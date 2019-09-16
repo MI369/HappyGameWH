@@ -1,0 +1,143 @@
+﻿生成启动时间为 2019/9/1 15:40:40。
+     1>项目“G:\网狐\精华版全套\系统模块\客户端组件\管理工具\ManageTools.vcxproj”在节点 3 上(Rebuild 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oy- /D WIN32 /D _WINDOWS /D NDEBUG /D PLAYCHATSHORTSOUND /D _MBCS /D _AFXDLL /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Release\管理工具.pch" /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Stdafx.cpp
+         Stdafx.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\atlmfc\include\afx.h(38): warning C4996: 'MBCS_Support_Deprecated_In_MFC': MBCS support in MFC is deprecated and may be removed in a future version of MFC.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\atlmfc\include\afx.h(33) : 参见“MBCS_Support_Deprecated_In_MFC”的声明
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oy- /D WIN32 /D _WINDOWS /D NDEBUG /D PLAYCHATSHORTSOUND /D _MBCS /D _AFXDLL /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Release\管理工具.pch" /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt AccountsControl.cpp AndroidManager.cpp DlgIssueMessage.cpp DlgLogon.cpp DlgServerManager.cpp DlgStatus.cpp GlobalUnits.cpp MissionAndroid.cpp MissionList.cpp MissionLogon.cpp Other\Custsite.cpp Other\IDispimp.cpp PlatformEvent.cpp PlatformFrame.cpp RoomControlDlg.cpp ServerControl.cpp ServerListData.cpp
+         AccountsControl.cpp
+         AndroidManager.cpp
+     1>g:\网狐\精华版全套\系统模块\全局定义\Module.h(247): warning C4101: “pszError”: 未引用的局部变量
+                 g:\网狐\精华版全套\系统模块\全局定义\Module.h(212): 编译类 模板 成员函数“bool CTempldateHelper<IPlatformResource>::CreateInstance(void)”时
+                 AndroidManager.cpp(54): 参见对正在编译的函数 模板 实例化“bool CTempldateHelper<IPlatformResource>::CreateInstance(void)”的引用
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\atlmfc\include\afxtempl.h(1531): 编译类 模板 成员函数“CMap<UINT,UINT,tagD3DFontItem *,tagD3DFontItem *>::CAssoc *CMap<UINT,UINT,tagD3DFontItem *,tagD3DFontItem *>::GetAssocAt(ARG_KEY,UINT &,UINT &) const”时
+                 with
+                 [
+                     ARG_KEY=UINT
+                 ]
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\atlmfc\include\afxtempl.h(1589): 参见对正在编译的函数 模板 实例化“CMap<UINT,UINT,tagD3DFontItem *,tagD3DFontItem *>::CAssoc *CMap<UINT,UINT,tagD3DFontItem *,tagD3DFontItem *>::GetAssocAt(ARG_KEY,UINT &,UINT &) const”的引用
+                 with
+                 [
+                     ARG_KEY=UINT
+                 ]
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\atlmfc\include\afxtempl.h(1584): 编译类 模板 成员函数“tagD3DFontItem &CMap<UINT,UINT,tagD3DFontItem *,tagD3DFontItem *>::operator [](ARG_KEY)”时
+                 with
+                 [
+                     ARG_KEY=UINT
+                 ]
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\atlmfc\include\afxtempl.h(1349): 参见对正在编译的函数 模板 实例化“tagD3DFontItem &CMap<UINT,UINT,tagD3DFontItem *,tagD3DFontItem *>::operator [](ARG_KEY)”的引用
+                 with
+                 [
+                     ARG_KEY=UINT
+                 ]
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\atlmfc\include\afxtempl.h(1349): 编译类 模板 成员函数“void CMap<UINT,UINT,tagD3DFontItem *,tagD3DFontItem *>::SetAt(ARG_KEY,ARG_VALUE)”时
+                 with
+                 [
+                     ARG_KEY=UINT
+         ,            ARG_VALUE=tagD3DFontItem *
+                 ]
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\atlmfc\include\afxtempl.h(1785): 参见对正在编译的函数 模板 实例化“void CMap<UINT,UINT,tagD3DFontItem *,tagD3DFontItem *>::SetAt(ARG_KEY,ARG_VALUE)”的引用
+                 with
+                 [
+                     ARG_KEY=UINT
+         ,            ARG_VALUE=tagD3DFontItem *
+                 ]
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\atlmfc\include\afxtempl.h(1471): 编译类 模板 成员函数“CMap<UINT,UINT,tagD3DFontItem *,tagD3DFontItem *>::~CMap(void)”时
+                 g:\网狐\精华版全套\系统模块\客户端组件\游戏引擎\D3DFont.h(43): 参见对正在编译的类 模板 实例化“CMap<UINT,UINT,tagD3DFontItem *,tagD3DFontItem *>”的引用
+         DlgIssueMessage.cpp
+         DlgLogon.cpp
+         DlgServerManager.cpp
+         DlgStatus.cpp
+         GlobalUnits.cpp
+         MissionAndroid.cpp
+         MissionList.cpp
+         MissionLogon.cpp
+         Custsite.cpp
+         IDispimp.cpp
+         PlatformEvent.cpp
+         PlatformFrame.cpp
+     1>PlatformFrame.cpp(1980): warning C4996: '_tcsncpy': This function or variable may be unsafe. Consider using _tcsncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\tchar.h(1587) : 参见“_tcsncpy”的声明
+     1>g:\网狐\精华版全套\系统模块\全局定义\Module.h(247): warning C4101: “pszError”: 未引用的局部变量
+                 g:\网狐\精华版全套\系统模块\全局定义\Module.h(212): 编译类 模板 成员函数“bool CTempldateHelper<ITCPSocket>::CreateInstance(void)”时
+                 PlatformFrame.cpp(1906): 参见对正在编译的函数 模板 实例化“bool CTempldateHelper<ITCPSocket>::CreateInstance(void)”的引用
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\atlmfc\include\afxtempl.h(1531): 编译类 模板 成员函数“CMap<UINT,UINT,tagD3DFontItem *,tagD3DFontItem *>::CAssoc *CMap<UINT,UINT,tagD3DFontItem *,tagD3DFontItem *>::GetAssocAt(ARG_KEY,UINT &,UINT &) const”时
+                 with
+                 [
+                     ARG_KEY=UINT
+                 ]
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\atlmfc\include\afxtempl.h(1589): 参见对正在编译的函数 模板 实例化“CMap<UINT,UINT,tagD3DFontItem *,tagD3DFontItem *>::CAssoc *CMap<UINT,UINT,tagD3DFontItem *,tagD3DFontItem *>::GetAssocAt(ARG_KEY,UINT &,UINT &) const”的引用
+                 with
+                 [
+                     ARG_KEY=UINT
+                 ]
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\atlmfc\include\afxtempl.h(1584): 编译类 模板 成员函数“tagD3DFontItem &CMap<UINT,UINT,tagD3DFontItem *,tagD3DFontItem *>::operator [](ARG_KEY)”时
+                 with
+                 [
+                     ARG_KEY=UINT
+                 ]
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\atlmfc\include\afxtempl.h(1349): 参见对正在编译的函数 模板 实例化“tagD3DFontItem &CMap<UINT,UINT,tagD3DFontItem *,tagD3DFontItem *>::operator [](ARG_KEY)”的引用
+                 with
+                 [
+                     ARG_KEY=UINT
+                 ]
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\atlmfc\include\afxtempl.h(1349): 编译类 模板 成员函数“void CMap<UINT,UINT,tagD3DFontItem *,tagD3DFontItem *>::SetAt(ARG_KEY,ARG_VALUE)”时
+                 with
+                 [
+                     ARG_KEY=UINT
+         ,            ARG_VALUE=tagD3DFontItem *
+                 ]
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\atlmfc\include\afxtempl.h(1785): 参见对正在编译的函数 模板 实例化“void CMap<UINT,UINT,tagD3DFontItem *,tagD3DFontItem *>::SetAt(ARG_KEY,ARG_VALUE)”的引用
+                 with
+                 [
+                     ARG_KEY=UINT
+         ,            ARG_VALUE=tagD3DFontItem *
+                 ]
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\atlmfc\include\afxtempl.h(1471): 编译类 模板 成员函数“CMap<UINT,UINT,tagD3DFontItem *,tagD3DFontItem *>::~CMap(void)”时
+                 g:\网狐\精华版全套\系统模块\客户端组件\游戏引擎\D3DFont.h(43): 参见对正在编译的类 模板 实例化“CMap<UINT,UINT,tagD3DFontItem *,tagD3DFontItem *>”的引用
+         RoomControlDlg.cpp
+         ServerControl.cpp
+         ServerListData.cpp
+         正在生成代码...
+       ResourceCompile:
+         C:\Program Files (x86)\Windows Kits\8.1\bin\x86\rc.exe /D NDEBUG /D _AFXDLL /l"0x0804" /IRelease\ /nologo /fo"Release\AndroidManager.res" AndroidManager.rc 
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(1193,5): warning MSB8012: TargetPath(G:\网狐\精华版全套\系统模块\客户端组件\管理工具\Release\管理工具.exe) does not match the Linker's OutputFile property value (G:\网狐\精华版全套\运行\Release\Ansi\ManageTools.exe). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(1195,5): warning MSB8012: TargetName(管理工具) does not match the Linker's OutputFile property value (ManageTools). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"../../../运行/Release/Ansi/ManageTools.exe" /INCREMENTAL:NO /NOLOGO /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\Include\Manifest\dpiaware.manifest" /DEBUG /PDB:"Release\管理工具.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"Release\管理工具.lib" /MACHINE:X86 /SAFESEH Release\AndroidManager.res
+         Release\AccountsControl.obj
+         Release\AndroidManager.obj
+         Release\DlgIssueMessage.obj
+         Release\DlgLogon.obj
+         Release\DlgServerManager.obj
+         Release\DlgStatus.obj
+         Release\GlobalUnits.obj
+         Release\MissionAndroid.obj
+         Release\MissionList.obj
+         Release\MissionLogon.obj
+         Release\Custsite.obj
+         Release\IDispimp.obj
+         Release\PlatformEvent.obj
+         Release\PlatformFrame.obj
+         Release\RoomControlDlg.obj
+         Release\ServerControl.obj
+         Release\ServerListData.obj
+         Release\Stdafx.obj
+         "G:\网狐\精华版全套\系统模块\链接库\Ansi\GameProperty.lib"
+     1>DlgIssueMessage.obj : error LNK2001: 无法解析的外部符号 "public: virtual long __thiscall CFGuiDialog::CloseWindow(void)" (?CloseWindow@CFGuiDialog@@UAEJXZ)
+     1>DlgServerManager.obj : error LNK2001: 无法解析的外部符号 "public: virtual long __thiscall CFGuiDialog::CloseWindow(void)" (?CloseWindow@CFGuiDialog@@UAEJXZ)
+     1>PlatformFrame.obj : error LNK2001: 无法解析的外部符号 "public: virtual long __thiscall CFGuiDialog::CloseWindow(void)" (?CloseWindow@CFGuiDialog@@UAEJXZ)
+     1>DlgIssueMessage.obj : error LNK2001: 无法解析的外部符号 "public: virtual int __thiscall CFGuiDialog::DoModal(void)" (?DoModal@CFGuiDialog@@UAEHXZ)
+     1>DlgServerManager.obj : error LNK2001: 无法解析的外部符号 "public: virtual int __thiscall CFGuiDialog::DoModal(void)" (?DoModal@CFGuiDialog@@UAEHXZ)
+     1>PlatformFrame.obj : error LNK2001: 无法解析的外部符号 "public: virtual int __thiscall CFGuiDialog::DoModal(void)" (?DoModal@CFGuiDialog@@UAEHXZ)
+     1>DlgIssueMessage.obj : error LNK2001: 无法解析的外部符号 "public: virtual long __thiscall CFGuiDialog::HandleOnSizeMessage(unsigned int,unsigned int,long,int &)" (?HandleOnSizeMessage@CFGuiDialog@@UAEJIIJAAH@Z)
+     1>DlgServerManager.obj : error LNK2001: 无法解析的外部符号 "public: virtual long __thiscall CFGuiDialog::HandleOnSizeMessage(unsigned int,unsigned int,long,int &)" (?HandleOnSizeMessage@CFGuiDialog@@UAEJIIJAAH@Z)
+     1>PlatformFrame.obj : error LNK2001: 无法解析的外部符号 "public: virtual long __thiscall CFGuiDialog::HandleOnSizeMessage(unsigned int,unsigned int,long,int &)" (?HandleOnSizeMessage@CFGuiDialog@@UAEJIIJAAH@Z)
+     1>PlatformFrame.obj : error LNK2019: 无法解析的外部符号 "__declspec(dllimport) public: virtual int __thiscall CFGuiDialog::DoModal(void)" (__imp_?DoModal@CFGuiDialog@@UAEHXZ)，该符号在函数 "protected: void __thiscall CPlatformFrame::OnBnClickedRoomManager(void)" (?OnBnClickedRoomManager@CPlatformFrame@@IAEXXZ) 中被引用
+     1>../../../运行/Release/Ansi/ManageTools.exe : fatal error LNK1120: 4 个无法解析的外部命令
+     1>已完成生成项目“G:\网狐\精华版全套\系统模块\客户端组件\管理工具\ManageTools.vcxproj”(Rebuild 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:08.57

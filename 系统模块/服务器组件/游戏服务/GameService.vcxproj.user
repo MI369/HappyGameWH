@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Unicode|Win32'">
+    <RemoteDebuggerCommand>G:/WHJJ/8-8-ts</RemoteDebuggerCommand>
+    <RemoteDebuggerWorkingDirectory>G:/WHJJ/8-8-ts</RemoteDebuggerWorkingDirectory>
+    <RemoteDebuggerServerName>172.16.0.211</RemoteDebuggerServerName>
+    <RemoteDebuggerConnection>RemoteWithoutAuthentication</RemoteDebuggerConnection>
+    <DeploymentDirectory>G:/WHJJ/8-8-ts</DeploymentDirectory>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <RemoteDebuggerDebuggerType>NativeOnly</RemoteDebuggerDebuggerType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Unicode|Win32'">
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <RemoteDebuggerCommand>G:\whjj\8-8-ts\GameService.dll</RemoteDebuggerCommand>
+    <RemoteDebuggerWorkingDirectory>G:\whjj\8-8-ts</RemoteDebuggerWorkingDirectory>
+    <RemoteDebuggerServerName>172.16.0.211</RemoteDebuggerServerName>
+    <RemoteDebuggerConnection>RemoteWithoutAuthentication</RemoteDebuggerConnection>
+    <RemoteDebuggerDebuggerType>NativeOnly</RemoteDebuggerDebuggerType>
+    <DeploymentDirectory>G:\whjj\8-8-ts</DeploymentDirectory>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,26 @@
+﻿生成启动时间为 2019/9/2 22:34:19。
+     1>项目“G:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\内核引擎\KernelEngine.vcxproj”在节点 2 上(Build 个目标)。
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(1193,5): warning MSB8012: TargetPath(G:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\内核引擎\Debug_Unicode\内核引擎.dll) does not match the Linker's OutputFile property value (G:\网狐\整理的最新网狐框架\精华版全套\运行\Debug\Unicode\KernelEngineD.dll). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(1195,5): warning MSB8012: TargetName(内核引擎) does not match the Linker's OutputFile property value (KernelEngineD). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+     1>Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"../../../运行/Debug/Unicode/KernelEngineD.dll" /INCREMENTAL /NOLOGO "../../链接库/unicode/ServiceCoreD.lib" /DEF:".\KernelEngineD.def" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\Include\Manifest\dpiaware.manifest" /DEBUG /PDB:"Debug_Unicode\内核引擎.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"../../链接库/Unicode/KernelEngineD.lib" /MACHINE:X86 /SAFESEH /DLL Debug_Unicode\KernelEngine.res
+         Debug_Unicode\AsynchronismEngine.obj
+         Debug_Unicode\AttemperEngine.obj
+         Debug_Unicode\DataBaseAide.obj
+         Debug_Unicode\DataBaseEngine.obj
+         Debug_Unicode\KernelEngine.obj
+         Debug_Unicode\Stdafx.obj
+         Debug_Unicode\TCPNetworkEngine.obj
+         Debug_Unicode\TCPSocketService.obj
+         Debug_Unicode\TimerEngine.obj
+         Debug_Unicode\TraceService.obj
+         Debug_Unicode\TraceServiceManager.obj
+         "G:\网狐\整理的最新网狐框架\精华版全套\系统模块\链接库\Unicode\ServiceCoreD.lib"
+     1>AsynchronismEngine.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/SAFESEH”规范)
+            正在创建库 ../../链接库/Unicode/KernelEngineD.lib 和对象 ../../链接库/Unicode/KernelEngineD.exp
+         KernelEngine.vcxproj -> G:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\内核引擎\Debug_Unicode\内核引擎.dll
+     1>已完成生成项目“G:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\内核引擎\KernelEngine.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:01.48

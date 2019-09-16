@@ -1,0 +1,83 @@
+﻿生成启动时间为 2019/9/16 9:02:28。
+     1>项目“G:\网狐\整理的最新网狐框架\精华版\系统模块\公共组件\服务核心\ServiceCore.vcxproj”在节点 2 上(Rebuild 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _AFXEXT /D SERVICE_CORE_DLL /D _WINDLL /D _MBCS /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Debug\服务核心.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Stdafx.cpp
+         Stdafx.cpp
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\atlmfc\include\afx.h(38): warning C4996: 'MBCS_Support_Deprecated_In_MFC': MBCS support in MFC is deprecated and may be removed in a future version of MFC.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\atlmfc\include\afx.h(33) : 参见“MBCS_Support_Deprecated_In_MFC”的声明
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _AFXEXT /D SERVICE_CORE_DLL /D _WINDLL /D _MBCS /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\服务核心.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ServiceCore.cpp WHBase64.cpp WHCommandLine.cpp WHDataLocker.cpp WHDataQueue.cpp WHEncrypt.cpp WHIniData.cpp WHMD5CheckSum.cpp WHRegKey.cpp WHService.cpp WHSha1.cpp WHThread.cpp
+         WHThread.cpp
+         WHSha1.cpp
+         WHService.cpp
+     1>g:\网狐\整理的最新网狐框架\精华版\系统模块\公共组件\服务核心\whservice.cpp(176): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(112) : 参见“strcpy”的声明
+     1>g:\网狐\整理的最新网狐框架\精华版\系统模块\公共组件\服务核心\whservice.cpp(183): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(356) : 参见“sprintf”的声明
+         WHRegKey.cpp
+         WHMD5CheckSum.cpp
+         WHIniData.cpp
+         WHEncrypt.cpp
+     1>g:\网狐\整理的最新网狐框架\精华版\系统模块\公共组件\服务核心\whencrypt.cpp(359): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>g:\网狐\整理的最新网狐框架\精华版\系统模块\公共组件\服务核心\whencrypt.cpp(389): warning C4996: 'swprintf': swprintf has been changed to conform with the ISO C standard, adding an extra character count parameter. To use traditional Microsoft swprintf, set _CRT_NON_CONFORMING_SWPRINTFS.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\swprintf.inl(85) : 参见“swprintf”的声明
+         WHDataQueue.cpp
+         WHDataLocker.cpp
+         WHCommandLine.cpp
+         WHBase64.cpp
+         ServiceCore.cpp
+         正在生成代码...
+       ResourceCompile:
+         C:\Program Files (x86)\Windows Kits\8.1\bin\x86\rc.exe /D _DEBUG /D _AFXDLL /l"0x0804" /IDebug\ /nologo /fo"Debug\ServiceCore.res" ServiceCore.rc 
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(1193,5): warning MSB8012: TargetPath(G:\网狐\整理的最新网狐框架\精华版\系统模块\公共组件\服务核心\Debug\服务核心.dll) does not match the Linker's OutputFile property value (G:\网狐\整理的最新网狐框架\精华版\运行\Debug\Ansi\ServiceCoreD.dll). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(1195,5): warning MSB8012: TargetName(服务核心) does not match the Linker's OutputFile property value (ServiceCoreD). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"../../../运行/Debug/Ansi/ServiceCoreD.dll" /INCREMENTAL /NOLOGO /DEF:".\ServiceCoreD.def" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\Include\Manifest\dpiaware.manifest" /DEBUG /PDB:"Debug\服务核心.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"../../链接库/Ansi/ServiceCoreD.lib" /MACHINE:X86 /SAFESEH /DLL Debug\ServiceCore.res
+         Debug\ServiceCore.obj
+         Debug\Stdafx.obj
+         Debug\WHBase64.obj
+         Debug\WHCommandLine.obj
+         Debug\WHDataLocker.obj
+         Debug\WHDataQueue.obj
+         Debug\WHEncrypt.obj
+         Debug\WHIniData.obj
+         Debug\WHMD5CheckSum.obj
+         Debug\WHRegKey.obj
+         Debug\WHService.obj
+         Debug\WHSha1.obj
+         Debug\WHThread.obj
+     1>ServiceCore.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/SAFESEH”规范)
+            正在创建库 ../../链接库/Ansi/ServiceCoreD.lib 和对象 ../../链接库/Ansi/ServiceCoreD.exp
+     1>ZLibD.lib(Adler32.obj) : warning LNK4099: 未找到 PDB“vc70.pdb”(使用“ZLibD.lib(Adler32.obj)”或在“G:\网狐\整理的最新网狐框架\精华版\系统模块\公共组件\服务核心\Debug\vc70.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>ZLibD.lib(Compress.obj) : warning LNK4099: 未找到 PDB“vc70.pdb”(使用“ZLibD.lib(Compress.obj)”或在“G:\网狐\整理的最新网狐框架\精华版\系统模块\公共组件\服务核心\Debug\vc70.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>ZLibD.lib(Deflate.obj) : warning LNK4099: 未找到 PDB“vc70.pdb”(使用“ZLibD.lib(Deflate.obj)”或在“G:\网狐\整理的最新网狐框架\精华版\系统模块\公共组件\服务核心\Debug\vc70.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>ZLibD.lib(Infblock.obj) : warning LNK4099: 未找到 PDB“vc70.pdb”(使用“ZLibD.lib(Infblock.obj)”或在“G:\网狐\整理的最新网狐框架\精华版\系统模块\公共组件\服务核心\Debug\vc70.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>ZLibD.lib(Infcodes.obj) : warning LNK4099: 未找到 PDB“vc70.pdb”(使用“ZLibD.lib(Infcodes.obj)”或在“G:\网狐\整理的最新网狐框架\精华版\系统模块\公共组件\服务核心\Debug\vc70.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>ZLibD.lib(Inffast.obj) : warning LNK4099: 未找到 PDB“vc70.pdb”(使用“ZLibD.lib(Inffast.obj)”或在“G:\网狐\整理的最新网狐框架\精华版\系统模块\公共组件\服务核心\Debug\vc70.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>ZLibD.lib(Inflate.obj) : warning LNK4099: 未找到 PDB“vc70.pdb”(使用“ZLibD.lib(Inflate.obj)”或在“G:\网狐\整理的最新网狐框架\精华版\系统模块\公共组件\服务核心\Debug\vc70.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>ZLibD.lib(Inftrees.obj) : warning LNK4099: 未找到 PDB“vc70.pdb”(使用“ZLibD.lib(Inftrees.obj)”或在“G:\网狐\整理的最新网狐框架\精华版\系统模块\公共组件\服务核心\Debug\vc70.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>ZLibD.lib(Infutil.obj) : warning LNK4099: 未找到 PDB“vc70.pdb”(使用“ZLibD.lib(Infutil.obj)”或在“G:\网狐\整理的最新网狐框架\精华版\系统模块\公共组件\服务核心\Debug\vc70.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>ZLibD.lib(Trees.obj) : warning LNK4099: 未找到 PDB“vc70.pdb”(使用“ZLibD.lib(Trees.obj)”或在“G:\网狐\整理的最新网狐框架\精华版\系统模块\公共组件\服务核心\Debug\vc70.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>ZLibD.lib(Uncompr.obj) : warning LNK4099: 未找到 PDB“vc70.pdb”(使用“ZLibD.lib(Uncompr.obj)”或在“G:\网狐\整理的最新网狐框架\精华版\系统模块\公共组件\服务核心\Debug\vc70.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>ZLibD.lib(Zutil.obj) : warning LNK4099: 未找到 PDB“vc70.pdb”(使用“ZLibD.lib(Zutil.obj)”或在“G:\网狐\整理的最新网狐框架\精华版\系统模块\公共组件\服务核心\Debug\vc70.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+         ServiceCore.vcxproj -> G:\网狐\整理的最新网狐框架\精华版\系统模块\公共组件\服务核心\Debug\服务核心.dll
+       PostBuildEvent:
+         mkdir ..\..\..\发布组件\服务器组件\Debug\Ansi
+         mkdir ..\..\..\发布组件\客户端组件\Debug\Ansi
+         copy /y ..\..\..\运行\Debug\Ansi\服务核心.dll ..\..\..\发布组件\服务器组件\Debug\Ansi\服务核心.dll
+         copy /y ..\..\..\运行\Debug\Ansi\服务核心.dll ..\..\..\发布组件\客户端组件\Debug\Ansi\服务核心.dll
+         
+         :VCEnd
+         系统找不到指定的文件。
+         系统找不到指定的文件。
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppCommon.targets(132,5): error MSB3073: 命令“mkdir ..\..\..\发布组件\服务器组件\Debug\Ansi
+C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppCommon.targets(132,5): error MSB3073: mkdir ..\..\..\发布组件\客户端组件\Debug\Ansi
+C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppCommon.targets(132,5): error MSB3073: copy /y ..\..\..\运行\Debug\Ansi\服务核心.dll ..\..\..\发布组件\服务器组件\Debug\Ansi\服务核心.dll
+C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppCommon.targets(132,5): error MSB3073: copy /y ..\..\..\运行\Debug\Ansi\服务核心.dll ..\..\..\发布组件\客户端组件\Debug\Ansi\服务核心.dll
+C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppCommon.targets(132,5): error MSB3073: 
+C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppCommon.targets(132,5): error MSB3073: :VCEnd”已退出，代码为 1。
+     1>已完成生成项目“G:\网狐\整理的最新网狐框架\精华版\系统模块\公共组件\服务核心\ServiceCore.vcxproj”(Rebuild 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:09.45

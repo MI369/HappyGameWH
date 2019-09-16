@@ -1,0 +1,98 @@
+﻿生成启动时间为 2019/9/2 22:33:37。
+     1>项目“G:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\模块管理\ModuleManager.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _AFXEXT /D MODULE_MANAGER_DLL /D _WINDLL /D _MBCS /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Debug\模块管理.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Stdafx.cpp
+         Stdafx.cpp
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\atlmfc\include\afx.h(38): warning C4996: 'MBCS_Support_Deprecated_In_MFC': MBCS support in MFC is deprecated and may be removed in a future version of MFC.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\atlmfc\include\afx.h(33) : 参见“MBCS_Support_Deprecated_In_MFC”的声明
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _AFXEXT /D MODULE_MANAGER_DLL /D _WINDLL /D _MBCS /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\模块管理.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt DlgMatchWizard.cpp DlgServerItem.cpp DlgServerMatch.cpp DlgServerWizard.cpp ListControl.cpp MatchInfoManager.cpp MatchListControl.cpp ModuleDBParameter.cpp ModuleInfoManager.cpp ModuleListControl.cpp ModuleManager.cpp ServerCustomRule.cpp ServerInfoManager.cpp ServerListControl.cpp
+         ServerListControl.cpp
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\模块管理\serverlistcontrol.cpp(288): warning C4996: '_itoa': This function or variable may be unsafe. Consider using _itoa_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(481) : 参见“_itoa”的声明
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\模块管理\serverlistcontrol.cpp(293): warning C4996: '_itoa': This function or variable may be unsafe. Consider using _itoa_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(481) : 参见“_itoa”的声明
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\模块管理\serverlistcontrol.cpp(297): warning C4996: '_itoa': This function or variable may be unsafe. Consider using _itoa_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(481) : 参见“_itoa”的声明
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\模块管理\serverlistcontrol.cpp(303): warning C4996: '_itoa': This function or variable may be unsafe. Consider using _itoa_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(481) : 参见“_itoa”的声明
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\模块管理\serverlistcontrol.cpp(307): warning C4996: '_itoa': This function or variable may be unsafe. Consider using _itoa_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(481) : 参见“_itoa”的声明
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\模块管理\serverlistcontrol.cpp(311): warning C4996: '_itoa': This function or variable may be unsafe. Consider using _itoa_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(481) : 参见“_itoa”的声明
+         ServerInfoManager.cpp
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\模块管理\serverinfomanager.cpp(544): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\模块管理\serverinfomanager.cpp(546): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\模块管理\serverinfomanager.cpp(649): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\模块管理\serverinfomanager.cpp(651): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\模块管理\serverinfomanager.cpp(1360): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(346) : 参见“_snprintf”的声明
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\模块管理\serverinfomanager.cpp(1377): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(346) : 参见“_snprintf”的声明
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\全局定义\module.h(247): warning C4101: “pszError”: 未引用的局部变量
+                 g:\网狐\整理的最新网狐框架\精华版全套\系统模块\全局定义\module.h(212): 编译类 模板 成员函数“bool CTempldateHelper<IDataBase>::CreateInstance(void)”时
+                 g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\模块管理\serverinfomanager.cpp(741): 参见对正在编译的函数 模板 实例化“bool CTempldateHelper<IDataBase>::CreateInstance(void)”的引用
+                 g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\内核引擎\kernelenginehead.h(829): 参见对正在编译的类 模板 实例化“CTempldateHelper<IDataBase>”的引用
+         ServerCustomRule.cpp
+         ModuleManager.cpp
+         ModuleListControl.cpp
+         ModuleInfoManager.cpp
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\全局定义\module.h(247): warning C4101: “pszError”: 未引用的局部变量
+                 g:\网狐\整理的最新网狐框架\精华版全套\系统模块\全局定义\module.h(212): 编译类 模板 成员函数“bool CTempldateHelper<IDataBase>::CreateInstance(void)”时
+                 g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\模块管理\moduleinfomanager.cpp(186): 参见对正在编译的函数 模板 实例化“bool CTempldateHelper<IDataBase>::CreateInstance(void)”的引用
+                 g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\内核引擎\kernelenginehead.h(829): 参见对正在编译的类 模板 实例化“CTempldateHelper<IDataBase>”的引用
+         ModuleDBParameter.cpp
+         MatchListControl.cpp
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\模块管理\matchlistcontrol.cpp(45): error C2664: “int lstrcmpA(LPCSTR,LPCSTR)”: 无法将参数 1 从“WCHAR [32]”转换为“LPCSTR”
+                 与指向的类型无关；转换要求 reinterpret_cast、C 样式转换或函数样式转换
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\模块管理\matchlistcontrol.cpp(142): error C2664: “int lstrcmpA(LPCSTR,LPCSTR)”: 无法将参数 1 从“WCHAR [32]”转换为“LPCSTR”
+                 与指向的类型无关；转换要求 reinterpret_cast、C 样式转换或函数样式转换
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\模块管理\matchlistcontrol.cpp(175): error C2440: “return”: 无法从“WCHAR [32]”转换为“LPCTSTR”
+                 与指向的类型无关；转换要求 reinterpret_cast、C 样式转换或函数样式转换
+         MatchInfoManager.cpp
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\模块管理\matchinfomanager.cpp(602): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\模块管理\matchinfomanager.cpp(707): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\全局定义\module.h(247): warning C4101: “pszError”: 未引用的局部变量
+                 g:\网狐\整理的最新网狐框架\精华版全套\系统模块\全局定义\module.h(212): 编译类 模板 成员函数“bool CTempldateHelper<IDataBase>::CreateInstance(void)”时
+                 g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\模块管理\matchinfomanager.cpp(800): 参见对正在编译的函数 模板 实例化“bool CTempldateHelper<IDataBase>::CreateInstance(void)”的引用
+                 g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\内核引擎\kernelenginehead.h(829): 参见对正在编译的类 模板 实例化“CTempldateHelper<IDataBase>”的引用
+         ListControl.cpp
+         DlgServerWizard.cpp
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\模块管理\dlgserverwizard.cpp(260): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+                 c:\program files (x86)\windows kits\8.1\include\um\winsock2.h(1850) : 参见“inet_addr”的声明
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\模块管理\dlgserverwizard.cpp(1576): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(346) : 参见“_snprintf”的声明
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\全局定义\module.h(247): warning C4101: “pszError”: 未引用的局部变量
+                 g:\网狐\整理的最新网狐框架\精华版全套\系统模块\全局定义\module.h(212): 编译类 模板 成员函数“bool CTempldateHelper<IGameServiceManager>::CreateInstance(void)”时
+                 g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\模块管理\dlgserverwizard.cpp(2141): 参见对正在编译的函数 模板 实例化“bool CTempldateHelper<IGameServiceManager>::CreateInstance(void)”的引用
+                 g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\游戏服务\gameservicehead.h(1692): 参见对正在编译的类 模板 实例化“CTempldateHelper<IGameServiceManager>”的引用
+         DlgServerMatch.cpp
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\全局定义\module.h(247): warning C4101: “pszError”: 未引用的局部变量
+                 g:\网狐\整理的最新网狐框架\精华版全套\系统模块\全局定义\module.h(212): 编译类 模板 成员函数“bool CTempldateHelper<IDataBase>::CreateInstance(void)”时
+                 g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\模块管理\dlgservermatch.cpp(130): 参见对正在编译的函数 模板 实例化“bool CTempldateHelper<IDataBase>::CreateInstance(void)”的引用
+                 g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\内核引擎\kernelenginehead.h(829): 参见对正在编译的类 模板 实例化“CTempldateHelper<IDataBase>”的引用
+         DlgServerItem.cpp
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\全局定义\module.h(247): warning C4101: “pszError”: 未引用的局部变量
+                 g:\网狐\整理的最新网狐框架\精华版全套\系统模块\全局定义\module.h(212): 编译类 模板 成员函数“bool CTempldateHelper<IGameServiceManager>::CreateInstance(void)”时
+                 g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\模块管理\dlgserveritem.cpp(274): 参见对正在编译的函数 模板 实例化“bool CTempldateHelper<IGameServiceManager>::CreateInstance(void)”的引用
+                 g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\游戏服务\gameservicehead.h(1692): 参见对正在编译的类 模板 实例化“CTempldateHelper<IGameServiceManager>”的引用
+         DlgMatchWizard.cpp
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\模块管理\dlgmatchwizard.cpp(214): error C2664: “int CComboBox::AddString(LPCTSTR)”: 无法将参数 1 从“WCHAR [32]”转换为“LPCTSTR”
+                 与指向的类型无关；转换要求 reinterpret_cast、C 样式转换或函数样式转换
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\模块管理\dlgmatchwizard.cpp(1603): error C2664: “void CWnd::SetDlgItemTextA(int,LPCTSTR)”: 无法将参数 2 从“WCHAR [32]”转换为“LPCTSTR”
+                 与指向的类型无关；转换要求 reinterpret_cast、C 样式转换或函数样式转换
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\模块管理\dlgmatchwizard.cpp(1709): error C2664: “int CWnd::GetDlgItemTextA(int,CString &) const”: 无法将参数 2 从“WCHAR [32]”转换为“LPTSTR”
+                 与指向的类型无关；转换要求 reinterpret_cast、C 样式转换或函数样式转换
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\模块管理\dlgmatchwizard.cpp(2099): error C2664: “LPSTR lstrcpynA(LPSTR,LPCSTR,int)”: 无法将参数 2 从“WCHAR [32]”转换为“LPCSTR”
+                 与指向的类型无关；转换要求 reinterpret_cast、C 样式转换或函数样式转换
+         正在生成代码...
+     1>已完成生成项目“G:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\模块管理\ModuleManager.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:11.14

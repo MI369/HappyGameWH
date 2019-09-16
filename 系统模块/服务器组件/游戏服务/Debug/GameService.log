@@ -1,0 +1,48 @@
+﻿生成启动时间为 2019/9/2 22:33:37。
+     1>项目“G:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\游戏服务\GameService.vcxproj”在节点 3 上(Build 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _AFXEXT /D GAME_SERVICE_DLL /D _WINDLL /D _MBCS /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Debug\游戏服务.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Stdafx.cpp
+         Stdafx.cpp
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\atlmfc\include\afx.h(38): warning C4996: 'MBCS_Support_Deprecated_In_MFC': MBCS support in MFC is deprecated and may be removed in a future version of MFC.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\atlmfc\include\afx.h(33) : 参见“MBCS_Support_Deprecated_In_MFC”的声明
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _AFXEXT /D GAME_SERVICE_DLL /D _WINDLL /D _MBCS /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\游戏服务.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt AndroidUserItem.cpp AndroidUserManager.cpp GamePropertyManager.cpp GameService.cpp ServerUserManager.cpp UserTaskManager.cpp
+         UserTaskManager.cpp
+         ServerUserManager.cpp
+         GameService.cpp
+         GamePropertyManager.cpp
+         AndroidUserManager.cpp
+         AndroidUserItem.cpp
+         正在生成代码...
+       ResourceCompile:
+         C:\Program Files (x86)\Windows Kits\8.1\bin\x86\rc.exe /D _DEBUG /D _AFXDLL /l"0x0804" /IDebug\ /nologo /fo"Debug\GameService.res" GameService.rc 
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(1193,5): warning MSB8012: TargetPath(G:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\游戏服务\Debug\游戏服务.dll) does not match the Linker's OutputFile property value (G:\网狐\整理的最新网狐框架\精华版全套\运行\Debug\Ansi\GameServiceD.dll). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(1195,5): warning MSB8012: TargetName(游戏服务) does not match the Linker's OutputFile property value (GameServiceD). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"../../../运行/Debug/Ansi/GameServiceD.dll" /INCREMENTAL /NOLOGO /DEF:".\GameServiceD.def" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\Include\Manifest\dpiaware.manifest" /DEBUG /PDB:"Debug\游戏服务.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"../../链接库/Ansi/GameServiceD.lib" /MACHINE:X86 /SAFESEH /DLL Debug\GameService.res
+         Debug\AndroidUserItem.obj
+         Debug\AndroidUserManager.obj
+         Debug\GamePropertyManager.obj
+         Debug\GameService.obj
+         Debug\ServerUserManager.obj
+         Debug\Stdafx.obj
+         Debug\UserTaskManager.obj
+         "G:\网狐\整理的最新网狐框架\精华版全套\系统模块\链接库\Unicode\KernelEngineD.lib"
+     1>AndroidUserItem.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/SAFESEH”规范)
+            正在创建库 ../../链接库/Ansi/GameServiceD.lib 和对象 ../../链接库/Ansi/GameServiceD.exp
+         GameService.vcxproj -> G:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\游戏服务\Debug\游戏服务.dll
+       PostBuildEvent:
+         mkdir ..\..\..\发布组件\服务器组件\Debug\Ansi
+         copy /y ..\..\..\运行\Debug\Ansi\游戏服务.dll ..\..\..\发布组件\服务器组件\Debug\Ansi\游戏服务.dll
+         
+         :VCEnd
+         子目录或文件 ..\..\..\发布组件\服务器组件\Debug\Ansi 已经存在。
+         系统找不到指定的文件。
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppCommon.targets(132,5): error MSB3073: 命令“mkdir ..\..\..\发布组件\服务器组件\Debug\Ansi
+C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppCommon.targets(132,5): error MSB3073: copy /y ..\..\..\运行\Debug\Ansi\游戏服务.dll ..\..\..\发布组件\服务器组件\Debug\Ansi\游戏服务.dll
+C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppCommon.targets(132,5): error MSB3073: 
+C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppCommon.targets(132,5): error MSB3073: :VCEnd”已退出，代码为 1。
+     1>已完成生成项目“G:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\游戏服务\GameService.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:08.17

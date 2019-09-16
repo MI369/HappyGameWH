@@ -1,0 +1,30 @@
+﻿生成启动时间为 2019/9/14 17:01:41。
+     1>项目“G:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\约战服务器\PersonalRoomCorrespond.vcxproj”在节点 6 上(Rebuild 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oy- /D WIN32 /D _WINDOWS /D NDEBUG /D _MBCS /D _AFXDLL /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Release\约战服务器.pch" /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Stdafx.cpp
+         Stdafx.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\atlmfc\include\afx.h(38): warning C4996: 'MBCS_Support_Deprecated_In_MFC': MBCS support in MFC is deprecated and may be removed in a future version of MFC.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\atlmfc\include\afx.h(33) : 参见“MBCS_Support_Deprecated_In_MFC”的声明
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\约战服务器\..\..\全局定义\Log.h(62): warning C4996: '_vsnprintf': This function or variable may be unsafe. Consider using _vsnprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(346) : 参见“_vsnprintf”的声明
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\约战服务器\..\..\全局定义\Log.h(75): warning C4996: '_vsnprintf': This function or variable may be unsafe. Consider using _vsnprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(346) : 参见“_vsnprintf”的声明
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\约战服务器\..\..\全局定义\Log.h(86): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : 参见“sprintf”的声明
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\约战服务器\..\..\全局定义\Log.h(90): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : 参见“sprintf”的声明
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\约战服务器\..\..\全局定义\Log.h(97): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : 参见“sprintf”的声明
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\约战服务器\..\..\全局定义\Log.h(104): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(211) : 参见“fopen”的声明
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\约战服务器\..\..\全局定义\Log.h(138): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : 参见“sprintf”的声明
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\约战服务器\..\..\全局定义\Log.h(141): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(211) : 参见“fopen”的声明
+     1>g:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\约战服务器\..\..\全局定义\Log.h(146): error C2664: “char *UnicodeToAnsi(const wchar_t *)”: 无法将参数 1 从“TCHAR [1024]”转换为“const wchar_t *”
+                 与指向的类型无关；转换要求 reinterpret_cast、C 样式转换或函数样式转换
+     1>已完成生成项目“G:\网狐\整理的最新网狐框架\精华版全套\系统模块\服务器组件\约战服务器\PersonalRoomCorrespond.vcxproj”(Rebuild 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:02.50

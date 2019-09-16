@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Unicode|Win32'">
+    <LocalDebuggerWorkingDirectory>..\..\..\运行\debug\unicode</LocalDebuggerWorkingDirectory>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Unicode|Win32'">
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <RemoteDebuggerWorkingDirectory>G:\whjj\8-8-ts</RemoteDebuggerWorkingDirectory>
+    <RemoteDebuggerCommand>G:\whjj\8-8-ts\PersonalRoomCorrespond.exe</RemoteDebuggerCommand>
+    <DeploymentDirectory>G:\whjj\8-8-ts</DeploymentDirectory>
+    <RemoteDebuggerServerName>172.16.0.211</RemoteDebuggerServerName>
+    <RemoteDebuggerConnection>RemoteWithoutAuthentication</RemoteDebuggerConnection>
+    <RemoteDebuggerDebuggerType>NativeOnly</RemoteDebuggerDebuggerType>
+  </PropertyGroup>
+</Project>
