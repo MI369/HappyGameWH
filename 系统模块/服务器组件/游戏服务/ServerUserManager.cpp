@@ -363,9 +363,9 @@ bool CServerUserItem::WriteUserScore(SCORE lScore, SCORE lGrade, SCORE lRevenue,
 	m_bModifyScore=true;
 
 	//设置积分
-	m_UserInfo.lScore+=lScore;
-	m_UserInfo.lGrade+=lGrade;
-	m_UserInfo.lIngot+=lIngot;
+	m_UserInfo.bConsumptionType.lScore += lScore;
+	m_UserInfo.bConsumptionType.lGrade += lGrade;
+	m_UserInfo.bConsumptionType.lIngot += lIngot;
 	m_UserInfo.dwExperience+=(dwPlayTimeCount+59L)/60L+dwWinExperience;	
 
 	//历史积分
@@ -395,18 +395,18 @@ bool CServerUserItem::WriteUserScore(SCORE lScore, SCORE lGrade, SCORE lRevenue,
 	if (m_lRestrictScore>0L)
 	{
 		//变量定义
-		SCORE lTotalScore=m_UserInfo.lScore+m_lTrusteeScore;
+		SCORE lTotalScore = m_UserInfo.bConsumptionType.lScore + m_lTrusteeScore;
 
 		//托管调整
 		if (lTotalScore>m_lRestrictScore)
 		{
-			m_UserInfo.lScore=m_lRestrictScore;
+			m_UserInfo.bConsumptionType.lScore = m_lRestrictScore;
 			m_lTrusteeScore=lTotalScore-m_lRestrictScore;
 		}
 		else
 		{
 			m_lTrusteeScore=0L;
-			m_UserInfo.lScore=lTotalScore;
+			m_UserInfo.bConsumptionType.lScore = lTotalScore;
 		}
 	}
 
@@ -420,8 +420,8 @@ bool CServerUserItem::WriteUserScore(SCORE lScore, SCORE lGrade, SCORE lRevenue,
 //领取奖励
 bool CServerUserItem::SetUserTaskReward(SCORE lScore, SCORE lIngot)
 {
-	m_UserInfo.lScore=lScore;
-	m_UserInfo.lIngot=lIngot;
+	m_UserInfo.bConsumptionType.lScore = lScore;
+	m_UserInfo.bConsumptionType.lIngot = lIngot;
 
 	return true;
 }
@@ -473,8 +473,8 @@ bool CServerUserItem::FrozenedUserScore(SCORE lScore)
 	if (m_UserInfo.dwUserID==0L) return false;
 
 	//效验积分
-	ASSERT((lScore>=0L)&&((m_UserInfo.lScore+m_lTrusteeScore)>=lScore));
-	if ((lScore<0L)||((m_UserInfo.lScore+m_lTrusteeScore)<lScore)) return false;
+	ASSERT((lScore >= 0L) && ((m_UserInfo.bConsumptionType.lScore + m_lTrusteeScore) >= lScore));
+	if ((lScore<0L) || ((m_UserInfo.bConsumptionType.lScore + m_lTrusteeScore)<lScore)) return false;
 
 	//设置变量
 	m_lFrozenedScore+=lScore;
@@ -484,7 +484,7 @@ bool CServerUserItem::FrozenedUserScore(SCORE lScore)
 	{
 		//积分锁定
 		lScore-=m_lTrusteeScore;
-		m_UserInfo.lScore-=lScore;
+		m_UserInfo.bConsumptionType.lScore -= lScore;
 		m_lTrusteeScore=0L;
 	}
 	else
@@ -509,24 +509,24 @@ bool CServerUserItem::UnFrozenedUserScore(SCORE lScore)
 
 	//设置变量
 	m_lFrozenedScore-=lScore;
-	m_UserInfo.lScore+=lScore;
+	m_UserInfo.bConsumptionType.lScore += lScore;
 
 	//托管积分
 	if (m_lRestrictScore>0L)
 	{
 		//变量定义
-		SCORE lTotalScore=m_UserInfo.lScore+m_lTrusteeScore;
+		SCORE lTotalScore = m_UserInfo.bConsumptionType.lScore + m_lTrusteeScore;
 
 		//托管调整
 		if (lTotalScore>m_lRestrictScore)
 		{
-			m_UserInfo.lScore=m_lRestrictScore;
+			m_UserInfo.bConsumptionType.lScore = m_lRestrictScore;
 			m_lTrusteeScore=lTotalScore-m_lRestrictScore;
 		}
 		else
 		{
 			m_lTrusteeScore=0L;
-			m_UserInfo.lScore=lTotalScore;
+			m_UserInfo.bConsumptionType.lScore = lTotalScore;
 		}
 	}
 
@@ -541,7 +541,7 @@ bool CServerUserItem::ModifyUserProperty(SCORE lScore,LONG lLoveLiness)
 	if (m_UserInfo.dwUserID==0L) return false;
 
 	//设置积分
-	m_UserInfo.lScore+=lScore;
+	m_UserInfo.bConsumptionType.lScore += lScore;
 	m_UserInfo.lLoveLiness+=lLoveLiness;
 
 	//记录信息
@@ -558,18 +558,18 @@ bool CServerUserItem::ModifyUserProperty(SCORE lScore,LONG lLoveLiness)
 	if ((m_lRestrictScore>0L)&&(lScore!=0L))
 	{
 		//变量定义
-		SCORE lTotalScore=m_UserInfo.lScore+m_lTrusteeScore;
+		SCORE lTotalScore = m_UserInfo.bConsumptionType.lScore + m_lTrusteeScore;
 
 		//托管调整
 		if (lTotalScore>m_lRestrictScore)
 		{
-			m_UserInfo.lScore=m_lRestrictScore;
+			m_UserInfo.bConsumptionType.lScore = m_lRestrictScore;
 			m_lTrusteeScore=lTotalScore-m_lRestrictScore;
 		}
 		else
 		{
 			m_lTrusteeScore=0L;
-			m_UserInfo.lScore=lTotalScore;
+			m_UserInfo.bConsumptionType.lScore = lTotalScore;
 		}
 	}
 
@@ -600,16 +600,16 @@ bool CServerUserItem::DetachBindStatus()
 bool CServerUserItem::ModifyUserInsure(SCORE lScore, SCORE lInsure, SCORE lRevenue)
 {
 	//平衡效验
-	/*ASSERT((m_bAndroidUser==true)||(((lScore+lInsure+lRevenue)==0L)&&(lRevenue>=0L)));
-	if ((m_bAndroidUser==false)&&(((lScore+lInsure+lRevenue)!=0L)||(lRevenue<0L))) return false;*/
+	ASSERT((m_bAndroidUser==true)||(((lScore+lInsure+lRevenue)==0L)&&(lRevenue>=0L)));
+	if ((m_bAndroidUser==false)&&(((lScore+lInsure+lRevenue)!=0L)||(lRevenue<0L))) return false;
 
 	//效验状态
-	/*ASSERT((m_UserInfo.dwUserID!=0L)&&((m_UserInfo.lScore+m_lTrusteeScore+lScore)>=0L));
-	if ((m_UserInfo.dwUserID==0L)||((m_UserInfo.lScore+m_lTrusteeScore+lScore)<0L)) return false;*/
+	ASSERT((m_UserInfo.dwUserID != 0L) && ((m_UserInfo.bConsumptionType.lScore + m_lTrusteeScore + lScore) >= 0L));
+	if ((m_UserInfo.dwUserID == 0L) || ((m_UserInfo.bConsumptionType.lScore + m_lTrusteeScore + lScore)<0L)) return false;
 
 	//设置积分
-	m_UserInfo.lScore+=lScore;
-	m_UserInfo.lInsure+=lInsure;
+	m_UserInfo.bConsumptionType.lScore += lScore;
+	m_UserInfo.bConsumptionType.lInsure += lInsure;
 
 	//记录信息
 	m_RecordInfo.lScore+=lScore;
@@ -620,18 +620,18 @@ bool CServerUserItem::ModifyUserInsure(SCORE lScore, SCORE lInsure, SCORE lReven
 	if (m_lRestrictScore>0L)
 	{
 		//变量定义
-		SCORE lTotalScore=m_UserInfo.lScore+m_lTrusteeScore;
+		SCORE lTotalScore = m_UserInfo.bConsumptionType.lScore + m_lTrusteeScore;
 
 		//托管调整
 		if (lTotalScore>m_lRestrictScore)
 		{
-			m_UserInfo.lScore=m_lRestrictScore;
+			m_UserInfo.bConsumptionType.lScore = m_lRestrictScore;
 			m_lTrusteeScore=lTotalScore-m_lRestrictScore;
 		}
 		else
 		{
 			m_lTrusteeScore=0L;
-			m_UserInfo.lScore=lTotalScore;
+			m_UserInfo.bConsumptionType.lScore = lTotalScore;
 		}
 	}
 
@@ -1064,7 +1064,7 @@ bool CServerUserManager::InsertUserItem(IServerUserItem * * pIServerUserResult, 
 	pServerUserItem->m_pIMatchUserItemSink=m_pIMatchUserItemSink;
 
 	//原始变量
-	pServerUserItem->m_ScoreFormer.lScore=UserInfo.lScore;
+	pServerUserItem->m_ScoreFormer.bConsumptionType.lScore = UserInfo.bConsumptionType.lScore;
 	pServerUserItem->m_ScoreFormer.dwWinCount=UserInfo.dwWinCount;
 	pServerUserItem->m_ScoreFormer.dwLostCount=UserInfo.dwLostCount;
 	pServerUserItem->m_ScoreFormer.dwDrawCount=UserInfo.dwDrawCount;
@@ -1105,10 +1105,10 @@ bool CServerUserManager::InsertUserItem(IServerUserItem * * pIServerUserResult, 
 	}
 
 	//托管调整
-	if ((UserInfoPlus.lRestrictScore>0L)&&(UserInfo.lScore>UserInfoPlus.lRestrictScore))
+	if ((UserInfoPlus.lRestrictScore>0L) && (UserInfo.bConsumptionType.lScore>UserInfoPlus.lRestrictScore))
 	{
-		pServerUserItem->m_UserInfo.lScore=UserInfoPlus.lRestrictScore;
-		pServerUserItem->m_lTrusteeScore=UserInfo.lScore-UserInfoPlus.lRestrictScore;
+		pServerUserItem->m_UserInfo.bConsumptionType.lScore = UserInfoPlus.lRestrictScore;
+		pServerUserItem->m_lTrusteeScore = UserInfo.bConsumptionType.lScore - UserInfoPlus.lRestrictScore;
 	}
 
 	//插入用户

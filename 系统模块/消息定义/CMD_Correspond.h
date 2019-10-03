@@ -16,7 +16,7 @@
 #define SUB_CS_C_REGISTER_SERVER	101									//注册房间
 #define SUB_CS_C_REGISTER_MATCH		102									//注册比赛
 #define SUB_CS_C_REGISTER_CHAT		103									//注册聊天	
-#define SUB_CS_C_REGISTER_PERSONAL		104									//注册约战房间限制	
+#define SUB_CS_C_REGISTER_PERSONAL	104									//注册约战房间限制	
 //注册结果
 #define SUB_CS_S_REGISTER_FAILURE	200									//注册失败
 
@@ -446,12 +446,14 @@ struct CMD_CS_S_DeleteParameter
 struct CMD_MB_QeuryPersonalRoomList
 {
 	DWORD							dwUserID;							//用户ID
+	DWORD							dwKindID;								//房间类型
 };
 
 struct CMD_MB_SC_QeuryPersonalRoomList
 {
 	DWORD							dwUserID;							//用户ID
 	DWORD							dwSocketID;						//网络ID
+	DWORD							dwKindID;								//游戏类型
 };
 
 
@@ -471,6 +473,7 @@ struct CMD_CS_C_SearchTable
 	DWORD							dwClientAddr;						//连接地址
 	DWORD							dwKindID;							//游戏类型标识
 	DWORD							dwPersonalRoomID;					//约战房间ID	
+	TCHAR							szPersonalTableID[7];				//房间标识
 };
 
 //查找结果

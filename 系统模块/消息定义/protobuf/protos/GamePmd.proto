@@ -1,0 +1,18 @@
+syntax = "proto3";    //Ö¸¶¨proto°æ±¾3.x
+
+import "NullPmd.proto";
+
+package PlatPmd;  
+
+message GamePmdCommand{ 
+	enum GamePmdEnum {  
+		param_nullmessage			= 0x00;   
+		param_game_c2s				= 0x01;        
+	} 
+}
+
+message game_c2s
+{
+    PlatPmd.null_request reqcmd	= 1;
+	
+}

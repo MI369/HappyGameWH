@@ -28,7 +28,7 @@
 #ifndef _DEBUG
 	#define SERVICE_CORE_DLL_NAME	TEXT("ServiceCore.dll")			//组件名字
 #else
-	#define SERVICE_CORE_DLL_NAME	TEXT("ServiceCoreD.dll")		//组件名字
+	#define SERVICE_CORE_DLL_NAME	TEXT("ServiceCore.dll")		//组件名字
 #endif
 
 //////////////////////////////////////////////////////////////////////////////////
@@ -46,6 +46,7 @@
 	#include "WHDataLocker.h"
 	#include "WHCommandLine.h"
 	#include "WHMD5CheckSum.h"
+	#include "WHStringUtils.h"
 #endif
 
 //////////////////////////////////////////////////////////////////////////////////

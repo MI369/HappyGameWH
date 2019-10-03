@@ -6,33 +6,92 @@
 //引入文件
 #include "ServiceCoreHead.h"
 
-//////////////////////////////////////////////////////////////////////////////////
-
-//类型定义
-enum emShaData
-{
-	SHA1_DATA_PUSH_SUCCEED			=	 0,
-	SHA1_DATA_TOO_LONG				=	-1,
-	SHA1_DATA_ALREADY_COMPUTED		=	-2,
-	SHA1_FILE_OPEN_FAILED			=	-3,
-};
+#define SHA_DIGEST_LENGTH 20
 
 //////////////////////////////////////////////////////////////////////////////////
+/*
+ *  sha1.h
+ *
+ *  Copyright (C) 1998, 2009
+ *  Paul E. Jones <paulej@packetizer.com>
+ *  All Rights Reserved.
+ *
+ *****************************************************************************
+ *  $Id: sha1.h 12 2009-06-22 19:34:25Z paulej $
+ *****************************************************************************
+ *
+ *  Description:
+ *      This class implements the Secure Hashing Standard as defined
+ *      in FIPS PUB 180-1 published April 17, 1995.
+ *
+ *      Many of the variable names in this class, especially the single
+ *      character names, were used because those were the names used
+ *      in the publication.
+ *
+ *      Please read the file sha1.cpp for more information.
+ *
+ */
 
-//Sha编码
-class SERVICE_CORE_CLASS CWHSha1
+class SERVICE_CORE_CLASS WHSha1
 {
-	//函数定义
-public:
-	//构造函数
-	CWHSha1();
-	//析构函数
-	virtual ~CWHSha1();			
 
-	//重载函数
 public:
-	//哈希数据
-	static int HashData(const void * pData, UINT nDataSize, UINT uMsgDigest[5]);		
+
+	WHSha1();
+	virtual ~WHSha1();
+
+	/*
+	 *  Re-initialize the class
+	 */
+	void Reset();
+
+	/*
+	 *  Returns the message digest
+	 */
+	bool Result(unsigned *message_digest_array);
+
+	/*
+	 *  Provide input to WHSha1
+	 */
+	void Input(const unsigned char *message_array,
+		unsigned            length);
+	void Input(const char  *message_array,
+		unsigned    length);
+	void Input(unsigned char message_element);
+	void Input(char message_element);
+	WHSha1& operator<<(const char *message_array);
+	WHSha1& operator<<(const unsigned char *message_array);
+	WHSha1& operator<<(const char message_element);
+	WHSha1& operator<<(const unsigned char message_element);
+
+private:
+
+	/*
+	 *  Process the next 512 bits of the message
+	 */
+	void ProcessMessageBlock();
+
+	/*
+	 *  Pads the current message block to 512 bits
+	 */
+	void PadMessage();
+
+	/*
+	 *  Performs a circular left shift operation
+	 */
+	inline unsigned CircularShift(int bits, unsigned word);
+
+	unsigned H[5];                      // Message digest buffers
+
+	unsigned Length_Low;                // Message length in bits
+	unsigned Length_High;               // Message length in bits
+
+	unsigned char Message_Block[64];    // 512-bit message blocks
+	int Message_Block_Index;            // Index into message block array
+
+	bool Computed;                      // Is the digest computed?
+	bool Corrupted;                     // Is the message digest corruped?
+
 };
 
 //////////////////////////////////////////////////////////////////////////////////

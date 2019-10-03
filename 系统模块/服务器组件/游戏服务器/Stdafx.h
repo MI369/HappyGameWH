@@ -48,7 +48,7 @@
 #include "..\..\公共组件\服务核心\ServiceCoreHead.h"
 #include "..\..\服务器组件\游戏服务\GameServiceHead.h"
 #include "..\..\服务器组件\比赛服务\MatchServiceHead.h"
-#include "..\..\服务器组件\游戏服务器\PersonalRoomServiceHead.h"
+#include "..\..\服务器组件\约战服务\PersonalRoomServiceHead.h"
 #include "..\..\服务器组件\内核引擎\KernelEngineHead.h"
 #include "..\..\服务器组件\模块管理\ModuleManagerHead.h"
 #include "..\..\全局定义\Log.h"

@@ -7,6 +7,17 @@
 //////////////////////////////////////////////////////////////////////////////////
 //游戏列表
 
+struct consumptionType{
+	SCORE							lGrade;								//用户成绩
+	SCORE							lInsure;							//用户银行	
+	SCORE							lScore;								//用户游戏币
+	SCORE							lIngot;								//用户元宝
+	SCORE							lBeans;								//游戏豆
+	SCORE							lDiamond;							//钻石数量
+	SCORE							lCoin;								//金币数量
+	SCORE							lCard;								//房卡数量
+};
+
 //游戏类型
 struct tagGameType
 {
@@ -280,11 +291,13 @@ struct tagUserAttrib
 struct tagUserScore
 {
 	//积分信息
-	SCORE							lScore;								//用户分数
-	SCORE							lGrade;								//用户成绩
-	SCORE							lInsure;							//用户银行
-	SCORE							lIngot;								//用户元宝
-	DOUBLE							dBeans;								//用户游戏豆
+	//SCORE							lScore;								//用户分数
+	//SCORE							lGrade;								//用户成绩
+	//SCORE							lInsure;							//用户银行
+	//SCORE							lIngot;								//用户元宝
+	//DOUBLE						dBeans;								//用户游戏豆
+
+	consumptionType					bConsumptionType;					//消费类型
 
 	//输赢信息
 	DWORD							dwWinCount;							//胜利盘数
@@ -303,9 +316,9 @@ struct tagUserScore
 struct tagMobileUserScore
 {
 	//积分信息
-	SCORE							lScore;								//用户分数
-	DOUBLE							dBeans;								//用户游戏豆
-
+	//SCORE							lScore;								//用户分数
+	//DOUBLE							dBeans;								//用户游戏豆
+	consumptionType					bConsumptionType;					//消费类型
 	//输赢信息
 	DWORD							dwWinCount;							//胜利盘数
 	DWORD							dwLostCount;						//失败盘数
@@ -585,13 +598,15 @@ struct tagUserInfo
 	BYTE							cbUserStatus;						//用户状态
 
 	//积分信息
-	SCORE							lScore;								//用户分数
-	SCORE							lGrade;								//用户成绩
-	SCORE							lInsure;							//用户银行
-	SCORE							lIngot;								//用户元宝
-	DOUBLE							dBeans;								//游戏豆
+	//SCORE							lScore;								//用户分数
+	//SCORE							lGrade;								//用户成绩
+	//SCORE							lInsure;							//用户银行
+	//SCORE							lIngot;								//用户元宝
+	//DOUBLE							dBeans;								//游戏豆
 	//私人房添加
-	SCORE							lDiamond;							//钻石数量
+	//SCORE							lDiamond;							//钻石数量
+
+	consumptionType					bConsumptionType;					//消费类型
 
 	//游戏信息
 	DWORD							dwWinCount;							//胜利盘数
@@ -634,11 +649,14 @@ struct tagUserInfoHead
 	BYTE							cbUserStatus;						//用户状态
 
 	//积分信息
-	SCORE							lScore;								//用户分数
-	SCORE							lGrade;								//用户成绩
-	SCORE							lInsure;							//用户银行
-	SCORE							lIngot;								//用户元宝
-	DOUBLE							dBeans;								//用户游戏豆
+	//SCORE							lScore;								//用户分数
+	//SCORE							lGrade;								//用户成绩
+	//SCORE							lInsure;							//用户银行
+	//SCORE							lIngot;								//用户元宝
+	//DOUBLE							dBeans;								//用户游戏豆
+
+	consumptionType					bConsumptionType;					//消费类型
+
 	SCORE							lFirstScore;						//进入房间积分
 
 	//游戏信息
@@ -887,9 +905,10 @@ struct tagMobileUserInfoHead
 	BYTE							cbUserStatus;						//用户状态
 
 	//积分信息
-	SCORE							lScore;								//用户分数
-	SCORE							lIngot;								//用户元宝
-	DOUBLE							dBeans;								//用户游戏豆
+	//SCORE							lScore;								//用户分数
+	//SCORE							lIngot;								//用户元宝
+	//DOUBLE							dBeans;								//用户游戏豆
+	consumptionType					bConsumptionType;					//消费类型
 
 	//游戏信息
 	DWORD							dwWinCount;							//胜利盘数
@@ -985,10 +1004,11 @@ struct tagPersonalTableInfo
 	DWORD							dwDrawCountLimit;					//局数限制
 	DWORD							dwDrawTimeLimit;					//时间限制
 	SCORE							lCellScore;							//房间底分
-	DWORD							dwPersonalRoomID;				//约战房间ID
+	DWORD							dwPersonalRoomID;					//约战房间ID
+	TCHAR							szRoomID[ROOM_ID_LEN];				//房间ID
 	DWORD							dwRoomTax;							//单独一个私人房间的税率，千分比
 	WORD							wJoinGamePeopleCount;				//参与游戏的人数
-	//TCHAR							szPassword[LEN_PASSWORD];			//桌子密码	
+	TCHAR							szPassword[LEN_PASSWORD];			//桌子密码	
 	BYTE							cbPassword;							//是否密码设置
 	tagRoomPassword					hRoomPassword[MAX_PASSWORD_COUNT];  //房间密码
 	WORD							wBeginFreeTime;						//免费时段开始
@@ -1007,6 +1027,7 @@ struct tagPersonalRoomOption
 	SCORE							lMaxCellScore;						//私人房的最大底分
 
 	SCORE							lPersonalRoomTax;					//私人房税收
+	consumptionType					bConsumptionType;					//消费类型
 
 	WORD							wCanCreateCount;					//玩家能够创建的私人房的最大数目
 	DWORD							dwPlayTurnCount; 					//私人放进行游戏的最大局数
@@ -1066,10 +1087,12 @@ struct tagHostCreatRoomInfo
 {
 	DWORD					dwUserID;
 	DWORD					dwKindID;
+	TCHAR szRoomID[MAX_CREATE_PERSONAL_ROOM][ROOM_ID_LEN];
 	tagRoomCreateInfo		hRoomCreateInfo[MAX_CREATE_PERSONAL_ROOM];
 
 	tagHostCreatRoomInfo()
 	{
+		memset(szRoomID, 0, sizeof(TCHAR) * MAX_CREATE_PERSONAL_ROOM *ROOM_ID_LEN);
 		memset(&hRoomCreateInfo, 0, sizeof(tagRoomCreateInfo) * MAX_CREATE_PERSONAL_ROOM);
 	}
 };
@@ -1210,6 +1233,51 @@ struct tagSystemMessage
 	DWORD							dwLastTime;						   //发送时间
 	tag_GR_SystemMessage            SystemMessage;                     //系统消息
 };
+
+//代理描述
+struct tagProxyDescribe
+{
+	BYTE							cbProxyType;						//代理类型
+	TCHAR							szDescribe[32];						//描述字符
+};
+
+//代理信息
+struct tagProxyServer
+{
+	WORD							wProxyPort;							//代理端口
+	TCHAR							szUserName[32];						//代理用户
+	TCHAR							szPassword[32];						//代理密码
+	TCHAR							szProxyServer[32];					//代理地址
+};
+
+
+//错误状态
+enum enDownLoadError
+{
+	DownLoadError_Server,			//服务错误
+	DownLoadError_Connect,			//连接错误
+};
+
+//下载状态
+enum enDownLoadStatus
+{
+	DownLoadStatus_Connect,			//连接状态
+	DownLoadStatus_Service,			//服务状态
+	DownLoadStatus_Conclude,		//完成状态
+};
+
+//////////////////////////////////////////////////////////////////////////////////
+
+//请求信息
+struct tagDownLoadInfo
+{
+	WORD							wHostPort;							//连接端口
+	TCHAR							szUrlPath[MAX_PATH];				//请求路径
+	TCHAR							szHostName[MAX_PATH];				//服务器名
+};
+
+
+//////////////////////////////////////////////////////////////////////////////////
 
 #pragma pack()
 

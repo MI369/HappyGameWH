@@ -32,7 +32,7 @@
 #ifndef _DEBUG
 	#define MATCH_SERVICE_DLL_NAME	TEXT("MatchService.dll")			//组件名字
 #else
-	#define MATCH_SERVICE_DLL_NAME	TEXT("MatchServiceD.dll")			//组件名字
+	#define MATCH_SERVICE_DLL_NAME	TEXT("MatchService.dll")			//组件名字
 #endif
 
 //////////////////////////////////////////////////////////////////////////////////

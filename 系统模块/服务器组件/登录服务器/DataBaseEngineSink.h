@@ -250,6 +250,8 @@ protected:
 	//请求私人房间信息
 	bool OnRequestqueryPersonalRoomInfo(DWORD dwContextID, VOID * pData, WORD wDataSize);
 
+	bool OnRequsetDissumeRoomTest(DWORD dwContextID, VOID * pData, WORD wDataSize, DWORD &dwUserID);
+
 	//玩家获取房间成绩
 	bool OnRequestQueryUserRoomScore(DWORD dwContextID, VOID * pData, WORD wDataSize);
 

@@ -69,6 +69,8 @@ public:
 public:
 	//获取状态
 	enServiceStatus GetServiceStatus() { return m_ServiceStatus; }
+	//获取配置参数
+	CInitParameter GetInitParameter() { return m_InitParameter; }
 
 	//服务控制
 public:

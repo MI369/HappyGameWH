@@ -24,7 +24,7 @@
 
 //长度定义
 #define SOCKET_TCP_BUFFER			16384								//网络缓冲
-#define SOCKET_TCP_PACKET			(SOCKET_TCP_BUFFER-sizeof(TCP_Head))//网络缓冲
+#define SOCKET_TCP_PACKET			(SOCKET_TCP_BUFFER-sizeof(TCP_Head))//网络包
 
 //长度定义
 #define SOCKET_UDP_BUFFER			16384								//网络缓冲

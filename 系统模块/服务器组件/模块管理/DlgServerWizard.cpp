@@ -246,13 +246,15 @@ BOOL CDlgServerOptionItem1::OnInitDialog()
 	}
 
 	//数据库名	
-	SetDlgItemText(IDC_DATABASE_NAME, TEXT("WHJHGameScoreDB"));
-	//if (m_pGameServiceOption->szDataBaseName[0]!=0)
-	//{
-	//	SetDlgItemText(IDC_DATABASE_NAME,m_pGameServiceOption->szDataBaseName);
-	//}
-	//else 
-	//	SetDlgItemText(IDC_DATABASE_NAME,m_pGameServiceAttrib->szDataBaseName);
+	//SetDlgItemText(IDC_DATABASE_NAME, szGameScoreDB);
+	if (m_pGameServiceOption->szDataBaseName[0]!=0)
+	{
+		SetDlgItemText(IDC_DATABASE_NAME,m_pGameServiceOption->szDataBaseName);
+	}
+	else {
+		SetDlgItemText(IDC_DATABASE_NAME, m_pGameServiceAttrib->szDataBaseName);
+	}
+		
 
 	//连接地址
 	if (m_pGameServiceOption->szDataBaseAddr[0]!=0)
@@ -334,11 +336,11 @@ BOOL CDlgServerOptionItem1::OnInitDialog()
 		//变量定义
 		WORD wServerType=0;
 		bool bGoldDataBase=(lstrcmpi(szDataBase,szTreasureDB)==0);
-		//bool bDefaultDataBase=(lstrcmpi(szDataBase,m_pGameServiceAttrib->szDataBaseName)==0);
+		bool bDefaultDataBase=(lstrcmpi(szDataBase,m_pGameServiceAttrib->szDataBaseName)==0);
 
 		//类型定义
 		if ((wServerType==0)&&(bGoldDataBase==true)) wServerType=GAME_GENRE_GOLD;
-		if ((wServerType==0)&&(bGoldDataBase==false)) wServerType=GAME_GENRE_SCORE;
+		if ((wServerType==0)&&(bGoldDataBase==false)&&(bDefaultDataBase==true)) wServerType=GAME_GENRE_SCORE;
 
 		//分析类型
 		if ((m_pGameServiceAttrib->wSupporType&wServerType)!=0L)
@@ -360,11 +362,11 @@ BOOL CDlgServerOptionItem1::OnInitDialog()
 	if (m_pGameServiceOption->wServerType == GAME_GENRE_PERSONAL)
 	{
 		//游戏类型
-		if ((lstrcmp(m_pGameServiceOption->szDataBaseName,  TEXT("WHJHTreasureDB")) == 0))
+		if ((lstrcmp(m_pGameServiceOption->szDataBaseName, szTreasureDB) == 0))
 		{
 			pComboBox->SetCurSel(0);
 		}
-		else 	if ((lstrcmp(m_pGameServiceOption->szDataBaseName,  TEXT("WHJHGameScoreDB")) == 0))
+		else if ((lstrcmp(m_pGameServiceOption->szDataBaseName, szGameScoreDB) == 0))
 		{
 			pComboBox->SetCurSel(1);
 		}
@@ -863,7 +865,7 @@ BOOL CDlgServerOptionItem2::OnInitDialog()
 	((CButton *)GetDlgItem(IDC_RECORD_GAME_TRACK))->EnableWindow(FALSE);
 
 	//所有财富游戏，每局即时写分，记录每局成绩，默认为直接勾选灰色状态
-	//if (m_pGameServiceOption->wServerType == GAME_GENRE_GOLD || GAME_GENRE_PERSONAL == m_pGameServiceOption->wServerType)
+	if (m_pGameServiceOption->wServerType == GAME_GENRE_GOLD || GAME_GENRE_PERSONAL == m_pGameServiceOption->wServerType)
 	{
 		CServerRule::SetImmediateWriteScore(m_pGameServiceOption->dwServerRule,true);
 		GetDlgItem(IDC_IMMEDIATE_WRITE_SCORE)->EnableWindow(FALSE);
@@ -1135,7 +1137,7 @@ VOID CDlgServerOptionItem2::InitCtrlWindow()
 	//控件禁用
 	GetDlgItem(IDC_ALLOW_DYNAMIC_JOIN)->EnableWindow((m_pGameServiceAttrib->cbDynamicJoin==TRUE)?TRUE:FALSE);
 	GetDlgItem(IDC_ALLOW_ANDROID_ATTEND)->EnableWindow((m_pGameServiceAttrib->cbAndroidUser==TRUE)?TRUE:FALSE);
-	//GetDlgItem(IDC_ALLOW_OFFLINE_TRUSTEE)->EnableWindow((m_pGameServiceAttrib->cbOffLineTrustee==TRUE)?TRUE:FALSE);
+	GetDlgItem(IDC_ALLOW_OFFLINE_TRUSTEE)->EnableWindow((m_pGameServiceAttrib->cbOffLineTrustee==TRUE)?TRUE:FALSE);
 
 	return;
 }
@@ -1323,7 +1325,7 @@ BOOL CDlgServerOptionItem5::OnInitDialog()
 	{
 		((CEdit*)GetDlgItem(IDC_EDIT_MAX_ROOM))->EnableWindow(true);
 	}
-//	SetDlgItemInt(IDC_EDIT_FEE_BEAN_OR_ROOMCARD, static_cast<DWORD>(m_pPersonalRoomOption->lFeeCardOrBeanCount));
+	//SetDlgItemInt(IDC_EDIT_FEE_BEAN_OR_ROOMCARD, static_cast<DWORD>(m_pPersonalRoomOption->lFeeCardOrBeanCount));
 	
 	//创建房间等级
 	((CButton *)GetDlgItem(IDC_RADIO_LEVEL_0))->SetCheck(false);
@@ -1431,7 +1433,7 @@ BOOL CDlgServerOptionItem5::OnInitDialog()
 		}
 		}	
 		
-		//if (i == 0)
+		if (i == 0)
 		{
 			if (m_pCreateRoomRightAndFee->stCreateRoomPayFee[i].dwPlayTurnLimit == 0 || m_pCreateRoomRightAndFee->stCreateRoomPayFee[i].dwIniScore == 0 
 				|| m_pCreateRoomRightAndFee->stCreateRoomPayFee[i].wAAPayFee == 0 || m_pCreateRoomRightAndFee->stCreateRoomPayFee[i].dwPayFee == 0)

@@ -26,6 +26,7 @@ typedef CMap<DWORD,DWORD,CGlobalUserItem *,CGlobalUserItem *> CMapGameID;
 typedef CMap<WORD,WORD,CGlobalPlazaItem *,CGlobalPlazaItem *> CMapPlazaID;
 typedef CMap<WORD,WORD,CGlobalServerItem *,CGlobalServerItem *> CMapServerID;
 typedef CMap<WORD,WORD,CGlobalChatItem *,CGlobalChatItem *> CMapChatID;
+typedef CMap<CString,LPCTSTR,tagPersonalTableInfo*,tagPersonalTableInfo* &> CMapPersonalTableInfo;
 
 //////////////////////////////////////////////////////////////////////////////////
 //结构定义
@@ -246,7 +247,12 @@ protected:
 	CMapPlazaID						m_MapPlazaID;						//广场标识
 	CMapServerID					m_MapServerID;						//房间标识
 	CMapChatID						m_MapChatID;						//聊天标识
-	
+
+	//++++++++++++++++++++++++++++++约战房间
+	CServerTableCountArray			m_ServerTableCountArray;			//房间空余桌子数量
+	CMapPersonalTableInfo			m_MapPersonalTableInfo;				//私人房间信息
+	std::vector<tagPersonalTableInfo>			m_VecDissumePersonalTableInfo;				//被解散的私人房间信息
+	std::vector<CMD_CS_S_RegisterPersonal> m_vecPersonalRoomMaxCreate;				//私人房可以创建的最大房间数
 	//辅助索引
 protected:
 	CMapGameID						m_MapGameID;						//标识索引
@@ -278,6 +284,37 @@ public:
 	DWORD GetServerItemCount() { return (DWORD)m_MapServerID.GetCount(); }
 	//聊天数目
 	DWORD GetChatItemCount() { return (DWORD)m_MapChatID.GetCount(); }
+
+	//私人房间
+public:
+	//查找桌子
+	tagPersonalTableInfo* SearchTableByID(LPCTSTR lpszTableID);
+	//查找桌子
+	tagPersonalTableInfo* SearchTableByTableIDAndServerID(DWORD dwServerID, DWORD dwTableID);
+	//添加桌子
+	bool AddFreeServerTable(DWORD dwServerID);
+	//添加桌子
+	bool AddServerTable(CString strServerID, tagPersonalTableInfo PersonalTable);
+	//移除桌子
+	bool RemoveFreeServerTable(DWORD dwServerID);
+	//移除桌子
+	bool RemoveServerTable(DWORD dwServerID, DWORD dwTableID);
+	//移除桌子
+	bool RemoveServerTable(DWORD dwServerID);
+	//获取房间
+	DWORD GetFreeServer(DWORD dwUserID, DWORD dwKindID, BYTE cbIsJoinGame);
+	//生成房间ID
+	VOID RandServerID(LPTSTR pszServerID, WORD wMaxCount);
+
+	//获取房主创建的所有房间
+	VOID GetHostCreatePersonalRoom(tagHostCreatRoomInfo & HostCreatRoomInfo);
+
+	//获取房主创建的房间的数量
+	INT GetHostCreatePersonalRoomCount(DWORD dwUserID);
+	//添加桌子
+	bool AddPersonalMaxCreate(CMD_CS_S_RegisterPersonal RegisterPersonal);
+	//是否可以再创建房间
+	bool CanCreatePersonalRoom(DWORD dwKindID,  DWORD dwUserID);
 
 	//用户管理
 public:

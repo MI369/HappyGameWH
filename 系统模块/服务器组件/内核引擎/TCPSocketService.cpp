@@ -447,63 +447,157 @@ WORD CTCPSocketServiceThread::SeedRandMap(WORD wSeed)
 // 映射发送数据
 BYTE CTCPSocketServiceThread::MapSendByte(BYTE const cbData)
 {
-    BYTE cbMap;
-    cbMap = g_SendByteMap[cbData];
+	BYTE cbMap = g_SendByteMap[(BYTE)(cbData + m_cbSendRound)];
+	m_cbSendRound += 3;
+
     return cbMap;
 }
 
 // 映射接收数据
 BYTE CTCPSocketServiceThread::MapRecvByte(BYTE const cbData)
 {
-    BYTE cbMap;
-    cbMap = g_RecvByteMap[cbData];
+	BYTE cbMap = g_RecvByteMap[cbData] - m_cbRecvRound;
+	m_cbRecvRound += 3;
+
     return cbMap;
 }
 
 // 解密数据
-WORD CTCPSocketServiceThread::CrevasseBuffer(BYTE cbDataBuffer[], WORD wDataSize)
+WORD CTCPSocketServiceThread::CrevasseBuffer(BYTE pcbDataBuffer[], WORD wDataSize)
 {
-    // 效验参数
-    // ASSERT(m_dwSendPacketCount > 0);
-    ASSERT(wDataSize >= sizeof(TCP_Head));
-    ASSERT(((TCP_Head *)cbDataBuffer)->TCPInfo.wPacketSize == wDataSize);
+	//效验参数
+	ASSERT(wDataSize >= sizeof(TCP_Head));
+	ASSERT(((TCP_Head *)pcbDataBuffer)->TCPInfo.wPacketSize == wDataSize);
 
-    // 效验码与字节映射
-    TCP_Head * pHead = (TCP_Head *)cbDataBuffer;
-    for (int i = sizeof(TCP_Info); i < wDataSize; i++)
-    {
-        cbDataBuffer[i] = MapRecvByte(cbDataBuffer[i]);
-    }
+	//调整长度
+	WORD wSnapCount = 0;
+	if ((wDataSize % sizeof(DWORD)) != 0)
+	{
+		wSnapCount = sizeof(DWORD) - wDataSize % sizeof(DWORD);
+		memset(pcbDataBuffer + wDataSize, 0, wSnapCount);
+	}
 
+	//提取密钥
+	if (m_dwRecvPacketCount == 0)
+	{
+		ASSERT(wDataSize >= (sizeof(TCP_Head) + sizeof(DWORD)));
+		if (wDataSize < (sizeof(TCP_Head) + sizeof(DWORD))) throw TEXT("数据包解密长度错误");
+		m_dwRecvXorKey = *(DWORD *)(pcbDataBuffer + sizeof(TCP_Head));
+		m_dwSendXorKey = m_dwRecvXorKey;
+		MoveMemory(pcbDataBuffer + sizeof(TCP_Head), pcbDataBuffer + sizeof(TCP_Head) + sizeof(DWORD),
+			wDataSize - sizeof(TCP_Head) - sizeof(DWORD));
+		wDataSize -= sizeof(DWORD);
+		((TCP_Head *)pcbDataBuffer)->TCPInfo.wPacketSize -= sizeof(DWORD);
+	}
+
+	//解密数据
+	DWORD dwXorKey = m_dwRecvXorKey;
+	DWORD * pdwXor = (DWORD *)(pcbDataBuffer + sizeof(TCP_Info));
+	WORD  * pwSeed = (WORD *)(pcbDataBuffer + sizeof(TCP_Info));
+	WORD wEncrypCount = (wDataSize + wSnapCount - sizeof(TCP_Info)) / 4;
+	for (WORD i = 0; i < wEncrypCount; i++)
+	{
+		if ((i == (wEncrypCount - 1)) && (wSnapCount > 0))
+		{
+			BYTE * pcbKey = ((BYTE *)&m_dwRecvXorKey) + sizeof(DWORD) - wSnapCount;
+			CopyMemory(pcbDataBuffer + wDataSize, pcbKey, wSnapCount);
+		}
+		dwXorKey = SeedRandMap(*pwSeed++);
+		dwXorKey |= ((DWORD)SeedRandMap(*pwSeed++)) << 16;
+		dwXorKey ^= g_dwPacketKey;
+		*pdwXor++ ^= m_dwRecvXorKey;
+		m_dwRecvXorKey = dwXorKey;
+	}
+
+	//效验码与字节映射
+	TCP_Head * pHead = (TCP_Head *)pcbDataBuffer;
+	BYTE cbCheckCode = pHead->TCPInfo.cbCheckCode;
+	for (int i = sizeof(TCP_Info); i < wDataSize; i++)
+	{
+		pcbDataBuffer[i] = MapRecvByte(pcbDataBuffer[i]);
+		cbCheckCode += pcbDataBuffer[i];
+	}
+	if (cbCheckCode != 0) throw TEXT("数据包效验码错误");
+
+	m_dwRecvPacketCount++;
     return wDataSize;
 }
 
 // 加密数据
-WORD CTCPSocketServiceThread::EncryptBuffer(BYTE cbDataBuffer[], WORD wDataSize, WORD wBufferSize)
+WORD CTCPSocketServiceThread::EncryptBuffer(BYTE pcbDataBuffer[], WORD wDataSize, WORD wBufferSize)
 {
-    int i = 0;
-    // 效验参数
-    ASSERT(wDataSize >= sizeof(TCP_Head));
-    ASSERT(wBufferSize >= (wDataSize + 2 * sizeof(DWORD)));
-    ASSERT(wDataSize <= (sizeof(TCP_Head) + SOCKET_TCP_BUFFER));
+	//效验参数
+	ASSERT(wDataSize >= sizeof(TCP_Head));
+	ASSERT(wBufferSize >= (wDataSize + 2 * sizeof(DWORD)));
+	ASSERT(wDataSize <= (sizeof(TCP_Head) + SOCKET_TCP_PACKET));
 
-    // 填写信息头
-    TCP_Head * pHead = (TCP_Head *)cbDataBuffer;
-    pHead->TCPInfo.wPacketSize = wDataSize;
-    pHead->TCPInfo.cbDataKind = DK_MAPPED;
+	//调整长度
+	WORD wEncryptSize = wDataSize - sizeof(TCP_Command), wSnapCount = 0;
+	if ((wEncryptSize % sizeof(DWORD)) != 0)
+	{
+		wSnapCount = sizeof(DWORD) - wEncryptSize % sizeof(DWORD);
+		memset(pcbDataBuffer + sizeof(TCP_Info) + wEncryptSize, 0, wSnapCount);
+	}
 
+	//效验码与字节映射
+	BYTE cbCheckCode = 0;
+	for (WORD i = sizeof(TCP_Info); i < wDataSize; i++)
+	{
+		cbCheckCode += pcbDataBuffer[i];
+		pcbDataBuffer[i] = MapSendByte(pcbDataBuffer[i]);
+	}
 
-    BYTE checkCode = 0;
+	//填写信息头
+	TCP_Head * pHead = (TCP_Head *)pcbDataBuffer;
+	pHead->TCPInfo.cbCheckCode = ~cbCheckCode + 1;
+	pHead->TCPInfo.wPacketSize = wDataSize;
+	pHead->TCPInfo.cbDataKind = DK_MAPPED;
 
-    for (WORD i = sizeof(TCP_Info); i < wDataSize; i++)
-    {
-        checkCode += cbDataBuffer[i];
-        cbDataBuffer[i] = MapSendByte(cbDataBuffer[i]);
-    }
-    pHead->TCPInfo.cbCheckCode = ~checkCode + 1;
+	//创建密钥
+	DWORD dwXorKey = m_dwSendXorKey;
+	if (m_dwSendPacketCount == 0)
+	{
+		//生成第一次随机种子
+		GUID Guid;
+		CoCreateGuid(&Guid);
+		dwXorKey = GetTickCount()*GetTickCount();
+		dwXorKey ^= Guid.Data1;
+		dwXorKey ^= Guid.Data2;
+		dwXorKey ^= Guid.Data3;
+		dwXorKey ^= *((DWORD *)Guid.Data4);
 
-    // 设置变量
-    m_dwSendPacketCount++;
+		//随机映射种子
+		dwXorKey = SeedRandMap((WORD)dwXorKey);
+		dwXorKey |= ((DWORD)SeedRandMap((WORD)(dwXorKey >> 16))) << 16;
+		dwXorKey ^= g_dwPacketKey;
+		m_dwSendXorKey = dwXorKey;
+		m_dwRecvXorKey = dwXorKey;
+	}
+
+	//加密数据
+	WORD * pwSeed = (WORD *)(pcbDataBuffer + sizeof(TCP_Info));
+	DWORD * pdwXor = (DWORD *)(pcbDataBuffer + sizeof(TCP_Info));
+	WORD wEncrypCount = (wEncryptSize + wSnapCount) / sizeof(DWORD);
+	for (int i = 0; i < wEncrypCount; i++)
+	{
+		*pdwXor++ ^= dwXorKey;
+		dwXorKey = SeedRandMap(*pwSeed++);
+		dwXorKey |= ((DWORD)SeedRandMap(*pwSeed++)) << 16;
+		dwXorKey ^= g_dwPacketKey;
+	}
+
+	//插入密钥
+	if (m_dwSendPacketCount == 0)
+	{
+		MoveMemory(pcbDataBuffer + sizeof(TCP_Head) + sizeof(DWORD), pcbDataBuffer + sizeof(TCP_Head), wDataSize);
+		*((DWORD *)(pcbDataBuffer + sizeof(TCP_Head))) = m_dwSendXorKey;
+		pHead->TCPInfo.wPacketSize += sizeof(DWORD);
+		wDataSize += sizeof(DWORD);
+	}
+
+	//设置变量
+	m_dwSendPacketCount++;
+	m_dwSendXorKey = dwXorKey;
 
     return wDataSize;
 }
@@ -629,7 +723,6 @@ LRESULT CTCPSocketServiceThread::OnSocketNotifyRead(WPARAM wParam, LPARAM lParam
                 return 1;
 
             // 拷贝数据
-            m_dwRecvPacketCount++;
             CopyMemory(cbDataBuffer, m_cbRecvBuf, wPacketSize);
             m_wRecvSize -= wPacketSize;
             MoveMemory(m_cbRecvBuf, m_cbRecvBuf + wPacketSize, m_wRecvSize);
@@ -637,7 +730,7 @@ LRESULT CTCPSocketServiceThread::OnSocketNotifyRead(WPARAM wParam, LPARAM lParam
             // 解密数据
             WORD wRealySize = CrevasseBuffer(cbDataBuffer, wPacketSize);
             ASSERT(wRealySize >= sizeof(TCP_Head));
-
+			
             // 解释数据
             WORD wDataSize = wRealySize - sizeof(TCP_Head);
             VOID * pDataBuffer = cbDataBuffer + sizeof(TCP_Head);

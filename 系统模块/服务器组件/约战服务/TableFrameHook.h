@@ -4,7 +4,8 @@
 #pragma once
 
 //引入文件
-#include "..\..\服务器组件\游戏服务器\PersonalRoomServiceHead.h"
+#include "PersonalRoomServiceHead.h"
+
 //////////////////////////////////////////////////////////////////////////
 
 //桌子钩子类
@@ -60,6 +61,12 @@ public:
 	virtual bool OnEventGameEnd(WORD wChairID, IServerUserItem * pIServerUserItem, BYTE cbReason);
 	//游戏结束
 	virtual bool  OnEventGameEnd(WORD wTableID, WORD wChairCount, DWORD dwDrawCountLimit, DWORD & dwPersonalPlayCount, int nSpecialInfoLen, byte * cbSpecialInfo, SYSTEMTIME sysStartTime, tagPersonalUserScoreInfo * PersonalUserScoreInfo, BOOL bPersonalLoop, BYTE cbGameMode);
+	
+	//用户事件
+public:
+	//玩家返赛
+	virtual bool OnEventUserReturnMatch(IServerUserItem * pIServerUserItem);
+	
 	//用户动作
 public:	
 	//用户断线

@@ -47,6 +47,10 @@
 
 #endif 
 
+#ifdef _DEBUG
+#pragma optimize("",off) 
+#endif // _DEBUG
+
 
 #define _ATL_CSTRING_EXPLICIT_CONSTRUCTORS
 

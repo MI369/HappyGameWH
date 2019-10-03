@@ -429,8 +429,10 @@ struct CMD_GR_GrowLevelParameter
 //等级升级
 struct CMD_GR_GrowLevelUpgrade
 {
-	SCORE							lCurrScore;							//当前游戏币
-	SCORE							lCurrIngot;							//当前元宝
+	//SCORE							lCurrScore;							//当前游戏币
+	//SCORE							lCurrIngot;							//当前元宝
+	consumptionType					bConsumptionType;					//消费类型
+
 	TCHAR							szNotifyContent[128];				//提示内容
 };
 
@@ -698,8 +700,11 @@ struct CMD_GR_PurchaseResult
 {
 	bool							bSuccessed;							//成功标识
 	BYTE							cbMemberOrder;						//会员系列
-	SCORE							lCurrScore;							//当前游戏币
-	DOUBLE							dCurrBeans;							//当前游戏豆
+
+	//SCORE							lCurrScore;							//当前游戏币
+	//DOUBLE							dCurrBeans;							//当前游戏豆
+
+	consumptionType					bConsumptionType;					//消费类型
 	TCHAR							szNotifyContent[128];				//提示内容
 };
 
@@ -723,9 +728,12 @@ struct CMD_GR_ExchangeScoreByBeans
 struct CMD_GR_ExchangeResult
 {
 	bool							bSuccessed;							//成功标识
-	SCORE							lCurrScore;							//当前游戏币
-	SCORE							lCurrIngot;							//当前元宝
-	double							dCurrBeans;							//当前游戏豆
+
+	//SCORE							lCurrScore;							//当前游戏币
+	//SCORE							lCurrIngot;							//当前元宝
+	//double							dCurrBeans;							//当前游戏豆
+	consumptionType					bConsumptionType;					//消费类型
+
 	TCHAR							szNotifyContent[128];				//提示内容
 };
 
@@ -789,11 +797,15 @@ struct CMD_GR_PropertyBuyResult
 	DWORD							dwUserID;							//用户 I D
 	DWORD							dwPropertyID;						//道具标识
 	DWORD							dwItemCount;						//道具数目
-	LONGLONG						lDiamond;							//钻石
-	LONGLONG						lInsureScore;						//银行存款
-	LONGLONG						lUserMedal;							//用户元宝
+
+	//LONGLONG						lDiamond;							//钻石
+	//LONGLONG						lInsureScore;						//银行存款
+	//LONGLONG						lUserMedal;							//用户元宝
+	//double							dCash;								//游戏豆
+
+	consumptionType					bConsumptionType;					//消费类型
+
 	LONGLONG						lLoveLiness;						//魅力值
-	double							dCash;								//游戏豆
 	BYTE							cbCurrMemberOrder;					//会员等级
 	TCHAR							szNotifyContent[128];				//提示内容
 };
@@ -857,7 +869,8 @@ struct CMD_GR_S_PropertyEffect
 	BYTE							wPropKind;							//道具类型
 	BYTE							cbMemberOrder;						//会员等级
 	DWORD							dwFleeCount;						//逃跑局数
-	SCORE							lScore;								//负分清零
+	//SCORE							lScore;								//负分清零
+	consumptionType					bConsumptionType;					//消费类型
 };
 
 //发送喇叭
@@ -1653,7 +1666,8 @@ struct CMD_GR_CreateSuccess
 	DWORD								dwPersonalRoomID;					//约战房间ID	
 	DWORD								dwDrawCountLimit;					//局数限制
 	DWORD								dwDrawTimeLimit;					//时间限制	
-	LONGLONG							lDiamond;							//钻石数量
+	//LONGLONG							lDiamond;							//钻石数量
+	consumptionType					bConsumptionType;					//消费类型
 };
 
 //创建失败
@@ -1781,7 +1795,9 @@ struct Personal_Room_Message
 //强制解散桌子后的游戏都和房卡
 struct CMD_GR_CurrenceRoomCardAndBeans
 {
-	SCORE					lDiamond;							//钻石
+	//SCORE					lDiamond;							//钻石
+	consumptionType			bConsumptionType;					//消费类型
+	//DOUBLE					dbBeans;							//网络标识
 };
 
 //改变椅子数量

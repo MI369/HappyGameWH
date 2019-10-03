@@ -27,7 +27,7 @@
 #ifndef _DEBUG
 	#define MODULE_MANAGER_DLL_NAME	TEXT("ModuleManager.dll")			//组件 DLL 名字
 #else
-	#define MODULE_MANAGER_DLL_NAME	TEXT("ModuleManagerD.dll")			//组件 DLL 名字
+	#define MODULE_MANAGER_DLL_NAME	TEXT("ModuleManager.dll")			//组件 DLL 名字
 #endif
 
 //////////////////////////////////////////////////////////////////////////////////

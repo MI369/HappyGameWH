@@ -66,10 +66,13 @@ CDataBase::CDataBase() : m_dwResumeConnectCount(10L), m_dwResumeConnectTime(30L)
     m_DBRecordset.CreateInstance(__uuidof(Recordset));
     m_DBConnection.CreateInstance(__uuidof(Connection));
 
-    // 效验数据
-    if (m_DBCommand == NULL) throw TEXT("创建 m_DBCommand 对象失败");
-    if (m_DBRecordset == NULL) throw TEXT("创建 m_DBRecordset 对象失败");
-    if (m_DBConnection == NULL) throw TEXT("创建 m_DBConnection 对象失败");
+	//效验数据
+	ASSERT(m_DBCommand!=NULL);
+	ASSERT(m_DBRecordset!=NULL);
+	ASSERT(m_DBConnection!=NULL);
+	if (m_DBCommand==NULL) throw TEXT("数据库命令对象创建失败");
+	if (m_DBRecordset==NULL) throw TEXT("数据库记录集对象创建失败");
+	if (m_DBConnection==NULL) throw TEXT("数据库连接对象创建失败");
 
     // 设置变量
     m_DBCommand->CommandType = adCmdStoredProc;
@@ -114,6 +117,9 @@ VOID CDataBase::OpenConnection()
         // 设置对象
         m_DBConnection->CursorLocation = adUseClient;
         m_DBCommand->ActiveConnection = m_DBConnection;
+		//设置变量
+		m_dwConnectCount=0L;
+		m_dwConnectErrorTime=0L;
     }
     catch (CComError & ComError)
     {
@@ -229,8 +235,11 @@ VOID CDataBase::ClearParameters()
 // 获取参数
 VOID CDataBase::GetParameter(LPCTSTR pszParamName, CDBVarValue & DBVarValue)
 {
+	//效验参数
+	ASSERT(pszParamName != NULL);
     try
     {
+		DBVarValue.Clear();
         DBVarValue = m_DBCommand->Parameters->Item[pszParamName]->Value;
     }
     catch (CComError & ComError)
@@ -885,8 +894,7 @@ bool CDataBaseEngine::OnAsynchronismEngineData(WORD wIdentifier, VOID * pData, W
         {
             // 效验参数
             ASSERT(wDataSize >= sizeof(NTY_DataBaseEvent));
-            if (wDataSize < sizeof(NTY_DataBaseEvent))
-                return false;
+            if (wDataSize < sizeof(NTY_DataBaseEvent)) return false;
 
             // 变量定义
             NTY_DataBaseEvent * pDataBaseEvent = (NTY_DataBaseEvent *)pData;
@@ -895,8 +903,9 @@ bool CDataBaseEngine::OnAsynchronismEngineData(WORD wIdentifier, VOID * pData, W
             try
             {
                 ASSERT(m_pIDataBaseEngineSink != NULL);
-                return m_pIDataBaseEngineSink->OnDataBaseEngineRequest(pDataBaseEvent->wRequestID, pDataBaseEvent->dwContextID,
-                    pDataBaseEvent + 1, wDataSize - sizeof(NTY_DataBaseEvent));
+				bool flag = m_pIDataBaseEngineSink->OnDataBaseEngineRequest(pDataBaseEvent->wRequestID, pDataBaseEvent->dwContextID,
+					pDataBaseEvent + 1, wDataSize - sizeof(NTY_DataBaseEvent));
+				return flag;
             }
             catch (...)
             {

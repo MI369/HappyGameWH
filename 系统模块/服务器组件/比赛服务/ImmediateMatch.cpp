@@ -953,15 +953,15 @@ bool CImmediateMatch::OnEventUserItemScore(IServerUserItem * pIServerUserItem, B
 	UserScore.UserScore.lIntegralCount =pUserInfo->lIntegralCount;
 
 	//构造积分
-	UserScore.UserScore.lGrade=pUserInfo->lGrade;
-	UserScore.UserScore.lInsure=pUserInfo->lInsure;
-	UserScore.UserScore.lIngot=pUserInfo->lIngot;
-	UserScore.UserScore.dBeans=pUserInfo->dBeans;
+	UserScore.UserScore.bConsumptionType.lGrade = pUserInfo->bConsumptionType.lGrade;
+	UserScore.UserScore.bConsumptionType.lInsure = pUserInfo->bConsumptionType.lInsure;
+	UserScore.UserScore.bConsumptionType.lIngot = pUserInfo->bConsumptionType.lIngot;
+	UserScore.UserScore.bConsumptionType.lBeans = pUserInfo->bConsumptionType.lBeans;
 
 	//构造积分
-	UserScore.UserScore.lScore=pUserInfo->lScore;
-	UserScore.UserScore.lScore+=pIServerUserItem->GetTrusteeScore();
-	UserScore.UserScore.lScore+=pIServerUserItem->GetFrozenedScore();
+	UserScore.UserScore.bConsumptionType.lScore = pUserInfo->bConsumptionType.lScore;
+	UserScore.UserScore.bConsumptionType.lScore += pIServerUserItem->GetTrusteeScore();
+	UserScore.UserScore.bConsumptionType.lScore += pIServerUserItem->GetFrozenedScore();
 
 	//发送数据
 	m_pIGameServiceFrame->SendData(BG_ALL_CLIENT,MDM_GR_USER,SUB_GR_USER_SCORE,&UserScore,sizeof(UserScore));
@@ -980,10 +980,10 @@ bool CImmediateMatch::OnEventUserItemScore(IServerUserItem * pIServerUserItem, B
 	MobileUserScore.UserScore.lIntegralCount=pUserInfo->lIntegralCount;
 
 	//构造积分
-	MobileUserScore.UserScore.lScore=pUserInfo->lScore;
-	MobileUserScore.UserScore.lScore+=pIServerUserItem->GetTrusteeScore();
-	MobileUserScore.UserScore.lScore+=pIServerUserItem->GetFrozenedScore();
-	MobileUserScore.UserScore.dBeans=pUserInfo->dBeans;
+	MobileUserScore.UserScore.bConsumptionType.lScore = pUserInfo->bConsumptionType.lScore;
+	MobileUserScore.UserScore.bConsumptionType.lScore += pIServerUserItem->GetTrusteeScore();
+	MobileUserScore.UserScore.bConsumptionType.lScore += pIServerUserItem->GetFrozenedScore();
+	MobileUserScore.UserScore.bConsumptionType.lBeans = pUserInfo->bConsumptionType.lBeans;
 
 	//发送数据
 	m_pIGameServiceFrame->SendDataBatchToMobileUser(pIServerUserItem->GetTableID(),MDM_GR_USER,SUB_GR_USER_SCORE,&MobileUserScore,sizeof(MobileUserScore));
@@ -1186,7 +1186,7 @@ bool CImmediateMatch::SendMatchInfo(IServerUserItem * pIServerUserItem)
 	pUserScore->dwWinCount=pUserScore->dwLostCount=pUserScore->dwFleeCount=pUserScore->dwDrawCount=pUserScore->cbGender=0;
 	if((LONGLONG)m_pImmediateMatch->lInitalScore!=0)
 	{
-		pUserScore->lScore=(LONG)m_pImmediateMatch->lInitalScore;
+		pUserScore->bConsumptionType.lScore = (LONG)m_pImmediateMatch->lInitalScore;
 	}
 
 	return SendGroupUserScore(pIServerUserItem, NULL);
@@ -1228,9 +1228,9 @@ bool CImmediateMatch::SendGroupUserScore(IServerUserItem * pIServerUserItem,CImm
 	UserScore.UserScore.lIntegralCount =pUserInfo->lIntegralCount;
 
 	//构造积分
-	UserScore.UserScore.lScore=pUserInfo->lScore;
-	UserScore.UserScore.lIngot=pUserInfo->lIngot;
-	UserScore.UserScore.dBeans=pUserInfo->dBeans;
+	UserScore.UserScore.bConsumptionType.lScore = pUserInfo->bConsumptionType.lScore;
+	UserScore.UserScore.bConsumptionType.lIngot = pUserInfo->bConsumptionType.lIngot;
+	UserScore.UserScore.bConsumptionType.lBeans = pUserInfo->bConsumptionType.lBeans;
 
 	if(pMatch!=NULL)
 	{

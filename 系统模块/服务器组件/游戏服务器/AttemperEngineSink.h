@@ -36,6 +36,13 @@ struct tagBindParameter
 	IServerUserItem *				pIServerUserItem;					//用户接口
 };
 
+//系统消息
+//struct tagSystemMessage
+//{
+//	DWORD							dwLastTime;						   //发送时间
+//	DBR_GR_SystemMessage            SystemMessage;                     //系统消息
+//};
+
 //数组说明
 typedef CWHArray<CTableFrame *>		CTableFrameArray;					//桌子数组
 typedef CWHArray<tagSystemMessage *>   CSystemMessageArray;             //系统消息
@@ -239,7 +246,7 @@ public:
 	//更新桌子
 	virtual VOID UpdateTablePlayerCount(WORD wServerID, WORD wTableID, WORD wCount);
 	//开始游戏写入参与信息
-	//virtual VOID PersonalRoomWriteJoinInfo(DWORD dwUserID, WORD wTableID, WORD wChairID, DWORD dwKindID, DWORD dwPersonalRoomID, TCHAR * szPersonalRoomGUID);
+	virtual VOID PersonalRoomWriteJoinInfo(DWORD dwUserID, WORD wTableID, WORD wChairID, DWORD dwKindID, DWORD dwPersonalRoomID, TCHAR * szPersonalRoomGUID);
 	//用户接口
 public:
 	//用户积分
@@ -339,6 +346,20 @@ protected:
 	bool OnDBPCGrowLevelParameter(DWORD dwContextID, VOID * pData, WORD wDataSize);
 	//等级升级
 	bool OnDBPCGrowLevelUpgrade(DWORD dwContextID, VOID * pData, WORD wDataSize);
+	//创建成功
+	bool OnDBCreateSucess(DWORD dwContextID, VOID * pData, WORD wDataSize);
+	//创建失败
+	bool OnDBCreateFailure(DWORD dwContextID, VOID * pData, WORD wDataSize);
+	//取消创建
+	bool OnDBCancelCreateTable(DWORD dwContextID, VOID * pData, WORD wDataSize);
+	//私人配置
+	bool OnDBLoadPersonalParameter(DWORD dwContextID, VOID * pData, WORD wDataSize);
+	//解散房间
+	bool OnDBDissumeTableResult(DWORD dwContextID, VOID * pData, WORD wDataSize);
+	//私人房间玩家请求房间信息
+	bool OnDBQueryUserRoomScore(DWORD dwContextID, VOID * pData, WORD wDataSize);
+	//当前用户的房卡和游戏豆
+	bool OnDBCurrenceRoomCardAndBeant(DWORD dwContextID, VOID * pData, WORD wDataSize);
 
 	//连接处理
 protected:
@@ -521,6 +542,18 @@ protected:
 	bool OnTCPNetworkSubWarningUser(VOID * pData, WORD wDataSize, DWORD dwSocketID);
 	//作弊命令
 	bool OnTCPNetworkSubRoomCheat(VOID * pData, WORD wDataSize, DWORD dwSocketID);
+	//私人房间
+	protected:
+	//创建桌子
+	bool OnTCPNetworkSubCreateTable(VOID * pData, WORD wDataSize, DWORD dwSocketID);
+	//取消请求
+	bool OnTCPNetworkSubCancelRequest(VOID * pData, WORD wDataSize, DWORD dwSocketID);
+	//取消答复
+	bool OnTCPNetworkSubRequestReply(VOID * pData, WORD wDataSize, DWORD dwSocketID);
+	//房主强制请求桌子
+	bool OnTCPNetworkSubHostDissumeTable(VOID * pData, WORD wDataSize, DWORD dwSocketID);
+	//玩家请求房间成绩
+	bool OnTCPNetworkSubQueryUserRoomScore(VOID * pData, WORD wDataSize, DWORD dwSocketID);
 
 	//内部事件
 protected:

@@ -90,7 +90,7 @@
 #define LEN_UNDER_WRITE				32									//个性签名
 #define LEN_REMARKS					32									//备注信息
 #define LEN_DATETIME				20									//日期长度
-
+#define ROOM_ID_LEN 				7
 //数据长度
 #define LEN_QQ						16									//Q Q 号码
 #define LEN_EMAIL					33									//电子邮件
@@ -475,6 +475,45 @@
 //热键定义
 #define IDI_HOT_KEY_BOSS			0x0100								//老板热键
 #define IDI_HOT_KEY_WHISPER			0x0200								//私聊热键
+
+//////////////////////////////////////////////////////////////////////////////////
+
+//游戏id
+#define ZZMJ_KIND_ID  386
+#define HZMJ_KIND_ID  389
+#define ZJH_KIND_ID	  6
+#define NN_KIND_ID	  27
+#define TBZ_KIND_ID	  47
+#define OXSIXX_KIND_ID	  50
+#define SET_RULE			1
+
+//////////////////////////////////////////////////////////////////////////////////
+
+//断线定义
+#define IDI_OFF_LINE				(TIME_TABLE_SINK_RANGE+1)			//断线标识
+#define MAX_OFF_LINE				3									//断线次数
+#define TIME_OFF_LINE				60000L								//断线时间
+#define TIME_OFF_LINE_PERSONAL		300000L								//断线时间
+
+//开始超时
+#define IDI_START_OVERTIME		(TIME_TABLE_SINK_RANGE+2)			    //开始超时
+#define IDI_START_OVERTIME_END	(TIME_TABLE_SINK_RANGE+22)			    //开始超时
+#ifndef _DEBUG
+#define TIME_OVERTIME				30000L								//超时时间
+#else
+#define TIME_OVERTIME               30000L                               //超时时间
+#endif
+
+//约战房间
+#define IDI_PERSONAL_BEFORE_BEGAIN_TIME		TIME_TABLE_SINK_RANGE+23		//约战房间超时
+#define IDI_PERSONAL_AFTER_BEGIN_TIME			TIME_TABLE_SINK_RANGE+24		//最大超时
+#define IDI_PERSONAL_AFTER_CREATE_ROOM_TIME			TIME_TABLE_SINK_RANGE+25		//房间创建后多长时间无人坐桌解散房间
+
+#define  GAME_510K		238
+
+#define  IDI_TIME_CANCEL   TIME_TABLE_SINK_RANGE + 26
+#define  TIME_CANCEL		150 *1000
+//////////////////////////////////////////////////////////////////////////////////
 
 //私人房相关
 const int RULE_LEN = 100;//房间规则长度

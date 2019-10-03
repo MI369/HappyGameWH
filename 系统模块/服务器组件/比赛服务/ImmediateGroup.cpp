@@ -105,7 +105,7 @@ bool CImmediateGroup::OnUserSignUpMatch(IServerUserItem * pUserItem)
 	pUserScore->dwFleeCount=0L;
 	pUserScore->dwDrawCount=0L;
 	pUserScore->lIntegralCount=0L;
-	pUserScore->lScore=(LONGLONG)m_pImmediateMatch->lInitalScore;
+	pUserScore->bConsumptionType.lScore = (LONGLONG)m_pImmediateMatch->lInitalScore;
 
 	//·¢ËÍ³É¼¨
 	m_pMatchSink->SendGroupUserScore(pUserItem,NULL);

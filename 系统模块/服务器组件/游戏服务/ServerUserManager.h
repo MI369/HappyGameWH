@@ -186,11 +186,11 @@ public:
 	//积分信息
 public:
 	//用户积分
-	virtual SCORE GetUserScore() { return m_UserInfo.lScore; }
+	virtual SCORE GetUserScore() { return m_UserInfo.bConsumptionType.lScore; }
 	//用户成绩
-	virtual SCORE GetUserGrade() { return m_UserInfo.lGrade; }
+	virtual SCORE GetUserGrade() { return m_UserInfo.bConsumptionType.lGrade; }
 	//用户银行
-	virtual SCORE GetUserInsure() { return m_UserInfo.lInsure; }
+	virtual SCORE GetUserInsure() { return m_UserInfo.bConsumptionType.lInsure; }
 
 	//托管信息
 public:

@@ -109,6 +109,16 @@ bool  CPersonalTableFrameHook::OnEventGameEnd(WORD wTableID, WORD wChairCount, D
 	return false;
 }
 
+//玩家返赛
+bool CPersonalTableFrameHook::OnEventUserReturnMatch(IServerUserItem * pIServerUserItem)
+{
+	if(m_pPersonalRoomEventSink!=NULL)
+	{
+		return m_pPersonalRoomEventSink->OnEventUserReturnMatch(m_pITableFrame,pIServerUserItem);
+	}
+
+	return false;
+}
 
 //用户坐下
 bool CPersonalTableFrameHook::OnActionUserSitDown(WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser)

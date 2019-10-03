@@ -131,7 +131,9 @@ CGlobalInfoManager::CGlobalInfoManager()
 	m_MapGameID.InitHashTable(PRIME_PLATFORM_USER);
 	m_MapNickName.InitHashTable(PRIME_PLATFORM_USER);
 	m_MapChatID.InitHashTable(PRIME_SERVER);
-	
+	//私人房
+	m_MapPersonalTableInfo.InitHashTable(MAX_SERVER);
+	m_ServerTableCountArray.RemoveAll();
 	return;
 }
 
@@ -275,6 +277,332 @@ VOID CGlobalInfoManager::ResetData()
 	m_MapServerID.RemoveAll();
 	m_MapNickName.RemoveAll();
 	m_MapChatID.RemoveAll();
+
+	return;
+}
+
+//查找桌子
+tagPersonalTableInfo* CGlobalInfoManager::SearchTableByID(LPCTSTR lpszTableID)
+{	
+	//定义变量
+	tagPersonalTableInfo* pPersonalTable = NULL;
+	if(m_MapPersonalTableInfo.Lookup(lpszTableID, pPersonalTable) == TRUE)
+		return pPersonalTable;
+	return NULL;
+}
+
+tagPersonalTableInfo* CGlobalInfoManager::SearchTableByTableIDAndServerID(DWORD dwServerID, DWORD dwTableID)
+{
+	//移除桌子
+	POSITION Position = NULL;
+	tagPersonalTableInfo* pPersonalTable = NULL;
+	CString str;
+	int iHostCreateRoomCount = 0;
+	Position = m_MapPersonalTableInfo.GetStartPosition();
+	while(Position != NULL)
+	{
+		m_MapPersonalTableInfo.GetNextAssoc(Position,str,pPersonalTable);
+		if(pPersonalTable != NULL && pPersonalTable->dwServerID == dwServerID &&  pPersonalTable->dwTableID == dwTableID)
+		{
+			return pPersonalTable;
+		}
+	}
+
+	return NULL;
+}
+
+//添加桌子
+bool CGlobalInfoManager::AddFreeServerTable(DWORD dwServerID)
+{
+	//查找房间
+	int nSize = m_ServerTableCountArray.GetCount();
+	CGlobalServerItem* pServerItem = SearchServerItem(dwServerID);
+	if(pServerItem == NULL) return true;
+	for(int i = 0; i < nSize; ++i)
+	{
+		tagServerTableCount* pServerTableCount = m_ServerTableCountArray.GetAt(i);
+		if(pServerTableCount->dwServerID == dwServerID)
+		{
+			if(pServerItem->m_GameServer.wTableCount < pServerTableCount->dwTableCount +1) return true;
+			pServerTableCount->dwTableCount += 1;
+			break;
+		}
+	}
+	return true;
+}
+
+//添加桌子
+bool CGlobalInfoManager::AddServerTable(CString strServerID, tagPersonalTableInfo PersonalTable)
+{
+	//添加桌子
+	tagPersonalTableInfo* pPersonalTable = NULL;
+
+	//检查房主创建私人房间的数目，如果创建的数目大于最大数目则不允许创建
+	if (GetHostCreatePersonalRoomCount(PersonalTable.dwUserID) > MAX_CREATE_PERSONAL_ROOM)
+	{
+		return false;
+	}
+
+	//添加桌子
+	pPersonalTable = NULL;
+	if(m_MapPersonalTableInfo.Lookup(strServerID, pPersonalTable) == FALSE)
+	{
+		pPersonalTable = new tagPersonalTableInfo;
+
+		m_MapPersonalTableInfo[strServerID] = pPersonalTable;
+		CopyMemory(pPersonalTable, &PersonalTable, sizeof(tagPersonalTableInfo));
+	}
+	else
+	{
+		return false;
+	}
+
+	return true;
+}
+
+//移除空闲桌子
+bool CGlobalInfoManager::RemoveFreeServerTable(DWORD dwServerID)
+{
+	//查找房间
+	int nSize = m_ServerTableCountArray.GetCount();
+	CGlobalServerItem* pServerItem = SearchServerItem(dwServerID);
+	if(pServerItem == NULL) return true;
+	for(int i = 0; i < nSize; ++i)
+	{
+		tagServerTableCount* pServerTableCount = m_ServerTableCountArray.GetAt(i);
+		if(pServerTableCount->dwServerID == dwServerID)
+		{
+			if(pServerTableCount->dwTableCount < 1) return true;
+			pServerTableCount->dwTableCount -= 1;
+			break;
+		}
+	}
+	return true;
+}
+
+//移除桌子
+bool CGlobalInfoManager::RemoveServerTable(DWORD dwServerID, DWORD dwTableID)
+{
+	//移除桌子
+	POSITION Position = NULL;
+	tagPersonalTableInfo* pPersonalTable = NULL;
+	CString str;
+
+	Position = m_MapPersonalTableInfo.GetStartPosition();
+	while(Position != NULL)
+	{
+		m_MapPersonalTableInfo.GetNextAssoc(Position,str,pPersonalTable);
+		if(pPersonalTable != NULL && pPersonalTable->dwServerID == dwServerID && pPersonalTable->dwTableID == dwTableID)
+		{
+			//将被解散的坐桌放入解散桌子集合 私人房
+			//统计同一个房主被解散的房间数量
+			int nOneHostDissumeCount = 0;
+			for (int i = 0; i < m_VecDissumePersonalTableInfo.size(); i++)
+			{
+				if (m_VecDissumePersonalTableInfo[i].dwUserID == pPersonalTable->dwUserID)
+				{
+					nOneHostDissumeCount++;
+				}
+			}
+
+			//删除最先被解散的约战房
+			if (nOneHostDissumeCount > MAX_CREATE_PERSONAL_ROOM)
+			{
+				int nOneHostDissumeCount = 0;
+				for (int i = 0; i < m_VecDissumePersonalTableInfo.size(); i++)
+				{
+					if (m_VecDissumePersonalTableInfo[i].dwUserID == pPersonalTable->dwUserID)
+					{
+						nOneHostDissumeCount = i;
+						m_VecDissumePersonalTableInfo.erase(m_VecDissumePersonalTableInfo.begin() + i);
+						break;
+					}
+				}
+
+			}
+			m_VecDissumePersonalTableInfo.push_back(*pPersonalTable);
+
+			SafeDelete(pPersonalTable);
+			m_MapPersonalTableInfo.RemoveKey(str);
+			return true;
+		}
+	}
+	return false;
+}
+
+
+//移除桌子
+bool CGlobalInfoManager::RemoveServerTable(DWORD dwServerID)
+{
+	//移除桌子
+	POSITION Position = NULL;
+	tagPersonalTableInfo* pPersonalTable = NULL;
+	CString str;
+
+	Position = m_MapPersonalTableInfo.GetStartPosition();
+	while(Position != NULL)
+	{
+		m_MapPersonalTableInfo.GetNextAssoc(Position,str,pPersonalTable);
+		if (Position == NULL)
+		{
+			break;
+		}
+		if(pPersonalTable != NULL && pPersonalTable->dwServerID == dwServerID)
+		{
+
+			SafeDelete(pPersonalTable);
+			m_MapPersonalTableInfo.RemoveKey(str);
+
+		}
+	}
+	return true;
+}
+
+
+//获取房主创建的所有房间
+VOID CGlobalInfoManager::GetHostCreatePersonalRoom(tagHostCreatRoomInfo & HostCreatRoomInfo)
+{
+	TCHAR szInfo[260] = {0};
+	//移除桌子
+	POSITION Position = NULL;
+	tagPersonalTableInfo* pPersonalTable = NULL;
+	CString str;
+	int iHostCreateRoomCount = 0;
+	Position = m_MapPersonalTableInfo.GetStartPosition();
+	while(Position != NULL)
+	{
+		m_MapPersonalTableInfo.GetNextAssoc(Position,str,pPersonalTable);
+		if(pPersonalTable != NULL && pPersonalTable->dwUserID == HostCreatRoomInfo.dwUserID && pPersonalTable->dwKindID == HostCreatRoomInfo.dwKindID)
+		{
+			lstrcpyn(HostCreatRoomInfo.szRoomID[iHostCreateRoomCount],  pPersonalTable->szRoomID, CountArray(pPersonalTable->szRoomID));
+			iHostCreateRoomCount++;
+			//大于最大房间数目返回
+			if(iHostCreateRoomCount >= MAX_CREATE_PERSONAL_ROOM)
+			{
+				break;
+			}
+		}
+
+	}
+
+	//加上已经解散的桌子
+	for (int i = m_VecDissumePersonalTableInfo.size() - 1; i >= 0 ; i--)
+	{
+		if (m_VecDissumePersonalTableInfo[i].dwUserID == HostCreatRoomInfo.dwUserID && m_VecDissumePersonalTableInfo[i].dwKindID == HostCreatRoomInfo.dwKindID)
+		{
+			lstrcpyn(HostCreatRoomInfo.szRoomID[iHostCreateRoomCount],  m_VecDissumePersonalTableInfo[i].szRoomID, CountArray(m_VecDissumePersonalTableInfo[i].szRoomID));
+			iHostCreateRoomCount++;
+			if(iHostCreateRoomCount >= MAX_CREATE_PERSONAL_ROOM)
+			{
+				break;
+			}
+		}
+	}
+}
+
+
+//获取房主创建的房间的数量
+INT CGlobalInfoManager::GetHostCreatePersonalRoomCount(DWORD dwUserID)
+{
+	tagPersonalTableInfo* pPersonalTable = NULL;
+	POSITION Position = NULL;
+	int iHostCreateRoomCount = 0;
+	CString str;
+	Position = m_MapPersonalTableInfo.GetStartPosition();
+	while(Position != NULL)
+	{
+		m_MapPersonalTableInfo.GetNextAssoc(Position,str,pPersonalTable);
+		if(pPersonalTable != NULL && pPersonalTable->dwUserID == dwUserID )
+		{
+			iHostCreateRoomCount++;
+		}
+	}
+	return  iHostCreateRoomCount;
+}
+
+//获取房间
+DWORD CGlobalInfoManager::GetFreeServer(DWORD dwUserID, DWORD dwKindID, BYTE cbIsJoinGame)
+{
+
+	//变量定义
+	POSITION Position;
+	bool bExit = false;
+	CString strServerID;
+
+	//如果房主参与游戏
+	if (cbIsJoinGame)
+	{
+		tagPersonalTableInfo* pPersonalTableInfo;
+		//查找用户
+		Position=m_MapPersonalTableInfo.GetStartPosition();
+		while(Position != NULL)
+		{
+			m_MapPersonalTableInfo.GetNextAssoc(Position,strServerID,pPersonalTableInfo);
+			if(pPersonalTableInfo != NULL)
+			{
+				if(pPersonalTableInfo->dwUserID == dwUserID)
+				{
+					bExit = true;
+					return 0;
+				}
+			}
+		}
+	}
+
+
+	//查找房间
+	int nSize = m_ServerTableCountArray.GetCount();
+	for(int i = 0; i < nSize; ++i)
+	{
+		tagServerTableCount* pServerTableCount = m_ServerTableCountArray.GetAt(i);
+		if(pServerTableCount->dwKindID == dwKindID && pServerTableCount->dwTableCount > 0)
+		{
+			return pServerTableCount->dwServerID;
+		}
+	}
+	return 0;
+}
+
+//生成房间ID
+VOID CGlobalInfoManager::RandServerID(LPTSTR pszServerID, WORD wMaxCount)
+{
+	//定义变量
+	TCHAR szScource[11] = TEXT("0123456789");
+	TCHAR* lpszTmp = new TCHAR[wMaxCount+1];
+
+	ZeroMemory(lpszTmp, sizeof(TCHAR)*(wMaxCount+1));
+
+	bool bExit = true;
+	while(bExit)
+	{
+		//生成ID
+		for(int i = 0; i < wMaxCount; ++i)
+		{
+			lpszTmp[i] = szScource[rand()%10];
+		}
+
+		//查找ID
+		tagPersonalTableInfo* pPersonalTable = NULL;
+		if(m_MapPersonalTableInfo.Lookup(lpszTmp, pPersonalTable) == TRUE)
+			bExit = true;
+		else
+			bExit = false;
+	}
+
+	//终止字符
+	lpszTmp[wMaxCount]=0;
+
+	//字符转换
+#ifdef _UNICODE
+	CW2CT strSrcData(lpszTmp);
+#else  // !_UNICODE
+	CA2CT strSrcData(lpszTmp);
+#endif  // !_UNICODE
+	
+	lstrcpyn(pszServerID,strSrcData,wMaxCount+1);
+
+	//释放内存
+	SafeDeleteArray(lpszTmp);
 
 	return;
 }
@@ -488,7 +816,39 @@ bool CGlobalInfoManager::DeleteServerItem(WORD wServerID)
 	//释放房间
 	m_MapServerID.RemoveKey(wServerID);
 	FreeGlobalServerItem(pGlobalServerItem);
-	
+
+	//查找房间
+	int nSize = m_ServerTableCountArray.GetCount();
+	for(int i = 0; i < nSize; ++i)
+	{
+		tagServerTableCount* pServerTableCount = m_ServerTableCountArray.GetAt(i);
+		if(pServerTableCount->dwServerID == wServerID)
+		{
+			SafeDelete(pServerTableCount);
+			m_ServerTableCountArray.RemoveAt(i);
+			break;
+		}
+	}
+
+	//删除用户信息
+	CString strServerID;
+	tagPersonalTableInfo* pPersonalTableInfo = NULL;
+	Position = m_MapPersonalTableInfo.GetStartPosition();
+	while(Position != NULL)
+	{
+		m_MapPersonalTableInfo.GetNextAssoc(Position,strServerID,pPersonalTableInfo);
+
+		if(pPersonalTableInfo != NULL && pPersonalTableInfo->dwServerID == wServerID)
+		{
+
+			SafeDelete(pPersonalTableInfo);
+			m_MapPersonalTableInfo.RemoveKey(strServerID);
+		}
+		pPersonalTableInfo = NULL;
+	}
+
+	//删除用户信息
+	RemoveServerTable(wServerID);
 	return true;
 }
 
@@ -517,6 +877,33 @@ bool CGlobalInfoManager::ActiveServerItem(WORD wBindIndex, tagGameServer & GameS
 
 	//设置索引
 	m_MapServerID[GameServer.wServerID]=pGlobalServerItem;
+
+	//插入私人房间
+	DWORD dwServerID = pGlobalServerItem->GetServerID();
+	DWORD dwTableCount = pGlobalServerItem->GetTabelCount();
+
+	//查找房间
+	int nSize = m_ServerTableCountArray.GetCount();
+	bool bExit = false;
+	for(int i = 0; i < nSize; ++i)
+	{
+		tagServerTableCount* pServerTableCount = m_ServerTableCountArray.GetAt(i);
+		if(pServerTableCount != NULL && pServerTableCount->dwServerID == dwServerID)
+		{
+			bExit = true;
+			break;
+		}
+	}
+
+	if(bExit == false && pGlobalServerItem->m_GameServer.wServerType == GAME_GENRE_PERSONAL)
+	{
+		tagServerTableCount* pServerTableCount = new tagServerTableCount;
+		pServerTableCount->dwKindID = pGlobalServerItem->GetKindID();
+		pServerTableCount->dwServerID = dwServerID;
+		pServerTableCount->dwTableCount = dwTableCount;
+
+		m_ServerTableCountArray.Add(pServerTableCount);
+	}
 
 	return true;
 }
@@ -852,6 +1239,61 @@ bool CGlobalInfoManager::FreeGlobalChatItem(CGlobalChatItem * pGlobalChatItem)
 	m_pGlobalChatItem=pGlobalChatItem;
 
 	return true;
+}
+
+//添加一种游戏最多创建私人房间的数目
+bool CGlobalInfoManager::AddPersonalMaxCreate(CMD_CS_S_RegisterPersonal RegisterPersonal)
+{
+	int iCount = m_vecPersonalRoomMaxCreate.size();
+
+	//遍历，如果不存在则加入， 如果存在则修改
+	bool bIsExist = false;
+	for (int i = 0; i < iCount; i++)
+	{
+		if (m_vecPersonalRoomMaxCreate[i].dwKindID == RegisterPersonal.dwKindID)
+		{
+			m_vecPersonalRoomMaxCreate[i].dwMaxCreate = RegisterPersonal.dwMaxCreate;
+			bIsExist = true;
+			break;
+		}
+	}
+
+	if (!bIsExist)
+	{
+		m_vecPersonalRoomMaxCreate.push_back(RegisterPersonal);
+	}
+
+	return true;
+}
+
+//是否可以再创建房间
+bool CGlobalInfoManager::CanCreatePersonalRoom(DWORD dwKindID,   DWORD dwUserID)
+{
+	//获取可以创建房间的最大数目
+	int iCount = m_vecPersonalRoomMaxCreate.size();
+	int iMaxCreateCount = 0;
+	for (int i = 0; i < iCount; i++)
+	{
+		if (m_vecPersonalRoomMaxCreate[i].dwKindID == dwKindID)
+		{
+			iMaxCreateCount = m_vecPersonalRoomMaxCreate[i].dwMaxCreate;
+			break;
+		}
+	}
+
+	if (iMaxCreateCount == 0)
+	{
+		iMaxCreateCount = MAX_CREATE_COUNT;
+	}
+
+	//获得约战房间数目
+	int iHaveCreate = GetHostCreatePersonalRoomCount(dwUserID);
+	if (iHaveCreate < iMaxCreateCount)
+	{
+		return true;
+	}
+
+	return false;
 }
 
 //////////////////////////////////////////////////////////////////////////////////

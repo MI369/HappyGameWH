@@ -228,15 +228,15 @@ bool CPersonalRoomGame::OnEventUserItemScore(IServerUserItem * pIServerUserItem,
 	UserScore.UserScore.lIntegralCount = pUserInfo->lIntegralCount;
 
 	//构造积分
-	UserScore.UserScore.lGrade=pUserInfo->lGrade;
-	UserScore.UserScore.lInsure=pUserInfo->lInsure;
-	UserScore.UserScore.lIngot=pUserInfo->lIngot;
-	UserScore.UserScore.dBeans=pUserInfo->dBeans;
+	UserScore.UserScore.bConsumptionType.lGrade = pUserInfo->bConsumptionType.lGrade;
+	UserScore.UserScore.bConsumptionType.lInsure = pUserInfo->bConsumptionType.lInsure;
+	UserScore.UserScore.bConsumptionType.lIngot = pUserInfo->bConsumptionType.lIngot;
+	UserScore.UserScore.bConsumptionType.lBeans = pUserInfo->bConsumptionType.lBeans;
 
 	//构造积分
-	UserScore.UserScore.lScore=pUserInfo->lScore;
-	UserScore.UserScore.lScore+=pIServerUserItem->GetTrusteeScore();
-	UserScore.UserScore.lScore+=pIServerUserItem->GetFrozenedScore();
+	UserScore.UserScore.bConsumptionType.lScore = pUserInfo->bConsumptionType.lScore;
+	UserScore.UserScore.bConsumptionType.lScore += pIServerUserItem->GetTrusteeScore();
+	UserScore.UserScore.bConsumptionType.lScore += pIServerUserItem->GetFrozenedScore();
 
 	//发送数据
 	m_pIGameServiceFrame->SendData(BG_COMPUTER,MDM_GR_USER,SUB_GR_USER_SCORE,&UserScore,sizeof(UserScore));
@@ -255,10 +255,10 @@ bool CPersonalRoomGame::OnEventUserItemScore(IServerUserItem * pIServerUserItem,
 	MobileUserScore.UserScore.lIntegralCount = pUserInfo->lIntegralCount;
 
 	//构造积分
-	MobileUserScore.UserScore.lScore=pUserInfo->lScore;
-	MobileUserScore.UserScore.lScore+=pIServerUserItem->GetTrusteeScore();
-	MobileUserScore.UserScore.lScore+=pIServerUserItem->GetFrozenedScore();
-	MobileUserScore.UserScore.dBeans=pUserInfo->dBeans;
+	MobileUserScore.UserScore.bConsumptionType.lScore = pUserInfo->bConsumptionType.lScore;
+	MobileUserScore.UserScore.bConsumptionType.lScore += pIServerUserItem->GetTrusteeScore();
+	MobileUserScore.UserScore.bConsumptionType.lScore += pIServerUserItem->GetFrozenedScore();
+	MobileUserScore.UserScore.bConsumptionType.lBeans = pUserInfo->bConsumptionType.lBeans;
 
 	//发送数据
 	m_pIGameServiceFrame->SendDataBatchToMobileUser(pIServerUserItem->GetTableID(),MDM_GR_USER,SUB_GR_USER_SCORE,&MobileUserScore,sizeof(MobileUserScore));
@@ -419,8 +419,6 @@ bool CPersonalRoomGame::OnEventUserLogonFinish(IServerUserItem * pIServerUserIte
 	return true;
 }
 
-
-
 //游戏开始
 bool CPersonalRoomGame::OnEventGameStart(ITableFrame *pITableFrame, WORD wChairCount)
 {
@@ -566,6 +564,11 @@ bool CPersonalRoomGame::OnEventGameEnd(WORD wTableID, WORD wChairCount, DWORD dw
 	}
 
 	return false;
+}
+
+//玩家返赛
+bool CPersonalRoomGame::OnEventUserReturnMatch(ITableFrame *pITableFrame, IServerUserItem * pIServerUserItem){
+	return true;
 }
 
 //用户坐下
@@ -881,7 +884,8 @@ bool CPersonalRoomGame::OnDBCurrenceRoomCardAndBeant(DWORD dwContextID, VOID * p
 	if (sizeof(DBO_GR_CurrenceRoomCardAndBeans)!=wDataSize) return false;
 	DBO_GR_CurrenceRoomCardAndBeans * pCardAndBeans = (DBO_GR_CurrenceRoomCardAndBeans *)pData;
 	CMD_GR_CurrenceRoomCardAndBeans  CurrenceRoomCardAndBeans;
-	CurrenceRoomCardAndBeans.lDiamond = pCardAndBeans->lDiamond;
+	//CurrenceRoomCardAndBeans.lDiamond = pCardAndBeans->lDiamond;
+	CurrenceRoomCardAndBeans.bConsumptionType = pCardAndBeans->bConsumptionType;
 
 	m_pITCPNetworkEngine->SendData(dwContextID, MDM_GR_PERSONAL_TABLE, SUB_GR_CURRECE_ROOMCARD_AND_BEAN, &CurrenceRoomCardAndBeans, sizeof(CMD_GR_CurrenceRoomCardAndBeans));
 
@@ -1188,7 +1192,9 @@ bool CPersonalRoomGame::OnDBCreateSucess(DWORD dwContextID, VOID * pData, WORD w
 	//设置桌子	
 	tagUserInfo* pUserInfo = pIServerUserItem->GetUserInfo();
 	//pUserInfo->dBeans = pCreateSuccess->dCurBeans;
-	pUserInfo->lDiamond = pCreateSuccess->lDiamond;
+	//pUserInfo->lDiamond = pCreateSuccess->lDiamond;
+	pUserInfo->bConsumptionType = pCreateSuccess->bConsumptionType;
+
 	pTableFrame->SetTableOwner(pUserInfo->dwUserID);
 	pTableFrame->SetTimerNotBeginAfterCreate();
 
@@ -1309,12 +1315,12 @@ bool CPersonalRoomGame::OnDBCancelCreateTable(DWORD dwContextID, VOID * pData, W
 
 	////判断在线
 	CAttemperEngineSink * pAttemperEngineSink= (CAttemperEngineSink *)m_pIGameServiceFrame;
-	//tagBindParameter * pBindParameter=pAttemperEngineSink->GetBindParameter(LOWORD(dwContextID));
-	//if(pBindParameter == NULL) return true;
-	//if ((pBindParameter->dwSocketID!=dwContextID)||(pBindParameter->pIServerUserItem==NULL)) return true;
+	tagBindParameter * pBindParameter=pAttemperEngineSink->GetBindParameter(LOWORD(dwContextID));
+	if(pBindParameter == NULL) return true;
+	if ((pBindParameter->dwSocketID!=dwContextID)||(pBindParameter->pIServerUserItem==NULL)) return true;
 
 	////获取用户
-	//if (pIServerUserItem==NULL) return false;
+	if (pIServerUserItem==NULL) return false;
 
 	//获取数据
 	DBO_GR_CancelCreateResult* pCancelCreateResult = (DBO_GR_CancelCreateResult*)pData;
@@ -1367,21 +1373,21 @@ bool CPersonalRoomGame::OnDBCancelCreateTable(DWORD dwContextID, VOID * pData, W
 			m_pITCPNetworkEngine->SendData(pBind->dwSocketID, MDM_GR_PERSONAL_TABLE, SUB_GR_CANCEL_TABLE, &CancelTable, sizeof(CMD_GR_CancelTable));
 
 		//用户状态
-		//pUserItem->SetUserStatus(US_FREE, INVALID_TABLE, INVALID_CHAIR);
+		pUserItem->SetUserStatus(US_FREE, INVALID_TABLE, INVALID_CHAIR);
 		pTableFrame->PerformStandUpAction(pUserItem);
 	}
 
 	////构造数据
-	//CMD_GR_CancelTable CancelTable;
-	//ZeroMemory(&CancelTable, sizeof(CMD_GR_CancelTable));
-	//CancelTable.dwReason = pCancelCreateResult->dwReason;
-	//lstrcpyn(CancelTable.szDescribeString, pCancelCreateResult->szDescribeString, CountArray(CancelTable.szDescribeString));
+	CMD_GR_CancelTable CancelTable;
+	ZeroMemory(&CancelTable, sizeof(CMD_GR_CancelTable));
+	CancelTable.dwReason = pCancelCreateResult->dwReason;
+	lstrcpyn(CancelTable.szDescribeString, pCancelCreateResult->szDescribeString, CountArray(CancelTable.szDescribeString));
 
 	////发送数据
-	//m_pITCPNetworkEngine->SendData(dwContextID, MDM_GR_PERSONAL_TABLE, SUB_GR_CANCEL_TABLE, &CancelTable, sizeof(CMD_GR_CancelTable));
+	m_pITCPNetworkEngine->SendData(dwContextID, MDM_GR_PERSONAL_TABLE, SUB_GR_CANCEL_TABLE, &CancelTable, sizeof(CMD_GR_CancelTable));
 
 	////退出用户
-	//pIServerUserItem->SetUserStatus(US_NULL, INVALID_TABLE, INVALID_CHAIR);
+	pIServerUserItem->SetUserStatus(US_NULL, INVALID_TABLE, INVALID_CHAIR);
 
 	return true;
 }
@@ -1443,7 +1449,8 @@ bool CPersonalRoomGame::OnTCPSocketMainServiceInfo(WORD wSubCmdID, VOID * pData,
 
 			CreateSuccess.dwDrawCountLimit = PersonalTableParameter.dwPlayTurnCount;
 			CreateSuccess.dwDrawTimeLimit = PersonalTableParameter.dwPlayTimeLimit;
-			CreateSuccess.lDiamond = pIServerUserItem->GetUserInfo()->lDiamond;
+			//CreateSuccess.lDiamond = pIServerUserItem->GetUserInfo()->lDiamond;
+			CreateSuccess.bConsumptionType = pIServerUserItem->GetUserInfo()->bConsumptionType;
 			CreateSuccess.dwPersonalRoomID = pCreateTableResult->PersonalTable.dwPersonalRoomID;
 			m_pITCPNetworkEngine->SendData(pCreateTableResult->dwSocketID, MDM_GR_PERSONAL_TABLE, SUB_GR_CREATE_SUCCESS, &CreateSuccess, sizeof(CMD_GR_CreateSuccess));
 

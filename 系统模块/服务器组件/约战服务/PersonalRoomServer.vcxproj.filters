@@ -50,6 +50,9 @@
     <ClInclude Include="TableFrameHook.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="PersonalRoomServiceHead.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="PersonalRoomServer.rc">

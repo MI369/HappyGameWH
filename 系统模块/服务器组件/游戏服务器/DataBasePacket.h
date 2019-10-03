@@ -851,12 +851,14 @@ struct DBO_GR_LogonSuccess
 	TCHAR							szPostalCode[LEN_POSTALCODE];		//邮政编码
 
 	//积分信息
-	SCORE							lScore;								//用户分数
-	SCORE							lIngot;								//用户元宝
-	SCORE							lGrade;								//用户成绩
-	SCORE							lInsure;							//用户银行	
-	DOUBLE							dBeans;								//用户游戏豆
-	SCORE							lDimand;							//钻石
+	//SCORE							lScore;								//用户分数
+	//SCORE							lIngot;								//用户元宝
+	//SCORE							lGrade;								//用户成绩
+	//SCORE							lInsure;							//用户银行	
+	//DOUBLE							dBeans;								//用户游戏豆
+	//SCORE							lDimand;							//钻石
+
+	consumptionType					bConsumptionType;					//消费类型
 
 	//游戏信息
 	DWORD							dwWinCount;							//胜利盘数
@@ -1002,12 +1004,15 @@ struct DBO_GR_PropertyBuyResult
 	DWORD							dwUserID;							//用户 I D
 	DWORD							dwPropertyID;						//道具标识
 	DWORD							dwItemCount;						//道具数目
-	LONGLONG						lDiamond;
+
+	//LONGLONG						lDiamond;
 	//LONGLONG						lInsureScore;						//银行存款
 	//LONGLONG						lUserMedal;							//用户元宝
-	//LONGLONG						lLoveLiness;						//魅力值
-	//double							dCash;								//游戏豆
-	//BYTE							cbCurrMemberOrder;					//会员等级
+	//double						dCash;								//游戏豆
+	consumptionType					bConsumptionType;					//消费类型
+
+	LONGLONG						lLoveLiness;						//魅力值
+	BYTE							cbCurrMemberOrder;					//会员等级
 	TCHAR							szNotifyContent[128];				//提示内容
 };
 
@@ -1267,8 +1272,11 @@ struct DBO_GR_GrowLevelParameter
 //等级升级
 struct DBO_GR_GrowLevelUpgrade
 {
-	SCORE							lCurrScore;							//当前游戏币
-	SCORE							lCurrIngot;							//当前元宝
+	//SCORE							lCurrScore;							//当前游戏币
+	//SCORE							lCurrIngot;							//当前元宝
+
+	consumptionType					bConsumptionType;					//消费类型
+
 	TCHAR							szNotifyContent[128];				//升级提示
 };
 
@@ -1309,8 +1317,11 @@ struct DBO_GR_PurchaseResult
 	bool							bSuccessed;							//成功标识
 	BYTE							cbMemberOrder;						//会员系列
 	DWORD							dwUserRight;						//用户权限
-	SCORE							lCurrScore;							//当前游戏币
-	DOUBLE							dCurrBeans;							//当前游戏豆
+	//SCORE							lCurrScore;							//当前游戏币
+	//DOUBLE							dCurrBeans;							//当前游戏豆
+
+	consumptionType					bConsumptionType;					//消费类型
+
 	TCHAR							szNotifyContent[128];				//提示内容
 };
  
@@ -1318,10 +1329,13 @@ struct DBO_GR_PurchaseResult
 struct DBO_GR_ExchangeResult
 {
 	bool							bSuccessed;							//成功标识
-	SCORE							lCurrScore;							//当前游戏币
-	SCORE							lCurrInsure;						//当前银行
-	SCORE							lCurrIngot;							//当前元宝
-	double							dCurrBeans;							//当前游戏豆
+
+	//SCORE							lCurrScore;							//当前游戏币
+	//SCORE							lCurrInsure;						//当前银行
+	//SCORE							lCurrIngot;							//当前元宝
+	//double							dCurrBeans;							//当前游戏豆
+	consumptionType					bConsumptionType;					//消费类型
+
 	TCHAR							szNotifyContent[128];				//提示内容
 };
 
@@ -1508,15 +1522,19 @@ struct DBO_GR_CreateSuccess
 {
 	DWORD							dwUserID;							//用户标识
 	LONG							lCellScore;							//设置底分
-//	DOUBLE							dCurBeans;							//当前游戏豆
-	LONGLONG						lDiamond;							//当前钻石
+
+	//DOUBLE						dCurBeans;							//当前游戏豆
+	//LONGLONG						lDiamond;							//当前钻石
+
+	consumptionType					bConsumptionType;					//消费类型
+
 	DWORD							dwTableID;							//预分配桌号
 	DWORD							dwDrawCountLimit;					//局数限制
 	DWORD							dwDrawTimeLimit;					//时间限制
 	WORD							wJoinGamePeopleCount;				//参与游戏的人数
 	DWORD							dwRoomTax;							//单独一个私人房间的税率，千分比
 	BYTE							cbIsJoinGame;						//玩家是否参与游戏
-	//TCHAR							szPassword[LEN_PASSWORD];			//密码设置
+	TCHAR							szPassword[LEN_PASSWORD];			//密码设置
 	BYTE							cbPassword;							//是否密码设置
 	TCHAR							szClientAddr[16];					//创建房间的IP地址
 	BYTE							cbGameRule[RULE_LEN];				//游戏规则 弟 0 位标识 是否设置规则 0 代表设置 1 代表未设置
@@ -1560,8 +1578,9 @@ struct DBO_GR_DissumeResult
 //解散结果
 struct DBO_GR_CurrenceRoomCardAndBeans
 {
-//	DOUBLE					dbBeans;							//网络标识
-	SCORE					lDiamond;							//钻石
+	//DOUBLE					dbBeans;							//网络标识
+	//SCORE					lDiamond;							//钻石
+	consumptionType			bConsumptionType;					//消费类型
 	DWORD					dwTableID;
 };
 

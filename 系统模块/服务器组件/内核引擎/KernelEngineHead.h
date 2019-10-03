@@ -11,10 +11,12 @@
 #include <Wininet.h>
 #include <WinSock2.h>
 #include <afxcmn.h>
+
 // 平台文件
 #include "..\..\..\系统模块\全局定义\Platform.h"
-#include "..\..\..\系统模块\公共组件\服务核心\ServiceCoreHead.h"
+#include "..\..\公共组件\服务核心\ServiceCoreHead.h"
 #include "..\..\第三方库\json\include\json.h"
+
 //////////////////////////////////////////////////////////////////////////////////
 // ADO 定义
 
@@ -40,7 +42,7 @@ typedef _variant_t						CDBVarValue;					// 数据库数值
 #ifndef _DEBUG
 #define KERNEL_ENGINE_DLL_NAME	TEXT("KernelEngine.dll")			// 组件 DLL 名字
 #else
-#define KERNEL_ENGINE_DLL_NAME	TEXT("KernelEngineD.dll")			// 组件 DLL 名字
+#define KERNEL_ENGINE_DLL_NAME	TEXT("KernelEngine.dll")			// 组件 DLL 名字
 #endif
 
 //////////////////////////////////////////////////////////////////////////////////
@@ -854,6 +856,7 @@ DECLARE_MODULE_HELPER(TraceServiceManager, KERNEL_ENGINE_DLL_NAME, "CreateTraceS
 #include "DataBaseAide.h"
 #include "TraceService.h"
 #include "ProcessException.h"
+#include "CProtobufEngine.h"
 #endif
 
 //////////////////////////////////////////////////////////////////////////////////

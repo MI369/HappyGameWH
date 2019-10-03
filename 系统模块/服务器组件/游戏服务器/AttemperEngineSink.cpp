@@ -340,8 +340,11 @@ bool CAttemperEngineSink::OnAttemperEngineConclude(IUnknownEx * pIUnknownEx)
 	if(m_pIPersonalRoomServiceManager!=NULL)
 		m_pIPersonalRoomServiceManager->StopService();	
 
+	//移除消息
+	RemoveSystemMessage();
+
 	//移除任务
-	//m_UserTaskManager.ResetTaskManager();
+	m_UserTaskManager.ResetTaskManager();
 
 	//复位关键字
 	m_WordsFilter.ResetSensitiveWordArray();
@@ -415,20 +418,20 @@ bool CAttemperEngineSink::OnEventControl(WORD wIdentifier, VOID * pData, WORD wD
 			//加载消息
 			m_pIDBCorrespondManager->PostDataBaseRequest(0L, DBR_GR_LOAD_SYSTEM_MESSAGE, 0L, NULL, 0L);
 			//加载任务
-		//	m_pIDBCorrespondManager->PostDataBaseRequest(0L,DBR_GR_TASK_LOAD_LIST,0L,NULL,0L);
+			m_pIDBCorrespondManager->PostDataBaseRequest(0L,DBR_GR_TASK_LOAD_LIST,0L,NULL,0L);
 
 			//会员参数
-		//	m_pIDBCorrespondManager->PostDataBaseRequest(0L,DBR_GR_LOAD_MEMBER_PARAMETER,0,NULL,0);	
+			m_pIDBCorrespondManager->PostDataBaseRequest(0L,DBR_GR_LOAD_MEMBER_PARAMETER,0,NULL,0);	
 
 
 			//成长配置
-		//	m_pIDBCorrespondManager->PostDataBaseRequest(0L,DBR_GR_LOAD_GROWLEVEL_CONFIG,0,NULL,0);	
+			m_pIDBCorrespondManager->PostDataBaseRequest(0L,DBR_GR_LOAD_GROWLEVEL_CONFIG,0,NULL,0);	
 
 			//加载签到
-		//	m_pIDBCorrespondManager->PostDataBaseRequest(0L,DBR_GR_LOAD_CHECKIN_REWARD,0L,NULL,0L);
+			m_pIDBCorrespondManager->PostDataBaseRequest(0L,DBR_GR_LOAD_CHECKIN_REWARD,0L,NULL,0L);
 
 			//加载低保
-		//	m_pIDBCorrespondManager->PostDataBaseRequest(0L,DBR_GR_LOAD_BASEENSURE,0L,NULL,0L);
+			m_pIDBCorrespondManager->PostDataBaseRequest(0L,DBR_GR_LOAD_BASEENSURE,0L,NULL,0L);
 
 			if (m_pGameServiceOption->wServerType == GAME_GENRE_PERSONAL)
 			{
@@ -1221,6 +1224,18 @@ bool CAttemperEngineSink::OnEventDataBase(WORD wRequestID, DWORD dwContextID, VO
 		{
 			return OnDBQueryGetSendPresent(dwContextID,pData,wDataSize);
 		}
+	case DBO_GR_CREATE_SUCCESS:			//创建成功
+		{
+			return OnDBCreateSucess(dwContextID,pData,wDataSize);
+		}
+	case DBO_GR_CREATE_FAILURE:			//创建失败
+		{
+			return OnDBCreateFailure(dwContextID,pData,wDataSize);
+		}
+	case DBO_GR_CANCEL_CREATE_RESULT:		//取消创建
+		{
+			return OnDBCancelCreateTable(dwContextID,pData,wDataSize);
+		}
 	case DBO_GR_LOAD_PERSONAL_ROOM_OPTION:
 		{
 			ASSERT(wDataSize == sizeof(tagPersonalRoomOption));
@@ -1230,6 +1245,18 @@ bool CAttemperEngineSink::OnEventDataBase(WORD wRequestID, DWORD dwContextID, VO
 
 			InitPersonalRoomServiceManager();
 			return true;
+		}
+	case DBO_GR_LOAD_PERSONAL_PARAMETER:
+		{
+			return OnDBLoadPersonalParameter(dwContextID, pData, wDataSize);
+		}
+	case DBO_GR_DISSUME_TABLE_RESULTE:
+		{
+			return OnDBDissumeTableResult(dwContextID, pData, wDataSize);
+		}
+	case DBO_GR_CURRENCE_ROOMCARD_AND_BEAN:
+		{
+			return OnDBCurrenceRoomCardAndBeant(dwContextID, pData, wDataSize);
 		}
 	}
 
@@ -1256,15 +1283,15 @@ bool CAttemperEngineSink::OnEventDataBase(WORD wRequestID, DWORD dwContextID, VO
 		tagBindParameter * pBindParameter=GetBindParameter(LOWORD(dwContextID));
 		IServerUserItem * pIServerUserItem=pBindParameter!=NULL?pBindParameter->pIServerUserItem:NULL;
 
-		//if (wRequestID==DBO_GR_CREATE_SUCCESS)
-		//{
-		//	//数据校验
-		//	ASSERT(wDataSize == sizeof(DBO_GR_CreateSuccess));
-		//	if(wDataSize != sizeof(DBO_GR_CreateSuccess)) return false;
-		//	//任务推进
-		//	DBO_GR_CreateSuccess* pCreateSuccess = (DBO_GR_CreateSuccess*)pData;
-		//	PerformRoomTaskProgress(pIServerUserItem,1,pCreateSuccess->iRoomCardFee,0);
-		//}
+		if (wRequestID==DBO_GR_CREATE_SUCCESS)
+		{
+			//数据校验
+			ASSERT(wDataSize == sizeof(DBO_GR_CreateSuccess));
+			if(wDataSize != sizeof(DBO_GR_CreateSuccess)) return false;
+			//任务推进
+			DBO_GR_CreateSuccess* pCreateSuccess = (DBO_GR_CreateSuccess*)pData;
+			PerformRoomTaskProgress(pIServerUserItem,1,pCreateSuccess->iRoomCardFee,0);
+		}
 		return m_pIPersonalRoomServiceManager->OnEventDataBase(wRequestID,pIServerUserItem,pData,wDataSize,dwContextID);
 	}
 
@@ -1384,18 +1411,18 @@ bool CAttemperEngineSink::OnEventTCPSocketLink(WORD wServiceID, INT nErrorCode)
 		ASSERT(m_pITCPSocketService!=NULL);
 		m_pITCPSocketService->SendData(MDM_CS_REGISTER,SUB_CS_C_REGISTER_SERVER,&RegisterServer,sizeof(RegisterServer));
 
-		////如果是约战房发送创建房间限制
-		//if (m_pGameServiceOption->wServerType == GAME_GENRE_PERSONAL)
-		//{
-		//	CMD_CS_S_RegisterPersonal  RegisterPersonal;
-		//	RegisterPersonal.dwKindID = m_pGameServiceOption->wKindID;
-		//	RegisterPersonal.dwMaxCreate = m_PersonalRoomOption.wCanCreateCount;
-		//	m_pITCPSocketService->SendData(MDM_CS_REGISTER, SUB_CS_C_REGISTER_PERSONAL, &RegisterPersonal, sizeof(RegisterPersonal));
-		//}
-		//
+		//如果是约战房发送创建房间限制
+		if (m_pGameServiceOption->wServerType == GAME_GENRE_PERSONAL)
+		{
+			CMD_CS_S_RegisterPersonal  RegisterPersonal;
+			RegisterPersonal.dwKindID = m_pGameServiceOption->wKindID;
+			RegisterPersonal.dwMaxCreate = m_PersonalRoomOption.wCanCreateCount;
+			m_pITCPSocketService->SendData(MDM_CS_REGISTER, SUB_CS_C_REGISTER_PERSONAL, &RegisterPersonal, sizeof(RegisterPersonal));
+		}
+		
 		//是否使用金币库
 		bool bIsTreasureDB = false;
-		if (lstrcmp(m_pGameServiceOption->szDataBaseName,  TEXT("WHJHTreasureDB")) == 0)
+		if (lstrcmp(m_pGameServiceOption->szDataBaseName, szTreasureDB) == 0)
 		{
 			bIsTreasureDB = true;
 		}
@@ -1673,6 +1700,12 @@ bool CAttemperEngineSink::OnEventTCPNetworkShut(DWORD dwClientAddr, DWORD dwActi
 //读取事件
 bool CAttemperEngineSink::OnEventTCPNetworkRead(TCP_Command Command, VOID * pData, WORD wDataSize, DWORD dwSocketID)
 {
+	if (wDataSize == 866)
+	{
+		TCHAR szMessage[260]=TEXT("");
+		_sntprintf(szMessage,CountArray(szMessage),TEXT("会发生异常的消息: Command.wMainCmdID =%d   Command.wSubCmdID = %d"), Command.wMainCmdID, Command.wSubCmdID);
+		CTraceService::TraceString(szMessage,TraceLevel_Normal);
+	}
 	switch (Command.wMainCmdID)
 	{
 	case MDM_GR_USER:		//用户命令
@@ -2130,15 +2163,15 @@ bool CAttemperEngineSink::OnEventUserItemScore(IServerUserItem * pIServerUserIte
 	UserScore.UserScore.lIntegralCount = pUserInfo->lIntegralCount;
 
 	//构造积分
-	UserScore.UserScore.lGrade=pUserInfo->lGrade;
+	/*UserScore.UserScore.lGrade=pUserInfo->lGrade;
 	UserScore.UserScore.lInsure=pUserInfo->lInsure;
 	UserScore.UserScore.lIngot=pUserInfo->lIngot;
 	UserScore.UserScore.dBeans=pUserInfo->dBeans;
+	UserScore.UserScore.lScore=pUserInfo->lScore;*/
+	UserScore.UserScore.bConsumptionType = pUserInfo->bConsumptionType;
 
-	//构造积分
-	UserScore.UserScore.lScore=pUserInfo->lScore;
-	UserScore.UserScore.lScore+=pIServerUserItem->GetTrusteeScore();
-	UserScore.UserScore.lScore+=pIServerUserItem->GetFrozenedScore();
+	UserScore.UserScore.bConsumptionType.lScore += pIServerUserItem->GetTrusteeScore();
+	UserScore.UserScore.bConsumptionType.lScore += pIServerUserItem->GetFrozenedScore();
 
 	//发送数据
 	SendData(BG_COMPUTER,MDM_GR_USER,SUB_GR_USER_SCORE,&UserScore,sizeof(UserScore));
@@ -2157,10 +2190,14 @@ bool CAttemperEngineSink::OnEventUserItemScore(IServerUserItem * pIServerUserIte
 	MobileUserScore.UserScore.lIntegralCount = pUserInfo->lIntegralCount;
 
 	//构造积分
-	MobileUserScore.UserScore.lScore=pUserInfo->lScore;
-	MobileUserScore.UserScore.lScore+=pIServerUserItem->GetTrusteeScore();
-	MobileUserScore.UserScore.lScore+=pIServerUserItem->GetFrozenedScore();
-	MobileUserScore.UserScore.dBeans=pUserInfo->dBeans;
+	/*MobileUserScore.UserScore.dBeans = pUserInfo->dBeans;
+	MobileUserScore.UserScore.lScore=pUserInfo->lScore;*/
+
+	MobileUserScore.UserScore.bConsumptionType = pUserInfo->bConsumptionType;
+
+	MobileUserScore.UserScore.bConsumptionType.lScore += pIServerUserItem->GetTrusteeScore();
+	MobileUserScore.UserScore.bConsumptionType.lScore += pIServerUserItem->GetFrozenedScore();
+	
 
 	//发送数据
 	SendDataBatchToMobileUser(pIServerUserItem->GetTableID(),MDM_GR_USER,SUB_GR_USER_SCORE,&MobileUserScore,sizeof(MobileUserScore));
@@ -2212,18 +2249,66 @@ bool CAttemperEngineSink::OnEventUserItemScore(IServerUserItem * pIServerUserIte
 			WriteGameScore.VariationInfo.lRevenue=0;
 		}
 
+		if(m_pGameServiceOption->wServerType == GAME_GENRE_PERSONAL)
+		{
+			if ((lstrcmp(m_pGameServiceOption->szDataBaseName, szTreasureDB) != 0))
+			{
+				WriteGameScore.VariationInfo.lScore=0;
+				WriteGameScore.VariationInfo.lGrade=0;
+				WriteGameScore.VariationInfo.lInsure=0;
+				WriteGameScore.VariationInfo.lRevenue=0;
+			}
+		}
+
 		//查找任务
-		//tagUserTaskEntry * pUserTaskEntry=m_UserTaskManager.GetUserTaskEntry(pIServerUserItem->GetUserID(),TASK_STATUS_UNFINISH); 
-		//if(pUserTaskEntry!=NULL) WriteGameScore.bTaskForward = true;		
+		tagUserTaskEntry * pUserTaskEntry=m_UserTaskManager.GetUserTaskEntry(pIServerUserItem->GetUserID(),TASK_STATUS_UNFINISH); 
+		if(pUserTaskEntry!=NULL) WriteGameScore.bTaskForward = true;		
 
 		//投递请求
 		m_pIDBCorrespondManager->PostDataBaseRequest(WriteGameScore.dwUserID,DBR_GR_WRITE_GAME_SCORE,0L,&WriteGameScore,sizeof(WriteGameScore), TRUE);
 
+
+		//私人房间ID
+		DWORD dwRoomHostID = 0;
+		DWORD szPersonalRoomID = 0;
+		INT_PTR nSize = m_TableFrameArray.GetCount();
+		for(INT_PTR i = 0; i < nSize; ++i)
+		{
+			CTableFrame* pTableFrame = m_TableFrameArray.GetAt(i);
+			if (pTableFrame->GetTableID() == pIServerUserItem->GetTableID())
+			{
+				szPersonalRoomID = pTableFrame->GetTableID();
+				dwRoomHostID = pTableFrame->GetRecordTableOwner();
+			}
+		}
+
+		//私人房间分数数据结构
+		DBR_GR_WritePersonalGameScore  WritePersonalScore;
+		WritePersonalScore.dwRoomHostID = dwRoomHostID;
+		WritePersonalScore.bTaskForward = WriteGameScore.bTaskForward;
+		WritePersonalScore.dwClientAddr = WriteGameScore.dwClientAddr;
+		WritePersonalScore.dwDBQuestID  = WriteGameScore.dwDBQuestID;
+		WritePersonalScore.dwInoutIndex = WriteGameScore.dwInoutIndex;
+		//WritePersonalScore.dwMatchID    = WriteGameScore.dwMatchID;
+		//WritePersonalScore.dwMatchNO	= WriteGameScore.dwMatchNO;
+		WritePersonalScore.dwUserID		= WriteGameScore.dwUserID;
+		WritePersonalScore.dwPersonalRoomTax = m_PersonalRoomOption.lPersonalRoomTax;
+		WritePersonalScore.dwPersonalRoomID = szPersonalRoomID;
+		memcpy(&WritePersonalScore.VariationInfo, &WriteGameScore.VariationInfo, sizeof(WritePersonalScore.VariationInfo));
+		WritePersonalScore.VariationInfo.lScore += WritePersonalScore.VariationInfo.lRevenue;
+		WritePersonalScore.VariationInfo.lRevenue = 0;
+
+		//请求数据库写入积分
+		if (m_pGameServiceOption->wServerType == GAME_GENRE_PERSONAL)
+		{
+			m_pIDBCorrespondManager->PostDataBaseRequest(WritePersonalScore.dwUserID,DBR_GR_WRITE_PERSONAL_GAME_SCORE,0L,&WritePersonalScore,sizeof(WritePersonalScore), TRUE);
+		}
+
 		//推进任务
-		//if(pUserTaskEntry!=NULL)
-		//{
-		//	PerformTaskProgress(pIServerUserItem,pUserTaskEntry,WriteGameScore.VariationInfo.dwWinCount,WriteGameScore.VariationInfo.dwLostCount,WriteGameScore.VariationInfo.dwDrawCount);
-		//}		
+		if(pUserTaskEntry!=NULL)
+		{
+			PerformTaskProgress(pIServerUserItem,pUserTaskEntry,WriteGameScore.VariationInfo.dwWinCount,WriteGameScore.VariationInfo.dwLostCount,WriteGameScore.VariationInfo.dwDrawCount);
+		}		
 	}
 
 	//通知桌子
@@ -2512,18 +2597,18 @@ bool CAttemperEngineSink::OnDBLogonSuccess(DWORD dwContextID, VOID * pData, WORD
 				if ((lTakeMaxScore-lTakeMinScore)>0L)
 				{
 					SCORE lTakeScore = __max((lTakeMaxScore-lTakeMinScore)/10,1);
-					pDBOLogonSuccess->lScore=(SCORE)(lTakeMinScore+(rand()%10)*lTakeScore+rand()%lTakeScore);
+					pDBOLogonSuccess->bConsumptionType.lScore=(SCORE)(lTakeMinScore+(rand()%10)*lTakeScore+rand()%lTakeScore);
 				}
 				else
 				{
-					pDBOLogonSuccess->lScore=(SCORE)lTakeMaxScore;
+					pDBOLogonSuccess->bConsumptionType.lScore = (SCORE)lTakeMaxScore;
 				}
 			}
 		}
 	}
 
 	//最低分数
-	if ((m_pGameServiceOption->lMinEnterScore!=0L)&&(pDBOLogonSuccess->lScore<m_pGameServiceOption->lMinEnterScore))
+	if ((m_pGameServiceOption->lMinEnterScore != 0L) && (pDBOLogonSuccess->bConsumptionType.lScore<m_pGameServiceOption->lMinEnterScore))
 	{
 		//发送失败
 		TCHAR szMsg[128]=TEXT("");
@@ -2537,7 +2622,7 @@ bool CAttemperEngineSink::OnDBLogonSuccess(DWORD dwContextID, VOID * pData, WORD
 	}
 
 	//最高分数
-	if ((m_pGameServiceOption->lMaxEnterScore!=0L)&&(pDBOLogonSuccess->lScore>m_pGameServiceOption->lMaxEnterScore))
+	if ((m_pGameServiceOption->lMaxEnterScore != 0L) && (pDBOLogonSuccess->bConsumptionType.lScore>m_pGameServiceOption->lMaxEnterScore))
 	{
 		//发送失败
 		TCHAR szMsg[128]=TEXT("");
@@ -2619,12 +2704,14 @@ bool CAttemperEngineSink::OnDBLogonSuccess(DWORD dwContextID, VOID * pData, WORD
 	UserInfo.wChairID=INVALID_CHAIR;
 
 	//积分信息
-	UserInfo.lScore=pDBOLogonSuccess->lScore;
+	/*UserInfo.lScore=pDBOLogonSuccess->lScore;
 	UserInfo.lGrade=pDBOLogonSuccess->lGrade;
 	UserInfo.lIngot=pDBOLogonSuccess->lIngot;
 	UserInfo.lInsure=pDBOLogonSuccess->lInsure;
-	//UserInfo.dBeans=pDBOLogonSuccess->dBeans;
-	UserInfo.lDiamond = pDBOLogonSuccess->lDimand;
+	UserInfo.dBeans=pDBOLogonSuccess->dBeans;
+	UserInfo.lDiamond = pDBOLogonSuccess->lDimand;*/
+	UserInfo.bConsumptionType = pDBOLogonSuccess->bConsumptionType;
+
 	UserInfo.dwWinCount=pDBOLogonSuccess->dwWinCount;
 	UserInfo.dwLostCount=pDBOLogonSuccess->dwLostCount;
 	UserInfo.dwDrawCount=pDBOLogonSuccess->dwDrawCount;
@@ -2660,10 +2747,10 @@ bool CAttemperEngineSink::OnDBLogonSuccess(DWORD dwContextID, VOID * pData, WORD
 	m_ServerUserManager.InsertUserItem(&pIServerUserItem,UserInfo,UserInfoPlus);
 
 	//用户任务
-	/*if(pDBOLogonSuccess->wTaskCount>0)
+	if(pDBOLogonSuccess->wTaskCount>0)
 	{
 		m_UserTaskManager.SetUserTaskInfo(pIServerUserItem->GetUserID(),pDBOLogonSuccess->UserTaskInfo,pDBOLogonSuccess->wTaskCount);
-	}*/
+	}
 
 	//错误判断
 	if (pIServerUserItem==NULL)
@@ -2733,10 +2820,10 @@ bool CAttemperEngineSink::OnDBLogonSuccess(DWORD dwContextID, VOID * pData, WORD
 	
 	//检测道具Buff
 	DWORD UserID = pDBOLogonSuccess->dwUserID;
-//	m_pIRecordDataBaseEngine->PostDataBaseRequest(DBR_GR_LOAD_GAME_BUFF,dwContextID,(void*)&UserID,sizeof(UserID));
+	m_pIRecordDataBaseEngine->PostDataBaseRequest(DBR_GR_LOAD_GAME_BUFF,dwContextID,(void*)&UserID,sizeof(UserID));
 
 	//背包喇叭
-//	m_pIRecordDataBaseEngine->PostDataBaseRequest(DBR_GR_LOAD_TRUMPET,dwContextID,(void*)&UserID,sizeof(UserID));
+	m_pIRecordDataBaseEngine->PostDataBaseRequest(DBR_GR_LOAD_TRUMPET,dwContextID,(void*)&UserID,sizeof(UserID));
 
 	return true;
 }
@@ -3302,7 +3389,7 @@ bool CAttemperEngineSink::OnDBPropertySuccess(DWORD dwContextID, VOID * pData, W
 				tagUserInfo * pUserInfo = pITargetUserItem->GetUserInfo();
 				if(pUserInfo==NULL) return true;
 				//修改积分
-				pUserInfo->lScore=0;
+				pUserInfo->bConsumptionType.lScore=0;
 				SendPropertyEffect(pITargetUserItem, PROP_KIND_NEGATIVE_SCORE_CLEAR);
 			}
 		}
@@ -3416,16 +3503,19 @@ bool CAttemperEngineSink::OnDBGamePropertyBuy(DWORD dwContextID, VOID * pData, W
 	PropertyBuyResult.dwUserID = pPropertyBuyResult->dwUserID;
 	PropertyBuyResult.dwPropertyID = pPropertyBuyResult->dwPropertyID;
 	PropertyBuyResult.dwItemCount = pPropertyBuyResult->dwItemCount;
-	PropertyBuyResult.lDiamond = pPropertyBuyResult->lDiamond;
-	/*PropertyBuyResult.lInsureScore = pPropertyBuyResult->lInsureScore;
+	/*PropertyBuyResult.lDiamond = pPropertyBuyResult->lDiamond;
+	PropertyBuyResult.lInsureScore = pPropertyBuyResult->lInsureScore;
 	PropertyBuyResult.lUserMedal = pPropertyBuyResult->lUserMedal;
+	PropertyBuyResult.dCash = pPropertyBuyResult->dCash;*/
+	PropertyBuyResult.bConsumptionType = pPropertyBuyResult->bConsumptionType;
+
 	PropertyBuyResult.lLoveLiness = pPropertyBuyResult->lLoveLiness;
-	PropertyBuyResult.dCash = pPropertyBuyResult->dCash;
-	PropertyBuyResult.cbCurrMemberOrder = pPropertyBuyResult->cbCurrMemberOrder;*/
+	PropertyBuyResult.cbCurrMemberOrder = pPropertyBuyResult->cbCurrMemberOrder;
 	lstrcpyn(PropertyBuyResult.szNotifyContent,pPropertyBuyResult->szNotifyContent,CountArray(PropertyBuyResult.szNotifyContent));
 	m_pITCPNetworkEngine->SendData(dwContextID,MDM_GR_PROPERTY, SUB_GR_GAME_PROPERTY_BUY_RESULT,&PropertyBuyResult,sizeof(PropertyBuyResult));
 
-//	pIServerUserItem->ModifyUserInsure(0,pPropertyBuyResult->lInsureScore-pIServerUserItem->GetUserInsure(),0);
+	//pIServerUserItem->ModifyUserInsure(0, pPropertyBuyResult->lInsureScore - pIServerUserItem->GetUserInsure(), 0);
+	pIServerUserItem->ModifyUserInsure(0, pPropertyBuyResult->bConsumptionType.lInsure - pIServerUserItem->GetUserInsure(), 0);
 
 	return true;
 }
@@ -3600,8 +3690,11 @@ bool CAttemperEngineSink::OnDBPurchaseResult(DWORD dwContextID, VOID * pData, WO
 
 	//设置变量
 	PurchaseResult.bSuccessed=pPurchaseResult->bSuccessed;
-	PurchaseResult.lCurrScore=pPurchaseResult->lCurrScore;
-	PurchaseResult.dCurrBeans=pPurchaseResult->dCurrBeans;
+
+	/*PurchaseResult.lCurrScore=pPurchaseResult->lCurrScore;
+	PurchaseResult.dCurrBeans=pPurchaseResult->dCurrBeans;*/
+	PurchaseResult.bConsumptionType = pPurchaseResult->bConsumptionType;
+
 	PurchaseResult.cbMemberOrder=pPurchaseResult->cbMemberOrder;
 	lstrcpyn(PurchaseResult.szNotifyContent,pPurchaseResult->szNotifyContent,CountArray(PurchaseResult.szNotifyContent));
 
@@ -3616,7 +3709,10 @@ bool CAttemperEngineSink::OnDBPurchaseResult(DWORD dwContextID, VOID * pData, WO
 		//修改会员等级
 		tagUserInfo *pUserInfo=pIServerUserItem->GetUserInfo();
 		pUserInfo->cbMemberOrder=pPurchaseResult->cbMemberOrder;
-		pUserInfo->dBeans=pPurchaseResult->dCurrBeans;
+
+		//pUserInfo->dBeans=pPurchaseResult->dCurrBeans;
+		pUserInfo->bConsumptionType = pPurchaseResult->bConsumptionType;
+
 		SendUserInfoPacket(pIServerUserItem,dwContextID);
 
 		//设置权限
@@ -3628,7 +3724,7 @@ bool CAttemperEngineSink::OnDBPurchaseResult(DWORD dwContextID, VOID * pData, WO
 			SCORE lOldScore=pIServerUserItem->GetUserScore();
 			lOldScore+=pIServerUserItem->GetFrozenedScore();
 			lOldScore+=pIServerUserItem->GetTrusteeScore();
-			pIServerUserItem->ModifyUserInsure(PurchaseResult.lCurrScore-lOldScore,0,0);
+			pIServerUserItem->ModifyUserInsure(PurchaseResult.bConsumptionType.lScore-lOldScore,0,0);
 		}
 	}
 
@@ -3655,9 +3751,12 @@ bool CAttemperEngineSink::OnDBExChangeResult(DWORD dwContextID, VOID * pData, WO
 
 	//设置变量
 	ExchangeResult.bSuccessed=pExchangeResult->bSuccessed;
-	ExchangeResult.lCurrScore=pExchangeResult->lCurrScore;
+
+	/*ExchangeResult.lCurrScore=pExchangeResult->lCurrScore;
 	ExchangeResult.lCurrIngot=pExchangeResult->lCurrIngot;
-	ExchangeResult.dCurrBeans=pExchangeResult->dCurrBeans;
+	ExchangeResult.dCurrBeans=pExchangeResult->dCurrBeans;*/
+	ExchangeResult.bConsumptionType = pExchangeResult->bConsumptionType;
+
 	lstrcpyn(ExchangeResult.szNotifyContent,pExchangeResult->szNotifyContent,CountArray(ExchangeResult.szNotifyContent));
 
 	//发送数据
@@ -3670,15 +3769,16 @@ bool CAttemperEngineSink::OnDBExChangeResult(DWORD dwContextID, VOID * pData, WO
 	{
 		//修改信息
 		tagUserInfo *pUserInfo=pIServerUserItem->GetUserInfo();
-		pUserInfo->lIngot=pExchangeResult->lCurrIngot;
-		pUserInfo->dBeans=pExchangeResult->dCurrBeans;
+		/*pUserInfo->lIngot=pExchangeResult->lCurrIngot;
+		pUserInfo->dBeans=pExchangeResult->dCurrBeans;*/
+		pUserInfo->bConsumptionType = pExchangeResult->bConsumptionType;
 	}
 
 	//更新游戏币
 	if(/*m_pGameServiceOption->wServerType==GAME_GENRE_GOLD && */ExchangeResult.bSuccessed==true)
 	{
 		SCORE lCurrScore=pIServerUserItem->GetUserScore();
-		SCORE lVarInsureScore=pExchangeResult->lCurrScore-lCurrScore;
+		SCORE lVarInsureScore=pExchangeResult->bConsumptionType.lScore-lCurrScore;
 		pIServerUserItem->ModifyUserInsure(lVarInsureScore,0,0);
 	}
 
@@ -3773,13 +3873,13 @@ bool CAttemperEngineSink::OnDBPCBaseEnsureParameter(DWORD dwContextID, VOID * pD
 	//获取状态
 	CServiceUnits * pServiceUnits=CServiceUnits::g_pServiceUnits;
 	enServiceStatus ServiceStatus=pServiceUnits->GetServiceStatus();
-	////事件通知
-	//if (ServiceStatus!=ServiceStatus_Service)
-	//{
-	//	CP_ControlResult ControlResult;
-	//	ControlResult.cbSuccess=ER_SUCCESS;
-	//	SendUIControlPacket(UI_SERVICE_CONFIG_RESULT,&ControlResult,sizeof(ControlResult));
-	//}
+	//事件通知
+	if (ServiceStatus!=ServiceStatus_Service)
+	{
+		CP_ControlResult ControlResult;
+		ControlResult.cbSuccess=ER_SUCCESS;
+		SendUIControlPacket(UI_SERVICE_CONFIG_RESULT,&ControlResult,sizeof(ControlResult));
+	}
 
 	return true;
 }
@@ -3961,7 +4061,7 @@ bool CAttemperEngineSink::OnDBUserTaskResult(DWORD dwContextID, VOID * pData, WO
 	{
 		//变量定义
 		tagUserInfo * pUserInfo=pIServerUserItem->GetUserInfo();
-		pUserInfo->lIngot=pTaskResult->lCurrIngot;
+		pUserInfo->bConsumptionType.lIngot=pTaskResult->lCurrIngot;
 
 		SCORE lOldScore=pIServerUserItem->GetUserScore();
 		lOldScore+=pIServerUserItem->GetFrozenedScore();
@@ -4136,15 +4236,19 @@ bool CAttemperEngineSink::OnDBPCGrowLevelUpgrade(DWORD dwContextID, VOID * pData
 
 	//构造结构
 	CMD_GR_GrowLevelUpgrade GrowLevelUpgrade;
-	GrowLevelUpgrade.lCurrScore=pGrowLevelUpgrade->lCurrScore;
-	GrowLevelUpgrade.lCurrIngot=pGrowLevelUpgrade->lCurrIngot;
+
+	/*GrowLevelUpgrade.lCurrScore=pGrowLevelUpgrade->lCurrScore;
+	GrowLevelUpgrade.lCurrIngot=pGrowLevelUpgrade->lCurrIngot;*/
+	GrowLevelUpgrade.bConsumptionType = pGrowLevelUpgrade->bConsumptionType;
+
 	lstrcpyn(GrowLevelUpgrade.szNotifyContent,pGrowLevelUpgrade->szNotifyContent,CountArray(GrowLevelUpgrade.szNotifyContent));
 
 	if (GrowLevelUpgrade.szNotifyContent[0]!=0)
 	{
 		tagUserInfo *pUserInfo=pIServerUserItem->GetUserInfo();
-		pUserInfo->lScore=pGrowLevelUpgrade->lCurrScore;
-		pUserInfo->lIngot=pGrowLevelUpgrade->lCurrIngot;
+		/*pUserInfo->lScore=pGrowLevelUpgrade->lCurrScore;
+		pUserInfo->lIngot=pGrowLevelUpgrade->lCurrIngot;*/
+		pUserInfo->bConsumptionType = pGrowLevelUpgrade->bConsumptionType;
 
 		SendUserInfoPacket(pIServerUserItem,dwContextID);
 	}
@@ -4157,9 +4261,371 @@ bool CAttemperEngineSink::OnDBPCGrowLevelUpgrade(DWORD dwContextID, VOID * pData
 	return true;
 }
 
+//创建成功
+bool CAttemperEngineSink::OnDBCreateSucess(DWORD dwContextID, VOID * pData, WORD wDataSize)
+{
+	//数据校验
+	ASSERT(wDataSize == sizeof(DBO_GR_CreateSuccess));
+	if(wDataSize != sizeof(DBO_GR_CreateSuccess)) return false;
+
+	//判断在线
+	tagBindParameter * pBindParameter=GetBindParameter(LOWORD(dwContextID));
+	if ((pBindParameter->dwSocketID!=dwContextID)||(pBindParameter->pIServerUserItem==NULL)) return true;
+
+	//获取用户
+	ASSERT(GetBindUserItem(LOWORD(dwContextID))!=NULL);
+	IServerUserItem * pIServerUserItem=GetBindUserItem(LOWORD(dwContextID));
+	if (pIServerUserItem==NULL) return false;
+
+	DBO_GR_CreateSuccess* pCreateSuccess = (DBO_GR_CreateSuccess*)pData;
+
+	//获取信息
+	CTableFrame* pTableFrame = m_TableFrameArray[pCreateSuccess->dwTableID];
+	WORD wChairID = pTableFrame->GetNullChairID();
+
+	//初始分数
+	LONGLONG lIniScore = 0;
+	byte cbIsJoinGame = 0;
+	INT_PTR nSize = m_PersonalTableParameterArray.GetCount();
+	for(INT_PTR i = 0; i < nSize; ++i)
+	{
+		tagPersonalTableParameter* pTableParameter = m_PersonalTableParameterArray.GetAt(i);
+		if(pTableParameter->dwPlayTurnCount == pCreateSuccess->dwDrawCountLimit && pTableParameter->dwPlayTimeLimit == pCreateSuccess->dwDrawTimeLimit)
+		{
+			lIniScore = pTableParameter->lIniScore;
+
+			//将配置信息改为制定的配置信息
+			pTableParameter->wJoinGamePeopleCount = pCreateSuccess->wJoinGamePeopleCount;	//参加游戏的最大人数
+			pTableParameter->lCellScore = pCreateSuccess->lCellScore;													//私人房的最大底分
+
+			pTableParameter->dwPlayTurnCount = pCreateSuccess->dwDrawCountLimit; 						//私人放进行游戏的最大局数
+			pTableParameter->dwPlayTimeLimit = pCreateSuccess->dwDrawTimeLimit;							//私人房进行游戏的最大时间 单位秒
+
+			//cbIsJoinGame = pTableParameter->cbIsJoinGame ;
+
+			break;
+		}
+	}
+	cbIsJoinGame = m_PersonalRoomOption.cbIsJoinGame;
+	pTableFrame->SetCellScore(pCreateSuccess->lCellScore);
+	pTableFrame->SetGameRule(pCreateSuccess->cbGameRule, RULE_LEN);
+
+
+	//如果使用的是金币数据库
+	if (lstrcmp(m_pGameServiceOption->szDataBaseName, szTreasureDB) == 0)
+	{
+		pTableFrame->SetPersonalTable(pCreateSuccess->dwDrawCountLimit, pCreateSuccess->dwDrawTimeLimit, 0);
+		pTableFrame->SetDataBaseMode(0);
+	}
+	else
+	{
+		pTableFrame->SetPersonalTable(pCreateSuccess->dwDrawCountLimit, pCreateSuccess->dwDrawTimeLimit, lIniScore);
+		pTableFrame->SetDataBaseMode(1);
+	}
+
+
+	//设置桌子配置信息
+	tagPersonalTableParameter PersonalTableParameter;
+	PersonalTableParameter.lIniScore = lIniScore;
+	PersonalTableParameter.wJoinGamePeopleCount = pCreateSuccess->wJoinGamePeopleCount;		//参加游戏的最大人数
+	PersonalTableParameter.lCellScore = pCreateSuccess->lCellScore;													//私人房的最大底分
+	PersonalTableParameter.dwPlayTurnCount = pCreateSuccess->dwDrawCountLimit; 						//私人放进行游戏的最大局数
+	PersonalTableParameter.dwPlayTimeLimit = pCreateSuccess->dwDrawTimeLimit;								//私人房进行游戏的最大时间 单位秒
+	PersonalTableParameter.cbIsJoinGame = cbIsJoinGame;
+
+	PersonalTableParameter.dwTimeAfterBeginCount = m_PersonalRoomOption.dwTimeAfterBeginCount;
+	PersonalTableParameter.dwTimeAfterCreateRoom = m_PersonalRoomOption.dwTimeAfterCreateRoom;
+	PersonalTableParameter.dwTimeNotBeginGame = m_PersonalRoomOption.dwTimeNotBeginGame;
+	PersonalTableParameter.dwTimeOffLineCount = m_PersonalRoomOption.dwTimeOffLineCount;
+
+	pTableFrame->SetPersonalTableParameter(PersonalTableParameter, m_PersonalRoomOption);
+
+	//转转麻将设置一张桌子上椅子的个数
+	if (m_pGameServiceAttrib->wKindID == ZZMJ_KIND_ID || m_pGameServiceAttrib->wKindID  == HZMJ_KIND_ID)
+	{
+		if (pCreateSuccess->cbGameRule[0] == SET_RULE) 
+		{
+			pTableFrame->SetTableChairCount(pCreateSuccess->cbGameRule[1]);
+		}
+	}
+
+	//设置桌子	
+	tagUserInfo* pUserInfo = pIServerUserItem->GetUserInfo();
+
+	/*pUserInfo->dBeans = pCreateSuccess->dCurBeans;
+	pUserInfo->lDiamond = pCreateSuccess->lDiamond;*/
+	pUserInfo->bConsumptionType = pCreateSuccess->bConsumptionType;
+
+	pTableFrame->SetTableOwner(pUserInfo->dwUserID);
+	pTableFrame->SetTimerNotBeginAfterCreate();
+
+	tagUserRule* pUserRule = pIServerUserItem->GetUserRule();
+	lstrcpyn(pUserRule->szPassword, pCreateSuccess->szPassword, CountArray(pUserRule->szPassword));
+
+	//如果房主参与游戏
+	if (pCreateSuccess->cbIsJoinGame)
+	{
+
+		//执行坐下
+		if(pTableFrame->PerformSitDownAction(wChairID, pIServerUserItem, pCreateSuccess->szPassword)== FALSE)
+		{
+			CTraceService::TraceString(TEXT("创建桌子坐下失败"), TraceLevel_Info);
+			//解锁桌子
+			pTableFrame->SetPersonalTableLocked(false);
+			pTableFrame->SetPersonalTable(0, 0, 0);
+			pTableFrame->SetCellScore(0);
+			pTableFrame->SetTableOwner(0);
+
+			//退还费用
+			DBR_GR_CancelCreateTable CancelCreateTable;
+			ZeroMemory(&CancelCreateTable, sizeof(DBR_GR_CancelCreateTable));
+
+			CancelCreateTable.dwUserID = pCreateSuccess->dwUserID;
+			CancelCreateTable.dwClientAddr = pBindParameter->dwClientAddr;
+			CancelCreateTable.dwTableID = pCreateSuccess->dwTableID;
+			CancelCreateTable.dwReason = CANCELTABLE_REASON_SYSTEM;
+			CancelCreateTable.dwDrawCountLimit = pCreateSuccess->dwDrawCountLimit;
+			CancelCreateTable.dwDrawTimeLimit = pCreateSuccess->dwDrawTimeLimit;
+			CancelCreateTable.dwServerID = m_pGameServiceOption->wServerID;
+
+			//投递数据
+			m_pIDBCorrespondManager->PostDataBaseRequest(pCreateSuccess->dwUserID, DBR_GR_CANCEL_CREATE_TABLE, dwContextID, &CancelCreateTable, sizeof(DBR_GR_CancelCreateTable));
+
+			return true;
+		}
+	}
 
 
 
+
+	//数据汇总
+	CMD_CS_C_CreateTable CS_CreateTable;
+	ZeroMemory(&CS_CreateTable, sizeof(CMD_CS_C_CreateTable));
+
+	CS_CreateTable.dwSocketID = dwContextID;
+	CS_CreateTable.dwClientAddr = pBindParameter->dwClientAddr;
+	CS_CreateTable.PersonalTable.dwServerID	= m_pGameServiceOption->wServerID;
+	CS_CreateTable.PersonalTable.dwKindID = m_pGameServiceOption->wKindID;
+	CS_CreateTable.PersonalTable.dwTableID = pCreateSuccess->dwTableID;
+	CS_CreateTable.PersonalTable.dwUserID = pIServerUserItem->GetUserID();
+	CS_CreateTable.PersonalTable.dwDrawCountLimit = pCreateSuccess->dwDrawCountLimit;
+	CS_CreateTable.PersonalTable.dwDrawTimeLimit = pCreateSuccess->dwDrawTimeLimit;
+	CS_CreateTable.PersonalTable.lCellScore = pCreateSuccess->lCellScore;
+	CS_CreateTable.PersonalTable.dwRoomTax = pCreateSuccess->dwRoomTax;
+	CS_CreateTable.PersonalTable.wJoinGamePeopleCount = pCreateSuccess->wJoinGamePeopleCount;
+	lstrcpyn(CS_CreateTable.PersonalTable.szPassword, pCreateSuccess->szPassword, CountArray(CS_CreateTable.PersonalTable.szPassword));
+	lstrcpyn(CS_CreateTable.szClientAddr, pCreateSuccess->szClientAddr, CountArray(CS_CreateTable.szClientAddr));
+
+	//发送数据
+	m_pITCPSocketService->SendData(MDM_CS_SERVICE_INFO, SUB_CS_C_CREATE_TABLE, &CS_CreateTable, sizeof(CMD_CS_C_CreateTable));
+
+
+	return true;
+}
+
+//创建失败
+bool CAttemperEngineSink::OnDBCreateFailure(DWORD dwContextID, VOID * pData, WORD wDataSize)
+{
+	//数据校验
+	ASSERT(wDataSize == sizeof(DBO_GR_CreateFailure));
+	if(wDataSize != sizeof(DBO_GR_CreateFailure)) return false;
+
+	//判断在线
+	tagBindParameter * pBindParameter=GetBindParameter(LOWORD(dwContextID));
+	if ((pBindParameter->dwSocketID!=dwContextID)||(pBindParameter->pIServerUserItem==NULL)) return true;
+
+	//获取用户
+	ASSERT(GetBindUserItem(LOWORD(dwContextID))!=NULL);
+	IServerUserItem * pIServerUserItem=GetBindUserItem(LOWORD(dwContextID));
+	if (pIServerUserItem==NULL) return false;
+
+	DBO_GR_CreateFailure* pCreateFailure = (DBO_GR_CreateFailure*)pData;
+
+	//构造数据
+	CMD_GR_CreateFailure CreateFailure;
+	ZeroMemory(&CreateFailure, sizeof(CMD_GR_CreateFailure));
+
+	CreateFailure.lErrorCode = pCreateFailure->lErrorCode;
+	lstrcpyn(CreateFailure.szDescribeString, pCreateFailure->szDescribeString, CountArray(CreateFailure.szDescribeString));
+
+	//发送数据
+	m_pITCPNetworkEngine->SendData(dwContextID, MDM_GR_PERSONAL_TABLE, SUB_GR_CREATE_FAILURE, &CreateFailure, sizeof(CMD_GR_CreateFailure));
+
+	return true;
+}
+
+//取消创建
+bool CAttemperEngineSink::OnDBCancelCreateTable(DWORD dwContextID, VOID * pData, WORD wDataSize)
+{
+	//数据校验
+	ASSERT(wDataSize == sizeof(DBO_GR_CancelCreateResult));
+	if(wDataSize != sizeof(DBO_GR_CancelCreateResult)) return false;
+
+	//判断在线
+	tagBindParameter * pBindParameter=GetBindParameter(LOWORD(dwContextID));
+	if(pBindParameter == NULL) return true;
+	if ((pBindParameter->dwSocketID!=dwContextID)||(pBindParameter->pIServerUserItem==NULL)) return true;
+
+	//获取用户
+	ASSERT(GetBindUserItem(LOWORD(dwContextID))!=NULL);
+	IServerUserItem * pIServerUserItem=GetBindUserItem(LOWORD(dwContextID));
+	if (pIServerUserItem==NULL) return false;
+
+	//获取数据
+	DBO_GR_CancelCreateResult* pCancelCreateResult = (DBO_GR_CancelCreateResult*)pData;
+	CTableFrame* pTableFrame = m_TableFrameArray[pCancelCreateResult->dwTableID];
+	ASSERT(pTableFrame != NULL);
+
+	//设置桌子
+	//ASSERT(pTableFrame->IsPersonalTableLocked() == true);
+	pTableFrame->SetPersonalTableLocked(false);
+	pTableFrame->SetPersonalTable(0, 0, 0);
+	if(pCancelCreateResult->dwReason == CANCELTABLE_REASON_SYSTEM || pCancelCreateResult->dwReason == CANCELTABLE_REASON_PLAYER)
+	{
+		pTableFrame->SetTableOwner(0);
+	}
+
+	WORD wChairCount = pTableFrame->GetChairCount();
+	for(int i = 0; i < wChairCount; ++i)
+	{
+		IServerUserItem* pUserItem =pTableFrame->GetTableUserItem(i);
+		if(pUserItem == NULL) continue;
+
+		//绑定参数
+		WORD wBindIndex = pUserItem->GetBindIndex();
+		tagBindParameter* pBind = GetBindParameter(wBindIndex);
+
+		//构造数据
+		CMD_GR_CancelTable CancelTable;
+		ZeroMemory(&CancelTable, sizeof(CMD_GR_CancelTable));
+		CancelTable.dwReason = pCancelCreateResult->dwReason;
+		if(pCancelCreateResult->dwReason == CANCELTABLE_REASON_SYSTEM)
+			lstrcpyn(CancelTable.szDescribeString, TEXT("游戏自动解散。"), CountArray(CancelTable.szDescribeString));
+		else if(pCancelCreateResult->dwReason == CANCELTABLE_REASON_PLAYER)
+			lstrcpyn(CancelTable.szDescribeString, TEXT("游戏未开始，游戏自动解散。"), CountArray(CancelTable.szDescribeString));
+		else if(pCancelCreateResult->dwReason == CANCELTABLE_REASON_ENFOCE)
+			lstrcpyn(CancelTable.szDescribeString, TEXT("房主退出游戏或游戏超时，游戏解散。"), CountArray(CancelTable.szDescribeString));
+		else if(pCancelCreateResult->dwReason == CANCELTABLE_REASON_OVER_TIME)
+			lstrcpyn(CancelTable.szDescribeString, TEXT("游戏超时，游戏解散。"), CountArray(CancelTable.szDescribeString));
+		else if(pCancelCreateResult->dwReason == CANCELTABLE_REASON_NOT_START)
+			lstrcpyn(CancelTable.szDescribeString, TEXT("约战规定开始时间到未开始游戏，游戏解散。"), CountArray(CancelTable.szDescribeString));
+		
+		if (CANCELTABLE_REASON_NOT_START == pCancelCreateResult->dwReason || CANCELTABLE_REASON_OVER_TIME == pCancelCreateResult->dwReason)
+		{
+			CancelTable.dwReason = CANCELTABLE_REASON_SYSTEM;
+		}
+		//解散消息
+		m_pITCPNetworkEngine->SendData(pBind->dwSocketID, MDM_GR_PERSONAL_TABLE, SUB_GR_CANCEL_TABLE, &CancelTable, sizeof(CMD_GR_CancelTable));
+
+		//用户状态
+		//pUserItem->SetUserStatus(US_FREE, INVALID_TABLE, INVALID_CHAIR);
+		pTableFrame->PerformStandUpAction(pUserItem);
+	}
+
+	////构造数据
+	//CMD_GR_CancelTable CancelTable;
+	//ZeroMemory(&CancelTable, sizeof(CMD_GR_CancelTable));
+	//CancelTable.dwReason = pCancelCreateResult->dwReason;
+	//lstrcpyn(CancelTable.szDescribeString, pCancelCreateResult->szDescribeString, CountArray(CancelTable.szDescribeString));
+
+	////发送数据
+	//m_pITCPNetworkEngine->SendData(dwContextID, MDM_GR_PERSONAL_TABLE, SUB_GR_CANCEL_TABLE, &CancelTable, sizeof(CMD_GR_CancelTable));
+
+	////退出用户
+	//pIServerUserItem->SetUserStatus(US_NULL, INVALID_TABLE, INVALID_CHAIR);
+
+	return true;
+}
+
+//私人配置
+bool CAttemperEngineSink::OnDBLoadPersonalParameter(DWORD dwContextID, VOID * pData, WORD wDataSize)
+{
+	//效验参数
+	ASSERT(wDataSize%sizeof(tagPersonalTableParameter)==0);
+	if (wDataSize%sizeof(tagPersonalTableParameter)!=0) return false;
+
+	//清楚缓存
+	ASSERT(m_PersonalTableParameterArray.GetCount() == 0);
+	if(m_PersonalTableParameterArray.GetCount() != 0)
+	{
+		INT_PTR nSize = m_PersonalTableParameterArray.GetCount();
+		for(INT_PTR i = 0; i < nSize; ++i)
+		{
+			tagPersonalTableParameter* pPersonalTableParameter = m_PersonalTableParameterArray.GetAt(i);
+			SafeDelete(pPersonalTableParameter);
+		}
+		m_PersonalTableParameterArray.RemoveAll();
+	}
+
+	//数据转换
+	WORD wCount = wDataSize/sizeof(tagPersonalTableParameter);
+	tagPersonalTableParameter* pParameterData = (tagPersonalTableParameter*)pData;
+
+	//保存配置
+	for(int i = 0; i < wCount; ++i)
+	{
+		tagPersonalTableParameter* pPersonalTableParameter = new tagPersonalTableParameter;
+		CopyMemory(pPersonalTableParameter,&pParameterData[i],sizeof(tagPersonalTableParameter));
+		m_PersonalTableParameterArray.Add(pPersonalTableParameter);
+	}
+
+	return true;
+}
+
+//私人配置
+bool CAttemperEngineSink::OnDBDissumeTableResult(DWORD dwContextID, VOID * pData, WORD wDataSize)
+{
+	//效验参数
+	ASSERT(wDataSize == sizeof(DBO_GR_DissumeResult));
+	if (sizeof(DBO_GR_DissumeResult)!=wDataSize) return false;
+	DBO_GR_DissumeResult * pDissumeResult = (DBO_GR_DissumeResult *)pData;
+	CMD_GR_DissumeTable  DissumeTable;
+	DissumeTable.cbIsDissumSuccess = pDissumeResult->cbIsDissumSuccess;
+	DissumeTable.dwPersonalRoomID = pDissumeResult->dwPersonalRoomID;
+	DissumeTable.sysDissumeTime = pDissumeResult->sysDissumeTime;
+
+	//获取房间玩家的信息
+	for (int i = 0; i < PERSONAL_ROOM_CHAIR; i++)
+	{
+		memcpy(&DissumeTable.PersonalUserScoreInfo[i],  &pDissumeResult->PersonalUserScoreInfo[i],  sizeof(tagPersonalUserScoreInfo));
+	}
+
+	m_pITCPNetworkEngine->SendData(pDissumeResult->dwSocketID, MDM_GR_PERSONAL_TABLE, SUB_GR_HOST_DISSUME_TABLE_RESULT, &DissumeTable, sizeof(CMD_GR_DissumeTable));
+
+	return true;
+
+}
+
+//私人房间玩家请求房间信息
+bool CAttemperEngineSink::OnDBQueryUserRoomScore(DWORD dwContextID, VOID * pData, WORD wDataSize)
+{
+	//效验参数
+	//ASSERT(wDataSize%sizeof(tagQueryPersonalRoomUserScore)==0);
+	//if (wDataSize%sizeof(tagQueryPersonalRoomUserScore)!=0) return false;
+
+	//m_pITCPNetworkEngine->SendData(dwContextID, MDM_GR_PERSONAL_TABLE, SUB_GR_USER_QUERY_ROOM_SCORE_RESULT, pData, wDataSize);
+
+	return true;
+
+}
+
+//私人房间玩家请求房间信息
+bool CAttemperEngineSink::OnDBCurrenceRoomCardAndBeant(DWORD dwContextID, VOID * pData, WORD wDataSize)
+{
+	//效验参数
+	ASSERT(wDataSize == sizeof(DBO_GR_CurrenceRoomCardAndBeans));
+	if (sizeof(DBO_GR_CurrenceRoomCardAndBeans)!=wDataSize) return false;
+	DBO_GR_CurrenceRoomCardAndBeans * pCardAndBeans = (DBO_GR_CurrenceRoomCardAndBeans *)pData;
+	CMD_GR_CurrenceRoomCardAndBeans  CurrenceRoomCardAndBeans;
+	//CurrenceRoomCardAndBeans.dbBeans = pCardAndBeans->dbBeans;
+	//CurrenceRoomCardAndBeans.lDiamond = pCardAndBeans->lDiamond;
+	CurrenceRoomCardAndBeans.bConsumptionType = pCardAndBeans->bConsumptionType;
+
+	m_pITCPNetworkEngine->SendData(dwContextID, MDM_GR_PERSONAL_TABLE, SUB_GR_CURRECE_ROOMCARD_AND_BEAN, &CurrenceRoomCardAndBeans, sizeof(CMD_GR_CurrenceRoomCardAndBeans));
+
+	return true;
+
+}
 
 //注册事件
 bool CAttemperEngineSink::OnTCPSocketMainRegister(WORD wSubCmdID, VOID * pData, WORD wDataSize)
@@ -4386,10 +4852,104 @@ bool CAttemperEngineSink::OnTCPSocketMainServiceInfo(WORD wSubCmdID, VOID * pDat
 
 			return true;
 		}
+	case SUB_CS_S_CREATE_TABLE_RESULT:		//创建结果
+		{
+			//效验参数
+			ASSERT(wDataSize==sizeof(CMD_CS_S_CreateTableResult));
+			if (wDataSize!=sizeof(CMD_CS_S_CreateTableResult)) return false;
+
+			//变量定义
+			CMD_CS_S_CreateTableResult * pCreateTableResult=(CMD_CS_S_CreateTableResult *)pData;
+
+			//获取用户
+			WORD wBindIndex=LOWORD(pCreateTableResult->dwSocketID);
+			IServerUserItem * pIServerUserItem=GetBindUserItem(wBindIndex);
+			if (pIServerUserItem==NULL) return false;
+
+			if(pCreateTableResult->PersonalTable.dwDrawCountLimit == 0 && pCreateTableResult->PersonalTable.dwDrawTimeLimit == 0)
+			{
+				//构造数据
+				CMD_GR_CreateFailure CreateFailure;
+				ZeroMemory(&CreateFailure, sizeof(CMD_GR_CreateFailure));
+
+				CreateFailure.lErrorCode = 1;
+				lstrcpyn(CreateFailure.szDescribeString, TEXT("创建房间参数不正确！"), CountArray(CreateFailure.szDescribeString));
+
+				//发送数据
+				m_pITCPNetworkEngine->SendData(pCreateTableResult->dwSocketID, MDM_GR_PERSONAL_TABLE, SUB_GR_CREATE_FAILURE, &CreateFailure, sizeof(CMD_GR_CreateFailure));
+
+				return false;
+			}
+
+			//获取桌子
+			CTableFrame* pTableFrame = m_TableFrameArray[pCreateTableResult->PersonalTable.dwTableID];
+			ASSERT(pTableFrame != NULL);
+
+			tagPersonalTableParameter PersonalTableParameter = pTableFrame->GetPersonalTableParameter();
+			pTableFrame->SetPersonalRoomID(pCreateTableResult->PersonalTable.dwPersonalRoomID);
+
+			//构造数据
+			CMD_GR_CreateSuccess CreateSuccess;
+			ZeroMemory(&CreateSuccess, sizeof(CMD_GR_CreateSuccess));
+
+			CreateSuccess.dwDrawCountLimit = PersonalTableParameter.dwPlayTurnCount;
+			CreateSuccess.dwDrawTimeLimit = PersonalTableParameter.dwPlayTimeLimit;
+
+			//CreateSuccess.lDiamond = pIServerUserItem->GetUserInfo()->lDiamond;
+			CreateSuccess.bConsumptionType = pIServerUserItem->GetUserInfo()->bConsumptionType;
+
+			CreateSuccess.dwPersonalRoomID = pCreateTableResult->PersonalTable.dwPersonalRoomID;
+			
+			m_pITCPNetworkEngine->SendData(pCreateTableResult->dwSocketID, MDM_GR_PERSONAL_TABLE, SUB_GR_CREATE_SUCCESS, &CreateSuccess, sizeof(CMD_GR_CreateSuccess));
+
+
+			//插入桌子创建记录
+			DBR_GR_InsertCreateRecord  CreateRecord;
+			ZeroMemory(&CreateRecord, sizeof(DBR_GR_InsertCreateRecord));
+
+			//桌子数据
+			CreateRecord.dwServerID	= pCreateTableResult->PersonalTable.dwServerID;
+			CreateRecord.dwUserID = pCreateTableResult->PersonalTable.dwUserID;
+			CreateRecord.lCellScore = pCreateTableResult->PersonalTable.lCellScore;
+			CreateRecord.dwDrawCountLimit = pCreateTableResult->PersonalTable.dwDrawCountLimit;
+			CreateRecord.dwDrawTimeLimit = pCreateTableResult->PersonalTable.dwDrawTimeLimit;
+			lstrcpyn(CreateRecord.szPassword, pCreateTableResult->PersonalTable.szPassword, CountArray(CreateRecord.szPassword));
+			CreateRecord.dwPersonalRoomID = pCreateTableResult->PersonalTable.dwPersonalRoomID;
+			CreateRecord.wJoinGamePeopleCount = pCreateTableResult->PersonalTable.wJoinGamePeopleCount;
+			CreateRecord.dwRoomTax =  pCreateTableResult->PersonalTable.dwRoomTax;
+			lstrcpyn(CreateRecord.szClientAddr, pCreateTableResult->szClientAddr, CountArray(CreateRecord.szClientAddr));
+
+			m_pIDBCorrespondManager->PostDataBaseRequest(0, DBR_GR_INSERT_CREATE_RECORD, 0, &CreateRecord, sizeof(CreateRecord));
+
+			return true;
+		}
+	case SUB_CS_C_DISMISS_TABLE_RESULT:		//解散结果
+		{
+			ASSERT(wDataSize == sizeof(CMD_CS_C_DismissTableResult));
+			if(wDataSize != sizeof(CMD_CS_C_DismissTableResult)) return false;
+
+			CMD_CS_C_DismissTableResult* pDismissTable = (CMD_CS_C_DismissTableResult*)pData;
+			//获取桌子
+			CTableFrame* pTableFrame = m_TableFrameArray[pDismissTable->PersonalTableInfo.dwTableID];
+			ASSERT(pTableFrame != NULL);
+
+			for (int i = 0; i < pTableFrame->GetChairCount(); i++)
+			{
+				memcpy(&(pDismissTable->PersonalUserScoreInfo[i]), &(pTableFrame->m_PersonalUserScoreInfo[i]),  sizeof(tagPersonalUserScoreInfo));
+			}
+			for (int i = 0; i < pTableFrame->GetChairCount(); i++)
+			{
+				ZeroMemory(&(pTableFrame->m_PersonalUserScoreInfo[i]), sizeof(pTableFrame->m_PersonalUserScoreInfo[i]));
+			}
+
+			m_pIDBCorrespondManager->PostDataBaseRequest(0, DBR_GR_DISSUME_ROOM, 0, pDismissTable, sizeof(CMD_CS_C_DismissTableResult));
+			return true;
+
+		}
 	}
+
 	return true;
 }
-
 
 //汇总事件
 bool CAttemperEngineSink::OnTCPSocketMainUserCollect(WORD wSubCmdID, VOID * pData, WORD wDataSize)
@@ -4465,19 +5025,19 @@ bool CAttemperEngineSink::OnTCPSocketMainManagerService(WORD wSubCmdID, VOID * p
 			m_pIDBCorrespondManager->PostDataBaseRequest(0L,DBR_GR_LOAD_PARAMETER,0L,NULL,0L);
 
 			//加载任务
-			//m_pIDBCorrespondManager->PostDataBaseRequest(0L,DBR_GR_TASK_LOAD_LIST,0L,NULL,0L);
+			m_pIDBCorrespondManager->PostDataBaseRequest(0L,DBR_GR_TASK_LOAD_LIST,0L,NULL,0L);
 
 			//会员参数
-			//m_pIDBCorrespondManager->PostDataBaseRequest(0L,DBR_GR_LOAD_MEMBER_PARAMETER,0,NULL,0);	
+			m_pIDBCorrespondManager->PostDataBaseRequest(0L,DBR_GR_LOAD_MEMBER_PARAMETER,0,NULL,0);	
 
 			//成长配置
-			//m_pIDBCorrespondManager->PostDataBaseRequest(0L,DBR_GR_LOAD_GROWLEVEL_CONFIG,0,NULL,0);	
+			m_pIDBCorrespondManager->PostDataBaseRequest(0L,DBR_GR_LOAD_GROWLEVEL_CONFIG,0,NULL,0);	
 
 			//加载签到
-			//m_pIDBCorrespondManager->PostDataBaseRequest(0L,DBR_GR_LOAD_CHECKIN_REWARD,0,NULL,0);	
+			m_pIDBCorrespondManager->PostDataBaseRequest(0L,DBR_GR_LOAD_CHECKIN_REWARD,0,NULL,0);	
 
 			//加载低保
-			//m_pIDBCorrespondManager->PostDataBaseRequest(0L,DBR_GR_LOAD_BASEENSURE,0L,NULL,0L);
+			m_pIDBCorrespondManager->PostDataBaseRequest(0L,DBR_GR_LOAD_BASEENSURE,0L,NULL,0L);
 			return true;
 		}
 	}
@@ -6551,11 +7111,13 @@ bool CAttemperEngineSink::OnTCPNetworkSubChairUserInfoReq(VOID * pData, WORD wDa
 		pUserInfoHead->lIntegralCount=pUserInfo->lIntegralCount;
 
 		//用户成绩
-		pUserInfoHead->lScore=pUserInfo->lScore;
-		pUserInfoHead->lScore+=pTagerIServerUserItem->GetTrusteeScore();
-		pUserInfoHead->lScore+=pTagerIServerUserItem->GetFrozenedScore();
-		pUserInfoHead->dBeans=pUserInfo->dBeans;
+		/*pUserInfoHead->dBeans=pUserInfo->dBeans;
 		pUserInfoHead->lIngot=pUserInfo->lIngot;
+		pUserInfoHead->lScore = pUserInfo->lScore;*/
+		pUserInfoHead->bConsumptionType = pUserInfo->bConsumptionType;
+
+		pUserInfoHead->bConsumptionType.lScore += pTagerIServerUserItem->GetTrusteeScore();
+		pUserInfoHead->bConsumptionType.lScore += pTagerIServerUserItem->GetFrozenedScore();
 
 		//叠加信息
 		SendPacket.AddPacket(pUserInfo->szNickName,DTP_GR_NICK_NAME);
@@ -7969,6 +8531,238 @@ bool CAttemperEngineSink::OnTCPNetworkSubRoomCheat(VOID * pData, WORD wDataSize,
 	return true;
 }
 
+//创建桌子
+bool CAttemperEngineSink::OnTCPNetworkSubCreateTable(VOID * pData, WORD wDataSize, DWORD dwSocketID)
+{
+	//效验数据
+	ASSERT(wDataSize == sizeof(CMD_GR_CreateTable));
+	if (wDataSize != sizeof(CMD_GR_CreateTable)) return false;
+
+	//提取数据
+	CMD_GR_CreateTable * pCreateTable = (CMD_GR_CreateTable*)pData;
+	ASSERT(pCreateTable != NULL);
+
+	//获取用户
+	WORD wBindIndex = LOWORD(dwSocketID);
+	IServerUserItem * pIServerUserItem = GetBindUserItem(wBindIndex);
+	if (pIServerUserItem == NULL) return false;
+
+	tagBindParameter* pBindParameter = GetBindParameter(wBindIndex);
+
+
+	//寻找空闲桌子
+	INT_PTR nSize = m_TableFrameArray.GetCount();
+
+	for (INT_PTR i = 0; i < nSize; ++i)
+	{
+		CTableFrame* pTableFrame = m_TableFrameArray.GetAt(i);
+		if (pTableFrame->GetNullChairCount() == pTableFrame->GetChairCount() && pTableFrame->IsPersonalTableLocked() == false)
+		{
+			//锁定桌子
+			pTableFrame->SetPersonalTableLocked(true);
+
+			//桌子号
+			DWORD dwTableID = pTableFrame->GetTableID();
+
+			//构造数据
+			DBR_GR_CreateTable CreateTable;
+			ZeroMemory(&CreateTable, sizeof(DBR_GR_CreateTable));
+
+			CreateTable.dwUserID = pIServerUserItem->GetUserID();
+			CreateTable.dwClientAddr = pBindParameter->dwClientAddr;
+			CreateTable.dwServerID = m_pGameServiceOption->wServerID;
+			CreateTable.dwTableID = dwTableID;
+			CreateTable.dwDrawCountLimit = pCreateTable->dwDrawCountLimit;
+			CreateTable.dwDrawTimeLimit = pCreateTable->dwDrawTimeLimit;
+			CreateTable.lCellScore = pCreateTable->lCellScore;
+			CreateTable.dwRoomTax = pCreateTable->dwRoomTax;
+			CreateTable.wJoinGamePeopleCount = pCreateTable->wJoinGamePeopleCount;
+			CreateTable.cbPassword = pCreateTable->cbPassword;
+			memcpy(CreateTable.cbGameRule, pCreateTable->cbGameRule, CountArray(CreateTable.cbGameRule));
+
+			//投递数据
+			m_pIDBCorrespondManager->PostDataBaseRequest(CreateTable.dwUserID, DBR_GR_CREATE_TABLE, dwSocketID, &CreateTable, sizeof(DBR_GR_CreateTable));
+
+			return true;
+		}
+	}
+
+	//构造数据
+	CMD_GR_CreateFailure CreateFailure;
+	ZeroMemory(&CreateFailure, sizeof(CMD_GR_CreateFailure));
+
+	CreateFailure.lErrorCode = 1;
+	lstrcpyn(CreateFailure.szDescribeString, TEXT("目前该游戏约战房间已满，请稍后再试！"), CountArray(CreateFailure.szDescribeString));
+
+	//发送数据
+	m_pITCPNetworkEngine->SendData(dwSocketID, MDM_GR_PERSONAL_TABLE, SUB_GR_CREATE_FAILURE, &CreateFailure, sizeof(CMD_GR_CreateFailure));
+
+	return true;
+}
+//取消请求
+bool CAttemperEngineSink::OnTCPNetworkSubCancelRequest(VOID * pData, WORD wDataSize, DWORD dwSocketID)
+{
+	//校验数据
+	ASSERT(wDataSize == sizeof(CMD_GR_CancelRequest));
+	if (wDataSize != sizeof(CMD_GR_CancelRequest)) return false;
+
+	//提取数据
+	CMD_GR_CancelRequest * pCancelRequest = (CMD_GR_CancelRequest*)pData;
+	ASSERT(pCancelRequest != NULL);
+	//获取用户
+	WORD wBindIndex = LOWORD(dwSocketID);
+	IServerUserItem * pIServerUserItem = GetBindUserItem(wBindIndex);
+	if (pIServerUserItem == NULL) return false;
+
+	//获取桌子
+	CTableFrame* pTableFrame = m_TableFrameArray[pCancelRequest->dwTableID];
+	ASSERT(pTableFrame != NULL);
+	//if(pCancelRequest->dwUserID != pTableFrame->GetTableOwner()->GetUserID()) return false;
+
+	if (pTableFrame->CancelTableRequest(pCancelRequest->dwUserID, pCancelRequest->dwChairID) == false) return false;
+
+	//转发数据
+	WORD wChairCount = pTableFrame->GetChairCount();
+	for (int i = 0; i < wChairCount; ++i)
+	{
+		//过滤用户
+
+		IServerUserItem* pUserItem = pTableFrame->GetTableUserItem(i);
+		if (pUserItem == NULL || pUserItem == pIServerUserItem) continue;
+
+		SendData(pUserItem, MDM_GR_PERSONAL_TABLE, SUB_GR_CANCEL_REQUEST, pData, wDataSize);
+	}
+
+	return true;
+}
+//取消答复
+bool CAttemperEngineSink::OnTCPNetworkSubRequestReply(VOID * pData, WORD wDataSize, DWORD dwSocketID)
+{
+	//校验数据
+	ASSERT(wDataSize == sizeof(CMD_GR_RequestReply));
+	if (wDataSize != sizeof(CMD_GR_RequestReply)) return false;
+
+	//提取数据
+	CMD_GR_RequestReply * pRequestReply = (CMD_GR_RequestReply*)pData;
+	ASSERT(pRequestReply != NULL);
+
+	//获取用户
+	WORD wBindIndex = LOWORD(dwSocketID);
+	IServerUserItem * pIServerUserItem = GetBindUserItem(wBindIndex);
+	if (pIServerUserItem == NULL) return false;
+
+	//获取桌子
+	CTableFrame* pTableFrame = m_TableFrameArray[pRequestReply->dwTableID];
+	ASSERT(pTableFrame != NULL);
+	//if(pRequestReply->dwUserID == pTableFrame->GetTableOwner()->GetUserID()) return false;
+
+	//转发数据
+	WORD wChairCount = pTableFrame->GetChairCount();
+	for (int i = 0; i < wChairCount; ++i)
+	{
+		//过滤用户
+		IServerUserItem* pUserItem = pTableFrame->GetTableUserItem(i);
+		if (pUserItem == NULL || pUserItem == pIServerUserItem) continue;
+
+		SendData(pUserItem, MDM_GR_PERSONAL_TABLE, SUB_GR_REQUEST_REPLY, pData, wDataSize);
+	}
+
+	if (pTableFrame->CancelTableRequestReply(pRequestReply->dwUserID, pRequestReply->cbAgree) == false) return false;
+
+	return true;
+}
+
+//取消请求
+bool CAttemperEngineSink::OnTCPNetworkSubHostDissumeTable(VOID * pData, WORD wDataSize, DWORD dwSocketID)
+{
+	//校验数据
+	ASSERT(wDataSize == sizeof(CMD_GR_HostDissumeGame));
+	if (wDataSize != sizeof(CMD_GR_HostDissumeGame)) return false;
+
+	//提取数据
+	CMD_GR_HostDissumeGame * pCancelRequest = (CMD_GR_HostDissumeGame*)pData;
+	ASSERT(pCancelRequest != NULL);
+	//获取用户
+	WORD wBindIndex = LOWORD(dwSocketID);
+	IServerUserItem * pIServerUserItem = GetBindUserItem(wBindIndex);
+	if (pIServerUserItem == NULL) return false;
+
+	//获取桌子
+	CTableFrame* pTableFrame = m_TableFrameArray[pCancelRequest->dwTableID];
+	ASSERT(pTableFrame != NULL);
+
+	//如果强制解散的玩家不是房主，不允许解散
+	if (pTableFrame->GetTableOwner() != pCancelRequest->dwUserID)
+	{
+		return true;
+	}
+
+	//投递数据
+	DBR_GR_CancelCreateTable CancelCreateTable;
+	ZeroMemory(&CancelCreateTable, sizeof(DBR_GR_CancelCreateTable));
+
+	CancelCreateTable.dwUserID = pTableFrame->GetTableOwner();
+	CancelCreateTable.dwReason = 3;
+	CancelCreateTable.dwDrawCountLimit = pTableFrame->GetPersonalTableParameter().dwPlayTurnCount;
+	CancelCreateTable.dwDrawTimeLimit = pTableFrame->GetPersonalTableParameter().dwPlayTimeLimit;
+	CancelCreateTable.dwServerID = m_pGameServiceOption->wServerID;
+	CancelCreateTable.dwTableID = pTableFrame->GetTableID();
+
+
+
+	m_pIDBCorrespondManager->PostDataBaseRequest(CancelCreateTable.dwUserID, DBR_GR_HOST_CANCEL_CREATE_TABLE, dwSocketID, &CancelCreateTable, sizeof(DBR_GR_CancelCreateTable));
+
+
+	pTableFrame->HostDissumeGame(true);
+
+	if (pTableFrame)
+	{
+		pTableFrame->SetPersonalTableLocked(false);
+	}
+
+
+	//发送数据
+	CMD_CS_C_DismissTable DismissTable;
+	ZeroMemory(&DismissTable, sizeof(CMD_CS_C_DismissTable));
+	DismissTable.dwSocketID = dwSocketID;
+	DismissTable.dwServerID = m_pGameServiceOption->wServerID;
+	DismissTable.dwTableID = pTableFrame->GetTableID();
+
+	//发送消息
+	m_pITCPSocketService->SendData(MDM_CS_SERVICE_INFO, SUB_CS_C_DISMISS_TABLE, &DismissTable, sizeof(CMD_CS_C_DismissTable));
+
+
+	return true;
+}
+
+//玩家请求房间成绩
+bool CAttemperEngineSink::OnTCPNetworkSubQueryUserRoomScore(VOID * pData, WORD wDataSize, DWORD dwSocketID)
+{
+	////OutputDebugString(TEXT("ptdt *** OnTCPNetworkSubHostDissumeTable"));
+	////校验数据
+	//ASSERT(wDataSize == sizeof(CMD_GR_QUERY_USER_ROOM_SCORE));
+	//if(wDataSize != sizeof(CMD_GR_QUERY_USER_ROOM_SCORE)) return false;
+
+	////提取数据
+	//CMD_GR_QUERY_USER_ROOM_SCORE * pQueryUserRoomScore = (CMD_GR_QUERY_USER_ROOM_SCORE*)pData;
+	//ASSERT(pQueryUserRoomScore!=NULL);
+	////获取用户
+	//WORD wBindIndex=LOWORD(dwSocketID);
+	//IServerUserItem * pIServerUserItem=GetBindUserItem(wBindIndex);
+	//if (pIServerUserItem==NULL) return false;
+
+	////发送数据
+	//DBR_GR_QUERY_USER_ROOM_INFO QUERY_USER_ROOM_INFO;
+	//ZeroMemory(&QUERY_USER_ROOM_INFO, sizeof(DBR_GR_QUERY_USER_ROOM_INFO));
+	//QUERY_USER_ROOM_INFO.dwUserID = pQueryUserRoomScore->dwUserID;//请求房间成绩的玩家
+
+	////投递数据
+	//m_pIDBCorrespondManager->PostDataBaseRequest(QUERY_USER_ROOM_INFO.dwUserID, DBR_GR_QUERY_USER_ROOM_SCORE, dwSocketID, &QUERY_USER_ROOM_INFO, sizeof(DBR_GR_QUERY_USER_ROOM_INFO));
+
+	return true;
+}
+
+
 //用户登录
 VOID CAttemperEngineSink::OnEventUserLogon(IServerUserItem * pIServerUserItem, bool bAlreadyOnLine)
 {
@@ -8091,9 +8885,9 @@ VOID CAttemperEngineSink::OnEventUserLogon(IServerUserItem * pIServerUserItem, b
 
 		//构造结构
 		CMD_GR_LogonFinish LogonFinish;
-	//	bool bHasTaskParameter=m_UserTaskManager.GetTaskParameterCount()>0;
-	//	bool bHasUserTaskEntry=m_UserTaskManager.GetUserTaskEntry(pIServerUserItem->GetUserID())!=NULL;
-		LogonFinish.bGuideTask = false;//bHasTaskParameter&&!bHasUserTaskEntry;
+		bool bHasTaskParameter=m_UserTaskManager.GetTaskParameterCount()>0;
+		bool bHasUserTaskEntry=m_UserTaskManager.GetUserTaskEntry(pIServerUserItem->GetUserID())!=NULL;
+		LogonFinish.bGuideTask = bHasTaskParameter&&!bHasUserTaskEntry;
 
 		//登录完成
 		SendData(pBindParameter->dwSocketID,MDM_GR_LOGON,SUB_GR_LOGON_FINISH,&LogonFinish,sizeof(LogonFinish));
@@ -8267,14 +9061,14 @@ VOID CAttemperEngineSink::OnEventUserLogout(IServerUserItem * pIServerUserItem, 
 	m_pIDBCorrespondManager->PostDataBaseRequest(pIServerUserItem->GetUserID(),DBR_GR_LEAVE_GAME_SERVER,0L,&LeaveGameServer,sizeof(LeaveGameServer), TRUE);
 
 	//查找对象
-	//tagUserTaskEntry * pUserTaskEntry=m_UserTaskManager.GetUserTaskEntry(pIServerUserItem->GetUserID(),TASK_STATUS_UNFINISH|TASK_STATUS_FAILED); 
+	tagUserTaskEntry * pUserTaskEntry=m_UserTaskManager.GetUserTaskEntry(pIServerUserItem->GetUserID(),TASK_STATUS_UNFINISH|TASK_STATUS_FAILED); 
 
-	////推进任务
-	//if(pUserTaskEntry!=NULL)
-	//{
-	//	PerformTaskProgress(pIServerUserItem,pUserTaskEntry,LeaveGameServer.VariationInfo.dwWinCount,LeaveGameServer.VariationInfo.dwLostCount,LeaveGameServer.VariationInfo.dwDrawCount);
-	//}
-	//
+	//推进任务
+	if(pUserTaskEntry!=NULL)
+	{
+		PerformTaskProgress(pIServerUserItem,pUserTaskEntry,LeaveGameServer.VariationInfo.dwWinCount,LeaveGameServer.VariationInfo.dwLostCount,LeaveGameServer.VariationInfo.dwDrawCount);
+	}
+	
 	//汇总用户
 	if (m_bCollectUser==true)
 	{
@@ -8299,7 +9093,7 @@ VOID CAttemperEngineSink::OnEventUserLogout(IServerUserItem * pIServerUserItem, 
 	DeleteDistribute(pIServerUserItem);
 
 	//移除任务
-	//m_UserTaskManager.RemoveUserTask(pIServerUserItem->GetUserID());
+	m_UserTaskManager.RemoveUserTask(pIServerUserItem->GetUserID());
 
 	//删除用户
 	m_ServerUserManager.DeleteUserItem(pIServerUserItem);
@@ -8847,19 +9641,19 @@ bool CAttemperEngineSink::SendUserInfoPacket(IServerUserItem * pIServerUserItem,
 	pUserInfoHead->dwFleeCount=pUserInfo->dwFleeCount;
 	pUserInfoHead->dwExperience=pUserInfo->dwExperience;
 	pUserInfoHead->lLoveLiness=pUserInfo->lLoveLiness;
-	pUserInfoHead->dBeans=pUserInfo->dBeans;
 	pUserInfoHead->lIntegralCount=pUserInfo->lIntegralCount;
 
 	//用户积分
-	pUserInfoHead->lGrade=pUserInfo->lGrade;
+	/*pUserInfoHead->lGrade=pUserInfo->lGrade;
 	pUserInfoHead->lInsure=pUserInfo->lInsure;
 	pUserInfoHead->lIngot=pUserInfo->lIngot;
+	pUserInfoHead->dBeans = pUserInfo->dBeans;
+	pUserInfoHead->lScore=pUserInfo->lScore;*/
+	pUserInfoHead->bConsumptionType = pUserInfo->bConsumptionType;
 
-	//用户成绩
-	pUserInfoHead->lScore=pUserInfo->lScore;
-	pUserInfoHead->lScore+=pIServerUserItem->GetTrusteeScore();
-	pUserInfoHead->lScore+=pIServerUserItem->GetFrozenedScore();
-	pUserInfoHead->lFirstScore = pIServerUserItem->GetFormerScore()->lScore;
+	pUserInfoHead->bConsumptionType.lScore += pIServerUserItem->GetTrusteeScore();
+	pUserInfoHead->bConsumptionType.lScore += pIServerUserItem->GetFrozenedScore();
+	pUserInfoHead->lFirstScore = pIServerUserItem->GetFormerScore()->bConsumptionType.lScore;
 
 	//叠加信息
 	SendPacket.AddPacket(pUserInfo->szNickName,DTP_GR_NICK_NAME);
@@ -8932,7 +9726,8 @@ bool CAttemperEngineSink::SendPropertyEffect(IServerUserItem * pIServerUserItem,
 	PropertyEffect.wUserID = pIServerUserItem->GetUserID();
 	PropertyEffect.cbMemberOrder=pIServerUserItem->GetMemberOrder();
 	PropertyEffect.dwFleeCount = pIServerUserItem->GetUserInfo()->dwFleeCount;
-	PropertyEffect.lScore = pIServerUserItem->GetUserInfo()->lScore;
+	//PropertyEffect.lScore = pIServerUserItem->GetUserInfo()->lScore;
+	PropertyEffect.bConsumptionType = pIServerUserItem->GetUserInfo()->bConsumptionType;
 
 	//在线用户
 	WORD wUserIndex=0;
@@ -9718,11 +10513,13 @@ bool CAttemperEngineSink::SendUserInfoPacketBatchToMobileUser(IServerUserItem * 
 	pUserInfoHead->dwExperience=pUserInfo->dwExperience;
 	pUserInfoHead->lIntegralCount=pUserInfo->lIntegralCount;
 	//用户成绩
-	pUserInfoHead->lScore=pUserInfo->lScore;
-	pUserInfoHead->lScore+=pIServerUserItem->GetTrusteeScore();
-	pUserInfoHead->lScore+=pIServerUserItem->GetFrozenedScore();
-	pUserInfoHead->dBeans=pUserInfo->dBeans;
+	/*pUserInfoHead->dBeans=pUserInfo->dBeans;
 	pUserInfoHead->lIngot=pUserInfo->lIngot;
+	pUserInfoHead->lScore = pUserInfo->lScore;*/
+	pUserInfoHead->bConsumptionType = pUserInfo->bConsumptionType;
+
+	pUserInfoHead->bConsumptionType.lScore += pIServerUserItem->GetTrusteeScore();
+	pUserInfoHead->bConsumptionType.lScore += pIServerUserItem->GetFrozenedScore();
 
 	pUserInfoHead->dwClientAddr=pIServerUserItem->GetClientAddr();
 
@@ -9828,11 +10625,12 @@ bool CAttemperEngineSink::SendVisibleTableUserInfoToMobileUser(IServerUserItem *
 		pUserInfoHead->lIntegralCount=pUserInfo->lIntegralCount;
 
 		//用户成绩
-		pUserInfoHead->lScore=pUserInfo->lScore;
-		pUserInfoHead->lScore+=pIUserItem->GetTrusteeScore();
-		pUserInfoHead->lScore+=pIUserItem->GetFrozenedScore();
-		pUserInfoHead->lIngot=pUserInfo->lIngot;
+		/*pUserInfoHead->lIngot=pUserInfo->lIngot;
 		pUserInfoHead->dBeans=pUserInfo->dBeans;
+		pUserInfoHead->lScore = pUserInfo->lScore;*/
+		pUserInfoHead->bConsumptionType = pUserInfo->bConsumptionType;
+		pUserInfoHead->bConsumptionType.lScore += pIUserItem->GetTrusteeScore();
+		pUserInfoHead->bConsumptionType.lScore += pIUserItem->GetFrozenedScore();
 
 		//叠加信息
 		SendPacket.AddPacket(pUserInfo->szNickName,DTP_GR_NICK_NAME);
@@ -9891,11 +10689,13 @@ bool CAttemperEngineSink::SendUserInfoPacketBatchToPage(IServerUserItem * pIServ
 	pUserInfoHead->lIntegralCount=pUserInfo->lIntegralCount;
 
 	//用户成绩
-	pUserInfoHead->lScore=pUserInfo->lScore;
-	pUserInfoHead->lScore+=pIServerUserItem->GetTrusteeScore();
-	pUserInfoHead->lScore+=pIServerUserItem->GetFrozenedScore();
-	pUserInfoHead->lIngot=pUserInfo->lIngot;
+	/*pUserInfoHead->lIngot=pUserInfo->lIngot;
 	pUserInfoHead->dBeans=pUserInfo->dBeans;
+	pUserInfoHead->lScore = pUserInfo->lScore;*/
+	pUserInfoHead->bConsumptionType = pUserInfo->bConsumptionType;
+
+	pUserInfoHead->bConsumptionType.lScore += pIServerUserItem->GetTrusteeScore();
+	pUserInfoHead->bConsumptionType.lScore += pIServerUserItem->GetFrozenedScore();
 	pUserInfoHead->dwClientAddr=pIServerUserItem->GetClientAddr();
 
 	//叠加信息
@@ -10027,21 +10827,21 @@ bool CAttemperEngineSink::SendSystemMessage(CMD_GR_SendMessage * pSendMessage, W
 
 	return true;
 }
-//
-////开始游戏写入参与信息
-//VOID CAttemperEngineSink::PersonalRoomWriteJoinInfo(DWORD dwUserID, WORD wTableID, WORD wChairID, DWORD dwKindID, DWORD dwPersonalRoomID, TCHAR * szPersonalRoomGUID)
-//{
-//	//退还费用
-//	DBR_GR_WriteJoinInfo JoinInfo;
-//	ZeroMemory(&JoinInfo, sizeof(DBR_GR_WriteJoinInfo));
-//
-//	JoinInfo.dwUserID = dwUserID;
-//	JoinInfo.wTableID = wTableID;
-//	JoinInfo.dwPersonalRoomID = dwPersonalRoomID;
-//
-//	//投递数据
-//	m_pIDBCorrespondManager->PostDataBaseRequest(0, DBR_GR_WRITE_JOIN_INFO, 0, &JoinInfo, sizeof(JoinInfo));
-//
-//}
+
+//开始游戏写入参与信息
+VOID CAttemperEngineSink::PersonalRoomWriteJoinInfo(DWORD dwUserID, WORD wTableID, WORD wChairID, DWORD dwKindID, DWORD dwPersonalRoomID, TCHAR * szPersonalRoomGUID)
+{
+	//退还费用
+	DBR_GR_WriteJoinInfo JoinInfo;
+	ZeroMemory(&JoinInfo, sizeof(DBR_GR_WriteJoinInfo));
+
+	JoinInfo.dwUserID = dwUserID;
+	JoinInfo.wTableID = wTableID;
+	JoinInfo.dwPersonalRoomID = dwPersonalRoomID;
+
+	//投递数据
+	m_pIDBCorrespondManager->PostDataBaseRequest(0, DBR_GR_WRITE_JOIN_INFO, 0, &JoinInfo, sizeof(JoinInfo));
+
+}
 
 //////////////////////////////////////////////////////////////////////////////////

@@ -9,42 +9,6 @@
 static char THIS_FILE[] = __FILE__;
 #endif
 
-
-#define ZZMJ_KIND_ID  386
-#define HZMJ_KIND_ID  389
-#define ZJH_KIND_ID	  6
-#define NN_KIND_ID	  27
-#define TBZ_KIND_ID	  47
-#define OXSIXX_KIND_ID	  50
-#define SET_RULE			1
-//////////////////////////////////////////////////////////////////////////////////
-
-//断线定义
-#define IDI_OFF_LINE				(TIME_TABLE_SINK_RANGE+1)			//断线标识
-#define MAX_OFF_LINE				3									//断线次数
-#define TIME_OFF_LINE				60000L								//断线时间
-#define TIME_OFF_LINE_PERSONAL		300000L								//断线时间
-
-//开始超时
-#define IDI_START_OVERTIME		(TIME_TABLE_SINK_RANGE+2)			    //开始超时
-#define IDI_START_OVERTIME_END	(TIME_TABLE_SINK_RANGE+22)			    //开始超时
-#ifndef _DEBUG
-#define TIME_OVERTIME				30000L								//超时时间
-#else
-#define TIME_OVERTIME               30000L                               //超时时间
-#endif
-
-//约战房间
-#define IDI_PERSONAL_BEFORE_BEGAIN_TIME		TIME_TABLE_SINK_RANGE+23		//约战房间超时
-#define IDI_PERSONAL_AFTER_BEGIN_TIME			TIME_TABLE_SINK_RANGE+24		//最大超时
-#define IDI_PERSONAL_AFTER_CREATE_ROOM_TIME			TIME_TABLE_SINK_RANGE+25		//房间创建后多长时间无人坐桌解散房间
-
-#define  GAME_510K		238
-
-#define  IDI_TIME_CANCEL   TIME_TABLE_SINK_RANGE + 26
-#define  TIME_CANCEL		150 *1000
-//////////////////////////////////////////////////////////////////////////////////
-
 //游戏记录
 CGameScoreRecordArray				CTableFrame::m_GameScoreRecordBuffer;
 
@@ -564,19 +528,19 @@ bool CTableFrame::ConcludeGame(BYTE cbGameStatus, BOOL bPersonalLoop)
 				}
 		}
 
-		////定义变量
-		//CAttemperEngineSink * pAttemperEngineSink=(CAttemperEngineSink *)m_pIMainServiceFrame;
-		////设置用户
-		//for (WORD i=0;i<m_wChairCount;i++)
-		//{
-		//	//获取用户
-		//	IServerUserItem * pIServerUserItem=GetTableUserItem(i);			
-		//	if (pIServerUserItem!=NULL&&pAttemperEngineSink!=NULL)
-		//	{
-		//		//任务推进
-		//		pAttemperEngineSink->PerformRoomTaskProgress(pIServerUserItem,0,0,1);
-		//	}
-		//}
+		//定义变量
+		CAttemperEngineSink * pAttemperEngineSink=(CAttemperEngineSink *)m_pIMainServiceFrame;
+		//设置用户
+		for (WORD i=0;i<m_wChairCount;i++)
+		{
+			//获取用户
+			IServerUserItem * pIServerUserItem=GetTableUserItem(i);			
+			if (pIServerUserItem!=NULL&&pAttemperEngineSink!=NULL)
+			{
+				//任务推进
+				pAttemperEngineSink->PerformRoomTaskProgress(pIServerUserItem,0,0,1);
+			}
+		}
 
 		if (m_pIPersonaTableFrameHook != NULL && m_pIPersonaTableFrameHook->OnEventGameEnd(m_wTableID, m_wChairCount, m_dwDrawCountLimit, m_dwPersonalPlayCount, m_nSpecialInfoLen, m_cbSpecialInfo, m_sysStartTime, m_PersonalUserScoreInfo,bPersonalLoop,m_cbGameMode))
 		{
@@ -2990,7 +2954,7 @@ bool CTableFrame::PerformSitDownAction(WORD wChairID, IServerUserItem * pIServer
 	//如果是约战房，且是AA制模式
 	if(((m_pGameServiceOption->wServerType & GAME_GENRE_PERSONAL) != 0) && m_cbPayMode != 0)
 	{
-		if(m_PersonalTableParameter.wJoinGamePeopleCount != 0 &&  pUserInfo->lDiamond < m_lPayRoomCardCount/m_PersonalTableParameter.wJoinGamePeopleCount)
+		if(m_PersonalTableParameter.wJoinGamePeopleCount != 0 &&  pUserInfo->bConsumptionType.lDiamond < m_lPayRoomCardCount/m_PersonalTableParameter.wJoinGamePeopleCount)
 		{
 			Personal_Room_Message personalRoomMessage;
 			_sntprintf_s(personalRoomMessage.szMessage,CountArray(personalRoomMessage.szMessage),TEXT("您的钻石数量少于 ") SCORE_STRING TEXT("，不能继续游戏！"),m_lPayRoomCardCount/m_PersonalTableParameter.wJoinGamePeopleCount);

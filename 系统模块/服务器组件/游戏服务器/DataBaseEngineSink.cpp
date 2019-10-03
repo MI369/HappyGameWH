@@ -384,7 +384,12 @@ bool CDataBaseEngineSink::OnDataBaseEngineRequest(WORD wRequestID, DWORD dwConte
 		{
 			bSucceed = OnRequestManageUserRight(dwContextID,pData,wDataSize,dwUserID);
 		}
-		break;	
+		break;
+	case DBR_GR_LOAD_SYSTEM_MESSAGE:   //系统消息
+		{
+			bSucceed = OnRequestLoadSystemMessage(dwContextID,pData,wDataSize,dwUserID);
+		}
+		break;
 	case DBR_GR_LOAD_SENSITIVE_WORDS://加载敏感词
 		{
 			bSucceed = OnRequestLoadSensitiveWords(dwContextID,pData,wDataSize,dwUserID);
@@ -865,7 +870,7 @@ bool CDataBaseEngineSink::OnRequestWriteGameScore(DWORD dwContextID, VOID * pDat
 		m_GameDBAide.AddParameter(TEXT("@dwPlayTimeCount"),pWriteGameScore->VariationInfo.dwPlayTimeCount);
 
 		//任务参数
-		//m_GameDBAide.AddParameter(TEXT("@cbTaskForward"),pWriteGameScore->bTaskForward);
+		m_GameDBAide.AddParameter(TEXT("@cbTaskForward"),pWriteGameScore->bTaskForward);
 
 		//比赛参数
 		if((m_pGameServiceOption->wServerType&GAME_GENRE_MATCH)!=0)
@@ -1027,7 +1032,7 @@ bool CDataBaseEngineSink::OnRequestWritePersonalGameScore(DWORD dwContextID, VOI
 		m_GameDBAide.AddParameter(TEXT("@dwPlayTimeCount"),pWriteGameScore->VariationInfo.dwPlayTimeCount);
 
 		//任务参数
-		//m_GameDBAide.AddParameter(TEXT("@cbTaskForward"),pWriteGameScore->bTaskForward);
+		m_GameDBAide.AddParameter(TEXT("@cbTaskForward"),pWriteGameScore->bTaskForward);
 
 		//比赛参数
 		if((m_pGameServiceOption->wServerType&GAME_GENRE_MATCH)!=0)
@@ -1128,7 +1133,7 @@ bool CDataBaseEngineSink::OnRequestGameScoreRecord(DWORD dwContextID, VOID * pDa
 		m_GameDBAide.AddParameter(TEXT("@lRevenueCount"),pGameScoreRecord->lRevenueCount);
 
 		//统计信息
-		//m_GameDBAide.AddParameter(TEXT("@dwUserMemal"),pGameScoreRecord->dwUserMemal);
+		m_GameDBAide.AddParameter(TEXT("@dwUserMemal"),pGameScoreRecord->dwUserMemal);
 		m_GameDBAide.AddParameter(TEXT("@dwPlayTimeCount"),pGameScoreRecord->dwPlayTimeCount);
 
 		//时间信息
@@ -1163,7 +1168,7 @@ bool CDataBaseEngineSink::OnRequestGameScoreRecord(DWORD dwContextID, VOID * pDa
 				m_GameDBAide.AddParameter(TEXT("@lScore"),pGameScoreRecord->GameScoreRecord[i].lScore);
 				m_GameDBAide.AddParameter(TEXT("@lGrade"),pGameScoreRecord->GameScoreRecord[i].lGrade);
 				m_GameDBAide.AddParameter(TEXT("@lRevenue"),pGameScoreRecord->GameScoreRecord[i].lRevenue);
-				//m_GameDBAide.AddParameter(TEXT("@dwUserMedal"),pGameScoreRecord->GameScoreRecord[i].dwUserMemal);
+				m_GameDBAide.AddParameter(TEXT("@dwUserMedal"),pGameScoreRecord->GameScoreRecord[i].dwUserMemal);
 				m_GameDBAide.AddParameter(TEXT("@dwPlayTimeCount"),pGameScoreRecord->GameScoreRecord[i].dwPlayTimeCount);
 
 				//执行查询
@@ -1205,19 +1210,19 @@ bool CDataBaseEngineSink::OnRequestLoadParameter(DWORD dwContextID, VOID * pData
 		if (lResultCode==DB_SUCCESS)
 		{
 			//汇率信息
-	//		GameParameter.dwMedalRate=m_GameDBAide.GetValue_DWORD(TEXT("MedalRate"));
-	//		GameParameter.dwRevenueRate=m_GameDBAide.GetValue_DWORD(TEXT("RevenueRate"));
-	//		GameParameter.dwExchangeRate=m_GameDBAide.GetValue_DWORD(TEXT("ExchangeRate"));
-	//		GameParameter.dwPresentExchangeRate=m_GameDBAide.GetValue_DWORD(TEXT("PresentExchangeRate"));
-	//		GameParameter.dwRateGold=m_GameDBAide.GetValue_DWORD(TEXT("RateGold"));
+			GameParameter.dwMedalRate=m_GameDBAide.GetValue_DWORD(TEXT("MedalRate"));
+			GameParameter.dwRevenueRate=m_GameDBAide.GetValue_DWORD(TEXT("RevenueRate"));
+			GameParameter.dwExchangeRate=m_GameDBAide.GetValue_DWORD(TEXT("ExchangeRate"));
+			GameParameter.dwPresentExchangeRate=m_GameDBAide.GetValue_DWORD(TEXT("PresentExchangeRate"));
+			GameParameter.dwRateGold=m_GameDBAide.GetValue_DWORD(TEXT("RateGold"));
 
-	//		if (m_pGameServiceOption->wServerType==GAME_GENRE_EDUCATE)
-	//		{
-	//			GameParameter.lEducateGrantScore=m_GameDBAide.GetValue_LONGLONG(TEXT("EducateGrantScore"));
-	//		}
+			if (m_pGameServiceOption->wServerType==GAME_GENRE_EDUCATE)
+			{
+				GameParameter.lEducateGrantScore=m_GameDBAide.GetValue_LONGLONG(TEXT("EducateGrantScore"));
+			}
 
-	//		//经验奖励
-	//		GameParameter.dwWinExperience=m_GameDBAide.GetValue_DWORD(TEXT("WinExperience"));
+			//经验奖励
+			GameParameter.dwWinExperience=m_GameDBAide.GetValue_DWORD(TEXT("WinExperience"));
 
 			//版本信息
 			GameParameter.dwClientVersion=m_GameDBAide.GetValue_DWORD(TEXT("ClientVersion"));
@@ -2221,75 +2226,75 @@ bool CDataBaseEngineSink::OnRequestTaskQueryInfo(DWORD dwContextID, VOID * pData
 	try
 	{
 		//效验参数
-		//ASSERT(wDataSize==sizeof(DBR_GR_TaskQueryInfo));
-		//if (wDataSize!=sizeof(DBR_GR_TaskQueryInfo)) return false;
+		ASSERT(wDataSize==sizeof(DBR_GR_TaskQueryInfo));
+		if (wDataSize!=sizeof(DBR_GR_TaskQueryInfo)) return false;
 
-		////请求处理
-		//DBR_GR_TaskQueryInfo * pTaskQueryInfo=(DBR_GR_TaskQueryInfo *)pData;
+		//请求处理
+		DBR_GR_TaskQueryInfo * pTaskQueryInfo=(DBR_GR_TaskQueryInfo *)pData;
 
-		////设置变量
-		//dwUserID = pTaskQueryInfo->dwUserID;
+		//设置变量
+		dwUserID = pTaskQueryInfo->dwUserID;
 
-		////构造参数
-		//m_PlatformDBAide.ResetParameter();
-		//m_PlatformDBAide.AddParameter(TEXT("@wKindID"),0);
-		//m_PlatformDBAide.AddParameter(TEXT("@dwUserID"),pTaskQueryInfo->dwUserID);
-		//m_PlatformDBAide.AddParameter(TEXT("@strPassword"),pTaskQueryInfo->szPassword);
+		//构造参数
+		m_PlatformDBAide.ResetParameter();
+		m_PlatformDBAide.AddParameter(TEXT("@wKindID"),0);
+		m_PlatformDBAide.AddParameter(TEXT("@dwUserID"),pTaskQueryInfo->dwUserID);
+		m_PlatformDBAide.AddParameter(TEXT("@strPassword"),pTaskQueryInfo->szPassword);
 
-		////输出参数
-		//TCHAR szDescribeString[128]=TEXT("");
-		//m_PlatformDBAide.AddParameterOutput(TEXT("@strErrorDescribe"),szDescribeString,sizeof(szDescribeString),adParamOutput);
+		//输出参数
+		TCHAR szDescribeString[128]=TEXT("");
+		m_PlatformDBAide.AddParameterOutput(TEXT("@strErrorDescribe"),szDescribeString,sizeof(szDescribeString),adParamOutput);
 
-		////执行脚本
-		//LONG lResultCode = m_PlatformDBAide.ExecuteProcess(TEXT("GSP_GR_QueryTaskInfo"),true);
+		//执行脚本
+		LONG lResultCode = m_PlatformDBAide.ExecuteProcess(TEXT("GSP_GR_QueryTaskInfo"),true);
 
-		////执行成功
-		//if(lResultCode==DB_SUCCESS)
-		//{
-		//	//变量定义
-		//	DBO_GR_TaskInfo TaskInfo;
-		//	tagTaskStatus * pTaskStatus=NULL;
-		//	ZeroMemory(&TaskInfo,sizeof(TaskInfo));
+		//执行成功
+		if(lResultCode==DB_SUCCESS)
+		{
+			//变量定义
+			DBO_GR_TaskInfo TaskInfo;
+			tagTaskStatus * pTaskStatus=NULL;
+			ZeroMemory(&TaskInfo,sizeof(TaskInfo));
 
-		//	//变量定义
-		//	while (m_PlatformDBModule->IsRecordsetEnd()==false)
-		//	{
-		//		//设置变量
-		//		pTaskStatus = &TaskInfo.TaskStatus[TaskInfo.wTaskCount++];
+			//变量定义
+			while (m_PlatformDBModule->IsRecordsetEnd()==false)
+			{
+				//设置变量
+				pTaskStatus = &TaskInfo.TaskStatus[TaskInfo.wTaskCount++];
 
-		//		//读取数据
-		//		pTaskStatus->wTaskID = m_PlatformDBAide.GetValue_WORD(TEXT("TaskID"));
-		//		pTaskStatus->cbTaskStatus = m_PlatformDBAide.GetValue_BYTE(TEXT("TaskStatus"));
-		//		pTaskStatus->wTaskProgress = m_PlatformDBAide.GetValue_WORD(TEXT("Progress"));
+				//读取数据
+				pTaskStatus->wTaskID = m_PlatformDBAide.GetValue_WORD(TEXT("TaskID"));
+				pTaskStatus->cbTaskStatus = m_PlatformDBAide.GetValue_BYTE(TEXT("TaskStatus"));
+				pTaskStatus->wTaskProgress = m_PlatformDBAide.GetValue_WORD(TEXT("Progress"));
 
-		//		//移动记录
-		//		m_PlatformDBModule->MoveToNext();
-		//	}
+				//移动记录
+				m_PlatformDBModule->MoveToNext();
+			}
 
-		//	//发送结果
-		//	WORD wSendDataSize = sizeof(TaskInfo)-sizeof(TaskInfo.TaskStatus);
-		//	wSendDataSize += sizeof(TaskInfo.TaskStatus[0])*TaskInfo.wTaskCount;
-		//	m_pIDataBaseEngineEvent->OnEventDataBaseResult(DBO_GR_TASK_INFO,dwContextID,&TaskInfo,wSendDataSize);
-		//}
-		//else
-		//{
-		//	//变量定义
-		//	DBO_GR_TaskResult TaskResult;
-		//	ZeroMemory(&TaskResult,sizeof(TaskResult));
+			//发送结果
+			WORD wSendDataSize = sizeof(TaskInfo)-sizeof(TaskInfo.TaskStatus);
+			wSendDataSize += sizeof(TaskInfo.TaskStatus[0])*TaskInfo.wTaskCount;
+			m_pIDataBaseEngineEvent->OnEventDataBaseResult(DBO_GR_TASK_INFO,dwContextID,&TaskInfo,wSendDataSize);
+		}
+		else
+		{
+			//变量定义
+			DBO_GR_TaskResult TaskResult;
+			ZeroMemory(&TaskResult,sizeof(TaskResult));
 
-		//	//获取参数
-		//	CDBVarValue DBVarValue;
-		//	m_PlatformDBModule->GetParameter(TEXT("@strErrorDescribe"),DBVarValue);
+			//获取参数
+			CDBVarValue DBVarValue;
+			m_PlatformDBModule->GetParameter(TEXT("@strErrorDescribe"),DBVarValue);
 
-		//	//银行信息
-		//	TaskResult.bSuccessed=false;
-		//	TaskResult.wCommandID=SUB_GR_TASK_LOAD_INFO;
-		//	lstrcpyn(TaskResult.szNotifyContent,CW2CT(DBVarValue.bstrVal),CountArray(TaskResult.szNotifyContent));
+			//银行信息
+			TaskResult.bSuccessed=false;
+			TaskResult.wCommandID=SUB_GR_TASK_LOAD_INFO;
+			lstrcpyn(TaskResult.szNotifyContent,CW2CT(DBVarValue.bstrVal),CountArray(TaskResult.szNotifyContent));
 
-		//	//发送结果
-		//	WORD wSendSize=sizeof(TaskResult)-sizeof(TaskResult.szNotifyContent)+CountStringBuffer(TaskResult.szNotifyContent);
-		//	m_pIDataBaseEngineEvent->OnEventDataBaseResult(DBO_GR_TASK_RESULT,dwContextID,&TaskResult,wSendSize);
-		//}
+			//发送结果
+			WORD wSendSize=sizeof(TaskResult)-sizeof(TaskResult.szNotifyContent)+CountStringBuffer(TaskResult.szNotifyContent);
+			m_pIDataBaseEngineEvent->OnEventDataBaseResult(DBO_GR_TASK_RESULT,dwContextID,&TaskResult,wSendSize);
+		}
 
 		return true;
 	}
@@ -2366,8 +2371,8 @@ bool CDataBaseEngineSink::OnRequestPurchaseMember(DWORD dwContextID, VOID * pDat
 			if (m_TreasureDBModule->IsRecordsetEnd()==false)
 			{
 				//读取数据
-				PurchaseResult.lCurrScore = m_TreasureDBAide.GetValue_LONGLONG(TEXT("CurrScore"));
-				PurchaseResult.dCurrBeans = m_TreasureDBAide.GetValue_DOUBLE(TEXT("CurrBeans"));
+				PurchaseResult.bConsumptionType.lScore = m_TreasureDBAide.GetValue_LONGLONG(TEXT("CurrScore"));
+				PurchaseResult.bConsumptionType.lBeans = m_TreasureDBAide.GetValue_DOUBLE(TEXT("CurrBeans"));
 				PurchaseResult.dwUserRight = m_TreasureDBAide.GetValue_DWORD(TEXT("UserRight"));
 				PurchaseResult.cbMemberOrder = m_TreasureDBAide.GetValue_BYTE(TEXT("MemberOrder"));
 			}	
@@ -2460,10 +2465,10 @@ bool CDataBaseEngineSink::OnRequestExchangeScoreByIngot(DWORD dwContextID, VOID 
 			if (m_TreasureDBModule->IsRecordsetEnd()==false)
 			{
 				//读取数据
-				ExchangeResult.lCurrScore = m_TreasureDBAide.GetValue_LONGLONG(TEXT("CurrScore"));
-				ExchangeResult.lCurrInsure = m_TreasureDBAide.GetValue_LONGLONG(TEXT("CurrInsure"));
-				ExchangeResult.lCurrIngot = m_TreasureDBAide.GetValue_LONGLONG(TEXT("CurrIngot"));
-				ExchangeResult.dCurrBeans = m_TreasureDBAide.GetValue_DOUBLE(TEXT("CurrBeans"));
+				ExchangeResult.bConsumptionType.lScore = m_TreasureDBAide.GetValue_LONGLONG(TEXT("CurrScore"));
+				ExchangeResult.bConsumptionType.lInsure = m_TreasureDBAide.GetValue_LONGLONG(TEXT("CurrInsure"));
+				ExchangeResult.bConsumptionType.lIngot = m_TreasureDBAide.GetValue_LONGLONG(TEXT("CurrIngot"));
+				ExchangeResult.bConsumptionType.lBeans = m_TreasureDBAide.GetValue_DOUBLE(TEXT("CurrBeans"));
 			}	
 		}
 
@@ -2554,10 +2559,10 @@ bool CDataBaseEngineSink::OnRequestExchangeScoreByBeans(DWORD dwContextID, VOID 
 			if (m_TreasureDBModule->IsRecordsetEnd()==false)
 			{
 				//读取数据
-				ExchangeResult.lCurrScore = m_TreasureDBAide.GetValue_LONGLONG(TEXT("CurrScore"));
-				//ExchangeResult.lCurrInsure = m_TreasureDBAide.GetValue_LONGLONG(TEXT("CurrInsure"));
-				//ExchangeResult.lCurrIngot = m_TreasureDBAide.GetValue_LONGLONG(TEXT("CurrIngot"));
-				ExchangeResult.dCurrBeans = m_TreasureDBAide.GetValue_DOUBLE(TEXT("CurrBeans"));
+				ExchangeResult.bConsumptionType.lScore = m_TreasureDBAide.GetValue_LONGLONG(TEXT("CurrScore"));
+				ExchangeResult.bConsumptionType.lInsure = m_TreasureDBAide.GetValue_LONGLONG(TEXT("CurrInsure"));
+				ExchangeResult.bConsumptionType.lIngot = m_TreasureDBAide.GetValue_LONGLONG(TEXT("CurrIngot"));
+				ExchangeResult.bConsumptionType.lBeans = m_TreasureDBAide.GetValue_DOUBLE(TEXT("CurrBeans"));
 			}	
 		}
 
@@ -2645,8 +2650,8 @@ bool CDataBaseEngineSink::OnRequestCreateTable(DWORD dwContextID, VOID * pData, 
 			CreateSuccess.dwDrawCountLimit = pCreateTable->dwDrawCountLimit;
 			CreateSuccess.dwDrawTimeLimit = pCreateTable->dwDrawTimeLimit;
 			CreateSuccess.lCellScore = pCreateTable->lCellScore;
-			//CreateSuccess.dCurBeans = m_TreasureDBAide.GetValue_DOUBLE(TEXT("dCurBeans"));
-			CreateSuccess.lDiamond = m_TreasureDBAide.GetValue_LONGLONG(TEXT("Diamond"));
+			CreateSuccess.bConsumptionType.lBeans = m_TreasureDBAide.GetValue_DOUBLE(TEXT("dCurBeans"));
+			CreateSuccess.bConsumptionType.lDiamond = m_TreasureDBAide.GetValue_LONGLONG(TEXT("Diamond"));
 			CreateSuccess.dwRoomTax = pCreateTable->dwRoomTax;
 			CreateSuccess.wJoinGamePeopleCount = pCreateTable->wJoinGamePeopleCount;
 			CreateSuccess.cbIsJoinGame = m_TreasureDBAide.GetValue_BYTE(TEXT("IsJoinGame"));
@@ -2654,11 +2659,11 @@ bool CDataBaseEngineSink::OnRequestCreateTable(DWORD dwContextID, VOID * pData, 
 			CreateSuccess.cbPayMode = pCreateTable->cbPayMode;
 			CreateSuccess.cbPassword = pCreateTable->cbPassword;
 			CreateSuccess.cbGameMode = pCreateTable->cbGameMode;
-		/*	if (pCreateTable->cbPassword == 1)
+			if (pCreateTable->cbPassword == 1)
 			{
 				int randval = rand()%8900 + 1000;
 				_itot(randval, CreateSuccess.szPassword, 10);
-			}			*/
+			}			
 			memcpy(CreateSuccess.cbGameRule, pCreateTable->cbGameRule,  CountArray(CreateSuccess.cbGameRule));
 			
 			//发送结果
@@ -2755,34 +2760,34 @@ bool CDataBaseEngineSink::OnRequsetInsertCreateRecord(DWORD dwContextID, VOID * 
 //推进任务
 bool CDataBaseEngineSink::OnRequestRoomTaskProgress(DWORD dwContextID, VOID * pData, WORD wDataSize, DWORD &dwUserID)
 {
-	//try
-	//{
-	//	//校验数据
-	//	ASSERT(wDataSize == sizeof(DBR_GR_PerformRoomTaskProgress));
-	//	if(wDataSize != sizeof(DBR_GR_PerformRoomTaskProgress)) return false;
+	try
+	{
+		//校验数据
+		ASSERT(wDataSize == sizeof(DBR_GR_PerformRoomTaskProgress));
+		if(wDataSize != sizeof(DBR_GR_PerformRoomTaskProgress)) return false;
 
-	//	DBR_GR_PerformRoomTaskProgress* pRoomTask = (DBR_GR_PerformRoomTaskProgress*)pData;
+		DBR_GR_PerformRoomTaskProgress* pRoomTask = (DBR_GR_PerformRoomTaskProgress*)pData;
 
-	//	dwUserID = pRoomTask->dwUserID;
+		dwUserID = pRoomTask->dwUserID;
 
-	//	//构造参数
-	//	m_PlatformDBAide.ResetParameter();
-	//	m_PlatformDBAide.AddParameter(TEXT("@dwUserID"), pRoomTask->dwUserID);		
-	//	m_PlatformDBAide.AddParameter(TEXT("@lWinCount"), 0);
-	//	m_PlatformDBAide.AddParameter(TEXT("@lLostCount"), 0);
-	//	m_PlatformDBAide.AddParameter(TEXT("@lDrawCount"), 1);
-	//
-	//	//结果处理
-	//	m_PlatformDBAide.ExecuteProcess(TEXT("GSP_GR_TaskForwardRoom"),true);	
+		//构造参数
+		m_PlatformDBAide.ResetParameter();
+		m_PlatformDBAide.AddParameter(TEXT("@dwUserID"), pRoomTask->dwUserID);		
+		m_PlatformDBAide.AddParameter(TEXT("@lWinCount"), 0);
+		m_PlatformDBAide.AddParameter(TEXT("@lLostCount"), 0);
+		m_PlatformDBAide.AddParameter(TEXT("@lDrawCount"), 1);
+	
+		//结果处理
+		m_PlatformDBAide.ExecuteProcess(TEXT("GSP_GR_TaskForwardRoom"),true);	
 
-	//}
-	//catch(IDataBaseException * pIException)
-	//{
-	//	//输出错误
-	//	TCHAR szInfo[260] = {0};
-	//	wsprintf(szInfo, TEXT("%s   %s"),   AnsiToUnicode(__FUNCTION__), pIException->GetExceptionDescribe());
-	//	CTraceService::TraceString(szInfo, TraceLevel_Exception);
-	//}
+	}
+	catch(IDataBaseException * pIException)
+	{
+		//输出错误
+		TCHAR szInfo[260] = {0};
+		wsprintf(szInfo, TEXT("%s   %s"),   AnsiToUnicode(__FUNCTION__), pIException->GetExceptionDescribe());
+		CTraceService::TraceString(szInfo, TraceLevel_Exception);
+	}
 	return true;
 }
 //取消创建
@@ -2896,14 +2901,14 @@ bool CDataBaseEngineSink::OnRequestPayRoomCard(DWORD dwContextID, VOID * pData, 
 		//结果处理
 		if(m_TreasureDBAide.ExecuteProcess(TEXT("GSP_GS_PayRoomCard"),true)==DB_SUCCESS)
 		{
-			//if(pPersonalPayRoomCard->cbPayMode != 1)
-			//{
-			//	DBO_GR_CurrenceRoomCardAndBeans  CurrenceRoomCardAndBeans;
-			//	CurrenceRoomCardAndBeans.dbBeans = m_TreasureDBAide.GetValue_DOUBLE(TEXT("dCurBeans"));
-			//	CurrenceRoomCardAndBeans.lRoomCard = m_TreasureDBAide.GetValue_LONGLONG(TEXT("RoomCard"));
-			//	//发送参数
-			//	m_pIDataBaseEngineEvent->OnEventDataBaseResult(DBO_GR_CURRENCE_ROOMCARD_AND_BEAN, dwContextID, &CurrenceRoomCardAndBeans, sizeof(DBO_GR_CurrenceRoomCardAndBeans));
-			//}
+			if(pPersonalPayRoomCard->cbPayMode != 1)
+			{
+				DBO_GR_CurrenceRoomCardAndBeans  CurrenceRoomCardAndBeans;
+				CurrenceRoomCardAndBeans.bConsumptionType.lBeans = m_TreasureDBAide.GetValue_DOUBLE(TEXT("dCurBeans"));
+				CurrenceRoomCardAndBeans.bConsumptionType.lCard = m_TreasureDBAide.GetValue_LONGLONG(TEXT("RoomCard"));
+				//发送参数
+				m_pIDataBaseEngineEvent->OnEventDataBaseResult(DBO_GR_CURRENCE_ROOMCARD_AND_BEAN, dwContextID, &CurrenceRoomCardAndBeans, sizeof(DBO_GR_CurrenceRoomCardAndBeans));
+			}
 		}
 	
 
@@ -2924,7 +2929,7 @@ bool CDataBaseEngineSink::OnRequestPayRoomCard(DWORD dwContextID, VOID * pData, 
 		lstrcpyn(CancelCreateResult.szDescribeString,TEXT("数据库异常，请稍后再试！"),CountArray(CancelCreateResult.szDescribeString));
 
 		//发送参数
-		//m_pIDataBaseEngineEvent->OnEventDataBaseResult(DBO_GR_CANCEL_CREATE_RESULT,dwContextID,&CancelCreateResult,sizeof(DBO_GR_CancelCreateResult));
+		m_pIDataBaseEngineEvent->OnEventDataBaseResult(DBO_GR_CANCEL_CREATE_RESULT,dwContextID,&CancelCreateResult,sizeof(DBO_GR_CancelCreateResult));
 	}
 	return true;
 }
@@ -2966,8 +2971,8 @@ bool CDataBaseEngineSink::OnRequestHostCancelCreateTable(DWORD dwContextID, VOID
 			if(m_TreasureDBAide.ExecuteProcess(TEXT("GSP_GR_CreateTableQuit"),true)==DB_SUCCESS)
 			{
 				DBO_GR_CurrenceRoomCardAndBeans  CurrenceRoomCardAndBeans;
-				//CurrenceRoomCardAndBeans.dbBeans = m_TreasureDBAide.GetValue_DOUBLE(TEXT("dCurBeans"));
-				CurrenceRoomCardAndBeans.lDiamond = m_TreasureDBAide.GetValue_LONGLONG(TEXT("Diamond"));
+				CurrenceRoomCardAndBeans.bConsumptionType.lBeans = m_TreasureDBAide.GetValue_DOUBLE(TEXT("dCurBeans"));
+				CurrenceRoomCardAndBeans.bConsumptionType.lDiamond = m_TreasureDBAide.GetValue_LONGLONG(TEXT("Diamond"));
 				CurrenceRoomCardAndBeans.dwTableID = pCancelCreateTable->dwTableID;
 				//发送参数
 				m_pIDataBaseEngineEvent->OnEventDataBaseResult(DBO_GR_CURRENCE_ROOMCARD_AND_BEAN, dwContextID, &CurrenceRoomCardAndBeans, sizeof(DBO_GR_CurrenceRoomCardAndBeans));
@@ -3132,9 +3137,9 @@ bool CDataBaseEngineSink::OnRequestLoadPersonalParameter(DWORD dwContextID, VOID
 
 			//读取约战房房间信息
 			pPersonalRoomOption.lPersonalRoomTax = m_PlatformDBAide.GetValue_LONGLONG(TEXT("PersonalRoomTax"));
-			//pPersonalRoomOption.lFeeCardOrBeanCount =  m_PlatformDBAide.GetValue_LONGLONG(TEXT("DiamondCount"));
+			pPersonalRoomOption.bConsumptionType.lDiamond =  m_PlatformDBAide.GetValue_LONGLONG(TEXT("DiamondCount"));
 
-			//pPersonalRoomOption.cbCardOrBean=m_PlatformDBAide.GetValue_BYTE(TEXT("CardOrBean"));
+			pPersonalRoomOption.bConsumptionType.lCard = m_PlatformDBAide.GetValue_BYTE(TEXT("CardOrBean"));
 			pPersonalRoomOption.cbIsJoinGame=m_PlatformDBAide.GetValue_BYTE(TEXT("IsJoinGame"));
 			pPersonalRoomOption.cbMinPeople=m_PlatformDBAide.GetValue_BYTE(TEXT("MinPeople"));
 			pPersonalRoomOption.cbMaxPeople=m_PlatformDBAide.GetValue_BYTE(TEXT("MaxPeople"));
@@ -3312,12 +3317,12 @@ bool CDataBaseEngineSink::OnRequestBuyGameProperty(DWORD dwContextID, VOID * pDa
 			PropertyBuyResult.dwUserID = pPropertyBuy->dwUserID;
 			PropertyBuyResult.dwPropertyID = m_PlatformDBAide.GetValue_DWORD(TEXT("PropertyID"));
 			PropertyBuyResult.dwItemCount = m_PlatformDBAide.GetValue_DWORD(TEXT("ItemCount"));
-			PropertyBuyResult.lDiamond = m_PlatformDBAide.GetValue_LONGLONG(TEXT("Diamond"));
-		/*	PropertyBuyResult.lInsureScore = m_PlatformDBAide.GetValue_LONGLONG(TEXT("Gold"));
-			PropertyBuyResult.lUserMedal = m_PlatformDBAide.GetValue_LONGLONG(TEXT("UserMedal"));
+			PropertyBuyResult.bConsumptionType.lDiamond = m_PlatformDBAide.GetValue_LONGLONG(TEXT("Diamond"));
+			PropertyBuyResult.bConsumptionType.lScore = m_PlatformDBAide.GetValue_LONGLONG(TEXT("Gold"));
+			PropertyBuyResult.bConsumptionType.lIngot = m_PlatformDBAide.GetValue_LONGLONG(TEXT("UserMedal"));
 			PropertyBuyResult.lLoveLiness = m_PlatformDBAide.GetValue_LONGLONG(TEXT("LoveLiness"));
-			PropertyBuyResult.dCash = m_PlatformDBAide.GetValue_DOUBLE(TEXT("Cash"));
-			PropertyBuyResult.cbCurrMemberOrder = m_PlatformDBAide.GetValue_BYTE(TEXT("MemberOrder"));*/
+			PropertyBuyResult.bConsumptionType.lBeans = m_PlatformDBAide.GetValue_DOUBLE(TEXT("Cash"));
+			PropertyBuyResult.cbCurrMemberOrder = m_PlatformDBAide.GetValue_BYTE(TEXT("MemberOrder"));
 
 			//获取提示
 			CDBVarValue DBVarValue;
@@ -5591,8 +5596,8 @@ bool CDataBaseEngineSink::OnRequestQueryGrowLevelParameter(DWORD dwContextID, VO
 			if(GrowLevelUpgrade.szNotifyContent[0]!=0)
 			{
 				//读取财富
-				GrowLevelUpgrade.lCurrScore = m_PlatformDBAide.GetValue_LONGLONG(TEXT("Score"));
-				GrowLevelUpgrade.lCurrIngot = m_PlatformDBAide.GetValue_LONGLONG(TEXT("Ingot"));	
+				GrowLevelUpgrade.bConsumptionType.lScore = m_PlatformDBAide.GetValue_LONGLONG(TEXT("Score"));
+				GrowLevelUpgrade.bConsumptionType.lIngot = m_PlatformDBAide.GetValue_LONGLONG(TEXT("Ingot"));
 
 				//发送提示
 				WORD wSendDataSize = sizeof(GrowLevelUpgrade)-sizeof(GrowLevelUpgrade.szNotifyContent);
@@ -5697,6 +5702,121 @@ bool CDataBaseEngineSink::OnRequestManageMatchRight(DWORD dwContextID, VOID * pD
 
 		//错误处理
 		OnInsureDisposeResult(dwContextID,DB_ERROR,0L,TEXT("由于数据库操作异常，请您稍后重试！"),false);
+
+		return false;
+	}
+
+	return true;
+}
+
+//系统消息
+bool CDataBaseEngineSink::OnRequestLoadSystemMessage(DWORD dwContextID, VOID * pData, WORD wDataSize, DWORD &dwUserID)
+{
+	try
+	{
+		//构造参数
+		m_GameDBAide.ResetParameter();
+		m_GameDBAide.AddParameter(TEXT("@wServerID"), m_pGameServiceOption->wServerID);
+
+		//执行查询
+		LONG lReturnValue = m_GameDBAide.ExecuteProcess(TEXT("GSP_GR_LoadSystemMessage"), true);
+
+		//结果处理
+		if (lReturnValue == 0)
+		{
+			TCHAR szServerID[32] = { 0 };
+			_sntprintf(szServerID, CountArray(szServerID), TEXT("%d"), m_pGameServiceOption->wServerID);
+
+			while (true)
+			{
+				//结束判断
+				if (m_GameDBModule->IsRecordsetEnd() == true) break;
+
+				//定义变量
+				TCHAR szServerRange[1024] = { 0 };
+				CString strServerRange;
+				bool bSendMessage = false;
+				bool bAllRoom = false;
+
+				//读取范围
+				m_GameDBAide.GetValue_String(TEXT("ServerRange"), szServerRange, CountArray(szServerRange));
+				szServerRange[1023] = 0;
+				strServerRange.Format(TEXT("%s"), szServerRange);
+
+				//范围判断
+				while (true)
+				{
+					int nfind = strServerRange.Find(TEXT(','));
+					if (nfind != -1 && nfind>0)
+					{
+						CString strID = strServerRange.Left(nfind);
+						WORD wServerID = StrToInt(strID);
+						bSendMessage = (wServerID == 0 || wServerID == m_pGameServiceOption->wServerID);
+						if (wServerID == 0)bAllRoom = true;
+
+						if (bSendMessage) break;
+
+						strServerRange = strServerRange.Right(strServerRange.GetLength() - nfind - 1);
+					}
+					else
+					{
+						WORD wServerID = StrToInt(szServerRange);
+						bSendMessage = (wServerID == 0 || wServerID == m_pGameServiceOption->wServerID);
+						if (wServerID == 0)bAllRoom = true;
+
+						break;
+					}
+				}
+
+				//发送消息
+				if (bSendMessage)
+				{
+					//定义变量
+					DBR_GR_SystemMessage SystemMessage;
+					ZeroMemory(&SystemMessage, sizeof(SystemMessage));
+
+					//读取消息
+					SystemMessage.dwMessageID = m_GameDBAide.GetValue_DWORD(TEXT("ID"));
+					SystemMessage.cbMessageType = m_GameDBAide.GetValue_BYTE(TEXT("MessageType"));
+					SystemMessage.dwTimeRate = m_GameDBAide.GetValue_DWORD(TEXT("TimeRate"));
+					SystemMessage.cbAllRoom = bAllRoom ? TRUE : FALSE;
+					m_GameDBAide.GetValue_String(TEXT("MessageString"), SystemMessage.szSystemMessage, CountArray(SystemMessage.szSystemMessage));
+
+					//读取时间
+					SYSTEMTIME systime;
+					ZeroMemory(&systime, sizeof(systime));
+
+					//开始时间
+					m_GameDBAide.GetValue_SystemTime(TEXT("StartTime"), systime);
+					CTime StarTime(systime);
+					SystemMessage.tStartTime = StarTime.GetTime();
+
+					//结束时间
+					m_GameDBAide.GetValue_SystemTime(TEXT("ConcludeTime"), systime);
+					CTime ConcludeTime(systime);
+					SystemMessage.tConcludeTime = ConcludeTime.GetTime();
+
+					//发送结果
+					m_pIDataBaseEngineEvent->OnEventDataBaseResult(DBO_GR_SYSTEM_MESSAGE_RESULT, dwContextID, &SystemMessage, sizeof(SystemMessage));
+				}
+
+				//下一条
+				m_GameDBModule->MoveToNext();
+			}
+
+			//加载完成
+			m_pIDataBaseEngineEvent->OnEventDataBaseResult(DBO_GR_SYSTEM_MESSAGE_FINISH, dwContextID, NULL, 0);
+		}
+
+		return true;
+	}
+	catch (IDataBaseException * pIException)
+	{
+		//错误信息
+		CTraceService::TraceString(pIException->GetExceptionDescribe(), TraceLevel_Exception);
+
+		//错误处理
+		OnInsureDisposeResult(dwContextID, DB_ERROR, 0L, TEXT("由于数据库操作异常，请您稍后重试！"), false);
 
 		return false;
 	}
@@ -5818,19 +5938,19 @@ VOID CDataBaseEngineSink::OnLogonDisposeResult(DWORD dwContextID, DWORD dwErrorC
 		m_GameDBAide.GetValue_String(TEXT("PostalCode"),m_LogonSuccess.szPostalCode,CountArray(m_LogonSuccess.szPostalCode));
 
 		//积分信息
-		m_LogonSuccess.lScore=m_GameDBAide.GetValue_LONGLONG(TEXT("Score"));
-		//m_LogonSuccess.lIngot=m_GameDBAide.GetValue_LONG(TEXT("Ingot"));
-		//m_LogonSuccess.lGrade=m_GameDBAide.GetValue_LONGLONG(TEXT("Grade"));
-		m_LogonSuccess.lInsure=m_GameDBAide.GetValue_LONGLONG(TEXT("Insure"));
-		m_LogonSuccess.lDimand = m_GameDBAide.GetValue_LONGLONG(TEXT("Dimand"));
+		m_LogonSuccess.bConsumptionType.lScore=m_GameDBAide.GetValue_LONGLONG(TEXT("Score"));
+		m_LogonSuccess.bConsumptionType.lIngot = m_GameDBAide.GetValue_LONG(TEXT("Ingot"));
+		m_LogonSuccess.bConsumptionType.lGrade = m_GameDBAide.GetValue_LONGLONG(TEXT("Grade"));
+		m_LogonSuccess.bConsumptionType.lInsure = m_GameDBAide.GetValue_LONGLONG(TEXT("Insure"));
+		m_LogonSuccess.bConsumptionType.lDiamond = m_GameDBAide.GetValue_LONGLONG(TEXT("Dimand"));
 
 		//局数信息
 		m_LogonSuccess.dwWinCount=m_GameDBAide.GetValue_LONG(TEXT("WinCount"));
 		m_LogonSuccess.dwLostCount=m_GameDBAide.GetValue_LONG(TEXT("LostCount"));
 		m_LogonSuccess.dwDrawCount=m_GameDBAide.GetValue_LONG(TEXT("DrawCount"));
 		m_LogonSuccess.dwFleeCount=m_GameDBAide.GetValue_LONG(TEXT("FleeCount"));		
-		//m_LogonSuccess.dwExperience=m_GameDBAide.GetValue_LONG(TEXT("Experience"));
-		//m_LogonSuccess.lLoveLiness=m_GameDBAide.GetValue_LONG(TEXT("LoveLiness"));
+		m_LogonSuccess.dwExperience=m_GameDBAide.GetValue_LONG(TEXT("Experience"));
+		m_LogonSuccess.lLoveLiness=m_GameDBAide.GetValue_LONG(TEXT("LoveLiness"));
 		m_LogonSuccess.lIntegralCount=m_GameDBAide.GetValue_LONGLONG(TEXT("IntegralCount"));
 
 		//代理信息
@@ -5852,7 +5972,50 @@ VOID CDataBaseEngineSink::OnLogonDisposeResult(DWORD dwContextID, DWORD dwErrorC
 		//任务变量
 		m_LogonSuccess.wTaskCount=0;
 		ZeroMemory(m_LogonSuccess.UserTaskInfo,sizeof(m_LogonSuccess.UserTaskInfo));
-	
+
+		try
+		{
+			//构造参数
+			m_PlatformDBAide.ResetParameter();
+			m_PlatformDBAide.AddParameter(TEXT("@wKindID"),m_pGameServiceOption->wKindID);
+			m_PlatformDBAide.AddParameter(TEXT("@dwUserID"),m_LogonSuccess.dwUserID);
+			m_PlatformDBAide.AddParameter(TEXT("@strPassword"),m_LogonSuccess.szPassword);
+
+			//输出参数
+			TCHAR szDescribeString[128]=TEXT("");
+			m_PlatformDBAide.AddParameterOutput(TEXT("@strErrorDescribe"),szDescribeString,sizeof(szDescribeString),adParamOutput);
+
+			//执行脚本
+			LONG lResultCode = m_PlatformDBAide.ExecuteProcess(TEXT("GSP_GR_QueryTaskInfo"),true);
+
+			//执行成功
+			if(lResultCode==DB_SUCCESS)
+			{
+				//变量定义
+				tagUserTaskInfo * pUserTaskInfo=NULL;
+
+				//循环读取
+				while (m_PlatformDBModule->IsRecordsetEnd()==false)
+				{
+					//设置变量
+					pUserTaskInfo = &m_LogonSuccess.UserTaskInfo[m_LogonSuccess.wTaskCount++];
+
+					//读取数据
+					pUserTaskInfo->wTaskID = m_PlatformDBAide.GetValue_WORD(TEXT("TaskID"));
+					pUserTaskInfo->cbTaskStatus = m_PlatformDBAide.GetValue_BYTE(TEXT("TaskStatus"));
+					pUserTaskInfo->wTaskProgress = m_PlatformDBAide.GetValue_WORD(TEXT("Progress"));
+					pUserTaskInfo->dwResidueTime = m_PlatformDBAide.GetValue_DWORD(TEXT("ResidueTime"));
+					pUserTaskInfo->dwLastUpdateTime=(DWORD)time(NULL);
+
+					//移动记录
+					m_PlatformDBModule->MoveToNext();
+				}
+			}
+		}catch(...)
+		{
+			ASSERT(FALSE);
+		}
+
 		try
 		{
 			//构造参数

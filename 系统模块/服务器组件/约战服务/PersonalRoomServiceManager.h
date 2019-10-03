@@ -4,7 +4,7 @@
 #pragma once
 
 #include "Stdafx.h"
-#include "..\..\服务器组件\游戏服务器\PersonalRoomServiceHead.h"
+#include "PersonalRoomServiceHead.h"
 
 ////////////////////////////////////////////////////////////////////////
 
@@ -80,6 +80,28 @@ public:
 public:
 	//用户接口
 	virtual IUnknownEx * GetServerUserItemSink();
+	
+public:
+	virtual void TestPersonal();
+
+	//查询房间
+	virtual bool OnTCPNetworkSubMBQueryGameServer(VOID * pData, WORD wDataSize, DWORD dwSocketID, tagPersonalBindParameter *	pBindParameter, ITCPSocketService * pITCPSocketService);
+
+	//搜索房间桌号
+	virtual bool OnTCPNetworkSubMBSearchServerTable(VOID * pData, WORD wDataSize, DWORD dwSocketID, tagPersonalBindParameter *	pBindParameter, ITCPSocketService * pITCPSocketService);
+
+	//强制解散搜索房间桌号
+	virtual bool OnTCPNetworkSubMBDissumeSearchServerTable(VOID * pData, WORD wDataSize, DWORD dwSocketID, tagPersonalBindParameter *	pBindParameter, ITCPSocketService * pITCPSocketService);
+
+	//私人房间配置
+	virtual bool OnTCPNetworkSubMBPersonalParameter(VOID * pData, WORD wDataSize, DWORD dwSocketID, IDataBaseEngine *	 pIDataBaseEngine);
+
+	//查询私人房间列表
+	virtual bool OnTCPNetworkSubMBQueryPersonalRoomList(VOID * pData, WORD wDataSize, DWORD dwSocketID,  ITCPSocketService * pITCPSocketService);
+
+	///玩家请求房间成绩
+	virtual bool OnTCPNetworkSubQueryUserRoomScore(VOID * pData, WORD wDataSize, DWORD dwSocketID,  IDataBaseEngine *	 pIDataBaseEngine);
+
 };
 
 //////////////////////////////////////////////////////////////////////////

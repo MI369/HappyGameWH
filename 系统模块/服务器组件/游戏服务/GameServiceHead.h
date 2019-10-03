@@ -34,7 +34,7 @@
 #ifndef _DEBUG
 #define GAME_SERVICE_DLL_NAME	TEXT("GameService.dll")				//组件 DLL 名字
 #else
-#define GAME_SERVICE_DLL_NAME	TEXT("GameServiceD.dll")			//组件 DLL 名字
+#define GAME_SERVICE_DLL_NAME	TEXT("GameService.dll")			//组件 DLL 名字
 #endif
 
 //////////////////////////////////////////////////////////////////////////////////
@@ -1408,7 +1408,7 @@ public:
 	virtual VOID UpdateTablePlayerCount(WORD wServerID, WORD wTableID, WORD wCount) = NULL;
 
 	//开始游戏写入参与信息
-	//virtual VOID PersonalRoomWriteJoinInfo(DWORD dwUserID, WORD wTableID, WORD wChairID, DWORD dwKindID, DWORD dwPersonalRoomID, TCHAR * szPersonalRoomGUID) = NULL;
+	virtual VOID PersonalRoomWriteJoinInfo(DWORD dwUserID, WORD wTableID, WORD wChairID, DWORD dwKindID, DWORD dwPersonalRoomID, TCHAR * szPersonalRoomGUID) = NULL;
 
 };
 

@@ -147,8 +147,9 @@ VOID CChatServerDlg::OnServiceUnitsStatus(enServiceStatus ServiceStatus)
 			GetDlgItem(IDC_START_SERVICE)->EnableWindow(FALSE);
 
 			//提示信息
-			LPCTSTR pszDescribe=TEXT("服务启动成功");
-			CTraceService::TraceString(pszDescribe,TraceLevel_Normal);
+			TCHAR szString[512] = TEXT("");
+			_sntprintf(szString, CountArray(szString), TEXT("服务启动成功 [ 端口:%d ]"), m_ServiceUnits.GetInitParameter().m_wServicePort);
+			CTraceService::TraceString(szString,TraceLevel_Normal);
 
 			break;
 		}

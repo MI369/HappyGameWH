@@ -5,7 +5,11 @@
 
 #include "KernelEngineHead.h"
 #include "AsynchronismEngine.h" 
+#include "zlreactor/WebSocket.h"
+#include "zlreactor/ByteBuffer.h"
+#include "zlreactor/net/http/HttpContext.h"
 
+#include <algorithm>    // std::search
 //////////////////////////////////////////////////////////////////////////////////
 // 枚举定义
 
@@ -104,11 +108,18 @@ class CTCPNetworkItem
     // 友元声明
     friend class CTCPNetworkEngine;
 
+	enum ConnectType {
+		CHECKING,
+		HANDSHAKING,
+		WINSOCKET,
+		WEBSOCKET
+	};
+
     // 连接属性
 protected:
     DWORD							m_dwClientIP;						// 连接地址
     DWORD							m_dwActiveTime;						// 激活时间
-
+	
     // 内核变量
 protected:
     WORD							m_wIndex;							// 连接索引
@@ -118,6 +129,7 @@ protected:
     CCriticalSection				m_CriticalSection;					// 锁定对象
     ITCPNetworkItemSink *			m_pITCPNetworkItemSink;				// 回调接口
 
+	ConnectType                     m_connectType;
     // 状态变量
 protected:
     bool							m_bSendIng;							// 发送标志
@@ -161,6 +173,18 @@ public:
     CTCPNetworkItem(WORD wIndex, ITCPNetworkItemSink * pITCPNetworkItemSink);
     // 析够函数
     virtual ~CTCPNetworkItem();
+
+private:
+	//return true mean websocket,false not
+	bool handshake(zl::net::ByteBuffer* byteBuffer);
+	bool SendRawData(const char* data, int len);
+	bool CheckIsWinSocket();
+	bool HandleWebsocketRecv();
+public:
+	bool isWebSocket();
+	bool isWinSocket();
+	bool sendPingFrame();
+	bool setForeground(bool foreground);
 
     // 标识函数
 public:

@@ -5,7 +5,7 @@
 
 //引入文件
 #include "TableFrameHook.h"
-#include "..\..\服务器组件\游戏服务器\PersonalRoomServiceHead.h"
+#include "PersonalRoomServiceHead.h"
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -110,13 +110,15 @@ public:
 	 //游戏开始
 	 virtual bool OnEventGameStart(ITableFrame *pITableFrame, WORD wChairCount);
 	 //约战房写参与信息
-	 virtual void	PersonalRoomWriteJoinInfo(DWORD dwUserID, WORD wTableID, WORD wChairID, DWORD dwKindID, DWORD dwPersonalRoomID, TCHAR * szPersonalRoomGUID);
+	 virtual void PersonalRoomWriteJoinInfo(DWORD dwUserID, WORD wTableID, WORD wChairID, DWORD dwKindID, DWORD dwPersonalRoomID, TCHAR * szPersonalRoomGUID);
 	 //游戏结束
 	 virtual bool OnEventGameEnd(ITableFrame *pITableFrame,WORD wChairID, IServerUserItem * pIServerUserItem, BYTE cbReason);
 	 //游戏结束
 	 virtual bool OnEventGameEnd(WORD wTableID, WORD wChairCount, DWORD dwDrawCountLimit, DWORD & dwPersonalPlayCount, int nSpecialInfoLen, byte * cbSpecialInfo, SYSTEMTIME sysStartTime, tagPersonalUserScoreInfo * PersonalUserScoreInfo, BOOL bPersonalLoop, BYTE cbGameMode);
-	//房卡支付
-	 virtual bool	PersonalPayRoomCard(DWORD dwUserID, WORD wTableID, WORD wChairCount, DWORD dwPersonalRoomID);
+	 //玩家返赛
+	 virtual bool OnEventUserReturnMatch(ITableFrame *pITableFrame, IServerUserItem * pIServerUserItem);
+	 //房卡支付
+	 virtual bool PersonalPayRoomCard(DWORD dwUserID, WORD wTableID, WORD wChairCount, DWORD dwPersonalRoomID);
 	 //用户事件
 public:
 	 //用户坐下
@@ -125,7 +127,6 @@ public:
 	 virtual bool OnActionUserStandUp(WORD wTableID, WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser);
 	 //用户同意
 	 virtual bool OnActionUserOnReady(WORD wTableID, WORD wChairID, IServerUserItem * pIServerUserItem, VOID * pData, WORD wDataSize);
-
 
 	//约战房间
 protected:
@@ -140,7 +141,7 @@ protected:
 	//玩家请求房间成绩
 	//bool OnTCPNetworkSubQueryUserRoomScore(VOID * pData, WORD wDataSize, DWORD dwSocketID, IServerUserItem * pIServerUserItem);
 	//加入信息请求
-	bool	OnTCPNetworkSubQueryJoinInfo(VOID * pData, WORD wDataSize, DWORD dwSocketID, IServerUserItem * pIServerUserItem);
+	bool OnTCPNetworkSubQueryJoinInfo(VOID * pData, WORD wDataSize, DWORD dwSocketID, IServerUserItem * pIServerUserItem);
 
 	//数据库响应
 protected:

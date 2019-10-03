@@ -490,7 +490,15 @@ bool CAttemperEngineSink::OnTCPNetworkMainRegister(WORD wSubCmdID, VOID * pData,
 
 			return true;
 		}
-	
+	case SUB_CS_C_REGISTER_PERSONAL:
+		{
+			//效验数据
+			ASSERT(wDataSize==sizeof(CMD_CS_S_RegisterPersonal));
+			if (wDataSize!=sizeof(CMD_CS_S_RegisterPersonal)) return false;
+			CMD_CS_S_RegisterPersonal * RegisterPersonal = (CMD_CS_S_RegisterPersonal *)pData;
+			m_GlobalInfoManager.AddPersonalMaxCreate(* RegisterPersonal);
+			return true;
+		}
 	}
 
 	return false;
@@ -600,6 +608,200 @@ bool CAttemperEngineSink::OnTCPNetworkMainServiceInfo(WORD wSubCmdID, VOID * pDa
 				//发送通知
 				m_pITCPNetworkEngine->SendDataBatch(MDM_CS_SERVICE_INFO,SUB_CS_S_SERVER_MODIFY,&ServerModify,sizeof(ServerModify),0L);
 			}
+
+			return true;
+		}
+	case SUB_CS_C_SEARCH_TABLE:			//查找桌子
+		{
+			//效验数据
+			ASSERT(wDataSize==sizeof(CMD_CS_C_SearchTable));
+			if (wDataSize!=sizeof(CMD_CS_C_SearchTable)) return false;
+
+			CMD_CS_C_SearchTable *pSearchTable = (CMD_CS_C_SearchTable*)pData;
+
+			//查找桌子
+			tagPersonalTableInfo* pPersonalTable = m_GlobalInfoManager.SearchTableByID(pSearchTable->szPersonalTableID);
+
+			//构造数据
+			CMD_CS_S_SearchTableResult SearchTableResult;
+			ZeroMemory(&SearchTableResult, sizeof(CMD_CS_S_SearchTableResult));
+
+			SearchTableResult.dwSocketID = pSearchTable->dwSocketID;
+			SearchTableResult.dwClientAddr = pSearchTable->dwClientAddr;
+
+			if(pPersonalTable == NULL)
+			{
+				SearchTableResult.dwServerID = 0;
+				SearchTableResult.dwTableID = 0;
+			}
+			else
+			{
+				SearchTableResult.dwServerID = pPersonalTable->dwServerID;
+				SearchTableResult.dwTableID = pPersonalTable->dwTableID;
+			}
+			
+			m_pITCPNetworkEngine->SendData(dwSocketID, MDM_CS_SERVICE_INFO, SUB_CS_S_SEARCH_TABLE_RESULT, &SearchTableResult, sizeof(SearchTableResult));
+
+			return true;
+		}
+	case SUB_CS_C_DISSUME_SEARCH_TABLE:			//查找桌子
+		{
+			//效验数据
+			ASSERT(wDataSize==sizeof(CMD_CS_C_SearchTable));
+			if (wDataSize!=sizeof(CMD_CS_C_SearchTable)) return false;
+
+			CMD_CS_C_SearchTable *pSearchTable = (CMD_CS_C_SearchTable*)pData;
+
+			//查找桌子
+			tagPersonalTableInfo* pPersonalTable = m_GlobalInfoManager.SearchTableByID(pSearchTable->szPersonalTableID);
+
+			//构造数据
+			CMD_CS_S_SearchTableResult SearchTableResult;
+			ZeroMemory(&SearchTableResult, sizeof(CMD_CS_S_SearchTableResult));
+
+			SearchTableResult.dwSocketID = pSearchTable->dwSocketID;
+			SearchTableResult.dwClientAddr = pSearchTable->dwClientAddr;
+
+			if(pPersonalTable == NULL)
+			{
+				SearchTableResult.dwServerID = 0;
+				SearchTableResult.dwTableID = 0;
+			}
+			else
+			{
+				SearchTableResult.dwServerID = pPersonalTable->dwServerID;
+				SearchTableResult.dwTableID = pPersonalTable->dwTableID;
+			}
+			
+			m_pITCPNetworkEngine->SendData(dwSocketID, MDM_CS_SERVICE_INFO, SUB_CS_S_DISSUME_SEARCH_TABLE_RESULT, &SearchTableResult, sizeof(SearchTableResult));
+
+			return true;
+		}
+	case SUB_CS_C_QUERY_GAME_SERVER:		//查询可用房间
+		{
+			//效验数据
+			ASSERT(wDataSize==sizeof(CMD_CS_C_QueryGameServer));
+			if (wDataSize!=sizeof(CMD_CS_C_QueryGameServer)) return false;
+
+			CMD_CS_C_QueryGameServer *pQueryGameServer = (CMD_CS_C_QueryGameServer *)pData;
+
+			//判断是否可以创建私人房间
+			DWORD dwServerID = 0;
+			bool bCanCreateRoom = false;
+
+			CMD_CS_S_QueryGameServerResult QueryGameServerResult;
+			ZeroMemory(&QueryGameServerResult, sizeof(CMD_CS_S_QueryGameServerResult));
+
+			if (m_GlobalInfoManager.CanCreatePersonalRoom(pQueryGameServer->dwKindID, pQueryGameServer->dwUserID))
+			{
+				//空闲桌子
+				dwServerID = m_GlobalInfoManager.GetFreeServer(pQueryGameServer->dwUserID, pQueryGameServer->dwKindID, pQueryGameServer->cbIsJoinGame);
+				bCanCreateRoom = true;
+
+				if (dwServerID == 0)
+				{
+					lstrcpyn(QueryGameServerResult.szErrDescrybe, TEXT("房主必须参与游戏模式下只能创建一个房间，或游戏服务器创建私人房间已满！"),  sizeof(QueryGameServerResult.szErrDescrybe));
+				}
+			}
+			else
+			{
+				lstrcpyn(QueryGameServerResult.szErrDescrybe, TEXT("已经达到创建私人房间的最大数，不能再创建房间！"),  sizeof(QueryGameServerResult.szErrDescrybe));
+			}
+
+			//构造数据
+			QueryGameServerResult.dwSocketID = pQueryGameServer->dwSocketID;
+			QueryGameServerResult.dwClientAddr = pQueryGameServer->dwClientAddr;
+			QueryGameServerResult.dwServerID = dwServerID;
+			QueryGameServerResult.bCanCreateRoom= bCanCreateRoom;
+
+
+			m_pITCPNetworkEngine->SendData(dwSocketID, MDM_CS_SERVICE_INFO, SUB_CS_S_QUERY_GAME_SERVER_RESULT, &QueryGameServerResult, sizeof(CMD_CS_S_QueryGameServerResult));
+
+			return true;
+		}
+	case SUB_CS_C_CREATE_TABLE:		//创建桌子
+		{
+			//校验数据
+			ASSERT(wDataSize == sizeof(CMD_CS_C_CreateTable));
+			if(wDataSize != sizeof(CMD_CS_C_CreateTable)) return false;
+
+			CMD_CS_C_CreateTable* pCreateTable = (CMD_CS_C_CreateTable*)pData;
+
+			//生成ID
+			TCHAR szServerID[7] = TEXT("");
+			m_GlobalInfoManager.RandServerID(szServerID, 6);
+
+			lstrcpyn(pCreateTable->PersonalTable.szRoomID, szServerID, CountArray(pCreateTable->PersonalTable.szRoomID));
+			//汇总桌子
+			m_GlobalInfoManager.AddServerTable(szServerID, pCreateTable->PersonalTable);
+			m_GlobalInfoManager.RemoveFreeServerTable(pCreateTable->PersonalTable.dwServerID);
+
+			//构造数据
+			CMD_CS_S_CreateTableResult CreateTableResult;
+			ZeroMemory(&CreateTableResult, sizeof(CMD_CS_S_CreateTableResult));
+
+			CreateTableResult.dwSocketID = pCreateTable->dwSocketID;
+			CreateTableResult.PersonalTable.dwTableID = pCreateTable->PersonalTable.dwTableID;
+			CreateTableResult.PersonalTable.dwServerID = pCreateTable->PersonalTable.dwServerID;
+			CreateTableResult.PersonalTable.dwKindID = pCreateTable->PersonalTable.dwKindID;
+			CreateTableResult.PersonalTable.dwUserID = pCreateTable->PersonalTable.dwUserID;
+			CreateTableResult.PersonalTable.lCellScore = pCreateTable->PersonalTable.lCellScore;
+			CreateTableResult.PersonalTable.dwDrawTimeLimit = pCreateTable->PersonalTable.dwDrawTimeLimit;
+			CreateTableResult.PersonalTable.dwDrawCountLimit = pCreateTable->PersonalTable.dwDrawCountLimit;
+			lstrcpyn(CreateTableResult.PersonalTable.szRoomID, szServerID, CountArray(CreateTableResult.PersonalTable.szRoomID));
+			lstrcpyn(CreateTableResult.PersonalTable.szPassword, pCreateTable->PersonalTable.szPassword, CountArray(CreateTableResult.PersonalTable.szPassword));
+			lstrcpyn(CreateTableResult.szClientAddr, pCreateTable->szClientAddr, CountArray(CreateTableResult.szClientAddr));
+			CreateTableResult.PersonalTable.wJoinGamePeopleCount = pCreateTable->PersonalTable.wJoinGamePeopleCount;
+			CreateTableResult.PersonalTable.dwRoomTax = pCreateTable->PersonalTable.dwRoomTax;
+
+			m_pITCPNetworkEngine->SendData(dwSocketID, MDM_CS_SERVICE_INFO, SUB_CS_S_CREATE_TABLE_RESULT, &CreateTableResult, sizeof(CMD_CS_S_CreateTableResult));
+
+
+			return true;
+		}
+	case SUB_CS_C_DISMISS_TABLE:		//解散桌子
+		{
+			//校验数据
+			ASSERT(wDataSize == sizeof(CMD_CS_C_DismissTable));
+			if(wDataSize != sizeof(CMD_CS_C_DismissTable)) return false;
+
+			CMD_CS_C_DismissTable* pDismissTable = (CMD_CS_C_DismissTable*)pData;
+
+			tagPersonalTableInfo * pPersonalTableInfo = m_GlobalInfoManager.SearchTableByTableIDAndServerID(pDismissTable->dwServerID, pDismissTable->dwTableID);
+			if (pPersonalTableInfo == NULL)
+			{
+				return true;
+			}
+
+			CMD_CS_C_DismissTableResult  DismissTableResult;
+			DismissTableResult.dwSocketID = pDismissTable->dwSocketID;
+			memcpy(&DismissTableResult.PersonalTableInfo, pPersonalTableInfo, sizeof(tagPersonalTableInfo));
+
+			//汇总桌子
+			m_GlobalInfoManager.RemoveServerTable(pDismissTable->dwServerID, pDismissTable->dwTableID);
+			m_GlobalInfoManager.AddFreeServerTable(pDismissTable->dwServerID);
+
+			m_pITCPNetworkEngine->SendData(dwSocketID, MDM_CS_SERVICE_INFO, SUB_CS_C_DISMISS_TABLE_RESULT, &DismissTableResult, sizeof(CMD_CS_C_DismissTableResult));
+
+			return true;
+		}
+	case SUB_CS_S_QUERY_PERSONAL_ROOM_LIST:		//请求房间列表
+		{
+			//校验数据
+			ASSERT(wDataSize == sizeof(CMD_MB_SC_QeuryPersonalRoomList));
+			if(wDataSize != sizeof(CMD_MB_SC_QeuryPersonalRoomList)) return false;
+
+			CMD_MB_SC_QeuryPersonalRoomList * QeuryPersonalRoomList = (CMD_MB_SC_QeuryPersonalRoomList * ) pData;
+
+			CMD_CS_C_HostCreatRoomInfo  cmdHostCreatRoomInfo;
+			ZeroMemory(&cmdHostCreatRoomInfo,  sizeof(CMD_CS_C_HostCreatRoomInfo));
+
+			cmdHostCreatRoomInfo.wSocketID = QeuryPersonalRoomList->dwSocketID;
+			cmdHostCreatRoomInfo.HostCreatRoomInfo.dwUserID = QeuryPersonalRoomList->dwUserID;
+			cmdHostCreatRoomInfo.HostCreatRoomInfo.dwKindID = QeuryPersonalRoomList->dwKindID;
+			m_GlobalInfoManager.GetHostCreatePersonalRoom(cmdHostCreatRoomInfo.HostCreatRoomInfo);
+
+			m_pITCPNetworkEngine->SendData(dwSocketID, MDM_CS_SERVICE_INFO, SUB_CS_C_QUERY_PERSONAL_ROOM_LIST_RESULT, &cmdHostCreatRoomInfo, sizeof(CMD_CS_C_HostCreatRoomInfo));
 
 			return true;
 		}

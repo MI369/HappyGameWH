@@ -838,7 +838,7 @@ bool CLockTimeMatch::OnEventDataBase(WORD wRequestID, IServerUserItem * pIServer
 			pUserScore->dwFleeCount=0L;
 			pUserScore->dwDrawCount=0L;
 			pUserScore->lIntegralCount=0L;
-			pUserScore->lScore-=m_pLockTimeMatch->lMatchInitScore;
+			pUserScore->bConsumptionType.lScore -= m_pLockTimeMatch->lMatchInitScore;
 
 			//发送分数
 			SendMatchUserScore(pIServerUserItem);
@@ -1144,15 +1144,15 @@ bool CLockTimeMatch::OnEventUserItemScore(IServerUserItem * pIServerUserItem,BYT
 	UserScore.UserScore.lIntegralCount=pUserInfo->lIntegralCount;
 
 	//构造积分
-	UserScore.UserScore.lGrade=pUserInfo->lGrade;
-	UserScore.UserScore.lInsure=pUserInfo->lInsure;
-	UserScore.UserScore.lIngot=pUserInfo->lIngot;
-	UserScore.UserScore.dBeans=pUserInfo->dBeans;
+	UserScore.UserScore.bConsumptionType.lGrade = pUserInfo->bConsumptionType.lGrade;
+	UserScore.UserScore.bConsumptionType.lInsure = pUserInfo->bConsumptionType.lInsure;
+	UserScore.UserScore.bConsumptionType.lIngot = pUserInfo->bConsumptionType.lIngot;
+	UserScore.UserScore.bConsumptionType.lBeans = pUserInfo->bConsumptionType.lBeans;
 
 	//构造积分
-	UserScore.UserScore.lScore=pUserInfo->lScore;
-	UserScore.UserScore.lScore+=pIServerUserItem->GetTrusteeScore();
-	UserScore.UserScore.lScore+=pIServerUserItem->GetFrozenedScore();
+	UserScore.UserScore.bConsumptionType.lScore = pUserInfo->bConsumptionType.lScore;
+	UserScore.UserScore.bConsumptionType.lScore += pIServerUserItem->GetTrusteeScore();
+	UserScore.UserScore.bConsumptionType.lScore += pIServerUserItem->GetFrozenedScore();
 
 	//发送数据
 	m_pIGameServiceFrame->SendData(BG_ALL_CLIENT,MDM_GR_USER,SUB_GR_USER_SCORE,&UserScore,sizeof(UserScore));
@@ -1171,10 +1171,10 @@ bool CLockTimeMatch::OnEventUserItemScore(IServerUserItem * pIServerUserItem,BYT
 	MobileUserScore.UserScore.lIntegralCount=pUserInfo->lIntegralCount;
 
 	//构造积分
-	MobileUserScore.UserScore.lScore=pUserInfo->lScore;
-	MobileUserScore.UserScore.lScore+=pIServerUserItem->GetTrusteeScore();
-	MobileUserScore.UserScore.lScore+=pIServerUserItem->GetFrozenedScore();
-	MobileUserScore.UserScore.dBeans=pUserInfo->dBeans;
+	MobileUserScore.UserScore.bConsumptionType.lScore = pUserInfo->bConsumptionType.lScore;
+	MobileUserScore.UserScore.bConsumptionType.lScore += pIServerUserItem->GetTrusteeScore();
+	MobileUserScore.UserScore.bConsumptionType.lScore += pIServerUserItem->GetFrozenedScore();
+	MobileUserScore.UserScore.bConsumptionType.lBeans = pUserInfo->bConsumptionType.lBeans;
 
 	//发送数据
 	m_pIGameServiceFrame->SendDataBatchToMobileUser(pIServerUserItem->GetTableID(),MDM_GR_USER,SUB_GR_USER_SCORE,&MobileUserScore,sizeof(MobileUserScore));
@@ -2371,9 +2371,9 @@ bool CLockTimeMatch::SendMatchUserScore(IServerUserItem * pIServerUserItem)
 	UserScore.UserScore.lIntegralCount=pUserInfo->lIntegralCount;
 
 	//构造积分
-	UserScore.UserScore.dBeans=pUserInfo->dBeans;
-	UserScore.UserScore.lIngot=pUserInfo->lIngot;
-	UserScore.UserScore.lScore=pUserInfo->lScore;
+	UserScore.UserScore.bConsumptionType.lBeans = pUserInfo->bConsumptionType.lBeans;
+	UserScore.UserScore.bConsumptionType.lIngot = pUserInfo->bConsumptionType.lIngot;
+	UserScore.UserScore.bConsumptionType.lScore = pUserInfo->bConsumptionType.lScore;
 
 	return m_pIGameServiceFrame->SendData(BG_ALL_CLIENT,MDM_GR_USER,SUB_GR_USER_SCORE,&UserScore,sizeof(UserScore));
 }
@@ -2390,7 +2390,7 @@ bool CLockTimeMatch::SendMatchUserInitScore(IServerUserItem * pIServerUserItem)
 	pUserScore->dwFleeCount=0L;
 	pUserScore->dwDrawCount=0L;
 	pUserScore->lIntegralCount=0L;
-	pUserScore->lScore=(LONGLONG)m_pLockTimeMatch->lMatchInitScore;
+	pUserScore->bConsumptionType.lScore = (LONGLONG)m_pLockTimeMatch->lMatchInitScore;
 
 	//发送分数
 	return SendMatchUserScore(pIServerUserItem);

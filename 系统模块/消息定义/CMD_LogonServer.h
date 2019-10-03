@@ -1007,8 +1007,9 @@ struct CMD_GP_QueryUserGameData
 struct CMD_GP_IndividuaResult
 {
 	bool							bSuccessed;							//成功标识
-	SCORE							lCurrDiamond;						//当前钻石
+	//SCORE							lCurrDiamond;						//当前钻石
 	TCHAR							szNotifyContent[128];				//提示内容
+	consumptionType					bConsumptionType;					//消费类型
 };
 
 
@@ -1240,7 +1241,8 @@ struct CMD_GP_PropertyBuyResult
 	DWORD							dwUserID;							//用户 I D
 	DWORD							dwPropertyID;						//道具标识
 	DWORD							dwItemCount;						//道具数目
-	LONGLONG						lDiamond;
+	//LONGLONG						lDiamond;
+	consumptionType					bConsumptionType;					//消费类型
 	LONGLONG						lInsureScore;						//银行存款
 	LONGLONG						lUserMedal;							//用户元宝
 	LONGLONG						lLoveLiness;						//魅力值
@@ -1511,18 +1513,19 @@ struct CMD_MB_LogonSuccess
 	DWORD							dwCustomID;							//自定头像
 	DWORD							dwUserID;							//用户 I D
 	DWORD							dwGameID;							//游戏 I D
-//	DWORD							dwExperience;						//经验数值
-//	SCORE							lLoveLiness;						//用户魅力
+	DWORD							dwExperience;						//经验数值
+	SCORE							lLoveLiness;						//用户魅力
 	TCHAR							szAccounts[LEN_ACCOUNTS];			//用户帐号
 	TCHAR							szNickName[LEN_NICKNAME];			//用户昵称
 	TCHAR							szDynamicPass[LEN_PASSWORD];		//动态密码
 	
 	//财富信息
-	SCORE							lUserScore;							//用户游戏币
-//	SCORE							lUserIngot;							//用户元宝
-	SCORE							lUserInsure;						//用户银行	
-//	DOUBLE							dUserBeans;							//用户游戏豆
-	SCORE							lDiamond;							//钻石
+	//SCORE							lUserScore;							//用户游戏币
+	//SCORE							lUserIngot;							//用户元宝
+	//SCORE							lUserInsure;						//用户银行	
+	//DOUBLE							dUserBeans;							//用户游戏豆
+	//SCORE							lDiamond;							//钻石
+	consumptionType					bConsumptionType;					//消费类型
 
 	//扩展信息
 	BYTE							cbInsureEnabled;					//使能标识
@@ -1530,7 +1533,7 @@ struct CMD_MB_LogonSuccess
 	BYTE							cbMoorMachine;						//锁定机器
 
 	//约战房相关
-//	SCORE							lRoomCard;							//用户房卡
+	SCORE							lRoomCard;							//用户房卡
 	DWORD							dwLockServerID;						//锁定房间
 	DWORD							dwKindID;							//游戏类型
 
@@ -1777,6 +1780,14 @@ struct CMD_MB_QueryGameServerResult
 struct CMD_MB_SearchServerTable
 {
 	DWORD							dwPersonalRoomID;						//约战房间ID	
+	TCHAR							szServerID[7];							//房间编号
+	DWORD							dwKindID;								//房间类型
+};
+
+//搜索别人房间
+struct CMD_MB_DissumeSearchServerTable
+{
+	TCHAR							szServerID[7];						//房间编号
 };
 
 //搜索结果
@@ -1819,7 +1830,9 @@ struct CMD_MB_PersonalRoomInfoList
 //约战房间用户信息
 struct CMD_MB_PersonalRoomUserInfo
 {
-	SCORE							lDiamond;							//钻石数量	
+	//SCORE							lDiamond;								//钻石数量	
+	//DOUBLE							dBeans;									//游戏豆
+	consumptionType					bConsumptionType;					//消费类型
 };
 
 //私人房间用户信息

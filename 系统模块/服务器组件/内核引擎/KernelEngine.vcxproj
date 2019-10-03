@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug_Unicode|Win32">
       <Configuration>Debug_Unicode</Configuration>
@@ -27,29 +27,29 @@
     <SccLocalPath />
     <SccProvider />
     <Keyword>MFCDLLProj</Keyword>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Unicode|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <UseOfMfc>Dynamic</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Unicode|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <UseOfMfc>Dynamic</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseOfMfc>Dynamic</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
@@ -95,6 +95,8 @@
     <TargetName>KernelEngine</TargetName>
     <IntDir>../../../中间目录/内核引擎/Debug_Ansi/</IntDir>
     <TargetExt>.dll</TargetExt>
+    <IncludePath>$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Unicode|Win32'">
     <ClCompile>
@@ -102,11 +104,12 @@
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_AFXEXT;KERNEL_ENGINE_DLL;_UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>Ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -119,6 +122,7 @@
       <ProgramDatabaseFile>../../../中间目录/内核引擎/Debug_Unicode/$(TargetName).pdb</ProgramDatabaseFile>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <Midl>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -156,6 +160,7 @@ copy /y ..\..\..\运行\Debug\Unicode\$(TargetFileName) ..\..\..\发布组件\�
       <ImportLibrary>../../链接库/Release/Unicode/KernelEngine.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
       <ProgramDatabaseFile>../../../中间目录/内核引擎/Release_Unicode/$(TargetName).pdb</ProgramDatabaseFile>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <Midl>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -177,6 +182,7 @@ copy /y ..\..\..\运行\Release\Unicode\$(TargetFileName) ..\..\..\发布组件\
       <AdditionalIncludeDirectories>
       </AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <OutputFile>../../../运行/Release/Ansi/KernelEngine.dll</OutputFile>
@@ -185,8 +191,7 @@ copy /y ..\..\..\运行\Release\Unicode\$(TargetFileName) ..\..\..\发布组件\
       <AdditionalDependencies>Ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
-      <AdditionalLibraryDirectories>
-      </AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>../../../中间目录/内核引擎/Release_Ansi/$(TargetName).pdb</ProgramDatabaseFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <OptimizeReferences>true</OptimizeReferences>
@@ -199,20 +204,23 @@ copy /y ..\..\..\运行\Release\Ansi\$(TargetFileName) ..\..\..\发布组件\服
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_AFXEXT;KERNEL_ENGINE_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>G:\网狐\开发的模块\服务端\系统模块\第三方库\protobuf\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_AFXEXT;KERNEL_ENGINE_DLL;NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <WarningLevel>Level3</WarningLevel>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <CallingConvention>Cdecl</CallingConvention>
+      <LanguageStandard>
+      </LanguageStandard>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>G:\网狐\开发的模块\服务端\系统模块\第三方库\protobuf\lib\debug\Ansi;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ModuleDefinitionFile>.\KernelEngine.def</ModuleDefinitionFile>
       <ImportLibrary>../../链接库/Debug/Ansi/KernelEngine.lib</ImportLibrary>
       <OutputFile>../../../运行/Debug/Ansi/KernelEngine.dll</OutputFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>../../../中间目录/内核引擎/Debug_Ansi/$(TargetName).pdb</ProgramDatabaseFile>
-      <AdditionalDependencies>Ws2_32.lib</AdditionalDependencies>
+      <AdditionalDependencies>Ws2_32.lib;libprotobufd.lib;libprotobuf-lited.lib;libprotocd.lib</AdditionalDependencies>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
     </Link>
@@ -233,6 +241,8 @@ copy /y ..\..\..\运行\Debug\Ansi\$(TargetFileName) ..\..\..\发布组件\服�
   <ItemGroup>
     <ClCompile Include="AsynchronismEngine.cpp" />
     <ClCompile Include="AttemperEngine.cpp" />
+    <ClCompile Include="CMessageSerializer.cpp" />
+    <ClCompile Include="CProtobufEngine.cpp" />
     <ClCompile Include="DataBaseAide.cpp" />
     <ClCompile Include="DataBaseEngine.cpp" />
     <ClCompile Include="KernelEngine.cpp" />
@@ -247,12 +257,36 @@ copy /y ..\..\..\运行\Debug\Ansi\$(TargetFileName) ..\..\..\发布组件\服�
     <ClCompile Include="TimerEngine.cpp" />
     <ClCompile Include="TraceService.cpp" />
     <ClCompile Include="TraceServiceManager.cpp" />
+    <ClCompile Include="zlreactor\base\StringUtil.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="zlreactor\ByteBuffer.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="zlreactor\net\http\HttpContext.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="zlreactor\net\http\HttpRequest.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="zlreactor\utility\Base64.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="zlreactor\utility\SHA1.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="zlreactor\WebSocket.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AsynchronismEngine.h" />
     <ClInclude Include="AttemperEngine.h" />
+    <ClInclude Include="CMessageSerializer.h" />
+    <ClInclude Include="CProtobufEngine.h" />
     <ClInclude Include="DataBaseAide.h" />
     <ClInclude Include="DataBaseEngine.h" />
+    <ClInclude Include="protobufHead.h" />
     <ClInclude Include="KernelEngineHead.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Stdafx.h" />
@@ -261,6 +295,14 @@ copy /y ..\..\..\运行\Debug\Ansi\$(TargetFileName) ..\..\..\发布组件\服�
     <ClInclude Include="TimerEngine.h" />
     <ClInclude Include="TraceService.h" />
     <ClInclude Include="TraceServiceManager.h" />
+    <ClInclude Include="zlreactor\base\StringUtil.h" />
+    <ClInclude Include="zlreactor\ByteBuffer.h" />
+    <ClInclude Include="zlreactor\net\http\HttpContext.h" />
+    <ClInclude Include="zlreactor\net\http\HttpProtocol.h" />
+    <ClInclude Include="zlreactor\net\http\HttpRequest.h" />
+    <ClInclude Include="zlreactor\utility\Base64.h" />
+    <ClInclude Include="zlreactor\utility\SHA1.h" />
+    <ClInclude Include="zlreactor\WebSocket.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\公共组件\服务核心\ServiceCore.vcxproj">

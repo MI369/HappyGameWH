@@ -1,0 +1,60 @@
+syntax = "proto3";    //指定proto版本3.x
+import "NullPmd.proto";
+import "CommonPmd.proto";
+
+package PlatPmd;
+
+message LoginPmdCommand{
+	enum LoginPmdEnum {  
+		param_nullmessage			= 0x00;   
+		param_loginbyid_c2s			= 0x01;       
+		param_loginbyaccounts_c2s	= 0x02;       
+		param_loginbyvisitor_c2s	= 0x06;       
+		param_loginsuccess_s2c		= 0x64;       
+	} 
+}
+
+message loginbyid_c2s
+{
+    PlatPmd.null_request reqcmd		= 1;
+	//系统信息
+	uint32	dwplazaversion			= 2;	//广场版本
+	string	szmachineid				= 3;	//机器序列
+
+	//登录信息
+	uint32	dwgameid				= 4;	//游戏 i d
+	string	szpassword				= 5;	//登录密码
+	int32	cbvalidateflags			= 6;	//校验标识
+}
+
+message loginbyaccounts_c2s
+{
+    PlatPmd.null_request reqcmd		= 1;
+	//系统信息
+	uint32	dwplazaversion			= 2;	//广场版本
+	string	szmachineid				= 3;	//机器序列
+
+	//登录信息
+	string	szpassword				= 4;	//登录密码
+	string	szaccounts				= 5;	//登录帐号
+	string	szpassportid			= 6;	//身份证号
+	int32	cbvalidateflags			= 7;	//校验标识
+}
+
+message loginbyvisitor_c2s
+{
+    PlatPmd.null_request reqcmd		= 1;
+	//系统信息
+	uint32	dwplazaversion			= 2;	//广场版本
+	string	szmachineid				= 3;	//机器序列
+
+	//登录信息
+	int32	cbvalidateflags			= 4;	//校验标识
+}
+
+//登录成功
+message loginsuccess_s2c
+{
+	PlatPmd.null_response respcmd		= 1;
+	PlatPmd.common_personinfo personinfo	= 2;
+}

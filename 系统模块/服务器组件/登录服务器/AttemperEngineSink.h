@@ -61,9 +61,9 @@ class CAttemperEngineSink : public IAttemperEngineSink
 	//状态变量
 protected:
 	bool							m_bNeekCorrespond;					//协调标志
-	bool                         m_bShowServerStatus;                //显示服务器状态
-	bool							m_bNeekPrsnlRmCorrespond;		//约战标志
-	bool							m_bHasPrsnlRM;							//有约战
+	bool							m_bShowServerStatus;                //显示服务器状态
+	bool							m_bNeekPrsnlRmCorrespond;			//约战标志
+	bool							m_bHasPrsnlRM;						//有约战
 
 	//配置变量
 protected:
@@ -111,7 +111,7 @@ protected:
 	ITCPSocketService *				m_pITCPSocketService;				//协调服务
 	ITCPSocketService *				m_pPrsnlRmITCPSocketService;		//约战服务
 public:
-
+	
 	//视频配置
 protected:
 	WORD							m_wAVServerPort;					//视频端口

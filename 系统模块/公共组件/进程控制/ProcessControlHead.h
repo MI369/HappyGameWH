@@ -30,7 +30,7 @@
 #ifndef _DEBUG
 	#define PROCESS_CONTROL_DLL_NAME	TEXT("ProcessControl.dll")		//组件名字
 #else
-	#define PROCESS_CONTROL_DLL_NAME	TEXT("ProcessControlD.dll")		//组件名字
+	#define PROCESS_CONTROL_DLL_NAME	TEXT("ProcessControl.dll")		//组件名字
 #endif
 
 //////////////////////////////////////////////////////////////////////////////////

@@ -339,7 +339,7 @@ bool CDataBaseEngineSink::OnRequestLogonUserID(DWORD dwContextID, VOID * pData, 
 					UserFriendInfo.FriendInfo[UserFriendInfo.wFriendCount].dwCustomID =m_AccountsDBAide.GetValue_DWORD(TEXT("CustomID"));
 					UserFriendInfo.FriendInfo[UserFriendInfo.wFriendCount].cbGender =m_AccountsDBAide.GetValue_BYTE(TEXT("Gender"));
 					UserFriendInfo.FriendInfo[UserFriendInfo.wFriendCount].wMemberOrder =m_AccountsDBAide.GetValue_WORD(TEXT("MemberOrder"));
-					//UserFriendInfo.FriendInfo[UserFriendInfo.wFriendCount].wGrowLevel =m_AccountsDBAide.GetValue_WORD(TEXT("GrowLevel"));
+					UserFriendInfo.FriendInfo[UserFriendInfo.wFriendCount].wGrowLevel =m_AccountsDBAide.GetValue_WORD(TEXT("GrowLevel"));
 					m_AccountsDBAide.GetValue_String(TEXT("NickName"),UserFriendInfo.FriendInfo[UserFriendInfo.wFriendCount].szNickName,CountArray(UserFriendInfo.FriendInfo[UserFriendInfo.wFriendCount].szNickName));
 					m_AccountsDBAide.GetValue_String(TEXT("UnderWrite"),UserFriendInfo.FriendInfo[UserFriendInfo.wFriendCount].szUnderWrite,CountArray(UserFriendInfo.FriendInfo[UserFriendInfo.wFriendCount].szUnderWrite));
 					m_AccountsDBAide.GetValue_String(TEXT("Compellation"),UserFriendInfo.FriendInfo[UserFriendInfo.wFriendCount].szCompellation,CountArray(UserFriendInfo.FriendInfo[UserFriendInfo.wFriendCount].szCompellation));
@@ -576,7 +576,7 @@ bool CDataBaseEngineSink::OnRequestAddFriend(DWORD dwContextID, VOID * pData, WO
 				UserFriendInfo.FriendInfo[0].dwCustomID =m_AccountsDBAide.GetValue_DWORD(TEXT("CustomID"));
 				UserFriendInfo.FriendInfo[0].cbGender =m_AccountsDBAide.GetValue_BYTE(TEXT("Gender"));
 				UserFriendInfo.FriendInfo[0].wMemberOrder =m_AccountsDBAide.GetValue_WORD(TEXT("MemberOrder"));
-				//UserFriendInfo.FriendInfo[0].wGrowLevel =m_AccountsDBAide.GetValue_WORD(TEXT("GrowLevel"));
+				UserFriendInfo.FriendInfo[0].wGrowLevel =m_AccountsDBAide.GetValue_WORD(TEXT("GrowLevel"));
 				m_AccountsDBAide.GetValue_String(TEXT("NickName"),UserFriendInfo.FriendInfo[0].szNickName,CountArray(UserFriendInfo.FriendInfo[0].szNickName));
 				m_AccountsDBAide.GetValue_String(TEXT("UnderWrite"),UserFriendInfo.FriendInfo[0].szUnderWrite,CountArray(UserFriendInfo.FriendInfo[0].szUnderWrite));
 				m_AccountsDBAide.GetValue_String(TEXT("Compellation"),UserFriendInfo.FriendInfo[0].szCompellation,CountArray(UserFriendInfo.FriendInfo[0].szCompellation));
@@ -813,7 +813,7 @@ bool CDataBaseEngineSink::OnRequestSearchUser(DWORD dwContextID, VOID * pData, W
 				SearchUserResult.FriendInfo.dwCustomID =m_AccountsDBAide.GetValue_DWORD(TEXT("CustomID"));
 				SearchUserResult.FriendInfo.cbGender =m_AccountsDBAide.GetValue_BYTE(TEXT("Gender"));
 				SearchUserResult.FriendInfo.wMemberOrder =m_AccountsDBAide.GetValue_WORD(TEXT("MemberOrder"));
-				//SearchUserResult.FriendInfo.wGrowLevel =m_AccountsDBAide.GetValue_WORD(TEXT("GrowLevel"));
+				SearchUserResult.FriendInfo.wGrowLevel =m_AccountsDBAide.GetValue_WORD(TEXT("GrowLevel"));
 				m_AccountsDBAide.GetValue_String(TEXT("NickName"),    SearchUserResult.FriendInfo.szNickName    ,CountArray(SearchUserResult.FriendInfo.szNickName));
 				m_AccountsDBAide.GetValue_String(TEXT("UnderWrite"),  SearchUserResult.FriendInfo.szUnderWrite  ,CountArray(SearchUserResult.FriendInfo.szUnderWrite));
 				SearchUserResult.cbUserCount = 1;
@@ -1079,7 +1079,7 @@ VOID CDataBaseEngineSink::OnLogonDisposeResult(DWORD dwContextID, DWORD dwErrorC
 		m_LogonSuccess.dwCustomID=m_AccountsDBAide.GetValue_DWORD(TEXT("CustomID"));
 		m_LogonSuccess.cbGender=m_AccountsDBAide.GetValue_BYTE(TEXT("Gender"));
 		m_LogonSuccess.wMemberOrder=m_AccountsDBAide.GetValue_BYTE(TEXT("MemberOrder"));
-		//m_LogonSuccess.wGrowLevel=m_AccountsDBAide.GetValue_BYTE(TEXT("GrowLevel"));
+		m_LogonSuccess.wGrowLevel=m_AccountsDBAide.GetValue_BYTE(TEXT("GrowLevel"));
 		m_AccountsDBAide.GetValue_String(TEXT("UnderWrite"),m_LogonSuccess.szUnderWrite,CountArray(m_LogonSuccess.szUnderWrite));
 		m_AccountsDBAide.GetValue_String(TEXT("Compellation"),m_LogonSuccess.szCompellation,CountArray(m_LogonSuccess.szCompellation));
 

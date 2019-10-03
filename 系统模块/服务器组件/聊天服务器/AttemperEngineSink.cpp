@@ -519,6 +519,9 @@ bool CAttemperEngineSink::OnEventTCPNetworkShut(DWORD dwClientAddr, DWORD dwActi
 			UserOnLine.dwUserID=pServerUserItem->GetUserID();
 			UserOnLine.cbMainStatus=pServerUserItem->GetMainStatus();	
 			SendDataToUserFriend(UserOnLine.dwUserID,MDM_GC_USER,SUB_GC_USER_STATUS_NOTIFY,&UserOnLine,sizeof(UserOnLine));
+
+			//清理用户
+			m_ServerUserManager.DeleteUserItem(UserOnLine.dwUserID);
 		}
 	}
 	catch(...)
@@ -1362,12 +1365,12 @@ bool CAttemperEngineSink::OnTCPNetworkUpdateCoordinate(VOID * pData, WORD wDataS
 	lstrcpyn(pUserInfo->szPlaceName, pUpdateCoordinate->szPlaceName, CountArray(pUpdateCoordinate->szPlaceName));
 	pUserInfo->cbCoordinate = 1;
 
-	//CMD_GC_Update_CoordinateNotify Notify;
-	//Notify.dLatitude = pUserInfo->dLatitude;
-	//Notify.dLongitude = pUserInfo->dLongitude;
-	//Notify.cbCoordinate = 1;
-	//Notify.dwClientAddr = pUserInfo->dwClientAddr;
-	//SendData(dwSocketID,MDM_GC_USER,SUB_GC_UPDATE_COORDINATE_NOTIFY,&Notify,sizeof(Notify));
+	CMD_GC_Update_CoordinateNotify Notify;
+	Notify.dLatitude = pUserInfo->dLatitude;
+	Notify.dLongitude = pUserInfo->dLongitude;
+	Notify.cbCoordinate = 1;
+	Notify.dwClientAddr = pUserInfo->dwClientAddr;
+	SendData(dwSocketID,MDM_GC_USER,SUB_GC_UPDATE_COORDINATE_NOTIFY,&Notify,sizeof(Notify));
 
 	{
 		CMD_GC_Update_CoordinateEcho Echo;

@@ -381,7 +381,7 @@ struct DBR_GP_UserTransferScore
 	DWORD							dwClientAddr;						//连接地址
 	SCORE							lTransferScore;						//转帐游戏币
 	DWORD							dwGameID;							//Game I D
-	//TCHAR							szAccounts[LEN_ACCOUNTS];			//用户昵称
+	TCHAR							szAccounts[LEN_ACCOUNTS];			//用户昵称
 	TCHAR							szPassword[LEN_PASSWORD];			//银行密码
 	TCHAR							szMachineID[LEN_MACHINE_ID];		//机器序列
 	TCHAR							szTransRemark[LEN_TRANS_REMARK];	//转帐备注
@@ -1058,8 +1058,9 @@ struct DBO_GP_AndroidParameter
 struct DBO_GP_IndividualResult
 {
 	bool							bSuccessed;							//成功标识
-	SCORE							lDiamond;							//当前钻石
+	//SCORE							lDiamond;							//当前钻石
 	TCHAR							szDescribeString[128];				//描述消息
+	consumptionType					bConsumptionType;					//消费类型
 };
 
 //查询结果
@@ -1234,11 +1235,11 @@ struct DBO_GP_GamePropertyItem
 
 	DWORD							dwExchangeRatio;					//钻石兑换道具比率
 	//销售价格
-	//SCORE							lPropertyDiamond;					//道具钻石
-	//SCORE							lPropertyGold;						//道具金币
-	//DOUBLE						dPropertyCash;						//道具价格
-	//SCORE							lPropertyUserMedal;					//道具金币
-	//SCORE							lPropertyLoveLiness;				//道具金币
+	SCORE							lPropertyDiamond;					//道具钻石
+	SCORE							lPropertyGold;						//道具金币
+	DOUBLE							dPropertyCash;						//道具价格
+	SCORE							lPropertyUserMedal;					//道具金币
+	SCORE							lPropertyLoveLiness;				//道具金币
 
 	//获得财富
 	SCORE							lSendLoveLiness;					//获得魅力（赠送方）
@@ -1279,12 +1280,13 @@ struct DBO_GP_PropertyBuyResult
 	DWORD							dwUserID;							//用户 I D
 	DWORD							dwPropertyID;						//道具标识
 	DWORD							dwItemCount;						//道具数目
-	LONGLONG						lDiamond;							//钻石
-//	LONGLONG						lInsureScore;						//银行存款
-//	LONGLONG						lUserMedal;							//用户元宝
-//	LONGLONG						lLoveLiness;						//魅力值
-//	double							dCash;								//游戏豆
-//	BYTE							cbCurrMemberOrder;					//会员等级
+	//LONGLONG						lDiamond;							//钻石
+	consumptionType					bConsumptionType;					//消费类型
+	//LONGLONG						lInsureScore;						//银行存款
+	//LONGLONG						lUserMedal;							//用户元宝
+	LONGLONG						lLoveLiness;						//魅力值
+	//double							dCash;								//游戏豆
+	BYTE							cbCurrMemberOrder;					//会员等级
 	TCHAR							szNotifyContent[128];				//提示内容
 };
 
@@ -1702,19 +1704,20 @@ struct DBO_MB_LogonSuccess
 	DWORD							dwCustomID;							//自定头像
 	DWORD							dwUserID;							//用户 I D
 	DWORD							dwGameID;							//游戏 I D
-//	DWORD							dwExperience;						//经验数值
-//	SCORE							lLoveLiness;						//用户魅力
+	DWORD							dwExperience;						//经验数值
+	SCORE							lLoveLiness;						//用户魅力
 	TCHAR							szAccounts[LEN_ACCOUNTS];			//用户帐号
 	TCHAR							szNickName[LEN_ACCOUNTS];			//用户昵称
 	TCHAR							szDynamicPass[LEN_PASSWORD];		//动态密码
 	TCHAR							szUnderWrite[LEN_UNDER_WRITE];		//个性签名
 
 	//用户成绩
-	SCORE							lUserScore;							//用户游戏币
-//	SCORE							lUserIngot;							//用户元宝
-	SCORE							lUserInsure;						//用户银行	
-//	DOUBLE							dUserBeans;							//用户游戏豆
-	SCORE							lDiamond;							//钻石
+	//SCORE							lUserScore;							//用户游戏币
+	//SCORE							lUserIngot;							//用户元宝
+	//SCORE							lUserInsure;						//用户银行	
+	//DOUBLE						dUserBeans;							//用户游戏豆
+	//SCORE							lDiamond;							//钻石
+	consumptionType					bConsumptionType;					//消费类型
 
 	//会员资料
 	BYTE							cbMemberOrder;						//会员等级
@@ -1725,7 +1728,7 @@ struct DBO_MB_LogonSuccess
 	BYTE							cbIsAgent;							//代理标识						
 	BYTE							cbMoorMachine;						//锁定机器
 
-//	SCORE							lRoomCard;						//玩家房卡
+	SCORE							lRoomCard;							//玩家房卡
 	DWORD							dwLockServerID;						//锁定房间
 	DWORD							dwKindID;							//游戏类型
 
@@ -1780,8 +1783,9 @@ struct DBR_GR_QUERY_PERSONAL_ROOM_USER_INFO
 //私人房间列表信息
 struct DBO_MB_PersonalRoomUserInfo
 {
-	SCORE							lDiamond;								//钻石数量
-	//DOUBLE						dBeans;									//游戏豆
+	//SCORE							lDiamond;								//钻石数量
+	//DOUBLE							dBeans;									//游戏豆
+	consumptionType					bConsumptionType;					//消费类型
 };
 
 //兑换游戏币
