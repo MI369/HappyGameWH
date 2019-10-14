@@ -1815,7 +1815,7 @@ bool CTableFrame::OnEventSocketFrame(WORD wSubCmdID, VOID * pData, WORD wDataSiz
 			PersonalTableTip.bRoomPwd = IsTableLocked();
 
 			//如果使用的是金币数据库
-			if (lstrcmp(m_pGameServiceOption->szDataBaseName,  TEXT("WHJHTreasureDB")) == 0)
+			if (lstrcmp(m_pGameServiceOption->szDataBaseName, szTreasureDB) == 0)
 			{
 				PersonalTableTip.cbIsGoldOrGameScore = 0;
 			}
@@ -2495,7 +2495,7 @@ bool CTableFrame::PerformStandUpAction(IServerUserItem * pIServerUserItem, bool 
 
 	//判断是否是金币场
 	bool bTreasureDB = false;
-	if (lstrcmp(m_pGameServiceOption->szDataBaseName,  TEXT("WHJHTreasureDB")) == 0)
+	if (lstrcmp(m_pGameServiceOption->szDataBaseName, szTreasureDB) == 0)
 	{
 		bTreasureDB = true;
 	}
@@ -3159,7 +3159,7 @@ bool CTableFrame::PerformSitDownAction(WORD wChairID, IServerUserItem * pIServer
 		
 		//判断是否是金币场
 		bool bTreasureDB = false;
-		if (lstrcmp(m_pGameServiceOption->szDataBaseName,  TEXT("WHJHTreasureDB")) == 0)
+		if (lstrcmp(m_pGameServiceOption->szDataBaseName, szTreasureDB) == 0)
 		{
 			bTreasureDB = true;
 		}

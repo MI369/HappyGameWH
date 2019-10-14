@@ -1,0 +1,88 @@
+syntax = "proto2";    //指定proto版本2.x
+
+import "NullPmd.proto";
+
+package GamePmd; 
+
+//游戏类型
+message taggametype_s2c
+{
+	required int32  wjoinid		= 1;       //挂接索引
+	required int32  wsortid		= 2;       //排序索引
+	required int32  wtypeid		= 3;       //类型索引
+	required string sztypename 	= 4;       //种类名字
+	optional NullPmd.response respcmd		= 5;
+}
+
+//游戏种类
+message taggamekind_s2c
+{
+	required int32	wtypeid		= 1;		//类型索引
+	required int32	wjoinid		= 2;		//挂接索引
+	required int32	wsortid		= 3;		//排序索引
+	required int32	wkindid		= 4;		//类型索引
+	required int32	wgameid		= 5;		//模块索引
+	required int32	wrecommend	= 6;		//推荐游戏
+	required int32	wgameflag	= 7;		//游戏标志
+	required uint64	dwonlinecount	= 8;	//在线人数
+	required uint64	dwandroidcount  = 9;	//在线人数
+	required uint64	dwsetcount		= 10;	//在线人数
+	required uint64	dwfullcount		= 11;	//满员人数
+	required string	szkindname		= 12;	//游戏名字
+	required string	szprocessname	= 13;	//进程名字
+	optional NullPmd.response respcmd		= 14;
+}
+
+//定制类型
+message tagGamePage_s2c
+{
+	required int32  wpageid		= 1;     //页面索引
+	required int32  wkindid		= 2;     //名称索引
+	required int32  wnodeid		= 3;     //节点索引
+	required int32  wsortid		= 4;     //排序索引
+	required int32  woperatetype	= 5;     //控制类型
+	required string szdisplayname	= 6; //显示名称
+	optional NullPmd.response respcmd		= 7;
+}
+
+
+//游戏节点
+message tagGameNode_s2c
+{
+	required int32	wkindid		= 1;	//名称索引
+	required int32	wjoinid		= 2;	//挂接索引
+	required int32	wsortid		= 3;	//排序索引
+	required int32	wnodeid		= 4;	//节点索引
+	required string	sznodename	= 5;	//节点名称
+	optional NullPmd.response respcmd		= 6;
+};
+
+//游戏房间
+message tagGameServer_s2c
+{
+	required int32	wKindID			= 1;		//名称索引
+	required int32	wNodeID			= 2;		//节点索引
+	required int32	wSortID			= 3;		//排序索引
+	required int32	wServerID		= 4;		//房间索引
+	required int32   wServerKind		= 5;        //房间类型
+	required int32	wServerType		= 6;		//房间类型
+	required int32	wServerLevel	= 7;		//房间等级
+	required int32	wServerPort		= 8;		//房间端口
+	required uint64	lCellScore		= 9;		//单元积分
+	required int32	cbEnterMember	= 10;		//进入会员
+	required uint64	lEnterScore		= 11;		//进入积分
+	required uint64	dwServerRule	= 12;		//房间规则
+	required uint64	dwOnLineCount	= 13;		//在线人数
+	required uint64	dwAndroidCount	= 14;		//机器人数
+	required uint64	dwFullCount		= 15;		//满员人数
+	required string	szServerAddr	= 16;		//房间名称
+	required string	szServerName	= 17;		//房间名称
+	//私人房添加
+	required uint64	dwSurportType	= 18;		//支持类型
+	required int32	wTableCount		= 19;		//桌子数目
+
+	//配置属性
+	required uint64	dwSetPlayerCount= 20;		//设置人数
+	required string	szGameInfomation= 21;		//游戏说明
+	optional NullPmd.response respcmd		= 22;
+};

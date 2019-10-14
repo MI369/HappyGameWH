@@ -3137,9 +3137,9 @@ bool CDataBaseEngineSink::OnRequestLoadPersonalParameter(DWORD dwContextID, VOID
 
 			//读取约战房房间信息
 			pPersonalRoomOption.lPersonalRoomTax = m_PlatformDBAide.GetValue_LONGLONG(TEXT("PersonalRoomTax"));
-			pPersonalRoomOption.bConsumptionType.lDiamond =  m_PlatformDBAide.GetValue_LONGLONG(TEXT("DiamondCount"));
+			/*pPersonalRoomOption.bConsumptionType.lDiamond =  m_PlatformDBAide.GetValue_LONGLONG(TEXT("DiamondCount"));
 
-			pPersonalRoomOption.bConsumptionType.lCard = m_PlatformDBAide.GetValue_BYTE(TEXT("CardOrBean"));
+			pPersonalRoomOption.bConsumptionType.lCard = m_PlatformDBAide.GetValue_BYTE(TEXT("CardOrBean"));*/
 			pPersonalRoomOption.cbIsJoinGame=m_PlatformDBAide.GetValue_BYTE(TEXT("IsJoinGame"));
 			pPersonalRoomOption.cbMinPeople=m_PlatformDBAide.GetValue_BYTE(TEXT("MinPeople"));
 			pPersonalRoomOption.cbMaxPeople=m_PlatformDBAide.GetValue_BYTE(TEXT("MaxPeople"));

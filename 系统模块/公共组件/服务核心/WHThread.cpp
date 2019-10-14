@@ -192,10 +192,14 @@ unsigned __stdcall CWHThread::ThreadFunction(LPVOID pThreadData)
 			catch (...)	{ }
 #else
 			//µ÷ÊÔ°æ±¾
-			if (pServiceThread->OnEventThreadRun()==false)
+			try
 			{
-				break;
+				if (pServiceThread->OnEventThreadRun() == false)
+				{
+					break;
+				}
 			}
+			catch (...) {}
 #endif
 		}
 

@@ -2,7 +2,27 @@
 #include "ServiceUnits.h"
 #include "ControlPacket.h"
 #include "AttemperEngineSink.h"
+#include "../../消息定义/pb/NullPmd.pb.h"
+#include "../../消息定义/pb/CommonPmd.pb.h"
 #include "../../消息定义/pb/LoginPmd.pb.h"
+#include "../../消息定义/pb/GamePmd.pb.h"
+#include "../../消息定义/pb/GrowLevelPmd.pb.h"
+#include "../../消息定义/pb/MatchPmd.pb.h"
+#include "../../消息定义/pb/MemberPmd.pb.h"
+#include "../../消息定义/pb/RealAuthPmd.pb.h"
+#include "../../消息定义/pb/VideoPmd.pb.h"
+#include "../../消息定义/pb/propertyPmd.pb.h"
+
+#include "../../消息定义/pb/NullPmd.pb.cc"
+#include "../../消息定义/pb/CommonPmd.pb.cc"
+#include "../../消息定义/pb/LoginPmd.pb.cc"
+#include "../../消息定义/pb/GamePmd.pb.cc"
+#include "../../消息定义/pb/GrowLevelPmd.pb.cc"
+#include "../../消息定义/pb/MatchPmd.pb.cc"
+#include "../../消息定义/pb/MemberPmd.pb.cc"
+#include "../../消息定义/pb/RealAuthPmd.pb.cc"
+#include "../../消息定义/pb/VideoPmd.pb.cc"
+#include "../../消息定义/pb/propertyPmd.pb.cc"
 //////////////////////////////////////////////////////////////////////////////////
 
 //时间标识
@@ -3583,12 +3603,11 @@ bool CAttemperEngineSink::OnTCPNetworkSubPCLogonVisitor(VOID * pData, WORD wData
 {
 	try
 	{
-		PlatPmd::loginbyvisitor_c2s*  message = (PlatPmd::loginbyvisitor_c2s*)CProtobufEngine::getInstance()->getMessageSerializer()
-			->createMessage(MDM_GP_LOGON, SUB_GP_LOGON_VISITOR);
-		if (CProtobufEngine::getInstance()->decode(message, pData, wDataSize) == false) {
-			CTraceService::TraceString("parse error", TraceLevel_Exception);
-			CProtobufEngine::getInstance()->getMessageSerializer()->ReleaseMessage(message);
-			return false;
+		LoginPmd::loginbyvisitor_c2s message;
+
+		int buffsize = wDataSize;
+		if (message.ParseFromArray(pData, buffsize) == false) {
+			throw TEXT("parse error");
 		}
 
 		//变量定义
@@ -3596,14 +3615,14 @@ bool CAttemperEngineSink::OnTCPNetworkSubPCLogonVisitor(VOID * pData, WORD wData
 		tagBindParameter * pBindParameter = (m_pBindParameter + wBindIndex);
 		//处理消息
 		CMD_GP_LogonVisitor pLogonVisitor;
-		pLogonVisitor.dwPlazaVersion = message->dwplazaversion();
-		pLogonVisitor.cbValidateFlags = message->cbvalidateflags();
-		lstrcpyn(pLogonVisitor.szMachineID, message->szmachineid().c_str(), CountArray(pLogonVisitor.szMachineID));
+		pLogonVisitor.dwPlazaVersion = message.dwplazaversion();
+		pLogonVisitor.cbValidateFlags = message.cbvalidateflags();
+		lstrcpyn(pLogonVisitor.szMachineID, message.szmachineid().c_str(), CountArray(pLogonVisitor.szMachineID));
 
 		//设置连接
 		pBindParameter->cbClientKind = CLIENT_KIND_COMPUTER;
 		pBindParameter->dwPlazaVersion = pLogonVisitor.dwPlazaVersion;
-		CProtobufEngine::getInstance()->getMessageSerializer()->ReleaseMessage(message);
+		
 		//版本判断
 		if (CheckPlazaVersion(DEVICE_TYPE_PC, pLogonVisitor.dwPlazaVersion, dwSocketID, ((pLogonVisitor.cbValidateFlags&LOW_VER_VALIDATE_FLAGS) != 0)) == false)
 		{
@@ -3624,11 +3643,25 @@ bool CAttemperEngineSink::OnTCPNetworkSubPCLogonVisitor(VOID * pData, WORD wData
 
 		//投递请求
 		m_pIDataBaseEngine->PostDataBaseRequest(DBR_GP_LOGON_VISITOR, dwSocketID, &LogonVisitor, sizeof(LogonVisitor));
-
 	}
-	catch (const std::exception&)
+	catch (LPCTSTR pszMessage) {
+		// 错误信息
+		TCHAR szString[512] = TEXT("");
+		_sntprintf(szString, CountArray(szString), TEXT("OnTCPNetworkSubPCLogonVisitor 异常:%s"), pszMessage);
+		CTraceService::TraceString(szString, TraceLevel_Exception);
+
+		//关闭连接
+		m_pITCPNetworkEngine->ShutDownSocket(dwSocketID);
+
+		return false;
+	}
+	catch (...)
 	{
 		CTraceService::TraceString("OnTCPNetworkSubPCLogonVisitor 异常", TraceLevel_Exception);
+
+		//关闭连接
+		m_pITCPNetworkEngine->ShutDownSocket(dwSocketID);
+
 		return false;
 	}
 	return true;
@@ -3861,8 +3894,11 @@ bool CAttemperEngineSink::OnTCPNetworkSubMBLogonOtherPlatform(VOID * pData, WORD
 	pLogonOtherPlatform->szCompellation[CountArray(pLogonOtherPlatform->szCompellation)-1]=0;
 
 	//平台判断
-	ASSERT(pLogonOtherPlatform->cbPlatformID==ULMBySina || pLogonOtherPlatform->cbPlatformID==ULMByTencent || pLogonOtherPlatform->cbPlatformID==ULMByRenRen);
-	if (pLogonOtherPlatform->cbPlatformID!=ULMBySina && pLogonOtherPlatform->cbPlatformID!=ULMByTencent && pLogonOtherPlatform->cbPlatformID!=ULMByRenRen) return false;
+	ASSERT(pLogonOtherPlatform->cbPlatformID==ULMBySina || pLogonOtherPlatform->cbPlatformID==ULMByTencent
+		|| pLogonOtherPlatform->cbPlatformID==ULMByRenRen || pLogonOtherPlatform->cbPlatformID == ULMByWx);
+	if (pLogonOtherPlatform->cbPlatformID!=ULMBySina && pLogonOtherPlatform->cbPlatformID!=ULMByTencent 
+		&& pLogonOtherPlatform->cbPlatformID!=ULMByRenRen && pLogonOtherPlatform->cbPlatformID != ULMByWx)
+		return false;
 
 	//设置连接
 	pBindParameter->cbClientKind=CLIENT_KIND_MOBILE;
@@ -3903,12 +3939,11 @@ bool CAttemperEngineSink::OnTCPNetworkSubMBLogonVisitor(VOID * pData, WORD wData
 {
 	try
 	{
-		PlatPmd::loginbyvisitor_c2s*  message = (PlatPmd::loginbyvisitor_c2s*)CProtobufEngine::getInstance()->getMessageSerializer()
-			->createMessage(MDM_GP_LOGON, SUB_GP_LOGON_VISITOR);
-		if (CProtobufEngine::getInstance()->decode(message, pData, wDataSize) == false) {
-			CTraceService::TraceString("parse error", TraceLevel_Exception);
-			CProtobufEngine::getInstance()->getMessageSerializer()->ReleaseMessage(message);
-			return false;
+		LoginPmd::loginbyvisitor_c2s message;
+
+		int buffsize = wDataSize;
+		if (message.ParseFromArray(pData, buffsize) == false) {
+			throw TEXT("parse error");
 		}
 		//效验参数
 		ASSERT(wDataSize >= sizeof(CMD_MB_LogonVisitor));
@@ -3925,7 +3960,7 @@ bool CAttemperEngineSink::OnTCPNetworkSubMBLogonVisitor(VOID * pData, WORD wData
 		pBindParameter->cbClientKind = CLIENT_KIND_MOBILE;
 		pBindParameter->wModuleID = pLogonVisitor->wModuleID;
 		pBindParameter->dwPlazaVersion = pLogonVisitor->dwPlazaVersion;
-		CProtobufEngine::getInstance()->getMessageSerializer()->ReleaseMessage(message);
+		
 		//版本判断
 		if (CheckPlazaVersion(pLogonVisitor->cbDeviceType, pLogonVisitor->dwPlazaVersion, dwSocketID) == false)
 		{
@@ -3948,11 +3983,25 @@ bool CAttemperEngineSink::OnTCPNetworkSubMBLogonVisitor(VOID * pData, WORD wData
 
 		//投递请求
 		m_pIDataBaseEngine->PostDataBaseRequest(DBR_MB_LOGON_VISITOR, dwSocketID, &LogonVisitor, sizeof(LogonVisitor));
-
 	}
-	catch (const std::exception&)
+	catch (LPCTSTR pszMessage) {
+		// 错误信息
+		TCHAR szString[512] = TEXT("");
+		_sntprintf(szString, CountArray(szString), TEXT("OnTCPNetworkSubMBLogonVisitor 异常:%s"), pszMessage);
+		CTraceService::TraceString(szString, TraceLevel_Exception);
+
+		//关闭连接
+		m_pITCPNetworkEngine->ShutDownSocket(dwSocketID);
+
+		return false;
+	}
+	catch (...)
 	{
 		CTraceService::TraceString("OnTCPNetworkSubMBLogonVisitor 异常", TraceLevel_Exception);
+
+		//关闭连接
+		m_pITCPNetworkEngine->ShutDownSocket(dwSocketID);
+
 		return false;
 	}
 	return true;
@@ -4310,63 +4359,66 @@ bool CAttemperEngineSink::OnDBPCLogonSuccess(DWORD dwContextID, VOID * pData, WO
 	if ((m_pBindParameter+LOWORD(dwContextID))->dwSocketID!=dwContextID) return true;
 	try
 	{
-		//变量定义
-		BYTE cbDataBuffer[SOCKET_TCP_PACKET];
 		DBO_GP_LogonSuccess * pDBOLogonSuccess = (DBO_GP_LogonSuccess *)pData;
-		CMD_GP_LogonSuccess * pCMDLogonSuccess = (CMD_GP_LogonSuccess *)cbDataBuffer;
 
-		//发送定义
-		WORD wHeadSize = sizeof(CMD_GP_LogonSuccess);
-		CSendPacketHelper SendPacket(cbDataBuffer + wHeadSize, sizeof(cbDataBuffer) - wHeadSize);
+		LoginPmd::loginsuccess_s2c message;
+		message.Clear();
 
-		//设置变量
-		ZeroMemory(pCMDLogonSuccess, sizeof(CMD_GP_LogonSuccess));
-
+		CommonPmd::personinfo* common_personinfo = message.mutable_personinfo();
+		NullPmd::response* response = message.mutable_respcmd();
+		
 		//构造数据
-		pCMDLogonSuccess->wFaceID = pDBOLogonSuccess->wFaceID;
-		pCMDLogonSuccess->cbGender = pDBOLogonSuccess->cbGender;
-		pCMDLogonSuccess->dwGameID = pDBOLogonSuccess->dwGameID;
-		pCMDLogonSuccess->dwUserID = pDBOLogonSuccess->dwUserID;
-		pCMDLogonSuccess->dwCustomID = pDBOLogonSuccess->dwCustomID;
-		pCMDLogonSuccess->dwExperience = pDBOLogonSuccess->dwExperience;
-		pCMDLogonSuccess->lLoveLiness = pDBOLogonSuccess->lLoveLiness;
-		pCMDLogonSuccess->cbMoorMachine = pDBOLogonSuccess->cbMoorMachine;
-		lstrcpyn(pCMDLogonSuccess->szAccounts, pDBOLogonSuccess->szAccounts, CountArray(pCMDLogonSuccess->szAccounts));
-		lstrcpyn(pCMDLogonSuccess->szNickName, pDBOLogonSuccess->szNickName, CountArray(pCMDLogonSuccess->szNickName));
-		lstrcpyn(pCMDLogonSuccess->szDynamicPass, pDBOLogonSuccess->szDynamicPass, CountArray(pCMDLogonSuccess->szDynamicPass));
+		common_personinfo->set_wfaceid(pDBOLogonSuccess->wFaceID);
+		common_personinfo->set_dwuserid(pDBOLogonSuccess->dwUserID);
+		common_personinfo->set_dwgameid(pDBOLogonSuccess->dwGameID);
+		common_personinfo->set_dwgroupid(pDBOLogonSuccess->dwGroupID);
+		common_personinfo->set_dwcustomid(pDBOLogonSuccess->dwCustomID);
+		common_personinfo->set_dwexperience(pDBOLogonSuccess->dwExperience);
+		common_personinfo->set_lloveliness(pDBOLogonSuccess->lLoveLiness);
+		common_personinfo->set_luserscore(pDBOLogonSuccess->lUserScore);
+		common_personinfo->set_luserinsure(pDBOLogonSuccess->lUserInsure);
+		common_personinfo->set_luseringot(pDBOLogonSuccess->lUserIngot);
+		common_personinfo->set_duserbeans(pDBOLogonSuccess->dUserBeans);
+		common_personinfo->set_cbgender(pDBOLogonSuccess->cbGender);
+		common_personinfo->set_cbmoormachine(pDBOLogonSuccess->cbMoorMachine);
+		common_personinfo->set_szaccounts(WHStringUtils::ws2utf8(WHStringUtils::s2ws(pDBOLogonSuccess->szAccounts)));
+		common_personinfo->set_sznickname(WHStringUtils::ws2utf8(WHStringUtils::s2ws(pDBOLogonSuccess->szNickName)));
+		common_personinfo->set_szdynamicpass(WHStringUtils::ws2utf8(WHStringUtils::s2ws(pDBOLogonSuccess->szDynamicPass)));
+		common_personinfo->set_szgroupname(WHStringUtils::ws2utf8(WHStringUtils::s2ws(pDBOLogonSuccess->szGroupName)));
+		common_personinfo->set_cbinsureenabled(pDBOLogonSuccess->cbInsureEnabled);
+		common_personinfo->set_cbshowserverstatus(m_bShowServerStatus ? 1 : 0);
+		common_personinfo->set_cbisagent(pDBOLogonSuccess->cbIsAgent);
+		common_personinfo->set_szpassword(WHStringUtils::ws2utf8(WHStringUtils::s2ws(pDBOLogonSuccess->szPassword)));
+		common_personinfo->set_szunderwrite(WHStringUtils::ws2utf8(WHStringUtils::s2ws(pDBOLogonSuccess->szUnderWrite)));
+		common_personinfo->set_cbmemberorder(pDBOLogonSuccess->cbMemberOrder);
+		common_personinfo->set_dwcheckuserright(pDBOLogonSuccess->dwCheckUserRight);
+		common_personinfo->set_szdescribestring(WHStringUtils::ws2utf8(WHStringUtils::s2ws(pDBOLogonSuccess->szDescribeString)));
 
-		//用户成绩
-		pCMDLogonSuccess->lUserScore = pDBOLogonSuccess->lUserScore;
-		pCMDLogonSuccess->lUserIngot = pDBOLogonSuccess->lUserIngot;
-		pCMDLogonSuccess->lUserInsure = pDBOLogonSuccess->lUserInsure;
-		pCMDLogonSuccess->dUserBeans = pDBOLogonSuccess->dUserBeans;
+		CommonPmd::SYSTEMTIME* systemtime = common_personinfo->mutable_memberoverdate();
+		systemtime->set_wday(pDBOLogonSuccess->MemberOverDate.wDay);
+		systemtime->set_wdayofweek(pDBOLogonSuccess->MemberOverDate.wDayOfWeek);
+		systemtime->set_whour(pDBOLogonSuccess->MemberOverDate.wHour);
+		systemtime->set_wmilliseconds(pDBOLogonSuccess->MemberOverDate.wMilliseconds);
+		systemtime->set_wminute(pDBOLogonSuccess->MemberOverDate.wMinute);
+		systemtime->set_wmonth(pDBOLogonSuccess->MemberOverDate.wMonth);
+		systemtime->set_wsecond(pDBOLogonSuccess->MemberOverDate.wSecond);
+		systemtime->set_wyear(pDBOLogonSuccess->MemberOverDate.wYear);
 
-		//配置信息
-		pCMDLogonSuccess->cbInsureEnabled = pDBOLogonSuccess->cbInsureEnabled;
-		pCMDLogonSuccess->cbShowServerStatus = m_bShowServerStatus ? 1 : 0;
-		pCMDLogonSuccess->cbIsAgent = pDBOLogonSuccess->cbIsAgent;
+		response->set_result(1);
+		response->set_errordescription(WHStringUtils::ws2utf8(WHStringUtils::s2ws(TEXT(""))));
 
-		//会员信息
-		if (pDBOLogonSuccess->cbMemberOrder != 0 || pDBOLogonSuccess->dwCheckUserRight != 0)
-		{
-			DTP_GP_MemberInfo MemberInfo;
-			ZeroMemory(&MemberInfo, sizeof(MemberInfo));
-			MemberInfo.cbMemberOrder = pDBOLogonSuccess->cbMemberOrder;
-			MemberInfo.MemberOverDate = pDBOLogonSuccess->MemberOverDate;
-			SendPacket.AddPacket(&MemberInfo, sizeof(MemberInfo), DTP_GP_MEMBER_INFO);
+		//变量定义
+		int buffsize = message.ByteSize();
+		if (buffsize > SOCKET_TCP_PACKET) {
+			throw TEXT("发送包太大");
 		}
-
-		//个性签名
-		if (pDBOLogonSuccess->szUnderWrite[0] != 0)
-		{
-			SendPacket.AddPacket(pDBOLogonSuccess->szUnderWrite, CountStringBuffer(pDBOLogonSuccess->szUnderWrite), DTP_GP_UNDER_WRITE);
+		if (buffsize > 0) {
+			std::shared_ptr<char> cbDataBuffer(new char[buffsize]);
+			if (message.SerializeToArray(cbDataBuffer.get(), buffsize) == false) {
+				throw TEXT("Serialize error");
+			}
+			m_pITCPNetworkEngine->SendData(dwContextID, MDM_GP_LOGON, SUB_GP_LOGON_SUCCESS, cbDataBuffer.get(), buffsize);
 		}
-
-		//登录成功
-		WORD wSendSize = SendPacket.GetDataSize() + sizeof(CMD_GP_LogonSuccess);
-
-		m_pITCPNetworkEngine->SendData(dwContextID, MDM_GP_LOGON, SUB_GP_LOGON_SUCCESS, cbDataBuffer, wSendSize);
-
 
 		//发送列表
 		if (m_pInitParameter->m_cbDelayList == FALSE || pDBOLogonSuccess->dwCheckUserRight == UR_CAN_MANAGER_ANDROID)
@@ -4376,7 +4428,6 @@ bool CAttemperEngineSink::OnDBPCLogonSuccess(DWORD dwContextID, VOID * pData, WO
 			SendGameKindInfo(dwContextID);
 			SendGamePageInfo(dwContextID, INVALID_WORD);
 			SendGameNodeInfo(dwContextID, INVALID_WORD);
-			//SendGameServerInfo(dwContextID,INVALID_WORD);
 			SendGameServerInfo(dwContextID, INVALID_WORD, DEVICE_TYPE_PC);
 			m_pITCPNetworkEngine->SendData(dwContextID, MDM_GP_SERVER_LIST, SUB_GP_LIST_FINISH);
 		}
@@ -4385,7 +4436,6 @@ bool CAttemperEngineSink::OnDBPCLogonSuccess(DWORD dwContextID, VOID * pData, WO
 			SendGameTypeInfo(dwContextID);
 			SendGameKindInfo(dwContextID);
 			SendGamePageInfo(dwContextID, 0);
-			//SendGameServerInfo(dwContextID,INVALID_WORD);
 			SendGameServerInfo(dwContextID, INVALID_WORD, DEVICE_TYPE_PC);
 			m_pITCPNetworkEngine->SendData(dwContextID, MDM_GP_SERVER_LIST, SUB_GP_LIST_FINISH);
 		}
@@ -4407,46 +4457,106 @@ bool CAttemperEngineSink::OnDBPCLogonSuccess(DWORD dwContextID, VOID * pData, WO
 		SendRealAuthConfig(dwContextID);
 
 		//登录完成
-		CMD_GP_LogonFinish LogonFinish;
-		ZeroMemory(&LogonFinish, sizeof(LogonFinish));
-		LogonFinish.wIntermitTime = m_pInitParameter->m_wIntermitTime;
-		LogonFinish.wOnLineCountTime = m_pInitParameter->m_wOnLineCountTime;
-		m_pITCPNetworkEngine->SendData(dwContextID, MDM_GP_LOGON, SUB_GP_LOGON_FINISH, &LogonFinish, sizeof(LogonFinish));
+		LoginPmd::loginfinish_s2c loginfinish_s2c;
+		loginfinish_s2c.Clear();
 
+		NullPmd::response* response_finish = loginfinish_s2c.mutable_respcmd();
+		//构造数据
+		response_finish->set_result(1);
+		response_finish->set_errordescription(WHStringUtils::ws2utf8(WHStringUtils::s2ws(TEXT(""))));
+
+		loginfinish_s2c.set_wintermittime(m_pInitParameter->m_wIntermitTime);
+		loginfinish_s2c.set_wonlinecounttime(m_pInitParameter->m_wOnLineCountTime);
+
+		int cbuffsize = loginfinish_s2c.ByteSize();
+		if (cbuffsize > SOCKET_TCP_PACKET) {
+			throw TEXT("发送包太大");
+		}
+		if (cbuffsize > 0) {
+			std::shared_ptr<char> cbDataBuffer_finish(new char[cbuffsize]);
+			if (loginfinish_s2c.SerializeToArray(cbDataBuffer_finish.get(), cbuffsize) == false) {
+				throw TEXT("Serialize loginfinish_s2c error");
+			}
+			m_pITCPNetworkEngine->SendData(dwContextID, MDM_GP_LOGON, SUB_GP_LOGON_FINISH, cbDataBuffer_finish.get(), cbuffsize);
+		}
 	}
-	catch (const std::exception&)
-	{
-		CTraceService::TraceString("OnDBPCLogonSuccess 异常", TraceLevel_Exception);
+	catch (LPCTSTR pszMessage) {
+		// 错误信息
+		TCHAR szString[512] = TEXT("");
+		_sntprintf(szString, CountArray(szString), TEXT("OnDBPCLogonSuccess 异常:%s"), pszMessage);
+		CTraceService::TraceString(szString, TraceLevel_Exception);
+
+		//关闭连接
+		m_pITCPNetworkEngine->ShutDownSocket(dwContextID);
+
 		return false;
 	}
-	
+	catch (...)
+	{
+		CTraceService::TraceString("OnDBPCLogonSuccess 异常", TraceLevel_Exception);
+
+		//关闭连接
+		m_pITCPNetworkEngine->ShutDownSocket(dwContextID);
+
+		return false;
+	}
 	return true;
 }
 
 //登录失败
 bool CAttemperEngineSink::OnDBPCLogonFailure(DWORD dwContextID, VOID * pData, WORD wDataSize)
 {
+	CTraceService::TraceString("OnDBPCLogonFailure", TraceLevel_Normal);
 	//判断在线
 	ASSERT(LOWORD(dwContextID)<m_pInitParameter->m_wMaxConnect);
 	if ((m_pBindParameter+LOWORD(dwContextID))->dwSocketID!=dwContextID) return true;
 
-	//变量定义
-	CMD_GP_LogonFailure LogonFailure;
-	ZeroMemory(&LogonFailure,sizeof(LogonFailure));
-	DBO_GP_LogonFailure * pLogonFailure=(DBO_GP_LogonFailure *)pData;
+	try
+	{
+		//变量定义
+		DBO_GP_LogonFailure * pLogonFailure = (DBO_GP_LogonFailure *)pData;
 
-	//构造数据
-	LogonFailure.lResultCode=pLogonFailure->lResultCode;
-	lstrcpyn(LogonFailure.szDescribeString,pLogonFailure->szDescribeString,CountArray(LogonFailure.szDescribeString));
+		LoginPmd::loginfailure_s2c message;
 
-	//发送数据
-	WORD wStringSize=CountStringBuffer(LogonFailure.szDescribeString);
-	WORD wSendSize=sizeof(LogonFailure)-sizeof(LogonFailure.szDescribeString)+wStringSize;
-	m_pITCPNetworkEngine->SendData(dwContextID,MDM_GP_LOGON,SUB_GP_LOGON_FAILURE,&LogonFailure,wSendSize);
+		NullPmd::response* response = message.mutable_respcmd();
 
-	//关闭连接
-	m_pITCPNetworkEngine->ShutDownSocket(dwContextID);
+		//构造数据
+		response->set_result(pLogonFailure->lResultCode);
+		response->set_errordescription(WHStringUtils::ws2utf8(WHStringUtils::s2ws(pLogonFailure->szDescribeString)));
 
+		int cbuffsize = message.ByteSize();
+		if (cbuffsize > SOCKET_TCP_PACKET) {
+			throw TEXT("发送包太大");
+		}
+		std::shared_ptr<char> cbDataBuffer(new char[cbuffsize]);
+		if (message.SerializeToArray(cbDataBuffer.get(), cbuffsize) == false) {
+			throw TEXT("Serialize error");
+		}
+		m_pITCPNetworkEngine->SendData(dwContextID, MDM_GP_LOGON, SUB_GP_LOGON_FAILURE, cbDataBuffer.get(), cbuffsize);
+
+		//关闭连接
+		m_pITCPNetworkEngine->ShutDownSocket(dwContextID);
+	}
+	catch (LPCTSTR pszMessage) {
+		// 错误信息
+		TCHAR szString[512] = TEXT("");
+		_sntprintf(szString, CountArray(szString), TEXT("OnDBPCLogonFailure 异常:%s"), pszMessage);
+		CTraceService::TraceString(szString, TraceLevel_Exception);
+
+		//关闭连接
+		m_pITCPNetworkEngine->ShutDownSocket(dwContextID);
+
+		return false;
+	}
+	catch (...)
+	{
+		CTraceService::TraceString("OnDBPCLogonFailure 异常", TraceLevel_Exception);
+
+		//关闭连接
+		m_pITCPNetworkEngine->ShutDownSocket(dwContextID);
+
+		return false;
+	}
 	return true;
 }
 
@@ -6497,149 +6607,251 @@ bool CAttemperEngineSink::SendUIControlPacket(WORD wRequestID, VOID * pData, WOR
 //发送类型
 VOID CAttemperEngineSink::SendGameTypeInfo(DWORD dwSocketID)
 {
-	//网络数据
-	WORD wSendSize=0;
-	BYTE cbDataBuffer[SOCKET_TCP_PACKET];
-
-	//枚举数据
-	POSITION Position=NULL;
-	CGameTypeItem * pGameTypeItem=NULL;
-
-	//枚举数据
-	for (DWORD i=0;i<m_ServerListManager.GetGameTypeCount();i++)
+	try
 	{
-		//发送数据
-		if ((wSendSize+sizeof(tagGameType))>sizeof(cbDataBuffer))
+		//枚举数据
+		POSITION Position = NULL;
+
+		GamePmd::taggametype_s2c taggametype_s2c;
+		taggametype_s2c.Clear();
+		//枚举数据
+		for (DWORD i = 0; i < m_ServerListManager.GetGameTypeCount(); i++)
 		{
-			m_pITCPNetworkEngine->SendData(dwSocketID,MDM_GP_SERVER_LIST,SUB_GP_LIST_TYPE,cbDataBuffer,wSendSize);
-			wSendSize=0;
+			//获取数据
+			CGameTypeItem *pGameTypeItem = m_ServerListManager.EmunGameTypeItem(Position);
+			if (pGameTypeItem == NULL) break;
+
+			tagGameType ctagGameType = pGameTypeItem->m_GameType;
+			GamePmd::taggametype* taggametype = taggametype_s2c.add_taggametype();
+
+			taggametype->set_wjoinid(ctagGameType.wJoinID);
+			taggametype->set_wsortid(ctagGameType.wSortID);
+			taggametype->set_wtypeid(ctagGameType.wTypeID);
+			taggametype->set_sztypename(WHStringUtils::ws2utf8(WHStringUtils::s2ws(ctagGameType.szTypeName)));
 		}
 
-		//获取数据
-		pGameTypeItem=m_ServerListManager.EmunGameTypeItem(Position);
-		if (pGameTypeItem==NULL) break;
-
-		//拷贝数据
-		CopyMemory(cbDataBuffer+wSendSize,&pGameTypeItem->m_GameType,sizeof(tagGameType));
-		wSendSize+=sizeof(tagGameType);
+		int cbuffsize = taggametype_s2c.ByteSize();
+		if (cbuffsize > SOCKET_TCP_PACKET) {
+			throw TEXT("发送包太大");
+		}
+		if (cbuffsize <= 0) {
+			return;
+		}
+		std::shared_ptr<char> dataBuffer(new char[cbuffsize]);
+		if (taggametype_s2c.SerializeToArray(dataBuffer.get(), cbuffsize) == false) {
+			throw TEXT("Serialize taggametype_s2c error");
+		}
+		m_pITCPNetworkEngine->SendData(dwSocketID, MDM_GP_SERVER_LIST, SUB_GP_LIST_TYPE, dataBuffer.get(), cbuffsize);
 	}
+	catch (LPCTSTR pszMessage) {
+		// 错误信息
+		TCHAR szString[512] = TEXT("");
+		_sntprintf(szString, CountArray(szString), TEXT("SendGameTypeInfo 异常:%s"), pszMessage);
+		CTraceService::TraceString(szString, TraceLevel_Exception);
+	}
+	catch (...)
+	{
+		// 错误信息
+		CTraceService::TraceString("SendGameTypeInfo 异常", TraceLevel_Exception);
 
-	//发送剩余
-	if (wSendSize>0) m_pITCPNetworkEngine->SendData(dwSocketID,MDM_GP_SERVER_LIST,SUB_GP_LIST_TYPE,cbDataBuffer,wSendSize);
-
+		//关闭连接
+		m_pITCPNetworkEngine->ShutDownSocket(dwSocketID);
+	}
+	
 	return;
 }
 
 //发送种类
 VOID CAttemperEngineSink::SendGameKindInfo(DWORD dwSocketID)
 {
-	//网络数据
-	WORD wSendSize=0;
-	BYTE cbDataBuffer[SOCKET_TCP_PACKET];
-
-	//枚举数据
-	POSITION Position=NULL;
-	CGameKindItem * pGameKindItem=NULL;
-
-	//枚举数据
-	for (DWORD i=0;i<m_ServerListManager.GetGameKindCount();i++)
+	try
 	{
-		//发送数据
-		if ((wSendSize+sizeof(tagGameKind))>sizeof(cbDataBuffer))
+		//枚举数据
+		POSITION Position = NULL;
+
+		GamePmd::taggamekind_s2c taggamekind_s2c;
+		taggamekind_s2c.Clear();
+
+		//枚举数据
+		for (DWORD i = 0; i < m_ServerListManager.GetGameKindCount(); i++)
 		{
-			m_pITCPNetworkEngine->SendData(dwSocketID,MDM_GP_SERVER_LIST,SUB_GP_LIST_KIND,cbDataBuffer,wSendSize);
-			wSendSize=0;
+			//获取数据
+			CGameKindItem * pGameKindItem = m_ServerListManager.EmunGameKindItem(Position);
+			if (pGameKindItem == NULL) break;
+
+			tagGameKind ctagGameKind = pGameKindItem->m_GameKind;
+
+			GamePmd::taggamekind* taggamekind = taggamekind_s2c.add_taggamekind();
+
+			taggamekind->set_dwandroidcount(ctagGameKind.dwAndroidCount);
+			taggamekind->set_dwfullcount(ctagGameKind.dwFullCount);
+			taggamekind->set_dwonlinecount(ctagGameKind.dwOnLineCount);
+			taggamekind->set_dwsetcount(ctagGameKind.dwSetCount);
+			taggamekind->set_szkindname(WHStringUtils::ws2utf8(WHStringUtils::s2ws(ctagGameKind.szKindName)));
+			taggamekind->set_szprocessname(WHStringUtils::ws2utf8(WHStringUtils::s2ws(ctagGameKind.szProcessName)));
+			taggamekind->set_wgameflag(ctagGameKind.wGameFlag);
+			taggamekind->set_wgameid(ctagGameKind.wGameID);
+			taggamekind->set_wjoinid(ctagGameKind.wJoinID);
+			taggamekind->set_wkindid(ctagGameKind.wKindID);
+			taggamekind->set_wrecommend(ctagGameKind.wRecommend);
+			taggamekind->set_wsortid(ctagGameKind.wSortID);
+			taggamekind->set_wtypeid(ctagGameKind.wTypeID);
 		}
 
-		//获取数据
-		pGameKindItem=m_ServerListManager.EmunGameKindItem(Position);
-		if (pGameKindItem==NULL) break;
-
-		//拷贝数据
-		CopyMemory(cbDataBuffer+wSendSize,&pGameKindItem->m_GameKind,sizeof(tagGameKind));
-		wSendSize+=sizeof(tagGameKind);
+		int cbuffsize = taggamekind_s2c.ByteSize();
+		if (cbuffsize > SOCKET_TCP_PACKET) {
+			throw TEXT("发送包太大");
+		}
+		if (cbuffsize <= 0) {
+			return;
+		}
+		std::shared_ptr<char> dataBuffer(new char[cbuffsize]);
+		if (taggamekind_s2c.SerializeToArray(dataBuffer.get(), cbuffsize) == false) {
+			throw TEXT("Serialize taggamekind_s2c error");
+		}
+		m_pITCPNetworkEngine->SendData(dwSocketID, MDM_GP_SERVER_LIST, SUB_GP_LIST_KIND, dataBuffer.get(), cbuffsize);
 	}
+	catch (LPCTSTR pszMessage) {
+		// 错误信息
+		TCHAR szString[512] = TEXT("");
+		_sntprintf(szString, CountArray(szString), TEXT("SendGameKindInfo 异常:%s"), pszMessage);
+		CTraceService::TraceString(szString, TraceLevel_Exception);
+	}
+	catch (...)
+	{
+		// 错误信息
+		CTraceService::TraceString("SendGameKindInfo 异常", TraceLevel_Exception);
 
-	//发送剩余
-	if (wSendSize>0) m_pITCPNetworkEngine->SendData(dwSocketID,MDM_GP_SERVER_LIST,SUB_GP_LIST_KIND,cbDataBuffer,wSendSize);
-
+		//关闭连接
+		m_pITCPNetworkEngine->ShutDownSocket(dwSocketID);
+	}
+	
 	return;
 }
 
 //发送节点
 VOID CAttemperEngineSink::SendGameNodeInfo(DWORD dwSocketID, WORD wKindID)
 {
-	//网络数据
-	WORD wSendSize=0;
-	BYTE cbDataBuffer[SOCKET_TCP_PACKET];
-
-	//枚举数据
-	POSITION Position=NULL;
-	CGameNodeItem * pGameNodeItem=NULL;
-
-	//枚举数据
-	for (DWORD i=0;i<m_ServerListManager.GetGameNodeCount();i++)
+	try
 	{
-		//发送数据
-		if ((wSendSize+sizeof(tagGameNode))>sizeof(cbDataBuffer))
+		//枚举数据
+		POSITION Position = NULL;
+
+		GamePmd::tagGameNode_s2c tagGameNode_s2c;
+		tagGameNode_s2c.Clear();
+
+		//枚举数据
+		for (DWORD i = 0; i < m_ServerListManager.GetGameNodeCount(); i++)
 		{
-			m_pITCPNetworkEngine->SendData(dwSocketID,MDM_GP_SERVER_LIST,SUB_GP_LIST_NODE,cbDataBuffer,wSendSize);
-			wSendSize=0;
+			//获取数据
+			CGameNodeItem * pGameNodeItem = m_ServerListManager.EmunGameNodeItem(Position);
+			if (pGameNodeItem == NULL) break;
+
+			tagGameNode ctagGameNode = pGameNodeItem->m_GameNode;
+			//拷贝数据
+			if ((wKindID == INVALID_WORD) || (ctagGameNode.wKindID == wKindID))
+			{
+				GamePmd::tagGameNode* tagGameNode = tagGameNode_s2c.add_taggamenode();
+
+				tagGameNode->set_sznodename(WHStringUtils::ws2utf8(WHStringUtils::s2ws(ctagGameNode.szNodeName)));
+				tagGameNode->set_wjoinid(ctagGameNode.wJoinID);
+				tagGameNode->set_wkindid(ctagGameNode.wKindID);
+				tagGameNode->set_wnodeid(ctagGameNode.wNodeID);
+				tagGameNode->set_wsortid(ctagGameNode.wSortID);
+			}
 		}
 
-		//获取数据
-		pGameNodeItem=m_ServerListManager.EmunGameNodeItem(Position);
-		if (pGameNodeItem==NULL) break;
-
-		//拷贝数据
-		if ((wKindID==INVALID_WORD)||(pGameNodeItem->m_GameNode.wKindID==wKindID))
-		{
-			CopyMemory(cbDataBuffer+wSendSize,&pGameNodeItem->m_GameNode,sizeof(tagGameNode));
-			wSendSize+=sizeof(tagGameNode);
+		int cbuffsize = tagGameNode_s2c.ByteSize();
+		if (cbuffsize > SOCKET_TCP_PACKET) {
+			throw TEXT("发送包太大");
 		}
+		if (cbuffsize <= 0) {
+			return;
+		}
+		std::shared_ptr<char> dataBuffer(new char[cbuffsize]);
+		if (tagGameNode_s2c.SerializeToArray(dataBuffer.get(), cbuffsize) == false) {
+			throw TEXT("Serialize tagGameNode_s2c error");
+		}
+		m_pITCPNetworkEngine->SendData(dwSocketID, MDM_GP_SERVER_LIST, SUB_GP_LIST_NODE, dataBuffer.get(), cbuffsize);
 	}
+	catch (LPCTSTR pszMessage) {
+		// 错误信息
+		TCHAR szString[512] = TEXT("");
+		_sntprintf(szString, CountArray(szString), TEXT("SendGameNodeInfo 异常:%s"), pszMessage);
+		CTraceService::TraceString(szString, TraceLevel_Exception);
+	}
+	catch (...)
+	{
+		// 错误信息
+		CTraceService::TraceString("SendGameNodeInfo 异常", TraceLevel_Exception);
 
-	//发送剩余
-	if (wSendSize>0) m_pITCPNetworkEngine->SendData(dwSocketID,MDM_GP_SERVER_LIST,SUB_GP_LIST_NODE,cbDataBuffer,wSendSize);
-
+		//关闭连接
+		m_pITCPNetworkEngine->ShutDownSocket(dwSocketID);
+	}
 	return;
 }
 
 //发送定制
 VOID CAttemperEngineSink::SendGamePageInfo(DWORD dwSocketID, WORD wKindID)
 {
-	//网络数据
-	WORD wSendSize=0;
-	BYTE cbDataBuffer[SOCKET_TCP_PACKET];
-
-	//枚举数据
-	POSITION Position=NULL;
-	CGamePageItem * pGamePageItem=NULL;
-
-	//枚举数据
-	for (DWORD i=0;i<m_ServerListManager.GetGamePageCount();i++)
+	try
 	{
-		//发送数据
-		if ((wSendSize+sizeof(tagGamePage))>sizeof(cbDataBuffer))
+		//枚举数据
+		POSITION Position = NULL;
+
+		GamePmd::tagGamePage_s2c tagGamePage_s2c;
+		tagGamePage_s2c.Clear();
+
+		//枚举数据
+		for (DWORD i = 0; i < m_ServerListManager.GetGamePageCount(); i++)
 		{
-			m_pITCPNetworkEngine->SendData(dwSocketID,MDM_GP_SERVER_LIST,SUB_GP_LIST_PAGE,cbDataBuffer,wSendSize);
-			wSendSize=0;
+			//获取数据
+			CGamePageItem * pGamePageItem = m_ServerListManager.EmunGamePageItem(Position);
+			if (pGamePageItem == NULL) break;
+
+			tagGamePage ctagGamePage = pGamePageItem->m_GamePage;
+
+			//拷贝数据
+			if ((wKindID == INVALID_WORD) || (ctagGamePage.wKindID == wKindID))
+			{
+				GamePmd::tagGamePage* tagGamePage = tagGamePage_s2c.add_taggamepage();
+
+				tagGamePage->set_szdisplayname(WHStringUtils::ws2utf8(WHStringUtils::s2ws(ctagGamePage.szDisplayName)));
+				tagGamePage->set_wkindid(ctagGamePage.wKindID);
+				tagGamePage->set_wnodeid(ctagGamePage.wNodeID);
+				tagGamePage->set_woperatetype(ctagGamePage.wOperateType);
+				tagGamePage->set_wpageid(ctagGamePage.wPageID);
+				tagGamePage->set_wsortid(ctagGamePage.wSortID);
+			}
 		}
 
-		//获取数据
-		pGamePageItem=m_ServerListManager.EmunGamePageItem(Position);
-		if (pGamePageItem==NULL) break;
-
-		//拷贝数据
-		if ((wKindID==INVALID_WORD)||(pGamePageItem->m_GamePage.wKindID==wKindID))
-		{
-			CopyMemory(cbDataBuffer+wSendSize,&pGamePageItem->m_GamePage,sizeof(tagGamePage));
-			wSendSize+=sizeof(tagGamePage);
+		int cbuffsize = tagGamePage_s2c.ByteSize();
+		if (cbuffsize > SOCKET_TCP_PACKET) {
+			throw TEXT("发送包太大");
 		}
+		if (cbuffsize <= 0) {
+			return;
+		}
+		std::shared_ptr<char> dataBuffer(new char[cbuffsize]);
+		if (tagGamePage_s2c.SerializeToArray(dataBuffer.get(), cbuffsize) == false) {
+			throw TEXT("Serialize tagGamePage_s2c error");
+		}
+		m_pITCPNetworkEngine->SendData(dwSocketID, MDM_GP_SERVER_LIST, SUB_GP_LIST_PAGE, dataBuffer.get(), cbuffsize);
 	}
+	catch (LPCTSTR pszMessage) {
+		// 错误信息
+		TCHAR szString[512] = TEXT("");
+		_sntprintf(szString, CountArray(szString), TEXT("SendGamePageInfo 异常:%s"), pszMessage);
+		CTraceService::TraceString(szString, TraceLevel_Exception);
+	}
+	catch (...)
+	{
+		// 错误信息
+		CTraceService::TraceString("SendGamePageInfo 异常", TraceLevel_Exception);
 
-	//发送剩余
-	if (wSendSize>0) m_pITCPNetworkEngine->SendData(dwSocketID,MDM_GP_SERVER_LIST,SUB_GP_LIST_PAGE,cbDataBuffer,wSendSize);
+		//关闭连接
+		m_pITCPNetworkEngine->ShutDownSocket(dwSocketID);
+	}
 
 	return;
 }
@@ -6647,219 +6859,405 @@ VOID CAttemperEngineSink::SendGamePageInfo(DWORD dwSocketID, WORD wKindID)
 //发送房间
 VOID CAttemperEngineSink::SendGameServerInfo(DWORD dwSocketID, WORD wKindID, BYTE cbDeviceType)
 {
-	//网络数据
-	WORD wSendSize=0;
-	BYTE cbDataBuffer[SOCKET_TCP_PACKET];
-
-	//枚举数据
-	POSITION Position=NULL;
-	CGameServerItem * pGameServerItem=NULL;
-
-	//枚举数据
-	for (DWORD i=0;i<m_ServerListManager.GetGameServerCount();i++)
+	try
 	{
-		//发送数据
-		if ((wSendSize+sizeof(tagGameServer))>sizeof(cbDataBuffer))
+		//枚举数据
+		POSITION Position = NULL;
+
+		GamePmd::tagGameServer_s2c tagGameServer_s2c;
+		tagGameServer_s2c.Clear();
+
+		//枚举数据
+		for (DWORD i = 0; i < m_ServerListManager.GetGameServerCount(); i++)
 		{
-			m_pITCPNetworkEngine->SendData(dwSocketID,MDM_GP_SERVER_LIST,SUB_GP_LIST_SERVER,cbDataBuffer,wSendSize);
-			wSendSize=0;
+			//获取数据
+			CGameServerItem * pGameServerItem = m_ServerListManager.EmunGameServerItem(Position);
+			if (pGameServerItem == NULL) break;
+			//支持类型
+			bool bSuportMobile = CServerRule::IsSuportMobile(pGameServerItem->m_GameServer.dwServerRule);
+			bool bSurportPC = CServerRule::IsSuportPC(pGameServerItem->m_GameServer.dwServerRule);
+
+			if (cbDeviceType == DEVICE_TYPE_PC)
+			{
+				if (bSurportPC == false) continue;
+			}
+			else if (cbDeviceType != DEVICE_TYPE_PC)
+			{
+				if (bSuportMobile == false) continue;
+			}
+			tagGameServer ctagGameServer = pGameServerItem->m_GameServer;
+			//拷贝数据
+			if ((wKindID == INVALID_WORD) || (ctagGameServer.wKindID == wKindID))
+			{
+				GamePmd::tagGameServer* tagGameServer = tagGameServer_s2c.add_taggameserver();
+
+				tagGameServer->set_cbentermember(ctagGameServer.cbEnterMember);
+				tagGameServer->set_dwandroidcount(ctagGameServer.dwAndroidCount);
+				tagGameServer->set_dwfullcount(ctagGameServer.dwFullCount);
+				tagGameServer->set_dwonlinecount(ctagGameServer.dwOnLineCount);
+				tagGameServer->set_dwserverrule(ctagGameServer.dwServerRule);
+				tagGameServer->set_dwsetplayercount(ctagGameServer.dwSetPlayerCount);
+				tagGameServer->set_dwsurporttype(ctagGameServer.dwSurportType);
+				tagGameServer->set_lcellscore(ctagGameServer.lCellScore);
+				tagGameServer->set_lenterscore(ctagGameServer.lEnterScore);
+				tagGameServer->set_szgameinfomation(WHStringUtils::ws2utf8(WHStringUtils::s2ws(ctagGameServer.szGameInfomation)));
+				tagGameServer->set_szserveraddr(WHStringUtils::ws2utf8(WHStringUtils::s2ws(ctagGameServer.szServerAddr)));
+				tagGameServer->set_szservername(WHStringUtils::ws2utf8(WHStringUtils::s2ws(ctagGameServer.szServerName)));
+				tagGameServer->set_wkindid(ctagGameServer.wKindID);
+				tagGameServer->set_wnodeid(ctagGameServer.wNodeID);
+				tagGameServer->set_wserverid(ctagGameServer.wServerID);
+				tagGameServer->set_wserverkind(ctagGameServer.wServerKind);
+				tagGameServer->set_wserverlevel(ctagGameServer.wServerLevel);
+				tagGameServer->set_wserverport(ctagGameServer.wServerPort);
+				tagGameServer->set_wservertype(ctagGameServer.wServerType);
+				tagGameServer->set_wsortid(ctagGameServer.wSortID);
+				tagGameServer->set_wtablecount(ctagGameServer.wTableCount);
+			}
+		}
+		int buffsize = tagGameServer_s2c.ByteSize();
+		if (buffsize > SOCKET_TCP_PACKET) {
+			throw TEXT("发送包太大");
+		}
+		if (buffsize > 0) {
+			std::shared_ptr<char> dataBuffer(new char[buffsize]);
+			if (tagGameServer_s2c.SerializeToArray(dataBuffer.get(), buffsize) == false) {
+				throw TEXT("Serialize tagGameServer_s2c error");
+			}
+			m_pITCPNetworkEngine->SendData(dwSocketID, MDM_GP_SERVER_LIST, SUB_GP_LIST_SERVER, dataBuffer.get(), buffsize);
+		}
+		
+		Position = NULL;
+		MatchPmd::tagGameMatch_s2c tagGameMatch_s2c;
+		tagGameMatch_s2c.Clear();
+
+		//枚举数据
+		for (DWORD i = 0; i < m_ServerListManager.GetGameServerCount(); i++)
+		{
+			//获取数据
+			CGameServerItem * pGameServerItem = m_ServerListManager.EmunGameServerItem(Position);
+			if (pGameServerItem == NULL) break;
+			if (pGameServerItem->IsMatchServer() == false) continue;
+
+			tagGameMatch ctagGameMatch = pGameServerItem->m_GameMatch;
+			MatchPmd::tagGameMatch* tagGameMatch = tagGameMatch_s2c.add_taggamematch();
+			
+			tagGameMatch->set_cbdeductarea(ctagGameMatch.cbDeductArea);
+			tagGameMatch->set_cbfeetype(ctagGameMatch.cbFeeType);
+			tagGameMatch->set_cbfiltergradesmode(ctagGameMatch.cbFilterGradesMode);
+			tagGameMatch->set_cbjoincondition(ctagGameMatch.cbJoinCondition);
+			tagGameMatch->set_cbmatchrule((char*)ctagGameMatch.cbMatchRule);
+			tagGameMatch->set_cbmatchtype(ctagGameMatch.cbMatchType);
+			tagGameMatch->set_cbmemberorder(ctagGameMatch.cbMemberOrder);
+			tagGameMatch->set_cbrankingmode(ctagGameMatch.cbRankingMode);
+			tagGameMatch->set_cbsignupmode(ctagGameMatch.cbSignupMode);
+			tagGameMatch->set_dwmatchid(ctagGameMatch.dwMatchID);
+			tagGameMatch->set_lexperience(ctagGameMatch.lExperience);
+			tagGameMatch->set_lsignupfee(ctagGameMatch.lSignupFee);
+			tagGameMatch->set_szmatchname(WHStringUtils::ws2utf8(WHStringUtils::s2ws(ctagGameMatch.szMatchName)));
+			tagGameMatch->set_wcountinnings(ctagGameMatch.wCountInnings);
+			tagGameMatch->set_wrewardcount(ctagGameMatch.wRewardCount);
+			tagGameMatch->set_wserverid(ctagGameMatch.wServerID);
+
+			for (DWORD index = 0; index < CountArray(ctagGameMatch.MatchRewardInfo); index++) {
+				tagMatchRewardInfo info = ctagGameMatch.MatchRewardInfo[index];
+				MatchPmd::tagMatchRewardInfo* matchrewardinfo = tagGameMatch->add_matchrewardinfo();
+				matchrewardinfo->set_dwrewardexperience(info.dwRewardExperience);
+				matchrewardinfo->set_lrewardgold(info.lRewardGold);
+				matchrewardinfo->set_lrewardingot(info.lRewardIngot);
+				matchrewardinfo->set_wrankid(info.wRankID);
+			}
 		}
 
-		//获取数据
-		pGameServerItem=m_ServerListManager.EmunGameServerItem(Position);
-		if (pGameServerItem==NULL) break;
-		//支持类型
-		bool bSuportMobile = CServerRule::IsSuportMobile(pGameServerItem->m_GameServer.dwServerRule);
-		bool bSurportPC = CServerRule::IsSuportPC(pGameServerItem->m_GameServer.dwServerRule);
+		int cbuffsize = tagGameMatch_s2c.ByteSize();
+		if (cbuffsize > SOCKET_TCP_PACKET) {
+			throw TEXT("发送包太大");
+		}
+		if (cbuffsize > 0) {
+			std::shared_ptr<char> dataBuffer(new char[cbuffsize]);
+			if (tagGameMatch_s2c.SerializeToArray(dataBuffer.get(), cbuffsize) == false) {
+				throw TEXT("Serialize tagGameMatch_s2c error");
+			}
+			m_pITCPNetworkEngine->SendData(dwSocketID, MDM_GP_SERVER_LIST, SUB_GP_LIST_MATCH, dataBuffer.get(), cbuffsize);
+		}
+		
+		if (m_wAVServerPort != 0 && m_dwAVServerAddr != 0)
+		{
+			//变量定义
+			VideoPmd::tagAVServerOption_s2c tagAVServerOption_s2c;
+			tagAVServerOption_s2c.Clear();
 
-		if(cbDeviceType == DEVICE_TYPE_PC)
-		{
-			if(bSurportPC == false) continue; 
-		}
-		else if(cbDeviceType != DEVICE_TYPE_PC)
-		{
-			if(bSuportMobile == false) continue;
-		}
+			tagAVServerOption_s2c.set_dwavserveraddr(m_dwAVServerAddr);
+			tagAVServerOption_s2c.set_wavserverport(m_wAVServerPort);
 
-		//拷贝数据
-		if ((wKindID==INVALID_WORD)||(pGameServerItem->m_GameServer.wKindID==wKindID))
-		{
-			CopyMemory(cbDataBuffer+wSendSize,&pGameServerItem->m_GameServer,sizeof(tagGameServer));
-			wSendSize+=sizeof(tagGameServer);
-		}
+			int c_buffsize = tagAVServerOption_s2c.ByteSize();
+			if (c_buffsize > SOCKET_TCP_PACKET) {
+				throw TEXT("发送包太大");
+			}
+			if (c_buffsize > 0) {
+				std::shared_ptr<char> dataBuffer(new char[c_buffsize]);
+				if (tagAVServerOption_s2c.SerializeToArray(dataBuffer.get(), c_buffsize) == false) {
+					throw TEXT("Serialize tagAVServerOption_s2c error");
+				}
+				//发送配置
+				m_pITCPNetworkEngine->SendData(dwSocketID, MDM_GP_SERVER_LIST, SUB_GP_VIDEO_OPTION, dataBuffer.get(), c_buffsize);
+			}
+		};
 	}
-
-	//发送剩余
-	if (wSendSize>0) m_pITCPNetworkEngine->SendData(dwSocketID,MDM_GP_SERVER_LIST,SUB_GP_LIST_SERVER,cbDataBuffer,wSendSize);
-	//设置变量
-	wSendSize=0;
-	ZeroMemory(cbDataBuffer,sizeof(cbDataBuffer));
-
-	//枚举数据
-	for (DWORD i=0;i<m_ServerListManager.GetGameServerCount();i++)
-	{
-		//发送数据
-		if ((wSendSize+sizeof(tagGameMatch))>sizeof(cbDataBuffer))
-		{
-			m_pITCPNetworkEngine->SendData(dwSocketID,MDM_GP_SERVER_LIST,SUB_GP_LIST_MATCH,cbDataBuffer,wSendSize);
-			wSendSize=0;
-		}
-
-		//获取数据
-		pGameServerItem=m_ServerListManager.EmunGameServerItem(Position);
-		if (pGameServerItem==NULL) break;
-		if (pGameServerItem->IsMatchServer()==false) continue;
-
-		//拷贝数据
-		if ((wKindID==INVALID_WORD)||(pGameServerItem->m_GameServer.wKindID==wKindID))
-		{
-			CopyMemory(cbDataBuffer+wSendSize,&pGameServerItem->m_GameMatch,sizeof(tagGameMatch));
-			wSendSize+=sizeof(tagGameMatch);
-		}
+	catch (LPCTSTR pszMessage) {
+		// 错误信息
+		TCHAR szString[512] = TEXT("");
+		_sntprintf(szString, CountArray(szString), TEXT("SendGameServerInfo 异常:%s"), pszMessage);
+		CTraceService::TraceString(szString, TraceLevel_Exception);
 	}
-
-	//发送剩余
-	if (wSendSize>0) m_pITCPNetworkEngine->SendData(dwSocketID,MDM_GP_SERVER_LIST,SUB_GP_LIST_MATCH,cbDataBuffer,wSendSize);
-
-	if(m_wAVServerPort!=0 && m_dwAVServerAddr!=0)
+	catch (...)
 	{
-		//变量定义
-		tagAVServerOption AVServerOption;
-		AVServerOption.wAVServerPort=m_wAVServerPort;
-		AVServerOption.dwAVServerAddr=m_dwAVServerAddr;
+		// 错误信息
+		CTraceService::TraceString("SendGameServerInfo 异常", TraceLevel_Exception);
 
-		//发送配置
-		m_pITCPNetworkEngine->SendData(dwSocketID,MDM_GP_SERVER_LIST,SUB_GP_VIDEO_OPTION,&AVServerOption,sizeof(AVServerOption));
-	};
-
+		//关闭连接
+		m_pITCPNetworkEngine->ShutDownSocket(dwSocketID);
+	}
 	return;
 }
 
 //等级配置
 VOID CAttemperEngineSink::SendGrowLevelConfig(DWORD dwSocketID)
 {
-	//构造结构
-	CMD_GP_GrowLevelConfig GrowLevelConfig;
-	GrowLevelConfig.wLevelCount = m_wLevelCount;
-	CopyMemory(GrowLevelConfig.GrowLevelItem,m_GrowLevelConfig,sizeof(tagGrowLevelConfig)*GrowLevelConfig.wLevelCount);
+	try
+	{
+		//构造结构
+		CMD_GP_GrowLevelConfig GrowLevelConfig;
+		GrowLevelConfig.wLevelCount = m_wLevelCount;
+		CopyMemory(GrowLevelConfig.GrowLevelItem, m_GrowLevelConfig, sizeof(tagGrowLevelConfig)*GrowLevelConfig.wLevelCount);
 
-	//发送数据
-	WORD wDataSize = sizeof(GrowLevelConfig)-sizeof(GrowLevelConfig.GrowLevelItem);
-	wDataSize += sizeof(tagGrowLevelConfig)*GrowLevelConfig.wLevelCount;
-	m_pITCPNetworkEngine->SendData(dwSocketID,MDM_GP_LOGON,SUB_GP_GROWLEVEL_CONFIG,&GrowLevelConfig,wDataSize);
+		GrowLevelPmd::tagGrowLevelConfig_s2c tagGrowLevelConfig_s2c;
+		tagGrowLevelConfig_s2c.Clear();
 
+		tagGrowLevelConfig_s2c.set_wlevelcount(GrowLevelConfig.wLevelCount);
+		for (DWORD index = 0; index < m_wLevelCount; index++) {
+			tagGrowLevelConfig info = GrowLevelConfig.GrowLevelItem[index];
+			GrowLevelPmd::tagGrowLevelConfig* growLevelConfig = tagGrowLevelConfig_s2c.add_growlevelitem();
+			growLevelConfig->set_dwexperience(info.dwExperience);
+			growLevelConfig->set_wlevelid(info.wLevelID);
+		}
+
+		int cbuffsize = tagGrowLevelConfig_s2c.ByteSize();
+		if (cbuffsize > SOCKET_TCP_PACKET) {
+			throw TEXT("发送包太大");
+		}
+		if (cbuffsize <= 0) {
+			return;
+		}
+		std::shared_ptr<char> dataBuffer(new char[cbuffsize]);
+		if (tagGrowLevelConfig_s2c.SerializeToArray(dataBuffer.get(), cbuffsize) == false) {
+			throw TEXT("Serialize tagGrowLevelConfig_s2c error");
+		}
+		m_pITCPNetworkEngine->SendData(dwSocketID, MDM_GP_LOGON, SUB_GP_GROWLEVEL_CONFIG, dataBuffer.get(), cbuffsize);
+
+	}
+	catch (LPCTSTR pszMessage) {
+		// 错误信息
+		TCHAR szString[512] = TEXT("");
+		_sntprintf(szString, CountArray(szString), TEXT("SendGrowLevelConfig 异常:%s"), pszMessage);
+		CTraceService::TraceString(szString, TraceLevel_Exception);
+	}
+	catch (...)
+	{
+		// 错误信息
+		CTraceService::TraceString("SendGrowLevelConfig 异常", TraceLevel_Exception);
+
+		//关闭连接
+		m_pITCPNetworkEngine->ShutDownSocket(dwSocketID);
+	}
 	return;
 }
 
 //道具类型
 VOID CAttemperEngineSink::SendGamePropertyTypeInfo(DWORD dwSocketID)
 {
-	//网络数据
-	WORD wSendSize=0;
-	BYTE cbDataBuffer[SOCKET_TCP_PACKET];
-
-	//枚举数据
-	POSITION Position=NULL;
-	CGamePropertyTypeItem * pGamePropertyTypeItem=NULL;
-	DWORD dwCount = m_GamePropertyListManager.GetGamePropertyTypeCount();
-
-	//枚举数据
-	for (DWORD i=0;i<dwCount;i++)
+	try
 	{
-		//发送数据
-		if ((wSendSize+sizeof(tagPropertyTypeItem))>sizeof(cbDataBuffer))
+		//枚举数据
+		POSITION Position = NULL;
+		DWORD dwCount = m_GamePropertyListManager.GetGamePropertyTypeCount();
+
+		propertyPmd::tagPropertyTypeItem_s2c tagPropertyTypeItem_s2c;
+		tagPropertyTypeItem_s2c.Clear();
+
+		//枚举数据
+		for (DWORD i = 0; i < dwCount; i++)
 		{
-			m_pITCPNetworkEngine->SendData(dwSocketID,MDM_GP_SERVER_LIST,SUB_GP_LIST_PROPERTY_TYPE,cbDataBuffer,wSendSize);
-			wSendSize=0;
+			//获取数据
+			CGamePropertyTypeItem * pGamePropertyTypeItem = m_GamePropertyListManager.EmunGamePropertyTypeItem(Position);
+			if (pGamePropertyTypeItem == NULL) break;
+
+			tagPropertyTypeItem ctagPropertyTypeItem = pGamePropertyTypeItem->m_PropertyTypeItem;
+
+			propertyPmd::tagPropertyTypeItem* tagPropertyTypeItem = tagPropertyTypeItem_s2c.add_tagpropertytypeitem();
+
+			tagPropertyTypeItem->set_dwsortid(ctagPropertyTypeItem.dwSortID);
+			tagPropertyTypeItem->set_dwtypeid(ctagPropertyTypeItem.dwTypeID);
+			tagPropertyTypeItem->set_sztypename(WHStringUtils::ws2utf8(WHStringUtils::s2ws(ctagPropertyTypeItem.szTypeName)));
 		}
 
-		//获取数据
-		pGamePropertyTypeItem=m_GamePropertyListManager.EmunGamePropertyTypeItem(Position);
-		if (pGamePropertyTypeItem==NULL) break;
-
-		//拷贝数据
-		CopyMemory(cbDataBuffer+wSendSize,&pGamePropertyTypeItem->m_PropertyTypeItem,sizeof(tagPropertyTypeItem));
-		wSendSize+=sizeof(tagPropertyTypeItem);
+		int cbuffsize = tagPropertyTypeItem_s2c.ByteSize();
+		if (cbuffsize > SOCKET_TCP_PACKET) {
+			throw TEXT("发送包太大");
+		}
+		if (cbuffsize <= 0) {
+			return;
+		}
+		std::shared_ptr<char> dataBuffer(new char[cbuffsize]);
+		if (tagPropertyTypeItem_s2c.SerializeToArray(dataBuffer.get(), cbuffsize) == false) {
+			throw TEXT("Serialize tagPropertyTypeItem_s2c error");
+		}
+		m_pITCPNetworkEngine->SendData(dwSocketID, MDM_GP_SERVER_LIST, SUB_GP_LIST_PROPERTY_TYPE, dataBuffer.get(), cbuffsize);
 	}
+	catch (LPCTSTR pszMessage) {
+		// 错误信息
+		TCHAR szString[512] = TEXT("");
+		_sntprintf(szString, CountArray(szString), TEXT("SendGamePropertyTypeInfo 异常:%s"), pszMessage);
+		CTraceService::TraceString(szString, TraceLevel_Exception);
+	}
+	catch (...)
+	{
+		// 错误信息
+		CTraceService::TraceString("SendGamePropertyTypeInfo 异常", TraceLevel_Exception);
 
-	//发送剩余
-	if (wSendSize>0) m_pITCPNetworkEngine->SendData(dwSocketID,MDM_GP_SERVER_LIST,SUB_GP_LIST_PROPERTY_TYPE,cbDataBuffer,wSendSize);
-
+		//关闭连接
+		m_pITCPNetworkEngine->ShutDownSocket(dwSocketID);
+	}
 	return;
 }
 
 //道具关系
 VOID CAttemperEngineSink::SendGamePropertyRelatInfo(DWORD dwSocketID)
 {
-	//网络数据
-	WORD wSendSize=0;
-	BYTE cbDataBuffer[SOCKET_TCP_PACKET];
-
-	//枚举数据
-	POSITION Position=NULL;
-	CGamePropertyRelatItem * pGamePropertyRelatItem=NULL;
-	DWORD dwCount = m_GamePropertyListManager.GetGamePropertyRelatCount();
-
-	//枚举数据
-	for (DWORD i=0;i<dwCount;i++)
+	try
 	{
-		//发送数据
-		if ((wSendSize+sizeof(tagPropertyRelatItem))>sizeof(cbDataBuffer))
+		//枚举数据
+		POSITION Position = NULL;
+		DWORD dwCount = m_GamePropertyListManager.GetGamePropertyRelatCount();
+
+		propertyPmd::tagPropertyRelatItem_s2c tagPropertyRelatItem_s2c;
+		tagPropertyRelatItem_s2c.Clear();
+
+		//枚举数据
+		for (DWORD i = 0; i < dwCount; i++)
 		{
-			m_pITCPNetworkEngine->SendData(dwSocketID,MDM_GP_SERVER_LIST,SUB_GP_LIST_PROPERTY_RELAT,cbDataBuffer,wSendSize);
-			wSendSize=0;
+			//获取数据
+			CGamePropertyRelatItem * pGamePropertyRelatItem = m_GamePropertyListManager.EmunGamePropertyRelatItem(Position);
+			if (pGamePropertyRelatItem == NULL) break;
+
+			tagPropertyRelatItem ctagPropertyRelatItem = pGamePropertyRelatItem->m_PropertyRelatItem;
+
+			propertyPmd::tagPropertyRelatItem* tagPropertyRelatItem = tagPropertyRelatItem_s2c.add_tagpropertyrelatitem();
+			tagPropertyRelatItem->set_dwpropertyid(ctagPropertyRelatItem.dwPropertyID);
+			tagPropertyRelatItem->set_dwtypeid(ctagPropertyRelatItem.dwTypeID);
 		}
 
-		//获取数据
-		pGamePropertyRelatItem=m_GamePropertyListManager.EmunGamePropertyRelatItem(Position);
-		if (pGamePropertyRelatItem==NULL) break;
-
-		//拷贝数据
-		CopyMemory(cbDataBuffer+wSendSize,&pGamePropertyRelatItem->m_PropertyRelatItem,sizeof(tagPropertyRelatItem));
-		wSendSize+=sizeof(tagPropertyRelatItem);
+		int cbuffsize = tagPropertyRelatItem_s2c.ByteSize();
+		if (cbuffsize > SOCKET_TCP_PACKET) {
+			throw TEXT("发送包太大");
+		}
+		if (cbuffsize <= 0) {
+			return;
+		}
+		std::shared_ptr<char> dataBuffer(new char[cbuffsize]);
+		if (tagPropertyRelatItem_s2c.SerializeToArray(dataBuffer.get(), cbuffsize) == false) {
+			throw TEXT("Serialize tagPropertyRelatItem_s2c error");
+		}
+		m_pITCPNetworkEngine->SendData(dwSocketID, MDM_GP_SERVER_LIST, SUB_GP_LIST_PROPERTY_RELAT, dataBuffer.get(), cbuffsize);
 	}
+	catch (LPCTSTR pszMessage) {
+		// 错误信息
+		TCHAR szString[512] = TEXT("");
+		_sntprintf(szString, CountArray(szString), TEXT("SendGamePropertyRelatInfo 异常:%s"), pszMessage);
+		CTraceService::TraceString(szString, TraceLevel_Exception);
+	}
+	catch (...)
+	{
+		// 错误信息
+		CTraceService::TraceString("SendGamePropertyRelatInfo 异常", TraceLevel_Exception);
 
-	//发送剩余
-	if (wSendSize>0) m_pITCPNetworkEngine->SendData(dwSocketID,MDM_GP_SERVER_LIST,SUB_GP_LIST_PROPERTY_RELAT,cbDataBuffer,wSendSize);
-
-
+		//关闭连接
+		m_pITCPNetworkEngine->ShutDownSocket(dwSocketID);
+	}
+	
 	return;
 }
 
 //发送道具
 VOID CAttemperEngineSink::SendGamePropertyInfo(DWORD dwSocketID)
 {
-	//网络数据
-	WORD wSendSize=0;
-	BYTE cbDataBuffer[SOCKET_TCP_PACKET];
-
-	//枚举数据
-	POSITION Position=NULL;
-	CGamePropertyItem * pGamePropertyItem=NULL;
-	DWORD dwCount = m_GamePropertyListManager.GetGamePropertyCount();
-
-	//枚举数据
-	for (DWORD i=0;i<dwCount;i++)
+	try
 	{
-		//发送数据
-		if ((wSendSize+sizeof(tagPropertyItem))>sizeof(cbDataBuffer))
+		//枚举数据
+		POSITION Position = NULL;
+		DWORD dwCount = m_GamePropertyListManager.GetGamePropertyCount();
+
+		propertyPmd::tagPropertyItem_s2c tagPropertyItem_s2c;
+		tagPropertyItem_s2c.Clear();
+
+		//枚举数据
+		for (DWORD i = 0; i < dwCount; i++)
 		{
-			m_pITCPNetworkEngine->SendData(dwSocketID,MDM_GP_SERVER_LIST,SUB_GP_LIST_PROPERTY,cbDataBuffer,wSendSize);
-			wSendSize=0;
+			//获取数据
+			CGamePropertyItem * pGamePropertyItem = m_GamePropertyListManager.EmunGamePropertyItem(Position);
+			if (pGamePropertyItem == NULL) break;
+
+			tagPropertyItem ctagPropertyItem = pGamePropertyItem->m_PropertyItem;
+			propertyPmd::tagPropertyItem* tagPropertyItem = tagPropertyItem_s2c.add_tagpropertyitem();
+
+			tagPropertyItem->set_cbrecommend(ctagPropertyItem.cbRecommend);
+			tagPropertyItem->set_cbservicearea(ctagPropertyItem.cbServiceArea);
+			tagPropertyItem->set_cbusearea(ctagPropertyItem.cbUseArea);
+			tagPropertyItem->set_dpropertycash(ctagPropertyItem.dPropertyCash);
+			tagPropertyItem->set_dwexchangeratio(ctagPropertyItem.dwExchangeRatio);
+			tagPropertyItem->set_dwpropertyid(ctagPropertyItem.dwPropertyID);
+			tagPropertyItem->set_dwpropertykind(ctagPropertyItem.dwPropertyKind);
+			tagPropertyItem->set_dwsortid(ctagPropertyItem.dwSortID);
+			tagPropertyItem->set_dwuseresultsgiftpackage(ctagPropertyItem.dwUseResultsGiftPackage);
+			tagPropertyItem->set_dwuseresultsvalidtime(ctagPropertyItem.dwUseResultsValidTime);
+			tagPropertyItem->set_dwuseresultsvalidtimescoremultiple(ctagPropertyItem.dwUseResultsValidTimeScoreMultiple);
+			tagPropertyItem->set_lpropertydiamond(ctagPropertyItem.lPropertyDiamond);
+			tagPropertyItem->set_lpropertygold(ctagPropertyItem.lPropertyGold);
+			tagPropertyItem->set_lpropertyloveliness(ctagPropertyItem.lPropertyLoveLiness);
+			tagPropertyItem->set_lpropertyusermedal(ctagPropertyItem.lPropertyUserMedal);
+			tagPropertyItem->set_lrecvloveliness(ctagPropertyItem.lRecvLoveLiness);
+			tagPropertyItem->set_lsendloveliness(ctagPropertyItem.lSendLoveLiness);
+			tagPropertyItem->set_luseresultsgold(ctagPropertyItem.lUseResultsGold);
+			tagPropertyItem->set_szname(WHStringUtils::ws2utf8(WHStringUtils::s2ws(ctagPropertyItem.szName)));
+			tagPropertyItem->set_szregulationsinfo(WHStringUtils::ws2utf8(WHStringUtils::s2ws(ctagPropertyItem.szRegulationsInfo)));
 		}
 
-		//获取数据
-		pGamePropertyItem=m_GamePropertyListManager.EmunGamePropertyItem(Position);
-		if (pGamePropertyItem==NULL) break;
-
-		//拷贝数据
-		CopyMemory(cbDataBuffer+wSendSize,&pGamePropertyItem->m_PropertyItem,sizeof(tagPropertyItem));
-		wSendSize+=sizeof(tagPropertyItem);
+		int cbuffsize = tagPropertyItem_s2c.ByteSize();
+		if (cbuffsize > SOCKET_TCP_PACKET) {
+			throw TEXT("发送包太大");
+		}
+		if (cbuffsize <= 0) {
+			return;
+		}
+		std::shared_ptr<char> dataBuffer(new char[cbuffsize]);
+		if (tagPropertyItem_s2c.SerializeToArray(dataBuffer.get(), cbuffsize) == false) {
+			throw TEXT("Serialize tagPropertyItem_s2c error");
+		}
+		m_pITCPNetworkEngine->SendData(dwSocketID, MDM_GP_SERVER_LIST, SUB_GP_LIST_PROPERTY, dataBuffer.get(), cbuffsize);
 	}
+	catch (LPCTSTR pszMessage) {
+		// 错误信息
+		TCHAR szString[512] = TEXT("");
+		_sntprintf(szString, CountArray(szString), TEXT("SendGamePropertyInfo 异常:%s"), pszMessage);
+		CTraceService::TraceString(szString, TraceLevel_Exception);
+	}
+	catch (...)
+	{
+		// 错误信息
+		CTraceService::TraceString("SendGamePropertyInfo 异常", TraceLevel_Exception);
 
-	//发送剩余
-	if (wSendSize>0) m_pITCPNetworkEngine->SendData(dwSocketID,MDM_GP_SERVER_LIST,SUB_GP_LIST_PROPERTY,cbDataBuffer,wSendSize);
-
+		//关闭连接
+		m_pITCPNetworkEngine->ShutDownSocket(dwSocketID);
+	}
 
 	return;
 }
@@ -6867,37 +7265,58 @@ VOID CAttemperEngineSink::SendGamePropertyInfo(DWORD dwSocketID)
 //发送道具
 VOID CAttemperEngineSink::SendGamePropertySubInfo(DWORD dwSocketID)
 {
-	//网络数据
-	WORD wSendSize=0;
-	BYTE cbDataBuffer[SOCKET_TCP_PACKET];
-
-	//枚举数据
-	POSITION Position=NULL;
-	CGamePropertySubItem * pGamePropertySubItem=NULL;
-	DWORD dwCount = m_GamePropertyListManager.GetGamePropertySubCount();
-
-	//枚举数据
-	for (DWORD i=0;i<dwCount;i++)
+	try
 	{
-		//发送数据
-		if ((wSendSize+sizeof(CGamePropertySubItem))>sizeof(cbDataBuffer))
+		//枚举数据
+		POSITION Position = NULL;
+		DWORD dwCount = m_GamePropertyListManager.GetGamePropertySubCount();
+
+		propertyPmd::tagPropertySubItem_s2c tagPropertySubItem_s2c;
+		tagPropertySubItem_s2c.Clear();
+
+		//枚举数据
+		for (DWORD i = 0; i < dwCount; i++)
 		{
-			m_pITCPNetworkEngine->SendData(dwSocketID,MDM_GP_SERVER_LIST,SUB_GP_LIST_PROPERTY_SUB,cbDataBuffer,wSendSize);
-			wSendSize=0;
+			//获取数据
+			CGamePropertySubItem * pGamePropertySubItem = m_GamePropertyListManager.EmunGamePropertySubItem(Position);
+			if (pGamePropertySubItem == NULL) break;
+
+			tagPropertySubItem ctagPropertySubItem = pGamePropertySubItem->m_PropertySubItem;
+			propertyPmd::tagPropertySubItem* tagPropertySubItem = tagPropertySubItem_s2c.add_tagpropertysubitem();
+
+			tagPropertySubItem->set_dwownerpropertyid(ctagPropertySubItem.dwOwnerPropertyID);
+			tagPropertySubItem->set_dwpropertycount(ctagPropertySubItem.dwPropertyCount);
+			tagPropertySubItem->set_dwpropertyid(ctagPropertySubItem.dwPropertyID);
+			tagPropertySubItem->set_dwsortid(ctagPropertySubItem.dwSortID);
 		}
 
-		//获取数据
-		pGamePropertySubItem=m_GamePropertyListManager.EmunGamePropertySubItem(Position);
-		if (pGamePropertySubItem==NULL) break;
-
-		//拷贝数据
-		CopyMemory(cbDataBuffer+wSendSize,&pGamePropertySubItem->m_PropertySubItem,sizeof(tagPropertySubItem));
-		wSendSize+=sizeof(tagPropertySubItem);
+		int cbuffsize = tagPropertySubItem_s2c.ByteSize();
+		if (cbuffsize > SOCKET_TCP_PACKET) {
+			throw TEXT("发送包太大");
+		}
+		if (cbuffsize <= 0) {
+			return;
+		}
+		std::shared_ptr<char> dataBuffer(new char[cbuffsize]);
+		if (tagPropertySubItem_s2c.SerializeToArray(dataBuffer.get(), cbuffsize) == false) {
+			throw TEXT("Serialize tagPropertySubItem_s2c error");
+		}
+		m_pITCPNetworkEngine->SendData(dwSocketID, MDM_GP_SERVER_LIST, SUB_GP_LIST_PROPERTY_SUB, dataBuffer.get(), cbuffsize);
 	}
+	catch (LPCTSTR pszMessage) {
+		// 错误信息
+		TCHAR szString[512] = TEXT("");
+		_sntprintf(szString, CountArray(szString), TEXT("SendGamePropertySubInfo 异常:%s"), pszMessage);
+		CTraceService::TraceString(szString, TraceLevel_Exception);
+	}
+	catch (...)
+	{
+		// 错误信息
+		CTraceService::TraceString("SendGamePropertySubInfo 异常", TraceLevel_Exception);
 
-	//发送剩余
-	if (wSendSize>0) m_pITCPNetworkEngine->SendData(dwSocketID,MDM_GP_SERVER_LIST,SUB_GP_LIST_PROPERTY_SUB,cbDataBuffer,wSendSize);
-
+		//关闭连接
+		m_pITCPNetworkEngine->ShutDownSocket(dwSocketID);
+	}
 
 	return;
 }
@@ -6905,24 +7324,105 @@ VOID CAttemperEngineSink::SendGamePropertySubInfo(DWORD dwSocketID)
 //会员配置
 VOID CAttemperEngineSink::SendMemberConfig(DWORD dwContextID)
 {
-	//会员配置
-	CMD_GP_MemberParameterResult MemberParameterResult;
-	MemberParameterResult.wMemberCount = m_wMemberCount;
-	CopyMemory(MemberParameterResult.MemberParameter,m_MemberParameter,sizeof(tagMemberParameterNew)*m_wMemberCount);
+	try
+	{
+		//会员配置
+		CMD_GP_MemberParameterResult MemberParameterResult;
+		MemberParameterResult.wMemberCount = m_wMemberCount;
+		CopyMemory(MemberParameterResult.MemberParameter, m_MemberParameter, sizeof(tagMemberParameterNew)*m_wMemberCount);
 
-	WORD wConfigMemberHead=sizeof(MemberParameterResult)-sizeof(MemberParameterResult.MemberParameter);
-	WORD wConfigMemberInfo=MemberParameterResult.wMemberCount*sizeof(MemberParameterResult.MemberParameter[0]);
-	m_pITCPNetworkEngine->SendData(dwContextID,MDM_GP_LOGON,SUB_GP_MEMBER_PARAMETER_RESULT,&MemberParameterResult,wConfigMemberHead+wConfigMemberInfo);
+		MemberPmd::MemberParameterResult_s2c MemberParameterResult_s2c;
+		MemberParameterResult_s2c.Clear();
 
+		MemberParameterResult_s2c.set_wmembercount(MemberParameterResult.wMemberCount);
+		for (DWORD index = 0; index < MemberParameterResult.wMemberCount; index++) {
+			tagMemberParameterNew info = MemberParameterResult.MemberParameter[index];
+			MemberPmd::tagMemberParameterNew* memberParameterNew = MemberParameterResult_s2c.add_memberparameter();
+			memberParameterNew->set_cbmemberorder(info.cbMemberOrder);
+			memberParameterNew->set_dwmemberdaygiftid(info.dwMemberDayGiftID);
+			memberParameterNew->set_dwmemberdaypresent(info.dwMemberDayPresent);
+			memberParameterNew->set_dwmemberinsure(info.dwMemberInsure);
+			memberParameterNew->set_dwmemberright(info.dwMemberRight);
+			memberParameterNew->set_dwmembershop(info.dwMemberShop);
+			memberParameterNew->set_dwmembertask(info.dwMemberTask);
+			memberParameterNew->set_szmembername(WHStringUtils::ws2utf8(WHStringUtils::s2ws(info.szMemberName)));
+		}
+
+		int cbuffsize = MemberParameterResult_s2c.ByteSize();
+		if (cbuffsize > SOCKET_TCP_PACKET) {
+			throw TEXT("发送包太大");
+		}
+		if (cbuffsize <= 0) {
+			return;
+		}
+		std::shared_ptr<char> dataBuffer(new char[cbuffsize]);
+		if (MemberParameterResult_s2c.SerializeToArray(dataBuffer.get(), cbuffsize) == false) {
+			throw TEXT("Serialize MemberParameterResult_s2c error");
+		}
+		m_pITCPNetworkEngine->SendData(dwContextID, MDM_GP_LOGON, SUB_GP_MEMBER_PARAMETER_RESULT, dataBuffer.get(), cbuffsize);
+
+	}
+	catch (LPCTSTR pszMessage) {
+		// 错误信息
+		TCHAR szString[512] = TEXT("");
+		_sntprintf(szString, CountArray(szString), TEXT("SendMemberConfig 异常:%s"), pszMessage);
+		CTraceService::TraceString(szString, TraceLevel_Exception);
+	}
+	catch (...)
+	{
+		// 错误信息
+		CTraceService::TraceString("SendMemberConfig 异常", TraceLevel_Exception);
+
+		//关闭连接
+		m_pITCPNetworkEngine->ShutDownSocket(dwContextID);
+	}
+	
 	return;
 }
 
 VOID CAttemperEngineSink::SendRealAuthConfig(DWORD dwContextID)
 {
-	//实名认证
-	CMD_GP_RealAuthParameter CmdParameter;
-	CopyMemory(&CmdParameter,&m_AuthRealParameter,sizeof(CmdParameter));
-	m_pITCPNetworkEngine->SendData(dwContextID,MDM_GP_LOGON,SUB_GP_REAL_AUTH_CONFIG,&CmdParameter,sizeof(CmdParameter));
+	try
+	{
+		//实名认证
+		CMD_GP_RealAuthParameter CmdParameter;
+		CopyMemory(&CmdParameter, &m_AuthRealParameter, sizeof(CmdParameter));
+
+		RealAuthPmd::RealAuthParameter_s2c RealAuthParameter_s2c;
+		RealAuthParameter_s2c.Clear();
+
+		RealAuthParameter_s2c.set_dwauthentdisable(CmdParameter.dwAuthentDisable);
+		RealAuthParameter_s2c.set_dwauthrealaward(CmdParameter.dwAuthRealAward);
+
+		int cbuffsize = RealAuthParameter_s2c.ByteSize();
+		if (cbuffsize > SOCKET_TCP_PACKET) {
+			throw TEXT("发送包太大");
+		}
+		if (cbuffsize <= 0) {
+			return;
+		}
+		std::shared_ptr<char> dataBuffer(new char[cbuffsize]);
+		if (RealAuthParameter_s2c.SerializeToArray(dataBuffer.get(), cbuffsize) == false) {
+			throw TEXT("Serialize RealAuthParameter_s2c error");
+		}
+
+		m_pITCPNetworkEngine->SendData(dwContextID, MDM_GP_LOGON, SUB_GP_REAL_AUTH_CONFIG, dataBuffer.get(), cbuffsize);
+	}
+	catch (LPCTSTR pszMessage) {
+		// 错误信息
+		TCHAR szString[512] = TEXT("");
+		_sntprintf(szString, CountArray(szString), TEXT("SendRealAuthConfig 异常:%s"), pszMessage);
+		CTraceService::TraceString(szString, TraceLevel_Exception);
+	}
+	catch (...)
+	{
+		// 错误信息
+		CTraceService::TraceString("SendRealAuthConfig 异常", TraceLevel_Exception);
+
+		//关闭连接
+		m_pITCPNetworkEngine->ShutDownSocket(dwContextID);
+	}
+
 	return;
 }
 

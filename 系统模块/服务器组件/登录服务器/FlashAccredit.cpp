@@ -54,7 +54,7 @@ bool CFlashAccredit::StartService()
 	}
 
 	//绑定链接
-	if (bind(m_hServerSocket,(SOCKADDR*)&SocketAddr,sizeof(SocketAddr))==SOCKET_ERROR)
+	if (::bind(m_hServerSocket,(SOCKADDR*)&SocketAddr,sizeof(SocketAddr))==SOCKET_ERROR)
 	{
 		LPCTSTR pszString=TEXT("网络绑定发生错误，网络启动失败");
 		AfxMessageBox(pszString);

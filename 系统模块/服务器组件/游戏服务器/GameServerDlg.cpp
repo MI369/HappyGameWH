@@ -296,12 +296,9 @@ VOID CGameServerDlg::UpdateParameterStatus(tagModuleInitParameter & ModuleInitPa
 	//监听端口
 	if (m_ModuleInitParameter.GameServiceOption.wServerPort==0)
 	{
-		SetDlgItemText(IDC_SERVER_PORT,TEXT("自动适配"));
+		m_ModuleInitParameter.GameServiceOption.wServerPort = 6000;
 	}
-	else
-	{
-		SetDlgItemInt(IDC_SERVER_PORT,m_ModuleInitParameter.GameServiceOption.wServerPort);
-	}
+	SetDlgItemInt(IDC_SERVER_PORT, m_ModuleInitParameter.GameServiceOption.wServerPort);
 
 	//设置模块
 	LPCTSTR pszServerDLLName=m_ModuleInitParameter.GameServiceAttrib.szServerDLLName;

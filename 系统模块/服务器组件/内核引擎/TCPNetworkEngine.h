@@ -280,7 +280,7 @@ private:
     // 发送判断
     inline bool SendVerdict(WORD wRountID);
     // 获取结构
-    inline COverLappedSend * GetSendOverLapped(WORD wPacketSize);
+    inline COverLappedSend * GetSendOverLapped(WORD wPacketSize,bool flag = true);
 };
 
 //////////////////////////////////////////////////////////////////////////////////

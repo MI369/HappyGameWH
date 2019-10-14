@@ -420,6 +420,7 @@ VOID CDataBaseAide::AddParameterOutput(LPCTSTR pszItem, LPWSTR pszString, UINT u
     m_pIDataBase->AddParameter(pszItem, adVarChar, ParameterDirection, uSize, CDBVarValue(pszString));
     return;
 }
+
 LONG CDataBaseAide::GetReturnValue()
 {
     ASSERT(m_pIDataBase != NULL);

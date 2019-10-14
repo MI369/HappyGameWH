@@ -772,7 +772,7 @@ bool CDataBaseEngineSink::OnRequestLogonVisitor(DWORD dwContextID, VOID * pData,
 
 		//构造参数
 		m_AccountsDBAide.ResetParameter();
-		m_AccountsDBAide.AddParameter(TEXT("@cbPlatformID"),pVisitorLogon->cbPlatformID);
+		m_AccountsDBAide.AddParameter(TEXT("@cbLogonMode"),pVisitorLogon->cbPlatformID);
 		m_AccountsDBAide.AddParameter(TEXT("@strClientIP"),szClientAddr);
 		m_AccountsDBAide.AddParameter(TEXT("@strMachineID"),pVisitorLogon->szMachineID);
 
@@ -2569,8 +2569,7 @@ void Hex2Char(char *szHex, unsigned char & rch)
 	}
 }
 
-
-///十六进制char* 转 Binary char*函数
+//十六进制char* 转 Binary char*函数
 void HexStr2CharStr( char *pszHexStr, int iSize,  byte *pucCharStr)
 {
 	int i;
@@ -2778,6 +2777,7 @@ bool CDataBaseEngineSink::OnRequestQueryPersonalRule(DWORD dwContextID, VOID * p
 
 	return true;
 }
+
 //写入房间结束时间
 bool CDataBaseEngineSink::OnRequestCloseRoomWriteDissumeTime(DWORD dwContextID, VOID * pData, WORD wDataSize)
 {
@@ -3303,6 +3303,7 @@ bool CDataBaseEngineSink::OnRequestDeleteParameter(DWORD dwContextID, VOID * pDa
 
 	return true;
 }
+
 //绑定推广
 bool CDataBaseEngineSink::OnRequestBindSpreader(DWORD dwContextID, VOID * pData, WORD wDataSize)
 {
@@ -3374,6 +3375,7 @@ bool CDataBaseEngineSink::OnRequestBindSpreader(DWORD dwContextID, VOID * pData,
 
 	return true;
 }
+
 //查询资料
 bool CDataBaseEngineSink::OnRequestQueryIndividual(DWORD dwContextID, VOID * pData, WORD wDataSize)
 {
@@ -3911,7 +3913,6 @@ bool CDataBaseEngineSink::OnRequestTaskGiveUp( DWORD dwContextID, VOID * pData, 
 		return false;
 	}
 }
-
 
 //领取任务
 bool CDataBaseEngineSink::OnRequestTaskTake(DWORD dwContextID, VOID * pData, WORD wDataSize)
@@ -5287,7 +5288,6 @@ bool CDataBaseEngineSink::OnRequestQuerySendPresent(DWORD dwContextID, VOID * pD
 	return true;
 }
 
-
 bool CDataBaseEngineSink::OnRequestGetSendPresent(DWORD dwContextID, VOID * pData, WORD wDataSize)
 {
 	try
@@ -5842,7 +5842,6 @@ bool CDataBaseEngineSink::OnRequestExchangeScoreByIngot(DWORD dwContextID, VOID 
 	}
 }
 
-
 //兑换游戏币
 bool CDataBaseEngineSink::OnRequestExchangeScoreByBeans(DWORD dwContextID, VOID * pData, WORD wDataSize)
 {
@@ -6368,6 +6367,7 @@ bool CDataBaseEngineSink::OnRequestVideoDetailsByRoomID(DWORD dwContextID, VOID 
 		return false;
 	}
 }
+
 //查询回放码
 bool CDataBaseEngineSink::OnRequestPlayBackCodeYZ(DWORD dwContextID, VOID * pData, WORD wDataSize)
 {

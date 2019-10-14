@@ -500,7 +500,8 @@ bool CAttemperEngine::OnAsynchronismEngineData(WORD wIdentifier, VOID * pData, W
             catch (...) {}
 
             // Ê§°Ü´¦Àí
-            if (bSuccess == false) m_pITCPNetworkEngine->CloseSocket(pReadEvent->dwSocketID);
+            if (bSuccess == false) 
+				m_pITCPNetworkEngine->CloseSocket(pReadEvent->dwSocketID);
 
             return true;
         }

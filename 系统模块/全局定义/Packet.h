@@ -109,6 +109,7 @@ struct UDP_Buffer
 #define MDM_KN_COMMAND				0									//内核命令
 #define SUB_KN_DETECT_SOCKET		1									//检测命令
 #define SUB_KN_VALIDATE_SOCKET		2									//验证命令
+#define SUB_KN_SHUT_DOWN_SOCKET     3                                   //中断网络
 
 //////////////////////////////////////////////////////////////////////////////////
 //传输数据

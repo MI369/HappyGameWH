@@ -32,9 +32,6 @@
     <Filter Include="websocket">
       <UniqueIdentifier>{28f5bbc3-98ad-45d0-9bba-492eaa22f991}</UniqueIdentifier>
     </Filter>
-    <Filter Include="protobuf">
-      <UniqueIdentifier>{5a505e7e-614c-458a-9ace-88731ea7227e}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Res\KernelEngine.ico">
@@ -106,12 +103,6 @@
     <ClCompile Include="zlreactor\base\StringUtil.cpp">
       <Filter>websocket</Filter>
     </ClCompile>
-    <ClCompile Include="CMessageSerializer.cpp">
-      <Filter>protobuf</Filter>
-    </ClCompile>
-    <ClCompile Include="CProtobufEngine.cpp">
-      <Filter>protobuf</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="KernelEngineHead.h">
@@ -173,15 +164,6 @@
     </ClInclude>
     <ClInclude Include="zlreactor\base\StringUtil.h">
       <Filter>websocket</Filter>
-    </ClInclude>
-    <ClInclude Include="CMessageSerializer.h">
-      <Filter>protobuf</Filter>
-    </ClInclude>
-    <ClInclude Include="CProtobufEngine.h">
-      <Filter>protobuf</Filter>
-    </ClInclude>
-    <ClInclude Include="protobufHead.h">
-      <Filter>protobuf</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -836,6 +836,7 @@ public:
 };
 
 //////////////////////////////////////////////////////////////////////////////////
+
 // ×é¼þ¸¨ÖúÀà
 
 DECLARE_MODULE_HELPER(DataBase, KERNEL_ENGINE_DLL_NAME, "CreateDataBase")
@@ -856,7 +857,6 @@ DECLARE_MODULE_HELPER(TraceServiceManager, KERNEL_ENGINE_DLL_NAME, "CreateTraceS
 #include "DataBaseAide.h"
 #include "TraceService.h"
 #include "ProcessException.h"
-#include "CProtobufEngine.h"
 #endif
 
 //////////////////////////////////////////////////////////////////////////////////

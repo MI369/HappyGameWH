@@ -523,6 +523,8 @@ public:
 	VOID OnBnClickedNext();
 	//完成按钮
 	VOID OnBnClickedFinish();
+	//保存MobileParameter.ini
+	VOID SaveData();
 
 	DECLARE_MESSAGE_MAP()
 };

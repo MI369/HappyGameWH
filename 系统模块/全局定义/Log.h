@@ -4,6 +4,7 @@
 #include <time.h>
 #include <direct.h> 
 #include <mmsystem.h>
+#include <memory>
 #pragma comment(lib, "winmm.lib")
 
 // 将宽字节wchar_t* 转换 单字节char*
@@ -51,7 +52,30 @@ static void AnsiToUnicode( const char* szStr , wchar_t *szDes)
 	DWORD num=MultiByteToWideChar(CP_ACP,0,szStr,-1,NULL,0);  
   
 	//多字节转换为宽字节  
-	MultiByteToWideChar(CP_ACP,0,szStr,-1,szDes,num);  
+	MultiByteToWideChar(CP_ACP,0,szStr,-1,szDes,num);
+}
+
+static char* UnicodeToUtf8( const wchar_t* szStr )
+{
+	int nLen = WideCharToMultiByte(CP_UTF8, 0, szStr, -1, NULL, 0, NULL, NULL);
+	if (nLen == 0)
+	{
+		return NULL;
+	}
+	char* pResult = new char[nLen];
+	WideCharToMultiByte(CP_UTF8, 0, szStr, -1, pResult, nLen, NULL, NULL);
+	return pResult;
+}
+
+static void Utf8ToUnicode( const char* szStr , wchar_t *szDes)
+{
+	if (NULL == szDes) return;
+
+	//计算pChar所指向的多字节字符串相当于多少个宽字节  
+	DWORD num=MultiByteToWideChar(CP_UTF8,0,szStr,-1,NULL,0);
+  
+	//多字节转换为宽字节
+	MultiByteToWideChar(CP_UTF8,0,szStr,-1,szDes,num);
 }
 
 static void DebugPrintf(const char* pszFormat, ...)
@@ -160,4 +184,57 @@ static void WriteLog( TCHAR * pText, ... )
 	pResult = NULL;
 }
 
+// debug log
+static void _DebugLog(const char* func, int line, const char* pszFormat, ...)
+{
+	static BOOL con = false;
+	static FILE* fp = 0;
+	if (!con) {
+		con = AllocConsole();
+		freopen_s(&fp, "CONOUT$", "w", stdout);
+		SetConsoleOutputCP(65001); //UTF8
+		// Remove close button
+		HWND handle = GetConsoleWindow();
+		HMENU hMenu = GetSystemMenu(handle, false);
+		// DeleteMenu(hMenu, SC_CLOSE, MF_BYCOMMAND);
+    EnableMenuItem(hMenu, SC_CLOSE, MF_GRAYED);
+	}
+	char sLog[2048];
+	va_list args; 
+	va_start(args, pszFormat);
+	int ret = _vsnprintf_s(sLog, sizeof(sLog), _TRUNCATE, pszFormat, args); 
+	va_end(args);
 
+	SYSTEMTIME SystemTime;
+	GetLocalTime(&SystemTime);
+	printf("%02d-%02d %02d:%02d:%02d:[%s:%d]%s %s\n",
+		SystemTime.wMonth, SystemTime.wDay, SystemTime.wHour, SystemTime.wMinute, SystemTime.wSecond,
+		func, line,
+		ret < 0 ? "T]":"", sLog);
+}
+
+#define DebugLog(format, ...) _DebugLog(__FUNCTION__, __LINE__, format, __VA_ARGS__)
+
+// debug log
+static void DebugLogW(const wchar_t* pszFormat, ...)
+{
+	wchar_t sLog[4096];
+	va_list args;
+	va_start(args, pszFormat);
+	int ret = vswprintf_s(sLog, sizeof(sLog), pszFormat, args);
+	va_end(args);
+
+	char* pLog = UnicodeToAnsi(sLog);
+	if (!pLog) {
+		printf("convert form u to a error");
+		return ;
+	}
+
+	SYSTEMTIME SystemTime;
+	GetLocalTime(&SystemTime);
+	printf("%02d-%02d %02d:%02d:%02d:%s %s\n", SystemTime.wMonth, SystemTime.wDay, SystemTime.wHour, SystemTime.wMinute, SystemTime.wSecond, ret < 0 ? "T]":"", pLog);
+	delete [] pLog;
+}
+
+#define UNI2ANC_S(s,d) char*d=UnicodeToAnsi((s));std::unique_ptr<char[],std::default_delete<char[]>> safe_##d(d)
+#define UNI2UTF_S(s,d) char*d=UnicodeToUtf8((s));std::unique_ptr<char[],std::default_delete<char[]>> safe_##d(d)

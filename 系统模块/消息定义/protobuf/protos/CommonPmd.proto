@@ -1,22 +1,26 @@
 syntax = "proto3";    //指定proto版本3.x
-package PlatPmd;  
+package CommonPmd;  
 
-message CommonPmdCommand{ 
-	enum CommonPmdEnum {   
-		param_nullmessage			= 0x00;        
-		param_common_personinfo		= 0x01;        
-	} 
-}
+message SYSTEMTIME {
+    int32 wYear 			= 1;
+    int32 wMonth			= 2;
+    int32 wDayOfWeek		= 3;
+    int32 wDay				= 4;
+    int32 wHour				= 5;
+    int32 wMinute			= 6;
+    int32 wSecond			= 7;
+    int32 wMilliseconds		= 8;
+};
 
-message common_personinfo
+message personinfo
 {
 	//属性资料
 	int32	wfaceid					= 1;	//头像标识
-	uint32	dwuserid				= 2;	//用户 i d
-	uint32	dwgameid				= 3;	//游戏 i d
-	uint32	dwgroupid				= 4;	//社团标识
-	uint32	dwcustomid				= 5;	//自定标识	
-	uint32	dwexperience			= 6;	//经验数值
+	uint64	dwuserid				= 2;	//用户 i d
+	uint64	dwgameid				= 3;	//游戏 i d
+	uint64	dwgroupid				= 4;	//社团标识
+	uint64	dwcustomid				= 5;	//自定标识	
+	uint64	dwexperience			= 6;	//经验数值
 	uint64	lloveliness				= 7;	//用户魅力
 
 	//用户成绩
@@ -26,15 +30,25 @@ message common_personinfo
 	double	duserbeans				= 11;	//用户游戏豆
 
 	//用户信息
-	bytes	cbgender				= 12;	//用户性别
-	bytes	cbmoormachine			= 13;	//锁定机器
+	uint64	cbgender				= 12;	//用户性别
+	uint64	cbmoormachine			= 13;	//锁定机器
 	string	szaccounts				= 14;	//登录帐号
 	string	sznickname				= 15;	//用户昵称
 	string	szdynamicpass			= 16;	//动态密码
-	string	szgroupname				= 17;	//社团名字
+	string	szPassword				= 17;	//用户密码
+	string	szgroupname				= 18;	//社团名字
 
 	//配置信息
-	bytes	cbinsureenabled			= 18;	//银行使能标识
-	bytes	cbshowserverstatus		= 19;   //显示服务器状态
-	bytes	cbisagent				= 20;	//代理标识
-}
+	uint64	cbinsureenabled			= 19;	//银行使能标识
+	uint64	cbshowserverstatus		= 20;   //显示服务器状态
+	uint64	cbisagent				= 21;	//代理标识
+	
+	string	szUnderWrite			= 22;	//个性签名
+	
+	int32 cbMemberOrder				= 23;	//会员等级
+    SYSTEMTIME MemberOverDate		= 24;	//到期时间
+	
+	uint64	dwCheckUserRight		= 25;	//检查权限
+	
+	string szDescribeString			= 26;	//描述消息
+};

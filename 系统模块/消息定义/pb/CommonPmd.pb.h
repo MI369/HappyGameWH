@@ -27,19 +27,18 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
-#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
-namespace PlatPmd {
-class CommonPmdCommand;
-class CommonPmdCommandDefaultTypeInternal;
-extern CommonPmdCommandDefaultTypeInternal _CommonPmdCommand_default_instance_;
-class common_personinfo;
-class common_personinfoDefaultTypeInternal;
-extern common_personinfoDefaultTypeInternal _common_personinfo_default_instance_;
-}  // namespace PlatPmd
+namespace CommonPmd {
+class SYSTEMTIME;
+class SYSTEMTIMEDefaultTypeInternal;
+extern SYSTEMTIMEDefaultTypeInternal _SYSTEMTIME_default_instance_;
+class personinfo;
+class personinfoDefaultTypeInternal;
+extern personinfoDefaultTypeInternal _personinfo_default_instance_;
+}  // namespace CommonPmd
 
-namespace PlatPmd {
+namespace CommonPmd {
 
 namespace protobuf_CommonPmd_2eproto {
 // Internal implementation detail -- do not call these.
@@ -52,60 +51,39 @@ void AddDescriptors();
 void InitDefaults();
 }  // namespace protobuf_CommonPmd_2eproto
 
-enum CommonPmdCommand_CommonPmdEnum {
-  CommonPmdCommand_CommonPmdEnum_param_nullmessage = 0,
-  CommonPmdCommand_CommonPmdEnum_param_common_personinfo = 1,
-  CommonPmdCommand_CommonPmdEnum_CommonPmdCommand_CommonPmdEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
-  CommonPmdCommand_CommonPmdEnum_CommonPmdCommand_CommonPmdEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
-};
-bool CommonPmdCommand_CommonPmdEnum_IsValid(int value);
-const CommonPmdCommand_CommonPmdEnum CommonPmdCommand_CommonPmdEnum_CommonPmdEnum_MIN = CommonPmdCommand_CommonPmdEnum_param_nullmessage;
-const CommonPmdCommand_CommonPmdEnum CommonPmdCommand_CommonPmdEnum_CommonPmdEnum_MAX = CommonPmdCommand_CommonPmdEnum_param_common_personinfo;
-const int CommonPmdCommand_CommonPmdEnum_CommonPmdEnum_ARRAYSIZE = CommonPmdCommand_CommonPmdEnum_CommonPmdEnum_MAX + 1;
-
-const ::google::protobuf::EnumDescriptor* CommonPmdCommand_CommonPmdEnum_descriptor();
-inline const ::std::string& CommonPmdCommand_CommonPmdEnum_Name(CommonPmdCommand_CommonPmdEnum value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    CommonPmdCommand_CommonPmdEnum_descriptor(), value);
-}
-inline bool CommonPmdCommand_CommonPmdEnum_Parse(
-    const ::std::string& name, CommonPmdCommand_CommonPmdEnum* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<CommonPmdCommand_CommonPmdEnum>(
-    CommonPmdCommand_CommonPmdEnum_descriptor(), name, value);
-}
 // ===================================================================
 
-class CommonPmdCommand : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:PlatPmd.CommonPmdCommand) */ {
+class SYSTEMTIME : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:CommonPmd.SYSTEMTIME) */ {
  public:
-  CommonPmdCommand();
-  virtual ~CommonPmdCommand();
+  SYSTEMTIME();
+  virtual ~SYSTEMTIME();
 
-  CommonPmdCommand(const CommonPmdCommand& from);
+  SYSTEMTIME(const SYSTEMTIME& from);
 
-  inline CommonPmdCommand& operator=(const CommonPmdCommand& from) {
+  inline SYSTEMTIME& operator=(const SYSTEMTIME& from) {
     CopyFrom(from);
     return *this;
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const CommonPmdCommand& default_instance();
+  static const SYSTEMTIME& default_instance();
 
-  static inline const CommonPmdCommand* internal_default_instance() {
-    return reinterpret_cast<const CommonPmdCommand*>(
-               &_CommonPmdCommand_default_instance_);
+  static inline const SYSTEMTIME* internal_default_instance() {
+    return reinterpret_cast<const SYSTEMTIME*>(
+               &_SYSTEMTIME_default_instance_);
   }
 
-  void Swap(CommonPmdCommand* other);
+  void Swap(SYSTEMTIME* other);
 
   // implements Message ----------------------------------------------
 
-  inline CommonPmdCommand* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline SYSTEMTIME* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  CommonPmdCommand* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  SYSTEMTIME* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const CommonPmdCommand& from);
-  void MergeFrom(const CommonPmdCommand& from);
+  void CopyFrom(const SYSTEMTIME& from);
+  void MergeFrom(const SYSTEMTIME& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -126,7 +104,7 @@ class CommonPmdCommand : public ::google::protobuf::Message /* @@protoc_insertio
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(CommonPmdCommand* other);
+  void InternalSwap(SYSTEMTIME* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -140,74 +118,104 @@ class CommonPmdCommand : public ::google::protobuf::Message /* @@protoc_insertio
 
   // nested types ----------------------------------------------------
 
-  typedef CommonPmdCommand_CommonPmdEnum CommonPmdEnum;
-  static const CommonPmdEnum param_nullmessage =
-    CommonPmdCommand_CommonPmdEnum_param_nullmessage;
-  static const CommonPmdEnum param_common_personinfo =
-    CommonPmdCommand_CommonPmdEnum_param_common_personinfo;
-  static inline bool CommonPmdEnum_IsValid(int value) {
-    return CommonPmdCommand_CommonPmdEnum_IsValid(value);
-  }
-  static const CommonPmdEnum CommonPmdEnum_MIN =
-    CommonPmdCommand_CommonPmdEnum_CommonPmdEnum_MIN;
-  static const CommonPmdEnum CommonPmdEnum_MAX =
-    CommonPmdCommand_CommonPmdEnum_CommonPmdEnum_MAX;
-  static const int CommonPmdEnum_ARRAYSIZE =
-    CommonPmdCommand_CommonPmdEnum_CommonPmdEnum_ARRAYSIZE;
-  static inline const ::google::protobuf::EnumDescriptor*
-  CommonPmdEnum_descriptor() {
-    return CommonPmdCommand_CommonPmdEnum_descriptor();
-  }
-  static inline const ::std::string& CommonPmdEnum_Name(CommonPmdEnum value) {
-    return CommonPmdCommand_CommonPmdEnum_Name(value);
-  }
-  static inline bool CommonPmdEnum_Parse(const ::std::string& name,
-      CommonPmdEnum* value) {
-    return CommonPmdCommand_CommonPmdEnum_Parse(name, value);
-  }
-
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:PlatPmd.CommonPmdCommand)
+  // int32 wYear = 1;
+  void clear_wyear();
+  static const int kWYearFieldNumber = 1;
+  ::google::protobuf::int32 wyear() const;
+  void set_wyear(::google::protobuf::int32 value);
+
+  // int32 wMonth = 2;
+  void clear_wmonth();
+  static const int kWMonthFieldNumber = 2;
+  ::google::protobuf::int32 wmonth() const;
+  void set_wmonth(::google::protobuf::int32 value);
+
+  // int32 wDayOfWeek = 3;
+  void clear_wdayofweek();
+  static const int kWDayOfWeekFieldNumber = 3;
+  ::google::protobuf::int32 wdayofweek() const;
+  void set_wdayofweek(::google::protobuf::int32 value);
+
+  // int32 wDay = 4;
+  void clear_wday();
+  static const int kWDayFieldNumber = 4;
+  ::google::protobuf::int32 wday() const;
+  void set_wday(::google::protobuf::int32 value);
+
+  // int32 wHour = 5;
+  void clear_whour();
+  static const int kWHourFieldNumber = 5;
+  ::google::protobuf::int32 whour() const;
+  void set_whour(::google::protobuf::int32 value);
+
+  // int32 wMinute = 6;
+  void clear_wminute();
+  static const int kWMinuteFieldNumber = 6;
+  ::google::protobuf::int32 wminute() const;
+  void set_wminute(::google::protobuf::int32 value);
+
+  // int32 wSecond = 7;
+  void clear_wsecond();
+  static const int kWSecondFieldNumber = 7;
+  ::google::protobuf::int32 wsecond() const;
+  void set_wsecond(::google::protobuf::int32 value);
+
+  // int32 wMilliseconds = 8;
+  void clear_wmilliseconds();
+  static const int kWMillisecondsFieldNumber = 8;
+  ::google::protobuf::int32 wmilliseconds() const;
+  void set_wmilliseconds(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:CommonPmd.SYSTEMTIME)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::int32 wyear_;
+  ::google::protobuf::int32 wmonth_;
+  ::google::protobuf::int32 wdayofweek_;
+  ::google::protobuf::int32 wday_;
+  ::google::protobuf::int32 whour_;
+  ::google::protobuf::int32 wminute_;
+  ::google::protobuf::int32 wsecond_;
+  ::google::protobuf::int32 wmilliseconds_;
   mutable int _cached_size_;
   friend struct  protobuf_CommonPmd_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
 
-class common_personinfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:PlatPmd.common_personinfo) */ {
+class personinfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:CommonPmd.personinfo) */ {
  public:
-  common_personinfo();
-  virtual ~common_personinfo();
+  personinfo();
+  virtual ~personinfo();
 
-  common_personinfo(const common_personinfo& from);
+  personinfo(const personinfo& from);
 
-  inline common_personinfo& operator=(const common_personinfo& from) {
+  inline personinfo& operator=(const personinfo& from) {
     CopyFrom(from);
     return *this;
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const common_personinfo& default_instance();
+  static const personinfo& default_instance();
 
-  static inline const common_personinfo* internal_default_instance() {
-    return reinterpret_cast<const common_personinfo*>(
-               &_common_personinfo_default_instance_);
+  static inline const personinfo* internal_default_instance() {
+    return reinterpret_cast<const personinfo*>(
+               &_personinfo_default_instance_);
   }
 
-  void Swap(common_personinfo* other);
+  void Swap(personinfo* other);
 
   // implements Message ----------------------------------------------
 
-  inline common_personinfo* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline personinfo* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  common_personinfo* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  personinfo* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const common_personinfo& from);
-  void MergeFrom(const common_personinfo& from);
+  void CopyFrom(const personinfo& from);
+  void MergeFrom(const personinfo& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -228,7 +236,7 @@ class common_personinfo : public ::google::protobuf::Message /* @@protoc_inserti
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(common_personinfo* other);
+  void InternalSwap(personinfo* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -243,34 +251,6 @@ class common_personinfo : public ::google::protobuf::Message /* @@protoc_inserti
   // nested types ----------------------------------------------------
 
   // accessors -------------------------------------------------------
-
-  // bytes cbgender = 12;
-  void clear_cbgender();
-  static const int kCbgenderFieldNumber = 12;
-  const ::std::string& cbgender() const;
-  void set_cbgender(const ::std::string& value);
-  #if LANG_CXX11
-  void set_cbgender(::std::string&& value);
-  #endif
-  void set_cbgender(const char* value);
-  void set_cbgender(const void* value, size_t size);
-  ::std::string* mutable_cbgender();
-  ::std::string* release_cbgender();
-  void set_allocated_cbgender(::std::string* cbgender);
-
-  // bytes cbmoormachine = 13;
-  void clear_cbmoormachine();
-  static const int kCbmoormachineFieldNumber = 13;
-  const ::std::string& cbmoormachine() const;
-  void set_cbmoormachine(const ::std::string& value);
-  #if LANG_CXX11
-  void set_cbmoormachine(::std::string&& value);
-  #endif
-  void set_cbmoormachine(const char* value);
-  void set_cbmoormachine(const void* value, size_t size);
-  ::std::string* mutable_cbmoormachine();
-  ::std::string* release_cbmoormachine();
-  void set_allocated_cbmoormachine(::std::string* cbmoormachine);
 
   // string szaccounts = 14;
   void clear_szaccounts();
@@ -314,9 +294,23 @@ class common_personinfo : public ::google::protobuf::Message /* @@protoc_inserti
   ::std::string* release_szdynamicpass();
   void set_allocated_szdynamicpass(::std::string* szdynamicpass);
 
-  // string szgroupname = 17;
+  // string szPassword = 17;
+  void clear_szpassword();
+  static const int kSzPasswordFieldNumber = 17;
+  const ::std::string& szpassword() const;
+  void set_szpassword(const ::std::string& value);
+  #if LANG_CXX11
+  void set_szpassword(::std::string&& value);
+  #endif
+  void set_szpassword(const char* value);
+  void set_szpassword(const char* value, size_t size);
+  ::std::string* mutable_szpassword();
+  ::std::string* release_szpassword();
+  void set_allocated_szpassword(::std::string* szpassword);
+
+  // string szgroupname = 18;
   void clear_szgroupname();
-  static const int kSzgroupnameFieldNumber = 17;
+  static const int kSzgroupnameFieldNumber = 18;
   const ::std::string& szgroupname() const;
   void set_szgroupname(const ::std::string& value);
   #if LANG_CXX11
@@ -328,83 +322,72 @@ class common_personinfo : public ::google::protobuf::Message /* @@protoc_inserti
   ::std::string* release_szgroupname();
   void set_allocated_szgroupname(::std::string* szgroupname);
 
-  // bytes cbinsureenabled = 18;
-  void clear_cbinsureenabled();
-  static const int kCbinsureenabledFieldNumber = 18;
-  const ::std::string& cbinsureenabled() const;
-  void set_cbinsureenabled(const ::std::string& value);
+  // string szUnderWrite = 22;
+  void clear_szunderwrite();
+  static const int kSzUnderWriteFieldNumber = 22;
+  const ::std::string& szunderwrite() const;
+  void set_szunderwrite(const ::std::string& value);
   #if LANG_CXX11
-  void set_cbinsureenabled(::std::string&& value);
+  void set_szunderwrite(::std::string&& value);
   #endif
-  void set_cbinsureenabled(const char* value);
-  void set_cbinsureenabled(const void* value, size_t size);
-  ::std::string* mutable_cbinsureenabled();
-  ::std::string* release_cbinsureenabled();
-  void set_allocated_cbinsureenabled(::std::string* cbinsureenabled);
+  void set_szunderwrite(const char* value);
+  void set_szunderwrite(const char* value, size_t size);
+  ::std::string* mutable_szunderwrite();
+  ::std::string* release_szunderwrite();
+  void set_allocated_szunderwrite(::std::string* szunderwrite);
 
-  // bytes cbshowserverstatus = 19;
-  void clear_cbshowserverstatus();
-  static const int kCbshowserverstatusFieldNumber = 19;
-  const ::std::string& cbshowserverstatus() const;
-  void set_cbshowserverstatus(const ::std::string& value);
+  // string szDescribeString = 26;
+  void clear_szdescribestring();
+  static const int kSzDescribeStringFieldNumber = 26;
+  const ::std::string& szdescribestring() const;
+  void set_szdescribestring(const ::std::string& value);
   #if LANG_CXX11
-  void set_cbshowserverstatus(::std::string&& value);
+  void set_szdescribestring(::std::string&& value);
   #endif
-  void set_cbshowserverstatus(const char* value);
-  void set_cbshowserverstatus(const void* value, size_t size);
-  ::std::string* mutable_cbshowserverstatus();
-  ::std::string* release_cbshowserverstatus();
-  void set_allocated_cbshowserverstatus(::std::string* cbshowserverstatus);
+  void set_szdescribestring(const char* value);
+  void set_szdescribestring(const char* value, size_t size);
+  ::std::string* mutable_szdescribestring();
+  ::std::string* release_szdescribestring();
+  void set_allocated_szdescribestring(::std::string* szdescribestring);
 
-  // bytes cbisagent = 20;
-  void clear_cbisagent();
-  static const int kCbisagentFieldNumber = 20;
-  const ::std::string& cbisagent() const;
-  void set_cbisagent(const ::std::string& value);
-  #if LANG_CXX11
-  void set_cbisagent(::std::string&& value);
-  #endif
-  void set_cbisagent(const char* value);
-  void set_cbisagent(const void* value, size_t size);
-  ::std::string* mutable_cbisagent();
-  ::std::string* release_cbisagent();
-  void set_allocated_cbisagent(::std::string* cbisagent);
+  // .CommonPmd.SYSTEMTIME MemberOverDate = 24;
+  bool has_memberoverdate() const;
+  void clear_memberoverdate();
+  static const int kMemberOverDateFieldNumber = 24;
+  const ::CommonPmd::SYSTEMTIME& memberoverdate() const;
+  ::CommonPmd::SYSTEMTIME* mutable_memberoverdate();
+  ::CommonPmd::SYSTEMTIME* release_memberoverdate();
+  void set_allocated_memberoverdate(::CommonPmd::SYSTEMTIME* memberoverdate);
 
-  // int32 wfaceid = 1;
-  void clear_wfaceid();
-  static const int kWfaceidFieldNumber = 1;
-  ::google::protobuf::int32 wfaceid() const;
-  void set_wfaceid(::google::protobuf::int32 value);
-
-  // uint32 dwuserid = 2;
+  // uint64 dwuserid = 2;
   void clear_dwuserid();
   static const int kDwuseridFieldNumber = 2;
-  ::google::protobuf::uint32 dwuserid() const;
-  void set_dwuserid(::google::protobuf::uint32 value);
+  ::google::protobuf::uint64 dwuserid() const;
+  void set_dwuserid(::google::protobuf::uint64 value);
 
-  // uint32 dwgameid = 3;
+  // uint64 dwgameid = 3;
   void clear_dwgameid();
   static const int kDwgameidFieldNumber = 3;
-  ::google::protobuf::uint32 dwgameid() const;
-  void set_dwgameid(::google::protobuf::uint32 value);
+  ::google::protobuf::uint64 dwgameid() const;
+  void set_dwgameid(::google::protobuf::uint64 value);
 
-  // uint32 dwgroupid = 4;
+  // uint64 dwgroupid = 4;
   void clear_dwgroupid();
   static const int kDwgroupidFieldNumber = 4;
-  ::google::protobuf::uint32 dwgroupid() const;
-  void set_dwgroupid(::google::protobuf::uint32 value);
+  ::google::protobuf::uint64 dwgroupid() const;
+  void set_dwgroupid(::google::protobuf::uint64 value);
 
-  // uint32 dwcustomid = 5;
+  // uint64 dwcustomid = 5;
   void clear_dwcustomid();
   static const int kDwcustomidFieldNumber = 5;
-  ::google::protobuf::uint32 dwcustomid() const;
-  void set_dwcustomid(::google::protobuf::uint32 value);
+  ::google::protobuf::uint64 dwcustomid() const;
+  void set_dwcustomid(::google::protobuf::uint64 value);
 
-  // uint32 dwexperience = 6;
+  // uint64 dwexperience = 6;
   void clear_dwexperience();
   static const int kDwexperienceFieldNumber = 6;
-  ::google::protobuf::uint32 dwexperience() const;
-  void set_dwexperience(::google::protobuf::uint32 value);
+  ::google::protobuf::uint64 dwexperience() const;
+  void set_dwexperience(::google::protobuf::uint64 value);
 
   // uint64 lloveliness = 7;
   void clear_lloveliness();
@@ -436,30 +419,84 @@ class common_personinfo : public ::google::protobuf::Message /* @@protoc_inserti
   double duserbeans() const;
   void set_duserbeans(double value);
 
-  // @@protoc_insertion_point(class_scope:PlatPmd.common_personinfo)
+  // uint64 cbgender = 12;
+  void clear_cbgender();
+  static const int kCbgenderFieldNumber = 12;
+  ::google::protobuf::uint64 cbgender() const;
+  void set_cbgender(::google::protobuf::uint64 value);
+
+  // int32 wfaceid = 1;
+  void clear_wfaceid();
+  static const int kWfaceidFieldNumber = 1;
+  ::google::protobuf::int32 wfaceid() const;
+  void set_wfaceid(::google::protobuf::int32 value);
+
+  // int32 cbMemberOrder = 23;
+  void clear_cbmemberorder();
+  static const int kCbMemberOrderFieldNumber = 23;
+  ::google::protobuf::int32 cbmemberorder() const;
+  void set_cbmemberorder(::google::protobuf::int32 value);
+
+  // uint64 cbmoormachine = 13;
+  void clear_cbmoormachine();
+  static const int kCbmoormachineFieldNumber = 13;
+  ::google::protobuf::uint64 cbmoormachine() const;
+  void set_cbmoormachine(::google::protobuf::uint64 value);
+
+  // uint64 cbinsureenabled = 19;
+  void clear_cbinsureenabled();
+  static const int kCbinsureenabledFieldNumber = 19;
+  ::google::protobuf::uint64 cbinsureenabled() const;
+  void set_cbinsureenabled(::google::protobuf::uint64 value);
+
+  // uint64 cbshowserverstatus = 20;
+  void clear_cbshowserverstatus();
+  static const int kCbshowserverstatusFieldNumber = 20;
+  ::google::protobuf::uint64 cbshowserverstatus() const;
+  void set_cbshowserverstatus(::google::protobuf::uint64 value);
+
+  // uint64 cbisagent = 21;
+  void clear_cbisagent();
+  static const int kCbisagentFieldNumber = 21;
+  ::google::protobuf::uint64 cbisagent() const;
+  void set_cbisagent(::google::protobuf::uint64 value);
+
+  // uint64 dwCheckUserRight = 25;
+  void clear_dwcheckuserright();
+  static const int kDwCheckUserRightFieldNumber = 25;
+  ::google::protobuf::uint64 dwcheckuserright() const;
+  void set_dwcheckuserright(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:CommonPmd.personinfo)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr cbgender_;
-  ::google::protobuf::internal::ArenaStringPtr cbmoormachine_;
   ::google::protobuf::internal::ArenaStringPtr szaccounts_;
   ::google::protobuf::internal::ArenaStringPtr sznickname_;
   ::google::protobuf::internal::ArenaStringPtr szdynamicpass_;
+  ::google::protobuf::internal::ArenaStringPtr szpassword_;
   ::google::protobuf::internal::ArenaStringPtr szgroupname_;
-  ::google::protobuf::internal::ArenaStringPtr cbinsureenabled_;
-  ::google::protobuf::internal::ArenaStringPtr cbshowserverstatus_;
-  ::google::protobuf::internal::ArenaStringPtr cbisagent_;
-  ::google::protobuf::int32 wfaceid_;
-  ::google::protobuf::uint32 dwuserid_;
-  ::google::protobuf::uint32 dwgameid_;
-  ::google::protobuf::uint32 dwgroupid_;
-  ::google::protobuf::uint32 dwcustomid_;
-  ::google::protobuf::uint32 dwexperience_;
+  ::google::protobuf::internal::ArenaStringPtr szunderwrite_;
+  ::google::protobuf::internal::ArenaStringPtr szdescribestring_;
+  ::CommonPmd::SYSTEMTIME* memberoverdate_;
+  ::google::protobuf::uint64 dwuserid_;
+  ::google::protobuf::uint64 dwgameid_;
+  ::google::protobuf::uint64 dwgroupid_;
+  ::google::protobuf::uint64 dwcustomid_;
+  ::google::protobuf::uint64 dwexperience_;
   ::google::protobuf::uint64 lloveliness_;
   ::google::protobuf::uint64 luserscore_;
   ::google::protobuf::uint64 luserinsure_;
   ::google::protobuf::uint64 luseringot_;
   double duserbeans_;
+  ::google::protobuf::uint64 cbgender_;
+  ::google::protobuf::int32 wfaceid_;
+  ::google::protobuf::int32 cbmemberorder_;
+  ::google::protobuf::uint64 cbmoormachine_;
+  ::google::protobuf::uint64 cbinsureenabled_;
+  ::google::protobuf::uint64 cbshowserverstatus_;
+  ::google::protobuf::uint64 cbisagent_;
+  ::google::protobuf::uint64 dwcheckuserright_;
   mutable int _cached_size_;
   friend struct  protobuf_CommonPmd_2eproto::TableStruct;
 };
@@ -469,632 +506,777 @@ class common_personinfo : public ::google::protobuf::Message /* @@protoc_inserti
 // ===================================================================
 
 #if !PROTOBUF_INLINE_NOT_IN_HEADERS
-// CommonPmdCommand
+// SYSTEMTIME
+
+// int32 wYear = 1;
+inline void SYSTEMTIME::clear_wyear() {
+  wyear_ = 0;
+}
+inline ::google::protobuf::int32 SYSTEMTIME::wyear() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.SYSTEMTIME.wYear)
+  return wyear_;
+}
+inline void SYSTEMTIME::set_wyear(::google::protobuf::int32 value) {
+  
+  wyear_ = value;
+  // @@protoc_insertion_point(field_set:CommonPmd.SYSTEMTIME.wYear)
+}
+
+// int32 wMonth = 2;
+inline void SYSTEMTIME::clear_wmonth() {
+  wmonth_ = 0;
+}
+inline ::google::protobuf::int32 SYSTEMTIME::wmonth() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.SYSTEMTIME.wMonth)
+  return wmonth_;
+}
+inline void SYSTEMTIME::set_wmonth(::google::protobuf::int32 value) {
+  
+  wmonth_ = value;
+  // @@protoc_insertion_point(field_set:CommonPmd.SYSTEMTIME.wMonth)
+}
+
+// int32 wDayOfWeek = 3;
+inline void SYSTEMTIME::clear_wdayofweek() {
+  wdayofweek_ = 0;
+}
+inline ::google::protobuf::int32 SYSTEMTIME::wdayofweek() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.SYSTEMTIME.wDayOfWeek)
+  return wdayofweek_;
+}
+inline void SYSTEMTIME::set_wdayofweek(::google::protobuf::int32 value) {
+  
+  wdayofweek_ = value;
+  // @@protoc_insertion_point(field_set:CommonPmd.SYSTEMTIME.wDayOfWeek)
+}
+
+// int32 wDay = 4;
+inline void SYSTEMTIME::clear_wday() {
+  wday_ = 0;
+}
+inline ::google::protobuf::int32 SYSTEMTIME::wday() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.SYSTEMTIME.wDay)
+  return wday_;
+}
+inline void SYSTEMTIME::set_wday(::google::protobuf::int32 value) {
+  
+  wday_ = value;
+  // @@protoc_insertion_point(field_set:CommonPmd.SYSTEMTIME.wDay)
+}
+
+// int32 wHour = 5;
+inline void SYSTEMTIME::clear_whour() {
+  whour_ = 0;
+}
+inline ::google::protobuf::int32 SYSTEMTIME::whour() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.SYSTEMTIME.wHour)
+  return whour_;
+}
+inline void SYSTEMTIME::set_whour(::google::protobuf::int32 value) {
+  
+  whour_ = value;
+  // @@protoc_insertion_point(field_set:CommonPmd.SYSTEMTIME.wHour)
+}
+
+// int32 wMinute = 6;
+inline void SYSTEMTIME::clear_wminute() {
+  wminute_ = 0;
+}
+inline ::google::protobuf::int32 SYSTEMTIME::wminute() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.SYSTEMTIME.wMinute)
+  return wminute_;
+}
+inline void SYSTEMTIME::set_wminute(::google::protobuf::int32 value) {
+  
+  wminute_ = value;
+  // @@protoc_insertion_point(field_set:CommonPmd.SYSTEMTIME.wMinute)
+}
+
+// int32 wSecond = 7;
+inline void SYSTEMTIME::clear_wsecond() {
+  wsecond_ = 0;
+}
+inline ::google::protobuf::int32 SYSTEMTIME::wsecond() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.SYSTEMTIME.wSecond)
+  return wsecond_;
+}
+inline void SYSTEMTIME::set_wsecond(::google::protobuf::int32 value) {
+  
+  wsecond_ = value;
+  // @@protoc_insertion_point(field_set:CommonPmd.SYSTEMTIME.wSecond)
+}
+
+// int32 wMilliseconds = 8;
+inline void SYSTEMTIME::clear_wmilliseconds() {
+  wmilliseconds_ = 0;
+}
+inline ::google::protobuf::int32 SYSTEMTIME::wmilliseconds() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.SYSTEMTIME.wMilliseconds)
+  return wmilliseconds_;
+}
+inline void SYSTEMTIME::set_wmilliseconds(::google::protobuf::int32 value) {
+  
+  wmilliseconds_ = value;
+  // @@protoc_insertion_point(field_set:CommonPmd.SYSTEMTIME.wMilliseconds)
+}
 
 // -------------------------------------------------------------------
 
-// common_personinfo
+// personinfo
 
 // int32 wfaceid = 1;
-inline void common_personinfo::clear_wfaceid() {
+inline void personinfo::clear_wfaceid() {
   wfaceid_ = 0;
 }
-inline ::google::protobuf::int32 common_personinfo::wfaceid() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.common_personinfo.wfaceid)
+inline ::google::protobuf::int32 personinfo::wfaceid() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.personinfo.wfaceid)
   return wfaceid_;
 }
-inline void common_personinfo::set_wfaceid(::google::protobuf::int32 value) {
+inline void personinfo::set_wfaceid(::google::protobuf::int32 value) {
   
   wfaceid_ = value;
-  // @@protoc_insertion_point(field_set:PlatPmd.common_personinfo.wfaceid)
+  // @@protoc_insertion_point(field_set:CommonPmd.personinfo.wfaceid)
 }
 
-// uint32 dwuserid = 2;
-inline void common_personinfo::clear_dwuserid() {
-  dwuserid_ = 0u;
+// uint64 dwuserid = 2;
+inline void personinfo::clear_dwuserid() {
+  dwuserid_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint32 common_personinfo::dwuserid() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.common_personinfo.dwuserid)
+inline ::google::protobuf::uint64 personinfo::dwuserid() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.personinfo.dwuserid)
   return dwuserid_;
 }
-inline void common_personinfo::set_dwuserid(::google::protobuf::uint32 value) {
+inline void personinfo::set_dwuserid(::google::protobuf::uint64 value) {
   
   dwuserid_ = value;
-  // @@protoc_insertion_point(field_set:PlatPmd.common_personinfo.dwuserid)
+  // @@protoc_insertion_point(field_set:CommonPmd.personinfo.dwuserid)
 }
 
-// uint32 dwgameid = 3;
-inline void common_personinfo::clear_dwgameid() {
-  dwgameid_ = 0u;
+// uint64 dwgameid = 3;
+inline void personinfo::clear_dwgameid() {
+  dwgameid_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint32 common_personinfo::dwgameid() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.common_personinfo.dwgameid)
+inline ::google::protobuf::uint64 personinfo::dwgameid() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.personinfo.dwgameid)
   return dwgameid_;
 }
-inline void common_personinfo::set_dwgameid(::google::protobuf::uint32 value) {
+inline void personinfo::set_dwgameid(::google::protobuf::uint64 value) {
   
   dwgameid_ = value;
-  // @@protoc_insertion_point(field_set:PlatPmd.common_personinfo.dwgameid)
+  // @@protoc_insertion_point(field_set:CommonPmd.personinfo.dwgameid)
 }
 
-// uint32 dwgroupid = 4;
-inline void common_personinfo::clear_dwgroupid() {
-  dwgroupid_ = 0u;
+// uint64 dwgroupid = 4;
+inline void personinfo::clear_dwgroupid() {
+  dwgroupid_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint32 common_personinfo::dwgroupid() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.common_personinfo.dwgroupid)
+inline ::google::protobuf::uint64 personinfo::dwgroupid() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.personinfo.dwgroupid)
   return dwgroupid_;
 }
-inline void common_personinfo::set_dwgroupid(::google::protobuf::uint32 value) {
+inline void personinfo::set_dwgroupid(::google::protobuf::uint64 value) {
   
   dwgroupid_ = value;
-  // @@protoc_insertion_point(field_set:PlatPmd.common_personinfo.dwgroupid)
+  // @@protoc_insertion_point(field_set:CommonPmd.personinfo.dwgroupid)
 }
 
-// uint32 dwcustomid = 5;
-inline void common_personinfo::clear_dwcustomid() {
-  dwcustomid_ = 0u;
+// uint64 dwcustomid = 5;
+inline void personinfo::clear_dwcustomid() {
+  dwcustomid_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint32 common_personinfo::dwcustomid() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.common_personinfo.dwcustomid)
+inline ::google::protobuf::uint64 personinfo::dwcustomid() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.personinfo.dwcustomid)
   return dwcustomid_;
 }
-inline void common_personinfo::set_dwcustomid(::google::protobuf::uint32 value) {
+inline void personinfo::set_dwcustomid(::google::protobuf::uint64 value) {
   
   dwcustomid_ = value;
-  // @@protoc_insertion_point(field_set:PlatPmd.common_personinfo.dwcustomid)
+  // @@protoc_insertion_point(field_set:CommonPmd.personinfo.dwcustomid)
 }
 
-// uint32 dwexperience = 6;
-inline void common_personinfo::clear_dwexperience() {
-  dwexperience_ = 0u;
+// uint64 dwexperience = 6;
+inline void personinfo::clear_dwexperience() {
+  dwexperience_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint32 common_personinfo::dwexperience() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.common_personinfo.dwexperience)
+inline ::google::protobuf::uint64 personinfo::dwexperience() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.personinfo.dwexperience)
   return dwexperience_;
 }
-inline void common_personinfo::set_dwexperience(::google::protobuf::uint32 value) {
+inline void personinfo::set_dwexperience(::google::protobuf::uint64 value) {
   
   dwexperience_ = value;
-  // @@protoc_insertion_point(field_set:PlatPmd.common_personinfo.dwexperience)
+  // @@protoc_insertion_point(field_set:CommonPmd.personinfo.dwexperience)
 }
 
 // uint64 lloveliness = 7;
-inline void common_personinfo::clear_lloveliness() {
+inline void personinfo::clear_lloveliness() {
   lloveliness_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint64 common_personinfo::lloveliness() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.common_personinfo.lloveliness)
+inline ::google::protobuf::uint64 personinfo::lloveliness() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.personinfo.lloveliness)
   return lloveliness_;
 }
-inline void common_personinfo::set_lloveliness(::google::protobuf::uint64 value) {
+inline void personinfo::set_lloveliness(::google::protobuf::uint64 value) {
   
   lloveliness_ = value;
-  // @@protoc_insertion_point(field_set:PlatPmd.common_personinfo.lloveliness)
+  // @@protoc_insertion_point(field_set:CommonPmd.personinfo.lloveliness)
 }
 
 // uint64 luserscore = 8;
-inline void common_personinfo::clear_luserscore() {
+inline void personinfo::clear_luserscore() {
   luserscore_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint64 common_personinfo::luserscore() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.common_personinfo.luserscore)
+inline ::google::protobuf::uint64 personinfo::luserscore() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.personinfo.luserscore)
   return luserscore_;
 }
-inline void common_personinfo::set_luserscore(::google::protobuf::uint64 value) {
+inline void personinfo::set_luserscore(::google::protobuf::uint64 value) {
   
   luserscore_ = value;
-  // @@protoc_insertion_point(field_set:PlatPmd.common_personinfo.luserscore)
+  // @@protoc_insertion_point(field_set:CommonPmd.personinfo.luserscore)
 }
 
 // uint64 luserinsure = 9;
-inline void common_personinfo::clear_luserinsure() {
+inline void personinfo::clear_luserinsure() {
   luserinsure_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint64 common_personinfo::luserinsure() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.common_personinfo.luserinsure)
+inline ::google::protobuf::uint64 personinfo::luserinsure() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.personinfo.luserinsure)
   return luserinsure_;
 }
-inline void common_personinfo::set_luserinsure(::google::protobuf::uint64 value) {
+inline void personinfo::set_luserinsure(::google::protobuf::uint64 value) {
   
   luserinsure_ = value;
-  // @@protoc_insertion_point(field_set:PlatPmd.common_personinfo.luserinsure)
+  // @@protoc_insertion_point(field_set:CommonPmd.personinfo.luserinsure)
 }
 
 // uint64 luseringot = 10;
-inline void common_personinfo::clear_luseringot() {
+inline void personinfo::clear_luseringot() {
   luseringot_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint64 common_personinfo::luseringot() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.common_personinfo.luseringot)
+inline ::google::protobuf::uint64 personinfo::luseringot() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.personinfo.luseringot)
   return luseringot_;
 }
-inline void common_personinfo::set_luseringot(::google::protobuf::uint64 value) {
+inline void personinfo::set_luseringot(::google::protobuf::uint64 value) {
   
   luseringot_ = value;
-  // @@protoc_insertion_point(field_set:PlatPmd.common_personinfo.luseringot)
+  // @@protoc_insertion_point(field_set:CommonPmd.personinfo.luseringot)
 }
 
 // double duserbeans = 11;
-inline void common_personinfo::clear_duserbeans() {
+inline void personinfo::clear_duserbeans() {
   duserbeans_ = 0;
 }
-inline double common_personinfo::duserbeans() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.common_personinfo.duserbeans)
+inline double personinfo::duserbeans() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.personinfo.duserbeans)
   return duserbeans_;
 }
-inline void common_personinfo::set_duserbeans(double value) {
+inline void personinfo::set_duserbeans(double value) {
   
   duserbeans_ = value;
-  // @@protoc_insertion_point(field_set:PlatPmd.common_personinfo.duserbeans)
+  // @@protoc_insertion_point(field_set:CommonPmd.personinfo.duserbeans)
 }
 
-// bytes cbgender = 12;
-inline void common_personinfo::clear_cbgender() {
-  cbgender_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+// uint64 cbgender = 12;
+inline void personinfo::clear_cbgender() {
+  cbgender_ = GOOGLE_ULONGLONG(0);
 }
-inline const ::std::string& common_personinfo::cbgender() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.common_personinfo.cbgender)
-  return cbgender_.GetNoArena();
+inline ::google::protobuf::uint64 personinfo::cbgender() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.personinfo.cbgender)
+  return cbgender_;
 }
-inline void common_personinfo::set_cbgender(const ::std::string& value) {
+inline void personinfo::set_cbgender(::google::protobuf::uint64 value) {
   
-  cbgender_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:PlatPmd.common_personinfo.cbgender)
-}
-#if LANG_CXX11
-inline void common_personinfo::set_cbgender(::std::string&& value) {
-  
-  cbgender_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:PlatPmd.common_personinfo.cbgender)
-}
-#endif
-inline void common_personinfo::set_cbgender(const char* value) {
-  
-  cbgender_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:PlatPmd.common_personinfo.cbgender)
-}
-inline void common_personinfo::set_cbgender(const void* value, size_t size) {
-  
-  cbgender_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:PlatPmd.common_personinfo.cbgender)
-}
-inline ::std::string* common_personinfo::mutable_cbgender() {
-  
-  // @@protoc_insertion_point(field_mutable:PlatPmd.common_personinfo.cbgender)
-  return cbgender_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* common_personinfo::release_cbgender() {
-  // @@protoc_insertion_point(field_release:PlatPmd.common_personinfo.cbgender)
-  
-  return cbgender_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void common_personinfo::set_allocated_cbgender(::std::string* cbgender) {
-  if (cbgender != NULL) {
-    
-  } else {
-    
-  }
-  cbgender_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), cbgender);
-  // @@protoc_insertion_point(field_set_allocated:PlatPmd.common_personinfo.cbgender)
+  cbgender_ = value;
+  // @@protoc_insertion_point(field_set:CommonPmd.personinfo.cbgender)
 }
 
-// bytes cbmoormachine = 13;
-inline void common_personinfo::clear_cbmoormachine() {
-  cbmoormachine_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+// uint64 cbmoormachine = 13;
+inline void personinfo::clear_cbmoormachine() {
+  cbmoormachine_ = GOOGLE_ULONGLONG(0);
 }
-inline const ::std::string& common_personinfo::cbmoormachine() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.common_personinfo.cbmoormachine)
-  return cbmoormachine_.GetNoArena();
+inline ::google::protobuf::uint64 personinfo::cbmoormachine() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.personinfo.cbmoormachine)
+  return cbmoormachine_;
 }
-inline void common_personinfo::set_cbmoormachine(const ::std::string& value) {
+inline void personinfo::set_cbmoormachine(::google::protobuf::uint64 value) {
   
-  cbmoormachine_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:PlatPmd.common_personinfo.cbmoormachine)
-}
-#if LANG_CXX11
-inline void common_personinfo::set_cbmoormachine(::std::string&& value) {
-  
-  cbmoormachine_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:PlatPmd.common_personinfo.cbmoormachine)
-}
-#endif
-inline void common_personinfo::set_cbmoormachine(const char* value) {
-  
-  cbmoormachine_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:PlatPmd.common_personinfo.cbmoormachine)
-}
-inline void common_personinfo::set_cbmoormachine(const void* value, size_t size) {
-  
-  cbmoormachine_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:PlatPmd.common_personinfo.cbmoormachine)
-}
-inline ::std::string* common_personinfo::mutable_cbmoormachine() {
-  
-  // @@protoc_insertion_point(field_mutable:PlatPmd.common_personinfo.cbmoormachine)
-  return cbmoormachine_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* common_personinfo::release_cbmoormachine() {
-  // @@protoc_insertion_point(field_release:PlatPmd.common_personinfo.cbmoormachine)
-  
-  return cbmoormachine_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void common_personinfo::set_allocated_cbmoormachine(::std::string* cbmoormachine) {
-  if (cbmoormachine != NULL) {
-    
-  } else {
-    
-  }
-  cbmoormachine_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), cbmoormachine);
-  // @@protoc_insertion_point(field_set_allocated:PlatPmd.common_personinfo.cbmoormachine)
+  cbmoormachine_ = value;
+  // @@protoc_insertion_point(field_set:CommonPmd.personinfo.cbmoormachine)
 }
 
 // string szaccounts = 14;
-inline void common_personinfo::clear_szaccounts() {
+inline void personinfo::clear_szaccounts() {
   szaccounts_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& common_personinfo::szaccounts() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.common_personinfo.szaccounts)
+inline const ::std::string& personinfo::szaccounts() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.personinfo.szaccounts)
   return szaccounts_.GetNoArena();
 }
-inline void common_personinfo::set_szaccounts(const ::std::string& value) {
+inline void personinfo::set_szaccounts(const ::std::string& value) {
   
   szaccounts_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:PlatPmd.common_personinfo.szaccounts)
+  // @@protoc_insertion_point(field_set:CommonPmd.personinfo.szaccounts)
 }
 #if LANG_CXX11
-inline void common_personinfo::set_szaccounts(::std::string&& value) {
+inline void personinfo::set_szaccounts(::std::string&& value) {
   
   szaccounts_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:PlatPmd.common_personinfo.szaccounts)
+  // @@protoc_insertion_point(field_set_rvalue:CommonPmd.personinfo.szaccounts)
 }
 #endif
-inline void common_personinfo::set_szaccounts(const char* value) {
+inline void personinfo::set_szaccounts(const char* value) {
   
   szaccounts_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:PlatPmd.common_personinfo.szaccounts)
+  // @@protoc_insertion_point(field_set_char:CommonPmd.personinfo.szaccounts)
 }
-inline void common_personinfo::set_szaccounts(const char* value, size_t size) {
+inline void personinfo::set_szaccounts(const char* value, size_t size) {
   
   szaccounts_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:PlatPmd.common_personinfo.szaccounts)
+  // @@protoc_insertion_point(field_set_pointer:CommonPmd.personinfo.szaccounts)
 }
-inline ::std::string* common_personinfo::mutable_szaccounts() {
+inline ::std::string* personinfo::mutable_szaccounts() {
   
-  // @@protoc_insertion_point(field_mutable:PlatPmd.common_personinfo.szaccounts)
+  // @@protoc_insertion_point(field_mutable:CommonPmd.personinfo.szaccounts)
   return szaccounts_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* common_personinfo::release_szaccounts() {
-  // @@protoc_insertion_point(field_release:PlatPmd.common_personinfo.szaccounts)
+inline ::std::string* personinfo::release_szaccounts() {
+  // @@protoc_insertion_point(field_release:CommonPmd.personinfo.szaccounts)
   
   return szaccounts_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void common_personinfo::set_allocated_szaccounts(::std::string* szaccounts) {
+inline void personinfo::set_allocated_szaccounts(::std::string* szaccounts) {
   if (szaccounts != NULL) {
     
   } else {
     
   }
   szaccounts_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), szaccounts);
-  // @@protoc_insertion_point(field_set_allocated:PlatPmd.common_personinfo.szaccounts)
+  // @@protoc_insertion_point(field_set_allocated:CommonPmd.personinfo.szaccounts)
 }
 
 // string sznickname = 15;
-inline void common_personinfo::clear_sznickname() {
+inline void personinfo::clear_sznickname() {
   sznickname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& common_personinfo::sznickname() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.common_personinfo.sznickname)
+inline const ::std::string& personinfo::sznickname() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.personinfo.sznickname)
   return sznickname_.GetNoArena();
 }
-inline void common_personinfo::set_sznickname(const ::std::string& value) {
+inline void personinfo::set_sznickname(const ::std::string& value) {
   
   sznickname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:PlatPmd.common_personinfo.sznickname)
+  // @@protoc_insertion_point(field_set:CommonPmd.personinfo.sznickname)
 }
 #if LANG_CXX11
-inline void common_personinfo::set_sznickname(::std::string&& value) {
+inline void personinfo::set_sznickname(::std::string&& value) {
   
   sznickname_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:PlatPmd.common_personinfo.sznickname)
+  // @@protoc_insertion_point(field_set_rvalue:CommonPmd.personinfo.sznickname)
 }
 #endif
-inline void common_personinfo::set_sznickname(const char* value) {
+inline void personinfo::set_sznickname(const char* value) {
   
   sznickname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:PlatPmd.common_personinfo.sznickname)
+  // @@protoc_insertion_point(field_set_char:CommonPmd.personinfo.sznickname)
 }
-inline void common_personinfo::set_sznickname(const char* value, size_t size) {
+inline void personinfo::set_sznickname(const char* value, size_t size) {
   
   sznickname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:PlatPmd.common_personinfo.sznickname)
+  // @@protoc_insertion_point(field_set_pointer:CommonPmd.personinfo.sznickname)
 }
-inline ::std::string* common_personinfo::mutable_sznickname() {
+inline ::std::string* personinfo::mutable_sznickname() {
   
-  // @@protoc_insertion_point(field_mutable:PlatPmd.common_personinfo.sznickname)
+  // @@protoc_insertion_point(field_mutable:CommonPmd.personinfo.sznickname)
   return sznickname_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* common_personinfo::release_sznickname() {
-  // @@protoc_insertion_point(field_release:PlatPmd.common_personinfo.sznickname)
+inline ::std::string* personinfo::release_sznickname() {
+  // @@protoc_insertion_point(field_release:CommonPmd.personinfo.sznickname)
   
   return sznickname_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void common_personinfo::set_allocated_sznickname(::std::string* sznickname) {
+inline void personinfo::set_allocated_sznickname(::std::string* sznickname) {
   if (sznickname != NULL) {
     
   } else {
     
   }
   sznickname_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), sznickname);
-  // @@protoc_insertion_point(field_set_allocated:PlatPmd.common_personinfo.sznickname)
+  // @@protoc_insertion_point(field_set_allocated:CommonPmd.personinfo.sznickname)
 }
 
 // string szdynamicpass = 16;
-inline void common_personinfo::clear_szdynamicpass() {
+inline void personinfo::clear_szdynamicpass() {
   szdynamicpass_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& common_personinfo::szdynamicpass() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.common_personinfo.szdynamicpass)
+inline const ::std::string& personinfo::szdynamicpass() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.personinfo.szdynamicpass)
   return szdynamicpass_.GetNoArena();
 }
-inline void common_personinfo::set_szdynamicpass(const ::std::string& value) {
+inline void personinfo::set_szdynamicpass(const ::std::string& value) {
   
   szdynamicpass_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:PlatPmd.common_personinfo.szdynamicpass)
+  // @@protoc_insertion_point(field_set:CommonPmd.personinfo.szdynamicpass)
 }
 #if LANG_CXX11
-inline void common_personinfo::set_szdynamicpass(::std::string&& value) {
+inline void personinfo::set_szdynamicpass(::std::string&& value) {
   
   szdynamicpass_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:PlatPmd.common_personinfo.szdynamicpass)
+  // @@protoc_insertion_point(field_set_rvalue:CommonPmd.personinfo.szdynamicpass)
 }
 #endif
-inline void common_personinfo::set_szdynamicpass(const char* value) {
+inline void personinfo::set_szdynamicpass(const char* value) {
   
   szdynamicpass_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:PlatPmd.common_personinfo.szdynamicpass)
+  // @@protoc_insertion_point(field_set_char:CommonPmd.personinfo.szdynamicpass)
 }
-inline void common_personinfo::set_szdynamicpass(const char* value, size_t size) {
+inline void personinfo::set_szdynamicpass(const char* value, size_t size) {
   
   szdynamicpass_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:PlatPmd.common_personinfo.szdynamicpass)
+  // @@protoc_insertion_point(field_set_pointer:CommonPmd.personinfo.szdynamicpass)
 }
-inline ::std::string* common_personinfo::mutable_szdynamicpass() {
+inline ::std::string* personinfo::mutable_szdynamicpass() {
   
-  // @@protoc_insertion_point(field_mutable:PlatPmd.common_personinfo.szdynamicpass)
+  // @@protoc_insertion_point(field_mutable:CommonPmd.personinfo.szdynamicpass)
   return szdynamicpass_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* common_personinfo::release_szdynamicpass() {
-  // @@protoc_insertion_point(field_release:PlatPmd.common_personinfo.szdynamicpass)
+inline ::std::string* personinfo::release_szdynamicpass() {
+  // @@protoc_insertion_point(field_release:CommonPmd.personinfo.szdynamicpass)
   
   return szdynamicpass_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void common_personinfo::set_allocated_szdynamicpass(::std::string* szdynamicpass) {
+inline void personinfo::set_allocated_szdynamicpass(::std::string* szdynamicpass) {
   if (szdynamicpass != NULL) {
     
   } else {
     
   }
   szdynamicpass_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), szdynamicpass);
-  // @@protoc_insertion_point(field_set_allocated:PlatPmd.common_personinfo.szdynamicpass)
+  // @@protoc_insertion_point(field_set_allocated:CommonPmd.personinfo.szdynamicpass)
 }
 
-// string szgroupname = 17;
-inline void common_personinfo::clear_szgroupname() {
-  szgroupname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+// string szPassword = 17;
+inline void personinfo::clear_szpassword() {
+  szpassword_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& common_personinfo::szgroupname() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.common_personinfo.szgroupname)
-  return szgroupname_.GetNoArena();
+inline const ::std::string& personinfo::szpassword() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.personinfo.szPassword)
+  return szpassword_.GetNoArena();
 }
-inline void common_personinfo::set_szgroupname(const ::std::string& value) {
+inline void personinfo::set_szpassword(const ::std::string& value) {
   
-  szgroupname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:PlatPmd.common_personinfo.szgroupname)
+  szpassword_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:CommonPmd.personinfo.szPassword)
 }
 #if LANG_CXX11
-inline void common_personinfo::set_szgroupname(::std::string&& value) {
+inline void personinfo::set_szpassword(::std::string&& value) {
+  
+  szpassword_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:CommonPmd.personinfo.szPassword)
+}
+#endif
+inline void personinfo::set_szpassword(const char* value) {
+  
+  szpassword_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:CommonPmd.personinfo.szPassword)
+}
+inline void personinfo::set_szpassword(const char* value, size_t size) {
+  
+  szpassword_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:CommonPmd.personinfo.szPassword)
+}
+inline ::std::string* personinfo::mutable_szpassword() {
+  
+  // @@protoc_insertion_point(field_mutable:CommonPmd.personinfo.szPassword)
+  return szpassword_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* personinfo::release_szpassword() {
+  // @@protoc_insertion_point(field_release:CommonPmd.personinfo.szPassword)
+  
+  return szpassword_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void personinfo::set_allocated_szpassword(::std::string* szpassword) {
+  if (szpassword != NULL) {
+    
+  } else {
+    
+  }
+  szpassword_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), szpassword);
+  // @@protoc_insertion_point(field_set_allocated:CommonPmd.personinfo.szPassword)
+}
+
+// string szgroupname = 18;
+inline void personinfo::clear_szgroupname() {
+  szgroupname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& personinfo::szgroupname() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.personinfo.szgroupname)
+  return szgroupname_.GetNoArena();
+}
+inline void personinfo::set_szgroupname(const ::std::string& value) {
+  
+  szgroupname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:CommonPmd.personinfo.szgroupname)
+}
+#if LANG_CXX11
+inline void personinfo::set_szgroupname(::std::string&& value) {
   
   szgroupname_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:PlatPmd.common_personinfo.szgroupname)
+  // @@protoc_insertion_point(field_set_rvalue:CommonPmd.personinfo.szgroupname)
 }
 #endif
-inline void common_personinfo::set_szgroupname(const char* value) {
+inline void personinfo::set_szgroupname(const char* value) {
   
   szgroupname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:PlatPmd.common_personinfo.szgroupname)
+  // @@protoc_insertion_point(field_set_char:CommonPmd.personinfo.szgroupname)
 }
-inline void common_personinfo::set_szgroupname(const char* value, size_t size) {
+inline void personinfo::set_szgroupname(const char* value, size_t size) {
   
   szgroupname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:PlatPmd.common_personinfo.szgroupname)
+  // @@protoc_insertion_point(field_set_pointer:CommonPmd.personinfo.szgroupname)
 }
-inline ::std::string* common_personinfo::mutable_szgroupname() {
+inline ::std::string* personinfo::mutable_szgroupname() {
   
-  // @@protoc_insertion_point(field_mutable:PlatPmd.common_personinfo.szgroupname)
+  // @@protoc_insertion_point(field_mutable:CommonPmd.personinfo.szgroupname)
   return szgroupname_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* common_personinfo::release_szgroupname() {
-  // @@protoc_insertion_point(field_release:PlatPmd.common_personinfo.szgroupname)
+inline ::std::string* personinfo::release_szgroupname() {
+  // @@protoc_insertion_point(field_release:CommonPmd.personinfo.szgroupname)
   
   return szgroupname_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void common_personinfo::set_allocated_szgroupname(::std::string* szgroupname) {
+inline void personinfo::set_allocated_szgroupname(::std::string* szgroupname) {
   if (szgroupname != NULL) {
     
   } else {
     
   }
   szgroupname_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), szgroupname);
-  // @@protoc_insertion_point(field_set_allocated:PlatPmd.common_personinfo.szgroupname)
+  // @@protoc_insertion_point(field_set_allocated:CommonPmd.personinfo.szgroupname)
 }
 
-// bytes cbinsureenabled = 18;
-inline void common_personinfo::clear_cbinsureenabled() {
-  cbinsureenabled_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+// uint64 cbinsureenabled = 19;
+inline void personinfo::clear_cbinsureenabled() {
+  cbinsureenabled_ = GOOGLE_ULONGLONG(0);
 }
-inline const ::std::string& common_personinfo::cbinsureenabled() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.common_personinfo.cbinsureenabled)
-  return cbinsureenabled_.GetNoArena();
+inline ::google::protobuf::uint64 personinfo::cbinsureenabled() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.personinfo.cbinsureenabled)
+  return cbinsureenabled_;
 }
-inline void common_personinfo::set_cbinsureenabled(const ::std::string& value) {
+inline void personinfo::set_cbinsureenabled(::google::protobuf::uint64 value) {
   
-  cbinsureenabled_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:PlatPmd.common_personinfo.cbinsureenabled)
+  cbinsureenabled_ = value;
+  // @@protoc_insertion_point(field_set:CommonPmd.personinfo.cbinsureenabled)
+}
+
+// uint64 cbshowserverstatus = 20;
+inline void personinfo::clear_cbshowserverstatus() {
+  cbshowserverstatus_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 personinfo::cbshowserverstatus() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.personinfo.cbshowserverstatus)
+  return cbshowserverstatus_;
+}
+inline void personinfo::set_cbshowserverstatus(::google::protobuf::uint64 value) {
+  
+  cbshowserverstatus_ = value;
+  // @@protoc_insertion_point(field_set:CommonPmd.personinfo.cbshowserverstatus)
+}
+
+// uint64 cbisagent = 21;
+inline void personinfo::clear_cbisagent() {
+  cbisagent_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 personinfo::cbisagent() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.personinfo.cbisagent)
+  return cbisagent_;
+}
+inline void personinfo::set_cbisagent(::google::protobuf::uint64 value) {
+  
+  cbisagent_ = value;
+  // @@protoc_insertion_point(field_set:CommonPmd.personinfo.cbisagent)
+}
+
+// string szUnderWrite = 22;
+inline void personinfo::clear_szunderwrite() {
+  szunderwrite_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& personinfo::szunderwrite() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.personinfo.szUnderWrite)
+  return szunderwrite_.GetNoArena();
+}
+inline void personinfo::set_szunderwrite(const ::std::string& value) {
+  
+  szunderwrite_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:CommonPmd.personinfo.szUnderWrite)
 }
 #if LANG_CXX11
-inline void common_personinfo::set_cbinsureenabled(::std::string&& value) {
+inline void personinfo::set_szunderwrite(::std::string&& value) {
   
-  cbinsureenabled_.SetNoArena(
+  szunderwrite_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:PlatPmd.common_personinfo.cbinsureenabled)
+  // @@protoc_insertion_point(field_set_rvalue:CommonPmd.personinfo.szUnderWrite)
 }
 #endif
-inline void common_personinfo::set_cbinsureenabled(const char* value) {
+inline void personinfo::set_szunderwrite(const char* value) {
   
-  cbinsureenabled_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:PlatPmd.common_personinfo.cbinsureenabled)
+  szunderwrite_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:CommonPmd.personinfo.szUnderWrite)
 }
-inline void common_personinfo::set_cbinsureenabled(const void* value, size_t size) {
+inline void personinfo::set_szunderwrite(const char* value, size_t size) {
   
-  cbinsureenabled_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  szunderwrite_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:PlatPmd.common_personinfo.cbinsureenabled)
+  // @@protoc_insertion_point(field_set_pointer:CommonPmd.personinfo.szUnderWrite)
 }
-inline ::std::string* common_personinfo::mutable_cbinsureenabled() {
+inline ::std::string* personinfo::mutable_szunderwrite() {
   
-  // @@protoc_insertion_point(field_mutable:PlatPmd.common_personinfo.cbinsureenabled)
-  return cbinsureenabled_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  // @@protoc_insertion_point(field_mutable:CommonPmd.personinfo.szUnderWrite)
+  return szunderwrite_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* common_personinfo::release_cbinsureenabled() {
-  // @@protoc_insertion_point(field_release:PlatPmd.common_personinfo.cbinsureenabled)
+inline ::std::string* personinfo::release_szunderwrite() {
+  // @@protoc_insertion_point(field_release:CommonPmd.personinfo.szUnderWrite)
   
-  return cbinsureenabled_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return szunderwrite_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void common_personinfo::set_allocated_cbinsureenabled(::std::string* cbinsureenabled) {
-  if (cbinsureenabled != NULL) {
+inline void personinfo::set_allocated_szunderwrite(::std::string* szunderwrite) {
+  if (szunderwrite != NULL) {
     
   } else {
     
   }
-  cbinsureenabled_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), cbinsureenabled);
-  // @@protoc_insertion_point(field_set_allocated:PlatPmd.common_personinfo.cbinsureenabled)
+  szunderwrite_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), szunderwrite);
+  // @@protoc_insertion_point(field_set_allocated:CommonPmd.personinfo.szUnderWrite)
 }
 
-// bytes cbshowserverstatus = 19;
-inline void common_personinfo::clear_cbshowserverstatus() {
-  cbshowserverstatus_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+// int32 cbMemberOrder = 23;
+inline void personinfo::clear_cbmemberorder() {
+  cbmemberorder_ = 0;
 }
-inline const ::std::string& common_personinfo::cbshowserverstatus() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.common_personinfo.cbshowserverstatus)
-  return cbshowserverstatus_.GetNoArena();
+inline ::google::protobuf::int32 personinfo::cbmemberorder() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.personinfo.cbMemberOrder)
+  return cbmemberorder_;
 }
-inline void common_personinfo::set_cbshowserverstatus(const ::std::string& value) {
+inline void personinfo::set_cbmemberorder(::google::protobuf::int32 value) {
   
-  cbshowserverstatus_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:PlatPmd.common_personinfo.cbshowserverstatus)
+  cbmemberorder_ = value;
+  // @@protoc_insertion_point(field_set:CommonPmd.personinfo.cbMemberOrder)
 }
-#if LANG_CXX11
-inline void common_personinfo::set_cbshowserverstatus(::std::string&& value) {
+
+// .CommonPmd.SYSTEMTIME MemberOverDate = 24;
+inline bool personinfo::has_memberoverdate() const {
+  return this != internal_default_instance() && memberoverdate_ != NULL;
+}
+inline void personinfo::clear_memberoverdate() {
+  if (GetArenaNoVirtual() == NULL && memberoverdate_ != NULL) delete memberoverdate_;
+  memberoverdate_ = NULL;
+}
+inline const ::CommonPmd::SYSTEMTIME& personinfo::memberoverdate() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.personinfo.MemberOverDate)
+  return memberoverdate_ != NULL ? *memberoverdate_
+                         : *::CommonPmd::SYSTEMTIME::internal_default_instance();
+}
+inline ::CommonPmd::SYSTEMTIME* personinfo::mutable_memberoverdate() {
   
-  cbshowserverstatus_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:PlatPmd.common_personinfo.cbshowserverstatus)
+  if (memberoverdate_ == NULL) {
+    memberoverdate_ = new ::CommonPmd::SYSTEMTIME;
+  }
+  // @@protoc_insertion_point(field_mutable:CommonPmd.personinfo.MemberOverDate)
+  return memberoverdate_;
 }
-#endif
-inline void common_personinfo::set_cbshowserverstatus(const char* value) {
+inline ::CommonPmd::SYSTEMTIME* personinfo::release_memberoverdate() {
+  // @@protoc_insertion_point(field_release:CommonPmd.personinfo.MemberOverDate)
   
-  cbshowserverstatus_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:PlatPmd.common_personinfo.cbshowserverstatus)
+  ::CommonPmd::SYSTEMTIME* temp = memberoverdate_;
+  memberoverdate_ = NULL;
+  return temp;
 }
-inline void common_personinfo::set_cbshowserverstatus(const void* value, size_t size) {
-  
-  cbshowserverstatus_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:PlatPmd.common_personinfo.cbshowserverstatus)
-}
-inline ::std::string* common_personinfo::mutable_cbshowserverstatus() {
-  
-  // @@protoc_insertion_point(field_mutable:PlatPmd.common_personinfo.cbshowserverstatus)
-  return cbshowserverstatus_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* common_personinfo::release_cbshowserverstatus() {
-  // @@protoc_insertion_point(field_release:PlatPmd.common_personinfo.cbshowserverstatus)
-  
-  return cbshowserverstatus_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void common_personinfo::set_allocated_cbshowserverstatus(::std::string* cbshowserverstatus) {
-  if (cbshowserverstatus != NULL) {
+inline void personinfo::set_allocated_memberoverdate(::CommonPmd::SYSTEMTIME* memberoverdate) {
+  delete memberoverdate_;
+  memberoverdate_ = memberoverdate;
+  if (memberoverdate) {
     
   } else {
     
   }
-  cbshowserverstatus_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), cbshowserverstatus);
-  // @@protoc_insertion_point(field_set_allocated:PlatPmd.common_personinfo.cbshowserverstatus)
+  // @@protoc_insertion_point(field_set_allocated:CommonPmd.personinfo.MemberOverDate)
 }
 
-// bytes cbisagent = 20;
-inline void common_personinfo::clear_cbisagent() {
-  cbisagent_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+// uint64 dwCheckUserRight = 25;
+inline void personinfo::clear_dwcheckuserright() {
+  dwcheckuserright_ = GOOGLE_ULONGLONG(0);
 }
-inline const ::std::string& common_personinfo::cbisagent() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.common_personinfo.cbisagent)
-  return cbisagent_.GetNoArena();
+inline ::google::protobuf::uint64 personinfo::dwcheckuserright() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.personinfo.dwCheckUserRight)
+  return dwcheckuserright_;
 }
-inline void common_personinfo::set_cbisagent(const ::std::string& value) {
+inline void personinfo::set_dwcheckuserright(::google::protobuf::uint64 value) {
   
-  cbisagent_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:PlatPmd.common_personinfo.cbisagent)
+  dwcheckuserright_ = value;
+  // @@protoc_insertion_point(field_set:CommonPmd.personinfo.dwCheckUserRight)
+}
+
+// string szDescribeString = 26;
+inline void personinfo::clear_szdescribestring() {
+  szdescribestring_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& personinfo::szdescribestring() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.personinfo.szDescribeString)
+  return szdescribestring_.GetNoArena();
+}
+inline void personinfo::set_szdescribestring(const ::std::string& value) {
+  
+  szdescribestring_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:CommonPmd.personinfo.szDescribeString)
 }
 #if LANG_CXX11
-inline void common_personinfo::set_cbisagent(::std::string&& value) {
+inline void personinfo::set_szdescribestring(::std::string&& value) {
   
-  cbisagent_.SetNoArena(
+  szdescribestring_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:PlatPmd.common_personinfo.cbisagent)
+  // @@protoc_insertion_point(field_set_rvalue:CommonPmd.personinfo.szDescribeString)
 }
 #endif
-inline void common_personinfo::set_cbisagent(const char* value) {
+inline void personinfo::set_szdescribestring(const char* value) {
   
-  cbisagent_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:PlatPmd.common_personinfo.cbisagent)
+  szdescribestring_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:CommonPmd.personinfo.szDescribeString)
 }
-inline void common_personinfo::set_cbisagent(const void* value, size_t size) {
+inline void personinfo::set_szdescribestring(const char* value, size_t size) {
   
-  cbisagent_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  szdescribestring_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:PlatPmd.common_personinfo.cbisagent)
+  // @@protoc_insertion_point(field_set_pointer:CommonPmd.personinfo.szDescribeString)
 }
-inline ::std::string* common_personinfo::mutable_cbisagent() {
+inline ::std::string* personinfo::mutable_szdescribestring() {
   
-  // @@protoc_insertion_point(field_mutable:PlatPmd.common_personinfo.cbisagent)
-  return cbisagent_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  // @@protoc_insertion_point(field_mutable:CommonPmd.personinfo.szDescribeString)
+  return szdescribestring_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* common_personinfo::release_cbisagent() {
-  // @@protoc_insertion_point(field_release:PlatPmd.common_personinfo.cbisagent)
+inline ::std::string* personinfo::release_szdescribestring() {
+  // @@protoc_insertion_point(field_release:CommonPmd.personinfo.szDescribeString)
   
-  return cbisagent_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return szdescribestring_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void common_personinfo::set_allocated_cbisagent(::std::string* cbisagent) {
-  if (cbisagent != NULL) {
+inline void personinfo::set_allocated_szdescribestring(::std::string* szdescribestring) {
+  if (szdescribestring != NULL) {
     
   } else {
     
   }
-  cbisagent_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), cbisagent);
-  // @@protoc_insertion_point(field_set_allocated:PlatPmd.common_personinfo.cbisagent)
+  szdescribestring_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), szdescribestring);
+  // @@protoc_insertion_point(field_set_allocated:CommonPmd.personinfo.szDescribeString)
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -1104,21 +1286,7 @@ inline void common_personinfo::set_allocated_cbisagent(::std::string* cbisagent)
 // @@protoc_insertion_point(namespace_scope)
 
 
-}  // namespace PlatPmd
-
-#ifndef SWIG
-namespace google {
-namespace protobuf {
-
-template <> struct is_proto_enum< ::PlatPmd::CommonPmdCommand_CommonPmdEnum> : ::google::protobuf::internal::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::PlatPmd::CommonPmdCommand_CommonPmdEnum>() {
-  return ::PlatPmd::CommonPmdCommand_CommonPmdEnum_descriptor();
-}
-
-}  // namespace protobuf
-}  // namespace google
-#endif  // SWIG
+}  // namespace CommonPmd
 
 // @@protoc_insertion_point(global_scope)
 

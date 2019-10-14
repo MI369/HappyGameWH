@@ -296,7 +296,7 @@ bool CPersonalRoomGame::OnEventUserItemScore(IServerUserItem * pIServerUserItem,
 		}
 
 
-		if ((lstrcmp(m_pGameServiceOption->szDataBaseName,  TEXT("WHJHTreasureDB")) != 0))
+		if ((lstrcmp(m_pGameServiceOption->szDataBaseName, szTreasureDB) != 0))
 		{
 			WriteGameScore.VariationInfo.lScore=0;
 			WriteGameScore.VariationInfo.lGrade=0;
@@ -1062,7 +1062,7 @@ bool CPersonalRoomGame::OnDBCreateSucess(DWORD dwContextID, VOID * pData, WORD w
 	pTableFrame->SetPersonalRoomID(0);
 
 	//如果使用的是金币数据库
-	if (lstrcmp(m_pGameServiceOption->szDataBaseName,  TEXT("WHJHTreasureDB")) == 0)
+	if (lstrcmp(m_pGameServiceOption->szDataBaseName, szTreasureDB) == 0)
 	{
 		pTableFrame->SetPersonalTable(pCreateSuccess->dwDrawCountLimit, pCreateSuccess->dwDrawTimeLimit, 0);
 		pTableFrame->SetDataBaseMode(0);

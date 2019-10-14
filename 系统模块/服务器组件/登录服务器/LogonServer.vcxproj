@@ -105,7 +105,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <AdditionalIncludeDirectories>G:\网狐\开发的模块\服务端\系统模块\第三方库\protobuf\include;</AdditionalIncludeDirectories>
-      <AssemblerOutput>NoListing</AssemblerOutput>
+      <AssemblerOutput>All</AssemblerOutput>
     </ClCompile>
     <Link>
       <OutputFile>../../../运行/Debug/Ansi/LogonServer.exe</OutputFile>
@@ -115,7 +115,9 @@
       <ProgramDatabaseFile>../../../中间目录/登录服务器/Debug_Ansi/$(TargetName).pdb</ProgramDatabaseFile>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
-      <GenerateMapFile>false</GenerateMapFile>
+      <GenerateMapFile>true</GenerateMapFile>
+      <AdditionalLibraryDirectories>G:\网狐\开发的模块\服务端\系统模块\第三方库\protobuf\lib\debug\Ansi;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Ws2_32.lib;libprotobufd.lib;libprotobuf-lited.lib;libprotocd.lib</AdditionalDependencies>
     </Link>
     <Midl>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>

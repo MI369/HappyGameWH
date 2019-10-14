@@ -2,36 +2,26 @@ syntax = "proto3";    //指定proto版本3.x
 import "NullPmd.proto";
 import "CommonPmd.proto";
 
-package PlatPmd;
-
-message LoginPmdCommand{
-	enum LoginPmdEnum {  
-		param_nullmessage			= 0x00;   
-		param_loginbyid_c2s			= 0x01;       
-		param_loginbyaccounts_c2s	= 0x02;       
-		param_loginbyvisitor_c2s	= 0x06;       
-		param_loginsuccess_s2c		= 0x64;       
-	} 
-}
+package LoginPmd;
 
 message loginbyid_c2s
 {
-    PlatPmd.null_request reqcmd		= 1;
+    NullPmd.request reqcmd			= 1;
 	//系统信息
-	uint32	dwplazaversion			= 2;	//广场版本
+	uint64	dwplazaversion			= 2;	//广场版本
 	string	szmachineid				= 3;	//机器序列
 
 	//登录信息
-	uint32	dwgameid				= 4;	//游戏 i d
+	uint64	dwgameid				= 4;	//游戏 i d
 	string	szpassword				= 5;	//登录密码
 	int32	cbvalidateflags			= 6;	//校验标识
 }
 
 message loginbyaccounts_c2s
 {
-    PlatPmd.null_request reqcmd		= 1;
+    NullPmd.request reqcmd			= 1;
 	//系统信息
-	uint32	dwplazaversion			= 2;	//广场版本
+	uint64	dwplazaversion			= 2;	//广场版本
 	string	szmachineid				= 3;	//机器序列
 
 	//登录信息
@@ -41,11 +31,34 @@ message loginbyaccounts_c2s
 	int32	cbvalidateflags			= 7;	//校验标识
 }
 
+//第三方帐号登录
+message logonOtherPlatform_c2s
+{
+	NullPmd.request reqcmd			= 1;
+	//系统信息
+	int32		wmoduleid			= 2;	//模块标识
+	uint64		dwplazaversion		= 3;	//广场版本
+	int32       cbdevicetype		= 4;    //设备类型
+
+	//登录信息
+	int32		cbgender			= 5;	//用户性别
+	int32		cbplatformid		= 6;	//平台编号
+	string		szuseruin			= 7;	//用户Uin
+	string		sznickname			= 8;	//用户昵称
+	string		szcompellation		= 9;	//真实名字
+
+	//连接信息
+	string		szmachineid			= 10;	//机器标识
+	string		szmobilephone		= 11;	//电话号码	
+	string		szdevicetoken		= 12;	//绑定设备标识
+	string      strfaceurl			= 13;	//头像URL
+};
+
 message loginbyvisitor_c2s
 {
-    PlatPmd.null_request reqcmd		= 1;
+    NullPmd.request reqcmd			= 1;
 	//系统信息
-	uint32	dwplazaversion			= 2;	//广场版本
+	uint64	dwplazaversion			= 2;	//广场版本
 	string	szmachineid				= 3;	//机器序列
 
 	//登录信息
@@ -55,6 +68,20 @@ message loginbyvisitor_c2s
 //登录成功
 message loginsuccess_s2c
 {
-	PlatPmd.null_response respcmd		= 1;
-	PlatPmd.common_personinfo personinfo	= 2;
+	NullPmd.response respcmd		= 1;
+	CommonPmd.personinfo personinfo	= 2;
+}
+
+//登陆完成
+message loginfinish_s2c
+{
+	NullPmd.response respcmd		= 1;
+	int32	wIntermitTime 			= 2;	//中断时间
+	int32	wOnLineCountTime		= 3;	//更新时间
+}
+
+//登录失败
+message loginfailure_s2c
+{
+	NullPmd.response respcmd		= 1;
 }

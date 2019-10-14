@@ -11,8 +11,29 @@ inline void EnableMemLeakCheck()
 #include "Afxinet.h"
 #include "TCPNetworkEngine.h"
 #include "TraceServiceManager.h"
-#include "CProtobufEngine.h"
+
 #include "../../消息定义/pb/NullPmd.pb.h"
+#include "../../消息定义/pb/NullPmd.pb.cc"
+
+#include "../../消息定义/pb/CommonPmd.pb.h"
+#include "../../消息定义/pb/LoginPmd.pb.h"
+#include "../../消息定义/pb/GamePmd.pb.h"
+#include "../../消息定义/pb/GrowLevelPmd.pb.h"
+#include "../../消息定义/pb/MatchPmd.pb.h"
+#include "../../消息定义/pb/MemberPmd.pb.h"
+#include "../../消息定义/pb/RealAuthPmd.pb.h"
+#include "../../消息定义/pb/VideoPmd.pb.h"
+#include "../../消息定义/pb/propertyPmd.pb.h"
+
+#include "../../消息定义/pb/CommonPmd.pb.cc"
+#include "../../消息定义/pb/LoginPmd.pb.cc"
+#include "../../消息定义/pb/GamePmd.pb.cc"
+#include "../../消息定义/pb/GrowLevelPmd.pb.cc"
+#include "../../消息定义/pb/MatchPmd.pb.cc"
+#include "../../消息定义/pb/MemberPmd.pb.cc"
+#include "../../消息定义/pb/RealAuthPmd.pb.cc"
+#include "../../消息定义/pb/VideoPmd.pb.cc"
+#include "../../消息定义/pb/propertyPmd.pb.cc"
 //////////////////////////////////////////////////////////////////////////////////
 // 宏定义
 
@@ -153,10 +174,10 @@ CTCPNetworkItem::CTCPNetworkItem(WORD wIndex, ITCPNetworkItemSink * pITCPNetwork
     ZeroMemory(m_cbRecvBuf, sizeof(m_cbRecvBuf));
 
     // 计数变量
-    m_dwSendTickCount = 0;
-    m_dwRecvTickCount = 0;
-    m_dwSendPacketCount = 0;
-    m_dwRecvPacketCount = 0;
+    m_dwSendTickCount = 0L;
+    m_dwRecvTickCount = 0L;
+    m_dwSendPacketCount = 0L;
+    m_dwRecvPacketCount = 0L;
 
     // 加密数据
     m_cbSendRound = 0;
@@ -215,8 +236,8 @@ DWORD CTCPNetworkItem::Attach(SOCKET hSocket, DWORD dwClientIP)
     m_hSocketHandle = hSocket;
     m_wSurvivalTime = SAFETY_QUOTIETY;
     m_dwActiveTime = (DWORD)time(NULL);
-	m_dwSendTickCount = GetTickCount() / 1000L;
-	m_dwRecvTickCount = GetTickCount() / 1000L;
+	m_dwSendTickCount = GetTickCount();
+	m_dwRecvTickCount = GetTickCount();
 
     // 发送通知
     m_pITCPNetworkItemSink->OnEventSocketBind(this);
@@ -250,10 +271,10 @@ DWORD CTCPNetworkItem::ResumeData()
     ZeroMemory(m_cbRecvBuf, sizeof(m_cbRecvBuf));
 
     // 计数变量
-    m_dwSendTickCount = 0;
-    m_dwRecvTickCount = 0;
-    m_dwSendPacketCount = 0;
-    m_dwRecvPacketCount = 0;
+    m_dwSendTickCount = 0L;
+    m_dwRecvTickCount = 0L;
+    m_dwSendPacketCount = 0L;
+    m_dwRecvPacketCount = 0L;
 
     // 加密数据
     m_cbSendRound = 0;
@@ -279,29 +300,32 @@ bool CTCPNetworkItem::SendData(WORD wMainCmdID, WORD wSubCmdID, WORD wRountID)
 	{
 		switch (m_connectType) {
 			case WEBSOCKET: {
-				char sendData[SOCKET_TCP_PACKET];
-				PlatPmd::null_message*  message = (PlatPmd::null_message*)CProtobufEngine::getInstance()->getMessageSerializer()->createMessage();
+				NullPmd::message message;
+				message.Clear();
+				NullPmd::head* head = message.mutable_head();
+				NullPmd::command* command = head->mutable_command();
+				NullPmd::info* info = head->mutable_info();
 
-				message->set_mainid(wMainCmdID);
-				message->set_subid(wSubCmdID);
-				message->set_allocated_data((string*)"");
-				message->set_sequence(1);
-				message->set_fid(1);
-				message->set_proto_type(0);
-				message->set_bitmask(1);
-				message->set_time(1);
+				command->set_mainid(wMainCmdID);
+				command->set_subid(wSubCmdID);
+				message.clear_data();
+				info->set_cbcheckcode(1);
+				info->set_wpacketsize(0);
+				info->set_cbdatakind(DK_MAPPED);
 
-				if (CProtobufEngine::getInstance()->encode(message, sendData) == false) {
-					CProtobufEngine::getInstance()->getMessageSerializer()->ReleaseMessage(message);
+				int buffsize = message.ByteSize();
+				if (buffsize > SOCKET_TCP_PACKET) {
+					throw TEXT("发送包太大");
+				}
+				std::shared_ptr<char> sendData(new char[buffsize]);
+				if (message.SerializeToArray(sendData.get(), buffsize) == false) {
 					throw TEXT("Serialize error");
 				}
 
-				TCHAR szString[512] = TEXT("");
-				_sntprintf(szString, CountArray(szString), TEXT("发送消息::\n%s"), message->DebugString().c_str());
-				g_TraceServiceManager.TraceString(szString, TraceLevel_Normal);
+				char cbSendData[SOCKET_TCP_BUFFER];
+				int encodesize = zl::net::ws::encodeFrame(zl::net::ws::WsFrameType::WS_BINARY_FRAME, sendData.get(), buffsize, cbSendData, SOCKET_TCP_BUFFER);
 
-				SendRawData(sendData, message->ByteSize());
-				CProtobufEngine::getInstance()->getMessageSerializer()->ReleaseMessage(message);
+				SendRawData(cbSendData, encodesize);
 				break;
 			}
 			case WINSOCKET: {
@@ -349,9 +373,17 @@ bool CTCPNetworkItem::SendData(WORD wMainCmdID, WORD wSubCmdID, WORD wRountID)
 			}
 		}
 	}
-	catch (const std::exception&)
+	catch (LPCTSTR pszMessage) {
+		// 错误信息
+		TCHAR szString[512] = TEXT("");
+		_sntprintf(szString, CountArray(szString), TEXT("SendData 异常:%s"), pszMessage);
+		g_TraceServiceManager.TraceString(szString, TraceLevel_Exception);
+		return false;
+	}
+	catch (...)
 	{
 		g_TraceServiceManager.TraceString("SendData 异常", TraceLevel_Exception);
+		CloseSocket(m_wRountID);
 		return false;
 	}
     return true;
@@ -371,32 +403,138 @@ bool CTCPNetworkItem::SendData(VOID * pData, WORD wDataSize, WORD wMainCmdID, WO
 		switch (m_connectType) {
 			case WEBSOCKET: {
 				if (wDataSize == 0) {
+					TCHAR szString[512] = TEXT("");
+					_sntprintf(szString, CountArray(szString), TEXT("数据为空:wMainCmdID:%d,wSubCmdID:%d"), wMainCmdID, wSubCmdID);
+					g_TraceServiceManager.TraceString(szString, TraceLevel_Normal);
 					return SendData(wMainCmdID, wSubCmdID, wRountID);
 				}
-				char sendData[SOCKET_TCP_PACKET];
-				PlatPmd::null_message*  message = (PlatPmd::null_message*)CProtobufEngine::getInstance()->getMessageSerializer()->createMessage();
 
-				message->set_mainid(wMainCmdID);
-				message->set_subid(wSubCmdID);
-				message->clear_data();
-				message->set_allocated_data((string*)pData);
-				message->set_sequence(1);
-				message->set_fid(1);
-				message->set_proto_type(0);
-				message->set_bitmask(1);
-				message->set_time(1);
+				if (wMainCmdID == 1) {
+					switch (wSubCmdID) {
+					case 100: {	
+						LoginPmd::loginsuccess_s2c message;
+						if (message.ParseFromArray(pData, wDataSize) == false) {
+							throw TEXT("parse error");
+						}
+						message.PrintDebugString();
+						break;
+					}
+					case 102: {
+						LoginPmd::loginfinish_s2c message;
+						if (message.ParseFromArray(pData, wDataSize) == false) {
+							throw TEXT("parse error");
+						}
+						message.PrintDebugString();
+						break;
+					}
+					case 107: {
+						GrowLevelPmd::tagGrowLevelConfig_s2c message;
+						if (message.ParseFromArray(pData, wDataSize) == false) {
+							throw TEXT("parse error");
+						}
+						message.PrintDebugString();
+						break;
+					}
+					case 110: {
+						RealAuthPmd::RealAuthParameter_s2c message;
+						if (message.ParseFromArray(pData, wDataSize) == false) {
+							throw TEXT("parse error");
+						}
+						message.PrintDebugString();
+						break;
+					}
+					case 350: {
+						MemberPmd::MemberParameterResult_s2c message;
+						if (message.ParseFromArray(pData, wDataSize) == false) {
+							throw TEXT("parse error");
+						}
+						message.PrintDebugString();
+						break;
+					}
+					}
+				}else if (wMainCmdID == 2) {
+					switch (wSubCmdID) {
+					case 100: {
+						GamePmd::taggametype_s2c message;
+						if (message.ParseFromArray(pData, wDataSize) == false) {
+							throw TEXT("parse error");
+						}
+						message.PrintDebugString();
+						break;
+					}
+					case 101: {
+						GamePmd::taggamekind_s2c message;
+						if (message.ParseFromArray(pData, wDataSize) == false) {
+							throw TEXT("parse error");
+						}
+						message.PrintDebugString();
+						break;
+					}
+					case 110: {
+						propertyPmd::tagPropertyTypeItem_s2c message;
+						if (message.ParseFromArray(pData, wDataSize) == false) {
+							throw TEXT("parse error");
+						}
+						message.PrintDebugString();
+						break;
+					}
+					case 111: {
+						propertyPmd::tagPropertyRelatItem_s2c message;
+						if (message.ParseFromArray(pData, wDataSize) == false) {
+							throw TEXT("parse error");
+						}
+						message.PrintDebugString();
+						break;
+					}
+					case 112: {
+						propertyPmd::tagPropertyItem_s2c message;
+						if (message.ParseFromArray(pData, wDataSize) == false) {
+							throw TEXT("parse error");
+						}
+						message.PrintDebugString();
+						break;
+					}
+					case 113: {
+						propertyPmd::tagPropertySubItem_s2c message;
+						if (message.ParseFromArray(pData, wDataSize) == false) {
+							throw TEXT("parse error");
+						}
+						message.PrintDebugString();
+						break;
+					}
+					}
+				}
+				TCHAR szString[512] = TEXT("");
+				_sntprintf(szString, CountArray(szString), TEXT("发送消息pData:wMainCmdID:%d,wSubCmdID:%d"), wMainCmdID, wSubCmdID);
+				g_TraceServiceManager.TraceString(szString, TraceLevel_Normal);
+				
+				NullPmd::message message;
+				message.Clear();
+				NullPmd::head* head = message.mutable_head();
+				NullPmd::command* command = head->mutable_command();
+				NullPmd::info* info = head->mutable_info();
 
-				if (CProtobufEngine::getInstance()->encode(message, sendData) == false) {
-					CProtobufEngine::getInstance()->getMessageSerializer()->ReleaseMessage(message);
+				command->set_mainid(wMainCmdID);
+				command->set_subid(wSubCmdID);
+				//message.clear_data();
+				message.set_data((char*)pData);
+				info->set_cbcheckcode(1);
+				info->set_wpacketsize(wDataSize);
+				info->set_cbdatakind(DK_MAPPED);
+
+				int buffsize = message.ByteSize();
+				if (buffsize > SOCKET_TCP_PACKET) {
+					throw TEXT("发送包太大");
+				}
+				std::shared_ptr<char> sendData(new char[buffsize]);
+				if (message.SerializeToArray(sendData.get(), buffsize) == false) {
 					throw TEXT("Serialize error");
 				}
 
-				TCHAR szString[512] = TEXT("");
-				_sntprintf(szString, CountArray(szString), TEXT("发送消息 pData::\n%s"), message->DebugString().c_str());
-				g_TraceServiceManager.TraceString(szString, TraceLevel_Normal);
-
-				SendRawData(sendData, message->ByteSize());
-				CProtobufEngine::getInstance()->getMessageSerializer()->ReleaseMessage(message);
+				char cbSendData[SOCKET_TCP_BUFFER];
+				int encodesize = zl::net::ws::encodeFrame(zl::net::ws::WsFrameType::WS_BINARY_FRAME, sendData.get(), buffsize, cbSendData, SOCKET_TCP_BUFFER);
+				
+				SendRawData(cbSendData, encodesize);
 				break;
 			}
 			case WINSOCKET: {
@@ -451,9 +589,17 @@ bool CTCPNetworkItem::SendData(VOID * pData, WORD wDataSize, WORD wMainCmdID, WO
 			}
 		}
 	}
-	catch (const std::exception&)
+	catch (LPCTSTR pszMessage) {
+		// 错误信息
+		TCHAR szString[512] = TEXT("");
+		_sntprintf(szString, CountArray(szString), TEXT("SendData pData 异常:%s"), pszMessage);
+		g_TraceServiceManager.TraceString(szString, TraceLevel_Exception);
+		return false;
+	}
+	catch (...)
 	{
 		g_TraceServiceManager.TraceString("SendData pData 异常", TraceLevel_Exception);
+		CloseSocket(m_wRountID);
 		return false;
 	}
 	
@@ -532,7 +678,7 @@ bool CTCPNetworkItem::ShutDownSocket(WORD wRountID)
 	}
 
     // 发送命令
-    //SendData(MDM_KN_COMMAND,SUB_KN_SHUT_DOWN_SOCKET,m_wRountID);
+    SendData(MDM_KN_COMMAND,SUB_KN_SHUT_DOWN_SOCKET,m_wRountID);
 
     return true;
 }
@@ -558,7 +704,7 @@ bool CTCPNetworkItem::AllowBatchSend(WORD wRountID, bool bAllowBatch, BYTE cbBat
 bool CTCPNetworkItem::OnSendCompleted(COverLappedSend * pOverLappedSend, DWORD dwThancferred)
 {
     // 效验变量
-	ASSERT(pOverLappedSend != NULL);
+    ASSERT(m_bSendIng == true);
     ASSERT(m_OverLappedSendActive.GetCount() > 0);
     ASSERT(pOverLappedSend == m_OverLappedSendActive[0]);
 
@@ -580,7 +726,7 @@ bool CTCPNetworkItem::OnSendCompleted(COverLappedSend * pOverLappedSend, DWORD d
     if (dwThancferred != 0)
     {
         m_wSurvivalTime = SAFETY_QUOTIETY;
-        m_dwSendTickCount = GetTickCount() / 1000L;
+        m_dwSendTickCount = GetTickCount();
     }
 
     // 继续发送
@@ -640,7 +786,7 @@ bool CTCPNetworkItem::OnRecvCompleted(COverLappedRecv * pOverLappedRecv, DWORD d
     // 设置变量
     m_wRecvSize += nResultCode;
     m_wSurvivalTime = SAFETY_QUOTIETY;
-    m_dwRecvTickCount = GetTickCount() / 1000L;
+    m_dwRecvTickCount = GetTickCount();
 
 	if (m_connectType == CHECKING) {
 		if (CheckIsWinSocket() == true) {
@@ -732,10 +878,13 @@ bool CTCPNetworkItem::OnRecvCompleted(COverLappedRecv * pOverLappedRecv, DWORD d
 					CopyMemory(cbBuffer, m_cbRecvBuf, wPacketSize);
 					WORD wRealySize = CrevasseBuffer(cbBuffer, wPacketSize);
 
-					// 解释数据
-					LPVOID pData = cbBuffer + sizeof(TCP_Head);
-					WORD wDataSize = wRealySize - sizeof(TCP_Head);
-					TCP_Command Command = ((TCP_Head *)cbBuffer)->CommandInfo;
+		            // 设置变量
+		            m_dwRecvPacketCount++;
+
+		            // 解释数据
+		            LPVOID pData = cbBuffer + sizeof(TCP_Head);
+		            WORD wDataSize = wRealySize - sizeof(TCP_Head);
+		            TCP_Command Command = ((TCP_Head *)cbBuffer)->CommandInfo;
 
 					// 消息处理
 					if (Command.wMainCmdID != MDM_KN_COMMAND)	m_pITCPNetworkItemSink->OnEventSocketRead(Command, pData, wDataSize, this);
@@ -972,16 +1121,31 @@ bool CTCPNetworkItem::SendVerdict(WORD wRountID)
 }
 
 // 获取发送结构
-COverLappedSend * CTCPNetworkItem::GetSendOverLapped(WORD wPacketSize)
+COverLappedSend * CTCPNetworkItem::GetSendOverLapped(WORD wPacketSize, bool flag)
 {
-    // 重用判断
-    if (m_OverLappedSendActive.GetCount() > 1)
-    {
-        INT_PTR nActiveCount = m_OverLappedSendActive.GetCount();
-        COverLappedSend * pOverLappedSend = m_OverLappedSendActive[nActiveCount - 1];
-        if (sizeof(pOverLappedSend->m_cbBuffer) >= (pOverLappedSend->m_WSABuffer.len + wPacketSize + sizeof(DWORD) * 2))
-            return pOverLappedSend;
-    }
+	if (flag == true) {
+		if (m_connectType == WEBSOCKET) {
+			// 重用判断
+			if (m_OverLappedSendActive.GetCount() > 1)
+			{
+				INT_PTR nActiveCount = m_OverLappedSendActive.GetCount();
+				COverLappedSend * pOverLappedSend = m_OverLappedSendActive[nActiveCount - 1];
+				if (sizeof(pOverLappedSend->m_cbBuffer) >= (pOverLappedSend->m_WSABuffer.len + wPacketSize))
+					return pOverLappedSend;
+			}
+		}
+		else {
+			// 重用判断
+			if (m_OverLappedSendActive.GetCount() > 1)
+			{
+				INT_PTR nActiveCount = m_OverLappedSendActive.GetCount();
+				COverLappedSend * pOverLappedSend = m_OverLappedSendActive[nActiveCount - 1];
+				if (sizeof(pOverLappedSend->m_cbBuffer) >= (pOverLappedSend->m_WSABuffer.len + wPacketSize + sizeof(DWORD) * 2))
+					return pOverLappedSend;
+			}
+		}
+	}
+    
 
     // 空闲对象
     if (m_OverLappedSendBuffer.GetCount() > 0)
@@ -1051,24 +1215,28 @@ bool CTCPNetworkItem::HandleWebsocketRecv() {
 				m_dwRecvPacketCount++;
 				
 				TCP_Command Command;
-				PlatPmd::null_message*  message = (PlatPmd::null_message*)CProtobufEngine::getInstance()->getMessageSerializer()->createMessage();
-				if (CProtobufEngine::getInstance()->decode(message,outbuf, outlen) == false) {
-					CProtobufEngine::getInstance()->getMessageSerializer()->ReleaseMessage(message);
+				NullPmd::message message;
+				if (message.ParseFromArray(outbuf, outlen) == false) {
 					throw TEXT("parse error");
 				}
+				NullPmd::head head = message.head();
+				NullPmd::command command = head.command();
+				NullPmd::info info = head.info();
+
+				if (info.cbdatakind() != DK_MAPPED && info.cbdatakind() != 0x05) {
+					CString aa;
+					aa.Format(TEXT("0x%x"), info.cbdatakind());
+					g_TraceServiceManager.TraceString(aa, TraceLevel_Exception);
+					throw TEXT("数据包版本不匹配");
+				}
 				
-				Command.wMainCmdID = message->mainid();
-				Command.wSubCmdID = message->subid();
-
-				TCHAR szString[512] = TEXT("");
-				_sntprintf(szString, CountArray(szString), TEXT("收到消息:mainid:%d   subid:%d"), Command.wMainCmdID, Command.wSubCmdID);
-				g_TraceServiceManager.TraceString(szString, TraceLevel_Normal);
-
+				Command.wMainCmdID = command.mainid();
+				Command.wSubCmdID = command.subid();
 				//内核命令
 				if (Command.wMainCmdID == MDM_KN_COMMAND) {
 					switch (Command.wSubCmdID) {
 						case SUB_KN_DETECT_SOCKET: {	//网络检测
-							SendData(MDM_KN_COMMAND, SUB_KN_DETECT_SOCKET, m_wRountID);
+							//SendData(MDM_KN_COMMAND, SUB_KN_DETECT_SOCKET, m_wRountID);
 							break;
 						}
 						default: {
@@ -1077,19 +1245,19 @@ bool CTCPNetworkItem::HandleWebsocketRecv() {
 					}
 				}
 				else {
+
+					TCHAR szString[512] = TEXT("");
+					_sntprintf(szString, CountArray(szString), TEXT("收到消息:mainid:%d,subid:%d"), Command.wMainCmdID, Command.wSubCmdID);
+					g_TraceServiceManager.TraceString(szString, TraceLevel_Normal);
+
 					//消息处理
-					m_pITCPNetworkItemSink->OnEventSocketRead(Command, (void*)message->data().c_str(), message->data().size(), this);
+					m_pITCPNetworkItemSink->OnEventSocketRead(Command, (void*)message.data().c_str(), message.data().size(), this);
 				}
-				CProtobufEngine::getInstance()->getMessageSerializer()->ReleaseMessage(message);
 				break;
 			}
 
 			case WS_PING_FRAME: {
 				//printf ("receive ping frame,framesize:%d\n", frameSize);
-				char cbSendData[SOCKET_TCP_BUFFER];
-				int encodesize = zl::net::ws::encodeFrame(zl::net::ws::WsFrameType::WS_PONG_FRAME, NULL, 0, cbSendData, SOCKET_TCP_BUFFER);
-				SendRawData(cbSendData, encodesize);
-
 				g_TraceServiceManager.TraceString("收到WS_PING_FRAME消息", TraceLevel_Normal);
 				break;
 			}
@@ -1119,7 +1287,19 @@ bool CTCPNetworkItem::HandleWebsocketRecv() {
 			MoveMemory(m_cbRecvBuf, m_cbRecvBuf + frameSize, m_wRecvSize);
 		}
 	}
+	catch (LPCTSTR pszMessage) {
+		// 错误信息
+		TCHAR szString[512] = TEXT("");
+		_sntprintf(szString, CountArray(szString), TEXT("HandleWebsocketRecv 异常:%s"), pszMessage);
+		g_TraceServiceManager.TraceString(szString, TraceLevel_Exception);
+		return false;
+	}
 	catch (...) {
+		// 错误信息
+		TCHAR szString[512] = TEXT("");
+		_sntprintf(szString, CountArray(szString), TEXT("Index=%ld，RountID=%ld，HandleWebsocketRecv 发生异常"), m_wIndex, m_wRountID);
+		g_TraceServiceManager.TraceString(szString, TraceLevel_Exception);
+		CloseSocket(m_wRountID);
 		return false;
 	}
 
@@ -1193,7 +1373,7 @@ bool CTCPNetworkItem::CheckIsWinSocket() {
 	catch (LPCTSTR pszMessage) {
 		// 错误信息
 		TCHAR szString[512] = TEXT("");
-		_sntprintf(szString, CountArray(szString), TEXT("CheckIsWinSocket %s"), pszMessage);
+		_sntprintf(szString, CountArray(szString), TEXT("CheckIsWinSocket 非weebsocket:%s"), pszMessage);
 		g_TraceServiceManager.TraceString(szString, TraceLevel_Normal);
 		return false;
 	}
@@ -1201,9 +1381,9 @@ bool CTCPNetworkItem::CheckIsWinSocket() {
 	{
 		// 错误信息
 		TCHAR szString[512] = TEXT("");
-		_sntprintf(szString, CountArray(szString), TEXT("SocketEngine Index=%ld，RountID=%ld，CheckIsWinSocket 发生“非法”异常"), m_wIndex, m_wRountID);
-		g_TraceServiceManager.TraceString(szString, TraceLevel_Normal);
-
+		_sntprintf(szString, CountArray(szString), TEXT("Index=%ld，RountID=%ld，CheckIsWinSocket 发生异常"), m_wIndex, m_wRountID);
+		g_TraceServiceManager.TraceString(szString, TraceLevel_Exception);
+		CloseSocket(m_wRountID);
 		return false;
 	}
 
@@ -1236,34 +1416,40 @@ bool CTCPNetworkItem::handshake(zl::net::ByteBuffer* byteBuffer) {
 	}
 	std::string answer = zl::net::ws::makeHandshakeResponse(key.c_str(), req.getHeader(zl::net::ws::kSecWebSocketProtocolHeader));
 	
-	TCHAR szString[512] = TEXT("");
+	/*TCHAR szString[512] = TEXT("");
 	_sntprintf(szString, CountArray(szString), TEXT("response handshake::\n %s"), answer.c_str());
-	g_TraceServiceManager.TraceString(szString, TraceLevel_Normal);
+	g_TraceServiceManager.TraceString(szString, TraceLevel_Normal);*/
 
 	SendRawData(answer.c_str(), answer.size());
 	return true;
 }
 
 bool CTCPNetworkItem::SendRawData(const char* data, int len) {
-
-	//寻找发送结构
-	WORD wPacketSize = sizeof(TCP_Head);
-	COverLappedSend * pOverLappedSend = GetSendOverLapped(wPacketSize);
-	ASSERT(pOverLappedSend != NULL);
 	try
 	{
+		// 获取缓冲
+		WORD wPacketSize = len;
+		COverLappedSend * pOverLappedSend = GetSendOverLapped(wPacketSize);
+		ASSERT(pOverLappedSend != NULL);
 		if (pOverLappedSend == NULL) {
+			CloseSocket(m_wRountID);
 			return false;
 		}
 
-		for (int i = 0; i < len; i++) {
-			pOverLappedSend->m_cbBuffer[i] = data[i];
+		// 变量定义
+		WORD wSourceLen = (WORD)pOverLappedSend->m_WSABuffer.len;
+
+		// 附加数据
+		if (len > 0)
+		{
+			ASSERT(data != NULL);
+			CopyMemory(pOverLappedSend->m_cbBuffer + wSourceLen, data, len);
 		}
 
-		pOverLappedSend->m_WSABuffer.len = len;
+		pOverLappedSend->m_WSABuffer.len += len;
 
 		//发送数据
-		if (m_bSendIng == false) {
+		if (m_OverLappedSendActive.GetCount() == 1) {
 			DWORD dwThancferred = 0;
 
 			int iRetCode = WSASend(m_hSocketHandle, &pOverLappedSend->m_WSABuffer, 1, &dwThancferred, 0, &pOverLappedSend->m_OverLapped, NULL);
@@ -1277,7 +1463,11 @@ bool CTCPNetworkItem::SendRawData(const char* data, int len) {
 	}
 	catch (...)
 	{
-		g_TraceServiceManager.TraceString("SendRawData 异常", TraceLevel_Exception);
+		// 错误信息
+		TCHAR szString[512] = TEXT("");
+		_sntprintf(szString, CountArray(szString), TEXT("Index=%ld，RountID=%ld，SendRawData 发生异常"), m_wIndex, m_wRountID);
+		g_TraceServiceManager.TraceString(szString, TraceLevel_Exception);
+		CloseSocket(m_wRountID);
 		return false;
 	}
 	return true;
@@ -1507,13 +1697,14 @@ CTCPNetworkEngine::CTCPNetworkEngine()
     m_hCompletionPort = NULL;
     m_hServerSocket = INVALID_SOCKET;
     m_pITCPNetworkEngineEvent = NULL;
-
+	GOOGLE_PROTOBUF_VERIFY_VERSION;
     return;
 }
 
 // 析构函数
 CTCPNetworkEngine::~CTCPNetworkEngine()
 {
+	google::protobuf::ShutdownProtobufLibrary();
 }
 
 // 接口查询
@@ -1793,6 +1984,7 @@ bool CTCPNetworkEngine::SendData(DWORD dwSocketID, WORD wMainCmdID, WORD wSubCmd
     if (wDataSize > 0)
     {
         ASSERT(pData != NULL);
+		ZeroMemory(pSendDataRequest->cbSendBuffer, sizeof(pSendDataRequest->cbSendBuffer));
         CopyMemory(pSendDataRequest->cbSendBuffer, pData, wDataSize);
     }
 
@@ -2027,7 +2219,7 @@ bool CTCPNetworkEngine::OnAsynchronismEngineData(WORD wIdentifier, VOID * pData,
                     {
                         if (!pTCPNetworkItem->IsRecvIng())
                         {
-                            //pTCPNetworkItem->CloseSocket(pTCPNetworkItem->GetRountID());
+                            pTCPNetworkItem->CloseSocket(pTCPNetworkItem->GetRountID());
                         }
                         continue;
                     }
@@ -2333,6 +2525,33 @@ bool CTCPNetworkEngine::FreeNetworkItem(CTCPNetworkItem * pTCPNetworkItem)
             return true;
         }
     }
+
+	bool hasFind = false;
+	INT_PTR nBufferCount = m_NetworkItemBuffer.GetCount();
+	for (INT i = 0; i < nBufferCount; i++)
+	{
+		if (pTCPNetworkItem == m_NetworkItemBuffer[i])
+		{
+			hasFind = true;
+			break;
+		}
+	}
+
+	if (hasFind == false) {
+		INT_PTR nStorCount = m_NetworkItemStorage.GetCount();
+		for (INT i = 0; i < nStorCount; i++)
+		{
+			if (pTCPNetworkItem == m_NetworkItemStorage[i])
+			{
+				m_NetworkItemBuffer.Add(pTCPNetworkItem);
+				break;
+			}
+		}
+	}
+	else
+	{
+		return true;
+	}
 
     // 释放失败
     ASSERT(FALSE);

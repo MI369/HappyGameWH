@@ -27,24 +27,19 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
-#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 #include "NullPmd.pb.h"
 #include "CommonPmd.pb.h"
 // @@protoc_insertion_point(includes)
-namespace PlatPmd {
-class CommonPmdCommand;
-class CommonPmdCommandDefaultTypeInternal;
-extern CommonPmdCommandDefaultTypeInternal _CommonPmdCommand_default_instance_;
-class LoginPmdCommand;
-class LoginPmdCommandDefaultTypeInternal;
-extern LoginPmdCommandDefaultTypeInternal _LoginPmdCommand_default_instance_;
-class NullPmdCommand;
-class NullPmdCommandDefaultTypeInternal;
-extern NullPmdCommandDefaultTypeInternal _NullPmdCommand_default_instance_;
-class common_personinfo;
-class common_personinfoDefaultTypeInternal;
-extern common_personinfoDefaultTypeInternal _common_personinfo_default_instance_;
+namespace CommonPmd {
+class SYSTEMTIME;
+class SYSTEMTIMEDefaultTypeInternal;
+extern SYSTEMTIMEDefaultTypeInternal _SYSTEMTIME_default_instance_;
+class personinfo;
+class personinfoDefaultTypeInternal;
+extern personinfoDefaultTypeInternal _personinfo_default_instance_;
+}  // namespace CommonPmd
+namespace LoginPmd {
 class loginbyaccounts_c2s;
 class loginbyaccounts_c2sDefaultTypeInternal;
 extern loginbyaccounts_c2sDefaultTypeInternal _loginbyaccounts_c2s_default_instance_;
@@ -54,30 +49,41 @@ extern loginbyid_c2sDefaultTypeInternal _loginbyid_c2s_default_instance_;
 class loginbyvisitor_c2s;
 class loginbyvisitor_c2sDefaultTypeInternal;
 extern loginbyvisitor_c2sDefaultTypeInternal _loginbyvisitor_c2s_default_instance_;
+class loginfailure_s2c;
+class loginfailure_s2cDefaultTypeInternal;
+extern loginfailure_s2cDefaultTypeInternal _loginfailure_s2c_default_instance_;
+class loginfinish_s2c;
+class loginfinish_s2cDefaultTypeInternal;
+extern loginfinish_s2cDefaultTypeInternal _loginfinish_s2c_default_instance_;
 class loginsuccess_s2c;
 class loginsuccess_s2cDefaultTypeInternal;
 extern loginsuccess_s2cDefaultTypeInternal _loginsuccess_s2c_default_instance_;
-class null_command;
-class null_commandDefaultTypeInternal;
-extern null_commandDefaultTypeInternal _null_command_default_instance_;
-class null_indication;
-class null_indicationDefaultTypeInternal;
-extern null_indicationDefaultTypeInternal _null_indication_default_instance_;
-class null_message;
-class null_messageDefaultTypeInternal;
-extern null_messageDefaultTypeInternal _null_message_default_instance_;
-class null_nettick;
-class null_nettickDefaultTypeInternal;
-extern null_nettickDefaultTypeInternal _null_nettick_default_instance_;
-class null_request;
-class null_requestDefaultTypeInternal;
-extern null_requestDefaultTypeInternal _null_request_default_instance_;
-class null_response;
-class null_responseDefaultTypeInternal;
-extern null_responseDefaultTypeInternal _null_response_default_instance_;
-}  // namespace PlatPmd
+}  // namespace LoginPmd
+namespace NullPmd {
+class command;
+class commandDefaultTypeInternal;
+extern commandDefaultTypeInternal _command_default_instance_;
+class head;
+class headDefaultTypeInternal;
+extern headDefaultTypeInternal _head_default_instance_;
+class indication;
+class indicationDefaultTypeInternal;
+extern indicationDefaultTypeInternal _indication_default_instance_;
+class info;
+class infoDefaultTypeInternal;
+extern infoDefaultTypeInternal _info_default_instance_;
+class message;
+class messageDefaultTypeInternal;
+extern messageDefaultTypeInternal _message_default_instance_;
+class request;
+class requestDefaultTypeInternal;
+extern requestDefaultTypeInternal _request_default_instance_;
+class response;
+class responseDefaultTypeInternal;
+extern responseDefaultTypeInternal _response_default_instance_;
+}  // namespace NullPmd
 
-namespace PlatPmd {
+namespace LoginPmd {
 
 namespace protobuf_LoginPmd_2eproto {
 // Internal implementation detail -- do not call these.
@@ -90,141 +96,9 @@ void AddDescriptors();
 void InitDefaults();
 }  // namespace protobuf_LoginPmd_2eproto
 
-enum LoginPmdCommand_LoginPmdEnum {
-  LoginPmdCommand_LoginPmdEnum_param_nullmessage = 0,
-  LoginPmdCommand_LoginPmdEnum_param_loginbyid_c2s = 1,
-  LoginPmdCommand_LoginPmdEnum_param_loginbyaccounts_c2s = 2,
-  LoginPmdCommand_LoginPmdEnum_param_loginbyvisitor_c2s = 6,
-  LoginPmdCommand_LoginPmdEnum_param_loginsuccess_s2c = 100,
-  LoginPmdCommand_LoginPmdEnum_LoginPmdCommand_LoginPmdEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
-  LoginPmdCommand_LoginPmdEnum_LoginPmdCommand_LoginPmdEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
-};
-bool LoginPmdCommand_LoginPmdEnum_IsValid(int value);
-const LoginPmdCommand_LoginPmdEnum LoginPmdCommand_LoginPmdEnum_LoginPmdEnum_MIN = LoginPmdCommand_LoginPmdEnum_param_nullmessage;
-const LoginPmdCommand_LoginPmdEnum LoginPmdCommand_LoginPmdEnum_LoginPmdEnum_MAX = LoginPmdCommand_LoginPmdEnum_param_loginsuccess_s2c;
-const int LoginPmdCommand_LoginPmdEnum_LoginPmdEnum_ARRAYSIZE = LoginPmdCommand_LoginPmdEnum_LoginPmdEnum_MAX + 1;
-
-const ::google::protobuf::EnumDescriptor* LoginPmdCommand_LoginPmdEnum_descriptor();
-inline const ::std::string& LoginPmdCommand_LoginPmdEnum_Name(LoginPmdCommand_LoginPmdEnum value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    LoginPmdCommand_LoginPmdEnum_descriptor(), value);
-}
-inline bool LoginPmdCommand_LoginPmdEnum_Parse(
-    const ::std::string& name, LoginPmdCommand_LoginPmdEnum* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<LoginPmdCommand_LoginPmdEnum>(
-    LoginPmdCommand_LoginPmdEnum_descriptor(), name, value);
-}
 // ===================================================================
 
-class LoginPmdCommand : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:PlatPmd.LoginPmdCommand) */ {
- public:
-  LoginPmdCommand();
-  virtual ~LoginPmdCommand();
-
-  LoginPmdCommand(const LoginPmdCommand& from);
-
-  inline LoginPmdCommand& operator=(const LoginPmdCommand& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const LoginPmdCommand& default_instance();
-
-  static inline const LoginPmdCommand* internal_default_instance() {
-    return reinterpret_cast<const LoginPmdCommand*>(
-               &_LoginPmdCommand_default_instance_);
-  }
-
-  void Swap(LoginPmdCommand* other);
-
-  // implements Message ----------------------------------------------
-
-  inline LoginPmdCommand* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  LoginPmdCommand* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const LoginPmdCommand& from);
-  void MergeFrom(const LoginPmdCommand& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
-      const PROTOBUF_FINAL {
-    return InternalSerializeWithCachedSizesToArray(
-        ::google::protobuf::io::CodedOutputStream::IsDefaultSerializationDeterministic(), output);
-  }
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(LoginPmdCommand* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  typedef LoginPmdCommand_LoginPmdEnum LoginPmdEnum;
-  static const LoginPmdEnum param_nullmessage =
-    LoginPmdCommand_LoginPmdEnum_param_nullmessage;
-  static const LoginPmdEnum param_loginbyid_c2s =
-    LoginPmdCommand_LoginPmdEnum_param_loginbyid_c2s;
-  static const LoginPmdEnum param_loginbyaccounts_c2s =
-    LoginPmdCommand_LoginPmdEnum_param_loginbyaccounts_c2s;
-  static const LoginPmdEnum param_loginbyvisitor_c2s =
-    LoginPmdCommand_LoginPmdEnum_param_loginbyvisitor_c2s;
-  static const LoginPmdEnum param_loginsuccess_s2c =
-    LoginPmdCommand_LoginPmdEnum_param_loginsuccess_s2c;
-  static inline bool LoginPmdEnum_IsValid(int value) {
-    return LoginPmdCommand_LoginPmdEnum_IsValid(value);
-  }
-  static const LoginPmdEnum LoginPmdEnum_MIN =
-    LoginPmdCommand_LoginPmdEnum_LoginPmdEnum_MIN;
-  static const LoginPmdEnum LoginPmdEnum_MAX =
-    LoginPmdCommand_LoginPmdEnum_LoginPmdEnum_MAX;
-  static const int LoginPmdEnum_ARRAYSIZE =
-    LoginPmdCommand_LoginPmdEnum_LoginPmdEnum_ARRAYSIZE;
-  static inline const ::google::protobuf::EnumDescriptor*
-  LoginPmdEnum_descriptor() {
-    return LoginPmdCommand_LoginPmdEnum_descriptor();
-  }
-  static inline const ::std::string& LoginPmdEnum_Name(LoginPmdEnum value) {
-    return LoginPmdCommand_LoginPmdEnum_Name(value);
-  }
-  static inline bool LoginPmdEnum_Parse(const ::std::string& name,
-      LoginPmdEnum* value) {
-    return LoginPmdCommand_LoginPmdEnum_Parse(name, value);
-  }
-
-  // accessors -------------------------------------------------------
-
-  // @@protoc_insertion_point(class_scope:PlatPmd.LoginPmdCommand)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  mutable int _cached_size_;
-  friend struct  protobuf_LoginPmd_2eproto::TableStruct;
-};
-// -------------------------------------------------------------------
-
-class loginbyid_c2s : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:PlatPmd.loginbyid_c2s) */ {
+class loginbyid_c2s : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:LoginPmd.loginbyid_c2s) */ {
  public:
   loginbyid_c2s();
   virtual ~loginbyid_c2s();
@@ -319,26 +193,26 @@ class loginbyid_c2s : public ::google::protobuf::Message /* @@protoc_insertion_p
   ::std::string* release_szpassword();
   void set_allocated_szpassword(::std::string* szpassword);
 
-  // .PlatPmd.null_request reqcmd = 1;
+  // .NullPmd.request reqcmd = 1;
   bool has_reqcmd() const;
   void clear_reqcmd();
   static const int kReqcmdFieldNumber = 1;
-  const ::PlatPmd::null_request& reqcmd() const;
-  ::PlatPmd::null_request* mutable_reqcmd();
-  ::PlatPmd::null_request* release_reqcmd();
-  void set_allocated_reqcmd(::PlatPmd::null_request* reqcmd);
+  const ::NullPmd::request& reqcmd() const;
+  ::NullPmd::request* mutable_reqcmd();
+  ::NullPmd::request* release_reqcmd();
+  void set_allocated_reqcmd(::NullPmd::request* reqcmd);
 
-  // uint32 dwplazaversion = 2;
+  // uint64 dwplazaversion = 2;
   void clear_dwplazaversion();
   static const int kDwplazaversionFieldNumber = 2;
-  ::google::protobuf::uint32 dwplazaversion() const;
-  void set_dwplazaversion(::google::protobuf::uint32 value);
+  ::google::protobuf::uint64 dwplazaversion() const;
+  void set_dwplazaversion(::google::protobuf::uint64 value);
 
-  // uint32 dwgameid = 4;
+  // uint64 dwgameid = 4;
   void clear_dwgameid();
   static const int kDwgameidFieldNumber = 4;
-  ::google::protobuf::uint32 dwgameid() const;
-  void set_dwgameid(::google::protobuf::uint32 value);
+  ::google::protobuf::uint64 dwgameid() const;
+  void set_dwgameid(::google::protobuf::uint64 value);
 
   // int32 cbvalidateflags = 6;
   void clear_cbvalidateflags();
@@ -346,22 +220,22 @@ class loginbyid_c2s : public ::google::protobuf::Message /* @@protoc_insertion_p
   ::google::protobuf::int32 cbvalidateflags() const;
   void set_cbvalidateflags(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:PlatPmd.loginbyid_c2s)
+  // @@protoc_insertion_point(class_scope:LoginPmd.loginbyid_c2s)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr szmachineid_;
   ::google::protobuf::internal::ArenaStringPtr szpassword_;
-  ::PlatPmd::null_request* reqcmd_;
-  ::google::protobuf::uint32 dwplazaversion_;
-  ::google::protobuf::uint32 dwgameid_;
+  ::NullPmd::request* reqcmd_;
+  ::google::protobuf::uint64 dwplazaversion_;
+  ::google::protobuf::uint64 dwgameid_;
   ::google::protobuf::int32 cbvalidateflags_;
   mutable int _cached_size_;
   friend struct  protobuf_LoginPmd_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
 
-class loginbyaccounts_c2s : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:PlatPmd.loginbyaccounts_c2s) */ {
+class loginbyaccounts_c2s : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:LoginPmd.loginbyaccounts_c2s) */ {
  public:
   loginbyaccounts_c2s();
   virtual ~loginbyaccounts_c2s();
@@ -484,20 +358,20 @@ class loginbyaccounts_c2s : public ::google::protobuf::Message /* @@protoc_inser
   ::std::string* release_szpassportid();
   void set_allocated_szpassportid(::std::string* szpassportid);
 
-  // .PlatPmd.null_request reqcmd = 1;
+  // .NullPmd.request reqcmd = 1;
   bool has_reqcmd() const;
   void clear_reqcmd();
   static const int kReqcmdFieldNumber = 1;
-  const ::PlatPmd::null_request& reqcmd() const;
-  ::PlatPmd::null_request* mutable_reqcmd();
-  ::PlatPmd::null_request* release_reqcmd();
-  void set_allocated_reqcmd(::PlatPmd::null_request* reqcmd);
+  const ::NullPmd::request& reqcmd() const;
+  ::NullPmd::request* mutable_reqcmd();
+  ::NullPmd::request* release_reqcmd();
+  void set_allocated_reqcmd(::NullPmd::request* reqcmd);
 
-  // uint32 dwplazaversion = 2;
+  // uint64 dwplazaversion = 2;
   void clear_dwplazaversion();
   static const int kDwplazaversionFieldNumber = 2;
-  ::google::protobuf::uint32 dwplazaversion() const;
-  void set_dwplazaversion(::google::protobuf::uint32 value);
+  ::google::protobuf::uint64 dwplazaversion() const;
+  void set_dwplazaversion(::google::protobuf::uint64 value);
 
   // int32 cbvalidateflags = 7;
   void clear_cbvalidateflags();
@@ -505,7 +379,7 @@ class loginbyaccounts_c2s : public ::google::protobuf::Message /* @@protoc_inser
   ::google::protobuf::int32 cbvalidateflags() const;
   void set_cbvalidateflags(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:PlatPmd.loginbyaccounts_c2s)
+  // @@protoc_insertion_point(class_scope:LoginPmd.loginbyaccounts_c2s)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -513,15 +387,15 @@ class loginbyaccounts_c2s : public ::google::protobuf::Message /* @@protoc_inser
   ::google::protobuf::internal::ArenaStringPtr szpassword_;
   ::google::protobuf::internal::ArenaStringPtr szaccounts_;
   ::google::protobuf::internal::ArenaStringPtr szpassportid_;
-  ::PlatPmd::null_request* reqcmd_;
-  ::google::protobuf::uint32 dwplazaversion_;
+  ::NullPmd::request* reqcmd_;
+  ::google::protobuf::uint64 dwplazaversion_;
   ::google::protobuf::int32 cbvalidateflags_;
   mutable int _cached_size_;
   friend struct  protobuf_LoginPmd_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
 
-class loginbyvisitor_c2s : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:PlatPmd.loginbyvisitor_c2s) */ {
+class loginbyvisitor_c2s : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:LoginPmd.loginbyvisitor_c2s) */ {
  public:
   loginbyvisitor_c2s();
   virtual ~loginbyvisitor_c2s();
@@ -602,20 +476,20 @@ class loginbyvisitor_c2s : public ::google::protobuf::Message /* @@protoc_insert
   ::std::string* release_szmachineid();
   void set_allocated_szmachineid(::std::string* szmachineid);
 
-  // .PlatPmd.null_request reqcmd = 1;
+  // .NullPmd.request reqcmd = 1;
   bool has_reqcmd() const;
   void clear_reqcmd();
   static const int kReqcmdFieldNumber = 1;
-  const ::PlatPmd::null_request& reqcmd() const;
-  ::PlatPmd::null_request* mutable_reqcmd();
-  ::PlatPmd::null_request* release_reqcmd();
-  void set_allocated_reqcmd(::PlatPmd::null_request* reqcmd);
+  const ::NullPmd::request& reqcmd() const;
+  ::NullPmd::request* mutable_reqcmd();
+  ::NullPmd::request* release_reqcmd();
+  void set_allocated_reqcmd(::NullPmd::request* reqcmd);
 
-  // uint32 dwplazaversion = 2;
+  // uint64 dwplazaversion = 2;
   void clear_dwplazaversion();
   static const int kDwplazaversionFieldNumber = 2;
-  ::google::protobuf::uint32 dwplazaversion() const;
-  void set_dwplazaversion(::google::protobuf::uint32 value);
+  ::google::protobuf::uint64 dwplazaversion() const;
+  void set_dwplazaversion(::google::protobuf::uint64 value);
 
   // int32 cbvalidateflags = 4;
   void clear_cbvalidateflags();
@@ -623,20 +497,20 @@ class loginbyvisitor_c2s : public ::google::protobuf::Message /* @@protoc_insert
   ::google::protobuf::int32 cbvalidateflags() const;
   void set_cbvalidateflags(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:PlatPmd.loginbyvisitor_c2s)
+  // @@protoc_insertion_point(class_scope:LoginPmd.loginbyvisitor_c2s)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr szmachineid_;
-  ::PlatPmd::null_request* reqcmd_;
-  ::google::protobuf::uint32 dwplazaversion_;
+  ::NullPmd::request* reqcmd_;
+  ::google::protobuf::uint64 dwplazaversion_;
   ::google::protobuf::int32 cbvalidateflags_;
   mutable int _cached_size_;
   friend struct  protobuf_LoginPmd_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
 
-class loginsuccess_s2c : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:PlatPmd.loginsuccess_s2c) */ {
+class loginsuccess_s2c : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:LoginPmd.loginsuccess_s2c) */ {
  public:
   loginsuccess_s2c();
   virtual ~loginsuccess_s2c();
@@ -703,30 +577,216 @@ class loginsuccess_s2c : public ::google::protobuf::Message /* @@protoc_insertio
 
   // accessors -------------------------------------------------------
 
-  // .PlatPmd.null_response respcmd = 1;
+  // .NullPmd.response respcmd = 1;
   bool has_respcmd() const;
   void clear_respcmd();
   static const int kRespcmdFieldNumber = 1;
-  const ::PlatPmd::null_response& respcmd() const;
-  ::PlatPmd::null_response* mutable_respcmd();
-  ::PlatPmd::null_response* release_respcmd();
-  void set_allocated_respcmd(::PlatPmd::null_response* respcmd);
+  const ::NullPmd::response& respcmd() const;
+  ::NullPmd::response* mutable_respcmd();
+  ::NullPmd::response* release_respcmd();
+  void set_allocated_respcmd(::NullPmd::response* respcmd);
 
-  // .PlatPmd.common_personinfo personinfo = 2;
+  // .CommonPmd.personinfo personinfo = 2;
   bool has_personinfo() const;
   void clear_personinfo();
   static const int kPersoninfoFieldNumber = 2;
-  const ::PlatPmd::common_personinfo& personinfo() const;
-  ::PlatPmd::common_personinfo* mutable_personinfo();
-  ::PlatPmd::common_personinfo* release_personinfo();
-  void set_allocated_personinfo(::PlatPmd::common_personinfo* personinfo);
+  const ::CommonPmd::personinfo& personinfo() const;
+  ::CommonPmd::personinfo* mutable_personinfo();
+  ::CommonPmd::personinfo* release_personinfo();
+  void set_allocated_personinfo(::CommonPmd::personinfo* personinfo);
 
-  // @@protoc_insertion_point(class_scope:PlatPmd.loginsuccess_s2c)
+  // @@protoc_insertion_point(class_scope:LoginPmd.loginsuccess_s2c)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::PlatPmd::null_response* respcmd_;
-  ::PlatPmd::common_personinfo* personinfo_;
+  ::NullPmd::response* respcmd_;
+  ::CommonPmd::personinfo* personinfo_;
+  mutable int _cached_size_;
+  friend struct  protobuf_LoginPmd_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class loginfinish_s2c : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:LoginPmd.loginfinish_s2c) */ {
+ public:
+  loginfinish_s2c();
+  virtual ~loginfinish_s2c();
+
+  loginfinish_s2c(const loginfinish_s2c& from);
+
+  inline loginfinish_s2c& operator=(const loginfinish_s2c& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const loginfinish_s2c& default_instance();
+
+  static inline const loginfinish_s2c* internal_default_instance() {
+    return reinterpret_cast<const loginfinish_s2c*>(
+               &_loginfinish_s2c_default_instance_);
+  }
+
+  void Swap(loginfinish_s2c* other);
+
+  // implements Message ----------------------------------------------
+
+  inline loginfinish_s2c* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  loginfinish_s2c* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const loginfinish_s2c& from);
+  void MergeFrom(const loginfinish_s2c& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
+      const PROTOBUF_FINAL {
+    return InternalSerializeWithCachedSizesToArray(
+        ::google::protobuf::io::CodedOutputStream::IsDefaultSerializationDeterministic(), output);
+  }
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(loginfinish_s2c* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // .NullPmd.response respcmd = 1;
+  bool has_respcmd() const;
+  void clear_respcmd();
+  static const int kRespcmdFieldNumber = 1;
+  const ::NullPmd::response& respcmd() const;
+  ::NullPmd::response* mutable_respcmd();
+  ::NullPmd::response* release_respcmd();
+  void set_allocated_respcmd(::NullPmd::response* respcmd);
+
+  // int32 wIntermitTime = 2;
+  void clear_wintermittime();
+  static const int kWIntermitTimeFieldNumber = 2;
+  ::google::protobuf::int32 wintermittime() const;
+  void set_wintermittime(::google::protobuf::int32 value);
+
+  // int32 wOnLineCountTime = 3;
+  void clear_wonlinecounttime();
+  static const int kWOnLineCountTimeFieldNumber = 3;
+  ::google::protobuf::int32 wonlinecounttime() const;
+  void set_wonlinecounttime(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:LoginPmd.loginfinish_s2c)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::NullPmd::response* respcmd_;
+  ::google::protobuf::int32 wintermittime_;
+  ::google::protobuf::int32 wonlinecounttime_;
+  mutable int _cached_size_;
+  friend struct  protobuf_LoginPmd_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class loginfailure_s2c : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:LoginPmd.loginfailure_s2c) */ {
+ public:
+  loginfailure_s2c();
+  virtual ~loginfailure_s2c();
+
+  loginfailure_s2c(const loginfailure_s2c& from);
+
+  inline loginfailure_s2c& operator=(const loginfailure_s2c& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const loginfailure_s2c& default_instance();
+
+  static inline const loginfailure_s2c* internal_default_instance() {
+    return reinterpret_cast<const loginfailure_s2c*>(
+               &_loginfailure_s2c_default_instance_);
+  }
+
+  void Swap(loginfailure_s2c* other);
+
+  // implements Message ----------------------------------------------
+
+  inline loginfailure_s2c* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  loginfailure_s2c* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const loginfailure_s2c& from);
+  void MergeFrom(const loginfailure_s2c& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
+      const PROTOBUF_FINAL {
+    return InternalSerializeWithCachedSizesToArray(
+        ::google::protobuf::io::CodedOutputStream::IsDefaultSerializationDeterministic(), output);
+  }
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(loginfailure_s2c* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // .NullPmd.response respcmd = 1;
+  bool has_respcmd() const;
+  void clear_respcmd();
+  static const int kRespcmdFieldNumber = 1;
+  const ::NullPmd::response& respcmd() const;
+  ::NullPmd::response* mutable_respcmd();
+  ::NullPmd::response* release_respcmd();
+  void set_allocated_respcmd(::NullPmd::response* respcmd);
+
+  // @@protoc_insertion_point(class_scope:LoginPmd.loginfailure_s2c)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::NullPmd::response* respcmd_;
   mutable int _cached_size_;
   friend struct  protobuf_LoginPmd_2eproto::TableStruct;
 };
@@ -736,13 +796,9 @@ class loginsuccess_s2c : public ::google::protobuf::Message /* @@protoc_insertio
 // ===================================================================
 
 #if !PROTOBUF_INLINE_NOT_IN_HEADERS
-// LoginPmdCommand
-
-// -------------------------------------------------------------------
-
 // loginbyid_c2s
 
-// .PlatPmd.null_request reqcmd = 1;
+// .NullPmd.request reqcmd = 1;
 inline bool loginbyid_c2s::has_reqcmd() const {
   return this != internal_default_instance() && reqcmd_ != NULL;
 }
@@ -750,27 +806,27 @@ inline void loginbyid_c2s::clear_reqcmd() {
   if (GetArenaNoVirtual() == NULL && reqcmd_ != NULL) delete reqcmd_;
   reqcmd_ = NULL;
 }
-inline const ::PlatPmd::null_request& loginbyid_c2s::reqcmd() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.loginbyid_c2s.reqcmd)
+inline const ::NullPmd::request& loginbyid_c2s::reqcmd() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.loginbyid_c2s.reqcmd)
   return reqcmd_ != NULL ? *reqcmd_
-                         : *::PlatPmd::null_request::internal_default_instance();
+                         : *::NullPmd::request::internal_default_instance();
 }
-inline ::PlatPmd::null_request* loginbyid_c2s::mutable_reqcmd() {
+inline ::NullPmd::request* loginbyid_c2s::mutable_reqcmd() {
   
   if (reqcmd_ == NULL) {
-    reqcmd_ = new ::PlatPmd::null_request;
+    reqcmd_ = new ::NullPmd::request;
   }
-  // @@protoc_insertion_point(field_mutable:PlatPmd.loginbyid_c2s.reqcmd)
+  // @@protoc_insertion_point(field_mutable:LoginPmd.loginbyid_c2s.reqcmd)
   return reqcmd_;
 }
-inline ::PlatPmd::null_request* loginbyid_c2s::release_reqcmd() {
-  // @@protoc_insertion_point(field_release:PlatPmd.loginbyid_c2s.reqcmd)
+inline ::NullPmd::request* loginbyid_c2s::release_reqcmd() {
+  // @@protoc_insertion_point(field_release:LoginPmd.loginbyid_c2s.reqcmd)
   
-  ::PlatPmd::null_request* temp = reqcmd_;
+  ::NullPmd::request* temp = reqcmd_;
   reqcmd_ = NULL;
   return temp;
 }
-inline void loginbyid_c2s::set_allocated_reqcmd(::PlatPmd::null_request* reqcmd) {
+inline void loginbyid_c2s::set_allocated_reqcmd(::NullPmd::request* reqcmd) {
   delete reqcmd_;
   reqcmd_ = reqcmd;
   if (reqcmd) {
@@ -778,21 +834,21 @@ inline void loginbyid_c2s::set_allocated_reqcmd(::PlatPmd::null_request* reqcmd)
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:PlatPmd.loginbyid_c2s.reqcmd)
+  // @@protoc_insertion_point(field_set_allocated:LoginPmd.loginbyid_c2s.reqcmd)
 }
 
-// uint32 dwplazaversion = 2;
+// uint64 dwplazaversion = 2;
 inline void loginbyid_c2s::clear_dwplazaversion() {
-  dwplazaversion_ = 0u;
+  dwplazaversion_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint32 loginbyid_c2s::dwplazaversion() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.loginbyid_c2s.dwplazaversion)
+inline ::google::protobuf::uint64 loginbyid_c2s::dwplazaversion() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.loginbyid_c2s.dwplazaversion)
   return dwplazaversion_;
 }
-inline void loginbyid_c2s::set_dwplazaversion(::google::protobuf::uint32 value) {
+inline void loginbyid_c2s::set_dwplazaversion(::google::protobuf::uint64 value) {
   
   dwplazaversion_ = value;
-  // @@protoc_insertion_point(field_set:PlatPmd.loginbyid_c2s.dwplazaversion)
+  // @@protoc_insertion_point(field_set:LoginPmd.loginbyid_c2s.dwplazaversion)
 }
 
 // string szmachineid = 3;
@@ -800,40 +856,40 @@ inline void loginbyid_c2s::clear_szmachineid() {
   szmachineid_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& loginbyid_c2s::szmachineid() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.loginbyid_c2s.szmachineid)
+  // @@protoc_insertion_point(field_get:LoginPmd.loginbyid_c2s.szmachineid)
   return szmachineid_.GetNoArena();
 }
 inline void loginbyid_c2s::set_szmachineid(const ::std::string& value) {
   
   szmachineid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:PlatPmd.loginbyid_c2s.szmachineid)
+  // @@protoc_insertion_point(field_set:LoginPmd.loginbyid_c2s.szmachineid)
 }
 #if LANG_CXX11
 inline void loginbyid_c2s::set_szmachineid(::std::string&& value) {
   
   szmachineid_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:PlatPmd.loginbyid_c2s.szmachineid)
+  // @@protoc_insertion_point(field_set_rvalue:LoginPmd.loginbyid_c2s.szmachineid)
 }
 #endif
 inline void loginbyid_c2s::set_szmachineid(const char* value) {
   
   szmachineid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:PlatPmd.loginbyid_c2s.szmachineid)
+  // @@protoc_insertion_point(field_set_char:LoginPmd.loginbyid_c2s.szmachineid)
 }
 inline void loginbyid_c2s::set_szmachineid(const char* value, size_t size) {
   
   szmachineid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:PlatPmd.loginbyid_c2s.szmachineid)
+  // @@protoc_insertion_point(field_set_pointer:LoginPmd.loginbyid_c2s.szmachineid)
 }
 inline ::std::string* loginbyid_c2s::mutable_szmachineid() {
   
-  // @@protoc_insertion_point(field_mutable:PlatPmd.loginbyid_c2s.szmachineid)
+  // @@protoc_insertion_point(field_mutable:LoginPmd.loginbyid_c2s.szmachineid)
   return szmachineid_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* loginbyid_c2s::release_szmachineid() {
-  // @@protoc_insertion_point(field_release:PlatPmd.loginbyid_c2s.szmachineid)
+  // @@protoc_insertion_point(field_release:LoginPmd.loginbyid_c2s.szmachineid)
   
   return szmachineid_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -844,21 +900,21 @@ inline void loginbyid_c2s::set_allocated_szmachineid(::std::string* szmachineid)
     
   }
   szmachineid_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), szmachineid);
-  // @@protoc_insertion_point(field_set_allocated:PlatPmd.loginbyid_c2s.szmachineid)
+  // @@protoc_insertion_point(field_set_allocated:LoginPmd.loginbyid_c2s.szmachineid)
 }
 
-// uint32 dwgameid = 4;
+// uint64 dwgameid = 4;
 inline void loginbyid_c2s::clear_dwgameid() {
-  dwgameid_ = 0u;
+  dwgameid_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint32 loginbyid_c2s::dwgameid() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.loginbyid_c2s.dwgameid)
+inline ::google::protobuf::uint64 loginbyid_c2s::dwgameid() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.loginbyid_c2s.dwgameid)
   return dwgameid_;
 }
-inline void loginbyid_c2s::set_dwgameid(::google::protobuf::uint32 value) {
+inline void loginbyid_c2s::set_dwgameid(::google::protobuf::uint64 value) {
   
   dwgameid_ = value;
-  // @@protoc_insertion_point(field_set:PlatPmd.loginbyid_c2s.dwgameid)
+  // @@protoc_insertion_point(field_set:LoginPmd.loginbyid_c2s.dwgameid)
 }
 
 // string szpassword = 5;
@@ -866,40 +922,40 @@ inline void loginbyid_c2s::clear_szpassword() {
   szpassword_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& loginbyid_c2s::szpassword() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.loginbyid_c2s.szpassword)
+  // @@protoc_insertion_point(field_get:LoginPmd.loginbyid_c2s.szpassword)
   return szpassword_.GetNoArena();
 }
 inline void loginbyid_c2s::set_szpassword(const ::std::string& value) {
   
   szpassword_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:PlatPmd.loginbyid_c2s.szpassword)
+  // @@protoc_insertion_point(field_set:LoginPmd.loginbyid_c2s.szpassword)
 }
 #if LANG_CXX11
 inline void loginbyid_c2s::set_szpassword(::std::string&& value) {
   
   szpassword_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:PlatPmd.loginbyid_c2s.szpassword)
+  // @@protoc_insertion_point(field_set_rvalue:LoginPmd.loginbyid_c2s.szpassword)
 }
 #endif
 inline void loginbyid_c2s::set_szpassword(const char* value) {
   
   szpassword_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:PlatPmd.loginbyid_c2s.szpassword)
+  // @@protoc_insertion_point(field_set_char:LoginPmd.loginbyid_c2s.szpassword)
 }
 inline void loginbyid_c2s::set_szpassword(const char* value, size_t size) {
   
   szpassword_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:PlatPmd.loginbyid_c2s.szpassword)
+  // @@protoc_insertion_point(field_set_pointer:LoginPmd.loginbyid_c2s.szpassword)
 }
 inline ::std::string* loginbyid_c2s::mutable_szpassword() {
   
-  // @@protoc_insertion_point(field_mutable:PlatPmd.loginbyid_c2s.szpassword)
+  // @@protoc_insertion_point(field_mutable:LoginPmd.loginbyid_c2s.szpassword)
   return szpassword_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* loginbyid_c2s::release_szpassword() {
-  // @@protoc_insertion_point(field_release:PlatPmd.loginbyid_c2s.szpassword)
+  // @@protoc_insertion_point(field_release:LoginPmd.loginbyid_c2s.szpassword)
   
   return szpassword_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -910,7 +966,7 @@ inline void loginbyid_c2s::set_allocated_szpassword(::std::string* szpassword) {
     
   }
   szpassword_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), szpassword);
-  // @@protoc_insertion_point(field_set_allocated:PlatPmd.loginbyid_c2s.szpassword)
+  // @@protoc_insertion_point(field_set_allocated:LoginPmd.loginbyid_c2s.szpassword)
 }
 
 // int32 cbvalidateflags = 6;
@@ -918,20 +974,20 @@ inline void loginbyid_c2s::clear_cbvalidateflags() {
   cbvalidateflags_ = 0;
 }
 inline ::google::protobuf::int32 loginbyid_c2s::cbvalidateflags() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.loginbyid_c2s.cbvalidateflags)
+  // @@protoc_insertion_point(field_get:LoginPmd.loginbyid_c2s.cbvalidateflags)
   return cbvalidateflags_;
 }
 inline void loginbyid_c2s::set_cbvalidateflags(::google::protobuf::int32 value) {
   
   cbvalidateflags_ = value;
-  // @@protoc_insertion_point(field_set:PlatPmd.loginbyid_c2s.cbvalidateflags)
+  // @@protoc_insertion_point(field_set:LoginPmd.loginbyid_c2s.cbvalidateflags)
 }
 
 // -------------------------------------------------------------------
 
 // loginbyaccounts_c2s
 
-// .PlatPmd.null_request reqcmd = 1;
+// .NullPmd.request reqcmd = 1;
 inline bool loginbyaccounts_c2s::has_reqcmd() const {
   return this != internal_default_instance() && reqcmd_ != NULL;
 }
@@ -939,27 +995,27 @@ inline void loginbyaccounts_c2s::clear_reqcmd() {
   if (GetArenaNoVirtual() == NULL && reqcmd_ != NULL) delete reqcmd_;
   reqcmd_ = NULL;
 }
-inline const ::PlatPmd::null_request& loginbyaccounts_c2s::reqcmd() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.loginbyaccounts_c2s.reqcmd)
+inline const ::NullPmd::request& loginbyaccounts_c2s::reqcmd() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.loginbyaccounts_c2s.reqcmd)
   return reqcmd_ != NULL ? *reqcmd_
-                         : *::PlatPmd::null_request::internal_default_instance();
+                         : *::NullPmd::request::internal_default_instance();
 }
-inline ::PlatPmd::null_request* loginbyaccounts_c2s::mutable_reqcmd() {
+inline ::NullPmd::request* loginbyaccounts_c2s::mutable_reqcmd() {
   
   if (reqcmd_ == NULL) {
-    reqcmd_ = new ::PlatPmd::null_request;
+    reqcmd_ = new ::NullPmd::request;
   }
-  // @@protoc_insertion_point(field_mutable:PlatPmd.loginbyaccounts_c2s.reqcmd)
+  // @@protoc_insertion_point(field_mutable:LoginPmd.loginbyaccounts_c2s.reqcmd)
   return reqcmd_;
 }
-inline ::PlatPmd::null_request* loginbyaccounts_c2s::release_reqcmd() {
-  // @@protoc_insertion_point(field_release:PlatPmd.loginbyaccounts_c2s.reqcmd)
+inline ::NullPmd::request* loginbyaccounts_c2s::release_reqcmd() {
+  // @@protoc_insertion_point(field_release:LoginPmd.loginbyaccounts_c2s.reqcmd)
   
-  ::PlatPmd::null_request* temp = reqcmd_;
+  ::NullPmd::request* temp = reqcmd_;
   reqcmd_ = NULL;
   return temp;
 }
-inline void loginbyaccounts_c2s::set_allocated_reqcmd(::PlatPmd::null_request* reqcmd) {
+inline void loginbyaccounts_c2s::set_allocated_reqcmd(::NullPmd::request* reqcmd) {
   delete reqcmd_;
   reqcmd_ = reqcmd;
   if (reqcmd) {
@@ -967,21 +1023,21 @@ inline void loginbyaccounts_c2s::set_allocated_reqcmd(::PlatPmd::null_request* r
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:PlatPmd.loginbyaccounts_c2s.reqcmd)
+  // @@protoc_insertion_point(field_set_allocated:LoginPmd.loginbyaccounts_c2s.reqcmd)
 }
 
-// uint32 dwplazaversion = 2;
+// uint64 dwplazaversion = 2;
 inline void loginbyaccounts_c2s::clear_dwplazaversion() {
-  dwplazaversion_ = 0u;
+  dwplazaversion_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint32 loginbyaccounts_c2s::dwplazaversion() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.loginbyaccounts_c2s.dwplazaversion)
+inline ::google::protobuf::uint64 loginbyaccounts_c2s::dwplazaversion() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.loginbyaccounts_c2s.dwplazaversion)
   return dwplazaversion_;
 }
-inline void loginbyaccounts_c2s::set_dwplazaversion(::google::protobuf::uint32 value) {
+inline void loginbyaccounts_c2s::set_dwplazaversion(::google::protobuf::uint64 value) {
   
   dwplazaversion_ = value;
-  // @@protoc_insertion_point(field_set:PlatPmd.loginbyaccounts_c2s.dwplazaversion)
+  // @@protoc_insertion_point(field_set:LoginPmd.loginbyaccounts_c2s.dwplazaversion)
 }
 
 // string szmachineid = 3;
@@ -989,40 +1045,40 @@ inline void loginbyaccounts_c2s::clear_szmachineid() {
   szmachineid_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& loginbyaccounts_c2s::szmachineid() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.loginbyaccounts_c2s.szmachineid)
+  // @@protoc_insertion_point(field_get:LoginPmd.loginbyaccounts_c2s.szmachineid)
   return szmachineid_.GetNoArena();
 }
 inline void loginbyaccounts_c2s::set_szmachineid(const ::std::string& value) {
   
   szmachineid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:PlatPmd.loginbyaccounts_c2s.szmachineid)
+  // @@protoc_insertion_point(field_set:LoginPmd.loginbyaccounts_c2s.szmachineid)
 }
 #if LANG_CXX11
 inline void loginbyaccounts_c2s::set_szmachineid(::std::string&& value) {
   
   szmachineid_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:PlatPmd.loginbyaccounts_c2s.szmachineid)
+  // @@protoc_insertion_point(field_set_rvalue:LoginPmd.loginbyaccounts_c2s.szmachineid)
 }
 #endif
 inline void loginbyaccounts_c2s::set_szmachineid(const char* value) {
   
   szmachineid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:PlatPmd.loginbyaccounts_c2s.szmachineid)
+  // @@protoc_insertion_point(field_set_char:LoginPmd.loginbyaccounts_c2s.szmachineid)
 }
 inline void loginbyaccounts_c2s::set_szmachineid(const char* value, size_t size) {
   
   szmachineid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:PlatPmd.loginbyaccounts_c2s.szmachineid)
+  // @@protoc_insertion_point(field_set_pointer:LoginPmd.loginbyaccounts_c2s.szmachineid)
 }
 inline ::std::string* loginbyaccounts_c2s::mutable_szmachineid() {
   
-  // @@protoc_insertion_point(field_mutable:PlatPmd.loginbyaccounts_c2s.szmachineid)
+  // @@protoc_insertion_point(field_mutable:LoginPmd.loginbyaccounts_c2s.szmachineid)
   return szmachineid_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* loginbyaccounts_c2s::release_szmachineid() {
-  // @@protoc_insertion_point(field_release:PlatPmd.loginbyaccounts_c2s.szmachineid)
+  // @@protoc_insertion_point(field_release:LoginPmd.loginbyaccounts_c2s.szmachineid)
   
   return szmachineid_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -1033,7 +1089,7 @@ inline void loginbyaccounts_c2s::set_allocated_szmachineid(::std::string* szmach
     
   }
   szmachineid_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), szmachineid);
-  // @@protoc_insertion_point(field_set_allocated:PlatPmd.loginbyaccounts_c2s.szmachineid)
+  // @@protoc_insertion_point(field_set_allocated:LoginPmd.loginbyaccounts_c2s.szmachineid)
 }
 
 // string szpassword = 4;
@@ -1041,40 +1097,40 @@ inline void loginbyaccounts_c2s::clear_szpassword() {
   szpassword_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& loginbyaccounts_c2s::szpassword() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.loginbyaccounts_c2s.szpassword)
+  // @@protoc_insertion_point(field_get:LoginPmd.loginbyaccounts_c2s.szpassword)
   return szpassword_.GetNoArena();
 }
 inline void loginbyaccounts_c2s::set_szpassword(const ::std::string& value) {
   
   szpassword_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:PlatPmd.loginbyaccounts_c2s.szpassword)
+  // @@protoc_insertion_point(field_set:LoginPmd.loginbyaccounts_c2s.szpassword)
 }
 #if LANG_CXX11
 inline void loginbyaccounts_c2s::set_szpassword(::std::string&& value) {
   
   szpassword_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:PlatPmd.loginbyaccounts_c2s.szpassword)
+  // @@protoc_insertion_point(field_set_rvalue:LoginPmd.loginbyaccounts_c2s.szpassword)
 }
 #endif
 inline void loginbyaccounts_c2s::set_szpassword(const char* value) {
   
   szpassword_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:PlatPmd.loginbyaccounts_c2s.szpassword)
+  // @@protoc_insertion_point(field_set_char:LoginPmd.loginbyaccounts_c2s.szpassword)
 }
 inline void loginbyaccounts_c2s::set_szpassword(const char* value, size_t size) {
   
   szpassword_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:PlatPmd.loginbyaccounts_c2s.szpassword)
+  // @@protoc_insertion_point(field_set_pointer:LoginPmd.loginbyaccounts_c2s.szpassword)
 }
 inline ::std::string* loginbyaccounts_c2s::mutable_szpassword() {
   
-  // @@protoc_insertion_point(field_mutable:PlatPmd.loginbyaccounts_c2s.szpassword)
+  // @@protoc_insertion_point(field_mutable:LoginPmd.loginbyaccounts_c2s.szpassword)
   return szpassword_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* loginbyaccounts_c2s::release_szpassword() {
-  // @@protoc_insertion_point(field_release:PlatPmd.loginbyaccounts_c2s.szpassword)
+  // @@protoc_insertion_point(field_release:LoginPmd.loginbyaccounts_c2s.szpassword)
   
   return szpassword_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -1085,7 +1141,7 @@ inline void loginbyaccounts_c2s::set_allocated_szpassword(::std::string* szpassw
     
   }
   szpassword_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), szpassword);
-  // @@protoc_insertion_point(field_set_allocated:PlatPmd.loginbyaccounts_c2s.szpassword)
+  // @@protoc_insertion_point(field_set_allocated:LoginPmd.loginbyaccounts_c2s.szpassword)
 }
 
 // string szaccounts = 5;
@@ -1093,40 +1149,40 @@ inline void loginbyaccounts_c2s::clear_szaccounts() {
   szaccounts_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& loginbyaccounts_c2s::szaccounts() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.loginbyaccounts_c2s.szaccounts)
+  // @@protoc_insertion_point(field_get:LoginPmd.loginbyaccounts_c2s.szaccounts)
   return szaccounts_.GetNoArena();
 }
 inline void loginbyaccounts_c2s::set_szaccounts(const ::std::string& value) {
   
   szaccounts_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:PlatPmd.loginbyaccounts_c2s.szaccounts)
+  // @@protoc_insertion_point(field_set:LoginPmd.loginbyaccounts_c2s.szaccounts)
 }
 #if LANG_CXX11
 inline void loginbyaccounts_c2s::set_szaccounts(::std::string&& value) {
   
   szaccounts_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:PlatPmd.loginbyaccounts_c2s.szaccounts)
+  // @@protoc_insertion_point(field_set_rvalue:LoginPmd.loginbyaccounts_c2s.szaccounts)
 }
 #endif
 inline void loginbyaccounts_c2s::set_szaccounts(const char* value) {
   
   szaccounts_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:PlatPmd.loginbyaccounts_c2s.szaccounts)
+  // @@protoc_insertion_point(field_set_char:LoginPmd.loginbyaccounts_c2s.szaccounts)
 }
 inline void loginbyaccounts_c2s::set_szaccounts(const char* value, size_t size) {
   
   szaccounts_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:PlatPmd.loginbyaccounts_c2s.szaccounts)
+  // @@protoc_insertion_point(field_set_pointer:LoginPmd.loginbyaccounts_c2s.szaccounts)
 }
 inline ::std::string* loginbyaccounts_c2s::mutable_szaccounts() {
   
-  // @@protoc_insertion_point(field_mutable:PlatPmd.loginbyaccounts_c2s.szaccounts)
+  // @@protoc_insertion_point(field_mutable:LoginPmd.loginbyaccounts_c2s.szaccounts)
   return szaccounts_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* loginbyaccounts_c2s::release_szaccounts() {
-  // @@protoc_insertion_point(field_release:PlatPmd.loginbyaccounts_c2s.szaccounts)
+  // @@protoc_insertion_point(field_release:LoginPmd.loginbyaccounts_c2s.szaccounts)
   
   return szaccounts_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -1137,7 +1193,7 @@ inline void loginbyaccounts_c2s::set_allocated_szaccounts(::std::string* szaccou
     
   }
   szaccounts_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), szaccounts);
-  // @@protoc_insertion_point(field_set_allocated:PlatPmd.loginbyaccounts_c2s.szaccounts)
+  // @@protoc_insertion_point(field_set_allocated:LoginPmd.loginbyaccounts_c2s.szaccounts)
 }
 
 // string szpassportid = 6;
@@ -1145,40 +1201,40 @@ inline void loginbyaccounts_c2s::clear_szpassportid() {
   szpassportid_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& loginbyaccounts_c2s::szpassportid() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.loginbyaccounts_c2s.szpassportid)
+  // @@protoc_insertion_point(field_get:LoginPmd.loginbyaccounts_c2s.szpassportid)
   return szpassportid_.GetNoArena();
 }
 inline void loginbyaccounts_c2s::set_szpassportid(const ::std::string& value) {
   
   szpassportid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:PlatPmd.loginbyaccounts_c2s.szpassportid)
+  // @@protoc_insertion_point(field_set:LoginPmd.loginbyaccounts_c2s.szpassportid)
 }
 #if LANG_CXX11
 inline void loginbyaccounts_c2s::set_szpassportid(::std::string&& value) {
   
   szpassportid_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:PlatPmd.loginbyaccounts_c2s.szpassportid)
+  // @@protoc_insertion_point(field_set_rvalue:LoginPmd.loginbyaccounts_c2s.szpassportid)
 }
 #endif
 inline void loginbyaccounts_c2s::set_szpassportid(const char* value) {
   
   szpassportid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:PlatPmd.loginbyaccounts_c2s.szpassportid)
+  // @@protoc_insertion_point(field_set_char:LoginPmd.loginbyaccounts_c2s.szpassportid)
 }
 inline void loginbyaccounts_c2s::set_szpassportid(const char* value, size_t size) {
   
   szpassportid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:PlatPmd.loginbyaccounts_c2s.szpassportid)
+  // @@protoc_insertion_point(field_set_pointer:LoginPmd.loginbyaccounts_c2s.szpassportid)
 }
 inline ::std::string* loginbyaccounts_c2s::mutable_szpassportid() {
   
-  // @@protoc_insertion_point(field_mutable:PlatPmd.loginbyaccounts_c2s.szpassportid)
+  // @@protoc_insertion_point(field_mutable:LoginPmd.loginbyaccounts_c2s.szpassportid)
   return szpassportid_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* loginbyaccounts_c2s::release_szpassportid() {
-  // @@protoc_insertion_point(field_release:PlatPmd.loginbyaccounts_c2s.szpassportid)
+  // @@protoc_insertion_point(field_release:LoginPmd.loginbyaccounts_c2s.szpassportid)
   
   return szpassportid_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -1189,7 +1245,7 @@ inline void loginbyaccounts_c2s::set_allocated_szpassportid(::std::string* szpas
     
   }
   szpassportid_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), szpassportid);
-  // @@protoc_insertion_point(field_set_allocated:PlatPmd.loginbyaccounts_c2s.szpassportid)
+  // @@protoc_insertion_point(field_set_allocated:LoginPmd.loginbyaccounts_c2s.szpassportid)
 }
 
 // int32 cbvalidateflags = 7;
@@ -1197,20 +1253,20 @@ inline void loginbyaccounts_c2s::clear_cbvalidateflags() {
   cbvalidateflags_ = 0;
 }
 inline ::google::protobuf::int32 loginbyaccounts_c2s::cbvalidateflags() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.loginbyaccounts_c2s.cbvalidateflags)
+  // @@protoc_insertion_point(field_get:LoginPmd.loginbyaccounts_c2s.cbvalidateflags)
   return cbvalidateflags_;
 }
 inline void loginbyaccounts_c2s::set_cbvalidateflags(::google::protobuf::int32 value) {
   
   cbvalidateflags_ = value;
-  // @@protoc_insertion_point(field_set:PlatPmd.loginbyaccounts_c2s.cbvalidateflags)
+  // @@protoc_insertion_point(field_set:LoginPmd.loginbyaccounts_c2s.cbvalidateflags)
 }
 
 // -------------------------------------------------------------------
 
 // loginbyvisitor_c2s
 
-// .PlatPmd.null_request reqcmd = 1;
+// .NullPmd.request reqcmd = 1;
 inline bool loginbyvisitor_c2s::has_reqcmd() const {
   return this != internal_default_instance() && reqcmd_ != NULL;
 }
@@ -1218,27 +1274,27 @@ inline void loginbyvisitor_c2s::clear_reqcmd() {
   if (GetArenaNoVirtual() == NULL && reqcmd_ != NULL) delete reqcmd_;
   reqcmd_ = NULL;
 }
-inline const ::PlatPmd::null_request& loginbyvisitor_c2s::reqcmd() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.loginbyvisitor_c2s.reqcmd)
+inline const ::NullPmd::request& loginbyvisitor_c2s::reqcmd() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.loginbyvisitor_c2s.reqcmd)
   return reqcmd_ != NULL ? *reqcmd_
-                         : *::PlatPmd::null_request::internal_default_instance();
+                         : *::NullPmd::request::internal_default_instance();
 }
-inline ::PlatPmd::null_request* loginbyvisitor_c2s::mutable_reqcmd() {
+inline ::NullPmd::request* loginbyvisitor_c2s::mutable_reqcmd() {
   
   if (reqcmd_ == NULL) {
-    reqcmd_ = new ::PlatPmd::null_request;
+    reqcmd_ = new ::NullPmd::request;
   }
-  // @@protoc_insertion_point(field_mutable:PlatPmd.loginbyvisitor_c2s.reqcmd)
+  // @@protoc_insertion_point(field_mutable:LoginPmd.loginbyvisitor_c2s.reqcmd)
   return reqcmd_;
 }
-inline ::PlatPmd::null_request* loginbyvisitor_c2s::release_reqcmd() {
-  // @@protoc_insertion_point(field_release:PlatPmd.loginbyvisitor_c2s.reqcmd)
+inline ::NullPmd::request* loginbyvisitor_c2s::release_reqcmd() {
+  // @@protoc_insertion_point(field_release:LoginPmd.loginbyvisitor_c2s.reqcmd)
   
-  ::PlatPmd::null_request* temp = reqcmd_;
+  ::NullPmd::request* temp = reqcmd_;
   reqcmd_ = NULL;
   return temp;
 }
-inline void loginbyvisitor_c2s::set_allocated_reqcmd(::PlatPmd::null_request* reqcmd) {
+inline void loginbyvisitor_c2s::set_allocated_reqcmd(::NullPmd::request* reqcmd) {
   delete reqcmd_;
   reqcmd_ = reqcmd;
   if (reqcmd) {
@@ -1246,21 +1302,21 @@ inline void loginbyvisitor_c2s::set_allocated_reqcmd(::PlatPmd::null_request* re
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:PlatPmd.loginbyvisitor_c2s.reqcmd)
+  // @@protoc_insertion_point(field_set_allocated:LoginPmd.loginbyvisitor_c2s.reqcmd)
 }
 
-// uint32 dwplazaversion = 2;
+// uint64 dwplazaversion = 2;
 inline void loginbyvisitor_c2s::clear_dwplazaversion() {
-  dwplazaversion_ = 0u;
+  dwplazaversion_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint32 loginbyvisitor_c2s::dwplazaversion() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.loginbyvisitor_c2s.dwplazaversion)
+inline ::google::protobuf::uint64 loginbyvisitor_c2s::dwplazaversion() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.loginbyvisitor_c2s.dwplazaversion)
   return dwplazaversion_;
 }
-inline void loginbyvisitor_c2s::set_dwplazaversion(::google::protobuf::uint32 value) {
+inline void loginbyvisitor_c2s::set_dwplazaversion(::google::protobuf::uint64 value) {
   
   dwplazaversion_ = value;
-  // @@protoc_insertion_point(field_set:PlatPmd.loginbyvisitor_c2s.dwplazaversion)
+  // @@protoc_insertion_point(field_set:LoginPmd.loginbyvisitor_c2s.dwplazaversion)
 }
 
 // string szmachineid = 3;
@@ -1268,40 +1324,40 @@ inline void loginbyvisitor_c2s::clear_szmachineid() {
   szmachineid_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& loginbyvisitor_c2s::szmachineid() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.loginbyvisitor_c2s.szmachineid)
+  // @@protoc_insertion_point(field_get:LoginPmd.loginbyvisitor_c2s.szmachineid)
   return szmachineid_.GetNoArena();
 }
 inline void loginbyvisitor_c2s::set_szmachineid(const ::std::string& value) {
   
   szmachineid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:PlatPmd.loginbyvisitor_c2s.szmachineid)
+  // @@protoc_insertion_point(field_set:LoginPmd.loginbyvisitor_c2s.szmachineid)
 }
 #if LANG_CXX11
 inline void loginbyvisitor_c2s::set_szmachineid(::std::string&& value) {
   
   szmachineid_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:PlatPmd.loginbyvisitor_c2s.szmachineid)
+  // @@protoc_insertion_point(field_set_rvalue:LoginPmd.loginbyvisitor_c2s.szmachineid)
 }
 #endif
 inline void loginbyvisitor_c2s::set_szmachineid(const char* value) {
   
   szmachineid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:PlatPmd.loginbyvisitor_c2s.szmachineid)
+  // @@protoc_insertion_point(field_set_char:LoginPmd.loginbyvisitor_c2s.szmachineid)
 }
 inline void loginbyvisitor_c2s::set_szmachineid(const char* value, size_t size) {
   
   szmachineid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:PlatPmd.loginbyvisitor_c2s.szmachineid)
+  // @@protoc_insertion_point(field_set_pointer:LoginPmd.loginbyvisitor_c2s.szmachineid)
 }
 inline ::std::string* loginbyvisitor_c2s::mutable_szmachineid() {
   
-  // @@protoc_insertion_point(field_mutable:PlatPmd.loginbyvisitor_c2s.szmachineid)
+  // @@protoc_insertion_point(field_mutable:LoginPmd.loginbyvisitor_c2s.szmachineid)
   return szmachineid_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* loginbyvisitor_c2s::release_szmachineid() {
-  // @@protoc_insertion_point(field_release:PlatPmd.loginbyvisitor_c2s.szmachineid)
+  // @@protoc_insertion_point(field_release:LoginPmd.loginbyvisitor_c2s.szmachineid)
   
   return szmachineid_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -1312,7 +1368,7 @@ inline void loginbyvisitor_c2s::set_allocated_szmachineid(::std::string* szmachi
     
   }
   szmachineid_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), szmachineid);
-  // @@protoc_insertion_point(field_set_allocated:PlatPmd.loginbyvisitor_c2s.szmachineid)
+  // @@protoc_insertion_point(field_set_allocated:LoginPmd.loginbyvisitor_c2s.szmachineid)
 }
 
 // int32 cbvalidateflags = 4;
@@ -1320,20 +1376,20 @@ inline void loginbyvisitor_c2s::clear_cbvalidateflags() {
   cbvalidateflags_ = 0;
 }
 inline ::google::protobuf::int32 loginbyvisitor_c2s::cbvalidateflags() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.loginbyvisitor_c2s.cbvalidateflags)
+  // @@protoc_insertion_point(field_get:LoginPmd.loginbyvisitor_c2s.cbvalidateflags)
   return cbvalidateflags_;
 }
 inline void loginbyvisitor_c2s::set_cbvalidateflags(::google::protobuf::int32 value) {
   
   cbvalidateflags_ = value;
-  // @@protoc_insertion_point(field_set:PlatPmd.loginbyvisitor_c2s.cbvalidateflags)
+  // @@protoc_insertion_point(field_set:LoginPmd.loginbyvisitor_c2s.cbvalidateflags)
 }
 
 // -------------------------------------------------------------------
 
 // loginsuccess_s2c
 
-// .PlatPmd.null_response respcmd = 1;
+// .NullPmd.response respcmd = 1;
 inline bool loginsuccess_s2c::has_respcmd() const {
   return this != internal_default_instance() && respcmd_ != NULL;
 }
@@ -1341,27 +1397,27 @@ inline void loginsuccess_s2c::clear_respcmd() {
   if (GetArenaNoVirtual() == NULL && respcmd_ != NULL) delete respcmd_;
   respcmd_ = NULL;
 }
-inline const ::PlatPmd::null_response& loginsuccess_s2c::respcmd() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.loginsuccess_s2c.respcmd)
+inline const ::NullPmd::response& loginsuccess_s2c::respcmd() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.loginsuccess_s2c.respcmd)
   return respcmd_ != NULL ? *respcmd_
-                         : *::PlatPmd::null_response::internal_default_instance();
+                         : *::NullPmd::response::internal_default_instance();
 }
-inline ::PlatPmd::null_response* loginsuccess_s2c::mutable_respcmd() {
+inline ::NullPmd::response* loginsuccess_s2c::mutable_respcmd() {
   
   if (respcmd_ == NULL) {
-    respcmd_ = new ::PlatPmd::null_response;
+    respcmd_ = new ::NullPmd::response;
   }
-  // @@protoc_insertion_point(field_mutable:PlatPmd.loginsuccess_s2c.respcmd)
+  // @@protoc_insertion_point(field_mutable:LoginPmd.loginsuccess_s2c.respcmd)
   return respcmd_;
 }
-inline ::PlatPmd::null_response* loginsuccess_s2c::release_respcmd() {
-  // @@protoc_insertion_point(field_release:PlatPmd.loginsuccess_s2c.respcmd)
+inline ::NullPmd::response* loginsuccess_s2c::release_respcmd() {
+  // @@protoc_insertion_point(field_release:LoginPmd.loginsuccess_s2c.respcmd)
   
-  ::PlatPmd::null_response* temp = respcmd_;
+  ::NullPmd::response* temp = respcmd_;
   respcmd_ = NULL;
   return temp;
 }
-inline void loginsuccess_s2c::set_allocated_respcmd(::PlatPmd::null_response* respcmd) {
+inline void loginsuccess_s2c::set_allocated_respcmd(::NullPmd::response* respcmd) {
   delete respcmd_;
   respcmd_ = respcmd;
   if (respcmd) {
@@ -1369,10 +1425,10 @@ inline void loginsuccess_s2c::set_allocated_respcmd(::PlatPmd::null_response* re
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:PlatPmd.loginsuccess_s2c.respcmd)
+  // @@protoc_insertion_point(field_set_allocated:LoginPmd.loginsuccess_s2c.respcmd)
 }
 
-// .PlatPmd.common_personinfo personinfo = 2;
+// .CommonPmd.personinfo personinfo = 2;
 inline bool loginsuccess_s2c::has_personinfo() const {
   return this != internal_default_instance() && personinfo_ != NULL;
 }
@@ -1380,27 +1436,27 @@ inline void loginsuccess_s2c::clear_personinfo() {
   if (GetArenaNoVirtual() == NULL && personinfo_ != NULL) delete personinfo_;
   personinfo_ = NULL;
 }
-inline const ::PlatPmd::common_personinfo& loginsuccess_s2c::personinfo() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.loginsuccess_s2c.personinfo)
+inline const ::CommonPmd::personinfo& loginsuccess_s2c::personinfo() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.loginsuccess_s2c.personinfo)
   return personinfo_ != NULL ? *personinfo_
-                         : *::PlatPmd::common_personinfo::internal_default_instance();
+                         : *::CommonPmd::personinfo::internal_default_instance();
 }
-inline ::PlatPmd::common_personinfo* loginsuccess_s2c::mutable_personinfo() {
+inline ::CommonPmd::personinfo* loginsuccess_s2c::mutable_personinfo() {
   
   if (personinfo_ == NULL) {
-    personinfo_ = new ::PlatPmd::common_personinfo;
+    personinfo_ = new ::CommonPmd::personinfo;
   }
-  // @@protoc_insertion_point(field_mutable:PlatPmd.loginsuccess_s2c.personinfo)
+  // @@protoc_insertion_point(field_mutable:LoginPmd.loginsuccess_s2c.personinfo)
   return personinfo_;
 }
-inline ::PlatPmd::common_personinfo* loginsuccess_s2c::release_personinfo() {
-  // @@protoc_insertion_point(field_release:PlatPmd.loginsuccess_s2c.personinfo)
+inline ::CommonPmd::personinfo* loginsuccess_s2c::release_personinfo() {
+  // @@protoc_insertion_point(field_release:LoginPmd.loginsuccess_s2c.personinfo)
   
-  ::PlatPmd::common_personinfo* temp = personinfo_;
+  ::CommonPmd::personinfo* temp = personinfo_;
   personinfo_ = NULL;
   return temp;
 }
-inline void loginsuccess_s2c::set_allocated_personinfo(::PlatPmd::common_personinfo* personinfo) {
+inline void loginsuccess_s2c::set_allocated_personinfo(::CommonPmd::personinfo* personinfo) {
   delete personinfo_;
   personinfo_ = personinfo;
   if (personinfo) {
@@ -1408,10 +1464,126 @@ inline void loginsuccess_s2c::set_allocated_personinfo(::PlatPmd::common_personi
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:PlatPmd.loginsuccess_s2c.personinfo)
+  // @@protoc_insertion_point(field_set_allocated:LoginPmd.loginsuccess_s2c.personinfo)
+}
+
+// -------------------------------------------------------------------
+
+// loginfinish_s2c
+
+// .NullPmd.response respcmd = 1;
+inline bool loginfinish_s2c::has_respcmd() const {
+  return this != internal_default_instance() && respcmd_ != NULL;
+}
+inline void loginfinish_s2c::clear_respcmd() {
+  if (GetArenaNoVirtual() == NULL && respcmd_ != NULL) delete respcmd_;
+  respcmd_ = NULL;
+}
+inline const ::NullPmd::response& loginfinish_s2c::respcmd() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.loginfinish_s2c.respcmd)
+  return respcmd_ != NULL ? *respcmd_
+                         : *::NullPmd::response::internal_default_instance();
+}
+inline ::NullPmd::response* loginfinish_s2c::mutable_respcmd() {
+  
+  if (respcmd_ == NULL) {
+    respcmd_ = new ::NullPmd::response;
+  }
+  // @@protoc_insertion_point(field_mutable:LoginPmd.loginfinish_s2c.respcmd)
+  return respcmd_;
+}
+inline ::NullPmd::response* loginfinish_s2c::release_respcmd() {
+  // @@protoc_insertion_point(field_release:LoginPmd.loginfinish_s2c.respcmd)
+  
+  ::NullPmd::response* temp = respcmd_;
+  respcmd_ = NULL;
+  return temp;
+}
+inline void loginfinish_s2c::set_allocated_respcmd(::NullPmd::response* respcmd) {
+  delete respcmd_;
+  respcmd_ = respcmd;
+  if (respcmd) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:LoginPmd.loginfinish_s2c.respcmd)
+}
+
+// int32 wIntermitTime = 2;
+inline void loginfinish_s2c::clear_wintermittime() {
+  wintermittime_ = 0;
+}
+inline ::google::protobuf::int32 loginfinish_s2c::wintermittime() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.loginfinish_s2c.wIntermitTime)
+  return wintermittime_;
+}
+inline void loginfinish_s2c::set_wintermittime(::google::protobuf::int32 value) {
+  
+  wintermittime_ = value;
+  // @@protoc_insertion_point(field_set:LoginPmd.loginfinish_s2c.wIntermitTime)
+}
+
+// int32 wOnLineCountTime = 3;
+inline void loginfinish_s2c::clear_wonlinecounttime() {
+  wonlinecounttime_ = 0;
+}
+inline ::google::protobuf::int32 loginfinish_s2c::wonlinecounttime() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.loginfinish_s2c.wOnLineCountTime)
+  return wonlinecounttime_;
+}
+inline void loginfinish_s2c::set_wonlinecounttime(::google::protobuf::int32 value) {
+  
+  wonlinecounttime_ = value;
+  // @@protoc_insertion_point(field_set:LoginPmd.loginfinish_s2c.wOnLineCountTime)
+}
+
+// -------------------------------------------------------------------
+
+// loginfailure_s2c
+
+// .NullPmd.response respcmd = 1;
+inline bool loginfailure_s2c::has_respcmd() const {
+  return this != internal_default_instance() && respcmd_ != NULL;
+}
+inline void loginfailure_s2c::clear_respcmd() {
+  if (GetArenaNoVirtual() == NULL && respcmd_ != NULL) delete respcmd_;
+  respcmd_ = NULL;
+}
+inline const ::NullPmd::response& loginfailure_s2c::respcmd() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.loginfailure_s2c.respcmd)
+  return respcmd_ != NULL ? *respcmd_
+                         : *::NullPmd::response::internal_default_instance();
+}
+inline ::NullPmd::response* loginfailure_s2c::mutable_respcmd() {
+  
+  if (respcmd_ == NULL) {
+    respcmd_ = new ::NullPmd::response;
+  }
+  // @@protoc_insertion_point(field_mutable:LoginPmd.loginfailure_s2c.respcmd)
+  return respcmd_;
+}
+inline ::NullPmd::response* loginfailure_s2c::release_respcmd() {
+  // @@protoc_insertion_point(field_release:LoginPmd.loginfailure_s2c.respcmd)
+  
+  ::NullPmd::response* temp = respcmd_;
+  respcmd_ = NULL;
+  return temp;
+}
+inline void loginfailure_s2c::set_allocated_respcmd(::NullPmd::response* respcmd) {
+  delete respcmd_;
+  respcmd_ = respcmd;
+  if (respcmd) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:LoginPmd.loginfailure_s2c.respcmd)
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
@@ -1424,21 +1596,7 @@ inline void loginsuccess_s2c::set_allocated_personinfo(::PlatPmd::common_personi
 // @@protoc_insertion_point(namespace_scope)
 
 
-}  // namespace PlatPmd
-
-#ifndef SWIG
-namespace google {
-namespace protobuf {
-
-template <> struct is_proto_enum< ::PlatPmd::LoginPmdCommand_LoginPmdEnum> : ::google::protobuf::internal::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::PlatPmd::LoginPmdCommand_LoginPmdEnum>() {
-  return ::PlatPmd::LoginPmdCommand_LoginPmdEnum_descriptor();
-}
-
-}  // namespace protobuf
-}  // namespace google
-#endif  // SWIG
+}  // namespace LoginPmd
 
 // @@protoc_insertion_point(global_scope)
 

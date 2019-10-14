@@ -105,7 +105,7 @@ CAttemperEngineSink::CAttemperEngineSink()
 
 	HINSTANCE hInstLibrary = NULL;
 #ifdef _DEBUG
-	hInstLibrary = LoadLibrary(TEXT("PersonalRoomServiceD.dll"));
+	hInstLibrary = LoadLibrary(TEXT("PersonalRoomService.dll"));
 #else
 	hInstLibrary = LoadLibrary(TEXT("PersonalRoomService.dll"));
 #endif
@@ -202,14 +202,19 @@ bool CAttemperEngineSink::OnAttemperEngineStart(IUnknownEx * pIUnknownEx)
 		}
 
 	}
-	else	if(m_pIPersonalRoomServiceManager!=NULL)//设置约战房间接口
+	else if(m_pIPersonalRoomServiceManager!=NULL)//设置约战房间接口
 	{
 		if (m_ServerUserManager.SetServerUserItemSink(m_pIPersonalRoomServiceManager->GetServerUserItemSink())==false)
 		{
 			ASSERT(FALSE);
 			return false;
 		}
-
+		//启动约战
+		if (m_pIPersonalRoomServiceManager->StartService() == false)
+		{
+			ASSERT(FALSE);
+			return false;
+		}
 	}
 	else
 	{
@@ -457,7 +462,6 @@ bool CAttemperEngineSink::OnEventTimer(DWORD dwTimerID, WPARAM wBindParam)
 {
 	try
 	{
-
 		//调度时间
 		if ((dwTimerID>=IDI_MAIN_MODULE_START)&&(dwTimerID<=IDI_MAIN_MODULE_FINISH))
 		{
@@ -487,7 +491,7 @@ bool CAttemperEngineSink::OnEventTimer(DWORD dwTimerID, WPARAM wBindParam)
 						LoadAndroidUser.AndroidCountMember3=pAndroidParameter->AndroidParameter.AndroidCountMember3;
 						LoadAndroidUser.AndroidCountMember4=pAndroidParameter->AndroidParameter.AndroidCountMember4;
 						LoadAndroidUser.AndroidCountMember5=pAndroidParameter->AndroidParameter.AndroidCountMember5;
-
+						
 						//加载机器
 						m_pIDBCorrespondManager->PostDataBaseRequest(0L,DBR_GR_LOAD_ANDROID_USER,0L,&LoadAndroidUser,sizeof(LoadAndroidUser));
 					}
@@ -899,7 +903,7 @@ bool CAttemperEngineSink::OnEventTimer(DWORD dwTimerID, WPARAM wBindParam)
 				{
 					//清除消息数据
 					RemoveSystemMessage();
-
+					
 					//加载消息
 					m_pIDBCorrespondManager->PostDataBaseRequest(0L, DBR_GR_LOAD_SYSTEM_MESSAGE, 0L, NULL, 0L);
 
@@ -907,57 +911,58 @@ bool CAttemperEngineSink::OnEventTimer(DWORD dwTimerID, WPARAM wBindParam)
 				}
 			case IDI_LOAD_SENSITIVE_WORD:	//加载敏感词
 				{
+					
 					//投递请求
 					m_pIRecordDataBaseEngine->PostDataBaseRequest(DBR_GR_LOAD_SENSITIVE_WORDS,0,NULL,0);				
 					return true;
 				}
 			case IDI_SEND_SYSTEM_MESSAGE: //系统消息
-			{
-				//数量判断
-				if (m_SystemMessageActive.GetCount() == 0) return true;
-
-				//时效判断
-				DWORD dwCurrTime = (DWORD)time(NULL);
-				for (INT_PTR nIndex = m_SystemMessageActive.GetCount() - 1; nIndex >= 0; nIndex--)
 				{
-					tagSystemMessage *pTagSystemMessage = m_SystemMessageActive[nIndex];
+					//数量判断
+					if (m_SystemMessageActive.GetCount() == 0) return true;
 
 					//时效判断
-					if (pTagSystemMessage->SystemMessage.tConcludeTime < dwCurrTime)
+					DWORD dwCurrTime = (DWORD)time(NULL);
+					for (INT_PTR nIndex = m_SystemMessageActive.GetCount() - 1; nIndex >= 0; nIndex--)
 					{
-						m_SystemMessageActive.RemoveAt(nIndex);
-						SafeDelete(pTagSystemMessage);
+						tagSystemMessage *pTagSystemMessage = m_SystemMessageActive[nIndex];
 
-						continue;
-					}
-
-					//间隔判断
-					if (pTagSystemMessage->dwLastTime + pTagSystemMessage->SystemMessage.dwTimeRate < dwCurrTime)
-					{
-						//更新数据
-						pTagSystemMessage->dwLastTime = dwCurrTime;
-
-						//构造消息
-						CMD_GR_SendMessage SendMessage = {};
-						SendMessage.cbAllRoom = (pTagSystemMessage->SystemMessage.dwMessageID == TEMP_MESSAGE_ID) ? TRUE : FALSE;
-						SendMessage.cbGame = (pTagSystemMessage->SystemMessage.cbMessageType == 1) ? TRUE : FALSE;
-						SendMessage.cbRoom = (pTagSystemMessage->SystemMessage.cbMessageType == 2) ? TRUE : FALSE;
-						if (pTagSystemMessage->SystemMessage.cbMessageType == 3)
+						//时效判断
+						if (pTagSystemMessage->SystemMessage.tConcludeTime < dwCurrTime)
 						{
-							SendMessage.cbGame = TRUE;
-							SendMessage.cbRoom = TRUE;
+							m_SystemMessageActive.RemoveAt(nIndex);
+							SafeDelete(pTagSystemMessage);
+
+							continue;
 						}
-						lstrcpyn(SendMessage.szSystemMessage, pTagSystemMessage->SystemMessage.szSystemMessage, CountArray(SendMessage.szSystemMessage));
-						SendMessage.wChatLength = lstrlen(SendMessage.szSystemMessage) + 1;
 
-						//发送消息
-						WORD wSendSize = sizeof(SendMessage) - sizeof(SendMessage.szSystemMessage) + CountStringBuffer(SendMessage.szSystemMessage);
-						SendSystemMessage(&SendMessage, wSendSize);
+						//间隔判断
+						if (pTagSystemMessage->dwLastTime + pTagSystemMessage->SystemMessage.dwTimeRate < dwCurrTime)
+						{
+							//更新数据
+							pTagSystemMessage->dwLastTime = dwCurrTime;
+
+							//构造消息
+							CMD_GR_SendMessage SendMessage = {};
+							SendMessage.cbAllRoom = (pTagSystemMessage->SystemMessage.dwMessageID == TEMP_MESSAGE_ID) ? TRUE : FALSE;
+							SendMessage.cbGame = (pTagSystemMessage->SystemMessage.cbMessageType == 1) ? TRUE : FALSE;
+							SendMessage.cbRoom = (pTagSystemMessage->SystemMessage.cbMessageType == 2) ? TRUE : FALSE;
+							if (pTagSystemMessage->SystemMessage.cbMessageType == 3)
+							{
+								SendMessage.cbGame = TRUE;
+								SendMessage.cbRoom = TRUE;
+							}
+							lstrcpyn(SendMessage.szSystemMessage, pTagSystemMessage->SystemMessage.szSystemMessage, CountArray(SendMessage.szSystemMessage));
+							SendMessage.wChatLength = lstrlen(SendMessage.szSystemMessage) + 1;
+
+							//发送消息
+							WORD wSendSize = sizeof(SendMessage) - sizeof(SendMessage.szSystemMessage) + CountStringBuffer(SendMessage.szSystemMessage);
+							SendSystemMessage(&SendMessage, wSendSize);
+						}
 					}
-				}
 
-				return true;
-			}
+					return true;
+				}
 			case IDI_DISTRIBUTE_USER: //分配用户
 				{
 					//执行分组
@@ -1448,7 +1453,7 @@ bool CAttemperEngineSink::OnEventTCPSocketLink(WORD wServiceID, INT nErrorCode)
 
 		return true;
 	}
-	else 	if (wServiceID==NETWORK_PERSONAL_ROOM_CORRESPOND)
+	else if (wServiceID==NETWORK_PERSONAL_ROOM_CORRESPOND)
 	{
 		//错误判断
 		if (nErrorCode!=0)
@@ -1522,7 +1527,7 @@ bool CAttemperEngineSink::OnEventTCPSocketLink(WORD wServiceID, INT nErrorCode)
 
 		//是否使用金币库
 		bool bIsTreasureDB = false;
-		if (lstrcmp(m_pGameServiceOption->szDataBaseName,  TEXT("WHJHTreasureDB")) == 0)
+		if (lstrcmp(m_pGameServiceOption->szDataBaseName, szTreasureDB) == 0)
 		{
 			bIsTreasureDB = true;
 		}

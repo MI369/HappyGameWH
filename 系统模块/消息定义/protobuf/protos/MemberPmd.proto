@@ -1,0 +1,28 @@
+syntax = "proto3";    //指定proto版本3.x
+
+import "NullPmd.proto";
+
+package MemberPmd; 
+
+//会员参数
+message tagMemberParameterNew
+{
+	NullPmd.response respcmd		= 1;
+	int32	cbmemberorder			= 2;	//会员标识
+	string	szmembername			= 3;	//会员名称
+	uint64  dwmemberright			= 4;    //会员权限
+	uint64  dwmembertask			= 5;    //会员任务
+	uint64  dwmembershop			= 6;    //会员商城
+	uint64  dwmemberinsure			= 7;    //会员银行
+	uint64  dwmemberdaypresent		= 8;    //会员送金
+	uint64  dwmemberdaygiftid		= 9;    //会员礼包
+};
+
+//会员配置
+message MemberParameterResult_s2c
+{
+	NullPmd.response respcmd		= 1;
+	int32							wmembercount		= 2;				//会员数目
+	repeated tagMemberParameterNew	memberparameter		= 3;				//会员参数
+};
+

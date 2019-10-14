@@ -48,6 +48,15 @@ public:
 	//读取字符
 	LPCTSTR ReadEncryptString(LPCTSTR pszItem, LPCTSTR pszSubItem, LPCTSTR pszDefault, LPTSTR pszString, WORD wMaxCount);
 
+	//常规写入
+public:
+	//写入数值
+	bool WriteInt(LPCTSTR pszItem, LPCTSTR pszSubItem, INT lpString = 0);
+	//写入字符
+	bool WriteString(LPCTSTR pszItem, LPCTSTR pszSubItem, LPCTSTR lpString = TEXT(""));
+	//写入字符
+	bool WriteEncryptString(LPCTSTR pszItem, LPCTSTR pszSubItem, LPCTSTR lpString = TEXT(""));
+
 	//内部函数
 protected:
 	//转换数值

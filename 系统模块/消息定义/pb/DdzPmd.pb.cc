@@ -17,9 +17,7 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 
-namespace PlatPmd {
-class DdzPmdCommandDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<DdzPmdCommand> {
-} _DdzPmdCommand_default_instance_;
+namespace DdzPmd {
 class ddz_c2sDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<ddz_c2s> {
 } _ddz_c2s_default_instance_;
 
@@ -28,16 +26,11 @@ namespace protobuf_DdzPmd_2eproto {
 
 namespace {
 
-::google::protobuf::Metadata file_level_metadata[2];
-const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[1];
+::google::protobuf::Metadata file_level_metadata[1];
 
 }  // namespace
 
 const ::google::protobuf::uint32 TableStruct::offsets[] = {
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DdzPmdCommand, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ddz_c2s, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -46,12 +39,10 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
 };
 
 static const ::google::protobuf::internal::MigrationSchema schemas[] = {
-  { 0, -1, sizeof(DdzPmdCommand)},
-  { 4, -1, sizeof(ddz_c2s)},
+  { 0, -1, sizeof(ddz_c2s)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::google::protobuf::Message*>(&_DdzPmdCommand_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_ddz_c2s_default_instance_),
 };
 
@@ -62,7 +53,7 @@ void protobuf_AssignDescriptors() {
   ::google::protobuf::MessageFactory* factory = NULL;
   AssignDescriptors(
       "DdzPmd.proto", schemas, file_default_instances, TableStruct::offsets, factory,
-      file_level_metadata, file_level_enum_descriptors, NULL);
+      file_level_metadata, NULL, NULL);
 }
 
 void protobuf_AssignDescriptorsOnce() {
@@ -73,27 +64,24 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 2);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 1);
 }
 
 }  // namespace
 
 void TableStruct::Shutdown() {
-  _DdzPmdCommand_default_instance_.Shutdown();
-  delete file_level_metadata[0].reflection;
   _ddz_c2s_default_instance_.Shutdown();
-  delete file_level_metadata[1].reflection;
+  delete file_level_metadata[0].reflection;
 }
 
 void TableStruct::InitDefaultsImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::internal::InitProtobufDefaults();
-  ::PlatPmd::protobuf_NullPmd_2eproto::InitDefaults();
-  _DdzPmdCommand_default_instance_.DefaultConstruct();
+  ::NullPmd::protobuf_NullPmd_2eproto::InitDefaults();
   _ddz_c2s_default_instance_.DefaultConstruct();
-  _ddz_c2s_default_instance_.get_mutable()->reqcmd_ = const_cast< ::PlatPmd::null_request*>(
-      ::PlatPmd::null_request::internal_default_instance());
+  _ddz_c2s_default_instance_.get_mutable()->reqcmd_ = const_cast< ::NullPmd::request*>(
+      ::NullPmd::request::internal_default_instance());
 }
 
 void InitDefaults() {
@@ -103,17 +91,15 @@ void InitDefaults() {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] = {
-      "\n\014DdzPmd.proto\022\007PlatPmd\032\rNullPmd.proto\"G"
-      "\n\rDdzPmdCommand\"6\n\nDdzPmdEnum\022\025\n\021param_n"
-      "ullmessage\020\000\022\021\n\rparam_ddz_c2s\020\001\"0\n\007ddz_c"
-      "2s\022%\n\006reqcmd\030\001 \001(\0132\025.PlatPmd.null_reques"
-      "tb\006proto3"
+      "\n\014DdzPmd.proto\022\006DdzPmd\032\rNullPmd.proto\"+\n"
+      "\007ddz_c2s\022 \n\006reqcmd\030\001 \001(\0132\020.NullPmd.reque"
+      "stb\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 169);
+      descriptor, 90);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "DdzPmd.proto", &protobuf_RegisterTypes);
-  ::PlatPmd::protobuf_NullPmd_2eproto::AddDescriptors();
+  ::NullPmd::protobuf_NullPmd_2eproto::AddDescriptors();
   ::google::protobuf::internal::OnShutdown(&TableStruct::Shutdown);
 }
 
@@ -130,195 +116,6 @@ struct StaticDescriptorInitializer {
 
 }  // namespace protobuf_DdzPmd_2eproto
 
-const ::google::protobuf::EnumDescriptor* DdzPmdCommand_DdzPmdEnum_descriptor() {
-  protobuf_DdzPmd_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_DdzPmd_2eproto::file_level_enum_descriptors[0];
-}
-bool DdzPmdCommand_DdzPmdEnum_IsValid(int value) {
-  switch (value) {
-    case 0:
-    case 1:
-      return true;
-    default:
-      return false;
-  }
-}
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const DdzPmdCommand_DdzPmdEnum DdzPmdCommand::param_nullmessage;
-const DdzPmdCommand_DdzPmdEnum DdzPmdCommand::param_ddz_c2s;
-const DdzPmdCommand_DdzPmdEnum DdzPmdCommand::DdzPmdEnum_MIN;
-const DdzPmdCommand_DdzPmdEnum DdzPmdCommand::DdzPmdEnum_MAX;
-const int DdzPmdCommand::DdzPmdEnum_ARRAYSIZE;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-// ===================================================================
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-DdzPmdCommand::DdzPmdCommand()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    protobuf_DdzPmd_2eproto::InitDefaults();
-  }
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:PlatPmd.DdzPmdCommand)
-}
-DdzPmdCommand::DdzPmdCommand(const DdzPmdCommand& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:PlatPmd.DdzPmdCommand)
-}
-
-void DdzPmdCommand::SharedCtor() {
-  _cached_size_ = 0;
-}
-
-DdzPmdCommand::~DdzPmdCommand() {
-  // @@protoc_insertion_point(destructor:PlatPmd.DdzPmdCommand)
-  SharedDtor();
-}
-
-void DdzPmdCommand::SharedDtor() {
-}
-
-void DdzPmdCommand::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* DdzPmdCommand::descriptor() {
-  protobuf_DdzPmd_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_DdzPmd_2eproto::file_level_metadata[0].descriptor;
-}
-
-const DdzPmdCommand& DdzPmdCommand::default_instance() {
-  protobuf_DdzPmd_2eproto::InitDefaults();
-  return *internal_default_instance();
-}
-
-DdzPmdCommand* DdzPmdCommand::New(::google::protobuf::Arena* arena) const {
-  DdzPmdCommand* n = new DdzPmdCommand;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
-
-void DdzPmdCommand::Clear() {
-// @@protoc_insertion_point(message_clear_start:PlatPmd.DdzPmdCommand)
-}
-
-bool DdzPmdCommand::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:PlatPmd.DdzPmdCommand)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-  handle_unusual:
-    if (tag == 0 ||
-        ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-        ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-      goto success;
-    }
-    DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
-  }
-success:
-  // @@protoc_insertion_point(parse_success:PlatPmd.DdzPmdCommand)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:PlatPmd.DdzPmdCommand)
-  return false;
-#undef DO_
-}
-
-void DdzPmdCommand::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:PlatPmd.DdzPmdCommand)
-  // @@protoc_insertion_point(serialize_end:PlatPmd.DdzPmdCommand)
-}
-
-::google::protobuf::uint8* DdzPmdCommand::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic;  // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:PlatPmd.DdzPmdCommand)
-  // @@protoc_insertion_point(serialize_to_array_end:PlatPmd.DdzPmdCommand)
-  return target;
-}
-
-size_t DdzPmdCommand::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:PlatPmd.DdzPmdCommand)
-  size_t total_size = 0;
-
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void DdzPmdCommand::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:PlatPmd.DdzPmdCommand)
-  GOOGLE_DCHECK_NE(&from, this);
-  const DdzPmdCommand* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const DdzPmdCommand>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:PlatPmd.DdzPmdCommand)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:PlatPmd.DdzPmdCommand)
-    MergeFrom(*source);
-  }
-}
-
-void DdzPmdCommand::MergeFrom(const DdzPmdCommand& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:PlatPmd.DdzPmdCommand)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-}
-
-void DdzPmdCommand::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:PlatPmd.DdzPmdCommand)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void DdzPmdCommand::CopyFrom(const DdzPmdCommand& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:PlatPmd.DdzPmdCommand)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool DdzPmdCommand::IsInitialized() const {
-  return true;
-}
-
-void DdzPmdCommand::Swap(DdzPmdCommand* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void DdzPmdCommand::InternalSwap(DdzPmdCommand* other) {
-  std::swap(_cached_size_, other->_cached_size_);
-}
-
-::google::protobuf::Metadata DdzPmdCommand::GetMetadata() const {
-  protobuf_DdzPmd_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_DdzPmd_2eproto::file_level_metadata[0];
-}
-
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// DdzPmdCommand
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -332,7 +129,7 @@ ddz_c2s::ddz_c2s()
     protobuf_DdzPmd_2eproto::InitDefaults();
   }
   SharedCtor();
-  // @@protoc_insertion_point(constructor:PlatPmd.ddz_c2s)
+  // @@protoc_insertion_point(constructor:DdzPmd.ddz_c2s)
 }
 ddz_c2s::ddz_c2s(const ddz_c2s& from)
   : ::google::protobuf::Message(),
@@ -340,11 +137,11 @@ ddz_c2s::ddz_c2s(const ddz_c2s& from)
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   if (from.has_reqcmd()) {
-    reqcmd_ = new ::PlatPmd::null_request(*from.reqcmd_);
+    reqcmd_ = new ::NullPmd::request(*from.reqcmd_);
   } else {
     reqcmd_ = NULL;
   }
-  // @@protoc_insertion_point(copy_constructor:PlatPmd.ddz_c2s)
+  // @@protoc_insertion_point(copy_constructor:DdzPmd.ddz_c2s)
 }
 
 void ddz_c2s::SharedCtor() {
@@ -353,7 +150,7 @@ void ddz_c2s::SharedCtor() {
 }
 
 ddz_c2s::~ddz_c2s() {
-  // @@protoc_insertion_point(destructor:PlatPmd.ddz_c2s)
+  // @@protoc_insertion_point(destructor:DdzPmd.ddz_c2s)
   SharedDtor();
 }
 
@@ -370,7 +167,7 @@ void ddz_c2s::SetCachedSize(int size) const {
 }
 const ::google::protobuf::Descriptor* ddz_c2s::descriptor() {
   protobuf_DdzPmd_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_DdzPmd_2eproto::file_level_metadata[1].descriptor;
+  return protobuf_DdzPmd_2eproto::file_level_metadata[0].descriptor;
 }
 
 const ddz_c2s& ddz_c2s::default_instance() {
@@ -387,7 +184,7 @@ ddz_c2s* ddz_c2s::New(::google::protobuf::Arena* arena) const {
 }
 
 void ddz_c2s::Clear() {
-// @@protoc_insertion_point(message_clear_start:PlatPmd.ddz_c2s)
+// @@protoc_insertion_point(message_clear_start:DdzPmd.ddz_c2s)
   if (GetArenaNoVirtual() == NULL && reqcmd_ != NULL) {
     delete reqcmd_;
   }
@@ -398,13 +195,13 @@ bool ddz_c2s::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:PlatPmd.ddz_c2s)
+  // @@protoc_insertion_point(parse_start:DdzPmd.ddz_c2s)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // .PlatPmd.null_request reqcmd = 1;
+      // .NullPmd.request reqcmd = 1;
       case 1: {
         if (tag == 10u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
@@ -428,46 +225,46 @@ bool ddz_c2s::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:PlatPmd.ddz_c2s)
+  // @@protoc_insertion_point(parse_success:DdzPmd.ddz_c2s)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:PlatPmd.ddz_c2s)
+  // @@protoc_insertion_point(parse_failure:DdzPmd.ddz_c2s)
   return false;
 #undef DO_
 }
 
 void ddz_c2s::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:PlatPmd.ddz_c2s)
-  // .PlatPmd.null_request reqcmd = 1;
+  // @@protoc_insertion_point(serialize_start:DdzPmd.ddz_c2s)
+  // .NullPmd.request reqcmd = 1;
   if (this->has_reqcmd()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, *this->reqcmd_, output);
   }
 
-  // @@protoc_insertion_point(serialize_end:PlatPmd.ddz_c2s)
+  // @@protoc_insertion_point(serialize_end:DdzPmd.ddz_c2s)
 }
 
 ::google::protobuf::uint8* ddz_c2s::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic;  // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:PlatPmd.ddz_c2s)
-  // .PlatPmd.null_request reqcmd = 1;
+  // @@protoc_insertion_point(serialize_to_array_start:DdzPmd.ddz_c2s)
+  // .NullPmd.request reqcmd = 1;
   if (this->has_reqcmd()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
         1, *this->reqcmd_, false, target);
   }
 
-  // @@protoc_insertion_point(serialize_to_array_end:PlatPmd.ddz_c2s)
+  // @@protoc_insertion_point(serialize_to_array_end:DdzPmd.ddz_c2s)
   return target;
 }
 
 size_t ddz_c2s::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:PlatPmd.ddz_c2s)
+// @@protoc_insertion_point(message_byte_size_start:DdzPmd.ddz_c2s)
   size_t total_size = 0;
 
-  // .PlatPmd.null_request reqcmd = 1;
+  // .NullPmd.request reqcmd = 1;
   if (this->has_reqcmd()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -482,38 +279,38 @@ size_t ddz_c2s::ByteSizeLong() const {
 }
 
 void ddz_c2s::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:PlatPmd.ddz_c2s)
+// @@protoc_insertion_point(generalized_merge_from_start:DdzPmd.ddz_c2s)
   GOOGLE_DCHECK_NE(&from, this);
   const ddz_c2s* source =
       ::google::protobuf::internal::DynamicCastToGenerated<const ddz_c2s>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:PlatPmd.ddz_c2s)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:DdzPmd.ddz_c2s)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:PlatPmd.ddz_c2s)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:DdzPmd.ddz_c2s)
     MergeFrom(*source);
   }
 }
 
 void ddz_c2s::MergeFrom(const ddz_c2s& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:PlatPmd.ddz_c2s)
+// @@protoc_insertion_point(class_specific_merge_from_start:DdzPmd.ddz_c2s)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   if (from.has_reqcmd()) {
-    mutable_reqcmd()->::PlatPmd::null_request::MergeFrom(from.reqcmd());
+    mutable_reqcmd()->::NullPmd::request::MergeFrom(from.reqcmd());
   }
 }
 
 void ddz_c2s::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:PlatPmd.ddz_c2s)
+// @@protoc_insertion_point(generalized_copy_from_start:DdzPmd.ddz_c2s)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void ddz_c2s::CopyFrom(const ddz_c2s& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:PlatPmd.ddz_c2s)
+// @@protoc_insertion_point(class_specific_copy_from_start:DdzPmd.ddz_c2s)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -534,13 +331,13 @@ void ddz_c2s::InternalSwap(ddz_c2s* other) {
 
 ::google::protobuf::Metadata ddz_c2s::GetMetadata() const {
   protobuf_DdzPmd_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_DdzPmd_2eproto::file_level_metadata[1];
+  return protobuf_DdzPmd_2eproto::file_level_metadata[0];
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // ddz_c2s
 
-// .PlatPmd.null_request reqcmd = 1;
+// .NullPmd.request reqcmd = 1;
 bool ddz_c2s::has_reqcmd() const {
   return this != internal_default_instance() && reqcmd_ != NULL;
 }
@@ -548,27 +345,27 @@ void ddz_c2s::clear_reqcmd() {
   if (GetArenaNoVirtual() == NULL && reqcmd_ != NULL) delete reqcmd_;
   reqcmd_ = NULL;
 }
-const ::PlatPmd::null_request& ddz_c2s::reqcmd() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.ddz_c2s.reqcmd)
+const ::NullPmd::request& ddz_c2s::reqcmd() const {
+  // @@protoc_insertion_point(field_get:DdzPmd.ddz_c2s.reqcmd)
   return reqcmd_ != NULL ? *reqcmd_
-                         : *::PlatPmd::null_request::internal_default_instance();
+                         : *::NullPmd::request::internal_default_instance();
 }
-::PlatPmd::null_request* ddz_c2s::mutable_reqcmd() {
+::NullPmd::request* ddz_c2s::mutable_reqcmd() {
   
   if (reqcmd_ == NULL) {
-    reqcmd_ = new ::PlatPmd::null_request;
+    reqcmd_ = new ::NullPmd::request;
   }
-  // @@protoc_insertion_point(field_mutable:PlatPmd.ddz_c2s.reqcmd)
+  // @@protoc_insertion_point(field_mutable:DdzPmd.ddz_c2s.reqcmd)
   return reqcmd_;
 }
-::PlatPmd::null_request* ddz_c2s::release_reqcmd() {
-  // @@protoc_insertion_point(field_release:PlatPmd.ddz_c2s.reqcmd)
+::NullPmd::request* ddz_c2s::release_reqcmd() {
+  // @@protoc_insertion_point(field_release:DdzPmd.ddz_c2s.reqcmd)
   
-  ::PlatPmd::null_request* temp = reqcmd_;
+  ::NullPmd::request* temp = reqcmd_;
   reqcmd_ = NULL;
   return temp;
 }
-void ddz_c2s::set_allocated_reqcmd(::PlatPmd::null_request* reqcmd) {
+void ddz_c2s::set_allocated_reqcmd(::NullPmd::request* reqcmd) {
   delete reqcmd_;
   reqcmd_ = reqcmd;
   if (reqcmd) {
@@ -576,13 +373,13 @@ void ddz_c2s::set_allocated_reqcmd(::PlatPmd::null_request* reqcmd) {
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:PlatPmd.ddz_c2s.reqcmd)
+  // @@protoc_insertion_point(field_set_allocated:DdzPmd.ddz_c2s.reqcmd)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace PlatPmd
+}  // namespace DdzPmd
 
 // @@protoc_insertion_point(global_scope)

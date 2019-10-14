@@ -212,6 +212,7 @@ copy /y ..\..\..\运行\Release\Ansi\$(TargetFileName) ..\..\..\发布组件\服
       <CallingConvention>Cdecl</CallingConvention>
       <LanguageStandard>
       </LanguageStandard>
+      <AssemblerOutput>All</AssemblerOutput>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>G:\网狐\开发的模块\服务端\系统模块\第三方库\protobuf\lib\debug\Ansi;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -223,6 +224,7 @@ copy /y ..\..\..\运行\Release\Ansi\$(TargetFileName) ..\..\..\发布组件\服
       <AdditionalDependencies>Ws2_32.lib;libprotobufd.lib;libprotobuf-lited.lib;libprotocd.lib</AdditionalDependencies>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateMapFile>true</GenerateMapFile>
     </Link>
     <PostBuildEvent>
       <Command>mkdir ..\..\..\发布组件\服务器组件\Debug\Ansi
@@ -241,8 +243,6 @@ copy /y ..\..\..\运行\Debug\Ansi\$(TargetFileName) ..\..\..\发布组件\服�
   <ItemGroup>
     <ClCompile Include="AsynchronismEngine.cpp" />
     <ClCompile Include="AttemperEngine.cpp" />
-    <ClCompile Include="CMessageSerializer.cpp" />
-    <ClCompile Include="CProtobufEngine.cpp" />
     <ClCompile Include="DataBaseAide.cpp" />
     <ClCompile Include="DataBaseEngine.cpp" />
     <ClCompile Include="KernelEngine.cpp" />
@@ -282,11 +282,8 @@ copy /y ..\..\..\运行\Debug\Ansi\$(TargetFileName) ..\..\..\发布组件\服�
   <ItemGroup>
     <ClInclude Include="AsynchronismEngine.h" />
     <ClInclude Include="AttemperEngine.h" />
-    <ClInclude Include="CMessageSerializer.h" />
-    <ClInclude Include="CProtobufEngine.h" />
     <ClInclude Include="DataBaseAide.h" />
     <ClInclude Include="DataBaseEngine.h" />
-    <ClInclude Include="protobufHead.h" />
     <ClInclude Include="KernelEngineHead.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Stdafx.h" />

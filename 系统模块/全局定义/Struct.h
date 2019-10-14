@@ -1213,6 +1213,7 @@ enum enUserLogonMode
 	ULMBySina,
 	ULMByTencent,
 	ULMByRenRen,
+	ULMByWx,
 };
 
 //系统消息

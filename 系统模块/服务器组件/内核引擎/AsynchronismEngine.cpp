@@ -64,6 +64,7 @@ bool CAsynchronismThread::OnEventThreadRun()
 
         // 提取数据
         tagDataHead DataHead;
+		ZeroMemory(m_cbBuffer, sizeof(m_cbBuffer));
         pAsynchronismEngine->m_DataQueue.DistillData(DataHead, m_cbBuffer, sizeof(m_cbBuffer));
 
         // 队列解锁
@@ -184,28 +185,36 @@ bool CAsynchronismEngine::SetAsynchronismSink(IUnknownEx * pIUnknownEx)
 // 异步数据
 bool CAsynchronismEngine::PostAsynchronismData(WORD wIdentifier, VOID * pData, WORD wDataSize)
 {
-    // 运行判断
-    ASSERT((m_bService == true) && (m_hCompletionPort != NULL));
-    if ((m_hCompletionPort == NULL) || (m_bService == false))
-        return false;
+	try
+	{
+		// 运行判断
+		/*ASSERT(m_bService == true);
+		ASSERT(m_hCompletionPort != NULL);*/
+		if ((m_hCompletionPort == NULL) || (m_bService == false))
+			return false;
 
-    // 插入数据
-    CWHDataLocker ThreadLock(m_CriticalSection);
-    if (m_DataQueue.InsertData(wIdentifier, pData, wDataSize) == false)
-    {
-        ASSERT(FALSE);
-        return false;
-    }
-    SYSTEMTIME SystemTime;
-    GetLocalTime(&SystemTime);
-    TCHAR buffer[256];
-    _sntprintf(buffer, CountArray(buffer), TEXT("%04d-%02d-%02d %02d:%02d:%02d PostAsynchronismData wIdentifier=%d\n"),
-        SystemTime.wYear, SystemTime.wMonth, SystemTime.wDay, SystemTime.wHour, SystemTime.wMinute, SystemTime.wSecond, wIdentifier);
-    OutputDebugString(buffer);
+		// 插入数据
+		CWHDataLocker ThreadLock(m_CriticalSection);
+		if (m_DataQueue.InsertData(wIdentifier, pData, wDataSize) == false)
+		{
+			ASSERT(FALSE);
+			return false;
+		}
+		SYSTEMTIME SystemTime;
+		GetLocalTime(&SystemTime);
+		TCHAR buffer[256];
+		_sntprintf(buffer, CountArray(buffer), TEXT("%04d-%02d-%02d %02d:%02d:%02d PostAsynchronismData wIdentifier=%d\n"),
+			SystemTime.wYear, SystemTime.wMonth, SystemTime.wDay, SystemTime.wHour, SystemTime.wMinute, SystemTime.wSecond, wIdentifier);
+		OutputDebugString(buffer);
 
-    // 投递通知
-    PostQueuedCompletionStatus(m_hCompletionPort, wDataSize, (ULONG_PTR)this, NULL);
-
+		// 投递通知
+		PostQueuedCompletionStatus(m_hCompletionPort, wDataSize, (ULONG_PTR)this, NULL);
+	}
+	catch (...)
+	{
+		g_TraceServiceManager.TraceString("PostAsynchronismData 异常", TraceLevel_Exception);
+		return false;
+	}
     return true;
 }
 

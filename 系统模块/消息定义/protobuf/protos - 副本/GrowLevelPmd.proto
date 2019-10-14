@@ -1,0 +1,22 @@
+syntax = "proto2";    //指定proto版本2.x
+
+import "NullPmd.proto";
+
+package GrowLevelPmd; 
+
+//等级配置
+message tagGrowLevelConfig
+{
+	optional NullPmd.response respcmd		= 1;
+	required int32	wlevelid		= 2;	//等级 I D
+	required uint64	dwexperience	= 3;	//相应经验
+	
+};
+
+//等级配置
+message tagGrowLevelConfig_s2c
+{
+	optional NullPmd.response respcmd		= 1;
+	required int32			wlevelcount		= 2;	//等级数目
+	repeated tagGrowLevelConfig	growlevelitem	= 3;	//等级配置
+};

@@ -32,6 +32,8 @@ UINT CWHIniData::ReadInt(LPCTSTR pszItem, LPCTSTR pszSubItem, INT nDefault)
 {
 	//效验状态
 	ASSERT(m_szIniFile[0]!=0);
+	ASSERT(pszItem != NULL);
+	ASSERT(pszSubItem != NULL);
 
 	//读取数值
 	UINT uReadData=GetPrivateProfileInt(pszItem,pszSubItem,nDefault,m_szIniFile);
@@ -39,11 +41,29 @@ UINT CWHIniData::ReadInt(LPCTSTR pszItem, LPCTSTR pszSubItem, INT nDefault)
 	return uReadData;
 }
 
+//写入数值
+bool CWHIniData::WriteInt(LPCTSTR pszItem, LPCTSTR pszSubItem, INT lpString)
+{
+	//效验状态
+	ASSERT(m_szIniFile[0] != 0);
+	ASSERT(pszItem != NULL);
+	ASSERT(pszSubItem != NULL);
+
+	CString value;
+	value.Format("%d", lpString);
+	//读取数值
+	bool result = WritePrivateProfileString(pszItem, pszSubItem, value, m_szIniFile);
+
+	return result;
+}
+
 //读取字符
 LPCTSTR CWHIniData::ReadString(LPCTSTR pszItem, LPCTSTR pszSubItem, LPCTSTR pszDefault, LPTSTR pszString, WORD wMaxCount)
 {
 	//效验状态
 	ASSERT(m_szIniFile[0]!=0);
+	ASSERT(pszItem != NULL);
+	ASSERT(pszSubItem != NULL);
 
 	//读取字符
 	GetPrivateProfileString(pszItem,pszSubItem,pszDefault,pszString,wMaxCount,m_szIniFile);
@@ -51,31 +71,65 @@ LPCTSTR CWHIniData::ReadString(LPCTSTR pszItem, LPCTSTR pszSubItem, LPCTSTR pszD
 	return pszString;
 }
 
+//写入字符
+bool CWHIniData::WriteString(LPCTSTR pszItem, LPCTSTR pszSubItem, LPCTSTR lpString)
+{
+	//效验状态
+	ASSERT(m_szIniFile[0] != 0);
+	ASSERT(pszItem != NULL);
+	ASSERT(pszSubItem != NULL);
+	
+	//读取数值
+	bool result = WritePrivateProfileString(pszItem, pszSubItem, lpString, m_szIniFile);
+
+	return result;
+}
+
 //读取字符
 LPCTSTR CWHIniData::ReadEncryptString(LPCTSTR pszItem, LPCTSTR pszSubItem, LPCTSTR pszDefault, LPTSTR pszString, WORD wMaxCount)
 {
 	//效验状态
-	ASSERT(m_szIniFile[0]!=0);
-	ASSERT(wMaxCount<=MAX_SOURCE_LEN);
+	ASSERT(m_szIniFile[0] != 0);
+	ASSERT(wMaxCount <= MAX_SOURCE_LEN);
+	ASSERT(pszItem != NULL);
+	ASSERT(pszSubItem != NULL);
 
 	//设置结果
-	if (wMaxCount>0) pszString[0]=0;
+	if (wMaxCount > 0) pszString[0] = 0;
 
 	//读取字符
 	TCHAR szStringRead[MAX_ENCRYPT_LEN];
-	DWORD dwReadCount=GetPrivateProfileString(pszItem,pszSubItem,NULL,szStringRead,MAX_ENCRYPT_LEN,m_szIniFile);
+	DWORD dwReadCount = GetPrivateProfileString(pszItem, pszSubItem, NULL, szStringRead, MAX_ENCRYPT_LEN, m_szIniFile);
 
 	//解密字符
-	if ((dwReadCount>0)&&(dwReadCount<CountArray(szStringRead)))
+	if ((dwReadCount > 0) && (dwReadCount <= CountArray(szStringRead)))
 	{
 		CWHEncrypt WHEncrypt;
-		WHEncrypt.XorCrevasse(szStringRead,pszString,wMaxCount);
+		WHEncrypt.XorCrevasse(szStringRead, pszString, wMaxCount);
 	}
-
 	//默认参数
-	if ((wMaxCount>0)&&(pszString[0]==0)) lstrcpyn(pszString,pszDefault,wMaxCount);
+	if ((wMaxCount>0)&&(pszString[0]==0)) 
+		lstrcpyn(pszString,pszDefault,wMaxCount);
 
 	return pszString;
+	//return ReadString(pszItem, pszSubItem, pszDefault, pszString, wMaxCount);
+}
+
+//写入字符
+bool CWHIniData::WriteEncryptString(LPCTSTR pszItem, LPCTSTR pszSubItem, LPCTSTR lpString)
+{
+	//效验状态
+	ASSERT(m_szIniFile[0] != 0);
+	ASSERT(pszItem != NULL);
+	ASSERT(pszSubItem != NULL);
+
+	TCHAR szRegString[MAX_ENCRYPT_LEN + 1] = TEXT("");
+	CWHEncrypt::XorEncrypt(lpString, szRegString, CountArray(szRegString));
+	//读取数值
+	bool result = WritePrivateProfileString(pszItem, pszSubItem, szRegString, m_szIniFile);
+
+	return result;
+	//return WriteString(pszItem, pszSubItem, lpString);
 }
 
 //读取矩形

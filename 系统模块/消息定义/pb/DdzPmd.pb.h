@@ -27,41 +27,39 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
-#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 #include "NullPmd.pb.h"
 // @@protoc_insertion_point(includes)
-namespace PlatPmd {
-class DdzPmdCommand;
-class DdzPmdCommandDefaultTypeInternal;
-extern DdzPmdCommandDefaultTypeInternal _DdzPmdCommand_default_instance_;
-class NullPmdCommand;
-class NullPmdCommandDefaultTypeInternal;
-extern NullPmdCommandDefaultTypeInternal _NullPmdCommand_default_instance_;
+namespace DdzPmd {
 class ddz_c2s;
 class ddz_c2sDefaultTypeInternal;
 extern ddz_c2sDefaultTypeInternal _ddz_c2s_default_instance_;
-class null_command;
-class null_commandDefaultTypeInternal;
-extern null_commandDefaultTypeInternal _null_command_default_instance_;
-class null_indication;
-class null_indicationDefaultTypeInternal;
-extern null_indicationDefaultTypeInternal _null_indication_default_instance_;
-class null_message;
-class null_messageDefaultTypeInternal;
-extern null_messageDefaultTypeInternal _null_message_default_instance_;
-class null_nettick;
-class null_nettickDefaultTypeInternal;
-extern null_nettickDefaultTypeInternal _null_nettick_default_instance_;
-class null_request;
-class null_requestDefaultTypeInternal;
-extern null_requestDefaultTypeInternal _null_request_default_instance_;
-class null_response;
-class null_responseDefaultTypeInternal;
-extern null_responseDefaultTypeInternal _null_response_default_instance_;
-}  // namespace PlatPmd
+}  // namespace DdzPmd
+namespace NullPmd {
+class command;
+class commandDefaultTypeInternal;
+extern commandDefaultTypeInternal _command_default_instance_;
+class head;
+class headDefaultTypeInternal;
+extern headDefaultTypeInternal _head_default_instance_;
+class indication;
+class indicationDefaultTypeInternal;
+extern indicationDefaultTypeInternal _indication_default_instance_;
+class info;
+class infoDefaultTypeInternal;
+extern infoDefaultTypeInternal _info_default_instance_;
+class message;
+class messageDefaultTypeInternal;
+extern messageDefaultTypeInternal _message_default_instance_;
+class request;
+class requestDefaultTypeInternal;
+extern requestDefaultTypeInternal _request_default_instance_;
+class response;
+class responseDefaultTypeInternal;
+extern responseDefaultTypeInternal _response_default_instance_;
+}  // namespace NullPmd
 
-namespace PlatPmd {
+namespace DdzPmd {
 
 namespace protobuf_DdzPmd_2eproto {
 // Internal implementation detail -- do not call these.
@@ -74,132 +72,9 @@ void AddDescriptors();
 void InitDefaults();
 }  // namespace protobuf_DdzPmd_2eproto
 
-enum DdzPmdCommand_DdzPmdEnum {
-  DdzPmdCommand_DdzPmdEnum_param_nullmessage = 0,
-  DdzPmdCommand_DdzPmdEnum_param_ddz_c2s = 1,
-  DdzPmdCommand_DdzPmdEnum_DdzPmdCommand_DdzPmdEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
-  DdzPmdCommand_DdzPmdEnum_DdzPmdCommand_DdzPmdEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
-};
-bool DdzPmdCommand_DdzPmdEnum_IsValid(int value);
-const DdzPmdCommand_DdzPmdEnum DdzPmdCommand_DdzPmdEnum_DdzPmdEnum_MIN = DdzPmdCommand_DdzPmdEnum_param_nullmessage;
-const DdzPmdCommand_DdzPmdEnum DdzPmdCommand_DdzPmdEnum_DdzPmdEnum_MAX = DdzPmdCommand_DdzPmdEnum_param_ddz_c2s;
-const int DdzPmdCommand_DdzPmdEnum_DdzPmdEnum_ARRAYSIZE = DdzPmdCommand_DdzPmdEnum_DdzPmdEnum_MAX + 1;
-
-const ::google::protobuf::EnumDescriptor* DdzPmdCommand_DdzPmdEnum_descriptor();
-inline const ::std::string& DdzPmdCommand_DdzPmdEnum_Name(DdzPmdCommand_DdzPmdEnum value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    DdzPmdCommand_DdzPmdEnum_descriptor(), value);
-}
-inline bool DdzPmdCommand_DdzPmdEnum_Parse(
-    const ::std::string& name, DdzPmdCommand_DdzPmdEnum* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<DdzPmdCommand_DdzPmdEnum>(
-    DdzPmdCommand_DdzPmdEnum_descriptor(), name, value);
-}
 // ===================================================================
 
-class DdzPmdCommand : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:PlatPmd.DdzPmdCommand) */ {
- public:
-  DdzPmdCommand();
-  virtual ~DdzPmdCommand();
-
-  DdzPmdCommand(const DdzPmdCommand& from);
-
-  inline DdzPmdCommand& operator=(const DdzPmdCommand& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const DdzPmdCommand& default_instance();
-
-  static inline const DdzPmdCommand* internal_default_instance() {
-    return reinterpret_cast<const DdzPmdCommand*>(
-               &_DdzPmdCommand_default_instance_);
-  }
-
-  void Swap(DdzPmdCommand* other);
-
-  // implements Message ----------------------------------------------
-
-  inline DdzPmdCommand* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  DdzPmdCommand* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const DdzPmdCommand& from);
-  void MergeFrom(const DdzPmdCommand& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
-      const PROTOBUF_FINAL {
-    return InternalSerializeWithCachedSizesToArray(
-        ::google::protobuf::io::CodedOutputStream::IsDefaultSerializationDeterministic(), output);
-  }
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(DdzPmdCommand* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  typedef DdzPmdCommand_DdzPmdEnum DdzPmdEnum;
-  static const DdzPmdEnum param_nullmessage =
-    DdzPmdCommand_DdzPmdEnum_param_nullmessage;
-  static const DdzPmdEnum param_ddz_c2s =
-    DdzPmdCommand_DdzPmdEnum_param_ddz_c2s;
-  static inline bool DdzPmdEnum_IsValid(int value) {
-    return DdzPmdCommand_DdzPmdEnum_IsValid(value);
-  }
-  static const DdzPmdEnum DdzPmdEnum_MIN =
-    DdzPmdCommand_DdzPmdEnum_DdzPmdEnum_MIN;
-  static const DdzPmdEnum DdzPmdEnum_MAX =
-    DdzPmdCommand_DdzPmdEnum_DdzPmdEnum_MAX;
-  static const int DdzPmdEnum_ARRAYSIZE =
-    DdzPmdCommand_DdzPmdEnum_DdzPmdEnum_ARRAYSIZE;
-  static inline const ::google::protobuf::EnumDescriptor*
-  DdzPmdEnum_descriptor() {
-    return DdzPmdCommand_DdzPmdEnum_descriptor();
-  }
-  static inline const ::std::string& DdzPmdEnum_Name(DdzPmdEnum value) {
-    return DdzPmdCommand_DdzPmdEnum_Name(value);
-  }
-  static inline bool DdzPmdEnum_Parse(const ::std::string& name,
-      DdzPmdEnum* value) {
-    return DdzPmdCommand_DdzPmdEnum_Parse(name, value);
-  }
-
-  // accessors -------------------------------------------------------
-
-  // @@protoc_insertion_point(class_scope:PlatPmd.DdzPmdCommand)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  mutable int _cached_size_;
-  friend struct  protobuf_DdzPmd_2eproto::TableStruct;
-};
-// -------------------------------------------------------------------
-
-class ddz_c2s : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:PlatPmd.ddz_c2s) */ {
+class ddz_c2s : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:DdzPmd.ddz_c2s) */ {
  public:
   ddz_c2s();
   virtual ~ddz_c2s();
@@ -266,20 +141,20 @@ class ddz_c2s : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 
   // accessors -------------------------------------------------------
 
-  // .PlatPmd.null_request reqcmd = 1;
+  // .NullPmd.request reqcmd = 1;
   bool has_reqcmd() const;
   void clear_reqcmd();
   static const int kReqcmdFieldNumber = 1;
-  const ::PlatPmd::null_request& reqcmd() const;
-  ::PlatPmd::null_request* mutable_reqcmd();
-  ::PlatPmd::null_request* release_reqcmd();
-  void set_allocated_reqcmd(::PlatPmd::null_request* reqcmd);
+  const ::NullPmd::request& reqcmd() const;
+  ::NullPmd::request* mutable_reqcmd();
+  ::NullPmd::request* release_reqcmd();
+  void set_allocated_reqcmd(::NullPmd::request* reqcmd);
 
-  // @@protoc_insertion_point(class_scope:PlatPmd.ddz_c2s)
+  // @@protoc_insertion_point(class_scope:DdzPmd.ddz_c2s)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::PlatPmd::null_request* reqcmd_;
+  ::NullPmd::request* reqcmd_;
   mutable int _cached_size_;
   friend struct  protobuf_DdzPmd_2eproto::TableStruct;
 };
@@ -289,13 +164,9 @@ class ddz_c2s : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 // ===================================================================
 
 #if !PROTOBUF_INLINE_NOT_IN_HEADERS
-// DdzPmdCommand
-
-// -------------------------------------------------------------------
-
 // ddz_c2s
 
-// .PlatPmd.null_request reqcmd = 1;
+// .NullPmd.request reqcmd = 1;
 inline bool ddz_c2s::has_reqcmd() const {
   return this != internal_default_instance() && reqcmd_ != NULL;
 }
@@ -303,27 +174,27 @@ inline void ddz_c2s::clear_reqcmd() {
   if (GetArenaNoVirtual() == NULL && reqcmd_ != NULL) delete reqcmd_;
   reqcmd_ = NULL;
 }
-inline const ::PlatPmd::null_request& ddz_c2s::reqcmd() const {
-  // @@protoc_insertion_point(field_get:PlatPmd.ddz_c2s.reqcmd)
+inline const ::NullPmd::request& ddz_c2s::reqcmd() const {
+  // @@protoc_insertion_point(field_get:DdzPmd.ddz_c2s.reqcmd)
   return reqcmd_ != NULL ? *reqcmd_
-                         : *::PlatPmd::null_request::internal_default_instance();
+                         : *::NullPmd::request::internal_default_instance();
 }
-inline ::PlatPmd::null_request* ddz_c2s::mutable_reqcmd() {
+inline ::NullPmd::request* ddz_c2s::mutable_reqcmd() {
   
   if (reqcmd_ == NULL) {
-    reqcmd_ = new ::PlatPmd::null_request;
+    reqcmd_ = new ::NullPmd::request;
   }
-  // @@protoc_insertion_point(field_mutable:PlatPmd.ddz_c2s.reqcmd)
+  // @@protoc_insertion_point(field_mutable:DdzPmd.ddz_c2s.reqcmd)
   return reqcmd_;
 }
-inline ::PlatPmd::null_request* ddz_c2s::release_reqcmd() {
-  // @@protoc_insertion_point(field_release:PlatPmd.ddz_c2s.reqcmd)
+inline ::NullPmd::request* ddz_c2s::release_reqcmd() {
+  // @@protoc_insertion_point(field_release:DdzPmd.ddz_c2s.reqcmd)
   
-  ::PlatPmd::null_request* temp = reqcmd_;
+  ::NullPmd::request* temp = reqcmd_;
   reqcmd_ = NULL;
   return temp;
 }
-inline void ddz_c2s::set_allocated_reqcmd(::PlatPmd::null_request* reqcmd) {
+inline void ddz_c2s::set_allocated_reqcmd(::NullPmd::request* reqcmd) {
   delete reqcmd_;
   reqcmd_ = reqcmd;
   if (reqcmd) {
@@ -331,31 +202,15 @@ inline void ddz_c2s::set_allocated_reqcmd(::PlatPmd::null_request* reqcmd) {
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:PlatPmd.ddz_c2s.reqcmd)
+  // @@protoc_insertion_point(field_set_allocated:DdzPmd.ddz_c2s.reqcmd)
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
-// -------------------------------------------------------------------
-
 
 // @@protoc_insertion_point(namespace_scope)
 
 
-}  // namespace PlatPmd
-
-#ifndef SWIG
-namespace google {
-namespace protobuf {
-
-template <> struct is_proto_enum< ::PlatPmd::DdzPmdCommand_DdzPmdEnum> : ::google::protobuf::internal::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::PlatPmd::DdzPmdCommand_DdzPmdEnum>() {
-  return ::PlatPmd::DdzPmdCommand_DdzPmdEnum_descriptor();
-}
-
-}  // namespace protobuf
-}  // namespace google
-#endif  // SWIG
+}  // namespace DdzPmd
 
 // @@protoc_insertion_point(global_scope)
 

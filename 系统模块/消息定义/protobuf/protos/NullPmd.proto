@@ -1,55 +1,44 @@
 syntax = "proto3";    //指定proto版本3.x
-package PlatPmd;  
 
-message NullPmdCommand{ 
-	enum NullPmdEnum {  
-		param_nullmessage			= 0x00;   
-		param_null_nettick			= 0x01;       
-		param_null_message			= 0x02;       
-		param_null_command			= 0x03;       
-		param_null_request			= 0x04;       
-		param_null_response			= 0x05;       
-		param_null_indication		= 0x06;       
-	}
-}
+package NullPmd;  
 
-message null_nettick
-{
-    uint32 requesttime = 1; // 对方的请求时间原封返回
-    uint32 mytime      = 2; // 当前应答的本地时间,秒,必须填,用来防止加速
-}
-
-message null_message
-{
-	uint32	mainID			= 1;
-    uint32	subID			= 2;
-    bytes	data			= 3;    // data
-	fixed32 sequence		= 4;
-	uint64	fid				= 5;    // server used for forward
-	uint64	proto_type		= 6;    // 0:proto,1:json,2:http
-	uint32	bitmask			= 7;    // frameheader位枚举
-	uint32	time			= 8;    // client use
-}
-
-message null_command
+message request
 {
 	
 }
 
-message null_request
+message response
+{
+	int32 result			= 1;
+	string errordescription	= 2;
+}
+
+message indication
 {
 	
 }
 
-message null_response
+message command
 {
-	bool result				= 2;
-	string errordescription	= 3;
-	bool lastblock			= 4;
-	fixed32 blockindex		= 5;
+	uint64	mainid			= 1;
+    uint64	subid			= 2;
 }
 
-message null_indication
+message info
 {
-	
+	uint64	cbdatakind		= 1;//数据类型
+	uint64	cbcheckcode		= 2;//效验字段
+	uint64	wpacketsize		= 3;//数据大小
+}
+
+message head
+{
+	command command			= 1;
+	info	info			= 2;
+}
+
+message message
+{
+	head	head			= 1;
+    bytes	data			= 2;    // data
 }

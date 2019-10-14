@@ -94,7 +94,7 @@ CDlgServerOptionItem::CDlgServerOptionItem(UINT nIDTemplate) : CDialog(nIDTempla
 
 	HINSTANCE hInstLibrary = NULL;
 #ifdef _DEBUG
-	hInstLibrary = LoadLibrary(TEXT("PersonalRoomServiceD.dll"));
+	hInstLibrary = LoadLibrary(TEXT("PersonalRoomService.dll"));
 #else
 	hInstLibrary = LoadLibrary(TEXT("PersonalRoomService.dll"));
 #endif
@@ -859,10 +859,10 @@ BOOL CDlgServerOptionItem2::OnInitDialog()
 	((CButton *)GetDlgItem(IDC_RECORD_GAME_SCORE))->SetCheck((bRecordGameScore==TRUE)?BST_CHECKED:BST_UNCHECKED);
 
 	//记录过程
-	//bool bRecordGameTrack=CServerRule::IsRecordGameTrack(m_pGameServiceOption->dwServerRule);
-	//((CButton *)GetDlgItem(IDC_RECORD_GAME_TRACK))->SetCheck((bRecordGameTrack==TRUE)?BST_CHECKED:BST_UNCHECKED);
-	((CButton *)GetDlgItem(IDC_RECORD_GAME_TRACK))->SetCheck(BST_UNCHECKED);
-	((CButton *)GetDlgItem(IDC_RECORD_GAME_TRACK))->EnableWindow(FALSE);
+	bool bRecordGameTrack=CServerRule::IsRecordGameTrack(m_pGameServiceOption->dwServerRule);
+	((CButton *)GetDlgItem(IDC_RECORD_GAME_TRACK))->SetCheck((bRecordGameTrack==TRUE)?BST_CHECKED:BST_UNCHECKED);
+	/*((CButton *)GetDlgItem(IDC_RECORD_GAME_TRACK))->SetCheck(BST_UNCHECKED);
+	((CButton *)GetDlgItem(IDC_RECORD_GAME_TRACK))->EnableWindow(FALSE);*/
 
 	//所有财富游戏，每局即时写分，记录每局成绩，默认为直接勾选灰色状态
 	if (m_pGameServiceOption->wServerType == GAME_GENRE_GOLD || GAME_GENRE_PERSONAL == m_pGameServiceOption->wServerType)
@@ -876,10 +876,10 @@ BOOL CDlgServerOptionItem2::OnInitDialog()
 	((CButton *)GetDlgItem(IDC_IMMEDIATE_WRITE_SCORE))->SetCheck((bImmediateWriteScore==TRUE)?BST_CHECKED:BST_UNCHECKED);
 	
 	//动态底分
-	//bool bDynamicCellScore=CServerRule::IsDynamicCellScore(m_pGameServiceOption->dwServerRule);
-	//((CButton *)GetDlgItem(IDC_DYNAMIC_CELL_SCORE))->SetCheck((bDynamicCellScore==TRUE)?BST_CHECKED:BST_UNCHECKED);
-	((CButton *)GetDlgItem(IDC_DYNAMIC_CELL_SCORE))->SetCheck(BST_UNCHECKED);
-	((CButton *)GetDlgItem(IDC_DYNAMIC_CELL_SCORE))->EnableWindow(FALSE);
+	bool bDynamicCellScore=CServerRule::IsDynamicCellScore(m_pGameServiceOption->dwServerRule);
+	((CButton *)GetDlgItem(IDC_DYNAMIC_CELL_SCORE))->SetCheck((bDynamicCellScore==TRUE)?BST_CHECKED:BST_UNCHECKED);
+	/*((CButton *)GetDlgItem(IDC_DYNAMIC_CELL_SCORE))->SetCheck(BST_UNCHECKED);
+	((CButton *)GetDlgItem(IDC_DYNAMIC_CELL_SCORE))->EnableWindow(FALSE);*/
 
 	//隐藏信息
 	bool bAllowAvertCheatMode=CServerRule::IsAllowAvertCheatMode(m_pGameServiceOption->dwServerRule);
@@ -2821,11 +2821,33 @@ VOID CDlgServerWizard::OnBnClickedFinish()
 	//扩展配置
 	UINT uCustomRuleSize=sizeof(m_ModuleInitParameter.GameServiceOption.cbCustomRule);
 	CopyMemory(m_ModuleInitParameter.GameServiceOption.cbCustomRule,GameServerResult.cbCustomRule,uCustomRuleSize);
-
+	SaveData();
 	//关闭窗口
 	EndDialog(IDOK);
 
 	return;
+}
+
+//保存MobileParameter.ini
+VOID CDlgServerWizard::SaveData()
+{
+	//获取路径
+	TCHAR szWorkDir[MAX_PATH] = TEXT("");
+	CWHService::GetWorkDirectory(szWorkDir, CountArray(szWorkDir));
+
+	//构造路径
+	TCHAR szIniFile[MAX_PATH] = TEXT("");
+	_sntprintf_s(szIniFile, CountArray(szIniFile), TEXT("%s\\MobileParameter.ini"), szWorkDir);
+
+	//读取配置
+	CWHIniData IniData;
+	IniData.SetIniFilePath(szIniFile);
+
+	CString strClientName(m_ModuleInitParameter.GameServiceAttrib.szClientEXEName);
+	strClientName = strClientName.Left(strClientName.GetLength() - 4);
+
+	IniData.WriteInt(strClientName, TEXT("VisibleTableCount"), m_ModuleInitParameter.GameServiceOption.wTableCount);
+	IniData.WriteInt(strClientName, TEXT("EverySendPageCount"), 1);
 }
 
 //////////////////////////////////////////////////////////////////////////////////

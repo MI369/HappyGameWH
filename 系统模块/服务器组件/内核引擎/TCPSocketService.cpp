@@ -748,13 +748,12 @@ LRESULT CTCPSocketServiceThread::OnSocketNotifyRead(WPARAM wParam, LPARAM lParam
 
                         break;
                     }
-                    // case SUB_KN_SHUT_DOWN_SOCKET:	// 中断连接
-                    // 	{
-                    // 		// 中断连接
-                    // 		PerformCloseSocket(true); 
-
-                    // 		break;
-                    // 	}
+                     case SUB_KN_SHUT_DOWN_SOCKET:	// 中断连接
+                     	{
+                     		// 中断连接
+                     		PerformCloseSocket(true); 
+                     		break;
+                     	}
                 }
             }
             else

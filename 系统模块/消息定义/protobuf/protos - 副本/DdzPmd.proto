@@ -1,0 +1,11 @@
+syntax = "proto2";    //Ö¸¶¨proto°æ±¾2.x
+
+import "NullPmd.proto";
+
+package DdzPmd;  
+
+message ddz_c2s
+{
+    optional NullPmd.request reqcmd			= 1;
+	
+}

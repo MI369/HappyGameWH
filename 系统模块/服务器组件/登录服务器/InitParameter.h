@@ -36,8 +36,8 @@ public:
 
 	//约战信息
 public:
-	WORD							m_wPrsnlRmCorrespondPort;					//约战端口
-	tagAddressInfo					m_PrsnlRmCorrespondAddress;				//约战地址
+	WORD							m_wPrsnlRmCorrespondPort;			//约战端口
+	tagAddressInfo					m_PrsnlRmCorrespondAddress;			//约战地址
 
 	//服务地址
 public:
@@ -59,6 +59,8 @@ public:
 	VOID InitParameter();
 	//加载配置
 	VOID LoadInitParameter();
+	//保存配置
+	bool SaveInitParameter();
 };
 
 //////////////////////////////////////////////////////////////////////////////////

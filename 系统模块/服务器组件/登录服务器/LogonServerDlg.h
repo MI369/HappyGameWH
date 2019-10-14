@@ -9,6 +9,30 @@
 
 //////////////////////////////////////////////////////////////////////////////////
 
+//配置对话框
+class CSystemOptionDlg : public CDialog
+{
+	//构造函数
+public:
+	//构造程序
+	CSystemOptionDlg();
+	//析构函数
+	virtual ~CSystemOptionDlg();
+
+	//重载函数
+protected:
+	//初始化函数
+	virtual BOOL OnInitDialog();
+	//控件子类化
+	virtual void DoDataExchange(CDataExchange * pDX);
+	//确定函数
+	virtual void OnOK();
+
+	//消息映射
+	DECLARE_MESSAGE_MAP()
+};
+
+
 //主对话框
 class CLogonServerDlg : public CDialog, public IServiceUnitsSink
 {
@@ -49,6 +73,8 @@ protected:
 	VOID OnBnClickedStartService();
 	//停止服务
 	VOID OnBnClickedStopService();
+	//系统配置
+	void OnBnClickedInitService();
 
 	//消息映射
 public:

@@ -62,6 +62,61 @@ VOID CInitParameter::InitParameter()
 	return;
 }
 
+//保存配置
+bool CInitParameter::SaveInitParameter()
+{
+	//获取路径
+	TCHAR szWorkDir[MAX_PATH] = TEXT("");
+	CWHService::GetWorkDirectory(szWorkDir, CountArray(szWorkDir));
+
+	//构造路径
+	TCHAR szIniFile[MAX_PATH] = TEXT("");
+	_sntprintf_s(szIniFile, CountArray(szIniFile), TEXT("%s\\ServerParameter.ini"), szWorkDir);
+
+	//读取配置
+	CWHIniData IniData;
+	IniData.SetIniFilePath(szIniFile);
+
+
+	//读取配置
+	IniData.WriteInt(TEXT("LogonServer"), TEXT("DelayList"), m_cbDelayList);
+	IniData.WriteInt(TEXT("LogonServer"), TEXT("ConnectMax"), m_wMaxConnect);
+	IniData.WriteInt(TEXT("LogonServer"), TEXT("ServicePort"), m_wServicePort);
+	IniData.WriteEncryptString(TEXT("ServerInfo"), TEXT("ServiceName"), m_szServerName);
+	IniData.WriteEncryptString(TEXT("ServerInfo"), TEXT("ServiceAddr"), m_ServiceAddress.szAddress);
+
+	//协调信息
+	IniData.WriteInt(TEXT("Correspond"), TEXT("ServicePort"), m_wCorrespondPort);
+	IniData.WriteEncryptString(TEXT("ServerInfo"), TEXT("CorrespondAddr"), m_CorrespondAddress.szAddress);
+
+	//约战信息
+	IniData.WriteInt(TEXT("PrsnlRmCorrespond"), TEXT("ServicePort"), m_wPrsnlRmCorrespondPort);
+	IniData.WriteEncryptString(TEXT("ServerInfo"), TEXT("PrsnlRmCorrespondAddr"), m_PrsnlRmCorrespondAddress.szAddress);
+
+	//连接信息
+	IniData.WriteInt(TEXT("AccountsDB"), TEXT("DBPort"), m_AccountsDBParameter.wDataBasePort);
+	IniData.WriteEncryptString(TEXT("AccountsDB"), TEXT("DBAddr"), m_AccountsDBParameter.szDataBaseAddr);
+	IniData.WriteEncryptString(TEXT("AccountsDB"), TEXT("DBUser"), m_AccountsDBParameter.szDataBaseUser);
+	IniData.WriteEncryptString(TEXT("AccountsDB"), TEXT("DBPass"), m_AccountsDBParameter.szDataBasePass);
+	IniData.WriteEncryptString(TEXT("AccountsDB"), TEXT("DBName"), m_AccountsDBParameter.szDataBaseName);
+
+	//连接信息
+	IniData.WriteInt(TEXT("TreasureDB"), TEXT("DBPort"), m_TreasureDBParameter.wDataBasePort);
+	IniData.WriteEncryptString(TEXT("TreasureDB"), TEXT("DBAddr"), m_TreasureDBParameter.szDataBaseAddr);
+	IniData.WriteEncryptString(TEXT("TreasureDB"), TEXT("DBUser"), m_TreasureDBParameter.szDataBaseUser);
+	IniData.WriteEncryptString(TEXT("TreasureDB"), TEXT("DBPass"), m_TreasureDBParameter.szDataBasePass);
+	IniData.WriteEncryptString(TEXT("TreasureDB"), TEXT("DBName"), m_TreasureDBParameter.szDataBaseName);
+
+	//连接信息
+	IniData.WriteInt(TEXT("PlatformDB"), TEXT("DBPort"), m_PlatformDBParameter.wDataBasePort);
+	IniData.WriteEncryptString(TEXT("PlatformDB"), TEXT("DBAddr"), m_PlatformDBParameter.szDataBaseAddr);
+	IniData.WriteEncryptString(TEXT("PlatformDB"), TEXT("DBUser"), m_PlatformDBParameter.szDataBaseUser);
+	IniData.WriteEncryptString(TEXT("PlatformDB"), TEXT("DBPass"), m_PlatformDBParameter.szDataBasePass);
+	IniData.WriteEncryptString(TEXT("PlatformDB"), TEXT("DBName"), m_PlatformDBParameter.szDataBaseName);
+
+	return true;
+}
+
 //加载配置
 VOID CInitParameter::LoadInitParameter()
 {
@@ -75,6 +130,12 @@ VOID CInitParameter::LoadInitParameter()
 	//构造路径
 	TCHAR szIniFile[MAX_PATH]=TEXT("");
 	_sntprintf_s(szIniFile,CountArray(szIniFile),TEXT("%s\\ServerParameter.ini"),szWorkDir);
+
+	if (PathFileExists(szIniFile) == FALSE)
+	{
+		CTraceService::TraceString(TEXT("未找到ServerParameter.ini文件!"), TraceLevel_Exception);
+		return;
+	}
 
 	//读取配置
 	CWHIniData IniData;
@@ -110,15 +171,11 @@ VOID CInitParameter::LoadInitParameter()
 	IniData.ReadEncryptString(TEXT("TreasureDB"),TEXT("DBName"),szTreasureDB,m_TreasureDBParameter.szDataBaseName,CountArray(m_TreasureDBParameter.szDataBaseName));
 
 	//连接信息
-	TCHAR szPlatformDBItem[32]=TEXT("PlatformDB");
-	TCHAR szPlatformDBName[32]=TEXT("QPPlatformDB");
-	IniData.ReadString(TEXT("LogonServer"),TEXT("PlatformDBItem"),TEXT("PlatformDB"),szPlatformDBItem,CountArray(szPlatformDBItem));
-	IniData.ReadString(TEXT("LogonServer"),TEXT("PlatformDBName"),szPlatformDB,szPlatformDBName,CountArray(szPlatformDBName));
 	m_PlatformDBParameter.wDataBasePort=(WORD)IniData.ReadInt(TEXT("PlatformDB"),TEXT("DBPort"),1433);
-	IniData.ReadEncryptString(szPlatformDBItem, TEXT("DBAddr"), TEXT("127.0.0.1"), m_PlatformDBParameter.szDataBaseAddr, CountArray(m_PlatformDBParameter.szDataBaseAddr));
-	IniData.ReadEncryptString(szPlatformDBItem, TEXT("DBUser"), TEXT("sa"), m_PlatformDBParameter.szDataBaseUser, CountArray(m_PlatformDBParameter.szDataBaseUser));
-	IniData.ReadEncryptString(szPlatformDBItem, TEXT("DBPass"), TEXT("people"), m_PlatformDBParameter.szDataBasePass, CountArray(m_PlatformDBParameter.szDataBasePass));
-	IniData.ReadEncryptString(szPlatformDBItem,TEXT("DBName"),szPlatformDBName,m_PlatformDBParameter.szDataBaseName,CountArray(m_PlatformDBParameter.szDataBaseName));
+	IniData.ReadEncryptString(TEXT("PlatformDB"), TEXT("DBAddr"), TEXT("127.0.0.1"), m_PlatformDBParameter.szDataBaseAddr, CountArray(m_PlatformDBParameter.szDataBaseAddr));
+	IniData.ReadEncryptString(TEXT("PlatformDB"), TEXT("DBUser"), TEXT("sa"), m_PlatformDBParameter.szDataBaseUser, CountArray(m_PlatformDBParameter.szDataBaseUser));
+	IniData.ReadEncryptString(TEXT("PlatformDB"), TEXT("DBPass"), TEXT("people"), m_PlatformDBParameter.szDataBasePass, CountArray(m_PlatformDBParameter.szDataBasePass));
+	IniData.ReadEncryptString(TEXT("PlatformDB"), TEXT("DBName"), szPlatformDB,m_PlatformDBParameter.szDataBaseName,CountArray(m_PlatformDBParameter.szDataBaseName));
 
 	return;
 }
