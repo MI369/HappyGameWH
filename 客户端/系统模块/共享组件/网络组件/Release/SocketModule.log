@@ -1,0 +1,20 @@
+﻿  Stdafx.cpp
+  ClientSocket.cpp
+g:\网狐\整理的最新网狐框架\系统模块\共享组件\网络组件\clientsocket.cpp(133): warning C4996: 'WSAAsyncSelect': Use WSAEventSelect() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\winsock2.h(2680): note: 参见“WSAAsyncSelect”的声明
+g:\网狐\整理的最新网狐框架\系统模块\共享组件\网络组件\clientsocket.cpp(144): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\整理的最新网狐框架\系统模块\共享组件\网络组件\clientsocket.cpp(236): warning C4996: 'WSAAsyncSelect': Use WSAEventSelect() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\winsock2.h(2680): note: 参见“WSAAsyncSelect”的声明
+g:\网狐\整理的最新网狐框架\系统模块\共享组件\网络组件\clientsocket.cpp(318): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\winsock2.h(1831): note: 参见“inet_addr”的声明
+g:\网狐\整理的最新网狐框架\系统模块\共享组件\网络组件\clientsocket.cpp(321): warning C4996: 'gethostbyname': Use getaddrinfo() or GetAddrInfoW() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\winsock2.h(2219): note: 参见“gethostbyname”的声明
+g:\网狐\整理的最新网狐框架\系统模块\共享组件\网络组件\clientsocket.cpp(365): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+  SocketModule.cpp
+  正在生成代码...
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(1216,5): warning MSB8012: TargetPath(G:\网狐\整理的最新网狐框架\系统模块\共享组件\网络组件\Release\网络组件.dll) 与 Linker 的 OutputFile 属性值(G:\网狐\整理的最新网狐框架\系统模块\运行\Release\SocketModule.dll)不匹配。这可能导致项目生成不正确。若要更正此问题，请确保 $(OutDir)、$(TargetName) 和 $(TargetExt) 属性值与 %(Link.OutputFile) 中指定的值匹配。
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(1218,5): warning MSB8012: TargetName(网络组件) 与 Linker 的 OutputFile 属性值(SocketModule)不匹配。这可能导致项目生成不正确。若要更正此问题，请确保 $(OutDir)、$(TargetName) 和 $(TargetExt) 属性值与 %(Link.OutputFile) 中指定的值匹配。
+    正在创建库 ../../链接库/SocketModule.lib 和对象 ../../链接库/SocketModule.exp
+  SocketModule.vcxproj -> G:\网狐\整理的最新网狐框架\系统模块\共享组件\网络组件\Release\网络组件.dll

@@ -1,0 +1,11 @@
+﻿  Stdafx.cpp
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\atlmfc\include\atlplus.h(26): warning C4467: 已弃用 ATL 属性的使用情况
+  BitImage.cpp
+  GIFImage.cpp
+  PngImage.cpp
+  WHImage.cpp
+  正在生成代码...
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(1216,5): warning MSB8012: TargetPath(G:\网狐\整理的最新网狐框架\系统模块\客户端组件\图像控件\Release\图像控件.dll) 与 Linker 的 OutputFile 属性值(G:\网狐\整理的最新网狐框架\系统模块\运行\Release\WHImage.dll)不匹配。这可能导致项目生成不正确。若要更正此问题，请确保 $(OutDir)、$(TargetName) 和 $(TargetExt) 属性值与 %(Link.OutputFile) 中指定的值匹配。
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(1218,5): warning MSB8012: TargetName(图像控件) 与 Linker 的 OutputFile 属性值(WHImage)不匹配。这可能导致项目生成不正确。若要更正此问题，请确保 $(OutDir)、$(TargetName) 和 $(TargetExt) 属性值与 %(Link.OutputFile) 中指定的值匹配。
+    正在创建库 ../../链接库/WHImage.lib 和对象 ../../链接库/WHImage.exp
+  WHImage.vcxproj -> G:\网狐\整理的最新网狐框架\系统模块\客户端组件\图像控件\Release\图像控件.dll

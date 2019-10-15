@@ -1,0 +1,245 @@
+﻿cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
+  Stdafx.cpp
+cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
+  UserManager.cpp
+  UserListView.cpp
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\userlistview.cpp(214): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\userlistview.cpp(224): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\userlistview.cpp(230): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\userlistview.cpp(235): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\userlistview.cpp(240): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\userlistview.cpp(245): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\userlistview.cpp(250): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\userlistview.cpp(255): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\userlistview.cpp(260): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\userlistview.cpp(265): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\userlistview.cpp(274): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\userlistview.cpp(286): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\userlistview.cpp(298): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\userlistview.cpp(310): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\userlistview.cpp(318): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+  TableFrame.cpp
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\tableframe.cpp(73): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\tableframe.cpp(85): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\tableframe.cpp(94): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\tableframe.cpp(104): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\tableframe.cpp(109): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\tableframe.cpp(474): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+  SystemOption.cpp
+  ShortMessage.cpp
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\shortmessage.cpp(54): warning C4477: “_snprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 2 拥有了类型“CString”
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\shortmessage.cpp(54): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\shortmessage.cpp(87): warning C4477: “_snprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\shortmessage.cpp(87): warning C4477: “_snprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 2 拥有了类型“CString”
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\shortmessage.cpp(87): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\shortmessage.cpp(200): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\模板库\modelu.h(77): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+  g:\网狐\开发的模块\客户端\系统模块\模板库\modelu.h(65): note: 编译 类 模板 成员函数 "bool CTempldateHelper<IMessageProxy>::CreateInstance(void)" 时
+  g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\shortmessage.cpp(59): note: 参见对正在编译的函数 模板 实例化“bool CTempldateHelper<IMessageProxy>::CreateInstance(void)”的引用
+  g:\网狐\开发的模块\客户端\系统模块\客户端组件\客户端共享\clientshare.h(99): note: 参见对正在编译的 类 模板 实例化 "CTempldateHelper<IMessageProxy>" 的引用
+g:\网狐\开发的模块\客户端\系统模块\模板库\modelu.h(85): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\模板库\modelu.h(93): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\模板库\modelu.h(99): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+  ServerItemView.cpp
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\serveritemview.cpp(658): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\serveritemview.cpp(1211): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\serveritemview.cpp(1215): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\serveritemview.cpp(1222): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\serveritemview.cpp(1226): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\serveritemview.cpp(1246): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\serveritemview.cpp(1250): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\serveritemview.cpp(1257): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\serveritemview.cpp(1261): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\serveritemview.cpp(1279): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\serveritemview.cpp(1283): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+  RoomViewItem.cpp
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\roomviewitem.cpp(448): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\roomviewitem.cpp(531): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\roomviewitem.cpp(537): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\roomviewitem.cpp(955): warning C4477: “_snprintf”: 格式字符串“%ld”需要类型“long”的参数，但可变参数 3 拥有了类型“time_t”
+  g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\roomviewitem.cpp(955): note: 请考虑在格式字符串中使用“%lld”
+  g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\roomviewitem.cpp(955): note: 请考虑在格式字符串中使用“%I64d”
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\roomviewitem.cpp(955): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\roomviewitem.cpp(1016): warning C4996: 'ltoa': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _ltoa. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdlib.h(1330): note: 参见“ltoa”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\roomviewitem.cpp(1083): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\roomviewitem.cpp(1088): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\roomviewitem.cpp(1102): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\roomviewitem.cpp(1148): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\roomviewitem.cpp(1152): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\roomviewitem.cpp(1158): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\roomviewitem.cpp(1162): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\roomviewitem.cpp(1168): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\roomviewitem.cpp(1173): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\roomviewitem.cpp(1179): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\roomviewitem.cpp(1618): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\roomviewitem.cpp(2000): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\roomviewitem.cpp(2015): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\roomviewitem.cpp(2033): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\roomviewitem.cpp(2051): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\roomviewitem.cpp(2067): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\roomviewitem.cpp(2077): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\roomviewitem.cpp(2662): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\roomviewitem.cpp(2667): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\roomviewitem.cpp(2967): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\roomviewitem.cpp(3152): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\roomviewitem.cpp(3238): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\模板库\modelu.h(77): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+  g:\网狐\开发的模块\客户端\系统模块\模板库\modelu.h(65): note: 编译 类 模板 成员函数 "bool CTempldateHelper<IClientSocket>::CreateInstance(void)" 时
+  g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\roomviewitem.cpp(940): note: 参见对正在编译的函数 模板 实例化“bool CTempldateHelper<IClientSocket>::CreateInstance(void)”的引用
+  g:\网狐\开发的模块\客户端\系统模块\共享组件\网络组件\socketmodule.h(110): note: 参见对正在编译的 类 模板 实例化 "CTempldateHelper<IClientSocket>" 的引用
+g:\网狐\开发的模块\客户端\系统模块\模板库\modelu.h(85): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\模板库\modelu.h(93): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\模板库\modelu.h(99): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+  PlazaViewItem.cpp
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\plazaviewitem.cpp(208): warning C4477: “_snprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\plazaviewitem.cpp(208): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\plazaviewitem.cpp(305): warning C4477: “_snprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\plazaviewitem.cpp(305): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\plazaviewitem.cpp(322): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\plazaviewitem.cpp(368): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\plazaviewitem.cpp(1051): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\plazaviewitem.cpp(1220): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\plazaviewitem.cpp(1224): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\模板库\modelu.h(77): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+  g:\网狐\开发的模块\客户端\系统模块\模板库\modelu.h(65): note: 编译 类 模板 成员函数 "bool CTempldateHelper<IClientSocket>::CreateInstance(void)" 时
+  g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\plazaviewitem.cpp(1030): note: 参见对正在编译的函数 模板 实例化“bool CTempldateHelper<IClientSocket>::CreateInstance(void)”的引用
+  g:\网狐\开发的模块\客户端\系统模块\共享组件\网络组件\socketmodule.h(110): note: 参见对正在编译的 类 模板 实例化 "CTempldateHelper<IClientSocket>" 的引用
+g:\网狐\开发的模块\客户端\系统模块\模板库\modelu.h(85): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\模板库\modelu.h(93): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\模板库\modelu.h(99): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+  ManagerClass.cpp
+  GlobalUnits.cpp
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\globalunits.cpp(47): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\globalunits.cpp(145): warning C4477: “_snprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\globalunits.cpp(142): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\globalunits.cpp(143): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\globalunits.cpp(145): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\模板库\modelu.h(77): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+  g:\网狐\开发的模块\客户端\系统模块\模板库\modelu.h(65): note: 编译 类 模板 成员函数 "bool CTempldateHelper<ICompanionManager>::CreateInstance(void)" 时
+  g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\globalunits.cpp(52): note: 参见对正在编译的函数 模板 实例化“bool CTempldateHelper<ICompanionManager>::CreateInstance(void)”的引用
+  g:\网狐\开发的模块\客户端\系统模块\客户端组件\关系管理\companion.h(103): note: 参见对正在编译的 类 模板 实例化 "CTempldateHelper<ICompanionManager>" 的引用
+g:\网狐\开发的模块\客户端\系统模块\模板库\modelu.h(85): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\模板库\modelu.h(93): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\模板库\modelu.h(99): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+  GamePlaza.cpp
+  GameFrame.cpp
+  FindUserDlg.cpp
+  DlgStatus.cpp
+  DlgOption.cpp
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\dlgoption.cpp(480): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\dlgoption.cpp(484): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+  DlgLogon.cpp
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\dlglogon.cpp(585): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\dlglogon.cpp(592): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\dlglogon.cpp(605): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\dlglogon.cpp(648): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+  DlgControlBar.cpp
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\dlgcontrolbar.cpp(266): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\dlgcontrolbar.cpp(298): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\dlgcontrolbar.cpp(309): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+  正在生成代码...
+DlgControlBar.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/SAFESEH”规范)
+LINK : warning LNK4233: 名称 公共服务.dll 包含非 ASCII 字符，如果系统没有与用于链接此 DLL 的相同的 ANSI 代码页，则不能加载该 DLL
+LINK : warning LNK4233: 名称 客户端共享.dll 包含非 ASCII 字符，如果系统没有与用于链接此 DLL 的相同的 ANSI 代码页，则不能加载该 DLL
+LINK : warning LNK4233: 名称 界面控件.dll 包含非 ASCII 字符，如果系统没有与用于链接此 DLL 的相同的 ANSI 代码页，则不能加载该 DLL
+LINK : warning LNK4233: 名称 信道模块.dll 包含非 ASCII 字符，如果系统没有与用于链接此 DLL 的相同的 ANSI 代码页，则不能加载该 DLL
+LINK : warning LNK4098: 默认库“MSVCRT”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
+  GamePlaza.vcxproj -> G:\网狐\开发的模块\客户端\系统模块\客户端组件\(演示)游戏广场\Debug\游戏广场.exe

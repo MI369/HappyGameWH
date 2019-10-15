@@ -1,0 +1,8 @@
+﻿  Stdafx.cpp
+  GameRank.cpp
+  GameRankManager.cpp
+  正在生成代码...
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(1216,5): warning MSB8012: TargetPath(G:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏等级\Release\游戏等级.dll) 与 Linker 的 OutputFile 属性值(G:\网狐\整理的最新网狐框架\系统模块\运行\Release\GameRank.dll)不匹配。这可能导致项目生成不正确。若要更正此问题，请确保 $(OutDir)、$(TargetName) 和 $(TargetExt) 属性值与 %(Link.OutputFile) 中指定的值匹配。
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(1218,5): warning MSB8012: TargetName(游戏等级) 与 Linker 的 OutputFile 属性值(GameRank)不匹配。这可能导致项目生成不正确。若要更正此问题，请确保 $(OutDir)、$(TargetName) 和 $(TargetExt) 属性值与 %(Link.OutputFile) 中指定的值匹配。
+    正在创建库 ../../链接库/GameRank.lib 和对象 ../../链接库/GameRank.exp
+  GameRank.vcxproj -> G:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏等级\Release\游戏等级.dll

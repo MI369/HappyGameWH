@@ -1,0 +1,11 @@
+﻿cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
+  Stdafx.cpp
+cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
+  GameRankManager.cpp
+  GameRank.cpp
+  正在生成代码...
+GameRank.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/SAFESEH”规范)
+    正在创建库 Debug\游戏等级.lib 和对象 Debug\游戏等级.exp
+LINK : warning LNK4232: 名称 游戏等级.dll 包含非 ASCII 字符，在具有除 936 以外的 ANSI 代码页的系统上可能不能加载 DLL
+LINK : warning LNK4098: 默认库“MSVCRT”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
+  GameRank.vcxproj -> G:\网狐\开发的模块\客户端\系统模块\客户端组件\游戏等级\Debug\游戏等级.dll

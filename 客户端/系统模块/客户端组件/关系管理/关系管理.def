@@ -1,0 +1,6 @@
+; CompanionD.def : 声明 DLL 的模块参数。
+
+LIBRARY      "关系管理"
+
+EXPORTS
+    ; 此处可以是显式导出

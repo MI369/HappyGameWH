@@ -1,0 +1,17 @@
+﻿  Stdafx.cpp
+  Companion.cpp
+  CompanionListCtrl.cpp
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\关系管理\companionlistctrl.cpp(75): warning C4996: 'ltoa': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _ltoa. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdlib.h(1330): note: 参见“ltoa”的声明
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\关系管理\companionlistctrl.cpp(105): warning C4996: 'ltoa': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _ltoa. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdlib.h(1330): note: 参见“ltoa”的声明
+  CompanionManager.cpp
+  CompanionTreeCtrl.cpp
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\关系管理\companiontreectrl.cpp(111): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+  DlgCompanionManager.cpp
+  正在生成代码...
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(1216,5): warning MSB8012: TargetPath(G:\网狐\整理的最新网狐框架\系统模块\客户端组件\关系管理\Release\关系管理.dll) 与 Linker 的 OutputFile 属性值(G:\网狐\整理的最新网狐框架\系统模块\运行\Release\Companion.dll)不匹配。这可能导致项目生成不正确。若要更正此问题，请确保 $(OutDir)、$(TargetName) 和 $(TargetExt) 属性值与 %(Link.OutputFile) 中指定的值匹配。
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(1218,5): warning MSB8012: TargetName(关系管理) 与 Linker 的 OutputFile 属性值(Companion)不匹配。这可能导致项目生成不正确。若要更正此问题，请确保 $(OutDir)、$(TargetName) 和 $(TargetExt) 属性值与 %(Link.OutputFile) 中指定的值匹配。
+    正在创建库 ../../链接库/Companion.lib 和对象 ../../链接库/Companion.exp
+  Companion.vcxproj -> G:\网狐\整理的最新网狐框架\系统模块\客户端组件\关系管理\Release\关系管理.dll

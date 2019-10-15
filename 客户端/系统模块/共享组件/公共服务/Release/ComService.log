@@ -1,0 +1,19 @@
+﻿  Stdafx.cpp
+  ComService.cpp
+  DataStorage.cpp
+  Encrypt.cpp
+g:\网狐\整理的最新网狐框架\系统模块\共享组件\公共服务\encrypt.cpp(288): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1774): note: 参见“sprintf”的声明
+g:\网狐\整理的最新网狐框架\系统模块\共享组件\公共服务\encrypt.cpp(319): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+  HtmlBrowser.cpp
+  ServiceThread.cpp
+  WebBrowser.cpp
+  WinFileInfo.cpp
+g:\网狐\整理的最新网狐框架\系统模块\共享组件\公共服务\winfileinfo.cpp(60): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+  正在生成代码...
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(1216,5): warning MSB8012: TargetPath(G:\网狐\整理的最新网狐框架\系统模块\共享组件\公共服务\Release\公共服务.dll) 与 Linker 的 OutputFile 属性值(G:\网狐\整理的最新网狐框架\系统模块\运行\Release\ComService.dll)不匹配。这可能导致项目生成不正确。若要更正此问题，请确保 $(OutDir)、$(TargetName) 和 $(TargetExt) 属性值与 %(Link.OutputFile) 中指定的值匹配。
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(1218,5): warning MSB8012: TargetName(公共服务) 与 Linker 的 OutputFile 属性值(ComService)不匹配。这可能导致项目生成不正确。若要更正此问题，请确保 $(OutDir)、$(TargetName) 和 $(TargetExt) 属性值与 %(Link.OutputFile) 中指定的值匹配。
+    正在创建库 ../../链接库/ComService.lib 和对象 ../../链接库/ComService.exp
+  ComService.vcxproj -> G:\网狐\整理的最新网狐框架\系统模块\共享组件\公共服务\Release\公共服务.dll

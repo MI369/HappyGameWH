@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>游戏框架</ProjectName>
+    <ProjectGuid>{D6452141-70F6-4857-8D60-AF2485F75A40}</ProjectGuid>
+    <RootNamespace>游戏框架</RootNamespace>
+    <Keyword>MFCDLLProj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>14.0.25431.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>../../../运行/Debug/Ansi/</OutDir>
+    <IntDir>../../../中间目录/游戏框架/Debug_Ansi/</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+    <PostBuildEventUseInBuild>false</PostBuildEventUseInBuild>
+    <TargetName>GameFrame</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>Release\</OutDir>
+    <IntDir>Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+    <PostBuildEventUseInBuild>false</PostBuildEventUseInBuild>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_AFXEXT;GAME_FRAME_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0804</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>Winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>../../../运行/Debug/Ansi/GameFrame.dll</OutputFile>
+      <ModuleDefinitionFile>.\GameFrame.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <ImportLibrary>../../链接库/Debug/Ansi/GameFrame.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>mkdir ..\..\..\发布组件\客户端组件\Debug\Ansi
+copy /y ..\..\..\运行\Debug\Ansi\$(TargetFileName) ..\..\..\发布组件\客户端组件\Debug\Ansi\$(TargetFileName)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+    </Midl>
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_AFXEXT;GAME_FRAME_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0804</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>../../链接库/ComService.lib;../../链接库/ClientShare.lib;../../链接库/SkinControls.lib;../../链接库/ChannelModule.lib;Winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>../../运行/Release/GameFrame.dll</OutputFile>
+      <ModuleDefinitionFile>.\GameFrame.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ImportLibrary>../../链接库/GameFrame.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>mkdir ..\..\发布组件\客户端组件\Release
+copy /y ..\..\运行\Release\$(TargetFileName) ..\..\发布组件\客户端组件\Release\$(TargetFileName)
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="ClientKernel.cpp" />
+    <ClCompile Include="ClientKernelSink.cpp" />
+    <ClCompile Include="DlgDTSound.cpp" />
+    <ClCompile Include="FlyGameSound.cpp" />
+    <ClCompile Include="FlySoundText.cpp" />
+    <ClCompile Include="GameFrame.cpp" />
+    <ClCompile Include="GameFrameApp.cpp" />
+    <ClCompile Include="GameFrameControl.cpp" />
+    <ClCompile Include="GameFrameDlg.cpp" />
+    <ClCompile Include="GameFrameView.cpp" />
+    <ClCompile Include="GlobalOption.cpp" />
+    <ClCompile Include="LabelEx.cpp" />
+    <ClCompile Include="Stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="ThreadDraw.cpp" />
+    <ClCompile Include="UserListView.cpp" />
+    <ClCompile Include="UtilitFun.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ClientKernel.h" />
+    <ClInclude Include="ClientKernelSink.h" />
+    <ClInclude Include="DlgDTSound.h" />
+    <ClInclude Include="FlyGameSound.h" />
+    <ClInclude Include="FlySoundText.h" />
+    <ClInclude Include="GameFrame.h" />
+    <ClInclude Include="GameFrameApp.h" />
+    <ClInclude Include="GameFrameControl.h" />
+    <ClInclude Include="GameFrameDlg.h" />
+    <ClInclude Include="GameFrameView.h" />
+    <ClInclude Include="GlobalOption.h" />
+    <ClInclude Include="LabelEx.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="Stdafx.h" />
+    <ClInclude Include="ThreadDraw.h" />
+    <ClInclude Include="UserListView.h" />
+    <ClInclude Include="UtilitFun.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Res\BT_CLEAN_SCREEN.bmp" />
+    <Image Include="Res\BT_COLOR_SET.bmp" />
+    <Image Include="Res\BT_EXPESSION.bmp" />
+    <Image Include="Res\BT_GAME_RULE.bmp" />
+    <Image Include="Res\BT_OPTION.bmp" />
+    <Image Include="Res\BT_QUIT.bmp" />
+    <Image Include="Res\BT_SEND_CHAT.bmp" />
+    <Image Include="Res\Card_frame\BT_CLEAN_SCREEN.bmp" />
+    <Image Include="Res\Card_frame\BT_COLOR_SET.bmp" />
+    <Image Include="Res\Card_frame\BT_EXPESSION.bmp" />
+    <Image Include="Res\Card_frame\BT_OPTION.bmp" />
+    <Image Include="Res\Card_frame\BT_QUIT.bmp" />
+    <Image Include="Res\Card_frame\BT_SEND_CHAT.bmp" />
+    <Image Include="Res\Card_frame\LEFT_VIEW_LB.bmp" />
+    <Image Include="Res\Card_frame\LEFT_VIEW_LBM.bmp" />
+    <Image Include="Res\Card_frame\LEFT_VIEW_LM.bmp" />
+    <Image Include="Res\Card_frame\LEFT_VIEW_LT.bmp" />
+    <Image Include="Res\Card_frame\LEFT_VIEW_LTM.bmp" />
+    <Image Include="Res\Card_frame\LEFT_VIEW_MB.bmp" />
+    <Image Include="Res\Card_frame\LEFT_VIEW_MM.bmp" />
+    <Image Include="Res\Card_frame\LEFT_VIEW_MT.bmp" />
+    <Image Include="Res\Card_frame\LEFT_VIEW_MTM.bmp" />
+    <Image Include="Res\Card_frame\LEFT_VIEW_RB.bmp" />
+    <Image Include="Res\Card_frame\LEFT_VIEW_RBM.bmp" />
+    <Image Include="Res\Card_frame\LEFT_VIEW_RM.bmp" />
+    <Image Include="Res\Card_frame\LEFT_VIEW_RT.bmp" />
+    <Image Include="Res\Card_frame\LEFT_VIEW_RTM.bmp" />
+    <Image Include="Res\Card_frame\VIEW_B.bmp" />
+    <Image Include="Res\Card_frame\VIEW_BL.bmp" />
+    <Image Include="Res\Card_frame\VIEW_BR.bmp" />
+    <Image Include="Res\Card_frame\VIEW_L.bmp" />
+    <Image Include="Res\Card_frame\VIEW_R.bmp" />
+    <Image Include="Res\Card_frame\VIEW_T.bmp" />
+    <Image Include="Res\Card_frame\VIEW_TL.bmp" />
+    <Image Include="Res\Card_frame\VIEW_TR.bmp" />
+    <Image Include="Res\Chess_frame\BT_CLEAN_SCREEN.bmp" />
+    <Image Include="Res\Chess_frame\BT_COLOR_SET.bmp" />
+    <Image Include="Res\Chess_frame\BT_EXPESSION.bmp" />
+    <Image Include="Res\Chess_frame\BT_OPTION.bmp" />
+    <Image Include="Res\Chess_frame\BT_QUIT.bmp" />
+    <Image Include="Res\Chess_frame\BT_SEND_CHAT.bmp" />
+    <Image Include="Res\Chess_frame\LEFT_VIEW_LB.bmp" />
+    <Image Include="Res\Chess_frame\LEFT_VIEW_LBM.bmp" />
+    <Image Include="Res\Chess_frame\LEFT_VIEW_LM.bmp" />
+    <Image Include="Res\Chess_frame\LEFT_VIEW_LT.bmp" />
+    <Image Include="Res\Chess_frame\LEFT_VIEW_LTM.bmp" />
+    <Image Include="Res\Chess_frame\LEFT_VIEW_MB.bmp" />
+    <Image Include="Res\Chess_frame\LEFT_VIEW_MM.bmp" />
+    <Image Include="Res\Chess_frame\LEFT_VIEW_MT.bmp" />
+    <Image Include="Res\Chess_frame\LEFT_VIEW_MTM.bmp" />
+    <Image Include="Res\Chess_frame\LEFT_VIEW_RB.bmp" />
+    <Image Include="Res\Chess_frame\LEFT_VIEW_RBM.bmp" />
+    <Image Include="Res\Chess_frame\LEFT_VIEW_RM.bmp" />
+    <Image Include="Res\Chess_frame\LEFT_VIEW_RT.bmp" />
+    <Image Include="Res\Chess_frame\LEFT_VIEW_RTM.bmp" />
+    <Image Include="Res\Chess_frame\VIEW_B.bmp" />
+    <Image Include="Res\Chess_frame\VIEW_BL.bmp" />
+    <Image Include="Res\Chess_frame\VIEW_BR.bmp" />
+    <Image Include="Res\Chess_frame\VIEW_L.bmp" />
+    <Image Include="Res\Chess_frame\VIEW_R.bmp" />
+    <Image Include="Res\Chess_frame\VIEW_T.bmp" />
+    <Image Include="Res\Chess_frame\VIEW_TL.bmp" />
+    <Image Include="Res\Chess_frame\VIEW_TR.bmp" />
+    <Image Include="Res\dt_sound.bmp" />
+    <Image Include="Res\Hide_List.bmp" />
+    <Image Include="Res\LEFT_VIEW\bitmap_kuang.bmp" />
+    <Image Include="Res\Left_view\LEFT_VIEW_LB.bmp" />
+    <Image Include="Res\Left_view\LEFT_VIEW_LBM.bmp" />
+    <Image Include="Res\Left_view\LEFT_VIEW_LM.bmp" />
+    <Image Include="Res\Left_view\LEFT_VIEW_LT.bmp" />
+    <Image Include="Res\Left_view\LEFT_VIEW_LTM.bmp" />
+    <Image Include="Res\Left_view\LEFT_VIEW_MB.bmp" />
+    <Image Include="Res\Left_view\LEFT_VIEW_MM.bmp" />
+    <Image Include="Res\Left_view\LEFT_VIEW_MMM.bmp" />
+    <Image Include="Res\Left_view\LEFT_VIEW_MT.bmp" />
+    <Image Include="Res\Left_view\LEFT_VIEW_MTM.bmp" />
+    <Image Include="Res\Left_view\LEFT_VIEW_RB.bmp" />
+    <Image Include="Res\Left_view\LEFT_VIEW_RBM.bmp" />
+    <Image Include="Res\Left_view\LEFT_VIEW_RM.bmp" />
+    <Image Include="Res\Left_view\LEFT_VIEW_RT.bmp" />
+    <Image Include="Res\Left_view\LEFT_VIEW_RTM.bmp" />
+    <Image Include="Res\op_bak.bmp" />
+    <Image Include="Res\PicVideo.bmp" />
+    <Image Include="Res\qjyy.bmp" />
+    <Image Include="Res\USER_READY.bmp" />
+    <Image Include="Res\USER_STATUS.bmp" />
+    <Image Include="Res\USER_STAUS.bmp" />
+    <Image Include="Res\USER_TIMER.bmp" />
+    <Image Include="Res\VIEW_B.bmp" />
+    <Image Include="Res\VIEW_BL.bmp" />
+    <Image Include="Res\VIEW_BR.bmp" />
+    <Image Include="Res\VIEW_L.bmp" />
+    <Image Include="Res\VIEW_R.bmp" />
+    <Image Include="Res\VIEW_T.bmp" />
+    <Image Include="Res\VIEW_TL.bmp" />
+    <Image Include="Res\VIEW_TR.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GameFrame.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\GameFrame.rc2" />
+    <None Include="Res\LEFT_VIEW\JIAN.cur" />
+    <None Include="Res\LEFT_VIEW\XX.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\共享组件\公共服务\ComService.vcxproj">
+      <Project>{48a17e45-3f15-4acc-92de-da57da6c360b}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\共享组件\界面控件\SkinControls.vcxproj">
+      <Project>{9580a9ba-2c2c-4359-852c-fd627732bf1d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\信道模块\ChannelModule.vcxproj">
+      <Project>{0d9684ce-a441-4d80-b449-c3ae8281c93b}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\客户端共享\ClientShare.vcxproj">
+      <Project>{1e98c5e5-a9bf-46c7-b57d-559a56ead344}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

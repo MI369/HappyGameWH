@@ -1,0 +1,166 @@
+﻿cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
+  Stdafx.cpp
+cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
+  UtilitFun.cpp
+  UserListView.cpp
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\userlistview.cpp(425): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\userlistview.cpp(435): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\userlistview.cpp(441): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\userlistview.cpp(446): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\userlistview.cpp(451): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\userlistview.cpp(456): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\userlistview.cpp(461): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\userlistview.cpp(466): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\userlistview.cpp(471): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\userlistview.cpp(477): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\userlistview.cpp(486): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\userlistview.cpp(498): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\userlistview.cpp(510): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\userlistview.cpp(522): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\整理的最新网狐框架\系统模块\模板库\modelu.h(77): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+  g:\网狐\整理的最新网狐框架\系统模块\模板库\modelu.h(65): note: 编译 类 模板 成员函数 "bool CTempldateHelper<IGameRankManager>::CreateInstance(void)" 时
+  g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\userlistview.cpp(154): note: 参见对正在编译的函数 模板 实例化“bool CTempldateHelper<IGameRankManager>::CreateInstance(void)”的引用
+  g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏等级\gamerank.h(50): note: 参见对正在编译的 类 模板 实例化 "CTempldateHelper<IGameRankManager>" 的引用
+g:\网狐\整理的最新网狐框架\系统模块\模板库\modelu.h(85): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\整理的最新网狐框架\系统模块\模板库\modelu.h(93): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\整理的最新网狐框架\系统模块\模板库\modelu.h(99): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+  ThreadDraw.cpp
+  LabelEx.cpp
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\labelex.cpp(560): warning C4101: “objInt”: 未引用的局部变量
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\labelex.cpp(595): warning C4101: “objInt”: 未引用的局部变量
+  GlobalOption.cpp
+  GameFrameView.cpp
+  GameFrameDlg.cpp
+g:\网狐\整理的最新网狐框架\系统模块\开发库\include\flygamepublicdefine.h(2): warning C4005: “HOME_WEB_URL”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\stdafx.h(50): note: 参见“HOME_WEB_URL”的前一个定义
+g:\网狐\整理的最新网狐框架\系统模块\开发库\include\flygamepublicdefine.h(85): warning C4005: “MAX_USE_TIME”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\开发库\include\flypublicdefine.h(2): note: 参见“MAX_USE_TIME”的前一个定义
+g:\网狐\整理的最新网狐框架\系统模块\开发库\include\flygamepublicdefine.h(86): warning C4005: “MAX_MIN_TIME”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\开发库\include\flypublicdefine.h(3): note: 参见“MAX_MIN_TIME”的前一个定义
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(31): warning C4005: “BUTTON_WIDE”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(20): note: 参见“BUTTON_WIDE”的前一个定义
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(32): warning C4005: “BUTTON_HIGHT”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(21): note: 参见“BUTTON_HIGHT”的前一个定义
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(33): warning C4005: “BT_BUTTON_WIDE”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(25): note: 参见“BT_BUTTON_WIDE”的前一个定义
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(34): warning C4005: “BT_BUTTON_HIGHT”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(26): note: 参见“BT_BUTTON_HIGHT”的前一个定义
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.cpp(789): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: 参见“strcpy”的声明
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.cpp(881): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: 参见“strcpy”的声明
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.cpp(1136): warning C4101: “y”: 未引用的局部变量
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.cpp(1136): warning C4101: “x”: 未引用的局部变量
+g:\网狐\整理的最新网狐框架\系统模块\模板库\modelu.h(77): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+  g:\网狐\整理的最新网狐框架\系统模块\模板库\modelu.h(65): note: 编译 类 模板 成员函数 "bool CTempldateHelper<IClientKernel>::CreateInstance(void)" 时
+  g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.cpp(584): note: 参见对正在编译的函数 模板 实例化“bool CTempldateHelper<IClientKernel>::CreateInstance(void)”的引用
+  g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframe.h(190): note: 参见对正在编译的 类 模板 实例化 "CTempldateHelper<IClientKernel>" 的引用
+g:\网狐\整理的最新网狐框架\系统模块\模板库\modelu.h(85): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\整理的最新网狐框架\系统模块\模板库\modelu.h(93): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\整理的最新网狐框架\系统模块\模板库\modelu.h(99): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+  GameFrameControl.cpp
+g:\网狐\整理的最新网狐框架\系统模块\开发库\include\flygamepublicdefine.h(2): warning C4005: “HOME_WEB_URL”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\stdafx.h(50): note: 参见“HOME_WEB_URL”的前一个定义
+g:\网狐\整理的最新网狐框架\系统模块\开发库\include\flygamepublicdefine.h(85): warning C4005: “MAX_USE_TIME”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\开发库\include\flypublicdefine.h(2): note: 参见“MAX_USE_TIME”的前一个定义
+g:\网狐\整理的最新网狐框架\系统模块\开发库\include\flygamepublicdefine.h(86): warning C4005: “MAX_MIN_TIME”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\开发库\include\flypublicdefine.h(3): note: 参见“MAX_MIN_TIME”的前一个定义
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(31): warning C4005: “BUTTON_WIDE”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(20): note: 参见“BUTTON_WIDE”的前一个定义
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(32): warning C4005: “BUTTON_HIGHT”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(21): note: 参见“BUTTON_HIGHT”的前一个定义
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(33): warning C4005: “BT_BUTTON_WIDE”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(25): note: 参见“BT_BUTTON_WIDE”的前一个定义
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(34): warning C4005: “BT_BUTTON_HIGHT”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(26): note: 参见“BT_BUTTON_HIGHT”的前一个定义
+  GameFrameApp.cpp
+g:\网狐\整理的最新网狐框架\系统模块\开发库\include\flygamepublicdefine.h(2): warning C4005: “HOME_WEB_URL”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\stdafx.h(50): note: 参见“HOME_WEB_URL”的前一个定义
+g:\网狐\整理的最新网狐框架\系统模块\开发库\include\flygamepublicdefine.h(85): warning C4005: “MAX_USE_TIME”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\开发库\include\flypublicdefine.h(2): note: 参见“MAX_USE_TIME”的前一个定义
+g:\网狐\整理的最新网狐框架\系统模块\开发库\include\flygamepublicdefine.h(86): warning C4005: “MAX_MIN_TIME”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\开发库\include\flypublicdefine.h(3): note: 参见“MAX_MIN_TIME”的前一个定义
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(31): warning C4005: “BUTTON_WIDE”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(20): note: 参见“BUTTON_WIDE”的前一个定义
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(32): warning C4005: “BUTTON_HIGHT”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(21): note: 参见“BUTTON_HIGHT”的前一个定义
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(33): warning C4005: “BT_BUTTON_WIDE”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(25): note: 参见“BT_BUTTON_WIDE”的前一个定义
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(34): warning C4005: “BT_BUTTON_HIGHT”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(26): note: 参见“BT_BUTTON_HIGHT”的前一个定义
+  GameFrame.cpp
+  FlySoundText.cpp
+  FlyGameSound.cpp
+  DlgDTSound.cpp
+g:\网狐\整理的最新网狐框架\系统模块\开发库\include\flygamepublicdefine.h(2): warning C4005: “HOME_WEB_URL”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\stdafx.h(50): note: 参见“HOME_WEB_URL”的前一个定义
+g:\网狐\整理的最新网狐框架\系统模块\开发库\include\flygamepublicdefine.h(85): warning C4005: “MAX_USE_TIME”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\开发库\include\flypublicdefine.h(2): note: 参见“MAX_USE_TIME”的前一个定义
+g:\网狐\整理的最新网狐框架\系统模块\开发库\include\flygamepublicdefine.h(86): warning C4005: “MAX_MIN_TIME”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\开发库\include\flypublicdefine.h(3): note: 参见“MAX_MIN_TIME”的前一个定义
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(31): warning C4005: “BUTTON_WIDE”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(20): note: 参见“BUTTON_WIDE”的前一个定义
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(32): warning C4005: “BUTTON_HIGHT”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(21): note: 参见“BUTTON_HIGHT”的前一个定义
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(33): warning C4005: “BT_BUTTON_WIDE”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(25): note: 参见“BT_BUTTON_WIDE”的前一个定义
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(34): warning C4005: “BT_BUTTON_HIGHT”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(26): note: 参见“BT_BUTTON_HIGHT”的前一个定义
+  ClientKernelSink.cpp
+g:\网狐\整理的最新网狐框架\系统模块\开发库\include\flygamepublicdefine.h(2): warning C4005: “HOME_WEB_URL”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\stdafx.h(50): note: 参见“HOME_WEB_URL”的前一个定义
+g:\网狐\整理的最新网狐框架\系统模块\开发库\include\flygamepublicdefine.h(85): warning C4005: “MAX_USE_TIME”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\开发库\include\flypublicdefine.h(2): note: 参见“MAX_USE_TIME”的前一个定义
+g:\网狐\整理的最新网狐框架\系统模块\开发库\include\flygamepublicdefine.h(86): warning C4005: “MAX_MIN_TIME”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\开发库\include\flypublicdefine.h(3): note: 参见“MAX_MIN_TIME”的前一个定义
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(31): warning C4005: “BUTTON_WIDE”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(20): note: 参见“BUTTON_WIDE”的前一个定义
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(32): warning C4005: “BUTTON_HIGHT”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(21): note: 参见“BUTTON_HIGHT”的前一个定义
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(33): warning C4005: “BT_BUTTON_WIDE”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(25): note: 参见“BT_BUTTON_WIDE”的前一个定义
+g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(34): warning C4005: “BT_BUTTON_HIGHT”: 宏重定义
+  g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\gameframedlg.h(26): note: 参见“BT_BUTTON_HIGHT”的前一个定义
+  ClientKernel.cpp
+g:\网狐\整理的最新网狐框架\系统模块\模板库\modelu.h(77): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+  g:\网狐\整理的最新网狐框架\系统模块\模板库\modelu.h(65): note: 编译 类 模板 成员函数 "bool CTempldateHelper<IChannelService>::CreateInstance(void)" 时
+  g:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\clientkernel.cpp(151): note: 参见对正在编译的函数 模板 实例化“bool CTempldateHelper<IChannelService>::CreateInstance(void)”的引用
+  g:\网狐\整理的最新网狐框架\系统模块\客户端组件\信道模块\channelmodule.h(101): note: 参见对正在编译的 类 模板 实例化 "CTempldateHelper<IChannelService>" 的引用
+g:\网狐\整理的最新网狐框架\系统模块\模板库\modelu.h(85): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\整理的最新网狐框架\系统模块\模板库\modelu.h(93): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\整理的最新网狐框架\系统模块\模板库\modelu.h(99): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+  正在生成代码...
+ClientKernel.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/SAFESEH”规范)
+LINK : warning LNK4233: 名称 公共服务.dll 包含非 ASCII 字符，如果系统没有与用于链接此 DLL 的相同的 ANSI 代码页，则不能加载该 DLL
+LINK : warning LNK4233: 名称 客户端共享.dll 包含非 ASCII 字符，如果系统没有与用于链接此 DLL 的相同的 ANSI 代码页，则不能加载该 DLL
+LINK : warning LNK4233: 名称 界面控件.dll 包含非 ASCII 字符，如果系统没有与用于链接此 DLL 的相同的 ANSI 代码页，则不能加载该 DLL
+    正在创建库 Debug\游戏框架.lib 和对象 Debug\游戏框架.exp
+LINK : warning LNK4232: 名称 游戏框架.dll 包含非 ASCII 字符，在具有除 936 以外的 ANSI 代码页的系统上可能不能加载 DLL
+LINK : warning LNK4098: 默认库“MSVCRT”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
+  GameFrame.vcxproj -> G:\网狐\整理的最新网狐框架\系统模块\客户端组件\游戏框架\Debug\游戏框架.dll
