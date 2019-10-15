@@ -14,26 +14,6 @@ inline void EnableMemLeakCheck()
 
 #include "../../消息定义/pb/NullPmd.pb.h"
 #include "../../消息定义/pb/NullPmd.pb.cc"
-
-#include "../../消息定义/pb/CommonPmd.pb.h"
-#include "../../消息定义/pb/LoginPmd.pb.h"
-#include "../../消息定义/pb/GamePmd.pb.h"
-#include "../../消息定义/pb/GrowLevelPmd.pb.h"
-#include "../../消息定义/pb/MatchPmd.pb.h"
-#include "../../消息定义/pb/MemberPmd.pb.h"
-#include "../../消息定义/pb/RealAuthPmd.pb.h"
-#include "../../消息定义/pb/VideoPmd.pb.h"
-#include "../../消息定义/pb/propertyPmd.pb.h"
-
-#include "../../消息定义/pb/CommonPmd.pb.cc"
-#include "../../消息定义/pb/LoginPmd.pb.cc"
-#include "../../消息定义/pb/GamePmd.pb.cc"
-#include "../../消息定义/pb/GrowLevelPmd.pb.cc"
-#include "../../消息定义/pb/MatchPmd.pb.cc"
-#include "../../消息定义/pb/MemberPmd.pb.cc"
-#include "../../消息定义/pb/RealAuthPmd.pb.cc"
-#include "../../消息定义/pb/VideoPmd.pb.cc"
-#include "../../消息定义/pb/propertyPmd.pb.cc"
 //////////////////////////////////////////////////////////////////////////////////
 // 宏定义
 
@@ -409,101 +389,6 @@ bool CTCPNetworkItem::SendData(VOID * pData, WORD wDataSize, WORD wMainCmdID, WO
 					return SendData(wMainCmdID, wSubCmdID, wRountID);
 				}
 
-				if (wMainCmdID == 1) {
-					switch (wSubCmdID) {
-					case 100: {	
-						LoginPmd::loginsuccess_s2c message;
-						if (message.ParseFromArray(pData, wDataSize) == false) {
-							throw TEXT("parse error");
-						}
-						message.PrintDebugString();
-						break;
-					}
-					case 102: {
-						LoginPmd::loginfinish_s2c message;
-						if (message.ParseFromArray(pData, wDataSize) == false) {
-							throw TEXT("parse error");
-						}
-						message.PrintDebugString();
-						break;
-					}
-					case 107: {
-						GrowLevelPmd::tagGrowLevelConfig_s2c message;
-						if (message.ParseFromArray(pData, wDataSize) == false) {
-							throw TEXT("parse error");
-						}
-						message.PrintDebugString();
-						break;
-					}
-					case 110: {
-						RealAuthPmd::RealAuthParameter_s2c message;
-						if (message.ParseFromArray(pData, wDataSize) == false) {
-							throw TEXT("parse error");
-						}
-						message.PrintDebugString();
-						break;
-					}
-					case 350: {
-						MemberPmd::MemberParameterResult_s2c message;
-						if (message.ParseFromArray(pData, wDataSize) == false) {
-							throw TEXT("parse error");
-						}
-						message.PrintDebugString();
-						break;
-					}
-					}
-				}else if (wMainCmdID == 2) {
-					switch (wSubCmdID) {
-					case 100: {
-						GamePmd::taggametype_s2c message;
-						if (message.ParseFromArray(pData, wDataSize) == false) {
-							throw TEXT("parse error");
-						}
-						message.PrintDebugString();
-						break;
-					}
-					case 101: {
-						GamePmd::taggamekind_s2c message;
-						if (message.ParseFromArray(pData, wDataSize) == false) {
-							throw TEXT("parse error");
-						}
-						message.PrintDebugString();
-						break;
-					}
-					case 110: {
-						propertyPmd::tagPropertyTypeItem_s2c message;
-						if (message.ParseFromArray(pData, wDataSize) == false) {
-							throw TEXT("parse error");
-						}
-						message.PrintDebugString();
-						break;
-					}
-					case 111: {
-						propertyPmd::tagPropertyRelatItem_s2c message;
-						if (message.ParseFromArray(pData, wDataSize) == false) {
-							throw TEXT("parse error");
-						}
-						message.PrintDebugString();
-						break;
-					}
-					case 112: {
-						propertyPmd::tagPropertyItem_s2c message;
-						if (message.ParseFromArray(pData, wDataSize) == false) {
-							throw TEXT("parse error");
-						}
-						message.PrintDebugString();
-						break;
-					}
-					case 113: {
-						propertyPmd::tagPropertySubItem_s2c message;
-						if (message.ParseFromArray(pData, wDataSize) == false) {
-							throw TEXT("parse error");
-						}
-						message.PrintDebugString();
-						break;
-					}
-					}
-				}
 				TCHAR szString[512] = TEXT("");
 				_sntprintf(szString, CountArray(szString), TEXT("发送消息pData:wMainCmdID:%d,wSubCmdID:%d"), wMainCmdID, wSubCmdID);
 				g_TraceServiceManager.TraceString(szString, TraceLevel_Normal);
