@@ -1,0 +1,48 @@
+﻿  Stdafx.cpp
+g:\网狐\happygamewh\服务端\系统模块\全局定义\log.h(86): warning C4996: '_vsnprintf': This function or variable may be unsafe. Consider using _vsnprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1400): note: 参见“_vsnprintf”的声明
+g:\网狐\happygamewh\服务端\系统模块\全局定义\log.h(99): warning C4996: '_vsnprintf': This function or variable may be unsafe. Consider using _vsnprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1400): note: 参见“_vsnprintf”的声明
+g:\网狐\happygamewh\服务端\系统模块\全局定义\log.h(110): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1774): note: 参见“sprintf”的声明
+g:\网狐\happygamewh\服务端\系统模块\全局定义\log.h(114): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1774): note: 参见“sprintf”的声明
+g:\网狐\happygamewh\服务端\系统模块\全局定义\log.h(121): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1774): note: 参见“sprintf”的声明
+g:\网狐\happygamewh\服务端\系统模块\全局定义\log.h(128): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: 参见“fopen”的声明
+g:\网狐\happygamewh\服务端\系统模块\全局定义\log.h(162): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1774): note: 参见“sprintf”的声明
+g:\网狐\happygamewh\服务端\系统模块\全局定义\log.h(165): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: 参见“fopen”的声明
+  DistributeManager.cpp
+  GameMatchServer.cpp
+  ImmediateGroup.cpp
+g:\网狐\happygamewh\服务端\系统模块\服务器组件\比赛服务\immediategroup.cpp(922): warning C4477: “_snprintf_s”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“LONGLONG”
+  g:\网狐\happygamewh\服务端\系统模块\服务器组件\比赛服务\immediategroup.cpp(922): note: 请考虑在格式字符串中使用“%lld”
+  g:\网狐\happygamewh\服务端\系统模块\服务器组件\比赛服务\immediategroup.cpp(922): note: 请考虑在格式字符串中使用“%I64d”
+  ImmediateMatch.cpp
+  LockTimeMatch.cpp
+g:\网狐\happygamewh\服务端\系统模块\服务器组件\比赛服务\locktimematch.cpp(1831): warning C4477: “_snprintf_s”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“LONGLONG”
+  g:\网狐\happygamewh\服务端\系统模块\服务器组件\比赛服务\locktimematch.cpp(1831): note: 请考虑在格式字符串中使用“%lld”
+  g:\网狐\happygamewh\服务端\系统模块\服务器组件\比赛服务\locktimematch.cpp(1831): note: 请考虑在格式字符串中使用“%I64d”
+g:\网狐\happygamewh\服务端\系统模块\服务器组件\比赛服务\locktimematch.cpp(2417): warning C4477: “_snprintf_s”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“LONGLONG”
+  g:\网狐\happygamewh\服务端\系统模块\服务器组件\比赛服务\locktimematch.cpp(2417): note: 请考虑在格式字符串中使用“%lld”
+  g:\网狐\happygamewh\服务端\系统模块\服务器组件\比赛服务\locktimematch.cpp(2417): note: 请考虑在格式字符串中使用“%I64d”
+g:\网狐\happygamewh\服务端\系统模块\服务器组件\比赛服务\locktimematch.cpp(2428): warning C4477: “_snprintf_s”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“LONGLONG”
+  g:\网狐\happygamewh\服务端\系统模块\服务器组件\比赛服务\locktimematch.cpp(2428): note: 请考虑在格式字符串中使用“%lld”
+  g:\网狐\happygamewh\服务端\系统模块\服务器组件\比赛服务\locktimematch.cpp(2428): note: 请考虑在格式字符串中使用“%I64d”
+g:\网狐\happygamewh\服务端\系统模块\服务器组件\比赛服务\locktimematch.cpp(2495): warning C4477: “_snprintf_s”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“LONGLONG”
+  g:\网狐\happygamewh\服务端\系统模块\服务器组件\比赛服务\locktimematch.cpp(2495): note: 请考虑在格式字符串中使用“%lld”
+  g:\网狐\happygamewh\服务端\系统模块\服务器组件\比赛服务\locktimematch.cpp(2495): note: 请考虑在格式字符串中使用“%I64d”
+g:\网狐\happygamewh\服务端\系统模块\服务器组件\比赛服务\locktimematch.cpp(2564): warning C4477: “_snprintf_s”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“LONGLONG”
+  g:\网狐\happygamewh\服务端\系统模块\服务器组件\比赛服务\locktimematch.cpp(2564): note: 请考虑在格式字符串中使用“%lld”
+  g:\网狐\happygamewh\服务端\系统模块\服务器组件\比赛服务\locktimematch.cpp(2564): note: 请考虑在格式字符串中使用“%I64d”
+  MatchServiceManager.cpp
+  TableFrameHook.cpp
+  正在生成代码...
+DistributeManager.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/SAFESEH”规范)
+    正在创建库 ../../链接库/Debug/Ansi/MatchService.lib 和对象 ../../链接库/Debug/Ansi/MatchService.exp
+  GameMatchServer.vcxproj -> G:\网狐\HappyGameWH\服务端\系统模块\服务器组件\比赛服务\../../../运行/Debug/Ansi/MatchService.dll
+  子目录或文件 ..\..\..\发布组件\服务器组件\Debug\Ansi 已经存在。
+  已复制         1 个文件。

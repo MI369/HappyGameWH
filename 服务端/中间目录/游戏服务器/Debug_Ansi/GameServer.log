@@ -1,0 +1,73 @@
+﻿  Stdafx.cpp
+g:\网狐\happygamewh\服务端\系统模块\全局定义\log.h(86): warning C4996: '_vsnprintf': This function or variable may be unsafe. Consider using _vsnprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1400): note: 参见“_vsnprintf”的声明
+g:\网狐\happygamewh\服务端\系统模块\全局定义\log.h(99): warning C4996: '_vsnprintf': This function or variable may be unsafe. Consider using _vsnprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1400): note: 参见“_vsnprintf”的声明
+g:\网狐\happygamewh\服务端\系统模块\全局定义\log.h(110): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1774): note: 参见“sprintf”的声明
+g:\网狐\happygamewh\服务端\系统模块\全局定义\log.h(114): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1774): note: 参见“sprintf”的声明
+g:\网狐\happygamewh\服务端\系统模块\全局定义\log.h(121): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1774): note: 参见“sprintf”的声明
+g:\网狐\happygamewh\服务端\系统模块\全局定义\log.h(128): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: 参见“fopen”的声明
+g:\网狐\happygamewh\服务端\系统模块\全局定义\log.h(162): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1774): note: 参见“sprintf”的声明
+g:\网狐\happygamewh\服务端\系统模块\全局定义\log.h(165): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: 参见“fopen”的声明
+  AttemperEngineSink.cpp
+g:\网狐\happygamewh\服务端\系统模块\服务器组件\游戏服务器\attemperenginesink.cpp(1343): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\服务端\系统模块\服务器组件\游戏服务器\attemperenginesink.cpp(1711): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\服务端\系统模块\服务器组件\游戏服务器\attemperenginesink.cpp(2300): warning C4244: “=”: 从“LONGLONG”转换到“DWORD”，可能丢失数据
+g:\网狐\happygamewh\服务端\系统模块\服务器组件\游戏服务器\attemperenginesink.cpp(4919): warning C4244: “=”: 从“DWORD”转换到“BYTE”，可能丢失数据
+g:\网狐\happygamewh\服务端\系统模块\服务器组件\游戏服务器\attemperenginesink.cpp(4923): warning C4244: “=”: 从“WORD”转换到“BYTE”，可能丢失数据
+g:\网狐\happygamewh\服务端\系统模块\服务器组件\游戏服务器\attemperenginesink.cpp(8582): warning C4244: “=”: 从“LONGLONG”转换到“LONG”，可能丢失数据
+g:\网狐\happygamewh\服务端\系统模块\服务器组件\游戏服务器\attemperenginesink.cpp(8627): warning C4244: “参数”: 从“DWORD”转换到“WORD”，可能丢失数据
+  DataBaseEngineSink.cpp
+g:\网狐\happygamewh\服务端\系统模块\服务器组件\游戏服务器\databaseenginesink.cpp(2375): warning C4244: “=”: 从“DOUBLE”转换到“LONGLONG”，可能丢失数据
+g:\网狐\happygamewh\服务端\系统模块\服务器组件\游戏服务器\databaseenginesink.cpp(2471): warning C4244: “=”: 从“DOUBLE”转换到“LONGLONG”，可能丢失数据
+g:\网狐\happygamewh\服务端\系统模块\服务器组件\游戏服务器\databaseenginesink.cpp(2565): warning C4244: “=”: 从“DOUBLE”转换到“LONGLONG”，可能丢失数据
+g:\网狐\happygamewh\服务端\系统模块\服务器组件\游戏服务器\databaseenginesink.cpp(2653): warning C4244: “=”: 从“DOUBLE”转换到“LONGLONG”，可能丢失数据
+g:\网狐\happygamewh\服务端\系统模块\服务器组件\游戏服务器\databaseenginesink.cpp(2665): warning C4996: '_itoa': This function or variable may be unsafe. Consider using _itoa_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdlib.h(640): note: 参见“_itoa”的声明
+g:\网狐\happygamewh\服务端\系统模块\服务器组件\游戏服务器\databaseenginesink.cpp(2818): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\服务端\系统模块\服务器组件\游戏服务器\databaseenginesink.cpp(2907): warning C4244: “=”: 从“DOUBLE”转换到“LONGLONG”，可能丢失数据
+g:\网狐\happygamewh\服务端\系统模块\服务器组件\游戏服务器\databaseenginesink.cpp(2885): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\服务端\系统模块\服务器组件\游戏服务器\databaseenginesink.cpp(2974): warning C4244: “=”: 从“DOUBLE”转换到“LONGLONG”，可能丢失数据
+g:\网狐\happygamewh\服务端\系统模块\服务器组件\游戏服务器\databaseenginesink.cpp(2953): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\服务端\系统模块\服务器组件\游戏服务器\databaseenginesink.cpp(3324): warning C4244: “=”: 从“DOUBLE”转换到“LONGLONG”，可能丢失数据
+g:\网狐\happygamewh\服务端\系统模块\服务器组件\游戏服务器\databaseenginesink.cpp(3566): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\服务端\系统模块\服务器组件\游戏服务器\databaseenginesink.cpp(5194): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\服务端\系统模块\服务器组件\游戏服务器\databaseenginesink.cpp(5728): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+  DBCorrespondManager.cpp
+  DistributeManager.cpp
+  GameServer.cpp
+  GameServerDlg.cpp
+  InitParameter.cpp
+  SensitiveWordsFilter.cpp
+  ServerListManager.cpp
+  ServiceUnits.cpp
+g:\网狐\happygamewh\服务端\系统模块\服务器组件\游戏服务器\serviceunits.cpp(822): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+  TableFrame.cpp
+g:\网狐\happygamewh\服务端\系统模块\服务器组件\游戏服务器\tableframe.cpp(516): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\time.h(506): note: 参见“localtime”的声明
+g:\网狐\happygamewh\服务端\系统模块\服务器组件\游戏服务器\tableframe.cpp(1747): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\服务端\系统模块\服务器组件\游戏服务器\tableframe.cpp(2960): warning C4477: “_snprintf_s”: 格式字符串“%I64d”需要类型“__int64”的参数，但可变参数 1 拥有了类型“LONG”
+  g:\网狐\happygamewh\服务端\系统模块\服务器组件\游戏服务器\tableframe.cpp(2960): note: 请考虑在格式字符串中使用“%ld”
+g:\网狐\happygamewh\服务端\系统模块\服务器组件\游戏服务器\tableframe.cpp(2945): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1961): note: 参见“_snprintf”的声明
+  正在生成代码...
+AttemperEngineSink.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/SAFESEH”规范)
+  GameServer.vcxproj -> G:\网狐\HappyGameWH\服务端\系统模块\服务器组件\游戏服务器\../../../运行/Debug/Ansi/GameServer.exe
+  子目录或文件 ..\..\..\发布组件\服务器组件\Debug\Ansi 已经存在。
+  已复制         1 个文件。

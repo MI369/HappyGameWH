@@ -9,7 +9,7 @@
 #ifndef _DEBUG
 	#define ANDROID_SERVICE_DLL_NAME	TEXT("LandAndroidService.dll")	//组件名字
 #else
-	#define ANDROID_SERVICE_DLL_NAME	TEXT("LandAndroidServiceD.dll")	//组件名字
+	#define ANDROID_SERVICE_DLL_NAME	TEXT("LandAndroidService.dll")	//组件名字
 #endif
 
 //////////////////////////////////////////////////////////////////////////////////

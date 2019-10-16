@@ -2241,11 +2241,14 @@ bool CDataBaseEngineSink::OnRequestGetPersonalParameter(DWORD dwContextID, VOID 
 			pPersonalRoomOption.cbMaxPeople=m_PlatformDBAide.GetValue_BYTE(TEXT("MaxPeople"));
 			pPersonalRoomOption.lMaxCellScore=m_PlatformDBAide.GetValue_LONGLONG(TEXT("MaxCellScore"));
 
-
 			pPersonalRoomOption.wCanCreateCount=m_PlatformDBAide.GetValue_WORD(TEXT("CanCreateCount"));
 			pPersonalRoomOption.dwPlayTimeLimit=m_PlatformDBAide.GetValue_DWORD(TEXT("PlayTimeLimit"));
 			pPersonalRoomOption.dwPlayTurnCount =  m_PlatformDBAide.GetValue_DWORD(TEXT("PlayTurnCount"));
-			
+
+			pPersonalRoomOption.dwTimeAfterBeginCount = m_PlatformDBAide.GetValue_DWORD(TEXT("TimeAfterBeginCount"));
+			pPersonalRoomOption.dwTimeOffLineCount = m_PlatformDBAide.GetValue_DWORD(TEXT("TimeOffLineCount"));
+			pPersonalRoomOption.dwTimeNotBeginGame = m_PlatformDBAide.GetValue_DWORD(TEXT("TimeNotBeginGame"));
+
 			pPersonalRoomOption.wBeginFreeTime = m_PlatformDBAide.GetValue_WORD(TEXT("BeginFreeTime"));
 			pPersonalRoomOption.wEndFreeTime = m_PlatformDBAide.GetValue_WORD(TEXT("EndFreeTime"));
 

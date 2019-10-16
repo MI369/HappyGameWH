@@ -401,7 +401,6 @@ bool CTCPNetworkItem::SendData(VOID * pData, WORD wDataSize, WORD wMainCmdID, WO
 
 				command->set_mainid(wMainCmdID);
 				command->set_subid(wSubCmdID);
-				//message.clear_data();
 				message.set_data((char*)pData);
 				info->set_cbcheckcode(1);
 				info->set_wpacketsize(wDataSize);
@@ -1041,6 +1040,7 @@ COverLappedSend * CTCPNetworkItem::GetSendOverLapped(WORD wPacketSize, bool flag
 
         // 设置变量
         pOverLappedSend->m_WSABuffer.len = 0;
+		ZeroMemory(pOverLappedSend->m_cbBuffer, sizeof(pOverLappedSend->m_cbBuffer));
         m_OverLappedSendActive.Add(pOverLappedSend);
         m_OverLappedSendBuffer.RemoveAt(nFreeCount - 1);
 
@@ -1055,6 +1055,7 @@ COverLappedSend * CTCPNetworkItem::GetSendOverLapped(WORD wPacketSize, bool flag
 
         // 设置变量
         pOverLappedSend->m_WSABuffer.len = 0;
+		ZeroMemory(pOverLappedSend->m_cbBuffer, sizeof(pOverLappedSend->m_cbBuffer));
         m_OverLappedSendActive.Add(pOverLappedSend);
 
         return pOverLappedSend;

@@ -12,6 +12,17 @@ message SYSTEMTIME {
     int32 wMilliseconds		= 8;
 };
 
+message consumptionType{
+	uint64	lgrade			= 1;	//用户成绩
+	uint64	linsure			= 2;	//用户银行	
+	uint64	lscore			= 3;	//用户游戏币
+	uint64	lingot			= 4;	//用户元宝
+	uint64	lbeans			= 5;	//游戏豆
+	uint64	ldiamond		= 6;	//钻石数量
+	uint64	lcoin			= 7;	//金币数量
+	uint64	lcard			= 8;	//房卡数量
+};
+
 message personinfo
 {
 	//属性资料

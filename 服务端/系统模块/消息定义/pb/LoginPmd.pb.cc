@@ -22,6 +22,8 @@ class loginbyid_c2sDefaultTypeInternal : public ::google::protobuf::internal::Ex
 } _loginbyid_c2s_default_instance_;
 class loginbyaccounts_c2sDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<loginbyaccounts_c2s> {
 } _loginbyaccounts_c2s_default_instance_;
+class logonOtherPlatform_c2sDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<logonOtherPlatform_c2s> {
+} _logonOtherPlatform_c2s_default_instance_;
 class loginbyvisitor_c2sDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<loginbyvisitor_c2s> {
 } _loginbyvisitor_c2s_default_instance_;
 class loginsuccess_s2cDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<loginsuccess_s2c> {
@@ -36,7 +38,7 @@ namespace protobuf_LoginPmd_2eproto {
 
 namespace {
 
-::google::protobuf::Metadata file_level_metadata[6];
+::google::protobuf::Metadata file_level_metadata[7];
 
 }  // namespace
 
@@ -62,6 +64,23 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(loginbyaccounts_c2s, szaccounts_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(loginbyaccounts_c2s, szpassportid_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(loginbyaccounts_c2s, cbvalidateflags_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(logonOtherPlatform_c2s, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(logonOtherPlatform_c2s, reqcmd_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(logonOtherPlatform_c2s, wmoduleid_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(logonOtherPlatform_c2s, dwplazaversion_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(logonOtherPlatform_c2s, cbdevicetype_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(logonOtherPlatform_c2s, cbgender_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(logonOtherPlatform_c2s, cbplatformid_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(logonOtherPlatform_c2s, szuseruin_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(logonOtherPlatform_c2s, sznickname_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(logonOtherPlatform_c2s, szcompellation_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(logonOtherPlatform_c2s, szmachineid_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(logonOtherPlatform_c2s, szmobilephone_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(logonOtherPlatform_c2s, szdevicetoken_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(logonOtherPlatform_c2s, strfaceurl_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(loginbyvisitor_c2s, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -93,15 +112,17 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
 static const ::google::protobuf::internal::MigrationSchema schemas[] = {
   { 0, -1, sizeof(loginbyid_c2s)},
   { 10, -1, sizeof(loginbyaccounts_c2s)},
-  { 21, -1, sizeof(loginbyvisitor_c2s)},
-  { 29, -1, sizeof(loginsuccess_s2c)},
-  { 35, -1, sizeof(loginfinish_s2c)},
-  { 42, -1, sizeof(loginfailure_s2c)},
+  { 21, -1, sizeof(logonOtherPlatform_c2s)},
+  { 38, -1, sizeof(loginbyvisitor_c2s)},
+  { 46, -1, sizeof(loginsuccess_s2c)},
+  { 52, -1, sizeof(loginfinish_s2c)},
+  { 59, -1, sizeof(loginfailure_s2c)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&_loginbyid_c2s_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_loginbyaccounts_c2s_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_logonOtherPlatform_c2s_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_loginbyvisitor_c2s_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_loginsuccess_s2c_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_loginfinish_s2c_default_instance_),
@@ -126,7 +147,7 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 6);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 7);
 }
 
 }  // namespace
@@ -136,14 +157,16 @@ void TableStruct::Shutdown() {
   delete file_level_metadata[0].reflection;
   _loginbyaccounts_c2s_default_instance_.Shutdown();
   delete file_level_metadata[1].reflection;
-  _loginbyvisitor_c2s_default_instance_.Shutdown();
+  _logonOtherPlatform_c2s_default_instance_.Shutdown();
   delete file_level_metadata[2].reflection;
-  _loginsuccess_s2c_default_instance_.Shutdown();
+  _loginbyvisitor_c2s_default_instance_.Shutdown();
   delete file_level_metadata[3].reflection;
-  _loginfinish_s2c_default_instance_.Shutdown();
+  _loginsuccess_s2c_default_instance_.Shutdown();
   delete file_level_metadata[4].reflection;
-  _loginfailure_s2c_default_instance_.Shutdown();
+  _loginfinish_s2c_default_instance_.Shutdown();
   delete file_level_metadata[5].reflection;
+  _loginfailure_s2c_default_instance_.Shutdown();
+  delete file_level_metadata[6].reflection;
 }
 
 void TableStruct::InitDefaultsImpl() {
@@ -154,6 +177,7 @@ void TableStruct::InitDefaultsImpl() {
   ::CommonPmd::protobuf_CommonPmd_2eproto::InitDefaults();
   _loginbyid_c2s_default_instance_.DefaultConstruct();
   _loginbyaccounts_c2s_default_instance_.DefaultConstruct();
+  _logonOtherPlatform_c2s_default_instance_.DefaultConstruct();
   _loginbyvisitor_c2s_default_instance_.DefaultConstruct();
   _loginsuccess_s2c_default_instance_.DefaultConstruct();
   _loginfinish_s2c_default_instance_.DefaultConstruct();
@@ -161,6 +185,8 @@ void TableStruct::InitDefaultsImpl() {
   _loginbyid_c2s_default_instance_.get_mutable()->reqcmd_ = const_cast< ::NullPmd::request*>(
       ::NullPmd::request::internal_default_instance());
   _loginbyaccounts_c2s_default_instance_.get_mutable()->reqcmd_ = const_cast< ::NullPmd::request*>(
+      ::NullPmd::request::internal_default_instance());
+  _logonOtherPlatform_c2s_default_instance_.get_mutable()->reqcmd_ = const_cast< ::NullPmd::request*>(
       ::NullPmd::request::internal_default_instance());
   _loginbyvisitor_c2s_default_instance_.get_mutable()->reqcmd_ = const_cast< ::NullPmd::request*>(
       ::NullPmd::request::internal_default_instance());
@@ -191,20 +217,27 @@ void AddDescriptorsImpl() {
       "dwplazaversion\030\002 \001(\004\022\023\n\013szmachineid\030\003 \001("
       "\t\022\022\n\nszpassword\030\004 \001(\t\022\022\n\nszaccounts\030\005 \001("
       "\t\022\024\n\014szpassportid\030\006 \001(\t\022\027\n\017cbvalidatefla"
-      "gs\030\007 \001(\005\"|\n\022loginbyvisitor_c2s\022 \n\006reqcmd"
-      "\030\001 \001(\0132\020.NullPmd.request\022\026\n\016dwplazaversi"
-      "on\030\002 \001(\004\022\023\n\013szmachineid\030\003 \001(\t\022\027\n\017cbvalid"
-      "ateflags\030\004 \001(\005\"a\n\020loginsuccess_s2c\022\"\n\007re"
-      "spcmd\030\001 \001(\0132\021.NullPmd.response\022)\n\nperson"
-      "info\030\002 \001(\0132\025.CommonPmd.personinfo\"f\n\017log"
-      "infinish_s2c\022\"\n\007respcmd\030\001 \001(\0132\021.NullPmd."
-      "response\022\025\n\rwIntermitTime\030\002 \001(\005\022\030\n\020wOnLi"
-      "neCountTime\030\003 \001(\005\"6\n\020loginfailure_s2c\022\"\n"
-      "\007respcmd\030\001 \001(\0132\021.NullPmd.responseb\006proto"
-      "3"
+      "gs\030\007 \001(\005\"\271\002\n\026logonOtherPlatform_c2s\022 \n\006r"
+      "eqcmd\030\001 \001(\0132\020.NullPmd.request\022\021\n\twmodule"
+      "id\030\002 \001(\005\022\026\n\016dwplazaversion\030\003 \001(\004\022\024\n\014cbde"
+      "vicetype\030\004 \001(\005\022\020\n\010cbgender\030\005 \001(\005\022\024\n\014cbpl"
+      "atformid\030\006 \001(\005\022\021\n\tszuseruin\030\007 \001(\t\022\022\n\nszn"
+      "ickname\030\010 \001(\t\022\026\n\016szcompellation\030\t \001(\t\022\023\n"
+      "\013szmachineid\030\n \001(\t\022\025\n\rszmobilephone\030\013 \001("
+      "\t\022\025\n\rszdevicetoken\030\014 \001(\t\022\022\n\nstrfaceurl\030\r"
+      " \001(\t\"|\n\022loginbyvisitor_c2s\022 \n\006reqcmd\030\001 \001"
+      "(\0132\020.NullPmd.request\022\026\n\016dwplazaversion\030\002"
+      " \001(\004\022\023\n\013szmachineid\030\003 \001(\t\022\027\n\017cbvalidatef"
+      "lags\030\004 \001(\005\"a\n\020loginsuccess_s2c\022\"\n\007respcm"
+      "d\030\001 \001(\0132\021.NullPmd.response\022)\n\npersoninfo"
+      "\030\002 \001(\0132\025.CommonPmd.personinfo\"f\n\017loginfi"
+      "nish_s2c\022\"\n\007respcmd\030\001 \001(\0132\021.NullPmd.resp"
+      "onse\022\025\n\rwIntermitTime\030\002 \001(\005\022\030\n\020wOnLineCo"
+      "untTime\030\003 \001(\005\"6\n\020loginfailure_s2c\022\"\n\007res"
+      "pcmd\030\001 \001(\0132\021.NullPmd.responseb\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 801);
+      descriptor, 1117);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "LoginPmd.proto", &protobuf_RegisterTypes);
   ::NullPmd::protobuf_NullPmd_2eproto::AddDescriptors();
@@ -1656,6 +1689,1274 @@ void loginbyaccounts_c2s::set_cbvalidateflags(::google::protobuf::int32 value) {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int logonOtherPlatform_c2s::kReqcmdFieldNumber;
+const int logonOtherPlatform_c2s::kWmoduleidFieldNumber;
+const int logonOtherPlatform_c2s::kDwplazaversionFieldNumber;
+const int logonOtherPlatform_c2s::kCbdevicetypeFieldNumber;
+const int logonOtherPlatform_c2s::kCbgenderFieldNumber;
+const int logonOtherPlatform_c2s::kCbplatformidFieldNumber;
+const int logonOtherPlatform_c2s::kSzuseruinFieldNumber;
+const int logonOtherPlatform_c2s::kSznicknameFieldNumber;
+const int logonOtherPlatform_c2s::kSzcompellationFieldNumber;
+const int logonOtherPlatform_c2s::kSzmachineidFieldNumber;
+const int logonOtherPlatform_c2s::kSzmobilephoneFieldNumber;
+const int logonOtherPlatform_c2s::kSzdevicetokenFieldNumber;
+const int logonOtherPlatform_c2s::kStrfaceurlFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+logonOtherPlatform_c2s::logonOtherPlatform_c2s()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    protobuf_LoginPmd_2eproto::InitDefaults();
+  }
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:LoginPmd.logonOtherPlatform_c2s)
+}
+logonOtherPlatform_c2s::logonOtherPlatform_c2s(const logonOtherPlatform_c2s& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  szuseruin_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.szuseruin().size() > 0) {
+    szuseruin_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.szuseruin_);
+  }
+  sznickname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.sznickname().size() > 0) {
+    sznickname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.sznickname_);
+  }
+  szcompellation_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.szcompellation().size() > 0) {
+    szcompellation_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.szcompellation_);
+  }
+  szmachineid_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.szmachineid().size() > 0) {
+    szmachineid_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.szmachineid_);
+  }
+  szmobilephone_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.szmobilephone().size() > 0) {
+    szmobilephone_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.szmobilephone_);
+  }
+  szdevicetoken_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.szdevicetoken().size() > 0) {
+    szdevicetoken_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.szdevicetoken_);
+  }
+  strfaceurl_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.strfaceurl().size() > 0) {
+    strfaceurl_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.strfaceurl_);
+  }
+  if (from.has_reqcmd()) {
+    reqcmd_ = new ::NullPmd::request(*from.reqcmd_);
+  } else {
+    reqcmd_ = NULL;
+  }
+  ::memcpy(&dwplazaversion_, &from.dwplazaversion_,
+    reinterpret_cast<char*>(&cbplatformid_) -
+    reinterpret_cast<char*>(&dwplazaversion_) + sizeof(cbplatformid_));
+  // @@protoc_insertion_point(copy_constructor:LoginPmd.logonOtherPlatform_c2s)
+}
+
+void logonOtherPlatform_c2s::SharedCtor() {
+  szuseruin_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  sznickname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  szcompellation_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  szmachineid_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  szmobilephone_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  szdevicetoken_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  strfaceurl_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&reqcmd_, 0, reinterpret_cast<char*>(&cbplatformid_) -
+    reinterpret_cast<char*>(&reqcmd_) + sizeof(cbplatformid_));
+  _cached_size_ = 0;
+}
+
+logonOtherPlatform_c2s::~logonOtherPlatform_c2s() {
+  // @@protoc_insertion_point(destructor:LoginPmd.logonOtherPlatform_c2s)
+  SharedDtor();
+}
+
+void logonOtherPlatform_c2s::SharedDtor() {
+  szuseruin_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  sznickname_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  szcompellation_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  szmachineid_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  szmobilephone_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  szdevicetoken_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  strfaceurl_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (this != internal_default_instance()) {
+    delete reqcmd_;
+  }
+}
+
+void logonOtherPlatform_c2s::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* logonOtherPlatform_c2s::descriptor() {
+  protobuf_LoginPmd_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_LoginPmd_2eproto::file_level_metadata[2].descriptor;
+}
+
+const logonOtherPlatform_c2s& logonOtherPlatform_c2s::default_instance() {
+  protobuf_LoginPmd_2eproto::InitDefaults();
+  return *internal_default_instance();
+}
+
+logonOtherPlatform_c2s* logonOtherPlatform_c2s::New(::google::protobuf::Arena* arena) const {
+  logonOtherPlatform_c2s* n = new logonOtherPlatform_c2s;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void logonOtherPlatform_c2s::Clear() {
+// @@protoc_insertion_point(message_clear_start:LoginPmd.logonOtherPlatform_c2s)
+  szuseruin_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  sznickname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  szcompellation_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  szmachineid_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  szmobilephone_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  szdevicetoken_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  strfaceurl_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (GetArenaNoVirtual() == NULL && reqcmd_ != NULL) {
+    delete reqcmd_;
+  }
+  reqcmd_ = NULL;
+  ::memset(&dwplazaversion_, 0, reinterpret_cast<char*>(&cbplatformid_) -
+    reinterpret_cast<char*>(&dwplazaversion_) + sizeof(cbplatformid_));
+}
+
+bool logonOtherPlatform_c2s::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:LoginPmd.logonOtherPlatform_c2s)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // .NullPmd.request reqcmd = 1;
+      case 1: {
+        if (tag == 10u) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_reqcmd()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 wmoduleid = 2;
+      case 2: {
+        if (tag == 16u) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &wmoduleid_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint64 dwplazaversion = 3;
+      case 3: {
+        if (tag == 24u) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &dwplazaversion_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 cbdevicetype = 4;
+      case 4: {
+        if (tag == 32u) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &cbdevicetype_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 cbgender = 5;
+      case 5: {
+        if (tag == 40u) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &cbgender_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 cbplatformid = 6;
+      case 6: {
+        if (tag == 48u) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &cbplatformid_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string szuseruin = 7;
+      case 7: {
+        if (tag == 58u) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_szuseruin()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->szuseruin().data(), this->szuseruin().length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "LoginPmd.logonOtherPlatform_c2s.szuseruin"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string sznickname = 8;
+      case 8: {
+        if (tag == 66u) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_sznickname()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->sznickname().data(), this->sznickname().length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "LoginPmd.logonOtherPlatform_c2s.sznickname"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string szcompellation = 9;
+      case 9: {
+        if (tag == 74u) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_szcompellation()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->szcompellation().data(), this->szcompellation().length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "LoginPmd.logonOtherPlatform_c2s.szcompellation"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string szmachineid = 10;
+      case 10: {
+        if (tag == 82u) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_szmachineid()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->szmachineid().data(), this->szmachineid().length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "LoginPmd.logonOtherPlatform_c2s.szmachineid"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string szmobilephone = 11;
+      case 11: {
+        if (tag == 90u) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_szmobilephone()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->szmobilephone().data(), this->szmobilephone().length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "LoginPmd.logonOtherPlatform_c2s.szmobilephone"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string szdevicetoken = 12;
+      case 12: {
+        if (tag == 98u) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_szdevicetoken()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->szdevicetoken().data(), this->szdevicetoken().length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "LoginPmd.logonOtherPlatform_c2s.szdevicetoken"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string strfaceurl = 13;
+      case 13: {
+        if (tag == 106u) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_strfaceurl()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->strfaceurl().data(), this->strfaceurl().length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "LoginPmd.logonOtherPlatform_c2s.strfaceurl"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:LoginPmd.logonOtherPlatform_c2s)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:LoginPmd.logonOtherPlatform_c2s)
+  return false;
+#undef DO_
+}
+
+void logonOtherPlatform_c2s::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:LoginPmd.logonOtherPlatform_c2s)
+  // .NullPmd.request reqcmd = 1;
+  if (this->has_reqcmd()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, *this->reqcmd_, output);
+  }
+
+  // int32 wmoduleid = 2;
+  if (this->wmoduleid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->wmoduleid(), output);
+  }
+
+  // uint64 dwplazaversion = 3;
+  if (this->dwplazaversion() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(3, this->dwplazaversion(), output);
+  }
+
+  // int32 cbdevicetype = 4;
+  if (this->cbdevicetype() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->cbdevicetype(), output);
+  }
+
+  // int32 cbgender = 5;
+  if (this->cbgender() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->cbgender(), output);
+  }
+
+  // int32 cbplatformid = 6;
+  if (this->cbplatformid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(6, this->cbplatformid(), output);
+  }
+
+  // string szuseruin = 7;
+  if (this->szuseruin().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->szuseruin().data(), this->szuseruin().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "LoginPmd.logonOtherPlatform_c2s.szuseruin");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      7, this->szuseruin(), output);
+  }
+
+  // string sznickname = 8;
+  if (this->sznickname().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->sznickname().data(), this->sznickname().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "LoginPmd.logonOtherPlatform_c2s.sznickname");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      8, this->sznickname(), output);
+  }
+
+  // string szcompellation = 9;
+  if (this->szcompellation().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->szcompellation().data(), this->szcompellation().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "LoginPmd.logonOtherPlatform_c2s.szcompellation");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      9, this->szcompellation(), output);
+  }
+
+  // string szmachineid = 10;
+  if (this->szmachineid().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->szmachineid().data(), this->szmachineid().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "LoginPmd.logonOtherPlatform_c2s.szmachineid");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      10, this->szmachineid(), output);
+  }
+
+  // string szmobilephone = 11;
+  if (this->szmobilephone().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->szmobilephone().data(), this->szmobilephone().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "LoginPmd.logonOtherPlatform_c2s.szmobilephone");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      11, this->szmobilephone(), output);
+  }
+
+  // string szdevicetoken = 12;
+  if (this->szdevicetoken().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->szdevicetoken().data(), this->szdevicetoken().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "LoginPmd.logonOtherPlatform_c2s.szdevicetoken");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      12, this->szdevicetoken(), output);
+  }
+
+  // string strfaceurl = 13;
+  if (this->strfaceurl().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->strfaceurl().data(), this->strfaceurl().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "LoginPmd.logonOtherPlatform_c2s.strfaceurl");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      13, this->strfaceurl(), output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:LoginPmd.logonOtherPlatform_c2s)
+}
+
+::google::protobuf::uint8* logonOtherPlatform_c2s::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic;  // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:LoginPmd.logonOtherPlatform_c2s)
+  // .NullPmd.request reqcmd = 1;
+  if (this->has_reqcmd()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        1, *this->reqcmd_, false, target);
+  }
+
+  // int32 wmoduleid = 2;
+  if (this->wmoduleid() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->wmoduleid(), target);
+  }
+
+  // uint64 dwplazaversion = 3;
+  if (this->dwplazaversion() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(3, this->dwplazaversion(), target);
+  }
+
+  // int32 cbdevicetype = 4;
+  if (this->cbdevicetype() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->cbdevicetype(), target);
+  }
+
+  // int32 cbgender = 5;
+  if (this->cbgender() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->cbgender(), target);
+  }
+
+  // int32 cbplatformid = 6;
+  if (this->cbplatformid() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(6, this->cbplatformid(), target);
+  }
+
+  // string szuseruin = 7;
+  if (this->szuseruin().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->szuseruin().data(), this->szuseruin().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "LoginPmd.logonOtherPlatform_c2s.szuseruin");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        7, this->szuseruin(), target);
+  }
+
+  // string sznickname = 8;
+  if (this->sznickname().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->sznickname().data(), this->sznickname().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "LoginPmd.logonOtherPlatform_c2s.sznickname");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        8, this->sznickname(), target);
+  }
+
+  // string szcompellation = 9;
+  if (this->szcompellation().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->szcompellation().data(), this->szcompellation().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "LoginPmd.logonOtherPlatform_c2s.szcompellation");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        9, this->szcompellation(), target);
+  }
+
+  // string szmachineid = 10;
+  if (this->szmachineid().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->szmachineid().data(), this->szmachineid().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "LoginPmd.logonOtherPlatform_c2s.szmachineid");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        10, this->szmachineid(), target);
+  }
+
+  // string szmobilephone = 11;
+  if (this->szmobilephone().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->szmobilephone().data(), this->szmobilephone().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "LoginPmd.logonOtherPlatform_c2s.szmobilephone");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        11, this->szmobilephone(), target);
+  }
+
+  // string szdevicetoken = 12;
+  if (this->szdevicetoken().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->szdevicetoken().data(), this->szdevicetoken().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "LoginPmd.logonOtherPlatform_c2s.szdevicetoken");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        12, this->szdevicetoken(), target);
+  }
+
+  // string strfaceurl = 13;
+  if (this->strfaceurl().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->strfaceurl().data(), this->strfaceurl().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "LoginPmd.logonOtherPlatform_c2s.strfaceurl");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        13, this->strfaceurl(), target);
+  }
+
+  // @@protoc_insertion_point(serialize_to_array_end:LoginPmd.logonOtherPlatform_c2s)
+  return target;
+}
+
+size_t logonOtherPlatform_c2s::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:LoginPmd.logonOtherPlatform_c2s)
+  size_t total_size = 0;
+
+  // string szuseruin = 7;
+  if (this->szuseruin().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->szuseruin());
+  }
+
+  // string sznickname = 8;
+  if (this->sznickname().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->sznickname());
+  }
+
+  // string szcompellation = 9;
+  if (this->szcompellation().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->szcompellation());
+  }
+
+  // string szmachineid = 10;
+  if (this->szmachineid().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->szmachineid());
+  }
+
+  // string szmobilephone = 11;
+  if (this->szmobilephone().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->szmobilephone());
+  }
+
+  // string szdevicetoken = 12;
+  if (this->szdevicetoken().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->szdevicetoken());
+  }
+
+  // string strfaceurl = 13;
+  if (this->strfaceurl().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->strfaceurl());
+  }
+
+  // .NullPmd.request reqcmd = 1;
+  if (this->has_reqcmd()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->reqcmd_);
+  }
+
+  // uint64 dwplazaversion = 3;
+  if (this->dwplazaversion() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->dwplazaversion());
+  }
+
+  // int32 wmoduleid = 2;
+  if (this->wmoduleid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->wmoduleid());
+  }
+
+  // int32 cbdevicetype = 4;
+  if (this->cbdevicetype() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->cbdevicetype());
+  }
+
+  // int32 cbgender = 5;
+  if (this->cbgender() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->cbgender());
+  }
+
+  // int32 cbplatformid = 6;
+  if (this->cbplatformid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->cbplatformid());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void logonOtherPlatform_c2s::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:LoginPmd.logonOtherPlatform_c2s)
+  GOOGLE_DCHECK_NE(&from, this);
+  const logonOtherPlatform_c2s* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const logonOtherPlatform_c2s>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:LoginPmd.logonOtherPlatform_c2s)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:LoginPmd.logonOtherPlatform_c2s)
+    MergeFrom(*source);
+  }
+}
+
+void logonOtherPlatform_c2s::MergeFrom(const logonOtherPlatform_c2s& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:LoginPmd.logonOtherPlatform_c2s)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  if (from.szuseruin().size() > 0) {
+
+    szuseruin_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.szuseruin_);
+  }
+  if (from.sznickname().size() > 0) {
+
+    sznickname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.sznickname_);
+  }
+  if (from.szcompellation().size() > 0) {
+
+    szcompellation_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.szcompellation_);
+  }
+  if (from.szmachineid().size() > 0) {
+
+    szmachineid_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.szmachineid_);
+  }
+  if (from.szmobilephone().size() > 0) {
+
+    szmobilephone_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.szmobilephone_);
+  }
+  if (from.szdevicetoken().size() > 0) {
+
+    szdevicetoken_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.szdevicetoken_);
+  }
+  if (from.strfaceurl().size() > 0) {
+
+    strfaceurl_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.strfaceurl_);
+  }
+  if (from.has_reqcmd()) {
+    mutable_reqcmd()->::NullPmd::request::MergeFrom(from.reqcmd());
+  }
+  if (from.dwplazaversion() != 0) {
+    set_dwplazaversion(from.dwplazaversion());
+  }
+  if (from.wmoduleid() != 0) {
+    set_wmoduleid(from.wmoduleid());
+  }
+  if (from.cbdevicetype() != 0) {
+    set_cbdevicetype(from.cbdevicetype());
+  }
+  if (from.cbgender() != 0) {
+    set_cbgender(from.cbgender());
+  }
+  if (from.cbplatformid() != 0) {
+    set_cbplatformid(from.cbplatformid());
+  }
+}
+
+void logonOtherPlatform_c2s::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:LoginPmd.logonOtherPlatform_c2s)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void logonOtherPlatform_c2s::CopyFrom(const logonOtherPlatform_c2s& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:LoginPmd.logonOtherPlatform_c2s)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool logonOtherPlatform_c2s::IsInitialized() const {
+  return true;
+}
+
+void logonOtherPlatform_c2s::Swap(logonOtherPlatform_c2s* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void logonOtherPlatform_c2s::InternalSwap(logonOtherPlatform_c2s* other) {
+  szuseruin_.Swap(&other->szuseruin_);
+  sznickname_.Swap(&other->sznickname_);
+  szcompellation_.Swap(&other->szcompellation_);
+  szmachineid_.Swap(&other->szmachineid_);
+  szmobilephone_.Swap(&other->szmobilephone_);
+  szdevicetoken_.Swap(&other->szdevicetoken_);
+  strfaceurl_.Swap(&other->strfaceurl_);
+  std::swap(reqcmd_, other->reqcmd_);
+  std::swap(dwplazaversion_, other->dwplazaversion_);
+  std::swap(wmoduleid_, other->wmoduleid_);
+  std::swap(cbdevicetype_, other->cbdevicetype_);
+  std::swap(cbgender_, other->cbgender_);
+  std::swap(cbplatformid_, other->cbplatformid_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata logonOtherPlatform_c2s::GetMetadata() const {
+  protobuf_LoginPmd_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_LoginPmd_2eproto::file_level_metadata[2];
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// logonOtherPlatform_c2s
+
+// .NullPmd.request reqcmd = 1;
+bool logonOtherPlatform_c2s::has_reqcmd() const {
+  return this != internal_default_instance() && reqcmd_ != NULL;
+}
+void logonOtherPlatform_c2s::clear_reqcmd() {
+  if (GetArenaNoVirtual() == NULL && reqcmd_ != NULL) delete reqcmd_;
+  reqcmd_ = NULL;
+}
+const ::NullPmd::request& logonOtherPlatform_c2s::reqcmd() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.logonOtherPlatform_c2s.reqcmd)
+  return reqcmd_ != NULL ? *reqcmd_
+                         : *::NullPmd::request::internal_default_instance();
+}
+::NullPmd::request* logonOtherPlatform_c2s::mutable_reqcmd() {
+  
+  if (reqcmd_ == NULL) {
+    reqcmd_ = new ::NullPmd::request;
+  }
+  // @@protoc_insertion_point(field_mutable:LoginPmd.logonOtherPlatform_c2s.reqcmd)
+  return reqcmd_;
+}
+::NullPmd::request* logonOtherPlatform_c2s::release_reqcmd() {
+  // @@protoc_insertion_point(field_release:LoginPmd.logonOtherPlatform_c2s.reqcmd)
+  
+  ::NullPmd::request* temp = reqcmd_;
+  reqcmd_ = NULL;
+  return temp;
+}
+void logonOtherPlatform_c2s::set_allocated_reqcmd(::NullPmd::request* reqcmd) {
+  delete reqcmd_;
+  reqcmd_ = reqcmd;
+  if (reqcmd) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:LoginPmd.logonOtherPlatform_c2s.reqcmd)
+}
+
+// int32 wmoduleid = 2;
+void logonOtherPlatform_c2s::clear_wmoduleid() {
+  wmoduleid_ = 0;
+}
+::google::protobuf::int32 logonOtherPlatform_c2s::wmoduleid() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.logonOtherPlatform_c2s.wmoduleid)
+  return wmoduleid_;
+}
+void logonOtherPlatform_c2s::set_wmoduleid(::google::protobuf::int32 value) {
+  
+  wmoduleid_ = value;
+  // @@protoc_insertion_point(field_set:LoginPmd.logonOtherPlatform_c2s.wmoduleid)
+}
+
+// uint64 dwplazaversion = 3;
+void logonOtherPlatform_c2s::clear_dwplazaversion() {
+  dwplazaversion_ = GOOGLE_ULONGLONG(0);
+}
+::google::protobuf::uint64 logonOtherPlatform_c2s::dwplazaversion() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.logonOtherPlatform_c2s.dwplazaversion)
+  return dwplazaversion_;
+}
+void logonOtherPlatform_c2s::set_dwplazaversion(::google::protobuf::uint64 value) {
+  
+  dwplazaversion_ = value;
+  // @@protoc_insertion_point(field_set:LoginPmd.logonOtherPlatform_c2s.dwplazaversion)
+}
+
+// int32 cbdevicetype = 4;
+void logonOtherPlatform_c2s::clear_cbdevicetype() {
+  cbdevicetype_ = 0;
+}
+::google::protobuf::int32 logonOtherPlatform_c2s::cbdevicetype() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.logonOtherPlatform_c2s.cbdevicetype)
+  return cbdevicetype_;
+}
+void logonOtherPlatform_c2s::set_cbdevicetype(::google::protobuf::int32 value) {
+  
+  cbdevicetype_ = value;
+  // @@protoc_insertion_point(field_set:LoginPmd.logonOtherPlatform_c2s.cbdevicetype)
+}
+
+// int32 cbgender = 5;
+void logonOtherPlatform_c2s::clear_cbgender() {
+  cbgender_ = 0;
+}
+::google::protobuf::int32 logonOtherPlatform_c2s::cbgender() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.logonOtherPlatform_c2s.cbgender)
+  return cbgender_;
+}
+void logonOtherPlatform_c2s::set_cbgender(::google::protobuf::int32 value) {
+  
+  cbgender_ = value;
+  // @@protoc_insertion_point(field_set:LoginPmd.logonOtherPlatform_c2s.cbgender)
+}
+
+// int32 cbplatformid = 6;
+void logonOtherPlatform_c2s::clear_cbplatformid() {
+  cbplatformid_ = 0;
+}
+::google::protobuf::int32 logonOtherPlatform_c2s::cbplatformid() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.logonOtherPlatform_c2s.cbplatformid)
+  return cbplatformid_;
+}
+void logonOtherPlatform_c2s::set_cbplatformid(::google::protobuf::int32 value) {
+  
+  cbplatformid_ = value;
+  // @@protoc_insertion_point(field_set:LoginPmd.logonOtherPlatform_c2s.cbplatformid)
+}
+
+// string szuseruin = 7;
+void logonOtherPlatform_c2s::clear_szuseruin() {
+  szuseruin_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+const ::std::string& logonOtherPlatform_c2s::szuseruin() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.logonOtherPlatform_c2s.szuseruin)
+  return szuseruin_.GetNoArena();
+}
+void logonOtherPlatform_c2s::set_szuseruin(const ::std::string& value) {
+  
+  szuseruin_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:LoginPmd.logonOtherPlatform_c2s.szuseruin)
+}
+#if LANG_CXX11
+void logonOtherPlatform_c2s::set_szuseruin(::std::string&& value) {
+  
+  szuseruin_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:LoginPmd.logonOtherPlatform_c2s.szuseruin)
+}
+#endif
+void logonOtherPlatform_c2s::set_szuseruin(const char* value) {
+  
+  szuseruin_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:LoginPmd.logonOtherPlatform_c2s.szuseruin)
+}
+void logonOtherPlatform_c2s::set_szuseruin(const char* value, size_t size) {
+  
+  szuseruin_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:LoginPmd.logonOtherPlatform_c2s.szuseruin)
+}
+::std::string* logonOtherPlatform_c2s::mutable_szuseruin() {
+  
+  // @@protoc_insertion_point(field_mutable:LoginPmd.logonOtherPlatform_c2s.szuseruin)
+  return szuseruin_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+::std::string* logonOtherPlatform_c2s::release_szuseruin() {
+  // @@protoc_insertion_point(field_release:LoginPmd.logonOtherPlatform_c2s.szuseruin)
+  
+  return szuseruin_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+void logonOtherPlatform_c2s::set_allocated_szuseruin(::std::string* szuseruin) {
+  if (szuseruin != NULL) {
+    
+  } else {
+    
+  }
+  szuseruin_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), szuseruin);
+  // @@protoc_insertion_point(field_set_allocated:LoginPmd.logonOtherPlatform_c2s.szuseruin)
+}
+
+// string sznickname = 8;
+void logonOtherPlatform_c2s::clear_sznickname() {
+  sznickname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+const ::std::string& logonOtherPlatform_c2s::sznickname() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.logonOtherPlatform_c2s.sznickname)
+  return sznickname_.GetNoArena();
+}
+void logonOtherPlatform_c2s::set_sznickname(const ::std::string& value) {
+  
+  sznickname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:LoginPmd.logonOtherPlatform_c2s.sznickname)
+}
+#if LANG_CXX11
+void logonOtherPlatform_c2s::set_sznickname(::std::string&& value) {
+  
+  sznickname_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:LoginPmd.logonOtherPlatform_c2s.sznickname)
+}
+#endif
+void logonOtherPlatform_c2s::set_sznickname(const char* value) {
+  
+  sznickname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:LoginPmd.logonOtherPlatform_c2s.sznickname)
+}
+void logonOtherPlatform_c2s::set_sznickname(const char* value, size_t size) {
+  
+  sznickname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:LoginPmd.logonOtherPlatform_c2s.sznickname)
+}
+::std::string* logonOtherPlatform_c2s::mutable_sznickname() {
+  
+  // @@protoc_insertion_point(field_mutable:LoginPmd.logonOtherPlatform_c2s.sznickname)
+  return sznickname_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+::std::string* logonOtherPlatform_c2s::release_sznickname() {
+  // @@protoc_insertion_point(field_release:LoginPmd.logonOtherPlatform_c2s.sznickname)
+  
+  return sznickname_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+void logonOtherPlatform_c2s::set_allocated_sznickname(::std::string* sznickname) {
+  if (sznickname != NULL) {
+    
+  } else {
+    
+  }
+  sznickname_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), sznickname);
+  // @@protoc_insertion_point(field_set_allocated:LoginPmd.logonOtherPlatform_c2s.sznickname)
+}
+
+// string szcompellation = 9;
+void logonOtherPlatform_c2s::clear_szcompellation() {
+  szcompellation_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+const ::std::string& logonOtherPlatform_c2s::szcompellation() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.logonOtherPlatform_c2s.szcompellation)
+  return szcompellation_.GetNoArena();
+}
+void logonOtherPlatform_c2s::set_szcompellation(const ::std::string& value) {
+  
+  szcompellation_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:LoginPmd.logonOtherPlatform_c2s.szcompellation)
+}
+#if LANG_CXX11
+void logonOtherPlatform_c2s::set_szcompellation(::std::string&& value) {
+  
+  szcompellation_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:LoginPmd.logonOtherPlatform_c2s.szcompellation)
+}
+#endif
+void logonOtherPlatform_c2s::set_szcompellation(const char* value) {
+  
+  szcompellation_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:LoginPmd.logonOtherPlatform_c2s.szcompellation)
+}
+void logonOtherPlatform_c2s::set_szcompellation(const char* value, size_t size) {
+  
+  szcompellation_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:LoginPmd.logonOtherPlatform_c2s.szcompellation)
+}
+::std::string* logonOtherPlatform_c2s::mutable_szcompellation() {
+  
+  // @@protoc_insertion_point(field_mutable:LoginPmd.logonOtherPlatform_c2s.szcompellation)
+  return szcompellation_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+::std::string* logonOtherPlatform_c2s::release_szcompellation() {
+  // @@protoc_insertion_point(field_release:LoginPmd.logonOtherPlatform_c2s.szcompellation)
+  
+  return szcompellation_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+void logonOtherPlatform_c2s::set_allocated_szcompellation(::std::string* szcompellation) {
+  if (szcompellation != NULL) {
+    
+  } else {
+    
+  }
+  szcompellation_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), szcompellation);
+  // @@protoc_insertion_point(field_set_allocated:LoginPmd.logonOtherPlatform_c2s.szcompellation)
+}
+
+// string szmachineid = 10;
+void logonOtherPlatform_c2s::clear_szmachineid() {
+  szmachineid_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+const ::std::string& logonOtherPlatform_c2s::szmachineid() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.logonOtherPlatform_c2s.szmachineid)
+  return szmachineid_.GetNoArena();
+}
+void logonOtherPlatform_c2s::set_szmachineid(const ::std::string& value) {
+  
+  szmachineid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:LoginPmd.logonOtherPlatform_c2s.szmachineid)
+}
+#if LANG_CXX11
+void logonOtherPlatform_c2s::set_szmachineid(::std::string&& value) {
+  
+  szmachineid_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:LoginPmd.logonOtherPlatform_c2s.szmachineid)
+}
+#endif
+void logonOtherPlatform_c2s::set_szmachineid(const char* value) {
+  
+  szmachineid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:LoginPmd.logonOtherPlatform_c2s.szmachineid)
+}
+void logonOtherPlatform_c2s::set_szmachineid(const char* value, size_t size) {
+  
+  szmachineid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:LoginPmd.logonOtherPlatform_c2s.szmachineid)
+}
+::std::string* logonOtherPlatform_c2s::mutable_szmachineid() {
+  
+  // @@protoc_insertion_point(field_mutable:LoginPmd.logonOtherPlatform_c2s.szmachineid)
+  return szmachineid_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+::std::string* logonOtherPlatform_c2s::release_szmachineid() {
+  // @@protoc_insertion_point(field_release:LoginPmd.logonOtherPlatform_c2s.szmachineid)
+  
+  return szmachineid_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+void logonOtherPlatform_c2s::set_allocated_szmachineid(::std::string* szmachineid) {
+  if (szmachineid != NULL) {
+    
+  } else {
+    
+  }
+  szmachineid_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), szmachineid);
+  // @@protoc_insertion_point(field_set_allocated:LoginPmd.logonOtherPlatform_c2s.szmachineid)
+}
+
+// string szmobilephone = 11;
+void logonOtherPlatform_c2s::clear_szmobilephone() {
+  szmobilephone_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+const ::std::string& logonOtherPlatform_c2s::szmobilephone() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.logonOtherPlatform_c2s.szmobilephone)
+  return szmobilephone_.GetNoArena();
+}
+void logonOtherPlatform_c2s::set_szmobilephone(const ::std::string& value) {
+  
+  szmobilephone_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:LoginPmd.logonOtherPlatform_c2s.szmobilephone)
+}
+#if LANG_CXX11
+void logonOtherPlatform_c2s::set_szmobilephone(::std::string&& value) {
+  
+  szmobilephone_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:LoginPmd.logonOtherPlatform_c2s.szmobilephone)
+}
+#endif
+void logonOtherPlatform_c2s::set_szmobilephone(const char* value) {
+  
+  szmobilephone_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:LoginPmd.logonOtherPlatform_c2s.szmobilephone)
+}
+void logonOtherPlatform_c2s::set_szmobilephone(const char* value, size_t size) {
+  
+  szmobilephone_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:LoginPmd.logonOtherPlatform_c2s.szmobilephone)
+}
+::std::string* logonOtherPlatform_c2s::mutable_szmobilephone() {
+  
+  // @@protoc_insertion_point(field_mutable:LoginPmd.logonOtherPlatform_c2s.szmobilephone)
+  return szmobilephone_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+::std::string* logonOtherPlatform_c2s::release_szmobilephone() {
+  // @@protoc_insertion_point(field_release:LoginPmd.logonOtherPlatform_c2s.szmobilephone)
+  
+  return szmobilephone_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+void logonOtherPlatform_c2s::set_allocated_szmobilephone(::std::string* szmobilephone) {
+  if (szmobilephone != NULL) {
+    
+  } else {
+    
+  }
+  szmobilephone_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), szmobilephone);
+  // @@protoc_insertion_point(field_set_allocated:LoginPmd.logonOtherPlatform_c2s.szmobilephone)
+}
+
+// string szdevicetoken = 12;
+void logonOtherPlatform_c2s::clear_szdevicetoken() {
+  szdevicetoken_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+const ::std::string& logonOtherPlatform_c2s::szdevicetoken() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.logonOtherPlatform_c2s.szdevicetoken)
+  return szdevicetoken_.GetNoArena();
+}
+void logonOtherPlatform_c2s::set_szdevicetoken(const ::std::string& value) {
+  
+  szdevicetoken_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:LoginPmd.logonOtherPlatform_c2s.szdevicetoken)
+}
+#if LANG_CXX11
+void logonOtherPlatform_c2s::set_szdevicetoken(::std::string&& value) {
+  
+  szdevicetoken_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:LoginPmd.logonOtherPlatform_c2s.szdevicetoken)
+}
+#endif
+void logonOtherPlatform_c2s::set_szdevicetoken(const char* value) {
+  
+  szdevicetoken_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:LoginPmd.logonOtherPlatform_c2s.szdevicetoken)
+}
+void logonOtherPlatform_c2s::set_szdevicetoken(const char* value, size_t size) {
+  
+  szdevicetoken_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:LoginPmd.logonOtherPlatform_c2s.szdevicetoken)
+}
+::std::string* logonOtherPlatform_c2s::mutable_szdevicetoken() {
+  
+  // @@protoc_insertion_point(field_mutable:LoginPmd.logonOtherPlatform_c2s.szdevicetoken)
+  return szdevicetoken_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+::std::string* logonOtherPlatform_c2s::release_szdevicetoken() {
+  // @@protoc_insertion_point(field_release:LoginPmd.logonOtherPlatform_c2s.szdevicetoken)
+  
+  return szdevicetoken_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+void logonOtherPlatform_c2s::set_allocated_szdevicetoken(::std::string* szdevicetoken) {
+  if (szdevicetoken != NULL) {
+    
+  } else {
+    
+  }
+  szdevicetoken_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), szdevicetoken);
+  // @@protoc_insertion_point(field_set_allocated:LoginPmd.logonOtherPlatform_c2s.szdevicetoken)
+}
+
+// string strfaceurl = 13;
+void logonOtherPlatform_c2s::clear_strfaceurl() {
+  strfaceurl_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+const ::std::string& logonOtherPlatform_c2s::strfaceurl() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.logonOtherPlatform_c2s.strfaceurl)
+  return strfaceurl_.GetNoArena();
+}
+void logonOtherPlatform_c2s::set_strfaceurl(const ::std::string& value) {
+  
+  strfaceurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:LoginPmd.logonOtherPlatform_c2s.strfaceurl)
+}
+#if LANG_CXX11
+void logonOtherPlatform_c2s::set_strfaceurl(::std::string&& value) {
+  
+  strfaceurl_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:LoginPmd.logonOtherPlatform_c2s.strfaceurl)
+}
+#endif
+void logonOtherPlatform_c2s::set_strfaceurl(const char* value) {
+  
+  strfaceurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:LoginPmd.logonOtherPlatform_c2s.strfaceurl)
+}
+void logonOtherPlatform_c2s::set_strfaceurl(const char* value, size_t size) {
+  
+  strfaceurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:LoginPmd.logonOtherPlatform_c2s.strfaceurl)
+}
+::std::string* logonOtherPlatform_c2s::mutable_strfaceurl() {
+  
+  // @@protoc_insertion_point(field_mutable:LoginPmd.logonOtherPlatform_c2s.strfaceurl)
+  return strfaceurl_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+::std::string* logonOtherPlatform_c2s::release_strfaceurl() {
+  // @@protoc_insertion_point(field_release:LoginPmd.logonOtherPlatform_c2s.strfaceurl)
+  
+  return strfaceurl_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+void logonOtherPlatform_c2s::set_allocated_strfaceurl(::std::string* strfaceurl) {
+  if (strfaceurl != NULL) {
+    
+  } else {
+    
+  }
+  strfaceurl_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), strfaceurl);
+  // @@protoc_insertion_point(field_set_allocated:LoginPmd.logonOtherPlatform_c2s.strfaceurl)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int loginbyvisitor_c2s::kReqcmdFieldNumber;
 const int loginbyvisitor_c2s::kDwplazaversionFieldNumber;
 const int loginbyvisitor_c2s::kSzmachineidFieldNumber;
@@ -1716,7 +3017,7 @@ void loginbyvisitor_c2s::SetCachedSize(int size) const {
 }
 const ::google::protobuf::Descriptor* loginbyvisitor_c2s::descriptor() {
   protobuf_LoginPmd_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_LoginPmd_2eproto::file_level_metadata[2].descriptor;
+  return protobuf_LoginPmd_2eproto::file_level_metadata[3].descriptor;
 }
 
 const loginbyvisitor_c2s& loginbyvisitor_c2s::default_instance() {
@@ -1999,7 +3300,7 @@ void loginbyvisitor_c2s::InternalSwap(loginbyvisitor_c2s* other) {
 
 ::google::protobuf::Metadata loginbyvisitor_c2s::GetMetadata() const {
   protobuf_LoginPmd_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_LoginPmd_2eproto::file_level_metadata[2];
+  return protobuf_LoginPmd_2eproto::file_level_metadata[3];
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -2186,7 +3487,7 @@ void loginsuccess_s2c::SetCachedSize(int size) const {
 }
 const ::google::protobuf::Descriptor* loginsuccess_s2c::descriptor() {
   protobuf_LoginPmd_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_LoginPmd_2eproto::file_level_metadata[3].descriptor;
+  return protobuf_LoginPmd_2eproto::file_level_metadata[4].descriptor;
 }
 
 const loginsuccess_s2c& loginsuccess_s2c::default_instance() {
@@ -2389,7 +3690,7 @@ void loginsuccess_s2c::InternalSwap(loginsuccess_s2c* other) {
 
 ::google::protobuf::Metadata loginsuccess_s2c::GetMetadata() const {
   protobuf_LoginPmd_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_LoginPmd_2eproto::file_level_metadata[3];
+  return protobuf_LoginPmd_2eproto::file_level_metadata[4];
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -2531,7 +3832,7 @@ void loginfinish_s2c::SetCachedSize(int size) const {
 }
 const ::google::protobuf::Descriptor* loginfinish_s2c::descriptor() {
   protobuf_LoginPmd_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_LoginPmd_2eproto::file_level_metadata[4].descriptor;
+  return protobuf_LoginPmd_2eproto::file_level_metadata[5].descriptor;
 }
 
 const loginfinish_s2c& loginfinish_s2c::default_instance() {
@@ -2765,7 +4066,7 @@ void loginfinish_s2c::InternalSwap(loginfinish_s2c* other) {
 
 ::google::protobuf::Metadata loginfinish_s2c::GetMetadata() const {
   protobuf_LoginPmd_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_LoginPmd_2eproto::file_level_metadata[4];
+  return protobuf_LoginPmd_2eproto::file_level_metadata[5];
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -2890,7 +4191,7 @@ void loginfailure_s2c::SetCachedSize(int size) const {
 }
 const ::google::protobuf::Descriptor* loginfailure_s2c::descriptor() {
   protobuf_LoginPmd_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_LoginPmd_2eproto::file_level_metadata[5].descriptor;
+  return protobuf_LoginPmd_2eproto::file_level_metadata[6].descriptor;
 }
 
 const loginfailure_s2c& loginfailure_s2c::default_instance() {
@@ -3054,7 +4355,7 @@ void loginfailure_s2c::InternalSwap(loginfailure_s2c* other) {
 
 ::google::protobuf::Metadata loginfailure_s2c::GetMetadata() const {
   protobuf_LoginPmd_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_LoginPmd_2eproto::file_level_metadata[5];
+  return protobuf_LoginPmd_2eproto::file_level_metadata[6];
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS

@@ -33,6 +33,9 @@ namespace CommonPmd {
 class SYSTEMTIME;
 class SYSTEMTIMEDefaultTypeInternal;
 extern SYSTEMTIMEDefaultTypeInternal _SYSTEMTIME_default_instance_;
+class consumptionType;
+class consumptionTypeDefaultTypeInternal;
+extern consumptionTypeDefaultTypeInternal _consumptionType_default_instance_;
 class personinfo;
 class personinfoDefaultTypeInternal;
 extern personinfoDefaultTypeInternal _personinfo_default_instance_;
@@ -180,6 +183,138 @@ class SYSTEMTIME : public ::google::protobuf::Message /* @@protoc_insertion_poin
   ::google::protobuf::int32 wminute_;
   ::google::protobuf::int32 wsecond_;
   ::google::protobuf::int32 wmilliseconds_;
+  mutable int _cached_size_;
+  friend struct  protobuf_CommonPmd_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class consumptionType : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:CommonPmd.consumptionType) */ {
+ public:
+  consumptionType();
+  virtual ~consumptionType();
+
+  consumptionType(const consumptionType& from);
+
+  inline consumptionType& operator=(const consumptionType& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const consumptionType& default_instance();
+
+  static inline const consumptionType* internal_default_instance() {
+    return reinterpret_cast<const consumptionType*>(
+               &_consumptionType_default_instance_);
+  }
+
+  void Swap(consumptionType* other);
+
+  // implements Message ----------------------------------------------
+
+  inline consumptionType* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  consumptionType* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const consumptionType& from);
+  void MergeFrom(const consumptionType& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
+      const PROTOBUF_FINAL {
+    return InternalSerializeWithCachedSizesToArray(
+        ::google::protobuf::io::CodedOutputStream::IsDefaultSerializationDeterministic(), output);
+  }
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(consumptionType* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint64 lgrade = 1;
+  void clear_lgrade();
+  static const int kLgradeFieldNumber = 1;
+  ::google::protobuf::uint64 lgrade() const;
+  void set_lgrade(::google::protobuf::uint64 value);
+
+  // uint64 linsure = 2;
+  void clear_linsure();
+  static const int kLinsureFieldNumber = 2;
+  ::google::protobuf::uint64 linsure() const;
+  void set_linsure(::google::protobuf::uint64 value);
+
+  // uint64 lscore = 3;
+  void clear_lscore();
+  static const int kLscoreFieldNumber = 3;
+  ::google::protobuf::uint64 lscore() const;
+  void set_lscore(::google::protobuf::uint64 value);
+
+  // uint64 lingot = 4;
+  void clear_lingot();
+  static const int kLingotFieldNumber = 4;
+  ::google::protobuf::uint64 lingot() const;
+  void set_lingot(::google::protobuf::uint64 value);
+
+  // uint64 lbeans = 5;
+  void clear_lbeans();
+  static const int kLbeansFieldNumber = 5;
+  ::google::protobuf::uint64 lbeans() const;
+  void set_lbeans(::google::protobuf::uint64 value);
+
+  // uint64 ldiamond = 6;
+  void clear_ldiamond();
+  static const int kLdiamondFieldNumber = 6;
+  ::google::protobuf::uint64 ldiamond() const;
+  void set_ldiamond(::google::protobuf::uint64 value);
+
+  // uint64 lcoin = 7;
+  void clear_lcoin();
+  static const int kLcoinFieldNumber = 7;
+  ::google::protobuf::uint64 lcoin() const;
+  void set_lcoin(::google::protobuf::uint64 value);
+
+  // uint64 lcard = 8;
+  void clear_lcard();
+  static const int kLcardFieldNumber = 8;
+  ::google::protobuf::uint64 lcard() const;
+  void set_lcard(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:CommonPmd.consumptionType)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint64 lgrade_;
+  ::google::protobuf::uint64 linsure_;
+  ::google::protobuf::uint64 lscore_;
+  ::google::protobuf::uint64 lingot_;
+  ::google::protobuf::uint64 lbeans_;
+  ::google::protobuf::uint64 ldiamond_;
+  ::google::protobuf::uint64 lcoin_;
+  ::google::protobuf::uint64 lcard_;
   mutable int _cached_size_;
   friend struct  protobuf_CommonPmd_2eproto::TableStruct;
 };
@@ -618,6 +753,122 @@ inline void SYSTEMTIME::set_wmilliseconds(::google::protobuf::int32 value) {
   
   wmilliseconds_ = value;
   // @@protoc_insertion_point(field_set:CommonPmd.SYSTEMTIME.wMilliseconds)
+}
+
+// -------------------------------------------------------------------
+
+// consumptionType
+
+// uint64 lgrade = 1;
+inline void consumptionType::clear_lgrade() {
+  lgrade_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 consumptionType::lgrade() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.consumptionType.lgrade)
+  return lgrade_;
+}
+inline void consumptionType::set_lgrade(::google::protobuf::uint64 value) {
+  
+  lgrade_ = value;
+  // @@protoc_insertion_point(field_set:CommonPmd.consumptionType.lgrade)
+}
+
+// uint64 linsure = 2;
+inline void consumptionType::clear_linsure() {
+  linsure_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 consumptionType::linsure() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.consumptionType.linsure)
+  return linsure_;
+}
+inline void consumptionType::set_linsure(::google::protobuf::uint64 value) {
+  
+  linsure_ = value;
+  // @@protoc_insertion_point(field_set:CommonPmd.consumptionType.linsure)
+}
+
+// uint64 lscore = 3;
+inline void consumptionType::clear_lscore() {
+  lscore_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 consumptionType::lscore() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.consumptionType.lscore)
+  return lscore_;
+}
+inline void consumptionType::set_lscore(::google::protobuf::uint64 value) {
+  
+  lscore_ = value;
+  // @@protoc_insertion_point(field_set:CommonPmd.consumptionType.lscore)
+}
+
+// uint64 lingot = 4;
+inline void consumptionType::clear_lingot() {
+  lingot_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 consumptionType::lingot() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.consumptionType.lingot)
+  return lingot_;
+}
+inline void consumptionType::set_lingot(::google::protobuf::uint64 value) {
+  
+  lingot_ = value;
+  // @@protoc_insertion_point(field_set:CommonPmd.consumptionType.lingot)
+}
+
+// uint64 lbeans = 5;
+inline void consumptionType::clear_lbeans() {
+  lbeans_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 consumptionType::lbeans() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.consumptionType.lbeans)
+  return lbeans_;
+}
+inline void consumptionType::set_lbeans(::google::protobuf::uint64 value) {
+  
+  lbeans_ = value;
+  // @@protoc_insertion_point(field_set:CommonPmd.consumptionType.lbeans)
+}
+
+// uint64 ldiamond = 6;
+inline void consumptionType::clear_ldiamond() {
+  ldiamond_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 consumptionType::ldiamond() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.consumptionType.ldiamond)
+  return ldiamond_;
+}
+inline void consumptionType::set_ldiamond(::google::protobuf::uint64 value) {
+  
+  ldiamond_ = value;
+  // @@protoc_insertion_point(field_set:CommonPmd.consumptionType.ldiamond)
+}
+
+// uint64 lcoin = 7;
+inline void consumptionType::clear_lcoin() {
+  lcoin_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 consumptionType::lcoin() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.consumptionType.lcoin)
+  return lcoin_;
+}
+inline void consumptionType::set_lcoin(::google::protobuf::uint64 value) {
+  
+  lcoin_ = value;
+  // @@protoc_insertion_point(field_set:CommonPmd.consumptionType.lcoin)
+}
+
+// uint64 lcard = 8;
+inline void consumptionType::clear_lcard() {
+  lcard_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 consumptionType::lcard() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.consumptionType.lcard)
+  return lcard_;
+}
+inline void consumptionType::set_lcard(::google::protobuf::uint64 value) {
+  
+  lcard_ = value;
+  // @@protoc_insertion_point(field_set:CommonPmd.consumptionType.lcard)
 }
 
 // -------------------------------------------------------------------
@@ -1280,6 +1531,8 @@ inline void personinfo::set_allocated_szdescribestring(::std::string* szdescribe
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 

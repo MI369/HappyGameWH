@@ -29,8 +29,23 @@
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/unknown_field_set.h>
 #include "NullPmd.pb.h"
+#include "CommonPmd.pb.h"
 // @@protoc_insertion_point(includes)
+namespace CommonPmd {
+class SYSTEMTIME;
+class SYSTEMTIMEDefaultTypeInternal;
+extern SYSTEMTIMEDefaultTypeInternal _SYSTEMTIME_default_instance_;
+class consumptionType;
+class consumptionTypeDefaultTypeInternal;
+extern consumptionTypeDefaultTypeInternal _consumptionType_default_instance_;
+class personinfo;
+class personinfoDefaultTypeInternal;
+extern personinfoDefaultTypeInternal _personinfo_default_instance_;
+}  // namespace CommonPmd
 namespace GamePmd {
+class personalParameter_c2s;
+class personalParameter_c2sDefaultTypeInternal;
+extern personalParameter_c2sDefaultTypeInternal _personalParameter_c2s_default_instance_;
 class tagGameNode;
 class tagGameNodeDefaultTypeInternal;
 extern tagGameNodeDefaultTypeInternal _tagGameNode_default_instance_;
@@ -49,6 +64,21 @@ extern tagGameServerDefaultTypeInternal _tagGameServer_default_instance_;
 class tagGameServer_s2c;
 class tagGameServer_s2cDefaultTypeInternal;
 extern tagGameServer_s2cDefaultTypeInternal _tagGameServer_s2c_default_instance_;
+class tagGetPersonalRule_s2c;
+class tagGetPersonalRule_s2cDefaultTypeInternal;
+extern tagGetPersonalRule_s2cDefaultTypeInternal _tagGetPersonalRule_s2c_default_instance_;
+class tagPersonalCellScore_s2c;
+class tagPersonalCellScore_s2cDefaultTypeInternal;
+extern tagPersonalCellScore_s2cDefaultTypeInternal _tagPersonalCellScore_s2c_default_instance_;
+class tagPersonalRoomOption_s2c;
+class tagPersonalRoomOption_s2cDefaultTypeInternal;
+extern tagPersonalRoomOption_s2cDefaultTypeInternal _tagPersonalRoomOption_s2c_default_instance_;
+class tagPersonalTableFeeList;
+class tagPersonalTableFeeListDefaultTypeInternal;
+extern tagPersonalTableFeeListDefaultTypeInternal _tagPersonalTableFeeList_default_instance_;
+class tagPersonalTableFeeList_s2c;
+class tagPersonalTableFeeList_s2cDefaultTypeInternal;
+extern tagPersonalTableFeeList_s2cDefaultTypeInternal _tagPersonalTableFeeList_s2c_default_instance_;
 class taggamekind;
 class taggamekindDefaultTypeInternal;
 extern taggamekindDefaultTypeInternal _taggamekind_default_instance_;
@@ -708,9 +738,9 @@ class tagGameServer : public ::google::protobuf::Message /* @@protoc_insertion_p
 
   // accessors -------------------------------------------------------
 
-  // string szServerAddr = 16;
+  // string szserveraddr = 16;
   void clear_szserveraddr();
-  static const int kSzServerAddrFieldNumber = 16;
+  static const int kSzserveraddrFieldNumber = 16;
   const ::std::string& szserveraddr() const;
   void set_szserveraddr(const ::std::string& value);
   #if LANG_CXX11
@@ -722,9 +752,9 @@ class tagGameServer : public ::google::protobuf::Message /* @@protoc_insertion_p
   ::std::string* release_szserveraddr();
   void set_allocated_szserveraddr(::std::string* szserveraddr);
 
-  // string szServerName = 17;
+  // string szservername = 17;
   void clear_szservername();
-  static const int kSzServerNameFieldNumber = 17;
+  static const int kSzservernameFieldNumber = 17;
   const ::std::string& szservername() const;
   void set_szservername(const ::std::string& value);
   #if LANG_CXX11
@@ -736,9 +766,9 @@ class tagGameServer : public ::google::protobuf::Message /* @@protoc_insertion_p
   ::std::string* release_szservername();
   void set_allocated_szservername(::std::string* szservername);
 
-  // string szGameInfomation = 21;
+  // string szgameinfomation = 21;
   void clear_szgameinfomation();
-  static const int kSzGameInfomationFieldNumber = 21;
+  static const int kSzgameinfomationFieldNumber = 21;
   const ::std::string& szgameinfomation() const;
   void set_szgameinfomation(const ::std::string& value);
   #if LANG_CXX11
@@ -750,111 +780,111 @@ class tagGameServer : public ::google::protobuf::Message /* @@protoc_insertion_p
   ::std::string* release_szgameinfomation();
   void set_allocated_szgameinfomation(::std::string* szgameinfomation);
 
-  // int32 wKindID = 1;
+  // int32 wkindid = 1;
   void clear_wkindid();
-  static const int kWKindIDFieldNumber = 1;
+  static const int kWkindidFieldNumber = 1;
   ::google::protobuf::int32 wkindid() const;
   void set_wkindid(::google::protobuf::int32 value);
 
-  // int32 wNodeID = 2;
+  // int32 wnodeid = 2;
   void clear_wnodeid();
-  static const int kWNodeIDFieldNumber = 2;
+  static const int kWnodeidFieldNumber = 2;
   ::google::protobuf::int32 wnodeid() const;
   void set_wnodeid(::google::protobuf::int32 value);
 
-  // int32 wSortID = 3;
+  // int32 wsortid = 3;
   void clear_wsortid();
-  static const int kWSortIDFieldNumber = 3;
+  static const int kWsortidFieldNumber = 3;
   ::google::protobuf::int32 wsortid() const;
   void set_wsortid(::google::protobuf::int32 value);
 
-  // int32 wServerID = 4;
+  // int32 wserverid = 4;
   void clear_wserverid();
-  static const int kWServerIDFieldNumber = 4;
+  static const int kWserveridFieldNumber = 4;
   ::google::protobuf::int32 wserverid() const;
   void set_wserverid(::google::protobuf::int32 value);
 
-  // int32 wServerKind = 5;
+  // int32 wserverkind = 5;
   void clear_wserverkind();
-  static const int kWServerKindFieldNumber = 5;
+  static const int kWserverkindFieldNumber = 5;
   ::google::protobuf::int32 wserverkind() const;
   void set_wserverkind(::google::protobuf::int32 value);
 
-  // int32 wServerType = 6;
+  // int32 wservertype = 6;
   void clear_wservertype();
-  static const int kWServerTypeFieldNumber = 6;
+  static const int kWservertypeFieldNumber = 6;
   ::google::protobuf::int32 wservertype() const;
   void set_wservertype(::google::protobuf::int32 value);
 
-  // int32 wServerLevel = 7;
+  // int32 wserverlevel = 7;
   void clear_wserverlevel();
-  static const int kWServerLevelFieldNumber = 7;
+  static const int kWserverlevelFieldNumber = 7;
   ::google::protobuf::int32 wserverlevel() const;
   void set_wserverlevel(::google::protobuf::int32 value);
 
-  // int32 wServerPort = 8;
+  // int32 wserverport = 8;
   void clear_wserverport();
-  static const int kWServerPortFieldNumber = 8;
+  static const int kWserverportFieldNumber = 8;
   ::google::protobuf::int32 wserverport() const;
   void set_wserverport(::google::protobuf::int32 value);
 
-  // uint64 lCellScore = 9;
+  // uint64 lcellscore = 9;
   void clear_lcellscore();
-  static const int kLCellScoreFieldNumber = 9;
+  static const int kLcellscoreFieldNumber = 9;
   ::google::protobuf::uint64 lcellscore() const;
   void set_lcellscore(::google::protobuf::uint64 value);
 
-  // uint64 lEnterScore = 11;
+  // uint64 lenterscore = 11;
   void clear_lenterscore();
-  static const int kLEnterScoreFieldNumber = 11;
+  static const int kLenterscoreFieldNumber = 11;
   ::google::protobuf::uint64 lenterscore() const;
   void set_lenterscore(::google::protobuf::uint64 value);
 
-  // uint64 dwServerRule = 12;
+  // uint64 dwserverrule = 12;
   void clear_dwserverrule();
-  static const int kDwServerRuleFieldNumber = 12;
+  static const int kDwserverruleFieldNumber = 12;
   ::google::protobuf::uint64 dwserverrule() const;
   void set_dwserverrule(::google::protobuf::uint64 value);
 
-  // uint64 dwOnLineCount = 13;
+  // uint64 dwonlinecount = 13;
   void clear_dwonlinecount();
-  static const int kDwOnLineCountFieldNumber = 13;
+  static const int kDwonlinecountFieldNumber = 13;
   ::google::protobuf::uint64 dwonlinecount() const;
   void set_dwonlinecount(::google::protobuf::uint64 value);
 
-  // uint64 dwAndroidCount = 14;
+  // uint64 dwandroidcount = 14;
   void clear_dwandroidcount();
-  static const int kDwAndroidCountFieldNumber = 14;
+  static const int kDwandroidcountFieldNumber = 14;
   ::google::protobuf::uint64 dwandroidcount() const;
   void set_dwandroidcount(::google::protobuf::uint64 value);
 
-  // int32 cbEnterMember = 10;
+  // int32 cbentermember = 10;
   void clear_cbentermember();
-  static const int kCbEnterMemberFieldNumber = 10;
+  static const int kCbentermemberFieldNumber = 10;
   ::google::protobuf::int32 cbentermember() const;
   void set_cbentermember(::google::protobuf::int32 value);
 
-  // int32 wTableCount = 19;
+  // int32 wtablecount = 19;
   void clear_wtablecount();
-  static const int kWTableCountFieldNumber = 19;
+  static const int kWtablecountFieldNumber = 19;
   ::google::protobuf::int32 wtablecount() const;
   void set_wtablecount(::google::protobuf::int32 value);
 
-  // uint64 dwFullCount = 15;
+  // uint64 dwfullcount = 15;
   void clear_dwfullcount();
-  static const int kDwFullCountFieldNumber = 15;
+  static const int kDwfullcountFieldNumber = 15;
   ::google::protobuf::uint64 dwfullcount() const;
   void set_dwfullcount(::google::protobuf::uint64 value);
 
-  // uint64 dwSurportType = 18;
+  // uint64 dwsurporttype = 18;
   void clear_dwsurporttype();
-  static const int kDwSurportTypeFieldNumber = 18;
+  static const int kDwsurporttypeFieldNumber = 18;
   ::google::protobuf::uint64 dwsurporttype() const;
   void set_dwsurporttype(::google::protobuf::uint64 value);
 
-  // uint64 dwSetPlayerCount = 20;
+  // uint64 dwsetplayercount = 20;
   void clear_dwsetplayercount();
-  static const int kDwSetPlayerCountFieldNumber = 20;
+  static const int kDwsetplayercountFieldNumber = 20;
   ::google::protobuf::uint64 dwsetplayercount() const;
   void set_dwsetplayercount(::google::protobuf::uint64 value);
 
@@ -1378,6 +1408,711 @@ class tagGameServer_s2c : public ::google::protobuf::Message /* @@protoc_inserti
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::RepeatedPtrField< ::GamePmd::tagGameServer > taggameserver_;
   ::NullPmd::response* respcmd_;
+  mutable int _cached_size_;
+  friend struct  protobuf_GamePmd_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class personalParameter_c2s : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:GamePmd.personalParameter_c2s) */ {
+ public:
+  personalParameter_c2s();
+  virtual ~personalParameter_c2s();
+
+  personalParameter_c2s(const personalParameter_c2s& from);
+
+  inline personalParameter_c2s& operator=(const personalParameter_c2s& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const personalParameter_c2s& default_instance();
+
+  static inline const personalParameter_c2s* internal_default_instance() {
+    return reinterpret_cast<const personalParameter_c2s*>(
+               &_personalParameter_c2s_default_instance_);
+  }
+
+  void Swap(personalParameter_c2s* other);
+
+  // implements Message ----------------------------------------------
+
+  inline personalParameter_c2s* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  personalParameter_c2s* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const personalParameter_c2s& from);
+  void MergeFrom(const personalParameter_c2s& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
+      const PROTOBUF_FINAL {
+    return InternalSerializeWithCachedSizesToArray(
+        ::google::protobuf::io::CodedOutputStream::IsDefaultSerializationDeterministic(), output);
+  }
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(personalParameter_c2s* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // .NullPmd.response respcmd = 1;
+  bool has_respcmd() const;
+  void clear_respcmd();
+  static const int kRespcmdFieldNumber = 1;
+  const ::NullPmd::response& respcmd() const;
+  ::NullPmd::response* mutable_respcmd();
+  ::NullPmd::response* release_respcmd();
+  void set_allocated_respcmd(::NullPmd::response* respcmd);
+
+  // uint64 dwkindid = 2;
+  void clear_dwkindid();
+  static const int kDwkindidFieldNumber = 2;
+  ::google::protobuf::uint64 dwkindid() const;
+  void set_dwkindid(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:GamePmd.personalParameter_c2s)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::NullPmd::response* respcmd_;
+  ::google::protobuf::uint64 dwkindid_;
+  mutable int _cached_size_;
+  friend struct  protobuf_GamePmd_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class tagPersonalTableFeeList : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:GamePmd.tagPersonalTableFeeList) */ {
+ public:
+  tagPersonalTableFeeList();
+  virtual ~tagPersonalTableFeeList();
+
+  tagPersonalTableFeeList(const tagPersonalTableFeeList& from);
+
+  inline tagPersonalTableFeeList& operator=(const tagPersonalTableFeeList& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const tagPersonalTableFeeList& default_instance();
+
+  static inline const tagPersonalTableFeeList* internal_default_instance() {
+    return reinterpret_cast<const tagPersonalTableFeeList*>(
+               &_tagPersonalTableFeeList_default_instance_);
+  }
+
+  void Swap(tagPersonalTableFeeList* other);
+
+  // implements Message ----------------------------------------------
+
+  inline tagPersonalTableFeeList* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  tagPersonalTableFeeList* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const tagPersonalTableFeeList& from);
+  void MergeFrom(const tagPersonalTableFeeList& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
+      const PROTOBUF_FINAL {
+    return InternalSerializeWithCachedSizesToArray(
+        ::google::protobuf::io::CodedOutputStream::IsDefaultSerializationDeterministic(), output);
+  }
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(tagPersonalTableFeeList* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint64 dwdrawtimelimit = 1;
+  void clear_dwdrawtimelimit();
+  static const int kDwdrawtimelimitFieldNumber = 1;
+  ::google::protobuf::uint64 dwdrawtimelimit() const;
+  void set_dwdrawtimelimit(::google::protobuf::uint64 value);
+
+  // uint64 dwdrawcountlimit = 2;
+  void clear_dwdrawcountlimit();
+  static const int kDwdrawcountlimitFieldNumber = 2;
+  ::google::protobuf::uint64 dwdrawcountlimit() const;
+  void set_dwdrawcountlimit(::google::protobuf::uint64 value);
+
+  // uint64 liniscore = 3;
+  void clear_liniscore();
+  static const int kLiniscoreFieldNumber = 3;
+  ::google::protobuf::uint64 liniscore() const;
+  void set_liniscore(::google::protobuf::uint64 value);
+
+  // uint64 lfeescore = 4;
+  void clear_lfeescore();
+  static const int kLfeescoreFieldNumber = 4;
+  ::google::protobuf::uint64 lfeescore() const;
+  void set_lfeescore(::google::protobuf::uint64 value);
+
+  // int32 waapayfee = 5;
+  void clear_waapayfee();
+  static const int kWaapayfeeFieldNumber = 5;
+  ::google::protobuf::int32 waapayfee() const;
+  void set_waapayfee(::google::protobuf::int32 value);
+
+  // int32 cbgamemode = 6;
+  void clear_cbgamemode();
+  static const int kCbgamemodeFieldNumber = 6;
+  ::google::protobuf::int32 cbgamemode() const;
+  void set_cbgamemode(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:GamePmd.tagPersonalTableFeeList)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint64 dwdrawtimelimit_;
+  ::google::protobuf::uint64 dwdrawcountlimit_;
+  ::google::protobuf::uint64 liniscore_;
+  ::google::protobuf::uint64 lfeescore_;
+  ::google::protobuf::int32 waapayfee_;
+  ::google::protobuf::int32 cbgamemode_;
+  mutable int _cached_size_;
+  friend struct  protobuf_GamePmd_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class tagPersonalTableFeeList_s2c : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:GamePmd.tagPersonalTableFeeList_s2c) */ {
+ public:
+  tagPersonalTableFeeList_s2c();
+  virtual ~tagPersonalTableFeeList_s2c();
+
+  tagPersonalTableFeeList_s2c(const tagPersonalTableFeeList_s2c& from);
+
+  inline tagPersonalTableFeeList_s2c& operator=(const tagPersonalTableFeeList_s2c& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const tagPersonalTableFeeList_s2c& default_instance();
+
+  static inline const tagPersonalTableFeeList_s2c* internal_default_instance() {
+    return reinterpret_cast<const tagPersonalTableFeeList_s2c*>(
+               &_tagPersonalTableFeeList_s2c_default_instance_);
+  }
+
+  void Swap(tagPersonalTableFeeList_s2c* other);
+
+  // implements Message ----------------------------------------------
+
+  inline tagPersonalTableFeeList_s2c* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  tagPersonalTableFeeList_s2c* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const tagPersonalTableFeeList_s2c& from);
+  void MergeFrom(const tagPersonalTableFeeList_s2c& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
+      const PROTOBUF_FINAL {
+    return InternalSerializeWithCachedSizesToArray(
+        ::google::protobuf::io::CodedOutputStream::IsDefaultSerializationDeterministic(), output);
+  }
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(tagPersonalTableFeeList_s2c* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .GamePmd.tagPersonalTableFeeList tagPersonalTableFeeList = 2;
+  int tagpersonaltablefeelist_size() const;
+  void clear_tagpersonaltablefeelist();
+  static const int kTagPersonalTableFeeListFieldNumber = 2;
+  const ::GamePmd::tagPersonalTableFeeList& tagpersonaltablefeelist(int index) const;
+  ::GamePmd::tagPersonalTableFeeList* mutable_tagpersonaltablefeelist(int index);
+  ::GamePmd::tagPersonalTableFeeList* add_tagpersonaltablefeelist();
+  ::google::protobuf::RepeatedPtrField< ::GamePmd::tagPersonalTableFeeList >*
+      mutable_tagpersonaltablefeelist();
+  const ::google::protobuf::RepeatedPtrField< ::GamePmd::tagPersonalTableFeeList >&
+      tagpersonaltablefeelist() const;
+
+  // .NullPmd.response respcmd = 1;
+  bool has_respcmd() const;
+  void clear_respcmd();
+  static const int kRespcmdFieldNumber = 1;
+  const ::NullPmd::response& respcmd() const;
+  ::NullPmd::response* mutable_respcmd();
+  ::NullPmd::response* release_respcmd();
+  void set_allocated_respcmd(::NullPmd::response* respcmd);
+
+  // @@protoc_insertion_point(class_scope:GamePmd.tagPersonalTableFeeList_s2c)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::RepeatedPtrField< ::GamePmd::tagPersonalTableFeeList > tagpersonaltablefeelist_;
+  ::NullPmd::response* respcmd_;
+  mutable int _cached_size_;
+  friend struct  protobuf_GamePmd_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class tagPersonalCellScore_s2c : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:GamePmd.tagPersonalCellScore_s2c) */ {
+ public:
+  tagPersonalCellScore_s2c();
+  virtual ~tagPersonalCellScore_s2c();
+
+  tagPersonalCellScore_s2c(const tagPersonalCellScore_s2c& from);
+
+  inline tagPersonalCellScore_s2c& operator=(const tagPersonalCellScore_s2c& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const tagPersonalCellScore_s2c& default_instance();
+
+  static inline const tagPersonalCellScore_s2c* internal_default_instance() {
+    return reinterpret_cast<const tagPersonalCellScore_s2c*>(
+               &_tagPersonalCellScore_s2c_default_instance_);
+  }
+
+  void Swap(tagPersonalCellScore_s2c* other);
+
+  // implements Message ----------------------------------------------
+
+  inline tagPersonalCellScore_s2c* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  tagPersonalCellScore_s2c* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const tagPersonalCellScore_s2c& from);
+  void MergeFrom(const tagPersonalCellScore_s2c& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
+      const PROTOBUF_FINAL {
+    return InternalSerializeWithCachedSizesToArray(
+        ::google::protobuf::io::CodedOutputStream::IsDefaultSerializationDeterministic(), output);
+  }
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(tagPersonalCellScore_s2c* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated int32 ncellscore = 2;
+  int ncellscore_size() const;
+  void clear_ncellscore();
+  static const int kNcellscoreFieldNumber = 2;
+  ::google::protobuf::int32 ncellscore(int index) const;
+  void set_ncellscore(int index, ::google::protobuf::int32 value);
+  void add_ncellscore(::google::protobuf::int32 value);
+  const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+      ncellscore() const;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+      mutable_ncellscore();
+
+  // .NullPmd.response respcmd = 1;
+  bool has_respcmd() const;
+  void clear_respcmd();
+  static const int kRespcmdFieldNumber = 1;
+  const ::NullPmd::response& respcmd() const;
+  ::NullPmd::response* mutable_respcmd();
+  ::NullPmd::response* release_respcmd();
+  void set_allocated_respcmd(::NullPmd::response* respcmd);
+
+  // @@protoc_insertion_point(class_scope:GamePmd.tagPersonalCellScore_s2c)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 > ncellscore_;
+  mutable int _ncellscore_cached_byte_size_;
+  ::NullPmd::response* respcmd_;
+  mutable int _cached_size_;
+  friend struct  protobuf_GamePmd_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class tagGetPersonalRule_s2c : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:GamePmd.tagGetPersonalRule_s2c) */ {
+ public:
+  tagGetPersonalRule_s2c();
+  virtual ~tagGetPersonalRule_s2c();
+
+  tagGetPersonalRule_s2c(const tagGetPersonalRule_s2c& from);
+
+  inline tagGetPersonalRule_s2c& operator=(const tagGetPersonalRule_s2c& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const tagGetPersonalRule_s2c& default_instance();
+
+  static inline const tagGetPersonalRule_s2c* internal_default_instance() {
+    return reinterpret_cast<const tagGetPersonalRule_s2c*>(
+               &_tagGetPersonalRule_s2c_default_instance_);
+  }
+
+  void Swap(tagGetPersonalRule_s2c* other);
+
+  // implements Message ----------------------------------------------
+
+  inline tagGetPersonalRule_s2c* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  tagGetPersonalRule_s2c* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const tagGetPersonalRule_s2c& from);
+  void MergeFrom(const tagGetPersonalRule_s2c& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
+      const PROTOBUF_FINAL {
+    return InternalSerializeWithCachedSizesToArray(
+        ::google::protobuf::io::CodedOutputStream::IsDefaultSerializationDeterministic(), output);
+  }
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(tagGetPersonalRule_s2c* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string cbpersonalrule = 2;
+  void clear_cbpersonalrule();
+  static const int kCbpersonalruleFieldNumber = 2;
+  const ::std::string& cbpersonalrule() const;
+  void set_cbpersonalrule(const ::std::string& value);
+  #if LANG_CXX11
+  void set_cbpersonalrule(::std::string&& value);
+  #endif
+  void set_cbpersonalrule(const char* value);
+  void set_cbpersonalrule(const char* value, size_t size);
+  ::std::string* mutable_cbpersonalrule();
+  ::std::string* release_cbpersonalrule();
+  void set_allocated_cbpersonalrule(::std::string* cbpersonalrule);
+
+  // .NullPmd.response respcmd = 1;
+  bool has_respcmd() const;
+  void clear_respcmd();
+  static const int kRespcmdFieldNumber = 1;
+  const ::NullPmd::response& respcmd() const;
+  ::NullPmd::response* mutable_respcmd();
+  ::NullPmd::response* release_respcmd();
+  void set_allocated_respcmd(::NullPmd::response* respcmd);
+
+  // @@protoc_insertion_point(class_scope:GamePmd.tagGetPersonalRule_s2c)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr cbpersonalrule_;
+  ::NullPmd::response* respcmd_;
+  mutable int _cached_size_;
+  friend struct  protobuf_GamePmd_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class tagPersonalRoomOption_s2c : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:GamePmd.tagPersonalRoomOption_s2c) */ {
+ public:
+  tagPersonalRoomOption_s2c();
+  virtual ~tagPersonalRoomOption_s2c();
+
+  tagPersonalRoomOption_s2c(const tagPersonalRoomOption_s2c& from);
+
+  inline tagPersonalRoomOption_s2c& operator=(const tagPersonalRoomOption_s2c& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const tagPersonalRoomOption_s2c& default_instance();
+
+  static inline const tagPersonalRoomOption_s2c* internal_default_instance() {
+    return reinterpret_cast<const tagPersonalRoomOption_s2c*>(
+               &_tagPersonalRoomOption_s2c_default_instance_);
+  }
+
+  void Swap(tagPersonalRoomOption_s2c* other);
+
+  // implements Message ----------------------------------------------
+
+  inline tagPersonalRoomOption_s2c* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  tagPersonalRoomOption_s2c* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const tagPersonalRoomOption_s2c& from);
+  void MergeFrom(const tagPersonalRoomOption_s2c& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
+      const PROTOBUF_FINAL {
+    return InternalSerializeWithCachedSizesToArray(
+        ::google::protobuf::io::CodedOutputStream::IsDefaultSerializationDeterministic(), output);
+  }
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(tagPersonalRoomOption_s2c* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // .NullPmd.response respcmd = 1;
+  bool has_respcmd() const;
+  void clear_respcmd();
+  static const int kRespcmdFieldNumber = 1;
+  const ::NullPmd::response& respcmd() const;
+  ::NullPmd::response* mutable_respcmd();
+  ::NullPmd::response* release_respcmd();
+  void set_allocated_respcmd(::NullPmd::response* respcmd);
+
+  // .CommonPmd.consumptionType bconsumptiontype = 7;
+  bool has_bconsumptiontype() const;
+  void clear_bconsumptiontype();
+  static const int kBconsumptiontypeFieldNumber = 7;
+  const ::CommonPmd::consumptionType& bconsumptiontype() const;
+  ::CommonPmd::consumptionType* mutable_bconsumptiontype();
+  ::CommonPmd::consumptionType* release_bconsumptiontype();
+  void set_allocated_bconsumptiontype(::CommonPmd::consumptionType* bconsumptiontype);
+
+  // int32 cbisjoingame = 2;
+  void clear_cbisjoingame();
+  static const int kCbisjoingameFieldNumber = 2;
+  ::google::protobuf::int32 cbisjoingame() const;
+  void set_cbisjoingame(::google::protobuf::int32 value);
+
+  // int32 cbminpeople = 3;
+  void clear_cbminpeople();
+  static const int kCbminpeopleFieldNumber = 3;
+  ::google::protobuf::int32 cbminpeople() const;
+  void set_cbminpeople(::google::protobuf::int32 value);
+
+  // uint64 lmaxcellscore = 5;
+  void clear_lmaxcellscore();
+  static const int kLmaxcellscoreFieldNumber = 5;
+  ::google::protobuf::uint64 lmaxcellscore() const;
+  void set_lmaxcellscore(::google::protobuf::uint64 value);
+
+  // uint64 lpersonalroomtax = 6;
+  void clear_lpersonalroomtax();
+  static const int kLpersonalroomtaxFieldNumber = 6;
+  ::google::protobuf::uint64 lpersonalroomtax() const;
+  void set_lpersonalroomtax(::google::protobuf::uint64 value);
+
+  // int32 cbmaxpeople = 4;
+  void clear_cbmaxpeople();
+  static const int kCbmaxpeopleFieldNumber = 4;
+  ::google::protobuf::int32 cbmaxpeople() const;
+  void set_cbmaxpeople(::google::protobuf::int32 value);
+
+  // int32 wcancreatecount = 8;
+  void clear_wcancreatecount();
+  static const int kWcancreatecountFieldNumber = 8;
+  ::google::protobuf::int32 wcancreatecount() const;
+  void set_wcancreatecount(::google::protobuf::int32 value);
+
+  // uint64 dwplayturncount = 9;
+  void clear_dwplayturncount();
+  static const int kDwplayturncountFieldNumber = 9;
+  ::google::protobuf::uint64 dwplayturncount() const;
+  void set_dwplayturncount(::google::protobuf::uint64 value);
+
+  // uint64 dwplaytimelimit = 10;
+  void clear_dwplaytimelimit();
+  static const int kDwplaytimelimitFieldNumber = 10;
+  ::google::protobuf::uint64 dwplaytimelimit() const;
+  void set_dwplaytimelimit(::google::protobuf::uint64 value);
+
+  // uint64 dwtimeafterbegincount = 11;
+  void clear_dwtimeafterbegincount();
+  static const int kDwtimeafterbegincountFieldNumber = 11;
+  ::google::protobuf::uint64 dwtimeafterbegincount() const;
+  void set_dwtimeafterbegincount(::google::protobuf::uint64 value);
+
+  // uint64 dwtimeofflinecount = 12;
+  void clear_dwtimeofflinecount();
+  static const int kDwtimeofflinecountFieldNumber = 12;
+  ::google::protobuf::uint64 dwtimeofflinecount() const;
+  void set_dwtimeofflinecount(::google::protobuf::uint64 value);
+
+  // uint64 dwtimenotbegingame = 13;
+  void clear_dwtimenotbegingame();
+  static const int kDwtimenotbegingameFieldNumber = 13;
+  ::google::protobuf::uint64 dwtimenotbegingame() const;
+  void set_dwtimenotbegingame(::google::protobuf::uint64 value);
+
+  // uint64 dwtimeaftercreateroom = 14;
+  void clear_dwtimeaftercreateroom();
+  static const int kDwtimeaftercreateroomFieldNumber = 14;
+  ::google::protobuf::uint64 dwtimeaftercreateroom() const;
+  void set_dwtimeaftercreateroom(::google::protobuf::uint64 value);
+
+  // int32 wbeginfreetime = 15;
+  void clear_wbeginfreetime();
+  static const int kWbeginfreetimeFieldNumber = 15;
+  ::google::protobuf::int32 wbeginfreetime() const;
+  void set_wbeginfreetime(::google::protobuf::int32 value);
+
+  // int32 wendfreetime = 16;
+  void clear_wendfreetime();
+  static const int kWendfreetimeFieldNumber = 16;
+  ::google::protobuf::int32 wendfreetime() const;
+  void set_wendfreetime(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:GamePmd.tagPersonalRoomOption_s2c)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::NullPmd::response* respcmd_;
+  ::CommonPmd::consumptionType* bconsumptiontype_;
+  ::google::protobuf::int32 cbisjoingame_;
+  ::google::protobuf::int32 cbminpeople_;
+  ::google::protobuf::uint64 lmaxcellscore_;
+  ::google::protobuf::uint64 lpersonalroomtax_;
+  ::google::protobuf::int32 cbmaxpeople_;
+  ::google::protobuf::int32 wcancreatecount_;
+  ::google::protobuf::uint64 dwplayturncount_;
+  ::google::protobuf::uint64 dwplaytimelimit_;
+  ::google::protobuf::uint64 dwtimeafterbegincount_;
+  ::google::protobuf::uint64 dwtimeofflinecount_;
+  ::google::protobuf::uint64 dwtimenotbegingame_;
+  ::google::protobuf::uint64 dwtimeaftercreateroom_;
+  ::google::protobuf::int32 wbeginfreetime_;
+  ::google::protobuf::int32 wendfreetime_;
   mutable int _cached_size_;
   friend struct  protobuf_GamePmd_2eproto::TableStruct;
 };
@@ -1987,255 +2722,255 @@ inline void tagGamePage::set_allocated_szdisplayname(::std::string* szdisplaynam
 
 // tagGameServer
 
-// int32 wKindID = 1;
+// int32 wkindid = 1;
 inline void tagGameServer::clear_wkindid() {
   wkindid_ = 0;
 }
 inline ::google::protobuf::int32 tagGameServer::wkindid() const {
-  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.wKindID)
+  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.wkindid)
   return wkindid_;
 }
 inline void tagGameServer::set_wkindid(::google::protobuf::int32 value) {
   
   wkindid_ = value;
-  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.wKindID)
+  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.wkindid)
 }
 
-// int32 wNodeID = 2;
+// int32 wnodeid = 2;
 inline void tagGameServer::clear_wnodeid() {
   wnodeid_ = 0;
 }
 inline ::google::protobuf::int32 tagGameServer::wnodeid() const {
-  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.wNodeID)
+  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.wnodeid)
   return wnodeid_;
 }
 inline void tagGameServer::set_wnodeid(::google::protobuf::int32 value) {
   
   wnodeid_ = value;
-  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.wNodeID)
+  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.wnodeid)
 }
 
-// int32 wSortID = 3;
+// int32 wsortid = 3;
 inline void tagGameServer::clear_wsortid() {
   wsortid_ = 0;
 }
 inline ::google::protobuf::int32 tagGameServer::wsortid() const {
-  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.wSortID)
+  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.wsortid)
   return wsortid_;
 }
 inline void tagGameServer::set_wsortid(::google::protobuf::int32 value) {
   
   wsortid_ = value;
-  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.wSortID)
+  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.wsortid)
 }
 
-// int32 wServerID = 4;
+// int32 wserverid = 4;
 inline void tagGameServer::clear_wserverid() {
   wserverid_ = 0;
 }
 inline ::google::protobuf::int32 tagGameServer::wserverid() const {
-  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.wServerID)
+  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.wserverid)
   return wserverid_;
 }
 inline void tagGameServer::set_wserverid(::google::protobuf::int32 value) {
   
   wserverid_ = value;
-  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.wServerID)
+  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.wserverid)
 }
 
-// int32 wServerKind = 5;
+// int32 wserverkind = 5;
 inline void tagGameServer::clear_wserverkind() {
   wserverkind_ = 0;
 }
 inline ::google::protobuf::int32 tagGameServer::wserverkind() const {
-  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.wServerKind)
+  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.wserverkind)
   return wserverkind_;
 }
 inline void tagGameServer::set_wserverkind(::google::protobuf::int32 value) {
   
   wserverkind_ = value;
-  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.wServerKind)
+  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.wserverkind)
 }
 
-// int32 wServerType = 6;
+// int32 wservertype = 6;
 inline void tagGameServer::clear_wservertype() {
   wservertype_ = 0;
 }
 inline ::google::protobuf::int32 tagGameServer::wservertype() const {
-  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.wServerType)
+  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.wservertype)
   return wservertype_;
 }
 inline void tagGameServer::set_wservertype(::google::protobuf::int32 value) {
   
   wservertype_ = value;
-  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.wServerType)
+  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.wservertype)
 }
 
-// int32 wServerLevel = 7;
+// int32 wserverlevel = 7;
 inline void tagGameServer::clear_wserverlevel() {
   wserverlevel_ = 0;
 }
 inline ::google::protobuf::int32 tagGameServer::wserverlevel() const {
-  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.wServerLevel)
+  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.wserverlevel)
   return wserverlevel_;
 }
 inline void tagGameServer::set_wserverlevel(::google::protobuf::int32 value) {
   
   wserverlevel_ = value;
-  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.wServerLevel)
+  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.wserverlevel)
 }
 
-// int32 wServerPort = 8;
+// int32 wserverport = 8;
 inline void tagGameServer::clear_wserverport() {
   wserverport_ = 0;
 }
 inline ::google::protobuf::int32 tagGameServer::wserverport() const {
-  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.wServerPort)
+  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.wserverport)
   return wserverport_;
 }
 inline void tagGameServer::set_wserverport(::google::protobuf::int32 value) {
   
   wserverport_ = value;
-  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.wServerPort)
+  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.wserverport)
 }
 
-// uint64 lCellScore = 9;
+// uint64 lcellscore = 9;
 inline void tagGameServer::clear_lcellscore() {
   lcellscore_ = GOOGLE_ULONGLONG(0);
 }
 inline ::google::protobuf::uint64 tagGameServer::lcellscore() const {
-  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.lCellScore)
+  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.lcellscore)
   return lcellscore_;
 }
 inline void tagGameServer::set_lcellscore(::google::protobuf::uint64 value) {
   
   lcellscore_ = value;
-  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.lCellScore)
+  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.lcellscore)
 }
 
-// int32 cbEnterMember = 10;
+// int32 cbentermember = 10;
 inline void tagGameServer::clear_cbentermember() {
   cbentermember_ = 0;
 }
 inline ::google::protobuf::int32 tagGameServer::cbentermember() const {
-  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.cbEnterMember)
+  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.cbentermember)
   return cbentermember_;
 }
 inline void tagGameServer::set_cbentermember(::google::protobuf::int32 value) {
   
   cbentermember_ = value;
-  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.cbEnterMember)
+  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.cbentermember)
 }
 
-// uint64 lEnterScore = 11;
+// uint64 lenterscore = 11;
 inline void tagGameServer::clear_lenterscore() {
   lenterscore_ = GOOGLE_ULONGLONG(0);
 }
 inline ::google::protobuf::uint64 tagGameServer::lenterscore() const {
-  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.lEnterScore)
+  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.lenterscore)
   return lenterscore_;
 }
 inline void tagGameServer::set_lenterscore(::google::protobuf::uint64 value) {
   
   lenterscore_ = value;
-  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.lEnterScore)
+  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.lenterscore)
 }
 
-// uint64 dwServerRule = 12;
+// uint64 dwserverrule = 12;
 inline void tagGameServer::clear_dwserverrule() {
   dwserverrule_ = GOOGLE_ULONGLONG(0);
 }
 inline ::google::protobuf::uint64 tagGameServer::dwserverrule() const {
-  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.dwServerRule)
+  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.dwserverrule)
   return dwserverrule_;
 }
 inline void tagGameServer::set_dwserverrule(::google::protobuf::uint64 value) {
   
   dwserverrule_ = value;
-  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.dwServerRule)
+  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.dwserverrule)
 }
 
-// uint64 dwOnLineCount = 13;
+// uint64 dwonlinecount = 13;
 inline void tagGameServer::clear_dwonlinecount() {
   dwonlinecount_ = GOOGLE_ULONGLONG(0);
 }
 inline ::google::protobuf::uint64 tagGameServer::dwonlinecount() const {
-  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.dwOnLineCount)
+  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.dwonlinecount)
   return dwonlinecount_;
 }
 inline void tagGameServer::set_dwonlinecount(::google::protobuf::uint64 value) {
   
   dwonlinecount_ = value;
-  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.dwOnLineCount)
+  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.dwonlinecount)
 }
 
-// uint64 dwAndroidCount = 14;
+// uint64 dwandroidcount = 14;
 inline void tagGameServer::clear_dwandroidcount() {
   dwandroidcount_ = GOOGLE_ULONGLONG(0);
 }
 inline ::google::protobuf::uint64 tagGameServer::dwandroidcount() const {
-  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.dwAndroidCount)
+  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.dwandroidcount)
   return dwandroidcount_;
 }
 inline void tagGameServer::set_dwandroidcount(::google::protobuf::uint64 value) {
   
   dwandroidcount_ = value;
-  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.dwAndroidCount)
+  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.dwandroidcount)
 }
 
-// uint64 dwFullCount = 15;
+// uint64 dwfullcount = 15;
 inline void tagGameServer::clear_dwfullcount() {
   dwfullcount_ = GOOGLE_ULONGLONG(0);
 }
 inline ::google::protobuf::uint64 tagGameServer::dwfullcount() const {
-  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.dwFullCount)
+  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.dwfullcount)
   return dwfullcount_;
 }
 inline void tagGameServer::set_dwfullcount(::google::protobuf::uint64 value) {
   
   dwfullcount_ = value;
-  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.dwFullCount)
+  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.dwfullcount)
 }
 
-// string szServerAddr = 16;
+// string szserveraddr = 16;
 inline void tagGameServer::clear_szserveraddr() {
   szserveraddr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& tagGameServer::szserveraddr() const {
-  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.szServerAddr)
+  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.szserveraddr)
   return szserveraddr_.GetNoArena();
 }
 inline void tagGameServer::set_szserveraddr(const ::std::string& value) {
   
   szserveraddr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.szServerAddr)
+  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.szserveraddr)
 }
 #if LANG_CXX11
 inline void tagGameServer::set_szserveraddr(::std::string&& value) {
   
   szserveraddr_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:GamePmd.tagGameServer.szServerAddr)
+  // @@protoc_insertion_point(field_set_rvalue:GamePmd.tagGameServer.szserveraddr)
 }
 #endif
 inline void tagGameServer::set_szserveraddr(const char* value) {
   
   szserveraddr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:GamePmd.tagGameServer.szServerAddr)
+  // @@protoc_insertion_point(field_set_char:GamePmd.tagGameServer.szserveraddr)
 }
 inline void tagGameServer::set_szserveraddr(const char* value, size_t size) {
   
   szserveraddr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:GamePmd.tagGameServer.szServerAddr)
+  // @@protoc_insertion_point(field_set_pointer:GamePmd.tagGameServer.szserveraddr)
 }
 inline ::std::string* tagGameServer::mutable_szserveraddr() {
   
-  // @@protoc_insertion_point(field_mutable:GamePmd.tagGameServer.szServerAddr)
+  // @@protoc_insertion_point(field_mutable:GamePmd.tagGameServer.szserveraddr)
   return szserveraddr_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* tagGameServer::release_szserveraddr() {
-  // @@protoc_insertion_point(field_release:GamePmd.tagGameServer.szServerAddr)
+  // @@protoc_insertion_point(field_release:GamePmd.tagGameServer.szserveraddr)
   
   return szserveraddr_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -2246,48 +2981,48 @@ inline void tagGameServer::set_allocated_szserveraddr(::std::string* szserveradd
     
   }
   szserveraddr_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), szserveraddr);
-  // @@protoc_insertion_point(field_set_allocated:GamePmd.tagGameServer.szServerAddr)
+  // @@protoc_insertion_point(field_set_allocated:GamePmd.tagGameServer.szserveraddr)
 }
 
-// string szServerName = 17;
+// string szservername = 17;
 inline void tagGameServer::clear_szservername() {
   szservername_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& tagGameServer::szservername() const {
-  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.szServerName)
+  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.szservername)
   return szservername_.GetNoArena();
 }
 inline void tagGameServer::set_szservername(const ::std::string& value) {
   
   szservername_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.szServerName)
+  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.szservername)
 }
 #if LANG_CXX11
 inline void tagGameServer::set_szservername(::std::string&& value) {
   
   szservername_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:GamePmd.tagGameServer.szServerName)
+  // @@protoc_insertion_point(field_set_rvalue:GamePmd.tagGameServer.szservername)
 }
 #endif
 inline void tagGameServer::set_szservername(const char* value) {
   
   szservername_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:GamePmd.tagGameServer.szServerName)
+  // @@protoc_insertion_point(field_set_char:GamePmd.tagGameServer.szservername)
 }
 inline void tagGameServer::set_szservername(const char* value, size_t size) {
   
   szservername_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:GamePmd.tagGameServer.szServerName)
+  // @@protoc_insertion_point(field_set_pointer:GamePmd.tagGameServer.szservername)
 }
 inline ::std::string* tagGameServer::mutable_szservername() {
   
-  // @@protoc_insertion_point(field_mutable:GamePmd.tagGameServer.szServerName)
+  // @@protoc_insertion_point(field_mutable:GamePmd.tagGameServer.szservername)
   return szservername_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* tagGameServer::release_szservername() {
-  // @@protoc_insertion_point(field_release:GamePmd.tagGameServer.szServerName)
+  // @@protoc_insertion_point(field_release:GamePmd.tagGameServer.szservername)
   
   return szservername_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -2298,90 +3033,90 @@ inline void tagGameServer::set_allocated_szservername(::std::string* szservernam
     
   }
   szservername_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), szservername);
-  // @@protoc_insertion_point(field_set_allocated:GamePmd.tagGameServer.szServerName)
+  // @@protoc_insertion_point(field_set_allocated:GamePmd.tagGameServer.szservername)
 }
 
-// uint64 dwSurportType = 18;
+// uint64 dwsurporttype = 18;
 inline void tagGameServer::clear_dwsurporttype() {
   dwsurporttype_ = GOOGLE_ULONGLONG(0);
 }
 inline ::google::protobuf::uint64 tagGameServer::dwsurporttype() const {
-  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.dwSurportType)
+  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.dwsurporttype)
   return dwsurporttype_;
 }
 inline void tagGameServer::set_dwsurporttype(::google::protobuf::uint64 value) {
   
   dwsurporttype_ = value;
-  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.dwSurportType)
+  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.dwsurporttype)
 }
 
-// int32 wTableCount = 19;
+// int32 wtablecount = 19;
 inline void tagGameServer::clear_wtablecount() {
   wtablecount_ = 0;
 }
 inline ::google::protobuf::int32 tagGameServer::wtablecount() const {
-  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.wTableCount)
+  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.wtablecount)
   return wtablecount_;
 }
 inline void tagGameServer::set_wtablecount(::google::protobuf::int32 value) {
   
   wtablecount_ = value;
-  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.wTableCount)
+  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.wtablecount)
 }
 
-// uint64 dwSetPlayerCount = 20;
+// uint64 dwsetplayercount = 20;
 inline void tagGameServer::clear_dwsetplayercount() {
   dwsetplayercount_ = GOOGLE_ULONGLONG(0);
 }
 inline ::google::protobuf::uint64 tagGameServer::dwsetplayercount() const {
-  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.dwSetPlayerCount)
+  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.dwsetplayercount)
   return dwsetplayercount_;
 }
 inline void tagGameServer::set_dwsetplayercount(::google::protobuf::uint64 value) {
   
   dwsetplayercount_ = value;
-  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.dwSetPlayerCount)
+  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.dwsetplayercount)
 }
 
-// string szGameInfomation = 21;
+// string szgameinfomation = 21;
 inline void tagGameServer::clear_szgameinfomation() {
   szgameinfomation_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& tagGameServer::szgameinfomation() const {
-  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.szGameInfomation)
+  // @@protoc_insertion_point(field_get:GamePmd.tagGameServer.szgameinfomation)
   return szgameinfomation_.GetNoArena();
 }
 inline void tagGameServer::set_szgameinfomation(const ::std::string& value) {
   
   szgameinfomation_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.szGameInfomation)
+  // @@protoc_insertion_point(field_set:GamePmd.tagGameServer.szgameinfomation)
 }
 #if LANG_CXX11
 inline void tagGameServer::set_szgameinfomation(::std::string&& value) {
   
   szgameinfomation_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:GamePmd.tagGameServer.szGameInfomation)
+  // @@protoc_insertion_point(field_set_rvalue:GamePmd.tagGameServer.szgameinfomation)
 }
 #endif
 inline void tagGameServer::set_szgameinfomation(const char* value) {
   
   szgameinfomation_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:GamePmd.tagGameServer.szGameInfomation)
+  // @@protoc_insertion_point(field_set_char:GamePmd.tagGameServer.szgameinfomation)
 }
 inline void tagGameServer::set_szgameinfomation(const char* value, size_t size) {
   
   szgameinfomation_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:GamePmd.tagGameServer.szGameInfomation)
+  // @@protoc_insertion_point(field_set_pointer:GamePmd.tagGameServer.szgameinfomation)
 }
 inline ::std::string* tagGameServer::mutable_szgameinfomation() {
   
-  // @@protoc_insertion_point(field_mutable:GamePmd.tagGameServer.szGameInfomation)
+  // @@protoc_insertion_point(field_mutable:GamePmd.tagGameServer.szgameinfomation)
   return szgameinfomation_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* tagGameServer::release_szgameinfomation() {
-  // @@protoc_insertion_point(field_release:GamePmd.tagGameServer.szGameInfomation)
+  // @@protoc_insertion_point(field_release:GamePmd.tagGameServer.szgameinfomation)
   
   return szgameinfomation_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -2392,7 +3127,7 @@ inline void tagGameServer::set_allocated_szgameinfomation(::std::string* szgamei
     
   }
   szgameinfomation_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), szgameinfomation);
-  // @@protoc_insertion_point(field_set_allocated:GamePmd.tagGameServer.szGameInfomation)
+  // @@protoc_insertion_point(field_set_allocated:GamePmd.tagGameServer.szgameinfomation)
 }
 
 // -------------------------------------------------------------------
@@ -2760,7 +3495,683 @@ tagGameServer_s2c::taggameserver() const {
   return taggameserver_;
 }
 
+// -------------------------------------------------------------------
+
+// personalParameter_c2s
+
+// .NullPmd.response respcmd = 1;
+inline bool personalParameter_c2s::has_respcmd() const {
+  return this != internal_default_instance() && respcmd_ != NULL;
+}
+inline void personalParameter_c2s::clear_respcmd() {
+  if (GetArenaNoVirtual() == NULL && respcmd_ != NULL) delete respcmd_;
+  respcmd_ = NULL;
+}
+inline const ::NullPmd::response& personalParameter_c2s::respcmd() const {
+  // @@protoc_insertion_point(field_get:GamePmd.personalParameter_c2s.respcmd)
+  return respcmd_ != NULL ? *respcmd_
+                         : *::NullPmd::response::internal_default_instance();
+}
+inline ::NullPmd::response* personalParameter_c2s::mutable_respcmd() {
+  
+  if (respcmd_ == NULL) {
+    respcmd_ = new ::NullPmd::response;
+  }
+  // @@protoc_insertion_point(field_mutable:GamePmd.personalParameter_c2s.respcmd)
+  return respcmd_;
+}
+inline ::NullPmd::response* personalParameter_c2s::release_respcmd() {
+  // @@protoc_insertion_point(field_release:GamePmd.personalParameter_c2s.respcmd)
+  
+  ::NullPmd::response* temp = respcmd_;
+  respcmd_ = NULL;
+  return temp;
+}
+inline void personalParameter_c2s::set_allocated_respcmd(::NullPmd::response* respcmd) {
+  delete respcmd_;
+  respcmd_ = respcmd;
+  if (respcmd) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:GamePmd.personalParameter_c2s.respcmd)
+}
+
+// uint64 dwkindid = 2;
+inline void personalParameter_c2s::clear_dwkindid() {
+  dwkindid_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 personalParameter_c2s::dwkindid() const {
+  // @@protoc_insertion_point(field_get:GamePmd.personalParameter_c2s.dwkindid)
+  return dwkindid_;
+}
+inline void personalParameter_c2s::set_dwkindid(::google::protobuf::uint64 value) {
+  
+  dwkindid_ = value;
+  // @@protoc_insertion_point(field_set:GamePmd.personalParameter_c2s.dwkindid)
+}
+
+// -------------------------------------------------------------------
+
+// tagPersonalTableFeeList
+
+// uint64 dwdrawtimelimit = 1;
+inline void tagPersonalTableFeeList::clear_dwdrawtimelimit() {
+  dwdrawtimelimit_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 tagPersonalTableFeeList::dwdrawtimelimit() const {
+  // @@protoc_insertion_point(field_get:GamePmd.tagPersonalTableFeeList.dwdrawtimelimit)
+  return dwdrawtimelimit_;
+}
+inline void tagPersonalTableFeeList::set_dwdrawtimelimit(::google::protobuf::uint64 value) {
+  
+  dwdrawtimelimit_ = value;
+  // @@protoc_insertion_point(field_set:GamePmd.tagPersonalTableFeeList.dwdrawtimelimit)
+}
+
+// uint64 dwdrawcountlimit = 2;
+inline void tagPersonalTableFeeList::clear_dwdrawcountlimit() {
+  dwdrawcountlimit_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 tagPersonalTableFeeList::dwdrawcountlimit() const {
+  // @@protoc_insertion_point(field_get:GamePmd.tagPersonalTableFeeList.dwdrawcountlimit)
+  return dwdrawcountlimit_;
+}
+inline void tagPersonalTableFeeList::set_dwdrawcountlimit(::google::protobuf::uint64 value) {
+  
+  dwdrawcountlimit_ = value;
+  // @@protoc_insertion_point(field_set:GamePmd.tagPersonalTableFeeList.dwdrawcountlimit)
+}
+
+// uint64 liniscore = 3;
+inline void tagPersonalTableFeeList::clear_liniscore() {
+  liniscore_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 tagPersonalTableFeeList::liniscore() const {
+  // @@protoc_insertion_point(field_get:GamePmd.tagPersonalTableFeeList.liniscore)
+  return liniscore_;
+}
+inline void tagPersonalTableFeeList::set_liniscore(::google::protobuf::uint64 value) {
+  
+  liniscore_ = value;
+  // @@protoc_insertion_point(field_set:GamePmd.tagPersonalTableFeeList.liniscore)
+}
+
+// uint64 lfeescore = 4;
+inline void tagPersonalTableFeeList::clear_lfeescore() {
+  lfeescore_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 tagPersonalTableFeeList::lfeescore() const {
+  // @@protoc_insertion_point(field_get:GamePmd.tagPersonalTableFeeList.lfeescore)
+  return lfeescore_;
+}
+inline void tagPersonalTableFeeList::set_lfeescore(::google::protobuf::uint64 value) {
+  
+  lfeescore_ = value;
+  // @@protoc_insertion_point(field_set:GamePmd.tagPersonalTableFeeList.lfeescore)
+}
+
+// int32 waapayfee = 5;
+inline void tagPersonalTableFeeList::clear_waapayfee() {
+  waapayfee_ = 0;
+}
+inline ::google::protobuf::int32 tagPersonalTableFeeList::waapayfee() const {
+  // @@protoc_insertion_point(field_get:GamePmd.tagPersonalTableFeeList.waapayfee)
+  return waapayfee_;
+}
+inline void tagPersonalTableFeeList::set_waapayfee(::google::protobuf::int32 value) {
+  
+  waapayfee_ = value;
+  // @@protoc_insertion_point(field_set:GamePmd.tagPersonalTableFeeList.waapayfee)
+}
+
+// int32 cbgamemode = 6;
+inline void tagPersonalTableFeeList::clear_cbgamemode() {
+  cbgamemode_ = 0;
+}
+inline ::google::protobuf::int32 tagPersonalTableFeeList::cbgamemode() const {
+  // @@protoc_insertion_point(field_get:GamePmd.tagPersonalTableFeeList.cbgamemode)
+  return cbgamemode_;
+}
+inline void tagPersonalTableFeeList::set_cbgamemode(::google::protobuf::int32 value) {
+  
+  cbgamemode_ = value;
+  // @@protoc_insertion_point(field_set:GamePmd.tagPersonalTableFeeList.cbgamemode)
+}
+
+// -------------------------------------------------------------------
+
+// tagPersonalTableFeeList_s2c
+
+// .NullPmd.response respcmd = 1;
+inline bool tagPersonalTableFeeList_s2c::has_respcmd() const {
+  return this != internal_default_instance() && respcmd_ != NULL;
+}
+inline void tagPersonalTableFeeList_s2c::clear_respcmd() {
+  if (GetArenaNoVirtual() == NULL && respcmd_ != NULL) delete respcmd_;
+  respcmd_ = NULL;
+}
+inline const ::NullPmd::response& tagPersonalTableFeeList_s2c::respcmd() const {
+  // @@protoc_insertion_point(field_get:GamePmd.tagPersonalTableFeeList_s2c.respcmd)
+  return respcmd_ != NULL ? *respcmd_
+                         : *::NullPmd::response::internal_default_instance();
+}
+inline ::NullPmd::response* tagPersonalTableFeeList_s2c::mutable_respcmd() {
+  
+  if (respcmd_ == NULL) {
+    respcmd_ = new ::NullPmd::response;
+  }
+  // @@protoc_insertion_point(field_mutable:GamePmd.tagPersonalTableFeeList_s2c.respcmd)
+  return respcmd_;
+}
+inline ::NullPmd::response* tagPersonalTableFeeList_s2c::release_respcmd() {
+  // @@protoc_insertion_point(field_release:GamePmd.tagPersonalTableFeeList_s2c.respcmd)
+  
+  ::NullPmd::response* temp = respcmd_;
+  respcmd_ = NULL;
+  return temp;
+}
+inline void tagPersonalTableFeeList_s2c::set_allocated_respcmd(::NullPmd::response* respcmd) {
+  delete respcmd_;
+  respcmd_ = respcmd;
+  if (respcmd) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:GamePmd.tagPersonalTableFeeList_s2c.respcmd)
+}
+
+// repeated .GamePmd.tagPersonalTableFeeList tagPersonalTableFeeList = 2;
+inline int tagPersonalTableFeeList_s2c::tagpersonaltablefeelist_size() const {
+  return tagpersonaltablefeelist_.size();
+}
+inline void tagPersonalTableFeeList_s2c::clear_tagpersonaltablefeelist() {
+  tagpersonaltablefeelist_.Clear();
+}
+inline const ::GamePmd::tagPersonalTableFeeList& tagPersonalTableFeeList_s2c::tagpersonaltablefeelist(int index) const {
+  // @@protoc_insertion_point(field_get:GamePmd.tagPersonalTableFeeList_s2c.tagPersonalTableFeeList)
+  return tagpersonaltablefeelist_.Get(index);
+}
+inline ::GamePmd::tagPersonalTableFeeList* tagPersonalTableFeeList_s2c::mutable_tagpersonaltablefeelist(int index) {
+  // @@protoc_insertion_point(field_mutable:GamePmd.tagPersonalTableFeeList_s2c.tagPersonalTableFeeList)
+  return tagpersonaltablefeelist_.Mutable(index);
+}
+inline ::GamePmd::tagPersonalTableFeeList* tagPersonalTableFeeList_s2c::add_tagpersonaltablefeelist() {
+  // @@protoc_insertion_point(field_add:GamePmd.tagPersonalTableFeeList_s2c.tagPersonalTableFeeList)
+  return tagpersonaltablefeelist_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::GamePmd::tagPersonalTableFeeList >*
+tagPersonalTableFeeList_s2c::mutable_tagpersonaltablefeelist() {
+  // @@protoc_insertion_point(field_mutable_list:GamePmd.tagPersonalTableFeeList_s2c.tagPersonalTableFeeList)
+  return &tagpersonaltablefeelist_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::GamePmd::tagPersonalTableFeeList >&
+tagPersonalTableFeeList_s2c::tagpersonaltablefeelist() const {
+  // @@protoc_insertion_point(field_list:GamePmd.tagPersonalTableFeeList_s2c.tagPersonalTableFeeList)
+  return tagpersonaltablefeelist_;
+}
+
+// -------------------------------------------------------------------
+
+// tagPersonalCellScore_s2c
+
+// .NullPmd.response respcmd = 1;
+inline bool tagPersonalCellScore_s2c::has_respcmd() const {
+  return this != internal_default_instance() && respcmd_ != NULL;
+}
+inline void tagPersonalCellScore_s2c::clear_respcmd() {
+  if (GetArenaNoVirtual() == NULL && respcmd_ != NULL) delete respcmd_;
+  respcmd_ = NULL;
+}
+inline const ::NullPmd::response& tagPersonalCellScore_s2c::respcmd() const {
+  // @@protoc_insertion_point(field_get:GamePmd.tagPersonalCellScore_s2c.respcmd)
+  return respcmd_ != NULL ? *respcmd_
+                         : *::NullPmd::response::internal_default_instance();
+}
+inline ::NullPmd::response* tagPersonalCellScore_s2c::mutable_respcmd() {
+  
+  if (respcmd_ == NULL) {
+    respcmd_ = new ::NullPmd::response;
+  }
+  // @@protoc_insertion_point(field_mutable:GamePmd.tagPersonalCellScore_s2c.respcmd)
+  return respcmd_;
+}
+inline ::NullPmd::response* tagPersonalCellScore_s2c::release_respcmd() {
+  // @@protoc_insertion_point(field_release:GamePmd.tagPersonalCellScore_s2c.respcmd)
+  
+  ::NullPmd::response* temp = respcmd_;
+  respcmd_ = NULL;
+  return temp;
+}
+inline void tagPersonalCellScore_s2c::set_allocated_respcmd(::NullPmd::response* respcmd) {
+  delete respcmd_;
+  respcmd_ = respcmd;
+  if (respcmd) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:GamePmd.tagPersonalCellScore_s2c.respcmd)
+}
+
+// repeated int32 ncellscore = 2;
+inline int tagPersonalCellScore_s2c::ncellscore_size() const {
+  return ncellscore_.size();
+}
+inline void tagPersonalCellScore_s2c::clear_ncellscore() {
+  ncellscore_.Clear();
+}
+inline ::google::protobuf::int32 tagPersonalCellScore_s2c::ncellscore(int index) const {
+  // @@protoc_insertion_point(field_get:GamePmd.tagPersonalCellScore_s2c.ncellscore)
+  return ncellscore_.Get(index);
+}
+inline void tagPersonalCellScore_s2c::set_ncellscore(int index, ::google::protobuf::int32 value) {
+  ncellscore_.Set(index, value);
+  // @@protoc_insertion_point(field_set:GamePmd.tagPersonalCellScore_s2c.ncellscore)
+}
+inline void tagPersonalCellScore_s2c::add_ncellscore(::google::protobuf::int32 value) {
+  ncellscore_.Add(value);
+  // @@protoc_insertion_point(field_add:GamePmd.tagPersonalCellScore_s2c.ncellscore)
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+tagPersonalCellScore_s2c::ncellscore() const {
+  // @@protoc_insertion_point(field_list:GamePmd.tagPersonalCellScore_s2c.ncellscore)
+  return ncellscore_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+tagPersonalCellScore_s2c::mutable_ncellscore() {
+  // @@protoc_insertion_point(field_mutable_list:GamePmd.tagPersonalCellScore_s2c.ncellscore)
+  return &ncellscore_;
+}
+
+// -------------------------------------------------------------------
+
+// tagGetPersonalRule_s2c
+
+// .NullPmd.response respcmd = 1;
+inline bool tagGetPersonalRule_s2c::has_respcmd() const {
+  return this != internal_default_instance() && respcmd_ != NULL;
+}
+inline void tagGetPersonalRule_s2c::clear_respcmd() {
+  if (GetArenaNoVirtual() == NULL && respcmd_ != NULL) delete respcmd_;
+  respcmd_ = NULL;
+}
+inline const ::NullPmd::response& tagGetPersonalRule_s2c::respcmd() const {
+  // @@protoc_insertion_point(field_get:GamePmd.tagGetPersonalRule_s2c.respcmd)
+  return respcmd_ != NULL ? *respcmd_
+                         : *::NullPmd::response::internal_default_instance();
+}
+inline ::NullPmd::response* tagGetPersonalRule_s2c::mutable_respcmd() {
+  
+  if (respcmd_ == NULL) {
+    respcmd_ = new ::NullPmd::response;
+  }
+  // @@protoc_insertion_point(field_mutable:GamePmd.tagGetPersonalRule_s2c.respcmd)
+  return respcmd_;
+}
+inline ::NullPmd::response* tagGetPersonalRule_s2c::release_respcmd() {
+  // @@protoc_insertion_point(field_release:GamePmd.tagGetPersonalRule_s2c.respcmd)
+  
+  ::NullPmd::response* temp = respcmd_;
+  respcmd_ = NULL;
+  return temp;
+}
+inline void tagGetPersonalRule_s2c::set_allocated_respcmd(::NullPmd::response* respcmd) {
+  delete respcmd_;
+  respcmd_ = respcmd;
+  if (respcmd) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:GamePmd.tagGetPersonalRule_s2c.respcmd)
+}
+
+// string cbpersonalrule = 2;
+inline void tagGetPersonalRule_s2c::clear_cbpersonalrule() {
+  cbpersonalrule_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& tagGetPersonalRule_s2c::cbpersonalrule() const {
+  // @@protoc_insertion_point(field_get:GamePmd.tagGetPersonalRule_s2c.cbpersonalrule)
+  return cbpersonalrule_.GetNoArena();
+}
+inline void tagGetPersonalRule_s2c::set_cbpersonalrule(const ::std::string& value) {
+  
+  cbpersonalrule_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:GamePmd.tagGetPersonalRule_s2c.cbpersonalrule)
+}
+#if LANG_CXX11
+inline void tagGetPersonalRule_s2c::set_cbpersonalrule(::std::string&& value) {
+  
+  cbpersonalrule_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:GamePmd.tagGetPersonalRule_s2c.cbpersonalrule)
+}
+#endif
+inline void tagGetPersonalRule_s2c::set_cbpersonalrule(const char* value) {
+  
+  cbpersonalrule_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:GamePmd.tagGetPersonalRule_s2c.cbpersonalrule)
+}
+inline void tagGetPersonalRule_s2c::set_cbpersonalrule(const char* value, size_t size) {
+  
+  cbpersonalrule_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:GamePmd.tagGetPersonalRule_s2c.cbpersonalrule)
+}
+inline ::std::string* tagGetPersonalRule_s2c::mutable_cbpersonalrule() {
+  
+  // @@protoc_insertion_point(field_mutable:GamePmd.tagGetPersonalRule_s2c.cbpersonalrule)
+  return cbpersonalrule_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* tagGetPersonalRule_s2c::release_cbpersonalrule() {
+  // @@protoc_insertion_point(field_release:GamePmd.tagGetPersonalRule_s2c.cbpersonalrule)
+  
+  return cbpersonalrule_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void tagGetPersonalRule_s2c::set_allocated_cbpersonalrule(::std::string* cbpersonalrule) {
+  if (cbpersonalrule != NULL) {
+    
+  } else {
+    
+  }
+  cbpersonalrule_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), cbpersonalrule);
+  // @@protoc_insertion_point(field_set_allocated:GamePmd.tagGetPersonalRule_s2c.cbpersonalrule)
+}
+
+// -------------------------------------------------------------------
+
+// tagPersonalRoomOption_s2c
+
+// .NullPmd.response respcmd = 1;
+inline bool tagPersonalRoomOption_s2c::has_respcmd() const {
+  return this != internal_default_instance() && respcmd_ != NULL;
+}
+inline void tagPersonalRoomOption_s2c::clear_respcmd() {
+  if (GetArenaNoVirtual() == NULL && respcmd_ != NULL) delete respcmd_;
+  respcmd_ = NULL;
+}
+inline const ::NullPmd::response& tagPersonalRoomOption_s2c::respcmd() const {
+  // @@protoc_insertion_point(field_get:GamePmd.tagPersonalRoomOption_s2c.respcmd)
+  return respcmd_ != NULL ? *respcmd_
+                         : *::NullPmd::response::internal_default_instance();
+}
+inline ::NullPmd::response* tagPersonalRoomOption_s2c::mutable_respcmd() {
+  
+  if (respcmd_ == NULL) {
+    respcmd_ = new ::NullPmd::response;
+  }
+  // @@protoc_insertion_point(field_mutable:GamePmd.tagPersonalRoomOption_s2c.respcmd)
+  return respcmd_;
+}
+inline ::NullPmd::response* tagPersonalRoomOption_s2c::release_respcmd() {
+  // @@protoc_insertion_point(field_release:GamePmd.tagPersonalRoomOption_s2c.respcmd)
+  
+  ::NullPmd::response* temp = respcmd_;
+  respcmd_ = NULL;
+  return temp;
+}
+inline void tagPersonalRoomOption_s2c::set_allocated_respcmd(::NullPmd::response* respcmd) {
+  delete respcmd_;
+  respcmd_ = respcmd;
+  if (respcmd) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:GamePmd.tagPersonalRoomOption_s2c.respcmd)
+}
+
+// int32 cbisjoingame = 2;
+inline void tagPersonalRoomOption_s2c::clear_cbisjoingame() {
+  cbisjoingame_ = 0;
+}
+inline ::google::protobuf::int32 tagPersonalRoomOption_s2c::cbisjoingame() const {
+  // @@protoc_insertion_point(field_get:GamePmd.tagPersonalRoomOption_s2c.cbisjoingame)
+  return cbisjoingame_;
+}
+inline void tagPersonalRoomOption_s2c::set_cbisjoingame(::google::protobuf::int32 value) {
+  
+  cbisjoingame_ = value;
+  // @@protoc_insertion_point(field_set:GamePmd.tagPersonalRoomOption_s2c.cbisjoingame)
+}
+
+// int32 cbminpeople = 3;
+inline void tagPersonalRoomOption_s2c::clear_cbminpeople() {
+  cbminpeople_ = 0;
+}
+inline ::google::protobuf::int32 tagPersonalRoomOption_s2c::cbminpeople() const {
+  // @@protoc_insertion_point(field_get:GamePmd.tagPersonalRoomOption_s2c.cbminpeople)
+  return cbminpeople_;
+}
+inline void tagPersonalRoomOption_s2c::set_cbminpeople(::google::protobuf::int32 value) {
+  
+  cbminpeople_ = value;
+  // @@protoc_insertion_point(field_set:GamePmd.tagPersonalRoomOption_s2c.cbminpeople)
+}
+
+// int32 cbmaxpeople = 4;
+inline void tagPersonalRoomOption_s2c::clear_cbmaxpeople() {
+  cbmaxpeople_ = 0;
+}
+inline ::google::protobuf::int32 tagPersonalRoomOption_s2c::cbmaxpeople() const {
+  // @@protoc_insertion_point(field_get:GamePmd.tagPersonalRoomOption_s2c.cbmaxpeople)
+  return cbmaxpeople_;
+}
+inline void tagPersonalRoomOption_s2c::set_cbmaxpeople(::google::protobuf::int32 value) {
+  
+  cbmaxpeople_ = value;
+  // @@protoc_insertion_point(field_set:GamePmd.tagPersonalRoomOption_s2c.cbmaxpeople)
+}
+
+// uint64 lmaxcellscore = 5;
+inline void tagPersonalRoomOption_s2c::clear_lmaxcellscore() {
+  lmaxcellscore_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 tagPersonalRoomOption_s2c::lmaxcellscore() const {
+  // @@protoc_insertion_point(field_get:GamePmd.tagPersonalRoomOption_s2c.lmaxcellscore)
+  return lmaxcellscore_;
+}
+inline void tagPersonalRoomOption_s2c::set_lmaxcellscore(::google::protobuf::uint64 value) {
+  
+  lmaxcellscore_ = value;
+  // @@protoc_insertion_point(field_set:GamePmd.tagPersonalRoomOption_s2c.lmaxcellscore)
+}
+
+// uint64 lpersonalroomtax = 6;
+inline void tagPersonalRoomOption_s2c::clear_lpersonalroomtax() {
+  lpersonalroomtax_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 tagPersonalRoomOption_s2c::lpersonalroomtax() const {
+  // @@protoc_insertion_point(field_get:GamePmd.tagPersonalRoomOption_s2c.lpersonalroomtax)
+  return lpersonalroomtax_;
+}
+inline void tagPersonalRoomOption_s2c::set_lpersonalroomtax(::google::protobuf::uint64 value) {
+  
+  lpersonalroomtax_ = value;
+  // @@protoc_insertion_point(field_set:GamePmd.tagPersonalRoomOption_s2c.lpersonalroomtax)
+}
+
+// .CommonPmd.consumptionType bconsumptiontype = 7;
+inline bool tagPersonalRoomOption_s2c::has_bconsumptiontype() const {
+  return this != internal_default_instance() && bconsumptiontype_ != NULL;
+}
+inline void tagPersonalRoomOption_s2c::clear_bconsumptiontype() {
+  if (GetArenaNoVirtual() == NULL && bconsumptiontype_ != NULL) delete bconsumptiontype_;
+  bconsumptiontype_ = NULL;
+}
+inline const ::CommonPmd::consumptionType& tagPersonalRoomOption_s2c::bconsumptiontype() const {
+  // @@protoc_insertion_point(field_get:GamePmd.tagPersonalRoomOption_s2c.bconsumptiontype)
+  return bconsumptiontype_ != NULL ? *bconsumptiontype_
+                         : *::CommonPmd::consumptionType::internal_default_instance();
+}
+inline ::CommonPmd::consumptionType* tagPersonalRoomOption_s2c::mutable_bconsumptiontype() {
+  
+  if (bconsumptiontype_ == NULL) {
+    bconsumptiontype_ = new ::CommonPmd::consumptionType;
+  }
+  // @@protoc_insertion_point(field_mutable:GamePmd.tagPersonalRoomOption_s2c.bconsumptiontype)
+  return bconsumptiontype_;
+}
+inline ::CommonPmd::consumptionType* tagPersonalRoomOption_s2c::release_bconsumptiontype() {
+  // @@protoc_insertion_point(field_release:GamePmd.tagPersonalRoomOption_s2c.bconsumptiontype)
+  
+  ::CommonPmd::consumptionType* temp = bconsumptiontype_;
+  bconsumptiontype_ = NULL;
+  return temp;
+}
+inline void tagPersonalRoomOption_s2c::set_allocated_bconsumptiontype(::CommonPmd::consumptionType* bconsumptiontype) {
+  delete bconsumptiontype_;
+  bconsumptiontype_ = bconsumptiontype;
+  if (bconsumptiontype) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:GamePmd.tagPersonalRoomOption_s2c.bconsumptiontype)
+}
+
+// int32 wcancreatecount = 8;
+inline void tagPersonalRoomOption_s2c::clear_wcancreatecount() {
+  wcancreatecount_ = 0;
+}
+inline ::google::protobuf::int32 tagPersonalRoomOption_s2c::wcancreatecount() const {
+  // @@protoc_insertion_point(field_get:GamePmd.tagPersonalRoomOption_s2c.wcancreatecount)
+  return wcancreatecount_;
+}
+inline void tagPersonalRoomOption_s2c::set_wcancreatecount(::google::protobuf::int32 value) {
+  
+  wcancreatecount_ = value;
+  // @@protoc_insertion_point(field_set:GamePmd.tagPersonalRoomOption_s2c.wcancreatecount)
+}
+
+// uint64 dwplayturncount = 9;
+inline void tagPersonalRoomOption_s2c::clear_dwplayturncount() {
+  dwplayturncount_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 tagPersonalRoomOption_s2c::dwplayturncount() const {
+  // @@protoc_insertion_point(field_get:GamePmd.tagPersonalRoomOption_s2c.dwplayturncount)
+  return dwplayturncount_;
+}
+inline void tagPersonalRoomOption_s2c::set_dwplayturncount(::google::protobuf::uint64 value) {
+  
+  dwplayturncount_ = value;
+  // @@protoc_insertion_point(field_set:GamePmd.tagPersonalRoomOption_s2c.dwplayturncount)
+}
+
+// uint64 dwplaytimelimit = 10;
+inline void tagPersonalRoomOption_s2c::clear_dwplaytimelimit() {
+  dwplaytimelimit_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 tagPersonalRoomOption_s2c::dwplaytimelimit() const {
+  // @@protoc_insertion_point(field_get:GamePmd.tagPersonalRoomOption_s2c.dwplaytimelimit)
+  return dwplaytimelimit_;
+}
+inline void tagPersonalRoomOption_s2c::set_dwplaytimelimit(::google::protobuf::uint64 value) {
+  
+  dwplaytimelimit_ = value;
+  // @@protoc_insertion_point(field_set:GamePmd.tagPersonalRoomOption_s2c.dwplaytimelimit)
+}
+
+// uint64 dwtimeafterbegincount = 11;
+inline void tagPersonalRoomOption_s2c::clear_dwtimeafterbegincount() {
+  dwtimeafterbegincount_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 tagPersonalRoomOption_s2c::dwtimeafterbegincount() const {
+  // @@protoc_insertion_point(field_get:GamePmd.tagPersonalRoomOption_s2c.dwtimeafterbegincount)
+  return dwtimeafterbegincount_;
+}
+inline void tagPersonalRoomOption_s2c::set_dwtimeafterbegincount(::google::protobuf::uint64 value) {
+  
+  dwtimeafterbegincount_ = value;
+  // @@protoc_insertion_point(field_set:GamePmd.tagPersonalRoomOption_s2c.dwtimeafterbegincount)
+}
+
+// uint64 dwtimeofflinecount = 12;
+inline void tagPersonalRoomOption_s2c::clear_dwtimeofflinecount() {
+  dwtimeofflinecount_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 tagPersonalRoomOption_s2c::dwtimeofflinecount() const {
+  // @@protoc_insertion_point(field_get:GamePmd.tagPersonalRoomOption_s2c.dwtimeofflinecount)
+  return dwtimeofflinecount_;
+}
+inline void tagPersonalRoomOption_s2c::set_dwtimeofflinecount(::google::protobuf::uint64 value) {
+  
+  dwtimeofflinecount_ = value;
+  // @@protoc_insertion_point(field_set:GamePmd.tagPersonalRoomOption_s2c.dwtimeofflinecount)
+}
+
+// uint64 dwtimenotbegingame = 13;
+inline void tagPersonalRoomOption_s2c::clear_dwtimenotbegingame() {
+  dwtimenotbegingame_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 tagPersonalRoomOption_s2c::dwtimenotbegingame() const {
+  // @@protoc_insertion_point(field_get:GamePmd.tagPersonalRoomOption_s2c.dwtimenotbegingame)
+  return dwtimenotbegingame_;
+}
+inline void tagPersonalRoomOption_s2c::set_dwtimenotbegingame(::google::protobuf::uint64 value) {
+  
+  dwtimenotbegingame_ = value;
+  // @@protoc_insertion_point(field_set:GamePmd.tagPersonalRoomOption_s2c.dwtimenotbegingame)
+}
+
+// uint64 dwtimeaftercreateroom = 14;
+inline void tagPersonalRoomOption_s2c::clear_dwtimeaftercreateroom() {
+  dwtimeaftercreateroom_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 tagPersonalRoomOption_s2c::dwtimeaftercreateroom() const {
+  // @@protoc_insertion_point(field_get:GamePmd.tagPersonalRoomOption_s2c.dwtimeaftercreateroom)
+  return dwtimeaftercreateroom_;
+}
+inline void tagPersonalRoomOption_s2c::set_dwtimeaftercreateroom(::google::protobuf::uint64 value) {
+  
+  dwtimeaftercreateroom_ = value;
+  // @@protoc_insertion_point(field_set:GamePmd.tagPersonalRoomOption_s2c.dwtimeaftercreateroom)
+}
+
+// int32 wbeginfreetime = 15;
+inline void tagPersonalRoomOption_s2c::clear_wbeginfreetime() {
+  wbeginfreetime_ = 0;
+}
+inline ::google::protobuf::int32 tagPersonalRoomOption_s2c::wbeginfreetime() const {
+  // @@protoc_insertion_point(field_get:GamePmd.tagPersonalRoomOption_s2c.wbeginfreetime)
+  return wbeginfreetime_;
+}
+inline void tagPersonalRoomOption_s2c::set_wbeginfreetime(::google::protobuf::int32 value) {
+  
+  wbeginfreetime_ = value;
+  // @@protoc_insertion_point(field_set:GamePmd.tagPersonalRoomOption_s2c.wbeginfreetime)
+}
+
+// int32 wendfreetime = 16;
+inline void tagPersonalRoomOption_s2c::clear_wendfreetime() {
+  wendfreetime_ = 0;
+}
+inline ::google::protobuf::int32 tagPersonalRoomOption_s2c::wendfreetime() const {
+  // @@protoc_insertion_point(field_get:GamePmd.tagPersonalRoomOption_s2c.wendfreetime)
+  return wendfreetime_;
+}
+inline void tagPersonalRoomOption_s2c::set_wendfreetime(::google::protobuf::int32 value) {
+  
+  wendfreetime_ = value;
+  // @@protoc_insertion_point(field_set:GamePmd.tagPersonalRoomOption_s2c.wendfreetime)
+}
+
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

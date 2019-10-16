@@ -20,6 +20,8 @@
 namespace CommonPmd {
 class SYSTEMTIMEDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<SYSTEMTIME> {
 } _SYSTEMTIME_default_instance_;
+class consumptionTypeDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<consumptionType> {
+} _consumptionType_default_instance_;
 class personinfoDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<personinfo> {
 } _personinfo_default_instance_;
 
@@ -28,7 +30,7 @@ namespace protobuf_CommonPmd_2eproto {
 
 namespace {
 
-::google::protobuf::Metadata file_level_metadata[2];
+::google::protobuf::Metadata file_level_metadata[3];
 
 }  // namespace
 
@@ -45,6 +47,18 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SYSTEMTIME, wminute_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SYSTEMTIME, wsecond_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SYSTEMTIME, wmilliseconds_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(consumptionType, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(consumptionType, lgrade_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(consumptionType, linsure_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(consumptionType, lscore_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(consumptionType, lingot_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(consumptionType, lbeans_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(consumptionType, ldiamond_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(consumptionType, lcoin_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(consumptionType, lcard_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(personinfo, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -79,11 +93,13 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
 
 static const ::google::protobuf::internal::MigrationSchema schemas[] = {
   { 0, -1, sizeof(SYSTEMTIME)},
-  { 12, -1, sizeof(personinfo)},
+  { 12, -1, sizeof(consumptionType)},
+  { 24, -1, sizeof(personinfo)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&_SYSTEMTIME_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_consumptionType_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_personinfo_default_instance_),
 };
 
@@ -105,7 +121,7 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 2);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 3);
 }
 
 }  // namespace
@@ -113,8 +129,10 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void TableStruct::Shutdown() {
   _SYSTEMTIME_default_instance_.Shutdown();
   delete file_level_metadata[0].reflection;
-  _personinfo_default_instance_.Shutdown();
+  _consumptionType_default_instance_.Shutdown();
   delete file_level_metadata[1].reflection;
+  _personinfo_default_instance_.Shutdown();
+  delete file_level_metadata[2].reflection;
 }
 
 void TableStruct::InitDefaultsImpl() {
@@ -122,6 +140,7 @@ void TableStruct::InitDefaultsImpl() {
 
   ::google::protobuf::internal::InitProtobufDefaults();
   _SYSTEMTIME_default_instance_.DefaultConstruct();
+  _consumptionType_default_instance_.DefaultConstruct();
   _personinfo_default_instance_.DefaultConstruct();
   _personinfo_default_instance_.get_mutable()->memberoverdate_ = const_cast< ::CommonPmd::SYSTEMTIME*>(
       ::CommonPmd::SYSTEMTIME::internal_default_instance());
@@ -138,25 +157,29 @@ void AddDescriptorsImpl() {
       "IME\022\r\n\005wYear\030\001 \001(\005\022\016\n\006wMonth\030\002 \001(\005\022\022\n\nwD"
       "ayOfWeek\030\003 \001(\005\022\014\n\004wDay\030\004 \001(\005\022\r\n\005wHour\030\005 "
       "\001(\005\022\017\n\007wMinute\030\006 \001(\005\022\017\n\007wSecond\030\007 \001(\005\022\025\n"
-      "\rwMilliseconds\030\010 \001(\005\"\315\004\n\npersoninfo\022\017\n\007w"
-      "faceid\030\001 \001(\005\022\020\n\010dwuserid\030\002 \001(\004\022\020\n\010dwgame"
-      "id\030\003 \001(\004\022\021\n\tdwgroupid\030\004 \001(\004\022\022\n\ndwcustomi"
-      "d\030\005 \001(\004\022\024\n\014dwexperience\030\006 \001(\004\022\023\n\013lloveli"
-      "ness\030\007 \001(\004\022\022\n\nluserscore\030\010 \001(\004\022\023\n\013luseri"
-      "nsure\030\t \001(\004\022\022\n\nluseringot\030\n \001(\004\022\022\n\nduser"
-      "beans\030\013 \001(\001\022\020\n\010cbgender\030\014 \001(\004\022\025\n\rcbmoorm"
-      "achine\030\r \001(\004\022\022\n\nszaccounts\030\016 \001(\t\022\022\n\nszni"
-      "ckname\030\017 \001(\t\022\025\n\rszdynamicpass\030\020 \001(\t\022\022\n\ns"
-      "zPassword\030\021 \001(\t\022\023\n\013szgroupname\030\022 \001(\t\022\027\n\017"
-      "cbinsureenabled\030\023 \001(\004\022\032\n\022cbshowserversta"
-      "tus\030\024 \001(\004\022\021\n\tcbisagent\030\025 \001(\004\022\024\n\014szUnderW"
-      "rite\030\026 \001(\t\022\025\n\rcbMemberOrder\030\027 \001(\005\022-\n\016Mem"
-      "berOverDate\030\030 \001(\0132\025.CommonPmd.SYSTEMTIME"
-      "\022\030\n\020dwCheckUserRight\030\031 \001(\004\022\030\n\020szDescribe"
-      "String\030\032 \001(\tb\006proto3"
+      "\rwMilliseconds\030\010 \001(\005\"\222\001\n\017consumptionType"
+      "\022\016\n\006lgrade\030\001 \001(\004\022\017\n\007linsure\030\002 \001(\004\022\016\n\006lsc"
+      "ore\030\003 \001(\004\022\016\n\006lingot\030\004 \001(\004\022\016\n\006lbeans\030\005 \001("
+      "\004\022\020\n\010ldiamond\030\006 \001(\004\022\r\n\005lcoin\030\007 \001(\004\022\r\n\005lc"
+      "ard\030\010 \001(\004\"\315\004\n\npersoninfo\022\017\n\007wfaceid\030\001 \001("
+      "\005\022\020\n\010dwuserid\030\002 \001(\004\022\020\n\010dwgameid\030\003 \001(\004\022\021\n"
+      "\tdwgroupid\030\004 \001(\004\022\022\n\ndwcustomid\030\005 \001(\004\022\024\n\014"
+      "dwexperience\030\006 \001(\004\022\023\n\013lloveliness\030\007 \001(\004\022"
+      "\022\n\nluserscore\030\010 \001(\004\022\023\n\013luserinsure\030\t \001(\004"
+      "\022\022\n\nluseringot\030\n \001(\004\022\022\n\nduserbeans\030\013 \001(\001"
+      "\022\020\n\010cbgender\030\014 \001(\004\022\025\n\rcbmoormachine\030\r \001("
+      "\004\022\022\n\nszaccounts\030\016 \001(\t\022\022\n\nsznickname\030\017 \001("
+      "\t\022\025\n\rszdynamicpass\030\020 \001(\t\022\022\n\nszPassword\030\021"
+      " \001(\t\022\023\n\013szgroupname\030\022 \001(\t\022\027\n\017cbinsureena"
+      "bled\030\023 \001(\004\022\032\n\022cbshowserverstatus\030\024 \001(\004\022\021"
+      "\n\tcbisagent\030\025 \001(\004\022\024\n\014szUnderWrite\030\026 \001(\t\022"
+      "\025\n\rcbMemberOrder\030\027 \001(\005\022-\n\016MemberOverDate"
+      "\030\030 \001(\0132\025.CommonPmd.SYSTEMTIME\022\030\n\020dwCheck"
+      "UserRight\030\031 \001(\004\022\030\n\020szDescribeString\030\032 \001("
+      "\tb\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 780);
+      descriptor, 929);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "CommonPmd.proto", &protobuf_RegisterTypes);
   ::google::protobuf::internal::OnShutdown(&TableStruct::Shutdown);
@@ -751,6 +774,578 @@ void SYSTEMTIME::set_wmilliseconds(::google::protobuf::int32 value) {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int consumptionType::kLgradeFieldNumber;
+const int consumptionType::kLinsureFieldNumber;
+const int consumptionType::kLscoreFieldNumber;
+const int consumptionType::kLingotFieldNumber;
+const int consumptionType::kLbeansFieldNumber;
+const int consumptionType::kLdiamondFieldNumber;
+const int consumptionType::kLcoinFieldNumber;
+const int consumptionType::kLcardFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+consumptionType::consumptionType()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    protobuf_CommonPmd_2eproto::InitDefaults();
+  }
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:CommonPmd.consumptionType)
+}
+consumptionType::consumptionType(const consumptionType& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::memcpy(&lgrade_, &from.lgrade_,
+    reinterpret_cast<char*>(&lcard_) -
+    reinterpret_cast<char*>(&lgrade_) + sizeof(lcard_));
+  // @@protoc_insertion_point(copy_constructor:CommonPmd.consumptionType)
+}
+
+void consumptionType::SharedCtor() {
+  ::memset(&lgrade_, 0, reinterpret_cast<char*>(&lcard_) -
+    reinterpret_cast<char*>(&lgrade_) + sizeof(lcard_));
+  _cached_size_ = 0;
+}
+
+consumptionType::~consumptionType() {
+  // @@protoc_insertion_point(destructor:CommonPmd.consumptionType)
+  SharedDtor();
+}
+
+void consumptionType::SharedDtor() {
+}
+
+void consumptionType::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* consumptionType::descriptor() {
+  protobuf_CommonPmd_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_CommonPmd_2eproto::file_level_metadata[1].descriptor;
+}
+
+const consumptionType& consumptionType::default_instance() {
+  protobuf_CommonPmd_2eproto::InitDefaults();
+  return *internal_default_instance();
+}
+
+consumptionType* consumptionType::New(::google::protobuf::Arena* arena) const {
+  consumptionType* n = new consumptionType;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void consumptionType::Clear() {
+// @@protoc_insertion_point(message_clear_start:CommonPmd.consumptionType)
+  ::memset(&lgrade_, 0, reinterpret_cast<char*>(&lcard_) -
+    reinterpret_cast<char*>(&lgrade_) + sizeof(lcard_));
+}
+
+bool consumptionType::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:CommonPmd.consumptionType)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // uint64 lgrade = 1;
+      case 1: {
+        if (tag == 8u) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &lgrade_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint64 linsure = 2;
+      case 2: {
+        if (tag == 16u) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &linsure_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint64 lscore = 3;
+      case 3: {
+        if (tag == 24u) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &lscore_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint64 lingot = 4;
+      case 4: {
+        if (tag == 32u) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &lingot_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint64 lbeans = 5;
+      case 5: {
+        if (tag == 40u) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &lbeans_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint64 ldiamond = 6;
+      case 6: {
+        if (tag == 48u) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &ldiamond_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint64 lcoin = 7;
+      case 7: {
+        if (tag == 56u) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &lcoin_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint64 lcard = 8;
+      case 8: {
+        if (tag == 64u) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &lcard_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:CommonPmd.consumptionType)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:CommonPmd.consumptionType)
+  return false;
+#undef DO_
+}
+
+void consumptionType::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:CommonPmd.consumptionType)
+  // uint64 lgrade = 1;
+  if (this->lgrade() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->lgrade(), output);
+  }
+
+  // uint64 linsure = 2;
+  if (this->linsure() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->linsure(), output);
+  }
+
+  // uint64 lscore = 3;
+  if (this->lscore() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(3, this->lscore(), output);
+  }
+
+  // uint64 lingot = 4;
+  if (this->lingot() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(4, this->lingot(), output);
+  }
+
+  // uint64 lbeans = 5;
+  if (this->lbeans() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(5, this->lbeans(), output);
+  }
+
+  // uint64 ldiamond = 6;
+  if (this->ldiamond() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(6, this->ldiamond(), output);
+  }
+
+  // uint64 lcoin = 7;
+  if (this->lcoin() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(7, this->lcoin(), output);
+  }
+
+  // uint64 lcard = 8;
+  if (this->lcard() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(8, this->lcard(), output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:CommonPmd.consumptionType)
+}
+
+::google::protobuf::uint8* consumptionType::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic;  // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:CommonPmd.consumptionType)
+  // uint64 lgrade = 1;
+  if (this->lgrade() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->lgrade(), target);
+  }
+
+  // uint64 linsure = 2;
+  if (this->linsure() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->linsure(), target);
+  }
+
+  // uint64 lscore = 3;
+  if (this->lscore() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(3, this->lscore(), target);
+  }
+
+  // uint64 lingot = 4;
+  if (this->lingot() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(4, this->lingot(), target);
+  }
+
+  // uint64 lbeans = 5;
+  if (this->lbeans() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(5, this->lbeans(), target);
+  }
+
+  // uint64 ldiamond = 6;
+  if (this->ldiamond() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(6, this->ldiamond(), target);
+  }
+
+  // uint64 lcoin = 7;
+  if (this->lcoin() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(7, this->lcoin(), target);
+  }
+
+  // uint64 lcard = 8;
+  if (this->lcard() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(8, this->lcard(), target);
+  }
+
+  // @@protoc_insertion_point(serialize_to_array_end:CommonPmd.consumptionType)
+  return target;
+}
+
+size_t consumptionType::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:CommonPmd.consumptionType)
+  size_t total_size = 0;
+
+  // uint64 lgrade = 1;
+  if (this->lgrade() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->lgrade());
+  }
+
+  // uint64 linsure = 2;
+  if (this->linsure() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->linsure());
+  }
+
+  // uint64 lscore = 3;
+  if (this->lscore() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->lscore());
+  }
+
+  // uint64 lingot = 4;
+  if (this->lingot() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->lingot());
+  }
+
+  // uint64 lbeans = 5;
+  if (this->lbeans() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->lbeans());
+  }
+
+  // uint64 ldiamond = 6;
+  if (this->ldiamond() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->ldiamond());
+  }
+
+  // uint64 lcoin = 7;
+  if (this->lcoin() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->lcoin());
+  }
+
+  // uint64 lcard = 8;
+  if (this->lcard() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->lcard());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void consumptionType::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:CommonPmd.consumptionType)
+  GOOGLE_DCHECK_NE(&from, this);
+  const consumptionType* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const consumptionType>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:CommonPmd.consumptionType)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:CommonPmd.consumptionType)
+    MergeFrom(*source);
+  }
+}
+
+void consumptionType::MergeFrom(const consumptionType& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:CommonPmd.consumptionType)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  if (from.lgrade() != 0) {
+    set_lgrade(from.lgrade());
+  }
+  if (from.linsure() != 0) {
+    set_linsure(from.linsure());
+  }
+  if (from.lscore() != 0) {
+    set_lscore(from.lscore());
+  }
+  if (from.lingot() != 0) {
+    set_lingot(from.lingot());
+  }
+  if (from.lbeans() != 0) {
+    set_lbeans(from.lbeans());
+  }
+  if (from.ldiamond() != 0) {
+    set_ldiamond(from.ldiamond());
+  }
+  if (from.lcoin() != 0) {
+    set_lcoin(from.lcoin());
+  }
+  if (from.lcard() != 0) {
+    set_lcard(from.lcard());
+  }
+}
+
+void consumptionType::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:CommonPmd.consumptionType)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void consumptionType::CopyFrom(const consumptionType& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:CommonPmd.consumptionType)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool consumptionType::IsInitialized() const {
+  return true;
+}
+
+void consumptionType::Swap(consumptionType* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void consumptionType::InternalSwap(consumptionType* other) {
+  std::swap(lgrade_, other->lgrade_);
+  std::swap(linsure_, other->linsure_);
+  std::swap(lscore_, other->lscore_);
+  std::swap(lingot_, other->lingot_);
+  std::swap(lbeans_, other->lbeans_);
+  std::swap(ldiamond_, other->ldiamond_);
+  std::swap(lcoin_, other->lcoin_);
+  std::swap(lcard_, other->lcard_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata consumptionType::GetMetadata() const {
+  protobuf_CommonPmd_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_CommonPmd_2eproto::file_level_metadata[1];
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// consumptionType
+
+// uint64 lgrade = 1;
+void consumptionType::clear_lgrade() {
+  lgrade_ = GOOGLE_ULONGLONG(0);
+}
+::google::protobuf::uint64 consumptionType::lgrade() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.consumptionType.lgrade)
+  return lgrade_;
+}
+void consumptionType::set_lgrade(::google::protobuf::uint64 value) {
+  
+  lgrade_ = value;
+  // @@protoc_insertion_point(field_set:CommonPmd.consumptionType.lgrade)
+}
+
+// uint64 linsure = 2;
+void consumptionType::clear_linsure() {
+  linsure_ = GOOGLE_ULONGLONG(0);
+}
+::google::protobuf::uint64 consumptionType::linsure() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.consumptionType.linsure)
+  return linsure_;
+}
+void consumptionType::set_linsure(::google::protobuf::uint64 value) {
+  
+  linsure_ = value;
+  // @@protoc_insertion_point(field_set:CommonPmd.consumptionType.linsure)
+}
+
+// uint64 lscore = 3;
+void consumptionType::clear_lscore() {
+  lscore_ = GOOGLE_ULONGLONG(0);
+}
+::google::protobuf::uint64 consumptionType::lscore() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.consumptionType.lscore)
+  return lscore_;
+}
+void consumptionType::set_lscore(::google::protobuf::uint64 value) {
+  
+  lscore_ = value;
+  // @@protoc_insertion_point(field_set:CommonPmd.consumptionType.lscore)
+}
+
+// uint64 lingot = 4;
+void consumptionType::clear_lingot() {
+  lingot_ = GOOGLE_ULONGLONG(0);
+}
+::google::protobuf::uint64 consumptionType::lingot() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.consumptionType.lingot)
+  return lingot_;
+}
+void consumptionType::set_lingot(::google::protobuf::uint64 value) {
+  
+  lingot_ = value;
+  // @@protoc_insertion_point(field_set:CommonPmd.consumptionType.lingot)
+}
+
+// uint64 lbeans = 5;
+void consumptionType::clear_lbeans() {
+  lbeans_ = GOOGLE_ULONGLONG(0);
+}
+::google::protobuf::uint64 consumptionType::lbeans() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.consumptionType.lbeans)
+  return lbeans_;
+}
+void consumptionType::set_lbeans(::google::protobuf::uint64 value) {
+  
+  lbeans_ = value;
+  // @@protoc_insertion_point(field_set:CommonPmd.consumptionType.lbeans)
+}
+
+// uint64 ldiamond = 6;
+void consumptionType::clear_ldiamond() {
+  ldiamond_ = GOOGLE_ULONGLONG(0);
+}
+::google::protobuf::uint64 consumptionType::ldiamond() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.consumptionType.ldiamond)
+  return ldiamond_;
+}
+void consumptionType::set_ldiamond(::google::protobuf::uint64 value) {
+  
+  ldiamond_ = value;
+  // @@protoc_insertion_point(field_set:CommonPmd.consumptionType.ldiamond)
+}
+
+// uint64 lcoin = 7;
+void consumptionType::clear_lcoin() {
+  lcoin_ = GOOGLE_ULONGLONG(0);
+}
+::google::protobuf::uint64 consumptionType::lcoin() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.consumptionType.lcoin)
+  return lcoin_;
+}
+void consumptionType::set_lcoin(::google::protobuf::uint64 value) {
+  
+  lcoin_ = value;
+  // @@protoc_insertion_point(field_set:CommonPmd.consumptionType.lcoin)
+}
+
+// uint64 lcard = 8;
+void consumptionType::clear_lcard() {
+  lcard_ = GOOGLE_ULONGLONG(0);
+}
+::google::protobuf::uint64 consumptionType::lcard() const {
+  // @@protoc_insertion_point(field_get:CommonPmd.consumptionType.lcard)
+  return lcard_;
+}
+void consumptionType::set_lcard(::google::protobuf::uint64 value) {
+  
+  lcard_ = value;
+  // @@protoc_insertion_point(field_set:CommonPmd.consumptionType.lcard)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int personinfo::kWfaceidFieldNumber;
 const int personinfo::kDwuseridFieldNumber;
 const int personinfo::kDwgameidFieldNumber;
@@ -869,7 +1464,7 @@ void personinfo::SetCachedSize(int size) const {
 }
 const ::google::protobuf::Descriptor* personinfo::descriptor() {
   protobuf_CommonPmd_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_CommonPmd_2eproto::file_level_metadata[1].descriptor;
+  return protobuf_CommonPmd_2eproto::file_level_metadata[2].descriptor;
 }
 
 const personinfo& personinfo::default_instance() {
@@ -1988,7 +2583,7 @@ void personinfo::InternalSwap(personinfo* other) {
 
 ::google::protobuf::Metadata personinfo::GetMetadata() const {
   protobuf_CommonPmd_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_CommonPmd_2eproto::file_level_metadata[1];
+  return protobuf_CommonPmd_2eproto::file_level_metadata[2];
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS

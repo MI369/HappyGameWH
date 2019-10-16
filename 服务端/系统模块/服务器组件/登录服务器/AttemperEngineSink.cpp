@@ -79,7 +79,7 @@ CAttemperEngineSink::CAttemperEngineSink()
 
 	HINSTANCE hInstLibrary = NULL;
 	#ifdef _DEBUG
-		hInstLibrary = LoadLibrary(TEXT("PersonalRoomServiceD.dll"));
+		hInstLibrary = LoadLibrary(TEXT("PersonalRoomService.dll"));
 	#else
 		hInstLibrary = LoadLibrary(TEXT("PersonalRoomService.dll"));
 	#endif
@@ -956,9 +956,12 @@ bool CAttemperEngineSink::OnEventTCPSocketRead(WORD wServiceID, TCP_Command Comm
 	}
 	else if (wServiceID==NETWORK_PERSONAL_ROOM_CORRESPOND)
 	{
-		if (wServiceID==MDM_CS_SERVICE_INFO)
+		switch (Command.wMainCmdID)
 		{
-			return OnTCPSocketPersonalServiceInfo(Command.wSubCmdID,pData,wDataSize);
+		case MDM_CS_SERVICE_INFO:		//注册服务
+			{
+				return OnTCPSocketPersonalServiceInfo(Command.wSubCmdID, pData, wDataSize);
+			}
 		}
 
 		return true;
@@ -4178,33 +4181,48 @@ bool CAttemperEngineSink::OnTCPNetworkSubMBDissumeSearchServerTable(VOID * pData
 //约战房间配置
 bool CAttemperEngineSink::OnTCPNetworkSubMBPersonalParameter(VOID * pData, WORD wDataSize, DWORD dwSocketID)
 {
-	//if (m_pIPersonalRoomServiceManager)
-	//{
-	//	return m_pIPersonalRoomServiceManager->OnTCPNetworkSubMBPersonalParameter(pData, wDataSize, dwSocketID, m_pIDataBaseEngine);
-	//}
+	try
+	{
+		GamePmd::personalParameter_c2s message;
+		int buffsize = wDataSize;
+		if (message.ParseFromArray(pData, buffsize) == false) {
+			throw TEXT("parse error");
+		}
+		//构造数据
+		DBR_MB_GetPersonalParameter GetPersonalParameter;
+		ZeroMemory(&GetPersonalParameter, sizeof(DBR_MB_GetPersonalParameter));
+		GetPersonalParameter.dwKindID = message.dwkindid();
 
-	//校验数据
-	ASSERT(wDataSize == sizeof(CMD_MB_GetPersonalParameter));
-	if(wDataSize != sizeof(CMD_MB_GetPersonalParameter)) return false;
+		//投递数据
+		m_pIDataBaseEngine->PostDataBaseRequest(DBR_MB_GET_PERSONAL_PARAMETER, dwSocketID, &GetPersonalParameter, sizeof(DBR_MB_GetPersonalParameter));
 
-	CMD_MB_GetPersonalParameter* pGetPersonalParameter = (CMD_MB_GetPersonalParameter*)pData;
+	}
+	catch (LPCTSTR pszMessage) {
+		// 错误信息
+		TCHAR szString[512] = TEXT("");
+		_sntprintf(szString, CountArray(szString), TEXT("OnTCPNetworkSubMBPersonalParameter 异常:%s"), pszMessage);
+		CTraceService::TraceString(szString, TraceLevel_Exception);
 
+		//关闭连接
+		m_pITCPNetworkEngine->ShutDownSocket(dwSocketID);
 
-	//构造数据
-	DBR_MB_GetPersonalParameter GetPersonalParameter;
-	ZeroMemory(&GetPersonalParameter, sizeof(DBR_MB_GetPersonalParameter));
-	GetPersonalParameter.dwKindID = pGetPersonalParameter->dwKindID;
+		return false;
+	}
+	catch (...)
+	{
+		CTraceService::TraceString("OnTCPNetworkSubMBPersonalParameter 异常", TraceLevel_Exception);
 
-	//投递数据
-	m_pIDataBaseEngine->PostDataBaseRequest(DBR_MB_GET_PERSONAL_PARAMETER,dwSocketID, &GetPersonalParameter, sizeof(DBR_MB_GetPersonalParameter));
+		//关闭连接
+		m_pITCPNetworkEngine->ShutDownSocket(dwSocketID);
 
+		return false;
+	}
 	return true;
 }
 
 //查询私人房间定制配置
 bool CAttemperEngineSink::OnTCPNetworkSubMBGetPersonalRoomRule(VOID * pData, WORD wDataSize, DWORD dwSocketID)
 {
-	return true;
 	//校验数据
 	ASSERT(wDataSize == sizeof(CMD_MB_GetPersonalRule));
 	if (wDataSize != sizeof(CMD_MB_GetPersonalRule)) return false;
@@ -6275,11 +6293,75 @@ bool CAttemperEngineSink::OnDBMBAgentGameList(DWORD dwContextID, VOID * pData, W
 //约战房间配置
 bool CAttemperEngineSink::OnDBMBPersonalParameter(DWORD dwContextID, VOID * pData, WORD wDataSize)
 {
-	//效验参数
-	ASSERT(wDataSize%sizeof(tagPersonalRoomOption)==0);
-	if (wDataSize%sizeof(tagPersonalRoomOption)!=0) return false;
+	try
+	{
+		//效验参数
+		ASSERT(wDataSize == sizeof(tagPersonalRoomOption));
+		if (wDataSize != sizeof(tagPersonalRoomOption)) return false;
 
-	m_pITCPNetworkEngine->SendData(dwContextID, MDM_MB_PERSONAL_SERVICE, SUB_MB_PERSONAL_PARAMETER, pData, wDataSize);
+		tagPersonalRoomOption* roomOption = (tagPersonalRoomOption*)pData;
+
+		GamePmd::tagPersonalRoomOption_s2c tagPersonalRoomOption_s2c;
+
+		NullPmd::response * response = tagPersonalRoomOption_s2c.mutable_respcmd();
+
+		response->set_result(1);
+		response->set_errordescription(WHStringUtils::ws2utf8(WHStringUtils::s2ws(TEXT(""))));
+
+		CommonPmd::consumptionType* consumptionType = tagPersonalRoomOption_s2c.mutable_bconsumptiontype();
+		consumptionType->set_lbeans(roomOption->bConsumptionType.lBeans);
+		consumptionType->set_lcard(roomOption->bConsumptionType.lCard);
+		consumptionType->set_lcoin(roomOption->bConsumptionType.lCoin);
+		consumptionType->set_ldiamond(roomOption->bConsumptionType.lDiamond);
+		consumptionType->set_lgrade(roomOption->bConsumptionType.lGrade);
+		consumptionType->set_lingot(roomOption->bConsumptionType.lIngot);
+		consumptionType->set_linsure(roomOption->bConsumptionType.lInsure);
+		consumptionType->set_lscore(roomOption->bConsumptionType.lScore);
+
+		tagPersonalRoomOption_s2c.set_cbisjoingame(roomOption->cbIsJoinGame);
+		tagPersonalRoomOption_s2c.set_cbmaxpeople(roomOption->cbMaxPeople);
+		tagPersonalRoomOption_s2c.set_cbminpeople(roomOption->cbMinPeople);
+		tagPersonalRoomOption_s2c.set_dwplaytimelimit(roomOption->dwPlayTimeLimit);
+		tagPersonalRoomOption_s2c.set_dwplayturncount(roomOption->dwPlayTurnCount);
+		tagPersonalRoomOption_s2c.set_dwtimeafterbegincount(roomOption->dwTimeAfterBeginCount);
+		tagPersonalRoomOption_s2c.set_dwtimeaftercreateroom(roomOption->dwTimeAfterCreateRoom);
+		tagPersonalRoomOption_s2c.set_dwtimenotbegingame(roomOption->dwTimeNotBeginGame);
+		tagPersonalRoomOption_s2c.set_dwtimeofflinecount(roomOption->dwTimeOffLineCount);
+		tagPersonalRoomOption_s2c.set_lmaxcellscore(roomOption->lMaxCellScore);
+		tagPersonalRoomOption_s2c.set_lpersonalroomtax(roomOption->lPersonalRoomTax);
+		tagPersonalRoomOption_s2c.set_wbeginfreetime(roomOption->wBeginFreeTime);
+		tagPersonalRoomOption_s2c.set_wcancreatecount(roomOption->wCanCreateCount);
+		tagPersonalRoomOption_s2c.set_wendfreetime(roomOption->wEndFreeTime);
+
+		int cbuffsize = tagPersonalRoomOption_s2c.ByteSize();
+		if (cbuffsize > SOCKET_TCP_PACKET) {
+			throw TEXT("发送包太大");
+		}
+		if (cbuffsize <= 0) {
+			return true;
+		}
+		std::shared_ptr<char> dataBuffer(new char[cbuffsize]);
+		if (tagPersonalRoomOption_s2c.SerializeToArray(dataBuffer.get(), cbuffsize) == false) {
+			throw TEXT("Serialize tagPersonalRoomOption_s2c error");
+		}
+		m_pITCPNetworkEngine->SendData(dwContextID, MDM_MB_PERSONAL_SERVICE, SUB_MB_PERSONAL_PARAMETER, dataBuffer.get(), cbuffsize);
+	}
+	catch (LPCTSTR pszMessage) {
+		// 错误信息
+		TCHAR szString[512] = TEXT("");
+		_sntprintf(szString, CountArray(szString), TEXT("OnDBMBPersonalParameter 异常:%s"), pszMessage);
+		CTraceService::TraceString(szString, TraceLevel_Exception);
+		return false;
+	}
+	catch (...)
+	{
+		// 错误信息
+		CTraceService::TraceString("OnDBMBPersonalParameter 异常", TraceLevel_Exception);
+
+		//关闭连接
+		m_pITCPNetworkEngine->ShutDownSocket(dwContextID);
+		return false;
+	}
 
 	return true;
 }
@@ -6287,11 +6369,62 @@ bool CAttemperEngineSink::OnDBMBPersonalParameter(DWORD dwContextID, VOID * pDat
 //约战房间配置
 bool CAttemperEngineSink::OnDBMBPersonalFeeList(DWORD dwContextID, VOID * pData, WORD wDataSize)
 {
-	//效验参数
-	ASSERT(wDataSize%sizeof(tagPersonalTableFeeList)==0);
-	if (wDataSize%sizeof(tagPersonalTableFeeList)!=0) return false;
+	try
+	{
+		//效验参数
+		ASSERT(wDataSize % sizeof(tagPersonalTableFeeList) == 0);
+		if (wDataSize % sizeof(tagPersonalTableFeeList) != 0) return false;
 
-	m_pITCPNetworkEngine->SendData(dwContextID, MDM_MB_PERSONAL_SERVICE, SUB_MB_PERSONAL_FEE_PARAMETER, pData, wDataSize);
+		int count = wDataSize / sizeof(tagPersonalTableFeeList);
+		GamePmd::tagPersonalTableFeeList_s2c tagPersonalTableFeeList_s2c;
+
+		NullPmd::response * response = tagPersonalTableFeeList_s2c.mutable_respcmd();
+
+		response->set_result(1);
+		response->set_errordescription(WHStringUtils::ws2utf8(WHStringUtils::s2ws(TEXT(""))));
+
+		for (int i = 0; i < count; i++) {
+			int position = i * sizeof(tagPersonalTableFeeList);
+			tagPersonalTableFeeList* feeList = (tagPersonalTableFeeList*)((BYTE*)pData+ position);
+
+			GamePmd::tagPersonalTableFeeList* tagPersonalTableFeeList = tagPersonalTableFeeList_s2c.add_tagpersonaltablefeelist();
+			tagPersonalTableFeeList->set_cbgamemode(feeList->cbGameMode);
+			tagPersonalTableFeeList->set_dwdrawcountlimit(feeList->dwDrawCountLimit);
+			tagPersonalTableFeeList->set_dwdrawtimelimit(feeList->dwDrawTimeLimit);
+			tagPersonalTableFeeList->set_lfeescore(feeList->lFeeScore);
+			tagPersonalTableFeeList->set_liniscore(feeList->lIniScore);
+			tagPersonalTableFeeList->set_waapayfee(feeList->wAAPayFee);
+		}
+
+		int cbuffsize = tagPersonalTableFeeList_s2c.ByteSize();
+		if (cbuffsize > SOCKET_TCP_PACKET) {
+			throw TEXT("发送包太大");
+		}
+		if (cbuffsize <= 0) {
+			return true;
+		}
+		std::shared_ptr<char> dataBuffer(new char[cbuffsize]);
+		if (tagPersonalTableFeeList_s2c.SerializeToArray(dataBuffer.get(), cbuffsize) == false) {
+			throw TEXT("Serialize tagPersonalTableFeeList_s2c error");
+		}
+		m_pITCPNetworkEngine->SendData(dwContextID, MDM_MB_PERSONAL_SERVICE, SUB_MB_PERSONAL_FEE_PARAMETER, dataBuffer.get(), cbuffsize);
+	}
+	catch (LPCTSTR pszMessage) {
+		// 错误信息
+		TCHAR szString[512] = TEXT("");
+		_sntprintf(szString, CountArray(szString), TEXT("OnDBMBPersonalFeeList 异常:%s"), pszMessage);
+		CTraceService::TraceString(szString, TraceLevel_Exception);
+		return false;
+	}
+	catch (...)
+	{
+		// 错误信息
+		CTraceService::TraceString("OnDBMBPersonalFeeList 异常", TraceLevel_Exception);
+
+		//关闭连接
+		m_pITCPNetworkEngine->ShutDownSocket(dwContextID);
+		return false;
+	}
 
 	return true;
 }
@@ -6299,24 +6432,105 @@ bool CAttemperEngineSink::OnDBMBPersonalFeeList(DWORD dwContextID, VOID * pData,
 //私人房间配置
 bool CAttemperEngineSink::OnDBMBPersonalCellScore(DWORD dwContextID, VOID * pData, WORD wDataSize)
 {
-	//效验参数
-	ASSERT(wDataSize%sizeof(tagPersonalCellScore) == 0);
-	if (wDataSize%sizeof(tagPersonalCellScore) != 0) return false;
+	try
+	{
+		//效验参数
+		ASSERT(wDataSize == sizeof(tagPersonalCellScore));
+		if (wDataSize != sizeof(tagPersonalCellScore)) return false;
 
-	m_pITCPNetworkEngine->SendData(dwContextID, MDM_MB_PERSONAL_SERVICE, SUB_MB_PERSONAL_CELL_SCORE, pData, wDataSize);
+		GamePmd::tagPersonalCellScore_s2c tagPersonalCellScore_s2c;
 
+		NullPmd::response * response = tagPersonalCellScore_s2c.mutable_respcmd();
+
+		response->set_result(1);
+		response->set_errordescription(WHStringUtils::ws2utf8(WHStringUtils::s2ws(TEXT(""))));
+
+		tagPersonalCellScore* cellScore = (tagPersonalCellScore*)pData;
+
+		for (int i = 0; i < sizeof(cellScore->nCellScore) / sizeof(cellScore->nCellScore[0]); i++) {
+			tagPersonalCellScore_s2c.add_ncellscore(cellScore->nCellScore[i]);
+		}
+
+		int cbuffsize = tagPersonalCellScore_s2c.ByteSize();
+		if (cbuffsize > SOCKET_TCP_PACKET) {
+			throw TEXT("发送包太大");
+		}
+		if (cbuffsize <= 0) {
+			return true;
+		}
+		std::shared_ptr<char> dataBuffer(new char[cbuffsize]);
+		if (tagPersonalCellScore_s2c.SerializeToArray(dataBuffer.get(), cbuffsize) == false) {
+			throw TEXT("Serialize tagPersonalCellScore_s2c error");
+		}
+		m_pITCPNetworkEngine->SendData(dwContextID, MDM_MB_PERSONAL_SERVICE, SUB_MB_PERSONAL_CELL_SCORE, dataBuffer.get(), cbuffsize);
+	}
+	catch (LPCTSTR pszMessage) {
+		// 错误信息
+		TCHAR szString[512] = TEXT("");
+		_sntprintf(szString, CountArray(szString), TEXT("OnDBMBPersonalCellScore 异常:%s"), pszMessage);
+		CTraceService::TraceString(szString, TraceLevel_Exception);
+		return false;
+	}
+	catch (...)
+	{
+		// 错误信息
+		CTraceService::TraceString("OnDBMBPersonalCellScore 异常", TraceLevel_Exception);
+
+		//关闭连接
+		m_pITCPNetworkEngine->ShutDownSocket(dwContextID);
+		return false;
+	}
 	return true;
 }
 
 //私人房间定制配置
 bool CAttemperEngineSink::OnDBMBPersonalRule(DWORD dwContextID, VOID * pData, WORD wDataSize)
 {
-	//效验参数
-	ASSERT(wDataSize==sizeof(tagGetPersonalRule));
-	if (wDataSize != sizeof(tagGetPersonalRule)) return false;
+	try
+	{
+		//效验参数
+		ASSERT(wDataSize == sizeof(tagGetPersonalRule));
+		if (wDataSize != sizeof(tagGetPersonalRule)) return false;
 
-	m_pITCPNetworkEngine->SendData(dwContextID, MDM_MB_PERSONAL_SERVICE, SUB_MB_PERSONAL_RULE_RESULT, pData, wDataSize);
+		GamePmd::tagGetPersonalRule_s2c tagGetPersonalRule_s2c;
 
+		NullPmd::response * response = tagGetPersonalRule_s2c.mutable_respcmd();
+
+		response->set_result(1);
+		response->set_errordescription(WHStringUtils::ws2utf8(WHStringUtils::s2ws(TEXT(""))));
+
+		tagGetPersonalRule* personalRule = (tagGetPersonalRule*)pData;
+		tagGetPersonalRule_s2c.set_cbpersonalrule((char*)personalRule->cbPersonalRule);
+
+		int cbuffsize = tagGetPersonalRule_s2c.ByteSize();
+		if (cbuffsize > SOCKET_TCP_PACKET) {
+			throw TEXT("发送包太大");
+		}
+		if (cbuffsize <= 0) {
+			return true;
+		}
+		std::shared_ptr<char> dataBuffer(new char[cbuffsize]);
+		if (tagGetPersonalRule_s2c.SerializeToArray(dataBuffer.get(), cbuffsize) == false) {
+			throw TEXT("Serialize tagGetPersonalRule_s2c error");
+		}
+		m_pITCPNetworkEngine->SendData(dwContextID, MDM_MB_PERSONAL_SERVICE, SUB_MB_PERSONAL_RULE_RESULT, dataBuffer.get(), cbuffsize);
+	}
+	catch (LPCTSTR pszMessage) {
+		// 错误信息
+		TCHAR szString[512] = TEXT("");
+		_sntprintf(szString, CountArray(szString), TEXT("OnDBMBPersonalRule 异常:%s"), pszMessage);
+		CTraceService::TraceString(szString, TraceLevel_Exception);
+		return false;
+	}
+	catch (...)
+	{
+		// 错误信息
+		CTraceService::TraceString("OnDBMBPersonalRule 异常", TraceLevel_Exception);
+
+		//关闭连接
+		m_pITCPNetworkEngine->ShutDownSocket(dwContextID);
+		return false;
+	}
 	return true;
 }
 

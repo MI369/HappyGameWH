@@ -360,6 +360,460 @@ $root.CommonPmd = (function() {
         return SYSTEMTIME;
     })();
 
+    CommonPmd.consumptionType = (function() {
+
+        /**
+         * Properties of a consumptionType.
+         * @memberof CommonPmd
+         * @interface IconsumptionType
+         * @property {number|Long|null} [lgrade] consumptionType lgrade
+         * @property {number|Long|null} [linsure] consumptionType linsure
+         * @property {number|Long|null} [lscore] consumptionType lscore
+         * @property {number|Long|null} [lingot] consumptionType lingot
+         * @property {number|Long|null} [lbeans] consumptionType lbeans
+         * @property {number|Long|null} [ldiamond] consumptionType ldiamond
+         * @property {number|Long|null} [lcoin] consumptionType lcoin
+         * @property {number|Long|null} [lcard] consumptionType lcard
+         */
+
+        /**
+         * Constructs a new consumptionType.
+         * @memberof CommonPmd
+         * @classdesc Represents a consumptionType.
+         * @implements IconsumptionType
+         * @constructor
+         * @param {CommonPmd.IconsumptionType=} [properties] Properties to set
+         */
+        function consumptionType(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * consumptionType lgrade.
+         * @member {number|Long} lgrade
+         * @memberof CommonPmd.consumptionType
+         * @instance
+         */
+        consumptionType.prototype.lgrade = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * consumptionType linsure.
+         * @member {number|Long} linsure
+         * @memberof CommonPmd.consumptionType
+         * @instance
+         */
+        consumptionType.prototype.linsure = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * consumptionType lscore.
+         * @member {number|Long} lscore
+         * @memberof CommonPmd.consumptionType
+         * @instance
+         */
+        consumptionType.prototype.lscore = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * consumptionType lingot.
+         * @member {number|Long} lingot
+         * @memberof CommonPmd.consumptionType
+         * @instance
+         */
+        consumptionType.prototype.lingot = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * consumptionType lbeans.
+         * @member {number|Long} lbeans
+         * @memberof CommonPmd.consumptionType
+         * @instance
+         */
+        consumptionType.prototype.lbeans = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * consumptionType ldiamond.
+         * @member {number|Long} ldiamond
+         * @memberof CommonPmd.consumptionType
+         * @instance
+         */
+        consumptionType.prototype.ldiamond = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * consumptionType lcoin.
+         * @member {number|Long} lcoin
+         * @memberof CommonPmd.consumptionType
+         * @instance
+         */
+        consumptionType.prototype.lcoin = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * consumptionType lcard.
+         * @member {number|Long} lcard
+         * @memberof CommonPmd.consumptionType
+         * @instance
+         */
+        consumptionType.prototype.lcard = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * Creates a new consumptionType instance using the specified properties.
+         * @function create
+         * @memberof CommonPmd.consumptionType
+         * @static
+         * @param {CommonPmd.IconsumptionType=} [properties] Properties to set
+         * @returns {CommonPmd.consumptionType} consumptionType instance
+         */
+        consumptionType.create = function create(properties) {
+            return new consumptionType(properties);
+        };
+
+        /**
+         * Encodes the specified consumptionType message. Does not implicitly {@link CommonPmd.consumptionType.verify|verify} messages.
+         * @function encode
+         * @memberof CommonPmd.consumptionType
+         * @static
+         * @param {CommonPmd.IconsumptionType} message consumptionType message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        consumptionType.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.lgrade != null && message.hasOwnProperty("lgrade"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.lgrade);
+            if (message.linsure != null && message.hasOwnProperty("linsure"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.linsure);
+            if (message.lscore != null && message.hasOwnProperty("lscore"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint64(message.lscore);
+            if (message.lingot != null && message.hasOwnProperty("lingot"))
+                writer.uint32(/* id 4, wireType 0 =*/32).uint64(message.lingot);
+            if (message.lbeans != null && message.hasOwnProperty("lbeans"))
+                writer.uint32(/* id 5, wireType 0 =*/40).uint64(message.lbeans);
+            if (message.ldiamond != null && message.hasOwnProperty("ldiamond"))
+                writer.uint32(/* id 6, wireType 0 =*/48).uint64(message.ldiamond);
+            if (message.lcoin != null && message.hasOwnProperty("lcoin"))
+                writer.uint32(/* id 7, wireType 0 =*/56).uint64(message.lcoin);
+            if (message.lcard != null && message.hasOwnProperty("lcard"))
+                writer.uint32(/* id 8, wireType 0 =*/64).uint64(message.lcard);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified consumptionType message, length delimited. Does not implicitly {@link CommonPmd.consumptionType.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CommonPmd.consumptionType
+         * @static
+         * @param {CommonPmd.IconsumptionType} message consumptionType message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        consumptionType.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a consumptionType message from the specified reader or buffer.
+         * @function decode
+         * @memberof CommonPmd.consumptionType
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CommonPmd.consumptionType} consumptionType
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        consumptionType.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CommonPmd.consumptionType();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.lgrade = reader.uint64();
+                    break;
+                case 2:
+                    message.linsure = reader.uint64();
+                    break;
+                case 3:
+                    message.lscore = reader.uint64();
+                    break;
+                case 4:
+                    message.lingot = reader.uint64();
+                    break;
+                case 5:
+                    message.lbeans = reader.uint64();
+                    break;
+                case 6:
+                    message.ldiamond = reader.uint64();
+                    break;
+                case 7:
+                    message.lcoin = reader.uint64();
+                    break;
+                case 8:
+                    message.lcard = reader.uint64();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a consumptionType message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CommonPmd.consumptionType
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CommonPmd.consumptionType} consumptionType
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        consumptionType.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a consumptionType message.
+         * @function verify
+         * @memberof CommonPmd.consumptionType
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        consumptionType.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.lgrade != null && message.hasOwnProperty("lgrade"))
+                if (!$util.isInteger(message.lgrade) && !(message.lgrade && $util.isInteger(message.lgrade.low) && $util.isInteger(message.lgrade.high)))
+                    return "lgrade: integer|Long expected";
+            if (message.linsure != null && message.hasOwnProperty("linsure"))
+                if (!$util.isInteger(message.linsure) && !(message.linsure && $util.isInteger(message.linsure.low) && $util.isInteger(message.linsure.high)))
+                    return "linsure: integer|Long expected";
+            if (message.lscore != null && message.hasOwnProperty("lscore"))
+                if (!$util.isInteger(message.lscore) && !(message.lscore && $util.isInteger(message.lscore.low) && $util.isInteger(message.lscore.high)))
+                    return "lscore: integer|Long expected";
+            if (message.lingot != null && message.hasOwnProperty("lingot"))
+                if (!$util.isInteger(message.lingot) && !(message.lingot && $util.isInteger(message.lingot.low) && $util.isInteger(message.lingot.high)))
+                    return "lingot: integer|Long expected";
+            if (message.lbeans != null && message.hasOwnProperty("lbeans"))
+                if (!$util.isInteger(message.lbeans) && !(message.lbeans && $util.isInteger(message.lbeans.low) && $util.isInteger(message.lbeans.high)))
+                    return "lbeans: integer|Long expected";
+            if (message.ldiamond != null && message.hasOwnProperty("ldiamond"))
+                if (!$util.isInteger(message.ldiamond) && !(message.ldiamond && $util.isInteger(message.ldiamond.low) && $util.isInteger(message.ldiamond.high)))
+                    return "ldiamond: integer|Long expected";
+            if (message.lcoin != null && message.hasOwnProperty("lcoin"))
+                if (!$util.isInteger(message.lcoin) && !(message.lcoin && $util.isInteger(message.lcoin.low) && $util.isInteger(message.lcoin.high)))
+                    return "lcoin: integer|Long expected";
+            if (message.lcard != null && message.hasOwnProperty("lcard"))
+                if (!$util.isInteger(message.lcard) && !(message.lcard && $util.isInteger(message.lcard.low) && $util.isInteger(message.lcard.high)))
+                    return "lcard: integer|Long expected";
+            return null;
+        };
+
+        /**
+         * Creates a consumptionType message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CommonPmd.consumptionType
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CommonPmd.consumptionType} consumptionType
+         */
+        consumptionType.fromObject = function fromObject(object) {
+            if (object instanceof $root.CommonPmd.consumptionType)
+                return object;
+            var message = new $root.CommonPmd.consumptionType();
+            if (object.lgrade != null)
+                if ($util.Long)
+                    (message.lgrade = $util.Long.fromValue(object.lgrade)).unsigned = true;
+                else if (typeof object.lgrade === "string")
+                    message.lgrade = parseInt(object.lgrade, 10);
+                else if (typeof object.lgrade === "number")
+                    message.lgrade = object.lgrade;
+                else if (typeof object.lgrade === "object")
+                    message.lgrade = new $util.LongBits(object.lgrade.low >>> 0, object.lgrade.high >>> 0).toNumber(true);
+            if (object.linsure != null)
+                if ($util.Long)
+                    (message.linsure = $util.Long.fromValue(object.linsure)).unsigned = true;
+                else if (typeof object.linsure === "string")
+                    message.linsure = parseInt(object.linsure, 10);
+                else if (typeof object.linsure === "number")
+                    message.linsure = object.linsure;
+                else if (typeof object.linsure === "object")
+                    message.linsure = new $util.LongBits(object.linsure.low >>> 0, object.linsure.high >>> 0).toNumber(true);
+            if (object.lscore != null)
+                if ($util.Long)
+                    (message.lscore = $util.Long.fromValue(object.lscore)).unsigned = true;
+                else if (typeof object.lscore === "string")
+                    message.lscore = parseInt(object.lscore, 10);
+                else if (typeof object.lscore === "number")
+                    message.lscore = object.lscore;
+                else if (typeof object.lscore === "object")
+                    message.lscore = new $util.LongBits(object.lscore.low >>> 0, object.lscore.high >>> 0).toNumber(true);
+            if (object.lingot != null)
+                if ($util.Long)
+                    (message.lingot = $util.Long.fromValue(object.lingot)).unsigned = true;
+                else if (typeof object.lingot === "string")
+                    message.lingot = parseInt(object.lingot, 10);
+                else if (typeof object.lingot === "number")
+                    message.lingot = object.lingot;
+                else if (typeof object.lingot === "object")
+                    message.lingot = new $util.LongBits(object.lingot.low >>> 0, object.lingot.high >>> 0).toNumber(true);
+            if (object.lbeans != null)
+                if ($util.Long)
+                    (message.lbeans = $util.Long.fromValue(object.lbeans)).unsigned = true;
+                else if (typeof object.lbeans === "string")
+                    message.lbeans = parseInt(object.lbeans, 10);
+                else if (typeof object.lbeans === "number")
+                    message.lbeans = object.lbeans;
+                else if (typeof object.lbeans === "object")
+                    message.lbeans = new $util.LongBits(object.lbeans.low >>> 0, object.lbeans.high >>> 0).toNumber(true);
+            if (object.ldiamond != null)
+                if ($util.Long)
+                    (message.ldiamond = $util.Long.fromValue(object.ldiamond)).unsigned = true;
+                else if (typeof object.ldiamond === "string")
+                    message.ldiamond = parseInt(object.ldiamond, 10);
+                else if (typeof object.ldiamond === "number")
+                    message.ldiamond = object.ldiamond;
+                else if (typeof object.ldiamond === "object")
+                    message.ldiamond = new $util.LongBits(object.ldiamond.low >>> 0, object.ldiamond.high >>> 0).toNumber(true);
+            if (object.lcoin != null)
+                if ($util.Long)
+                    (message.lcoin = $util.Long.fromValue(object.lcoin)).unsigned = true;
+                else if (typeof object.lcoin === "string")
+                    message.lcoin = parseInt(object.lcoin, 10);
+                else if (typeof object.lcoin === "number")
+                    message.lcoin = object.lcoin;
+                else if (typeof object.lcoin === "object")
+                    message.lcoin = new $util.LongBits(object.lcoin.low >>> 0, object.lcoin.high >>> 0).toNumber(true);
+            if (object.lcard != null)
+                if ($util.Long)
+                    (message.lcard = $util.Long.fromValue(object.lcard)).unsigned = true;
+                else if (typeof object.lcard === "string")
+                    message.lcard = parseInt(object.lcard, 10);
+                else if (typeof object.lcard === "number")
+                    message.lcard = object.lcard;
+                else if (typeof object.lcard === "object")
+                    message.lcard = new $util.LongBits(object.lcard.low >>> 0, object.lcard.high >>> 0).toNumber(true);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a consumptionType message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CommonPmd.consumptionType
+         * @static
+         * @param {CommonPmd.consumptionType} message consumptionType
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        consumptionType.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults) {
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.lgrade = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.lgrade = options.longs === String ? "0" : 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.linsure = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.linsure = options.longs === String ? "0" : 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.lscore = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.lscore = options.longs === String ? "0" : 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.lingot = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.lingot = options.longs === String ? "0" : 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.lbeans = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.lbeans = options.longs === String ? "0" : 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.ldiamond = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.ldiamond = options.longs === String ? "0" : 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.lcoin = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.lcoin = options.longs === String ? "0" : 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.lcard = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.lcard = options.longs === String ? "0" : 0;
+            }
+            if (message.lgrade != null && message.hasOwnProperty("lgrade"))
+                if (typeof message.lgrade === "number")
+                    object.lgrade = options.longs === String ? String(message.lgrade) : message.lgrade;
+                else
+                    object.lgrade = options.longs === String ? $util.Long.prototype.toString.call(message.lgrade) : options.longs === Number ? new $util.LongBits(message.lgrade.low >>> 0, message.lgrade.high >>> 0).toNumber(true) : message.lgrade;
+            if (message.linsure != null && message.hasOwnProperty("linsure"))
+                if (typeof message.linsure === "number")
+                    object.linsure = options.longs === String ? String(message.linsure) : message.linsure;
+                else
+                    object.linsure = options.longs === String ? $util.Long.prototype.toString.call(message.linsure) : options.longs === Number ? new $util.LongBits(message.linsure.low >>> 0, message.linsure.high >>> 0).toNumber(true) : message.linsure;
+            if (message.lscore != null && message.hasOwnProperty("lscore"))
+                if (typeof message.lscore === "number")
+                    object.lscore = options.longs === String ? String(message.lscore) : message.lscore;
+                else
+                    object.lscore = options.longs === String ? $util.Long.prototype.toString.call(message.lscore) : options.longs === Number ? new $util.LongBits(message.lscore.low >>> 0, message.lscore.high >>> 0).toNumber(true) : message.lscore;
+            if (message.lingot != null && message.hasOwnProperty("lingot"))
+                if (typeof message.lingot === "number")
+                    object.lingot = options.longs === String ? String(message.lingot) : message.lingot;
+                else
+                    object.lingot = options.longs === String ? $util.Long.prototype.toString.call(message.lingot) : options.longs === Number ? new $util.LongBits(message.lingot.low >>> 0, message.lingot.high >>> 0).toNumber(true) : message.lingot;
+            if (message.lbeans != null && message.hasOwnProperty("lbeans"))
+                if (typeof message.lbeans === "number")
+                    object.lbeans = options.longs === String ? String(message.lbeans) : message.lbeans;
+                else
+                    object.lbeans = options.longs === String ? $util.Long.prototype.toString.call(message.lbeans) : options.longs === Number ? new $util.LongBits(message.lbeans.low >>> 0, message.lbeans.high >>> 0).toNumber(true) : message.lbeans;
+            if (message.ldiamond != null && message.hasOwnProperty("ldiamond"))
+                if (typeof message.ldiamond === "number")
+                    object.ldiamond = options.longs === String ? String(message.ldiamond) : message.ldiamond;
+                else
+                    object.ldiamond = options.longs === String ? $util.Long.prototype.toString.call(message.ldiamond) : options.longs === Number ? new $util.LongBits(message.ldiamond.low >>> 0, message.ldiamond.high >>> 0).toNumber(true) : message.ldiamond;
+            if (message.lcoin != null && message.hasOwnProperty("lcoin"))
+                if (typeof message.lcoin === "number")
+                    object.lcoin = options.longs === String ? String(message.lcoin) : message.lcoin;
+                else
+                    object.lcoin = options.longs === String ? $util.Long.prototype.toString.call(message.lcoin) : options.longs === Number ? new $util.LongBits(message.lcoin.low >>> 0, message.lcoin.high >>> 0).toNumber(true) : message.lcoin;
+            if (message.lcard != null && message.hasOwnProperty("lcard"))
+                if (typeof message.lcard === "number")
+                    object.lcard = options.longs === String ? String(message.lcard) : message.lcard;
+                else
+                    object.lcard = options.longs === String ? $util.Long.prototype.toString.call(message.lcard) : options.longs === Number ? new $util.LongBits(message.lcard.low >>> 0, message.lcard.high >>> 0).toNumber(true) : message.lcard;
+            return object;
+        };
+
+        /**
+         * Converts this consumptionType to JSON.
+         * @function toJSON
+         * @memberof CommonPmd.consumptionType
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        consumptionType.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        return consumptionType;
+    })();
+
     CommonPmd.personinfo = (function() {
 
         /**
@@ -4369,27 +4823,27 @@ $root.GamePmd = (function() {
          * Properties of a tagGameServer.
          * @memberof GamePmd
          * @interface ItagGameServer
-         * @property {number|null} [wKindID] tagGameServer wKindID
-         * @property {number|null} [wNodeID] tagGameServer wNodeID
-         * @property {number|null} [wSortID] tagGameServer wSortID
-         * @property {number|null} [wServerID] tagGameServer wServerID
-         * @property {number|null} [wServerKind] tagGameServer wServerKind
-         * @property {number|null} [wServerType] tagGameServer wServerType
-         * @property {number|null} [wServerLevel] tagGameServer wServerLevel
-         * @property {number|null} [wServerPort] tagGameServer wServerPort
-         * @property {number|Long|null} [lCellScore] tagGameServer lCellScore
-         * @property {number|null} [cbEnterMember] tagGameServer cbEnterMember
-         * @property {number|Long|null} [lEnterScore] tagGameServer lEnterScore
-         * @property {number|Long|null} [dwServerRule] tagGameServer dwServerRule
-         * @property {number|Long|null} [dwOnLineCount] tagGameServer dwOnLineCount
-         * @property {number|Long|null} [dwAndroidCount] tagGameServer dwAndroidCount
-         * @property {number|Long|null} [dwFullCount] tagGameServer dwFullCount
-         * @property {string|null} [szServerAddr] tagGameServer szServerAddr
-         * @property {string|null} [szServerName] tagGameServer szServerName
-         * @property {number|Long|null} [dwSurportType] tagGameServer dwSurportType
-         * @property {number|null} [wTableCount] tagGameServer wTableCount
-         * @property {number|Long|null} [dwSetPlayerCount] tagGameServer dwSetPlayerCount
-         * @property {string|null} [szGameInfomation] tagGameServer szGameInfomation
+         * @property {number|null} [wkindid] tagGameServer wkindid
+         * @property {number|null} [wnodeid] tagGameServer wnodeid
+         * @property {number|null} [wsortid] tagGameServer wsortid
+         * @property {number|null} [wserverid] tagGameServer wserverid
+         * @property {number|null} [wserverkind] tagGameServer wserverkind
+         * @property {number|null} [wservertype] tagGameServer wservertype
+         * @property {number|null} [wserverlevel] tagGameServer wserverlevel
+         * @property {number|null} [wserverport] tagGameServer wserverport
+         * @property {number|Long|null} [lcellscore] tagGameServer lcellscore
+         * @property {number|null} [cbentermember] tagGameServer cbentermember
+         * @property {number|Long|null} [lenterscore] tagGameServer lenterscore
+         * @property {number|Long|null} [dwserverrule] tagGameServer dwserverrule
+         * @property {number|Long|null} [dwonlinecount] tagGameServer dwonlinecount
+         * @property {number|Long|null} [dwandroidcount] tagGameServer dwandroidcount
+         * @property {number|Long|null} [dwfullcount] tagGameServer dwfullcount
+         * @property {string|null} [szserveraddr] tagGameServer szserveraddr
+         * @property {string|null} [szservername] tagGameServer szservername
+         * @property {number|Long|null} [dwsurporttype] tagGameServer dwsurporttype
+         * @property {number|null} [wtablecount] tagGameServer wtablecount
+         * @property {number|Long|null} [dwsetplayercount] tagGameServer dwsetplayercount
+         * @property {string|null} [szgameinfomation] tagGameServer szgameinfomation
          */
 
         /**
@@ -4408,172 +4862,172 @@ $root.GamePmd = (function() {
         }
 
         /**
-         * tagGameServer wKindID.
-         * @member {number} wKindID
+         * tagGameServer wkindid.
+         * @member {number} wkindid
          * @memberof GamePmd.tagGameServer
          * @instance
          */
-        tagGameServer.prototype.wKindID = 0;
+        tagGameServer.prototype.wkindid = 0;
 
         /**
-         * tagGameServer wNodeID.
-         * @member {number} wNodeID
+         * tagGameServer wnodeid.
+         * @member {number} wnodeid
          * @memberof GamePmd.tagGameServer
          * @instance
          */
-        tagGameServer.prototype.wNodeID = 0;
+        tagGameServer.prototype.wnodeid = 0;
 
         /**
-         * tagGameServer wSortID.
-         * @member {number} wSortID
+         * tagGameServer wsortid.
+         * @member {number} wsortid
          * @memberof GamePmd.tagGameServer
          * @instance
          */
-        tagGameServer.prototype.wSortID = 0;
+        tagGameServer.prototype.wsortid = 0;
 
         /**
-         * tagGameServer wServerID.
-         * @member {number} wServerID
+         * tagGameServer wserverid.
+         * @member {number} wserverid
          * @memberof GamePmd.tagGameServer
          * @instance
          */
-        tagGameServer.prototype.wServerID = 0;
+        tagGameServer.prototype.wserverid = 0;
 
         /**
-         * tagGameServer wServerKind.
-         * @member {number} wServerKind
+         * tagGameServer wserverkind.
+         * @member {number} wserverkind
          * @memberof GamePmd.tagGameServer
          * @instance
          */
-        tagGameServer.prototype.wServerKind = 0;
+        tagGameServer.prototype.wserverkind = 0;
 
         /**
-         * tagGameServer wServerType.
-         * @member {number} wServerType
+         * tagGameServer wservertype.
+         * @member {number} wservertype
          * @memberof GamePmd.tagGameServer
          * @instance
          */
-        tagGameServer.prototype.wServerType = 0;
+        tagGameServer.prototype.wservertype = 0;
 
         /**
-         * tagGameServer wServerLevel.
-         * @member {number} wServerLevel
+         * tagGameServer wserverlevel.
+         * @member {number} wserverlevel
          * @memberof GamePmd.tagGameServer
          * @instance
          */
-        tagGameServer.prototype.wServerLevel = 0;
+        tagGameServer.prototype.wserverlevel = 0;
 
         /**
-         * tagGameServer wServerPort.
-         * @member {number} wServerPort
+         * tagGameServer wserverport.
+         * @member {number} wserverport
          * @memberof GamePmd.tagGameServer
          * @instance
          */
-        tagGameServer.prototype.wServerPort = 0;
+        tagGameServer.prototype.wserverport = 0;
 
         /**
-         * tagGameServer lCellScore.
-         * @member {number|Long} lCellScore
+         * tagGameServer lcellscore.
+         * @member {number|Long} lcellscore
          * @memberof GamePmd.tagGameServer
          * @instance
          */
-        tagGameServer.prototype.lCellScore = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+        tagGameServer.prototype.lcellscore = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
 
         /**
-         * tagGameServer cbEnterMember.
-         * @member {number} cbEnterMember
+         * tagGameServer cbentermember.
+         * @member {number} cbentermember
          * @memberof GamePmd.tagGameServer
          * @instance
          */
-        tagGameServer.prototype.cbEnterMember = 0;
+        tagGameServer.prototype.cbentermember = 0;
 
         /**
-         * tagGameServer lEnterScore.
-         * @member {number|Long} lEnterScore
+         * tagGameServer lenterscore.
+         * @member {number|Long} lenterscore
          * @memberof GamePmd.tagGameServer
          * @instance
          */
-        tagGameServer.prototype.lEnterScore = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+        tagGameServer.prototype.lenterscore = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
 
         /**
-         * tagGameServer dwServerRule.
-         * @member {number|Long} dwServerRule
+         * tagGameServer dwserverrule.
+         * @member {number|Long} dwserverrule
          * @memberof GamePmd.tagGameServer
          * @instance
          */
-        tagGameServer.prototype.dwServerRule = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+        tagGameServer.prototype.dwserverrule = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
 
         /**
-         * tagGameServer dwOnLineCount.
-         * @member {number|Long} dwOnLineCount
+         * tagGameServer dwonlinecount.
+         * @member {number|Long} dwonlinecount
          * @memberof GamePmd.tagGameServer
          * @instance
          */
-        tagGameServer.prototype.dwOnLineCount = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+        tagGameServer.prototype.dwonlinecount = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
 
         /**
-         * tagGameServer dwAndroidCount.
-         * @member {number|Long} dwAndroidCount
+         * tagGameServer dwandroidcount.
+         * @member {number|Long} dwandroidcount
          * @memberof GamePmd.tagGameServer
          * @instance
          */
-        tagGameServer.prototype.dwAndroidCount = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+        tagGameServer.prototype.dwandroidcount = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
 
         /**
-         * tagGameServer dwFullCount.
-         * @member {number|Long} dwFullCount
+         * tagGameServer dwfullcount.
+         * @member {number|Long} dwfullcount
          * @memberof GamePmd.tagGameServer
          * @instance
          */
-        tagGameServer.prototype.dwFullCount = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+        tagGameServer.prototype.dwfullcount = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
 
         /**
-         * tagGameServer szServerAddr.
-         * @member {string} szServerAddr
+         * tagGameServer szserveraddr.
+         * @member {string} szserveraddr
          * @memberof GamePmd.tagGameServer
          * @instance
          */
-        tagGameServer.prototype.szServerAddr = "";
+        tagGameServer.prototype.szserveraddr = "";
 
         /**
-         * tagGameServer szServerName.
-         * @member {string} szServerName
+         * tagGameServer szservername.
+         * @member {string} szservername
          * @memberof GamePmd.tagGameServer
          * @instance
          */
-        tagGameServer.prototype.szServerName = "";
+        tagGameServer.prototype.szservername = "";
 
         /**
-         * tagGameServer dwSurportType.
-         * @member {number|Long} dwSurportType
+         * tagGameServer dwsurporttype.
+         * @member {number|Long} dwsurporttype
          * @memberof GamePmd.tagGameServer
          * @instance
          */
-        tagGameServer.prototype.dwSurportType = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+        tagGameServer.prototype.dwsurporttype = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
 
         /**
-         * tagGameServer wTableCount.
-         * @member {number} wTableCount
+         * tagGameServer wtablecount.
+         * @member {number} wtablecount
          * @memberof GamePmd.tagGameServer
          * @instance
          */
-        tagGameServer.prototype.wTableCount = 0;
+        tagGameServer.prototype.wtablecount = 0;
 
         /**
-         * tagGameServer dwSetPlayerCount.
-         * @member {number|Long} dwSetPlayerCount
+         * tagGameServer dwsetplayercount.
+         * @member {number|Long} dwsetplayercount
          * @memberof GamePmd.tagGameServer
          * @instance
          */
-        tagGameServer.prototype.dwSetPlayerCount = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+        tagGameServer.prototype.dwsetplayercount = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
 
         /**
-         * tagGameServer szGameInfomation.
-         * @member {string} szGameInfomation
+         * tagGameServer szgameinfomation.
+         * @member {string} szgameinfomation
          * @memberof GamePmd.tagGameServer
          * @instance
          */
-        tagGameServer.prototype.szGameInfomation = "";
+        tagGameServer.prototype.szgameinfomation = "";
 
         /**
          * Creates a new tagGameServer instance using the specified properties.
@@ -4599,48 +5053,48 @@ $root.GamePmd = (function() {
         tagGameServer.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.wKindID != null && message.hasOwnProperty("wKindID"))
-                writer.uint32(/* id 1, wireType 0 =*/8).int32(message.wKindID);
-            if (message.wNodeID != null && message.hasOwnProperty("wNodeID"))
-                writer.uint32(/* id 2, wireType 0 =*/16).int32(message.wNodeID);
-            if (message.wSortID != null && message.hasOwnProperty("wSortID"))
-                writer.uint32(/* id 3, wireType 0 =*/24).int32(message.wSortID);
-            if (message.wServerID != null && message.hasOwnProperty("wServerID"))
-                writer.uint32(/* id 4, wireType 0 =*/32).int32(message.wServerID);
-            if (message.wServerKind != null && message.hasOwnProperty("wServerKind"))
-                writer.uint32(/* id 5, wireType 0 =*/40).int32(message.wServerKind);
-            if (message.wServerType != null && message.hasOwnProperty("wServerType"))
-                writer.uint32(/* id 6, wireType 0 =*/48).int32(message.wServerType);
-            if (message.wServerLevel != null && message.hasOwnProperty("wServerLevel"))
-                writer.uint32(/* id 7, wireType 0 =*/56).int32(message.wServerLevel);
-            if (message.wServerPort != null && message.hasOwnProperty("wServerPort"))
-                writer.uint32(/* id 8, wireType 0 =*/64).int32(message.wServerPort);
-            if (message.lCellScore != null && message.hasOwnProperty("lCellScore"))
-                writer.uint32(/* id 9, wireType 0 =*/72).uint64(message.lCellScore);
-            if (message.cbEnterMember != null && message.hasOwnProperty("cbEnterMember"))
-                writer.uint32(/* id 10, wireType 0 =*/80).int32(message.cbEnterMember);
-            if (message.lEnterScore != null && message.hasOwnProperty("lEnterScore"))
-                writer.uint32(/* id 11, wireType 0 =*/88).uint64(message.lEnterScore);
-            if (message.dwServerRule != null && message.hasOwnProperty("dwServerRule"))
-                writer.uint32(/* id 12, wireType 0 =*/96).uint64(message.dwServerRule);
-            if (message.dwOnLineCount != null && message.hasOwnProperty("dwOnLineCount"))
-                writer.uint32(/* id 13, wireType 0 =*/104).uint64(message.dwOnLineCount);
-            if (message.dwAndroidCount != null && message.hasOwnProperty("dwAndroidCount"))
-                writer.uint32(/* id 14, wireType 0 =*/112).uint64(message.dwAndroidCount);
-            if (message.dwFullCount != null && message.hasOwnProperty("dwFullCount"))
-                writer.uint32(/* id 15, wireType 0 =*/120).uint64(message.dwFullCount);
-            if (message.szServerAddr != null && message.hasOwnProperty("szServerAddr"))
-                writer.uint32(/* id 16, wireType 2 =*/130).string(message.szServerAddr);
-            if (message.szServerName != null && message.hasOwnProperty("szServerName"))
-                writer.uint32(/* id 17, wireType 2 =*/138).string(message.szServerName);
-            if (message.dwSurportType != null && message.hasOwnProperty("dwSurportType"))
-                writer.uint32(/* id 18, wireType 0 =*/144).uint64(message.dwSurportType);
-            if (message.wTableCount != null && message.hasOwnProperty("wTableCount"))
-                writer.uint32(/* id 19, wireType 0 =*/152).int32(message.wTableCount);
-            if (message.dwSetPlayerCount != null && message.hasOwnProperty("dwSetPlayerCount"))
-                writer.uint32(/* id 20, wireType 0 =*/160).uint64(message.dwSetPlayerCount);
-            if (message.szGameInfomation != null && message.hasOwnProperty("szGameInfomation"))
-                writer.uint32(/* id 21, wireType 2 =*/170).string(message.szGameInfomation);
+            if (message.wkindid != null && message.hasOwnProperty("wkindid"))
+                writer.uint32(/* id 1, wireType 0 =*/8).int32(message.wkindid);
+            if (message.wnodeid != null && message.hasOwnProperty("wnodeid"))
+                writer.uint32(/* id 2, wireType 0 =*/16).int32(message.wnodeid);
+            if (message.wsortid != null && message.hasOwnProperty("wsortid"))
+                writer.uint32(/* id 3, wireType 0 =*/24).int32(message.wsortid);
+            if (message.wserverid != null && message.hasOwnProperty("wserverid"))
+                writer.uint32(/* id 4, wireType 0 =*/32).int32(message.wserverid);
+            if (message.wserverkind != null && message.hasOwnProperty("wserverkind"))
+                writer.uint32(/* id 5, wireType 0 =*/40).int32(message.wserverkind);
+            if (message.wservertype != null && message.hasOwnProperty("wservertype"))
+                writer.uint32(/* id 6, wireType 0 =*/48).int32(message.wservertype);
+            if (message.wserverlevel != null && message.hasOwnProperty("wserverlevel"))
+                writer.uint32(/* id 7, wireType 0 =*/56).int32(message.wserverlevel);
+            if (message.wserverport != null && message.hasOwnProperty("wserverport"))
+                writer.uint32(/* id 8, wireType 0 =*/64).int32(message.wserverport);
+            if (message.lcellscore != null && message.hasOwnProperty("lcellscore"))
+                writer.uint32(/* id 9, wireType 0 =*/72).uint64(message.lcellscore);
+            if (message.cbentermember != null && message.hasOwnProperty("cbentermember"))
+                writer.uint32(/* id 10, wireType 0 =*/80).int32(message.cbentermember);
+            if (message.lenterscore != null && message.hasOwnProperty("lenterscore"))
+                writer.uint32(/* id 11, wireType 0 =*/88).uint64(message.lenterscore);
+            if (message.dwserverrule != null && message.hasOwnProperty("dwserverrule"))
+                writer.uint32(/* id 12, wireType 0 =*/96).uint64(message.dwserverrule);
+            if (message.dwonlinecount != null && message.hasOwnProperty("dwonlinecount"))
+                writer.uint32(/* id 13, wireType 0 =*/104).uint64(message.dwonlinecount);
+            if (message.dwandroidcount != null && message.hasOwnProperty("dwandroidcount"))
+                writer.uint32(/* id 14, wireType 0 =*/112).uint64(message.dwandroidcount);
+            if (message.dwfullcount != null && message.hasOwnProperty("dwfullcount"))
+                writer.uint32(/* id 15, wireType 0 =*/120).uint64(message.dwfullcount);
+            if (message.szserveraddr != null && message.hasOwnProperty("szserveraddr"))
+                writer.uint32(/* id 16, wireType 2 =*/130).string(message.szserveraddr);
+            if (message.szservername != null && message.hasOwnProperty("szservername"))
+                writer.uint32(/* id 17, wireType 2 =*/138).string(message.szservername);
+            if (message.dwsurporttype != null && message.hasOwnProperty("dwsurporttype"))
+                writer.uint32(/* id 18, wireType 0 =*/144).uint64(message.dwsurporttype);
+            if (message.wtablecount != null && message.hasOwnProperty("wtablecount"))
+                writer.uint32(/* id 19, wireType 0 =*/152).int32(message.wtablecount);
+            if (message.dwsetplayercount != null && message.hasOwnProperty("dwsetplayercount"))
+                writer.uint32(/* id 20, wireType 0 =*/160).uint64(message.dwsetplayercount);
+            if (message.szgameinfomation != null && message.hasOwnProperty("szgameinfomation"))
+                writer.uint32(/* id 21, wireType 2 =*/170).string(message.szgameinfomation);
             return writer;
         };
 
@@ -4676,67 +5130,67 @@ $root.GamePmd = (function() {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
                 case 1:
-                    message.wKindID = reader.int32();
+                    message.wkindid = reader.int32();
                     break;
                 case 2:
-                    message.wNodeID = reader.int32();
+                    message.wnodeid = reader.int32();
                     break;
                 case 3:
-                    message.wSortID = reader.int32();
+                    message.wsortid = reader.int32();
                     break;
                 case 4:
-                    message.wServerID = reader.int32();
+                    message.wserverid = reader.int32();
                     break;
                 case 5:
-                    message.wServerKind = reader.int32();
+                    message.wserverkind = reader.int32();
                     break;
                 case 6:
-                    message.wServerType = reader.int32();
+                    message.wservertype = reader.int32();
                     break;
                 case 7:
-                    message.wServerLevel = reader.int32();
+                    message.wserverlevel = reader.int32();
                     break;
                 case 8:
-                    message.wServerPort = reader.int32();
+                    message.wserverport = reader.int32();
                     break;
                 case 9:
-                    message.lCellScore = reader.uint64();
+                    message.lcellscore = reader.uint64();
                     break;
                 case 10:
-                    message.cbEnterMember = reader.int32();
+                    message.cbentermember = reader.int32();
                     break;
                 case 11:
-                    message.lEnterScore = reader.uint64();
+                    message.lenterscore = reader.uint64();
                     break;
                 case 12:
-                    message.dwServerRule = reader.uint64();
+                    message.dwserverrule = reader.uint64();
                     break;
                 case 13:
-                    message.dwOnLineCount = reader.uint64();
+                    message.dwonlinecount = reader.uint64();
                     break;
                 case 14:
-                    message.dwAndroidCount = reader.uint64();
+                    message.dwandroidcount = reader.uint64();
                     break;
                 case 15:
-                    message.dwFullCount = reader.uint64();
+                    message.dwfullcount = reader.uint64();
                     break;
                 case 16:
-                    message.szServerAddr = reader.string();
+                    message.szserveraddr = reader.string();
                     break;
                 case 17:
-                    message.szServerName = reader.string();
+                    message.szservername = reader.string();
                     break;
                 case 18:
-                    message.dwSurportType = reader.uint64();
+                    message.dwsurporttype = reader.uint64();
                     break;
                 case 19:
-                    message.wTableCount = reader.int32();
+                    message.wtablecount = reader.int32();
                     break;
                 case 20:
-                    message.dwSetPlayerCount = reader.uint64();
+                    message.dwsetplayercount = reader.uint64();
                     break;
                 case 21:
-                    message.szGameInfomation = reader.string();
+                    message.szgameinfomation = reader.string();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -4773,69 +5227,69 @@ $root.GamePmd = (function() {
         tagGameServer.verify = function verify(message) {
             if (typeof message !== "object" || message === null)
                 return "object expected";
-            if (message.wKindID != null && message.hasOwnProperty("wKindID"))
-                if (!$util.isInteger(message.wKindID))
-                    return "wKindID: integer expected";
-            if (message.wNodeID != null && message.hasOwnProperty("wNodeID"))
-                if (!$util.isInteger(message.wNodeID))
-                    return "wNodeID: integer expected";
-            if (message.wSortID != null && message.hasOwnProperty("wSortID"))
-                if (!$util.isInteger(message.wSortID))
-                    return "wSortID: integer expected";
-            if (message.wServerID != null && message.hasOwnProperty("wServerID"))
-                if (!$util.isInteger(message.wServerID))
-                    return "wServerID: integer expected";
-            if (message.wServerKind != null && message.hasOwnProperty("wServerKind"))
-                if (!$util.isInteger(message.wServerKind))
-                    return "wServerKind: integer expected";
-            if (message.wServerType != null && message.hasOwnProperty("wServerType"))
-                if (!$util.isInteger(message.wServerType))
-                    return "wServerType: integer expected";
-            if (message.wServerLevel != null && message.hasOwnProperty("wServerLevel"))
-                if (!$util.isInteger(message.wServerLevel))
-                    return "wServerLevel: integer expected";
-            if (message.wServerPort != null && message.hasOwnProperty("wServerPort"))
-                if (!$util.isInteger(message.wServerPort))
-                    return "wServerPort: integer expected";
-            if (message.lCellScore != null && message.hasOwnProperty("lCellScore"))
-                if (!$util.isInteger(message.lCellScore) && !(message.lCellScore && $util.isInteger(message.lCellScore.low) && $util.isInteger(message.lCellScore.high)))
-                    return "lCellScore: integer|Long expected";
-            if (message.cbEnterMember != null && message.hasOwnProperty("cbEnterMember"))
-                if (!$util.isInteger(message.cbEnterMember))
-                    return "cbEnterMember: integer expected";
-            if (message.lEnterScore != null && message.hasOwnProperty("lEnterScore"))
-                if (!$util.isInteger(message.lEnterScore) && !(message.lEnterScore && $util.isInteger(message.lEnterScore.low) && $util.isInteger(message.lEnterScore.high)))
-                    return "lEnterScore: integer|Long expected";
-            if (message.dwServerRule != null && message.hasOwnProperty("dwServerRule"))
-                if (!$util.isInteger(message.dwServerRule) && !(message.dwServerRule && $util.isInteger(message.dwServerRule.low) && $util.isInteger(message.dwServerRule.high)))
-                    return "dwServerRule: integer|Long expected";
-            if (message.dwOnLineCount != null && message.hasOwnProperty("dwOnLineCount"))
-                if (!$util.isInteger(message.dwOnLineCount) && !(message.dwOnLineCount && $util.isInteger(message.dwOnLineCount.low) && $util.isInteger(message.dwOnLineCount.high)))
-                    return "dwOnLineCount: integer|Long expected";
-            if (message.dwAndroidCount != null && message.hasOwnProperty("dwAndroidCount"))
-                if (!$util.isInteger(message.dwAndroidCount) && !(message.dwAndroidCount && $util.isInteger(message.dwAndroidCount.low) && $util.isInteger(message.dwAndroidCount.high)))
-                    return "dwAndroidCount: integer|Long expected";
-            if (message.dwFullCount != null && message.hasOwnProperty("dwFullCount"))
-                if (!$util.isInteger(message.dwFullCount) && !(message.dwFullCount && $util.isInteger(message.dwFullCount.low) && $util.isInteger(message.dwFullCount.high)))
-                    return "dwFullCount: integer|Long expected";
-            if (message.szServerAddr != null && message.hasOwnProperty("szServerAddr"))
-                if (!$util.isString(message.szServerAddr))
-                    return "szServerAddr: string expected";
-            if (message.szServerName != null && message.hasOwnProperty("szServerName"))
-                if (!$util.isString(message.szServerName))
-                    return "szServerName: string expected";
-            if (message.dwSurportType != null && message.hasOwnProperty("dwSurportType"))
-                if (!$util.isInteger(message.dwSurportType) && !(message.dwSurportType && $util.isInteger(message.dwSurportType.low) && $util.isInteger(message.dwSurportType.high)))
-                    return "dwSurportType: integer|Long expected";
-            if (message.wTableCount != null && message.hasOwnProperty("wTableCount"))
-                if (!$util.isInteger(message.wTableCount))
-                    return "wTableCount: integer expected";
-            if (message.dwSetPlayerCount != null && message.hasOwnProperty("dwSetPlayerCount"))
-                if (!$util.isInteger(message.dwSetPlayerCount) && !(message.dwSetPlayerCount && $util.isInteger(message.dwSetPlayerCount.low) && $util.isInteger(message.dwSetPlayerCount.high)))
-                    return "dwSetPlayerCount: integer|Long expected";
-            if (message.szGameInfomation != null && message.hasOwnProperty("szGameInfomation"))
-                if (!$util.isString(message.szGameInfomation))
-                    return "szGameInfomation: string expected";
+            if (message.wkindid != null && message.hasOwnProperty("wkindid"))
+                if (!$util.isInteger(message.wkindid))
+                    return "wkindid: integer expected";
+            if (message.wnodeid != null && message.hasOwnProperty("wnodeid"))
+                if (!$util.isInteger(message.wnodeid))
+                    return "wnodeid: integer expected";
+            if (message.wsortid != null && message.hasOwnProperty("wsortid"))
+                if (!$util.isInteger(message.wsortid))
+                    return "wsortid: integer expected";
+            if (message.wserverid != null && message.hasOwnProperty("wserverid"))
+                if (!$util.isInteger(message.wserverid))
+                    return "wserverid: integer expected";
+            if (message.wserverkind != null && message.hasOwnProperty("wserverkind"))
+                if (!$util.isInteger(message.wserverkind))
+                    return "wserverkind: integer expected";
+            if (message.wservertype != null && message.hasOwnProperty("wservertype"))
+                if (!$util.isInteger(message.wservertype))
+                    return "wservertype: integer expected";
+            if (message.wserverlevel != null && message.hasOwnProperty("wserverlevel"))
+                if (!$util.isInteger(message.wserverlevel))
+                    return "wserverlevel: integer expected";
+            if (message.wserverport != null && message.hasOwnProperty("wserverport"))
+                if (!$util.isInteger(message.wserverport))
+                    return "wserverport: integer expected";
+            if (message.lcellscore != null && message.hasOwnProperty("lcellscore"))
+                if (!$util.isInteger(message.lcellscore) && !(message.lcellscore && $util.isInteger(message.lcellscore.low) && $util.isInteger(message.lcellscore.high)))
+                    return "lcellscore: integer|Long expected";
+            if (message.cbentermember != null && message.hasOwnProperty("cbentermember"))
+                if (!$util.isInteger(message.cbentermember))
+                    return "cbentermember: integer expected";
+            if (message.lenterscore != null && message.hasOwnProperty("lenterscore"))
+                if (!$util.isInteger(message.lenterscore) && !(message.lenterscore && $util.isInteger(message.lenterscore.low) && $util.isInteger(message.lenterscore.high)))
+                    return "lenterscore: integer|Long expected";
+            if (message.dwserverrule != null && message.hasOwnProperty("dwserverrule"))
+                if (!$util.isInteger(message.dwserverrule) && !(message.dwserverrule && $util.isInteger(message.dwserverrule.low) && $util.isInteger(message.dwserverrule.high)))
+                    return "dwserverrule: integer|Long expected";
+            if (message.dwonlinecount != null && message.hasOwnProperty("dwonlinecount"))
+                if (!$util.isInteger(message.dwonlinecount) && !(message.dwonlinecount && $util.isInteger(message.dwonlinecount.low) && $util.isInteger(message.dwonlinecount.high)))
+                    return "dwonlinecount: integer|Long expected";
+            if (message.dwandroidcount != null && message.hasOwnProperty("dwandroidcount"))
+                if (!$util.isInteger(message.dwandroidcount) && !(message.dwandroidcount && $util.isInteger(message.dwandroidcount.low) && $util.isInteger(message.dwandroidcount.high)))
+                    return "dwandroidcount: integer|Long expected";
+            if (message.dwfullcount != null && message.hasOwnProperty("dwfullcount"))
+                if (!$util.isInteger(message.dwfullcount) && !(message.dwfullcount && $util.isInteger(message.dwfullcount.low) && $util.isInteger(message.dwfullcount.high)))
+                    return "dwfullcount: integer|Long expected";
+            if (message.szserveraddr != null && message.hasOwnProperty("szserveraddr"))
+                if (!$util.isString(message.szserveraddr))
+                    return "szserveraddr: string expected";
+            if (message.szservername != null && message.hasOwnProperty("szservername"))
+                if (!$util.isString(message.szservername))
+                    return "szservername: string expected";
+            if (message.dwsurporttype != null && message.hasOwnProperty("dwsurporttype"))
+                if (!$util.isInteger(message.dwsurporttype) && !(message.dwsurporttype && $util.isInteger(message.dwsurporttype.low) && $util.isInteger(message.dwsurporttype.high)))
+                    return "dwsurporttype: integer|Long expected";
+            if (message.wtablecount != null && message.hasOwnProperty("wtablecount"))
+                if (!$util.isInteger(message.wtablecount))
+                    return "wtablecount: integer expected";
+            if (message.dwsetplayercount != null && message.hasOwnProperty("dwsetplayercount"))
+                if (!$util.isInteger(message.dwsetplayercount) && !(message.dwsetplayercount && $util.isInteger(message.dwsetplayercount.low) && $util.isInteger(message.dwsetplayercount.high)))
+                    return "dwsetplayercount: integer|Long expected";
+            if (message.szgameinfomation != null && message.hasOwnProperty("szgameinfomation"))
+                if (!$util.isString(message.szgameinfomation))
+                    return "szgameinfomation: string expected";
             return null;
         };
 
@@ -4851,104 +5305,104 @@ $root.GamePmd = (function() {
             if (object instanceof $root.GamePmd.tagGameServer)
                 return object;
             var message = new $root.GamePmd.tagGameServer();
-            if (object.wKindID != null)
-                message.wKindID = object.wKindID | 0;
-            if (object.wNodeID != null)
-                message.wNodeID = object.wNodeID | 0;
-            if (object.wSortID != null)
-                message.wSortID = object.wSortID | 0;
-            if (object.wServerID != null)
-                message.wServerID = object.wServerID | 0;
-            if (object.wServerKind != null)
-                message.wServerKind = object.wServerKind | 0;
-            if (object.wServerType != null)
-                message.wServerType = object.wServerType | 0;
-            if (object.wServerLevel != null)
-                message.wServerLevel = object.wServerLevel | 0;
-            if (object.wServerPort != null)
-                message.wServerPort = object.wServerPort | 0;
-            if (object.lCellScore != null)
+            if (object.wkindid != null)
+                message.wkindid = object.wkindid | 0;
+            if (object.wnodeid != null)
+                message.wnodeid = object.wnodeid | 0;
+            if (object.wsortid != null)
+                message.wsortid = object.wsortid | 0;
+            if (object.wserverid != null)
+                message.wserverid = object.wserverid | 0;
+            if (object.wserverkind != null)
+                message.wserverkind = object.wserverkind | 0;
+            if (object.wservertype != null)
+                message.wservertype = object.wservertype | 0;
+            if (object.wserverlevel != null)
+                message.wserverlevel = object.wserverlevel | 0;
+            if (object.wserverport != null)
+                message.wserverport = object.wserverport | 0;
+            if (object.lcellscore != null)
                 if ($util.Long)
-                    (message.lCellScore = $util.Long.fromValue(object.lCellScore)).unsigned = true;
-                else if (typeof object.lCellScore === "string")
-                    message.lCellScore = parseInt(object.lCellScore, 10);
-                else if (typeof object.lCellScore === "number")
-                    message.lCellScore = object.lCellScore;
-                else if (typeof object.lCellScore === "object")
-                    message.lCellScore = new $util.LongBits(object.lCellScore.low >>> 0, object.lCellScore.high >>> 0).toNumber(true);
-            if (object.cbEnterMember != null)
-                message.cbEnterMember = object.cbEnterMember | 0;
-            if (object.lEnterScore != null)
+                    (message.lcellscore = $util.Long.fromValue(object.lcellscore)).unsigned = true;
+                else if (typeof object.lcellscore === "string")
+                    message.lcellscore = parseInt(object.lcellscore, 10);
+                else if (typeof object.lcellscore === "number")
+                    message.lcellscore = object.lcellscore;
+                else if (typeof object.lcellscore === "object")
+                    message.lcellscore = new $util.LongBits(object.lcellscore.low >>> 0, object.lcellscore.high >>> 0).toNumber(true);
+            if (object.cbentermember != null)
+                message.cbentermember = object.cbentermember | 0;
+            if (object.lenterscore != null)
                 if ($util.Long)
-                    (message.lEnterScore = $util.Long.fromValue(object.lEnterScore)).unsigned = true;
-                else if (typeof object.lEnterScore === "string")
-                    message.lEnterScore = parseInt(object.lEnterScore, 10);
-                else if (typeof object.lEnterScore === "number")
-                    message.lEnterScore = object.lEnterScore;
-                else if (typeof object.lEnterScore === "object")
-                    message.lEnterScore = new $util.LongBits(object.lEnterScore.low >>> 0, object.lEnterScore.high >>> 0).toNumber(true);
-            if (object.dwServerRule != null)
+                    (message.lenterscore = $util.Long.fromValue(object.lenterscore)).unsigned = true;
+                else if (typeof object.lenterscore === "string")
+                    message.lenterscore = parseInt(object.lenterscore, 10);
+                else if (typeof object.lenterscore === "number")
+                    message.lenterscore = object.lenterscore;
+                else if (typeof object.lenterscore === "object")
+                    message.lenterscore = new $util.LongBits(object.lenterscore.low >>> 0, object.lenterscore.high >>> 0).toNumber(true);
+            if (object.dwserverrule != null)
                 if ($util.Long)
-                    (message.dwServerRule = $util.Long.fromValue(object.dwServerRule)).unsigned = true;
-                else if (typeof object.dwServerRule === "string")
-                    message.dwServerRule = parseInt(object.dwServerRule, 10);
-                else if (typeof object.dwServerRule === "number")
-                    message.dwServerRule = object.dwServerRule;
-                else if (typeof object.dwServerRule === "object")
-                    message.dwServerRule = new $util.LongBits(object.dwServerRule.low >>> 0, object.dwServerRule.high >>> 0).toNumber(true);
-            if (object.dwOnLineCount != null)
+                    (message.dwserverrule = $util.Long.fromValue(object.dwserverrule)).unsigned = true;
+                else if (typeof object.dwserverrule === "string")
+                    message.dwserverrule = parseInt(object.dwserverrule, 10);
+                else if (typeof object.dwserverrule === "number")
+                    message.dwserverrule = object.dwserverrule;
+                else if (typeof object.dwserverrule === "object")
+                    message.dwserverrule = new $util.LongBits(object.dwserverrule.low >>> 0, object.dwserverrule.high >>> 0).toNumber(true);
+            if (object.dwonlinecount != null)
                 if ($util.Long)
-                    (message.dwOnLineCount = $util.Long.fromValue(object.dwOnLineCount)).unsigned = true;
-                else if (typeof object.dwOnLineCount === "string")
-                    message.dwOnLineCount = parseInt(object.dwOnLineCount, 10);
-                else if (typeof object.dwOnLineCount === "number")
-                    message.dwOnLineCount = object.dwOnLineCount;
-                else if (typeof object.dwOnLineCount === "object")
-                    message.dwOnLineCount = new $util.LongBits(object.dwOnLineCount.low >>> 0, object.dwOnLineCount.high >>> 0).toNumber(true);
-            if (object.dwAndroidCount != null)
+                    (message.dwonlinecount = $util.Long.fromValue(object.dwonlinecount)).unsigned = true;
+                else if (typeof object.dwonlinecount === "string")
+                    message.dwonlinecount = parseInt(object.dwonlinecount, 10);
+                else if (typeof object.dwonlinecount === "number")
+                    message.dwonlinecount = object.dwonlinecount;
+                else if (typeof object.dwonlinecount === "object")
+                    message.dwonlinecount = new $util.LongBits(object.dwonlinecount.low >>> 0, object.dwonlinecount.high >>> 0).toNumber(true);
+            if (object.dwandroidcount != null)
                 if ($util.Long)
-                    (message.dwAndroidCount = $util.Long.fromValue(object.dwAndroidCount)).unsigned = true;
-                else if (typeof object.dwAndroidCount === "string")
-                    message.dwAndroidCount = parseInt(object.dwAndroidCount, 10);
-                else if (typeof object.dwAndroidCount === "number")
-                    message.dwAndroidCount = object.dwAndroidCount;
-                else if (typeof object.dwAndroidCount === "object")
-                    message.dwAndroidCount = new $util.LongBits(object.dwAndroidCount.low >>> 0, object.dwAndroidCount.high >>> 0).toNumber(true);
-            if (object.dwFullCount != null)
+                    (message.dwandroidcount = $util.Long.fromValue(object.dwandroidcount)).unsigned = true;
+                else if (typeof object.dwandroidcount === "string")
+                    message.dwandroidcount = parseInt(object.dwandroidcount, 10);
+                else if (typeof object.dwandroidcount === "number")
+                    message.dwandroidcount = object.dwandroidcount;
+                else if (typeof object.dwandroidcount === "object")
+                    message.dwandroidcount = new $util.LongBits(object.dwandroidcount.low >>> 0, object.dwandroidcount.high >>> 0).toNumber(true);
+            if (object.dwfullcount != null)
                 if ($util.Long)
-                    (message.dwFullCount = $util.Long.fromValue(object.dwFullCount)).unsigned = true;
-                else if (typeof object.dwFullCount === "string")
-                    message.dwFullCount = parseInt(object.dwFullCount, 10);
-                else if (typeof object.dwFullCount === "number")
-                    message.dwFullCount = object.dwFullCount;
-                else if (typeof object.dwFullCount === "object")
-                    message.dwFullCount = new $util.LongBits(object.dwFullCount.low >>> 0, object.dwFullCount.high >>> 0).toNumber(true);
-            if (object.szServerAddr != null)
-                message.szServerAddr = String(object.szServerAddr);
-            if (object.szServerName != null)
-                message.szServerName = String(object.szServerName);
-            if (object.dwSurportType != null)
+                    (message.dwfullcount = $util.Long.fromValue(object.dwfullcount)).unsigned = true;
+                else if (typeof object.dwfullcount === "string")
+                    message.dwfullcount = parseInt(object.dwfullcount, 10);
+                else if (typeof object.dwfullcount === "number")
+                    message.dwfullcount = object.dwfullcount;
+                else if (typeof object.dwfullcount === "object")
+                    message.dwfullcount = new $util.LongBits(object.dwfullcount.low >>> 0, object.dwfullcount.high >>> 0).toNumber(true);
+            if (object.szserveraddr != null)
+                message.szserveraddr = String(object.szserveraddr);
+            if (object.szservername != null)
+                message.szservername = String(object.szservername);
+            if (object.dwsurporttype != null)
                 if ($util.Long)
-                    (message.dwSurportType = $util.Long.fromValue(object.dwSurportType)).unsigned = true;
-                else if (typeof object.dwSurportType === "string")
-                    message.dwSurportType = parseInt(object.dwSurportType, 10);
-                else if (typeof object.dwSurportType === "number")
-                    message.dwSurportType = object.dwSurportType;
-                else if (typeof object.dwSurportType === "object")
-                    message.dwSurportType = new $util.LongBits(object.dwSurportType.low >>> 0, object.dwSurportType.high >>> 0).toNumber(true);
-            if (object.wTableCount != null)
-                message.wTableCount = object.wTableCount | 0;
-            if (object.dwSetPlayerCount != null)
+                    (message.dwsurporttype = $util.Long.fromValue(object.dwsurporttype)).unsigned = true;
+                else if (typeof object.dwsurporttype === "string")
+                    message.dwsurporttype = parseInt(object.dwsurporttype, 10);
+                else if (typeof object.dwsurporttype === "number")
+                    message.dwsurporttype = object.dwsurporttype;
+                else if (typeof object.dwsurporttype === "object")
+                    message.dwsurporttype = new $util.LongBits(object.dwsurporttype.low >>> 0, object.dwsurporttype.high >>> 0).toNumber(true);
+            if (object.wtablecount != null)
+                message.wtablecount = object.wtablecount | 0;
+            if (object.dwsetplayercount != null)
                 if ($util.Long)
-                    (message.dwSetPlayerCount = $util.Long.fromValue(object.dwSetPlayerCount)).unsigned = true;
-                else if (typeof object.dwSetPlayerCount === "string")
-                    message.dwSetPlayerCount = parseInt(object.dwSetPlayerCount, 10);
-                else if (typeof object.dwSetPlayerCount === "number")
-                    message.dwSetPlayerCount = object.dwSetPlayerCount;
-                else if (typeof object.dwSetPlayerCount === "object")
-                    message.dwSetPlayerCount = new $util.LongBits(object.dwSetPlayerCount.low >>> 0, object.dwSetPlayerCount.high >>> 0).toNumber(true);
-            if (object.szGameInfomation != null)
-                message.szGameInfomation = String(object.szGameInfomation);
+                    (message.dwsetplayercount = $util.Long.fromValue(object.dwsetplayercount)).unsigned = true;
+                else if (typeof object.dwsetplayercount === "string")
+                    message.dwsetplayercount = parseInt(object.dwsetplayercount, 10);
+                else if (typeof object.dwsetplayercount === "number")
+                    message.dwsetplayercount = object.dwsetplayercount;
+                else if (typeof object.dwsetplayercount === "object")
+                    message.dwsetplayercount = new $util.LongBits(object.dwsetplayercount.low >>> 0, object.dwsetplayercount.high >>> 0).toNumber(true);
+            if (object.szgameinfomation != null)
+                message.szgameinfomation = String(object.szgameinfomation);
             return message;
         };
 
@@ -4966,126 +5420,126 @@ $root.GamePmd = (function() {
                 options = {};
             var object = {};
             if (options.defaults) {
-                object.wKindID = 0;
-                object.wNodeID = 0;
-                object.wSortID = 0;
-                object.wServerID = 0;
-                object.wServerKind = 0;
-                object.wServerType = 0;
-                object.wServerLevel = 0;
-                object.wServerPort = 0;
+                object.wkindid = 0;
+                object.wnodeid = 0;
+                object.wsortid = 0;
+                object.wserverid = 0;
+                object.wserverkind = 0;
+                object.wservertype = 0;
+                object.wserverlevel = 0;
+                object.wserverport = 0;
                 if ($util.Long) {
                     var long = new $util.Long(0, 0, true);
-                    object.lCellScore = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                    object.lcellscore = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
                 } else
-                    object.lCellScore = options.longs === String ? "0" : 0;
-                object.cbEnterMember = 0;
+                    object.lcellscore = options.longs === String ? "0" : 0;
+                object.cbentermember = 0;
                 if ($util.Long) {
                     var long = new $util.Long(0, 0, true);
-                    object.lEnterScore = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                    object.lenterscore = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
                 } else
-                    object.lEnterScore = options.longs === String ? "0" : 0;
+                    object.lenterscore = options.longs === String ? "0" : 0;
                 if ($util.Long) {
                     var long = new $util.Long(0, 0, true);
-                    object.dwServerRule = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                    object.dwserverrule = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
                 } else
-                    object.dwServerRule = options.longs === String ? "0" : 0;
+                    object.dwserverrule = options.longs === String ? "0" : 0;
                 if ($util.Long) {
                     var long = new $util.Long(0, 0, true);
-                    object.dwOnLineCount = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                    object.dwonlinecount = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
                 } else
-                    object.dwOnLineCount = options.longs === String ? "0" : 0;
+                    object.dwonlinecount = options.longs === String ? "0" : 0;
                 if ($util.Long) {
                     var long = new $util.Long(0, 0, true);
-                    object.dwAndroidCount = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                    object.dwandroidcount = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
                 } else
-                    object.dwAndroidCount = options.longs === String ? "0" : 0;
+                    object.dwandroidcount = options.longs === String ? "0" : 0;
                 if ($util.Long) {
                     var long = new $util.Long(0, 0, true);
-                    object.dwFullCount = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                    object.dwfullcount = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
                 } else
-                    object.dwFullCount = options.longs === String ? "0" : 0;
-                object.szServerAddr = "";
-                object.szServerName = "";
+                    object.dwfullcount = options.longs === String ? "0" : 0;
+                object.szserveraddr = "";
+                object.szservername = "";
                 if ($util.Long) {
                     var long = new $util.Long(0, 0, true);
-                    object.dwSurportType = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                    object.dwsurporttype = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
                 } else
-                    object.dwSurportType = options.longs === String ? "0" : 0;
-                object.wTableCount = 0;
+                    object.dwsurporttype = options.longs === String ? "0" : 0;
+                object.wtablecount = 0;
                 if ($util.Long) {
                     var long = new $util.Long(0, 0, true);
-                    object.dwSetPlayerCount = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                    object.dwsetplayercount = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
                 } else
-                    object.dwSetPlayerCount = options.longs === String ? "0" : 0;
-                object.szGameInfomation = "";
+                    object.dwsetplayercount = options.longs === String ? "0" : 0;
+                object.szgameinfomation = "";
             }
-            if (message.wKindID != null && message.hasOwnProperty("wKindID"))
-                object.wKindID = message.wKindID;
-            if (message.wNodeID != null && message.hasOwnProperty("wNodeID"))
-                object.wNodeID = message.wNodeID;
-            if (message.wSortID != null && message.hasOwnProperty("wSortID"))
-                object.wSortID = message.wSortID;
-            if (message.wServerID != null && message.hasOwnProperty("wServerID"))
-                object.wServerID = message.wServerID;
-            if (message.wServerKind != null && message.hasOwnProperty("wServerKind"))
-                object.wServerKind = message.wServerKind;
-            if (message.wServerType != null && message.hasOwnProperty("wServerType"))
-                object.wServerType = message.wServerType;
-            if (message.wServerLevel != null && message.hasOwnProperty("wServerLevel"))
-                object.wServerLevel = message.wServerLevel;
-            if (message.wServerPort != null && message.hasOwnProperty("wServerPort"))
-                object.wServerPort = message.wServerPort;
-            if (message.lCellScore != null && message.hasOwnProperty("lCellScore"))
-                if (typeof message.lCellScore === "number")
-                    object.lCellScore = options.longs === String ? String(message.lCellScore) : message.lCellScore;
+            if (message.wkindid != null && message.hasOwnProperty("wkindid"))
+                object.wkindid = message.wkindid;
+            if (message.wnodeid != null && message.hasOwnProperty("wnodeid"))
+                object.wnodeid = message.wnodeid;
+            if (message.wsortid != null && message.hasOwnProperty("wsortid"))
+                object.wsortid = message.wsortid;
+            if (message.wserverid != null && message.hasOwnProperty("wserverid"))
+                object.wserverid = message.wserverid;
+            if (message.wserverkind != null && message.hasOwnProperty("wserverkind"))
+                object.wserverkind = message.wserverkind;
+            if (message.wservertype != null && message.hasOwnProperty("wservertype"))
+                object.wservertype = message.wservertype;
+            if (message.wserverlevel != null && message.hasOwnProperty("wserverlevel"))
+                object.wserverlevel = message.wserverlevel;
+            if (message.wserverport != null && message.hasOwnProperty("wserverport"))
+                object.wserverport = message.wserverport;
+            if (message.lcellscore != null && message.hasOwnProperty("lcellscore"))
+                if (typeof message.lcellscore === "number")
+                    object.lcellscore = options.longs === String ? String(message.lcellscore) : message.lcellscore;
                 else
-                    object.lCellScore = options.longs === String ? $util.Long.prototype.toString.call(message.lCellScore) : options.longs === Number ? new $util.LongBits(message.lCellScore.low >>> 0, message.lCellScore.high >>> 0).toNumber(true) : message.lCellScore;
-            if (message.cbEnterMember != null && message.hasOwnProperty("cbEnterMember"))
-                object.cbEnterMember = message.cbEnterMember;
-            if (message.lEnterScore != null && message.hasOwnProperty("lEnterScore"))
-                if (typeof message.lEnterScore === "number")
-                    object.lEnterScore = options.longs === String ? String(message.lEnterScore) : message.lEnterScore;
+                    object.lcellscore = options.longs === String ? $util.Long.prototype.toString.call(message.lcellscore) : options.longs === Number ? new $util.LongBits(message.lcellscore.low >>> 0, message.lcellscore.high >>> 0).toNumber(true) : message.lcellscore;
+            if (message.cbentermember != null && message.hasOwnProperty("cbentermember"))
+                object.cbentermember = message.cbentermember;
+            if (message.lenterscore != null && message.hasOwnProperty("lenterscore"))
+                if (typeof message.lenterscore === "number")
+                    object.lenterscore = options.longs === String ? String(message.lenterscore) : message.lenterscore;
                 else
-                    object.lEnterScore = options.longs === String ? $util.Long.prototype.toString.call(message.lEnterScore) : options.longs === Number ? new $util.LongBits(message.lEnterScore.low >>> 0, message.lEnterScore.high >>> 0).toNumber(true) : message.lEnterScore;
-            if (message.dwServerRule != null && message.hasOwnProperty("dwServerRule"))
-                if (typeof message.dwServerRule === "number")
-                    object.dwServerRule = options.longs === String ? String(message.dwServerRule) : message.dwServerRule;
+                    object.lenterscore = options.longs === String ? $util.Long.prototype.toString.call(message.lenterscore) : options.longs === Number ? new $util.LongBits(message.lenterscore.low >>> 0, message.lenterscore.high >>> 0).toNumber(true) : message.lenterscore;
+            if (message.dwserverrule != null && message.hasOwnProperty("dwserverrule"))
+                if (typeof message.dwserverrule === "number")
+                    object.dwserverrule = options.longs === String ? String(message.dwserverrule) : message.dwserverrule;
                 else
-                    object.dwServerRule = options.longs === String ? $util.Long.prototype.toString.call(message.dwServerRule) : options.longs === Number ? new $util.LongBits(message.dwServerRule.low >>> 0, message.dwServerRule.high >>> 0).toNumber(true) : message.dwServerRule;
-            if (message.dwOnLineCount != null && message.hasOwnProperty("dwOnLineCount"))
-                if (typeof message.dwOnLineCount === "number")
-                    object.dwOnLineCount = options.longs === String ? String(message.dwOnLineCount) : message.dwOnLineCount;
+                    object.dwserverrule = options.longs === String ? $util.Long.prototype.toString.call(message.dwserverrule) : options.longs === Number ? new $util.LongBits(message.dwserverrule.low >>> 0, message.dwserverrule.high >>> 0).toNumber(true) : message.dwserverrule;
+            if (message.dwonlinecount != null && message.hasOwnProperty("dwonlinecount"))
+                if (typeof message.dwonlinecount === "number")
+                    object.dwonlinecount = options.longs === String ? String(message.dwonlinecount) : message.dwonlinecount;
                 else
-                    object.dwOnLineCount = options.longs === String ? $util.Long.prototype.toString.call(message.dwOnLineCount) : options.longs === Number ? new $util.LongBits(message.dwOnLineCount.low >>> 0, message.dwOnLineCount.high >>> 0).toNumber(true) : message.dwOnLineCount;
-            if (message.dwAndroidCount != null && message.hasOwnProperty("dwAndroidCount"))
-                if (typeof message.dwAndroidCount === "number")
-                    object.dwAndroidCount = options.longs === String ? String(message.dwAndroidCount) : message.dwAndroidCount;
+                    object.dwonlinecount = options.longs === String ? $util.Long.prototype.toString.call(message.dwonlinecount) : options.longs === Number ? new $util.LongBits(message.dwonlinecount.low >>> 0, message.dwonlinecount.high >>> 0).toNumber(true) : message.dwonlinecount;
+            if (message.dwandroidcount != null && message.hasOwnProperty("dwandroidcount"))
+                if (typeof message.dwandroidcount === "number")
+                    object.dwandroidcount = options.longs === String ? String(message.dwandroidcount) : message.dwandroidcount;
                 else
-                    object.dwAndroidCount = options.longs === String ? $util.Long.prototype.toString.call(message.dwAndroidCount) : options.longs === Number ? new $util.LongBits(message.dwAndroidCount.low >>> 0, message.dwAndroidCount.high >>> 0).toNumber(true) : message.dwAndroidCount;
-            if (message.dwFullCount != null && message.hasOwnProperty("dwFullCount"))
-                if (typeof message.dwFullCount === "number")
-                    object.dwFullCount = options.longs === String ? String(message.dwFullCount) : message.dwFullCount;
+                    object.dwandroidcount = options.longs === String ? $util.Long.prototype.toString.call(message.dwandroidcount) : options.longs === Number ? new $util.LongBits(message.dwandroidcount.low >>> 0, message.dwandroidcount.high >>> 0).toNumber(true) : message.dwandroidcount;
+            if (message.dwfullcount != null && message.hasOwnProperty("dwfullcount"))
+                if (typeof message.dwfullcount === "number")
+                    object.dwfullcount = options.longs === String ? String(message.dwfullcount) : message.dwfullcount;
                 else
-                    object.dwFullCount = options.longs === String ? $util.Long.prototype.toString.call(message.dwFullCount) : options.longs === Number ? new $util.LongBits(message.dwFullCount.low >>> 0, message.dwFullCount.high >>> 0).toNumber(true) : message.dwFullCount;
-            if (message.szServerAddr != null && message.hasOwnProperty("szServerAddr"))
-                object.szServerAddr = message.szServerAddr;
-            if (message.szServerName != null && message.hasOwnProperty("szServerName"))
-                object.szServerName = message.szServerName;
-            if (message.dwSurportType != null && message.hasOwnProperty("dwSurportType"))
-                if (typeof message.dwSurportType === "number")
-                    object.dwSurportType = options.longs === String ? String(message.dwSurportType) : message.dwSurportType;
+                    object.dwfullcount = options.longs === String ? $util.Long.prototype.toString.call(message.dwfullcount) : options.longs === Number ? new $util.LongBits(message.dwfullcount.low >>> 0, message.dwfullcount.high >>> 0).toNumber(true) : message.dwfullcount;
+            if (message.szserveraddr != null && message.hasOwnProperty("szserveraddr"))
+                object.szserveraddr = message.szserveraddr;
+            if (message.szservername != null && message.hasOwnProperty("szservername"))
+                object.szservername = message.szservername;
+            if (message.dwsurporttype != null && message.hasOwnProperty("dwsurporttype"))
+                if (typeof message.dwsurporttype === "number")
+                    object.dwsurporttype = options.longs === String ? String(message.dwsurporttype) : message.dwsurporttype;
                 else
-                    object.dwSurportType = options.longs === String ? $util.Long.prototype.toString.call(message.dwSurportType) : options.longs === Number ? new $util.LongBits(message.dwSurportType.low >>> 0, message.dwSurportType.high >>> 0).toNumber(true) : message.dwSurportType;
-            if (message.wTableCount != null && message.hasOwnProperty("wTableCount"))
-                object.wTableCount = message.wTableCount;
-            if (message.dwSetPlayerCount != null && message.hasOwnProperty("dwSetPlayerCount"))
-                if (typeof message.dwSetPlayerCount === "number")
-                    object.dwSetPlayerCount = options.longs === String ? String(message.dwSetPlayerCount) : message.dwSetPlayerCount;
+                    object.dwsurporttype = options.longs === String ? $util.Long.prototype.toString.call(message.dwsurporttype) : options.longs === Number ? new $util.LongBits(message.dwsurporttype.low >>> 0, message.dwsurporttype.high >>> 0).toNumber(true) : message.dwsurporttype;
+            if (message.wtablecount != null && message.hasOwnProperty("wtablecount"))
+                object.wtablecount = message.wtablecount;
+            if (message.dwsetplayercount != null && message.hasOwnProperty("dwsetplayercount"))
+                if (typeof message.dwsetplayercount === "number")
+                    object.dwsetplayercount = options.longs === String ? String(message.dwsetplayercount) : message.dwsetplayercount;
                 else
-                    object.dwSetPlayerCount = options.longs === String ? $util.Long.prototype.toString.call(message.dwSetPlayerCount) : options.longs === Number ? new $util.LongBits(message.dwSetPlayerCount.low >>> 0, message.dwSetPlayerCount.high >>> 0).toNumber(true) : message.dwSetPlayerCount;
-            if (message.szGameInfomation != null && message.hasOwnProperty("szGameInfomation"))
-                object.szGameInfomation = message.szGameInfomation;
+                    object.dwsetplayercount = options.longs === String ? $util.Long.prototype.toString.call(message.dwsetplayercount) : options.longs === Number ? new $util.LongBits(message.dwsetplayercount.low >>> 0, message.dwsetplayercount.high >>> 0).toNumber(true) : message.dwsetplayercount;
+            if (message.szgameinfomation != null && message.hasOwnProperty("szgameinfomation"))
+                object.szgameinfomation = message.szgameinfomation;
             return object;
         };
 
@@ -6281,6 +6735,1919 @@ $root.GamePmd = (function() {
         };
 
         return tagGameServer_s2c;
+    })();
+
+    GamePmd.personalParameter_c2s = (function() {
+
+        /**
+         * Properties of a personalParameter_c2s.
+         * @memberof GamePmd
+         * @interface IpersonalParameter_c2s
+         * @property {NullPmd.Iresponse|null} [respcmd] personalParameter_c2s respcmd
+         * @property {number|Long|null} [dwkindid] personalParameter_c2s dwkindid
+         */
+
+        /**
+         * Constructs a new personalParameter_c2s.
+         * @memberof GamePmd
+         * @classdesc Represents a personalParameter_c2s.
+         * @implements IpersonalParameter_c2s
+         * @constructor
+         * @param {GamePmd.IpersonalParameter_c2s=} [properties] Properties to set
+         */
+        function personalParameter_c2s(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * personalParameter_c2s respcmd.
+         * @member {NullPmd.Iresponse|null|undefined} respcmd
+         * @memberof GamePmd.personalParameter_c2s
+         * @instance
+         */
+        personalParameter_c2s.prototype.respcmd = null;
+
+        /**
+         * personalParameter_c2s dwkindid.
+         * @member {number|Long} dwkindid
+         * @memberof GamePmd.personalParameter_c2s
+         * @instance
+         */
+        personalParameter_c2s.prototype.dwkindid = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * Creates a new personalParameter_c2s instance using the specified properties.
+         * @function create
+         * @memberof GamePmd.personalParameter_c2s
+         * @static
+         * @param {GamePmd.IpersonalParameter_c2s=} [properties] Properties to set
+         * @returns {GamePmd.personalParameter_c2s} personalParameter_c2s instance
+         */
+        personalParameter_c2s.create = function create(properties) {
+            return new personalParameter_c2s(properties);
+        };
+
+        /**
+         * Encodes the specified personalParameter_c2s message. Does not implicitly {@link GamePmd.personalParameter_c2s.verify|verify} messages.
+         * @function encode
+         * @memberof GamePmd.personalParameter_c2s
+         * @static
+         * @param {GamePmd.IpersonalParameter_c2s} message personalParameter_c2s message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        personalParameter_c2s.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.respcmd != null && message.hasOwnProperty("respcmd"))
+                $root.NullPmd.response.encode(message.respcmd, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            if (message.dwkindid != null && message.hasOwnProperty("dwkindid"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.dwkindid);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified personalParameter_c2s message, length delimited. Does not implicitly {@link GamePmd.personalParameter_c2s.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof GamePmd.personalParameter_c2s
+         * @static
+         * @param {GamePmd.IpersonalParameter_c2s} message personalParameter_c2s message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        personalParameter_c2s.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a personalParameter_c2s message from the specified reader or buffer.
+         * @function decode
+         * @memberof GamePmd.personalParameter_c2s
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {GamePmd.personalParameter_c2s} personalParameter_c2s
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        personalParameter_c2s.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.GamePmd.personalParameter_c2s();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.respcmd = $root.NullPmd.response.decode(reader, reader.uint32());
+                    break;
+                case 2:
+                    message.dwkindid = reader.uint64();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a personalParameter_c2s message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof GamePmd.personalParameter_c2s
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {GamePmd.personalParameter_c2s} personalParameter_c2s
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        personalParameter_c2s.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a personalParameter_c2s message.
+         * @function verify
+         * @memberof GamePmd.personalParameter_c2s
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        personalParameter_c2s.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.respcmd != null && message.hasOwnProperty("respcmd")) {
+                var error = $root.NullPmd.response.verify(message.respcmd);
+                if (error)
+                    return "respcmd." + error;
+            }
+            if (message.dwkindid != null && message.hasOwnProperty("dwkindid"))
+                if (!$util.isInteger(message.dwkindid) && !(message.dwkindid && $util.isInteger(message.dwkindid.low) && $util.isInteger(message.dwkindid.high)))
+                    return "dwkindid: integer|Long expected";
+            return null;
+        };
+
+        /**
+         * Creates a personalParameter_c2s message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof GamePmd.personalParameter_c2s
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {GamePmd.personalParameter_c2s} personalParameter_c2s
+         */
+        personalParameter_c2s.fromObject = function fromObject(object) {
+            if (object instanceof $root.GamePmd.personalParameter_c2s)
+                return object;
+            var message = new $root.GamePmd.personalParameter_c2s();
+            if (object.respcmd != null) {
+                if (typeof object.respcmd !== "object")
+                    throw TypeError(".GamePmd.personalParameter_c2s.respcmd: object expected");
+                message.respcmd = $root.NullPmd.response.fromObject(object.respcmd);
+            }
+            if (object.dwkindid != null)
+                if ($util.Long)
+                    (message.dwkindid = $util.Long.fromValue(object.dwkindid)).unsigned = true;
+                else if (typeof object.dwkindid === "string")
+                    message.dwkindid = parseInt(object.dwkindid, 10);
+                else if (typeof object.dwkindid === "number")
+                    message.dwkindid = object.dwkindid;
+                else if (typeof object.dwkindid === "object")
+                    message.dwkindid = new $util.LongBits(object.dwkindid.low >>> 0, object.dwkindid.high >>> 0).toNumber(true);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a personalParameter_c2s message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof GamePmd.personalParameter_c2s
+         * @static
+         * @param {GamePmd.personalParameter_c2s} message personalParameter_c2s
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        personalParameter_c2s.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults) {
+                object.respcmd = null;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.dwkindid = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.dwkindid = options.longs === String ? "0" : 0;
+            }
+            if (message.respcmd != null && message.hasOwnProperty("respcmd"))
+                object.respcmd = $root.NullPmd.response.toObject(message.respcmd, options);
+            if (message.dwkindid != null && message.hasOwnProperty("dwkindid"))
+                if (typeof message.dwkindid === "number")
+                    object.dwkindid = options.longs === String ? String(message.dwkindid) : message.dwkindid;
+                else
+                    object.dwkindid = options.longs === String ? $util.Long.prototype.toString.call(message.dwkindid) : options.longs === Number ? new $util.LongBits(message.dwkindid.low >>> 0, message.dwkindid.high >>> 0).toNumber(true) : message.dwkindid;
+            return object;
+        };
+
+        /**
+         * Converts this personalParameter_c2s to JSON.
+         * @function toJSON
+         * @memberof GamePmd.personalParameter_c2s
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        personalParameter_c2s.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        return personalParameter_c2s;
+    })();
+
+    GamePmd.tagPersonalTableFeeList = (function() {
+
+        /**
+         * Properties of a tagPersonalTableFeeList.
+         * @memberof GamePmd
+         * @interface ItagPersonalTableFeeList
+         * @property {number|Long|null} [dwdrawtimelimit] tagPersonalTableFeeList dwdrawtimelimit
+         * @property {number|Long|null} [dwdrawcountlimit] tagPersonalTableFeeList dwdrawcountlimit
+         * @property {number|Long|null} [liniscore] tagPersonalTableFeeList liniscore
+         * @property {number|Long|null} [lfeescore] tagPersonalTableFeeList lfeescore
+         * @property {number|null} [waapayfee] tagPersonalTableFeeList waapayfee
+         * @property {number|null} [cbgamemode] tagPersonalTableFeeList cbgamemode
+         */
+
+        /**
+         * Constructs a new tagPersonalTableFeeList.
+         * @memberof GamePmd
+         * @classdesc Represents a tagPersonalTableFeeList.
+         * @implements ItagPersonalTableFeeList
+         * @constructor
+         * @param {GamePmd.ItagPersonalTableFeeList=} [properties] Properties to set
+         */
+        function tagPersonalTableFeeList(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * tagPersonalTableFeeList dwdrawtimelimit.
+         * @member {number|Long} dwdrawtimelimit
+         * @memberof GamePmd.tagPersonalTableFeeList
+         * @instance
+         */
+        tagPersonalTableFeeList.prototype.dwdrawtimelimit = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * tagPersonalTableFeeList dwdrawcountlimit.
+         * @member {number|Long} dwdrawcountlimit
+         * @memberof GamePmd.tagPersonalTableFeeList
+         * @instance
+         */
+        tagPersonalTableFeeList.prototype.dwdrawcountlimit = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * tagPersonalTableFeeList liniscore.
+         * @member {number|Long} liniscore
+         * @memberof GamePmd.tagPersonalTableFeeList
+         * @instance
+         */
+        tagPersonalTableFeeList.prototype.liniscore = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * tagPersonalTableFeeList lfeescore.
+         * @member {number|Long} lfeescore
+         * @memberof GamePmd.tagPersonalTableFeeList
+         * @instance
+         */
+        tagPersonalTableFeeList.prototype.lfeescore = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * tagPersonalTableFeeList waapayfee.
+         * @member {number} waapayfee
+         * @memberof GamePmd.tagPersonalTableFeeList
+         * @instance
+         */
+        tagPersonalTableFeeList.prototype.waapayfee = 0;
+
+        /**
+         * tagPersonalTableFeeList cbgamemode.
+         * @member {number} cbgamemode
+         * @memberof GamePmd.tagPersonalTableFeeList
+         * @instance
+         */
+        tagPersonalTableFeeList.prototype.cbgamemode = 0;
+
+        /**
+         * Creates a new tagPersonalTableFeeList instance using the specified properties.
+         * @function create
+         * @memberof GamePmd.tagPersonalTableFeeList
+         * @static
+         * @param {GamePmd.ItagPersonalTableFeeList=} [properties] Properties to set
+         * @returns {GamePmd.tagPersonalTableFeeList} tagPersonalTableFeeList instance
+         */
+        tagPersonalTableFeeList.create = function create(properties) {
+            return new tagPersonalTableFeeList(properties);
+        };
+
+        /**
+         * Encodes the specified tagPersonalTableFeeList message. Does not implicitly {@link GamePmd.tagPersonalTableFeeList.verify|verify} messages.
+         * @function encode
+         * @memberof GamePmd.tagPersonalTableFeeList
+         * @static
+         * @param {GamePmd.ItagPersonalTableFeeList} message tagPersonalTableFeeList message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        tagPersonalTableFeeList.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.dwdrawtimelimit != null && message.hasOwnProperty("dwdrawtimelimit"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.dwdrawtimelimit);
+            if (message.dwdrawcountlimit != null && message.hasOwnProperty("dwdrawcountlimit"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.dwdrawcountlimit);
+            if (message.liniscore != null && message.hasOwnProperty("liniscore"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint64(message.liniscore);
+            if (message.lfeescore != null && message.hasOwnProperty("lfeescore"))
+                writer.uint32(/* id 4, wireType 0 =*/32).uint64(message.lfeescore);
+            if (message.waapayfee != null && message.hasOwnProperty("waapayfee"))
+                writer.uint32(/* id 5, wireType 0 =*/40).int32(message.waapayfee);
+            if (message.cbgamemode != null && message.hasOwnProperty("cbgamemode"))
+                writer.uint32(/* id 6, wireType 0 =*/48).int32(message.cbgamemode);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified tagPersonalTableFeeList message, length delimited. Does not implicitly {@link GamePmd.tagPersonalTableFeeList.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof GamePmd.tagPersonalTableFeeList
+         * @static
+         * @param {GamePmd.ItagPersonalTableFeeList} message tagPersonalTableFeeList message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        tagPersonalTableFeeList.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a tagPersonalTableFeeList message from the specified reader or buffer.
+         * @function decode
+         * @memberof GamePmd.tagPersonalTableFeeList
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {GamePmd.tagPersonalTableFeeList} tagPersonalTableFeeList
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        tagPersonalTableFeeList.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.GamePmd.tagPersonalTableFeeList();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.dwdrawtimelimit = reader.uint64();
+                    break;
+                case 2:
+                    message.dwdrawcountlimit = reader.uint64();
+                    break;
+                case 3:
+                    message.liniscore = reader.uint64();
+                    break;
+                case 4:
+                    message.lfeescore = reader.uint64();
+                    break;
+                case 5:
+                    message.waapayfee = reader.int32();
+                    break;
+                case 6:
+                    message.cbgamemode = reader.int32();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a tagPersonalTableFeeList message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof GamePmd.tagPersonalTableFeeList
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {GamePmd.tagPersonalTableFeeList} tagPersonalTableFeeList
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        tagPersonalTableFeeList.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a tagPersonalTableFeeList message.
+         * @function verify
+         * @memberof GamePmd.tagPersonalTableFeeList
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        tagPersonalTableFeeList.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.dwdrawtimelimit != null && message.hasOwnProperty("dwdrawtimelimit"))
+                if (!$util.isInteger(message.dwdrawtimelimit) && !(message.dwdrawtimelimit && $util.isInteger(message.dwdrawtimelimit.low) && $util.isInteger(message.dwdrawtimelimit.high)))
+                    return "dwdrawtimelimit: integer|Long expected";
+            if (message.dwdrawcountlimit != null && message.hasOwnProperty("dwdrawcountlimit"))
+                if (!$util.isInteger(message.dwdrawcountlimit) && !(message.dwdrawcountlimit && $util.isInteger(message.dwdrawcountlimit.low) && $util.isInteger(message.dwdrawcountlimit.high)))
+                    return "dwdrawcountlimit: integer|Long expected";
+            if (message.liniscore != null && message.hasOwnProperty("liniscore"))
+                if (!$util.isInteger(message.liniscore) && !(message.liniscore && $util.isInteger(message.liniscore.low) && $util.isInteger(message.liniscore.high)))
+                    return "liniscore: integer|Long expected";
+            if (message.lfeescore != null && message.hasOwnProperty("lfeescore"))
+                if (!$util.isInteger(message.lfeescore) && !(message.lfeescore && $util.isInteger(message.lfeescore.low) && $util.isInteger(message.lfeescore.high)))
+                    return "lfeescore: integer|Long expected";
+            if (message.waapayfee != null && message.hasOwnProperty("waapayfee"))
+                if (!$util.isInteger(message.waapayfee))
+                    return "waapayfee: integer expected";
+            if (message.cbgamemode != null && message.hasOwnProperty("cbgamemode"))
+                if (!$util.isInteger(message.cbgamemode))
+                    return "cbgamemode: integer expected";
+            return null;
+        };
+
+        /**
+         * Creates a tagPersonalTableFeeList message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof GamePmd.tagPersonalTableFeeList
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {GamePmd.tagPersonalTableFeeList} tagPersonalTableFeeList
+         */
+        tagPersonalTableFeeList.fromObject = function fromObject(object) {
+            if (object instanceof $root.GamePmd.tagPersonalTableFeeList)
+                return object;
+            var message = new $root.GamePmd.tagPersonalTableFeeList();
+            if (object.dwdrawtimelimit != null)
+                if ($util.Long)
+                    (message.dwdrawtimelimit = $util.Long.fromValue(object.dwdrawtimelimit)).unsigned = true;
+                else if (typeof object.dwdrawtimelimit === "string")
+                    message.dwdrawtimelimit = parseInt(object.dwdrawtimelimit, 10);
+                else if (typeof object.dwdrawtimelimit === "number")
+                    message.dwdrawtimelimit = object.dwdrawtimelimit;
+                else if (typeof object.dwdrawtimelimit === "object")
+                    message.dwdrawtimelimit = new $util.LongBits(object.dwdrawtimelimit.low >>> 0, object.dwdrawtimelimit.high >>> 0).toNumber(true);
+            if (object.dwdrawcountlimit != null)
+                if ($util.Long)
+                    (message.dwdrawcountlimit = $util.Long.fromValue(object.dwdrawcountlimit)).unsigned = true;
+                else if (typeof object.dwdrawcountlimit === "string")
+                    message.dwdrawcountlimit = parseInt(object.dwdrawcountlimit, 10);
+                else if (typeof object.dwdrawcountlimit === "number")
+                    message.dwdrawcountlimit = object.dwdrawcountlimit;
+                else if (typeof object.dwdrawcountlimit === "object")
+                    message.dwdrawcountlimit = new $util.LongBits(object.dwdrawcountlimit.low >>> 0, object.dwdrawcountlimit.high >>> 0).toNumber(true);
+            if (object.liniscore != null)
+                if ($util.Long)
+                    (message.liniscore = $util.Long.fromValue(object.liniscore)).unsigned = true;
+                else if (typeof object.liniscore === "string")
+                    message.liniscore = parseInt(object.liniscore, 10);
+                else if (typeof object.liniscore === "number")
+                    message.liniscore = object.liniscore;
+                else if (typeof object.liniscore === "object")
+                    message.liniscore = new $util.LongBits(object.liniscore.low >>> 0, object.liniscore.high >>> 0).toNumber(true);
+            if (object.lfeescore != null)
+                if ($util.Long)
+                    (message.lfeescore = $util.Long.fromValue(object.lfeescore)).unsigned = true;
+                else if (typeof object.lfeescore === "string")
+                    message.lfeescore = parseInt(object.lfeescore, 10);
+                else if (typeof object.lfeescore === "number")
+                    message.lfeescore = object.lfeescore;
+                else if (typeof object.lfeescore === "object")
+                    message.lfeescore = new $util.LongBits(object.lfeescore.low >>> 0, object.lfeescore.high >>> 0).toNumber(true);
+            if (object.waapayfee != null)
+                message.waapayfee = object.waapayfee | 0;
+            if (object.cbgamemode != null)
+                message.cbgamemode = object.cbgamemode | 0;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a tagPersonalTableFeeList message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof GamePmd.tagPersonalTableFeeList
+         * @static
+         * @param {GamePmd.tagPersonalTableFeeList} message tagPersonalTableFeeList
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        tagPersonalTableFeeList.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults) {
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.dwdrawtimelimit = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.dwdrawtimelimit = options.longs === String ? "0" : 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.dwdrawcountlimit = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.dwdrawcountlimit = options.longs === String ? "0" : 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.liniscore = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.liniscore = options.longs === String ? "0" : 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.lfeescore = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.lfeescore = options.longs === String ? "0" : 0;
+                object.waapayfee = 0;
+                object.cbgamemode = 0;
+            }
+            if (message.dwdrawtimelimit != null && message.hasOwnProperty("dwdrawtimelimit"))
+                if (typeof message.dwdrawtimelimit === "number")
+                    object.dwdrawtimelimit = options.longs === String ? String(message.dwdrawtimelimit) : message.dwdrawtimelimit;
+                else
+                    object.dwdrawtimelimit = options.longs === String ? $util.Long.prototype.toString.call(message.dwdrawtimelimit) : options.longs === Number ? new $util.LongBits(message.dwdrawtimelimit.low >>> 0, message.dwdrawtimelimit.high >>> 0).toNumber(true) : message.dwdrawtimelimit;
+            if (message.dwdrawcountlimit != null && message.hasOwnProperty("dwdrawcountlimit"))
+                if (typeof message.dwdrawcountlimit === "number")
+                    object.dwdrawcountlimit = options.longs === String ? String(message.dwdrawcountlimit) : message.dwdrawcountlimit;
+                else
+                    object.dwdrawcountlimit = options.longs === String ? $util.Long.prototype.toString.call(message.dwdrawcountlimit) : options.longs === Number ? new $util.LongBits(message.dwdrawcountlimit.low >>> 0, message.dwdrawcountlimit.high >>> 0).toNumber(true) : message.dwdrawcountlimit;
+            if (message.liniscore != null && message.hasOwnProperty("liniscore"))
+                if (typeof message.liniscore === "number")
+                    object.liniscore = options.longs === String ? String(message.liniscore) : message.liniscore;
+                else
+                    object.liniscore = options.longs === String ? $util.Long.prototype.toString.call(message.liniscore) : options.longs === Number ? new $util.LongBits(message.liniscore.low >>> 0, message.liniscore.high >>> 0).toNumber(true) : message.liniscore;
+            if (message.lfeescore != null && message.hasOwnProperty("lfeescore"))
+                if (typeof message.lfeescore === "number")
+                    object.lfeescore = options.longs === String ? String(message.lfeescore) : message.lfeescore;
+                else
+                    object.lfeescore = options.longs === String ? $util.Long.prototype.toString.call(message.lfeescore) : options.longs === Number ? new $util.LongBits(message.lfeescore.low >>> 0, message.lfeescore.high >>> 0).toNumber(true) : message.lfeescore;
+            if (message.waapayfee != null && message.hasOwnProperty("waapayfee"))
+                object.waapayfee = message.waapayfee;
+            if (message.cbgamemode != null && message.hasOwnProperty("cbgamemode"))
+                object.cbgamemode = message.cbgamemode;
+            return object;
+        };
+
+        /**
+         * Converts this tagPersonalTableFeeList to JSON.
+         * @function toJSON
+         * @memberof GamePmd.tagPersonalTableFeeList
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        tagPersonalTableFeeList.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        return tagPersonalTableFeeList;
+    })();
+
+    GamePmd.tagPersonalTableFeeList_s2c = (function() {
+
+        /**
+         * Properties of a tagPersonalTableFeeList_s2c.
+         * @memberof GamePmd
+         * @interface ItagPersonalTableFeeList_s2c
+         * @property {NullPmd.Iresponse|null} [respcmd] tagPersonalTableFeeList_s2c respcmd
+         * @property {Array.<GamePmd.ItagPersonalTableFeeList>|null} [tagPersonalTableFeeList] tagPersonalTableFeeList_s2c tagPersonalTableFeeList
+         */
+
+        /**
+         * Constructs a new tagPersonalTableFeeList_s2c.
+         * @memberof GamePmd
+         * @classdesc Represents a tagPersonalTableFeeList_s2c.
+         * @implements ItagPersonalTableFeeList_s2c
+         * @constructor
+         * @param {GamePmd.ItagPersonalTableFeeList_s2c=} [properties] Properties to set
+         */
+        function tagPersonalTableFeeList_s2c(properties) {
+            this.tagPersonalTableFeeList = [];
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * tagPersonalTableFeeList_s2c respcmd.
+         * @member {NullPmd.Iresponse|null|undefined} respcmd
+         * @memberof GamePmd.tagPersonalTableFeeList_s2c
+         * @instance
+         */
+        tagPersonalTableFeeList_s2c.prototype.respcmd = null;
+
+        /**
+         * tagPersonalTableFeeList_s2c tagPersonalTableFeeList.
+         * @member {Array.<GamePmd.ItagPersonalTableFeeList>} tagPersonalTableFeeList
+         * @memberof GamePmd.tagPersonalTableFeeList_s2c
+         * @instance
+         */
+        tagPersonalTableFeeList_s2c.prototype.tagPersonalTableFeeList = $util.emptyArray;
+
+        /**
+         * Creates a new tagPersonalTableFeeList_s2c instance using the specified properties.
+         * @function create
+         * @memberof GamePmd.tagPersonalTableFeeList_s2c
+         * @static
+         * @param {GamePmd.ItagPersonalTableFeeList_s2c=} [properties] Properties to set
+         * @returns {GamePmd.tagPersonalTableFeeList_s2c} tagPersonalTableFeeList_s2c instance
+         */
+        tagPersonalTableFeeList_s2c.create = function create(properties) {
+            return new tagPersonalTableFeeList_s2c(properties);
+        };
+
+        /**
+         * Encodes the specified tagPersonalTableFeeList_s2c message. Does not implicitly {@link GamePmd.tagPersonalTableFeeList_s2c.verify|verify} messages.
+         * @function encode
+         * @memberof GamePmd.tagPersonalTableFeeList_s2c
+         * @static
+         * @param {GamePmd.ItagPersonalTableFeeList_s2c} message tagPersonalTableFeeList_s2c message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        tagPersonalTableFeeList_s2c.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.respcmd != null && message.hasOwnProperty("respcmd"))
+                $root.NullPmd.response.encode(message.respcmd, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            if (message.tagPersonalTableFeeList != null && message.tagPersonalTableFeeList.length)
+                for (var i = 0; i < message.tagPersonalTableFeeList.length; ++i)
+                    $root.GamePmd.tagPersonalTableFeeList.encode(message.tagPersonalTableFeeList[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified tagPersonalTableFeeList_s2c message, length delimited. Does not implicitly {@link GamePmd.tagPersonalTableFeeList_s2c.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof GamePmd.tagPersonalTableFeeList_s2c
+         * @static
+         * @param {GamePmd.ItagPersonalTableFeeList_s2c} message tagPersonalTableFeeList_s2c message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        tagPersonalTableFeeList_s2c.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a tagPersonalTableFeeList_s2c message from the specified reader or buffer.
+         * @function decode
+         * @memberof GamePmd.tagPersonalTableFeeList_s2c
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {GamePmd.tagPersonalTableFeeList_s2c} tagPersonalTableFeeList_s2c
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        tagPersonalTableFeeList_s2c.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.GamePmd.tagPersonalTableFeeList_s2c();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.respcmd = $root.NullPmd.response.decode(reader, reader.uint32());
+                    break;
+                case 2:
+                    if (!(message.tagPersonalTableFeeList && message.tagPersonalTableFeeList.length))
+                        message.tagPersonalTableFeeList = [];
+                    message.tagPersonalTableFeeList.push($root.GamePmd.tagPersonalTableFeeList.decode(reader, reader.uint32()));
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a tagPersonalTableFeeList_s2c message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof GamePmd.tagPersonalTableFeeList_s2c
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {GamePmd.tagPersonalTableFeeList_s2c} tagPersonalTableFeeList_s2c
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        tagPersonalTableFeeList_s2c.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a tagPersonalTableFeeList_s2c message.
+         * @function verify
+         * @memberof GamePmd.tagPersonalTableFeeList_s2c
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        tagPersonalTableFeeList_s2c.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.respcmd != null && message.hasOwnProperty("respcmd")) {
+                var error = $root.NullPmd.response.verify(message.respcmd);
+                if (error)
+                    return "respcmd." + error;
+            }
+            if (message.tagPersonalTableFeeList != null && message.hasOwnProperty("tagPersonalTableFeeList")) {
+                if (!Array.isArray(message.tagPersonalTableFeeList))
+                    return "tagPersonalTableFeeList: array expected";
+                for (var i = 0; i < message.tagPersonalTableFeeList.length; ++i) {
+                    var error = $root.GamePmd.tagPersonalTableFeeList.verify(message.tagPersonalTableFeeList[i]);
+                    if (error)
+                        return "tagPersonalTableFeeList." + error;
+                }
+            }
+            return null;
+        };
+
+        /**
+         * Creates a tagPersonalTableFeeList_s2c message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof GamePmd.tagPersonalTableFeeList_s2c
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {GamePmd.tagPersonalTableFeeList_s2c} tagPersonalTableFeeList_s2c
+         */
+        tagPersonalTableFeeList_s2c.fromObject = function fromObject(object) {
+            if (object instanceof $root.GamePmd.tagPersonalTableFeeList_s2c)
+                return object;
+            var message = new $root.GamePmd.tagPersonalTableFeeList_s2c();
+            if (object.respcmd != null) {
+                if (typeof object.respcmd !== "object")
+                    throw TypeError(".GamePmd.tagPersonalTableFeeList_s2c.respcmd: object expected");
+                message.respcmd = $root.NullPmd.response.fromObject(object.respcmd);
+            }
+            if (object.tagPersonalTableFeeList) {
+                if (!Array.isArray(object.tagPersonalTableFeeList))
+                    throw TypeError(".GamePmd.tagPersonalTableFeeList_s2c.tagPersonalTableFeeList: array expected");
+                message.tagPersonalTableFeeList = [];
+                for (var i = 0; i < object.tagPersonalTableFeeList.length; ++i) {
+                    if (typeof object.tagPersonalTableFeeList[i] !== "object")
+                        throw TypeError(".GamePmd.tagPersonalTableFeeList_s2c.tagPersonalTableFeeList: object expected");
+                    message.tagPersonalTableFeeList[i] = $root.GamePmd.tagPersonalTableFeeList.fromObject(object.tagPersonalTableFeeList[i]);
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a tagPersonalTableFeeList_s2c message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof GamePmd.tagPersonalTableFeeList_s2c
+         * @static
+         * @param {GamePmd.tagPersonalTableFeeList_s2c} message tagPersonalTableFeeList_s2c
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        tagPersonalTableFeeList_s2c.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.arrays || options.defaults)
+                object.tagPersonalTableFeeList = [];
+            if (options.defaults)
+                object.respcmd = null;
+            if (message.respcmd != null && message.hasOwnProperty("respcmd"))
+                object.respcmd = $root.NullPmd.response.toObject(message.respcmd, options);
+            if (message.tagPersonalTableFeeList && message.tagPersonalTableFeeList.length) {
+                object.tagPersonalTableFeeList = [];
+                for (var j = 0; j < message.tagPersonalTableFeeList.length; ++j)
+                    object.tagPersonalTableFeeList[j] = $root.GamePmd.tagPersonalTableFeeList.toObject(message.tagPersonalTableFeeList[j], options);
+            }
+            return object;
+        };
+
+        /**
+         * Converts this tagPersonalTableFeeList_s2c to JSON.
+         * @function toJSON
+         * @memberof GamePmd.tagPersonalTableFeeList_s2c
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        tagPersonalTableFeeList_s2c.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        return tagPersonalTableFeeList_s2c;
+    })();
+
+    GamePmd.tagPersonalCellScore_s2c = (function() {
+
+        /**
+         * Properties of a tagPersonalCellScore_s2c.
+         * @memberof GamePmd
+         * @interface ItagPersonalCellScore_s2c
+         * @property {NullPmd.Iresponse|null} [respcmd] tagPersonalCellScore_s2c respcmd
+         * @property {Array.<number>|null} [ncellscore] tagPersonalCellScore_s2c ncellscore
+         */
+
+        /**
+         * Constructs a new tagPersonalCellScore_s2c.
+         * @memberof GamePmd
+         * @classdesc Represents a tagPersonalCellScore_s2c.
+         * @implements ItagPersonalCellScore_s2c
+         * @constructor
+         * @param {GamePmd.ItagPersonalCellScore_s2c=} [properties] Properties to set
+         */
+        function tagPersonalCellScore_s2c(properties) {
+            this.ncellscore = [];
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * tagPersonalCellScore_s2c respcmd.
+         * @member {NullPmd.Iresponse|null|undefined} respcmd
+         * @memberof GamePmd.tagPersonalCellScore_s2c
+         * @instance
+         */
+        tagPersonalCellScore_s2c.prototype.respcmd = null;
+
+        /**
+         * tagPersonalCellScore_s2c ncellscore.
+         * @member {Array.<number>} ncellscore
+         * @memberof GamePmd.tagPersonalCellScore_s2c
+         * @instance
+         */
+        tagPersonalCellScore_s2c.prototype.ncellscore = $util.emptyArray;
+
+        /**
+         * Creates a new tagPersonalCellScore_s2c instance using the specified properties.
+         * @function create
+         * @memberof GamePmd.tagPersonalCellScore_s2c
+         * @static
+         * @param {GamePmd.ItagPersonalCellScore_s2c=} [properties] Properties to set
+         * @returns {GamePmd.tagPersonalCellScore_s2c} tagPersonalCellScore_s2c instance
+         */
+        tagPersonalCellScore_s2c.create = function create(properties) {
+            return new tagPersonalCellScore_s2c(properties);
+        };
+
+        /**
+         * Encodes the specified tagPersonalCellScore_s2c message. Does not implicitly {@link GamePmd.tagPersonalCellScore_s2c.verify|verify} messages.
+         * @function encode
+         * @memberof GamePmd.tagPersonalCellScore_s2c
+         * @static
+         * @param {GamePmd.ItagPersonalCellScore_s2c} message tagPersonalCellScore_s2c message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        tagPersonalCellScore_s2c.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.respcmd != null && message.hasOwnProperty("respcmd"))
+                $root.NullPmd.response.encode(message.respcmd, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            if (message.ncellscore != null && message.ncellscore.length) {
+                writer.uint32(/* id 2, wireType 2 =*/18).fork();
+                for (var i = 0; i < message.ncellscore.length; ++i)
+                    writer.int32(message.ncellscore[i]);
+                writer.ldelim();
+            }
+            return writer;
+        };
+
+        /**
+         * Encodes the specified tagPersonalCellScore_s2c message, length delimited. Does not implicitly {@link GamePmd.tagPersonalCellScore_s2c.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof GamePmd.tagPersonalCellScore_s2c
+         * @static
+         * @param {GamePmd.ItagPersonalCellScore_s2c} message tagPersonalCellScore_s2c message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        tagPersonalCellScore_s2c.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a tagPersonalCellScore_s2c message from the specified reader or buffer.
+         * @function decode
+         * @memberof GamePmd.tagPersonalCellScore_s2c
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {GamePmd.tagPersonalCellScore_s2c} tagPersonalCellScore_s2c
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        tagPersonalCellScore_s2c.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.GamePmd.tagPersonalCellScore_s2c();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.respcmd = $root.NullPmd.response.decode(reader, reader.uint32());
+                    break;
+                case 2:
+                    if (!(message.ncellscore && message.ncellscore.length))
+                        message.ncellscore = [];
+                    if ((tag & 7) === 2) {
+                        var end2 = reader.uint32() + reader.pos;
+                        while (reader.pos < end2)
+                            message.ncellscore.push(reader.int32());
+                    } else
+                        message.ncellscore.push(reader.int32());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a tagPersonalCellScore_s2c message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof GamePmd.tagPersonalCellScore_s2c
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {GamePmd.tagPersonalCellScore_s2c} tagPersonalCellScore_s2c
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        tagPersonalCellScore_s2c.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a tagPersonalCellScore_s2c message.
+         * @function verify
+         * @memberof GamePmd.tagPersonalCellScore_s2c
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        tagPersonalCellScore_s2c.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.respcmd != null && message.hasOwnProperty("respcmd")) {
+                var error = $root.NullPmd.response.verify(message.respcmd);
+                if (error)
+                    return "respcmd." + error;
+            }
+            if (message.ncellscore != null && message.hasOwnProperty("ncellscore")) {
+                if (!Array.isArray(message.ncellscore))
+                    return "ncellscore: array expected";
+                for (var i = 0; i < message.ncellscore.length; ++i)
+                    if (!$util.isInteger(message.ncellscore[i]))
+                        return "ncellscore: integer[] expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a tagPersonalCellScore_s2c message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof GamePmd.tagPersonalCellScore_s2c
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {GamePmd.tagPersonalCellScore_s2c} tagPersonalCellScore_s2c
+         */
+        tagPersonalCellScore_s2c.fromObject = function fromObject(object) {
+            if (object instanceof $root.GamePmd.tagPersonalCellScore_s2c)
+                return object;
+            var message = new $root.GamePmd.tagPersonalCellScore_s2c();
+            if (object.respcmd != null) {
+                if (typeof object.respcmd !== "object")
+                    throw TypeError(".GamePmd.tagPersonalCellScore_s2c.respcmd: object expected");
+                message.respcmd = $root.NullPmd.response.fromObject(object.respcmd);
+            }
+            if (object.ncellscore) {
+                if (!Array.isArray(object.ncellscore))
+                    throw TypeError(".GamePmd.tagPersonalCellScore_s2c.ncellscore: array expected");
+                message.ncellscore = [];
+                for (var i = 0; i < object.ncellscore.length; ++i)
+                    message.ncellscore[i] = object.ncellscore[i] | 0;
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a tagPersonalCellScore_s2c message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof GamePmd.tagPersonalCellScore_s2c
+         * @static
+         * @param {GamePmd.tagPersonalCellScore_s2c} message tagPersonalCellScore_s2c
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        tagPersonalCellScore_s2c.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.arrays || options.defaults)
+                object.ncellscore = [];
+            if (options.defaults)
+                object.respcmd = null;
+            if (message.respcmd != null && message.hasOwnProperty("respcmd"))
+                object.respcmd = $root.NullPmd.response.toObject(message.respcmd, options);
+            if (message.ncellscore && message.ncellscore.length) {
+                object.ncellscore = [];
+                for (var j = 0; j < message.ncellscore.length; ++j)
+                    object.ncellscore[j] = message.ncellscore[j];
+            }
+            return object;
+        };
+
+        /**
+         * Converts this tagPersonalCellScore_s2c to JSON.
+         * @function toJSON
+         * @memberof GamePmd.tagPersonalCellScore_s2c
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        tagPersonalCellScore_s2c.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        return tagPersonalCellScore_s2c;
+    })();
+
+    GamePmd.tagGetPersonalRule_s2c = (function() {
+
+        /**
+         * Properties of a tagGetPersonalRule_s2c.
+         * @memberof GamePmd
+         * @interface ItagGetPersonalRule_s2c
+         * @property {NullPmd.Iresponse|null} [respcmd] tagGetPersonalRule_s2c respcmd
+         * @property {string|null} [cbpersonalrule] tagGetPersonalRule_s2c cbpersonalrule
+         */
+
+        /**
+         * Constructs a new tagGetPersonalRule_s2c.
+         * @memberof GamePmd
+         * @classdesc Represents a tagGetPersonalRule_s2c.
+         * @implements ItagGetPersonalRule_s2c
+         * @constructor
+         * @param {GamePmd.ItagGetPersonalRule_s2c=} [properties] Properties to set
+         */
+        function tagGetPersonalRule_s2c(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * tagGetPersonalRule_s2c respcmd.
+         * @member {NullPmd.Iresponse|null|undefined} respcmd
+         * @memberof GamePmd.tagGetPersonalRule_s2c
+         * @instance
+         */
+        tagGetPersonalRule_s2c.prototype.respcmd = null;
+
+        /**
+         * tagGetPersonalRule_s2c cbpersonalrule.
+         * @member {string} cbpersonalrule
+         * @memberof GamePmd.tagGetPersonalRule_s2c
+         * @instance
+         */
+        tagGetPersonalRule_s2c.prototype.cbpersonalrule = "";
+
+        /**
+         * Creates a new tagGetPersonalRule_s2c instance using the specified properties.
+         * @function create
+         * @memberof GamePmd.tagGetPersonalRule_s2c
+         * @static
+         * @param {GamePmd.ItagGetPersonalRule_s2c=} [properties] Properties to set
+         * @returns {GamePmd.tagGetPersonalRule_s2c} tagGetPersonalRule_s2c instance
+         */
+        tagGetPersonalRule_s2c.create = function create(properties) {
+            return new tagGetPersonalRule_s2c(properties);
+        };
+
+        /**
+         * Encodes the specified tagGetPersonalRule_s2c message. Does not implicitly {@link GamePmd.tagGetPersonalRule_s2c.verify|verify} messages.
+         * @function encode
+         * @memberof GamePmd.tagGetPersonalRule_s2c
+         * @static
+         * @param {GamePmd.ItagGetPersonalRule_s2c} message tagGetPersonalRule_s2c message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        tagGetPersonalRule_s2c.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.respcmd != null && message.hasOwnProperty("respcmd"))
+                $root.NullPmd.response.encode(message.respcmd, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            if (message.cbpersonalrule != null && message.hasOwnProperty("cbpersonalrule"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.cbpersonalrule);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified tagGetPersonalRule_s2c message, length delimited. Does not implicitly {@link GamePmd.tagGetPersonalRule_s2c.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof GamePmd.tagGetPersonalRule_s2c
+         * @static
+         * @param {GamePmd.ItagGetPersonalRule_s2c} message tagGetPersonalRule_s2c message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        tagGetPersonalRule_s2c.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a tagGetPersonalRule_s2c message from the specified reader or buffer.
+         * @function decode
+         * @memberof GamePmd.tagGetPersonalRule_s2c
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {GamePmd.tagGetPersonalRule_s2c} tagGetPersonalRule_s2c
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        tagGetPersonalRule_s2c.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.GamePmd.tagGetPersonalRule_s2c();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.respcmd = $root.NullPmd.response.decode(reader, reader.uint32());
+                    break;
+                case 2:
+                    message.cbpersonalrule = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a tagGetPersonalRule_s2c message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof GamePmd.tagGetPersonalRule_s2c
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {GamePmd.tagGetPersonalRule_s2c} tagGetPersonalRule_s2c
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        tagGetPersonalRule_s2c.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a tagGetPersonalRule_s2c message.
+         * @function verify
+         * @memberof GamePmd.tagGetPersonalRule_s2c
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        tagGetPersonalRule_s2c.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.respcmd != null && message.hasOwnProperty("respcmd")) {
+                var error = $root.NullPmd.response.verify(message.respcmd);
+                if (error)
+                    return "respcmd." + error;
+            }
+            if (message.cbpersonalrule != null && message.hasOwnProperty("cbpersonalrule"))
+                if (!$util.isString(message.cbpersonalrule))
+                    return "cbpersonalrule: string expected";
+            return null;
+        };
+
+        /**
+         * Creates a tagGetPersonalRule_s2c message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof GamePmd.tagGetPersonalRule_s2c
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {GamePmd.tagGetPersonalRule_s2c} tagGetPersonalRule_s2c
+         */
+        tagGetPersonalRule_s2c.fromObject = function fromObject(object) {
+            if (object instanceof $root.GamePmd.tagGetPersonalRule_s2c)
+                return object;
+            var message = new $root.GamePmd.tagGetPersonalRule_s2c();
+            if (object.respcmd != null) {
+                if (typeof object.respcmd !== "object")
+                    throw TypeError(".GamePmd.tagGetPersonalRule_s2c.respcmd: object expected");
+                message.respcmd = $root.NullPmd.response.fromObject(object.respcmd);
+            }
+            if (object.cbpersonalrule != null)
+                message.cbpersonalrule = String(object.cbpersonalrule);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a tagGetPersonalRule_s2c message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof GamePmd.tagGetPersonalRule_s2c
+         * @static
+         * @param {GamePmd.tagGetPersonalRule_s2c} message tagGetPersonalRule_s2c
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        tagGetPersonalRule_s2c.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults) {
+                object.respcmd = null;
+                object.cbpersonalrule = "";
+            }
+            if (message.respcmd != null && message.hasOwnProperty("respcmd"))
+                object.respcmd = $root.NullPmd.response.toObject(message.respcmd, options);
+            if (message.cbpersonalrule != null && message.hasOwnProperty("cbpersonalrule"))
+                object.cbpersonalrule = message.cbpersonalrule;
+            return object;
+        };
+
+        /**
+         * Converts this tagGetPersonalRule_s2c to JSON.
+         * @function toJSON
+         * @memberof GamePmd.tagGetPersonalRule_s2c
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        tagGetPersonalRule_s2c.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        return tagGetPersonalRule_s2c;
+    })();
+
+    GamePmd.tagPersonalRoomOption_s2c = (function() {
+
+        /**
+         * Properties of a tagPersonalRoomOption_s2c.
+         * @memberof GamePmd
+         * @interface ItagPersonalRoomOption_s2c
+         * @property {NullPmd.Iresponse|null} [respcmd] tagPersonalRoomOption_s2c respcmd
+         * @property {number|null} [cbisjoingame] tagPersonalRoomOption_s2c cbisjoingame
+         * @property {number|null} [cbminpeople] tagPersonalRoomOption_s2c cbminpeople
+         * @property {number|null} [cbmaxpeople] tagPersonalRoomOption_s2c cbmaxpeople
+         * @property {number|Long|null} [lmaxcellscore] tagPersonalRoomOption_s2c lmaxcellscore
+         * @property {number|Long|null} [lpersonalroomtax] tagPersonalRoomOption_s2c lpersonalroomtax
+         * @property {CommonPmd.IconsumptionType|null} [bconsumptiontype] tagPersonalRoomOption_s2c bconsumptiontype
+         * @property {number|null} [wcancreatecount] tagPersonalRoomOption_s2c wcancreatecount
+         * @property {number|Long|null} [dwplayturncount] tagPersonalRoomOption_s2c dwplayturncount
+         * @property {number|Long|null} [dwplaytimelimit] tagPersonalRoomOption_s2c dwplaytimelimit
+         * @property {number|Long|null} [dwtimeafterbegincount] tagPersonalRoomOption_s2c dwtimeafterbegincount
+         * @property {number|Long|null} [dwtimeofflinecount] tagPersonalRoomOption_s2c dwtimeofflinecount
+         * @property {number|Long|null} [dwtimenotbegingame] tagPersonalRoomOption_s2c dwtimenotbegingame
+         * @property {number|Long|null} [dwtimeaftercreateroom] tagPersonalRoomOption_s2c dwtimeaftercreateroom
+         * @property {number|null} [wbeginfreetime] tagPersonalRoomOption_s2c wbeginfreetime
+         * @property {number|null} [wendfreetime] tagPersonalRoomOption_s2c wendfreetime
+         */
+
+        /**
+         * Constructs a new tagPersonalRoomOption_s2c.
+         * @memberof GamePmd
+         * @classdesc Represents a tagPersonalRoomOption_s2c.
+         * @implements ItagPersonalRoomOption_s2c
+         * @constructor
+         * @param {GamePmd.ItagPersonalRoomOption_s2c=} [properties] Properties to set
+         */
+        function tagPersonalRoomOption_s2c(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * tagPersonalRoomOption_s2c respcmd.
+         * @member {NullPmd.Iresponse|null|undefined} respcmd
+         * @memberof GamePmd.tagPersonalRoomOption_s2c
+         * @instance
+         */
+        tagPersonalRoomOption_s2c.prototype.respcmd = null;
+
+        /**
+         * tagPersonalRoomOption_s2c cbisjoingame.
+         * @member {number} cbisjoingame
+         * @memberof GamePmd.tagPersonalRoomOption_s2c
+         * @instance
+         */
+        tagPersonalRoomOption_s2c.prototype.cbisjoingame = 0;
+
+        /**
+         * tagPersonalRoomOption_s2c cbminpeople.
+         * @member {number} cbminpeople
+         * @memberof GamePmd.tagPersonalRoomOption_s2c
+         * @instance
+         */
+        tagPersonalRoomOption_s2c.prototype.cbminpeople = 0;
+
+        /**
+         * tagPersonalRoomOption_s2c cbmaxpeople.
+         * @member {number} cbmaxpeople
+         * @memberof GamePmd.tagPersonalRoomOption_s2c
+         * @instance
+         */
+        tagPersonalRoomOption_s2c.prototype.cbmaxpeople = 0;
+
+        /**
+         * tagPersonalRoomOption_s2c lmaxcellscore.
+         * @member {number|Long} lmaxcellscore
+         * @memberof GamePmd.tagPersonalRoomOption_s2c
+         * @instance
+         */
+        tagPersonalRoomOption_s2c.prototype.lmaxcellscore = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * tagPersonalRoomOption_s2c lpersonalroomtax.
+         * @member {number|Long} lpersonalroomtax
+         * @memberof GamePmd.tagPersonalRoomOption_s2c
+         * @instance
+         */
+        tagPersonalRoomOption_s2c.prototype.lpersonalroomtax = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * tagPersonalRoomOption_s2c bconsumptiontype.
+         * @member {CommonPmd.IconsumptionType|null|undefined} bconsumptiontype
+         * @memberof GamePmd.tagPersonalRoomOption_s2c
+         * @instance
+         */
+        tagPersonalRoomOption_s2c.prototype.bconsumptiontype = null;
+
+        /**
+         * tagPersonalRoomOption_s2c wcancreatecount.
+         * @member {number} wcancreatecount
+         * @memberof GamePmd.tagPersonalRoomOption_s2c
+         * @instance
+         */
+        tagPersonalRoomOption_s2c.prototype.wcancreatecount = 0;
+
+        /**
+         * tagPersonalRoomOption_s2c dwplayturncount.
+         * @member {number|Long} dwplayturncount
+         * @memberof GamePmd.tagPersonalRoomOption_s2c
+         * @instance
+         */
+        tagPersonalRoomOption_s2c.prototype.dwplayturncount = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * tagPersonalRoomOption_s2c dwplaytimelimit.
+         * @member {number|Long} dwplaytimelimit
+         * @memberof GamePmd.tagPersonalRoomOption_s2c
+         * @instance
+         */
+        tagPersonalRoomOption_s2c.prototype.dwplaytimelimit = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * tagPersonalRoomOption_s2c dwtimeafterbegincount.
+         * @member {number|Long} dwtimeafterbegincount
+         * @memberof GamePmd.tagPersonalRoomOption_s2c
+         * @instance
+         */
+        tagPersonalRoomOption_s2c.prototype.dwtimeafterbegincount = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * tagPersonalRoomOption_s2c dwtimeofflinecount.
+         * @member {number|Long} dwtimeofflinecount
+         * @memberof GamePmd.tagPersonalRoomOption_s2c
+         * @instance
+         */
+        tagPersonalRoomOption_s2c.prototype.dwtimeofflinecount = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * tagPersonalRoomOption_s2c dwtimenotbegingame.
+         * @member {number|Long} dwtimenotbegingame
+         * @memberof GamePmd.tagPersonalRoomOption_s2c
+         * @instance
+         */
+        tagPersonalRoomOption_s2c.prototype.dwtimenotbegingame = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * tagPersonalRoomOption_s2c dwtimeaftercreateroom.
+         * @member {number|Long} dwtimeaftercreateroom
+         * @memberof GamePmd.tagPersonalRoomOption_s2c
+         * @instance
+         */
+        tagPersonalRoomOption_s2c.prototype.dwtimeaftercreateroom = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * tagPersonalRoomOption_s2c wbeginfreetime.
+         * @member {number} wbeginfreetime
+         * @memberof GamePmd.tagPersonalRoomOption_s2c
+         * @instance
+         */
+        tagPersonalRoomOption_s2c.prototype.wbeginfreetime = 0;
+
+        /**
+         * tagPersonalRoomOption_s2c wendfreetime.
+         * @member {number} wendfreetime
+         * @memberof GamePmd.tagPersonalRoomOption_s2c
+         * @instance
+         */
+        tagPersonalRoomOption_s2c.prototype.wendfreetime = 0;
+
+        /**
+         * Creates a new tagPersonalRoomOption_s2c instance using the specified properties.
+         * @function create
+         * @memberof GamePmd.tagPersonalRoomOption_s2c
+         * @static
+         * @param {GamePmd.ItagPersonalRoomOption_s2c=} [properties] Properties to set
+         * @returns {GamePmd.tagPersonalRoomOption_s2c} tagPersonalRoomOption_s2c instance
+         */
+        tagPersonalRoomOption_s2c.create = function create(properties) {
+            return new tagPersonalRoomOption_s2c(properties);
+        };
+
+        /**
+         * Encodes the specified tagPersonalRoomOption_s2c message. Does not implicitly {@link GamePmd.tagPersonalRoomOption_s2c.verify|verify} messages.
+         * @function encode
+         * @memberof GamePmd.tagPersonalRoomOption_s2c
+         * @static
+         * @param {GamePmd.ItagPersonalRoomOption_s2c} message tagPersonalRoomOption_s2c message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        tagPersonalRoomOption_s2c.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.respcmd != null && message.hasOwnProperty("respcmd"))
+                $root.NullPmd.response.encode(message.respcmd, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            if (message.cbisjoingame != null && message.hasOwnProperty("cbisjoingame"))
+                writer.uint32(/* id 2, wireType 0 =*/16).int32(message.cbisjoingame);
+            if (message.cbminpeople != null && message.hasOwnProperty("cbminpeople"))
+                writer.uint32(/* id 3, wireType 0 =*/24).int32(message.cbminpeople);
+            if (message.cbmaxpeople != null && message.hasOwnProperty("cbmaxpeople"))
+                writer.uint32(/* id 4, wireType 0 =*/32).int32(message.cbmaxpeople);
+            if (message.lmaxcellscore != null && message.hasOwnProperty("lmaxcellscore"))
+                writer.uint32(/* id 5, wireType 0 =*/40).uint64(message.lmaxcellscore);
+            if (message.lpersonalroomtax != null && message.hasOwnProperty("lpersonalroomtax"))
+                writer.uint32(/* id 6, wireType 0 =*/48).uint64(message.lpersonalroomtax);
+            if (message.bconsumptiontype != null && message.hasOwnProperty("bconsumptiontype"))
+                $root.CommonPmd.consumptionType.encode(message.bconsumptiontype, writer.uint32(/* id 7, wireType 2 =*/58).fork()).ldelim();
+            if (message.wcancreatecount != null && message.hasOwnProperty("wcancreatecount"))
+                writer.uint32(/* id 8, wireType 0 =*/64).int32(message.wcancreatecount);
+            if (message.dwplayturncount != null && message.hasOwnProperty("dwplayturncount"))
+                writer.uint32(/* id 9, wireType 0 =*/72).uint64(message.dwplayturncount);
+            if (message.dwplaytimelimit != null && message.hasOwnProperty("dwplaytimelimit"))
+                writer.uint32(/* id 10, wireType 0 =*/80).uint64(message.dwplaytimelimit);
+            if (message.dwtimeafterbegincount != null && message.hasOwnProperty("dwtimeafterbegincount"))
+                writer.uint32(/* id 11, wireType 0 =*/88).uint64(message.dwtimeafterbegincount);
+            if (message.dwtimeofflinecount != null && message.hasOwnProperty("dwtimeofflinecount"))
+                writer.uint32(/* id 12, wireType 0 =*/96).uint64(message.dwtimeofflinecount);
+            if (message.dwtimenotbegingame != null && message.hasOwnProperty("dwtimenotbegingame"))
+                writer.uint32(/* id 13, wireType 0 =*/104).uint64(message.dwtimenotbegingame);
+            if (message.dwtimeaftercreateroom != null && message.hasOwnProperty("dwtimeaftercreateroom"))
+                writer.uint32(/* id 14, wireType 0 =*/112).uint64(message.dwtimeaftercreateroom);
+            if (message.wbeginfreetime != null && message.hasOwnProperty("wbeginfreetime"))
+                writer.uint32(/* id 15, wireType 0 =*/120).int32(message.wbeginfreetime);
+            if (message.wendfreetime != null && message.hasOwnProperty("wendfreetime"))
+                writer.uint32(/* id 16, wireType 0 =*/128).int32(message.wendfreetime);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified tagPersonalRoomOption_s2c message, length delimited. Does not implicitly {@link GamePmd.tagPersonalRoomOption_s2c.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof GamePmd.tagPersonalRoomOption_s2c
+         * @static
+         * @param {GamePmd.ItagPersonalRoomOption_s2c} message tagPersonalRoomOption_s2c message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        tagPersonalRoomOption_s2c.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a tagPersonalRoomOption_s2c message from the specified reader or buffer.
+         * @function decode
+         * @memberof GamePmd.tagPersonalRoomOption_s2c
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {GamePmd.tagPersonalRoomOption_s2c} tagPersonalRoomOption_s2c
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        tagPersonalRoomOption_s2c.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.GamePmd.tagPersonalRoomOption_s2c();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.respcmd = $root.NullPmd.response.decode(reader, reader.uint32());
+                    break;
+                case 2:
+                    message.cbisjoingame = reader.int32();
+                    break;
+                case 3:
+                    message.cbminpeople = reader.int32();
+                    break;
+                case 4:
+                    message.cbmaxpeople = reader.int32();
+                    break;
+                case 5:
+                    message.lmaxcellscore = reader.uint64();
+                    break;
+                case 6:
+                    message.lpersonalroomtax = reader.uint64();
+                    break;
+                case 7:
+                    message.bconsumptiontype = $root.CommonPmd.consumptionType.decode(reader, reader.uint32());
+                    break;
+                case 8:
+                    message.wcancreatecount = reader.int32();
+                    break;
+                case 9:
+                    message.dwplayturncount = reader.uint64();
+                    break;
+                case 10:
+                    message.dwplaytimelimit = reader.uint64();
+                    break;
+                case 11:
+                    message.dwtimeafterbegincount = reader.uint64();
+                    break;
+                case 12:
+                    message.dwtimeofflinecount = reader.uint64();
+                    break;
+                case 13:
+                    message.dwtimenotbegingame = reader.uint64();
+                    break;
+                case 14:
+                    message.dwtimeaftercreateroom = reader.uint64();
+                    break;
+                case 15:
+                    message.wbeginfreetime = reader.int32();
+                    break;
+                case 16:
+                    message.wendfreetime = reader.int32();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a tagPersonalRoomOption_s2c message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof GamePmd.tagPersonalRoomOption_s2c
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {GamePmd.tagPersonalRoomOption_s2c} tagPersonalRoomOption_s2c
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        tagPersonalRoomOption_s2c.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a tagPersonalRoomOption_s2c message.
+         * @function verify
+         * @memberof GamePmd.tagPersonalRoomOption_s2c
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        tagPersonalRoomOption_s2c.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.respcmd != null && message.hasOwnProperty("respcmd")) {
+                var error = $root.NullPmd.response.verify(message.respcmd);
+                if (error)
+                    return "respcmd." + error;
+            }
+            if (message.cbisjoingame != null && message.hasOwnProperty("cbisjoingame"))
+                if (!$util.isInteger(message.cbisjoingame))
+                    return "cbisjoingame: integer expected";
+            if (message.cbminpeople != null && message.hasOwnProperty("cbminpeople"))
+                if (!$util.isInteger(message.cbminpeople))
+                    return "cbminpeople: integer expected";
+            if (message.cbmaxpeople != null && message.hasOwnProperty("cbmaxpeople"))
+                if (!$util.isInteger(message.cbmaxpeople))
+                    return "cbmaxpeople: integer expected";
+            if (message.lmaxcellscore != null && message.hasOwnProperty("lmaxcellscore"))
+                if (!$util.isInteger(message.lmaxcellscore) && !(message.lmaxcellscore && $util.isInteger(message.lmaxcellscore.low) && $util.isInteger(message.lmaxcellscore.high)))
+                    return "lmaxcellscore: integer|Long expected";
+            if (message.lpersonalroomtax != null && message.hasOwnProperty("lpersonalroomtax"))
+                if (!$util.isInteger(message.lpersonalroomtax) && !(message.lpersonalroomtax && $util.isInteger(message.lpersonalroomtax.low) && $util.isInteger(message.lpersonalroomtax.high)))
+                    return "lpersonalroomtax: integer|Long expected";
+            if (message.bconsumptiontype != null && message.hasOwnProperty("bconsumptiontype")) {
+                var error = $root.CommonPmd.consumptionType.verify(message.bconsumptiontype);
+                if (error)
+                    return "bconsumptiontype." + error;
+            }
+            if (message.wcancreatecount != null && message.hasOwnProperty("wcancreatecount"))
+                if (!$util.isInteger(message.wcancreatecount))
+                    return "wcancreatecount: integer expected";
+            if (message.dwplayturncount != null && message.hasOwnProperty("dwplayturncount"))
+                if (!$util.isInteger(message.dwplayturncount) && !(message.dwplayturncount && $util.isInteger(message.dwplayturncount.low) && $util.isInteger(message.dwplayturncount.high)))
+                    return "dwplayturncount: integer|Long expected";
+            if (message.dwplaytimelimit != null && message.hasOwnProperty("dwplaytimelimit"))
+                if (!$util.isInteger(message.dwplaytimelimit) && !(message.dwplaytimelimit && $util.isInteger(message.dwplaytimelimit.low) && $util.isInteger(message.dwplaytimelimit.high)))
+                    return "dwplaytimelimit: integer|Long expected";
+            if (message.dwtimeafterbegincount != null && message.hasOwnProperty("dwtimeafterbegincount"))
+                if (!$util.isInteger(message.dwtimeafterbegincount) && !(message.dwtimeafterbegincount && $util.isInteger(message.dwtimeafterbegincount.low) && $util.isInteger(message.dwtimeafterbegincount.high)))
+                    return "dwtimeafterbegincount: integer|Long expected";
+            if (message.dwtimeofflinecount != null && message.hasOwnProperty("dwtimeofflinecount"))
+                if (!$util.isInteger(message.dwtimeofflinecount) && !(message.dwtimeofflinecount && $util.isInteger(message.dwtimeofflinecount.low) && $util.isInteger(message.dwtimeofflinecount.high)))
+                    return "dwtimeofflinecount: integer|Long expected";
+            if (message.dwtimenotbegingame != null && message.hasOwnProperty("dwtimenotbegingame"))
+                if (!$util.isInteger(message.dwtimenotbegingame) && !(message.dwtimenotbegingame && $util.isInteger(message.dwtimenotbegingame.low) && $util.isInteger(message.dwtimenotbegingame.high)))
+                    return "dwtimenotbegingame: integer|Long expected";
+            if (message.dwtimeaftercreateroom != null && message.hasOwnProperty("dwtimeaftercreateroom"))
+                if (!$util.isInteger(message.dwtimeaftercreateroom) && !(message.dwtimeaftercreateroom && $util.isInteger(message.dwtimeaftercreateroom.low) && $util.isInteger(message.dwtimeaftercreateroom.high)))
+                    return "dwtimeaftercreateroom: integer|Long expected";
+            if (message.wbeginfreetime != null && message.hasOwnProperty("wbeginfreetime"))
+                if (!$util.isInteger(message.wbeginfreetime))
+                    return "wbeginfreetime: integer expected";
+            if (message.wendfreetime != null && message.hasOwnProperty("wendfreetime"))
+                if (!$util.isInteger(message.wendfreetime))
+                    return "wendfreetime: integer expected";
+            return null;
+        };
+
+        /**
+         * Creates a tagPersonalRoomOption_s2c message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof GamePmd.tagPersonalRoomOption_s2c
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {GamePmd.tagPersonalRoomOption_s2c} tagPersonalRoomOption_s2c
+         */
+        tagPersonalRoomOption_s2c.fromObject = function fromObject(object) {
+            if (object instanceof $root.GamePmd.tagPersonalRoomOption_s2c)
+                return object;
+            var message = new $root.GamePmd.tagPersonalRoomOption_s2c();
+            if (object.respcmd != null) {
+                if (typeof object.respcmd !== "object")
+                    throw TypeError(".GamePmd.tagPersonalRoomOption_s2c.respcmd: object expected");
+                message.respcmd = $root.NullPmd.response.fromObject(object.respcmd);
+            }
+            if (object.cbisjoingame != null)
+                message.cbisjoingame = object.cbisjoingame | 0;
+            if (object.cbminpeople != null)
+                message.cbminpeople = object.cbminpeople | 0;
+            if (object.cbmaxpeople != null)
+                message.cbmaxpeople = object.cbmaxpeople | 0;
+            if (object.lmaxcellscore != null)
+                if ($util.Long)
+                    (message.lmaxcellscore = $util.Long.fromValue(object.lmaxcellscore)).unsigned = true;
+                else if (typeof object.lmaxcellscore === "string")
+                    message.lmaxcellscore = parseInt(object.lmaxcellscore, 10);
+                else if (typeof object.lmaxcellscore === "number")
+                    message.lmaxcellscore = object.lmaxcellscore;
+                else if (typeof object.lmaxcellscore === "object")
+                    message.lmaxcellscore = new $util.LongBits(object.lmaxcellscore.low >>> 0, object.lmaxcellscore.high >>> 0).toNumber(true);
+            if (object.lpersonalroomtax != null)
+                if ($util.Long)
+                    (message.lpersonalroomtax = $util.Long.fromValue(object.lpersonalroomtax)).unsigned = true;
+                else if (typeof object.lpersonalroomtax === "string")
+                    message.lpersonalroomtax = parseInt(object.lpersonalroomtax, 10);
+                else if (typeof object.lpersonalroomtax === "number")
+                    message.lpersonalroomtax = object.lpersonalroomtax;
+                else if (typeof object.lpersonalroomtax === "object")
+                    message.lpersonalroomtax = new $util.LongBits(object.lpersonalroomtax.low >>> 0, object.lpersonalroomtax.high >>> 0).toNumber(true);
+            if (object.bconsumptiontype != null) {
+                if (typeof object.bconsumptiontype !== "object")
+                    throw TypeError(".GamePmd.tagPersonalRoomOption_s2c.bconsumptiontype: object expected");
+                message.bconsumptiontype = $root.CommonPmd.consumptionType.fromObject(object.bconsumptiontype);
+            }
+            if (object.wcancreatecount != null)
+                message.wcancreatecount = object.wcancreatecount | 0;
+            if (object.dwplayturncount != null)
+                if ($util.Long)
+                    (message.dwplayturncount = $util.Long.fromValue(object.dwplayturncount)).unsigned = true;
+                else if (typeof object.dwplayturncount === "string")
+                    message.dwplayturncount = parseInt(object.dwplayturncount, 10);
+                else if (typeof object.dwplayturncount === "number")
+                    message.dwplayturncount = object.dwplayturncount;
+                else if (typeof object.dwplayturncount === "object")
+                    message.dwplayturncount = new $util.LongBits(object.dwplayturncount.low >>> 0, object.dwplayturncount.high >>> 0).toNumber(true);
+            if (object.dwplaytimelimit != null)
+                if ($util.Long)
+                    (message.dwplaytimelimit = $util.Long.fromValue(object.dwplaytimelimit)).unsigned = true;
+                else if (typeof object.dwplaytimelimit === "string")
+                    message.dwplaytimelimit = parseInt(object.dwplaytimelimit, 10);
+                else if (typeof object.dwplaytimelimit === "number")
+                    message.dwplaytimelimit = object.dwplaytimelimit;
+                else if (typeof object.dwplaytimelimit === "object")
+                    message.dwplaytimelimit = new $util.LongBits(object.dwplaytimelimit.low >>> 0, object.dwplaytimelimit.high >>> 0).toNumber(true);
+            if (object.dwtimeafterbegincount != null)
+                if ($util.Long)
+                    (message.dwtimeafterbegincount = $util.Long.fromValue(object.dwtimeafterbegincount)).unsigned = true;
+                else if (typeof object.dwtimeafterbegincount === "string")
+                    message.dwtimeafterbegincount = parseInt(object.dwtimeafterbegincount, 10);
+                else if (typeof object.dwtimeafterbegincount === "number")
+                    message.dwtimeafterbegincount = object.dwtimeafterbegincount;
+                else if (typeof object.dwtimeafterbegincount === "object")
+                    message.dwtimeafterbegincount = new $util.LongBits(object.dwtimeafterbegincount.low >>> 0, object.dwtimeafterbegincount.high >>> 0).toNumber(true);
+            if (object.dwtimeofflinecount != null)
+                if ($util.Long)
+                    (message.dwtimeofflinecount = $util.Long.fromValue(object.dwtimeofflinecount)).unsigned = true;
+                else if (typeof object.dwtimeofflinecount === "string")
+                    message.dwtimeofflinecount = parseInt(object.dwtimeofflinecount, 10);
+                else if (typeof object.dwtimeofflinecount === "number")
+                    message.dwtimeofflinecount = object.dwtimeofflinecount;
+                else if (typeof object.dwtimeofflinecount === "object")
+                    message.dwtimeofflinecount = new $util.LongBits(object.dwtimeofflinecount.low >>> 0, object.dwtimeofflinecount.high >>> 0).toNumber(true);
+            if (object.dwtimenotbegingame != null)
+                if ($util.Long)
+                    (message.dwtimenotbegingame = $util.Long.fromValue(object.dwtimenotbegingame)).unsigned = true;
+                else if (typeof object.dwtimenotbegingame === "string")
+                    message.dwtimenotbegingame = parseInt(object.dwtimenotbegingame, 10);
+                else if (typeof object.dwtimenotbegingame === "number")
+                    message.dwtimenotbegingame = object.dwtimenotbegingame;
+                else if (typeof object.dwtimenotbegingame === "object")
+                    message.dwtimenotbegingame = new $util.LongBits(object.dwtimenotbegingame.low >>> 0, object.dwtimenotbegingame.high >>> 0).toNumber(true);
+            if (object.dwtimeaftercreateroom != null)
+                if ($util.Long)
+                    (message.dwtimeaftercreateroom = $util.Long.fromValue(object.dwtimeaftercreateroom)).unsigned = true;
+                else if (typeof object.dwtimeaftercreateroom === "string")
+                    message.dwtimeaftercreateroom = parseInt(object.dwtimeaftercreateroom, 10);
+                else if (typeof object.dwtimeaftercreateroom === "number")
+                    message.dwtimeaftercreateroom = object.dwtimeaftercreateroom;
+                else if (typeof object.dwtimeaftercreateroom === "object")
+                    message.dwtimeaftercreateroom = new $util.LongBits(object.dwtimeaftercreateroom.low >>> 0, object.dwtimeaftercreateroom.high >>> 0).toNumber(true);
+            if (object.wbeginfreetime != null)
+                message.wbeginfreetime = object.wbeginfreetime | 0;
+            if (object.wendfreetime != null)
+                message.wendfreetime = object.wendfreetime | 0;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a tagPersonalRoomOption_s2c message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof GamePmd.tagPersonalRoomOption_s2c
+         * @static
+         * @param {GamePmd.tagPersonalRoomOption_s2c} message tagPersonalRoomOption_s2c
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        tagPersonalRoomOption_s2c.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults) {
+                object.respcmd = null;
+                object.cbisjoingame = 0;
+                object.cbminpeople = 0;
+                object.cbmaxpeople = 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.lmaxcellscore = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.lmaxcellscore = options.longs === String ? "0" : 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.lpersonalroomtax = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.lpersonalroomtax = options.longs === String ? "0" : 0;
+                object.bconsumptiontype = null;
+                object.wcancreatecount = 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.dwplayturncount = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.dwplayturncount = options.longs === String ? "0" : 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.dwplaytimelimit = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.dwplaytimelimit = options.longs === String ? "0" : 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.dwtimeafterbegincount = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.dwtimeafterbegincount = options.longs === String ? "0" : 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.dwtimeofflinecount = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.dwtimeofflinecount = options.longs === String ? "0" : 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.dwtimenotbegingame = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.dwtimenotbegingame = options.longs === String ? "0" : 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.dwtimeaftercreateroom = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.dwtimeaftercreateroom = options.longs === String ? "0" : 0;
+                object.wbeginfreetime = 0;
+                object.wendfreetime = 0;
+            }
+            if (message.respcmd != null && message.hasOwnProperty("respcmd"))
+                object.respcmd = $root.NullPmd.response.toObject(message.respcmd, options);
+            if (message.cbisjoingame != null && message.hasOwnProperty("cbisjoingame"))
+                object.cbisjoingame = message.cbisjoingame;
+            if (message.cbminpeople != null && message.hasOwnProperty("cbminpeople"))
+                object.cbminpeople = message.cbminpeople;
+            if (message.cbmaxpeople != null && message.hasOwnProperty("cbmaxpeople"))
+                object.cbmaxpeople = message.cbmaxpeople;
+            if (message.lmaxcellscore != null && message.hasOwnProperty("lmaxcellscore"))
+                if (typeof message.lmaxcellscore === "number")
+                    object.lmaxcellscore = options.longs === String ? String(message.lmaxcellscore) : message.lmaxcellscore;
+                else
+                    object.lmaxcellscore = options.longs === String ? $util.Long.prototype.toString.call(message.lmaxcellscore) : options.longs === Number ? new $util.LongBits(message.lmaxcellscore.low >>> 0, message.lmaxcellscore.high >>> 0).toNumber(true) : message.lmaxcellscore;
+            if (message.lpersonalroomtax != null && message.hasOwnProperty("lpersonalroomtax"))
+                if (typeof message.lpersonalroomtax === "number")
+                    object.lpersonalroomtax = options.longs === String ? String(message.lpersonalroomtax) : message.lpersonalroomtax;
+                else
+                    object.lpersonalroomtax = options.longs === String ? $util.Long.prototype.toString.call(message.lpersonalroomtax) : options.longs === Number ? new $util.LongBits(message.lpersonalroomtax.low >>> 0, message.lpersonalroomtax.high >>> 0).toNumber(true) : message.lpersonalroomtax;
+            if (message.bconsumptiontype != null && message.hasOwnProperty("bconsumptiontype"))
+                object.bconsumptiontype = $root.CommonPmd.consumptionType.toObject(message.bconsumptiontype, options);
+            if (message.wcancreatecount != null && message.hasOwnProperty("wcancreatecount"))
+                object.wcancreatecount = message.wcancreatecount;
+            if (message.dwplayturncount != null && message.hasOwnProperty("dwplayturncount"))
+                if (typeof message.dwplayturncount === "number")
+                    object.dwplayturncount = options.longs === String ? String(message.dwplayturncount) : message.dwplayturncount;
+                else
+                    object.dwplayturncount = options.longs === String ? $util.Long.prototype.toString.call(message.dwplayturncount) : options.longs === Number ? new $util.LongBits(message.dwplayturncount.low >>> 0, message.dwplayturncount.high >>> 0).toNumber(true) : message.dwplayturncount;
+            if (message.dwplaytimelimit != null && message.hasOwnProperty("dwplaytimelimit"))
+                if (typeof message.dwplaytimelimit === "number")
+                    object.dwplaytimelimit = options.longs === String ? String(message.dwplaytimelimit) : message.dwplaytimelimit;
+                else
+                    object.dwplaytimelimit = options.longs === String ? $util.Long.prototype.toString.call(message.dwplaytimelimit) : options.longs === Number ? new $util.LongBits(message.dwplaytimelimit.low >>> 0, message.dwplaytimelimit.high >>> 0).toNumber(true) : message.dwplaytimelimit;
+            if (message.dwtimeafterbegincount != null && message.hasOwnProperty("dwtimeafterbegincount"))
+                if (typeof message.dwtimeafterbegincount === "number")
+                    object.dwtimeafterbegincount = options.longs === String ? String(message.dwtimeafterbegincount) : message.dwtimeafterbegincount;
+                else
+                    object.dwtimeafterbegincount = options.longs === String ? $util.Long.prototype.toString.call(message.dwtimeafterbegincount) : options.longs === Number ? new $util.LongBits(message.dwtimeafterbegincount.low >>> 0, message.dwtimeafterbegincount.high >>> 0).toNumber(true) : message.dwtimeafterbegincount;
+            if (message.dwtimeofflinecount != null && message.hasOwnProperty("dwtimeofflinecount"))
+                if (typeof message.dwtimeofflinecount === "number")
+                    object.dwtimeofflinecount = options.longs === String ? String(message.dwtimeofflinecount) : message.dwtimeofflinecount;
+                else
+                    object.dwtimeofflinecount = options.longs === String ? $util.Long.prototype.toString.call(message.dwtimeofflinecount) : options.longs === Number ? new $util.LongBits(message.dwtimeofflinecount.low >>> 0, message.dwtimeofflinecount.high >>> 0).toNumber(true) : message.dwtimeofflinecount;
+            if (message.dwtimenotbegingame != null && message.hasOwnProperty("dwtimenotbegingame"))
+                if (typeof message.dwtimenotbegingame === "number")
+                    object.dwtimenotbegingame = options.longs === String ? String(message.dwtimenotbegingame) : message.dwtimenotbegingame;
+                else
+                    object.dwtimenotbegingame = options.longs === String ? $util.Long.prototype.toString.call(message.dwtimenotbegingame) : options.longs === Number ? new $util.LongBits(message.dwtimenotbegingame.low >>> 0, message.dwtimenotbegingame.high >>> 0).toNumber(true) : message.dwtimenotbegingame;
+            if (message.dwtimeaftercreateroom != null && message.hasOwnProperty("dwtimeaftercreateroom"))
+                if (typeof message.dwtimeaftercreateroom === "number")
+                    object.dwtimeaftercreateroom = options.longs === String ? String(message.dwtimeaftercreateroom) : message.dwtimeaftercreateroom;
+                else
+                    object.dwtimeaftercreateroom = options.longs === String ? $util.Long.prototype.toString.call(message.dwtimeaftercreateroom) : options.longs === Number ? new $util.LongBits(message.dwtimeaftercreateroom.low >>> 0, message.dwtimeaftercreateroom.high >>> 0).toNumber(true) : message.dwtimeaftercreateroom;
+            if (message.wbeginfreetime != null && message.hasOwnProperty("wbeginfreetime"))
+                object.wbeginfreetime = message.wbeginfreetime;
+            if (message.wendfreetime != null && message.hasOwnProperty("wendfreetime"))
+                object.wendfreetime = message.wendfreetime;
+            return object;
+        };
+
+        /**
+         * Converts this tagPersonalRoomOption_s2c to JSON.
+         * @function toJSON
+         * @memberof GamePmd.tagPersonalRoomOption_s2c
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        tagPersonalRoomOption_s2c.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        return tagPersonalRoomOption_s2c;
     })();
 
     return GamePmd;
@@ -7485,6 +9852,477 @@ $root.LoginPmd = (function() {
         };
 
         return loginbyaccounts_c2s;
+    })();
+
+    LoginPmd.logonOtherPlatform_c2s = (function() {
+
+        /**
+         * Properties of a logonOtherPlatform_c2s.
+         * @memberof LoginPmd
+         * @interface IlogonOtherPlatform_c2s
+         * @property {NullPmd.Irequest|null} [reqcmd] logonOtherPlatform_c2s reqcmd
+         * @property {number|null} [wmoduleid] logonOtherPlatform_c2s wmoduleid
+         * @property {number|Long|null} [dwplazaversion] logonOtherPlatform_c2s dwplazaversion
+         * @property {number|null} [cbdevicetype] logonOtherPlatform_c2s cbdevicetype
+         * @property {number|null} [cbgender] logonOtherPlatform_c2s cbgender
+         * @property {number|null} [cbplatformid] logonOtherPlatform_c2s cbplatformid
+         * @property {string|null} [szuseruin] logonOtherPlatform_c2s szuseruin
+         * @property {string|null} [sznickname] logonOtherPlatform_c2s sznickname
+         * @property {string|null} [szcompellation] logonOtherPlatform_c2s szcompellation
+         * @property {string|null} [szmachineid] logonOtherPlatform_c2s szmachineid
+         * @property {string|null} [szmobilephone] logonOtherPlatform_c2s szmobilephone
+         * @property {string|null} [szdevicetoken] logonOtherPlatform_c2s szdevicetoken
+         * @property {string|null} [strfaceurl] logonOtherPlatform_c2s strfaceurl
+         */
+
+        /**
+         * Constructs a new logonOtherPlatform_c2s.
+         * @memberof LoginPmd
+         * @classdesc Represents a logonOtherPlatform_c2s.
+         * @implements IlogonOtherPlatform_c2s
+         * @constructor
+         * @param {LoginPmd.IlogonOtherPlatform_c2s=} [properties] Properties to set
+         */
+        function logonOtherPlatform_c2s(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * logonOtherPlatform_c2s reqcmd.
+         * @member {NullPmd.Irequest|null|undefined} reqcmd
+         * @memberof LoginPmd.logonOtherPlatform_c2s
+         * @instance
+         */
+        logonOtherPlatform_c2s.prototype.reqcmd = null;
+
+        /**
+         * logonOtherPlatform_c2s wmoduleid.
+         * @member {number} wmoduleid
+         * @memberof LoginPmd.logonOtherPlatform_c2s
+         * @instance
+         */
+        logonOtherPlatform_c2s.prototype.wmoduleid = 0;
+
+        /**
+         * logonOtherPlatform_c2s dwplazaversion.
+         * @member {number|Long} dwplazaversion
+         * @memberof LoginPmd.logonOtherPlatform_c2s
+         * @instance
+         */
+        logonOtherPlatform_c2s.prototype.dwplazaversion = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * logonOtherPlatform_c2s cbdevicetype.
+         * @member {number} cbdevicetype
+         * @memberof LoginPmd.logonOtherPlatform_c2s
+         * @instance
+         */
+        logonOtherPlatform_c2s.prototype.cbdevicetype = 0;
+
+        /**
+         * logonOtherPlatform_c2s cbgender.
+         * @member {number} cbgender
+         * @memberof LoginPmd.logonOtherPlatform_c2s
+         * @instance
+         */
+        logonOtherPlatform_c2s.prototype.cbgender = 0;
+
+        /**
+         * logonOtherPlatform_c2s cbplatformid.
+         * @member {number} cbplatformid
+         * @memberof LoginPmd.logonOtherPlatform_c2s
+         * @instance
+         */
+        logonOtherPlatform_c2s.prototype.cbplatformid = 0;
+
+        /**
+         * logonOtherPlatform_c2s szuseruin.
+         * @member {string} szuseruin
+         * @memberof LoginPmd.logonOtherPlatform_c2s
+         * @instance
+         */
+        logonOtherPlatform_c2s.prototype.szuseruin = "";
+
+        /**
+         * logonOtherPlatform_c2s sznickname.
+         * @member {string} sznickname
+         * @memberof LoginPmd.logonOtherPlatform_c2s
+         * @instance
+         */
+        logonOtherPlatform_c2s.prototype.sznickname = "";
+
+        /**
+         * logonOtherPlatform_c2s szcompellation.
+         * @member {string} szcompellation
+         * @memberof LoginPmd.logonOtherPlatform_c2s
+         * @instance
+         */
+        logonOtherPlatform_c2s.prototype.szcompellation = "";
+
+        /**
+         * logonOtherPlatform_c2s szmachineid.
+         * @member {string} szmachineid
+         * @memberof LoginPmd.logonOtherPlatform_c2s
+         * @instance
+         */
+        logonOtherPlatform_c2s.prototype.szmachineid = "";
+
+        /**
+         * logonOtherPlatform_c2s szmobilephone.
+         * @member {string} szmobilephone
+         * @memberof LoginPmd.logonOtherPlatform_c2s
+         * @instance
+         */
+        logonOtherPlatform_c2s.prototype.szmobilephone = "";
+
+        /**
+         * logonOtherPlatform_c2s szdevicetoken.
+         * @member {string} szdevicetoken
+         * @memberof LoginPmd.logonOtherPlatform_c2s
+         * @instance
+         */
+        logonOtherPlatform_c2s.prototype.szdevicetoken = "";
+
+        /**
+         * logonOtherPlatform_c2s strfaceurl.
+         * @member {string} strfaceurl
+         * @memberof LoginPmd.logonOtherPlatform_c2s
+         * @instance
+         */
+        logonOtherPlatform_c2s.prototype.strfaceurl = "";
+
+        /**
+         * Creates a new logonOtherPlatform_c2s instance using the specified properties.
+         * @function create
+         * @memberof LoginPmd.logonOtherPlatform_c2s
+         * @static
+         * @param {LoginPmd.IlogonOtherPlatform_c2s=} [properties] Properties to set
+         * @returns {LoginPmd.logonOtherPlatform_c2s} logonOtherPlatform_c2s instance
+         */
+        logonOtherPlatform_c2s.create = function create(properties) {
+            return new logonOtherPlatform_c2s(properties);
+        };
+
+        /**
+         * Encodes the specified logonOtherPlatform_c2s message. Does not implicitly {@link LoginPmd.logonOtherPlatform_c2s.verify|verify} messages.
+         * @function encode
+         * @memberof LoginPmd.logonOtherPlatform_c2s
+         * @static
+         * @param {LoginPmd.IlogonOtherPlatform_c2s} message logonOtherPlatform_c2s message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        logonOtherPlatform_c2s.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.reqcmd != null && message.hasOwnProperty("reqcmd"))
+                $root.NullPmd.request.encode(message.reqcmd, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            if (message.wmoduleid != null && message.hasOwnProperty("wmoduleid"))
+                writer.uint32(/* id 2, wireType 0 =*/16).int32(message.wmoduleid);
+            if (message.dwplazaversion != null && message.hasOwnProperty("dwplazaversion"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint64(message.dwplazaversion);
+            if (message.cbdevicetype != null && message.hasOwnProperty("cbdevicetype"))
+                writer.uint32(/* id 4, wireType 0 =*/32).int32(message.cbdevicetype);
+            if (message.cbgender != null && message.hasOwnProperty("cbgender"))
+                writer.uint32(/* id 5, wireType 0 =*/40).int32(message.cbgender);
+            if (message.cbplatformid != null && message.hasOwnProperty("cbplatformid"))
+                writer.uint32(/* id 6, wireType 0 =*/48).int32(message.cbplatformid);
+            if (message.szuseruin != null && message.hasOwnProperty("szuseruin"))
+                writer.uint32(/* id 7, wireType 2 =*/58).string(message.szuseruin);
+            if (message.sznickname != null && message.hasOwnProperty("sznickname"))
+                writer.uint32(/* id 8, wireType 2 =*/66).string(message.sznickname);
+            if (message.szcompellation != null && message.hasOwnProperty("szcompellation"))
+                writer.uint32(/* id 9, wireType 2 =*/74).string(message.szcompellation);
+            if (message.szmachineid != null && message.hasOwnProperty("szmachineid"))
+                writer.uint32(/* id 10, wireType 2 =*/82).string(message.szmachineid);
+            if (message.szmobilephone != null && message.hasOwnProperty("szmobilephone"))
+                writer.uint32(/* id 11, wireType 2 =*/90).string(message.szmobilephone);
+            if (message.szdevicetoken != null && message.hasOwnProperty("szdevicetoken"))
+                writer.uint32(/* id 12, wireType 2 =*/98).string(message.szdevicetoken);
+            if (message.strfaceurl != null && message.hasOwnProperty("strfaceurl"))
+                writer.uint32(/* id 13, wireType 2 =*/106).string(message.strfaceurl);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified logonOtherPlatform_c2s message, length delimited. Does not implicitly {@link LoginPmd.logonOtherPlatform_c2s.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof LoginPmd.logonOtherPlatform_c2s
+         * @static
+         * @param {LoginPmd.IlogonOtherPlatform_c2s} message logonOtherPlatform_c2s message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        logonOtherPlatform_c2s.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a logonOtherPlatform_c2s message from the specified reader or buffer.
+         * @function decode
+         * @memberof LoginPmd.logonOtherPlatform_c2s
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {LoginPmd.logonOtherPlatform_c2s} logonOtherPlatform_c2s
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        logonOtherPlatform_c2s.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.LoginPmd.logonOtherPlatform_c2s();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.reqcmd = $root.NullPmd.request.decode(reader, reader.uint32());
+                    break;
+                case 2:
+                    message.wmoduleid = reader.int32();
+                    break;
+                case 3:
+                    message.dwplazaversion = reader.uint64();
+                    break;
+                case 4:
+                    message.cbdevicetype = reader.int32();
+                    break;
+                case 5:
+                    message.cbgender = reader.int32();
+                    break;
+                case 6:
+                    message.cbplatformid = reader.int32();
+                    break;
+                case 7:
+                    message.szuseruin = reader.string();
+                    break;
+                case 8:
+                    message.sznickname = reader.string();
+                    break;
+                case 9:
+                    message.szcompellation = reader.string();
+                    break;
+                case 10:
+                    message.szmachineid = reader.string();
+                    break;
+                case 11:
+                    message.szmobilephone = reader.string();
+                    break;
+                case 12:
+                    message.szdevicetoken = reader.string();
+                    break;
+                case 13:
+                    message.strfaceurl = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a logonOtherPlatform_c2s message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof LoginPmd.logonOtherPlatform_c2s
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {LoginPmd.logonOtherPlatform_c2s} logonOtherPlatform_c2s
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        logonOtherPlatform_c2s.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a logonOtherPlatform_c2s message.
+         * @function verify
+         * @memberof LoginPmd.logonOtherPlatform_c2s
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        logonOtherPlatform_c2s.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.reqcmd != null && message.hasOwnProperty("reqcmd")) {
+                var error = $root.NullPmd.request.verify(message.reqcmd);
+                if (error)
+                    return "reqcmd." + error;
+            }
+            if (message.wmoduleid != null && message.hasOwnProperty("wmoduleid"))
+                if (!$util.isInteger(message.wmoduleid))
+                    return "wmoduleid: integer expected";
+            if (message.dwplazaversion != null && message.hasOwnProperty("dwplazaversion"))
+                if (!$util.isInteger(message.dwplazaversion) && !(message.dwplazaversion && $util.isInteger(message.dwplazaversion.low) && $util.isInteger(message.dwplazaversion.high)))
+                    return "dwplazaversion: integer|Long expected";
+            if (message.cbdevicetype != null && message.hasOwnProperty("cbdevicetype"))
+                if (!$util.isInteger(message.cbdevicetype))
+                    return "cbdevicetype: integer expected";
+            if (message.cbgender != null && message.hasOwnProperty("cbgender"))
+                if (!$util.isInteger(message.cbgender))
+                    return "cbgender: integer expected";
+            if (message.cbplatformid != null && message.hasOwnProperty("cbplatformid"))
+                if (!$util.isInteger(message.cbplatformid))
+                    return "cbplatformid: integer expected";
+            if (message.szuseruin != null && message.hasOwnProperty("szuseruin"))
+                if (!$util.isString(message.szuseruin))
+                    return "szuseruin: string expected";
+            if (message.sznickname != null && message.hasOwnProperty("sznickname"))
+                if (!$util.isString(message.sznickname))
+                    return "sznickname: string expected";
+            if (message.szcompellation != null && message.hasOwnProperty("szcompellation"))
+                if (!$util.isString(message.szcompellation))
+                    return "szcompellation: string expected";
+            if (message.szmachineid != null && message.hasOwnProperty("szmachineid"))
+                if (!$util.isString(message.szmachineid))
+                    return "szmachineid: string expected";
+            if (message.szmobilephone != null && message.hasOwnProperty("szmobilephone"))
+                if (!$util.isString(message.szmobilephone))
+                    return "szmobilephone: string expected";
+            if (message.szdevicetoken != null && message.hasOwnProperty("szdevicetoken"))
+                if (!$util.isString(message.szdevicetoken))
+                    return "szdevicetoken: string expected";
+            if (message.strfaceurl != null && message.hasOwnProperty("strfaceurl"))
+                if (!$util.isString(message.strfaceurl))
+                    return "strfaceurl: string expected";
+            return null;
+        };
+
+        /**
+         * Creates a logonOtherPlatform_c2s message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof LoginPmd.logonOtherPlatform_c2s
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {LoginPmd.logonOtherPlatform_c2s} logonOtherPlatform_c2s
+         */
+        logonOtherPlatform_c2s.fromObject = function fromObject(object) {
+            if (object instanceof $root.LoginPmd.logonOtherPlatform_c2s)
+                return object;
+            var message = new $root.LoginPmd.logonOtherPlatform_c2s();
+            if (object.reqcmd != null) {
+                if (typeof object.reqcmd !== "object")
+                    throw TypeError(".LoginPmd.logonOtherPlatform_c2s.reqcmd: object expected");
+                message.reqcmd = $root.NullPmd.request.fromObject(object.reqcmd);
+            }
+            if (object.wmoduleid != null)
+                message.wmoduleid = object.wmoduleid | 0;
+            if (object.dwplazaversion != null)
+                if ($util.Long)
+                    (message.dwplazaversion = $util.Long.fromValue(object.dwplazaversion)).unsigned = true;
+                else if (typeof object.dwplazaversion === "string")
+                    message.dwplazaversion = parseInt(object.dwplazaversion, 10);
+                else if (typeof object.dwplazaversion === "number")
+                    message.dwplazaversion = object.dwplazaversion;
+                else if (typeof object.dwplazaversion === "object")
+                    message.dwplazaversion = new $util.LongBits(object.dwplazaversion.low >>> 0, object.dwplazaversion.high >>> 0).toNumber(true);
+            if (object.cbdevicetype != null)
+                message.cbdevicetype = object.cbdevicetype | 0;
+            if (object.cbgender != null)
+                message.cbgender = object.cbgender | 0;
+            if (object.cbplatformid != null)
+                message.cbplatformid = object.cbplatformid | 0;
+            if (object.szuseruin != null)
+                message.szuseruin = String(object.szuseruin);
+            if (object.sznickname != null)
+                message.sznickname = String(object.sznickname);
+            if (object.szcompellation != null)
+                message.szcompellation = String(object.szcompellation);
+            if (object.szmachineid != null)
+                message.szmachineid = String(object.szmachineid);
+            if (object.szmobilephone != null)
+                message.szmobilephone = String(object.szmobilephone);
+            if (object.szdevicetoken != null)
+                message.szdevicetoken = String(object.szdevicetoken);
+            if (object.strfaceurl != null)
+                message.strfaceurl = String(object.strfaceurl);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a logonOtherPlatform_c2s message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof LoginPmd.logonOtherPlatform_c2s
+         * @static
+         * @param {LoginPmd.logonOtherPlatform_c2s} message logonOtherPlatform_c2s
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        logonOtherPlatform_c2s.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults) {
+                object.reqcmd = null;
+                object.wmoduleid = 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.dwplazaversion = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.dwplazaversion = options.longs === String ? "0" : 0;
+                object.cbdevicetype = 0;
+                object.cbgender = 0;
+                object.cbplatformid = 0;
+                object.szuseruin = "";
+                object.sznickname = "";
+                object.szcompellation = "";
+                object.szmachineid = "";
+                object.szmobilephone = "";
+                object.szdevicetoken = "";
+                object.strfaceurl = "";
+            }
+            if (message.reqcmd != null && message.hasOwnProperty("reqcmd"))
+                object.reqcmd = $root.NullPmd.request.toObject(message.reqcmd, options);
+            if (message.wmoduleid != null && message.hasOwnProperty("wmoduleid"))
+                object.wmoduleid = message.wmoduleid;
+            if (message.dwplazaversion != null && message.hasOwnProperty("dwplazaversion"))
+                if (typeof message.dwplazaversion === "number")
+                    object.dwplazaversion = options.longs === String ? String(message.dwplazaversion) : message.dwplazaversion;
+                else
+                    object.dwplazaversion = options.longs === String ? $util.Long.prototype.toString.call(message.dwplazaversion) : options.longs === Number ? new $util.LongBits(message.dwplazaversion.low >>> 0, message.dwplazaversion.high >>> 0).toNumber(true) : message.dwplazaversion;
+            if (message.cbdevicetype != null && message.hasOwnProperty("cbdevicetype"))
+                object.cbdevicetype = message.cbdevicetype;
+            if (message.cbgender != null && message.hasOwnProperty("cbgender"))
+                object.cbgender = message.cbgender;
+            if (message.cbplatformid != null && message.hasOwnProperty("cbplatformid"))
+                object.cbplatformid = message.cbplatformid;
+            if (message.szuseruin != null && message.hasOwnProperty("szuseruin"))
+                object.szuseruin = message.szuseruin;
+            if (message.sznickname != null && message.hasOwnProperty("sznickname"))
+                object.sznickname = message.sznickname;
+            if (message.szcompellation != null && message.hasOwnProperty("szcompellation"))
+                object.szcompellation = message.szcompellation;
+            if (message.szmachineid != null && message.hasOwnProperty("szmachineid"))
+                object.szmachineid = message.szmachineid;
+            if (message.szmobilephone != null && message.hasOwnProperty("szmobilephone"))
+                object.szmobilephone = message.szmobilephone;
+            if (message.szdevicetoken != null && message.hasOwnProperty("szdevicetoken"))
+                object.szdevicetoken = message.szdevicetoken;
+            if (message.strfaceurl != null && message.hasOwnProperty("strfaceurl"))
+                object.strfaceurl = message.strfaceurl;
+            return object;
+        };
+
+        /**
+         * Converts this logonOtherPlatform_c2s to JSON.
+         * @function toJSON
+         * @memberof LoginPmd.logonOtherPlatform_c2s
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        logonOtherPlatform_c2s.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        return logonOtherPlatform_c2s;
     })();
 
     LoginPmd.loginbyvisitor_c2s = (function() {

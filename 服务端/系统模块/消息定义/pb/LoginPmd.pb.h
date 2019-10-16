@@ -35,6 +35,9 @@ namespace CommonPmd {
 class SYSTEMTIME;
 class SYSTEMTIMEDefaultTypeInternal;
 extern SYSTEMTIMEDefaultTypeInternal _SYSTEMTIME_default_instance_;
+class consumptionType;
+class consumptionTypeDefaultTypeInternal;
+extern consumptionTypeDefaultTypeInternal _consumptionType_default_instance_;
 class personinfo;
 class personinfoDefaultTypeInternal;
 extern personinfoDefaultTypeInternal _personinfo_default_instance_;
@@ -58,6 +61,9 @@ extern loginfinish_s2cDefaultTypeInternal _loginfinish_s2c_default_instance_;
 class loginsuccess_s2c;
 class loginsuccess_s2cDefaultTypeInternal;
 extern loginsuccess_s2cDefaultTypeInternal _loginsuccess_s2c_default_instance_;
+class logonOtherPlatform_c2s;
+class logonOtherPlatform_c2sDefaultTypeInternal;
+extern logonOtherPlatform_c2sDefaultTypeInternal _logonOtherPlatform_c2s_default_instance_;
 }  // namespace LoginPmd
 namespace NullPmd {
 class command;
@@ -390,6 +396,232 @@ class loginbyaccounts_c2s : public ::google::protobuf::Message /* @@protoc_inser
   ::NullPmd::request* reqcmd_;
   ::google::protobuf::uint64 dwplazaversion_;
   ::google::protobuf::int32 cbvalidateflags_;
+  mutable int _cached_size_;
+  friend struct  protobuf_LoginPmd_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class logonOtherPlatform_c2s : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:LoginPmd.logonOtherPlatform_c2s) */ {
+ public:
+  logonOtherPlatform_c2s();
+  virtual ~logonOtherPlatform_c2s();
+
+  logonOtherPlatform_c2s(const logonOtherPlatform_c2s& from);
+
+  inline logonOtherPlatform_c2s& operator=(const logonOtherPlatform_c2s& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const logonOtherPlatform_c2s& default_instance();
+
+  static inline const logonOtherPlatform_c2s* internal_default_instance() {
+    return reinterpret_cast<const logonOtherPlatform_c2s*>(
+               &_logonOtherPlatform_c2s_default_instance_);
+  }
+
+  void Swap(logonOtherPlatform_c2s* other);
+
+  // implements Message ----------------------------------------------
+
+  inline logonOtherPlatform_c2s* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  logonOtherPlatform_c2s* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const logonOtherPlatform_c2s& from);
+  void MergeFrom(const logonOtherPlatform_c2s& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
+      const PROTOBUF_FINAL {
+    return InternalSerializeWithCachedSizesToArray(
+        ::google::protobuf::io::CodedOutputStream::IsDefaultSerializationDeterministic(), output);
+  }
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(logonOtherPlatform_c2s* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string szuseruin = 7;
+  void clear_szuseruin();
+  static const int kSzuseruinFieldNumber = 7;
+  const ::std::string& szuseruin() const;
+  void set_szuseruin(const ::std::string& value);
+  #if LANG_CXX11
+  void set_szuseruin(::std::string&& value);
+  #endif
+  void set_szuseruin(const char* value);
+  void set_szuseruin(const char* value, size_t size);
+  ::std::string* mutable_szuseruin();
+  ::std::string* release_szuseruin();
+  void set_allocated_szuseruin(::std::string* szuseruin);
+
+  // string sznickname = 8;
+  void clear_sznickname();
+  static const int kSznicknameFieldNumber = 8;
+  const ::std::string& sznickname() const;
+  void set_sznickname(const ::std::string& value);
+  #if LANG_CXX11
+  void set_sznickname(::std::string&& value);
+  #endif
+  void set_sznickname(const char* value);
+  void set_sznickname(const char* value, size_t size);
+  ::std::string* mutable_sznickname();
+  ::std::string* release_sznickname();
+  void set_allocated_sznickname(::std::string* sznickname);
+
+  // string szcompellation = 9;
+  void clear_szcompellation();
+  static const int kSzcompellationFieldNumber = 9;
+  const ::std::string& szcompellation() const;
+  void set_szcompellation(const ::std::string& value);
+  #if LANG_CXX11
+  void set_szcompellation(::std::string&& value);
+  #endif
+  void set_szcompellation(const char* value);
+  void set_szcompellation(const char* value, size_t size);
+  ::std::string* mutable_szcompellation();
+  ::std::string* release_szcompellation();
+  void set_allocated_szcompellation(::std::string* szcompellation);
+
+  // string szmachineid = 10;
+  void clear_szmachineid();
+  static const int kSzmachineidFieldNumber = 10;
+  const ::std::string& szmachineid() const;
+  void set_szmachineid(const ::std::string& value);
+  #if LANG_CXX11
+  void set_szmachineid(::std::string&& value);
+  #endif
+  void set_szmachineid(const char* value);
+  void set_szmachineid(const char* value, size_t size);
+  ::std::string* mutable_szmachineid();
+  ::std::string* release_szmachineid();
+  void set_allocated_szmachineid(::std::string* szmachineid);
+
+  // string szmobilephone = 11;
+  void clear_szmobilephone();
+  static const int kSzmobilephoneFieldNumber = 11;
+  const ::std::string& szmobilephone() const;
+  void set_szmobilephone(const ::std::string& value);
+  #if LANG_CXX11
+  void set_szmobilephone(::std::string&& value);
+  #endif
+  void set_szmobilephone(const char* value);
+  void set_szmobilephone(const char* value, size_t size);
+  ::std::string* mutable_szmobilephone();
+  ::std::string* release_szmobilephone();
+  void set_allocated_szmobilephone(::std::string* szmobilephone);
+
+  // string szdevicetoken = 12;
+  void clear_szdevicetoken();
+  static const int kSzdevicetokenFieldNumber = 12;
+  const ::std::string& szdevicetoken() const;
+  void set_szdevicetoken(const ::std::string& value);
+  #if LANG_CXX11
+  void set_szdevicetoken(::std::string&& value);
+  #endif
+  void set_szdevicetoken(const char* value);
+  void set_szdevicetoken(const char* value, size_t size);
+  ::std::string* mutable_szdevicetoken();
+  ::std::string* release_szdevicetoken();
+  void set_allocated_szdevicetoken(::std::string* szdevicetoken);
+
+  // string strfaceurl = 13;
+  void clear_strfaceurl();
+  static const int kStrfaceurlFieldNumber = 13;
+  const ::std::string& strfaceurl() const;
+  void set_strfaceurl(const ::std::string& value);
+  #if LANG_CXX11
+  void set_strfaceurl(::std::string&& value);
+  #endif
+  void set_strfaceurl(const char* value);
+  void set_strfaceurl(const char* value, size_t size);
+  ::std::string* mutable_strfaceurl();
+  ::std::string* release_strfaceurl();
+  void set_allocated_strfaceurl(::std::string* strfaceurl);
+
+  // .NullPmd.request reqcmd = 1;
+  bool has_reqcmd() const;
+  void clear_reqcmd();
+  static const int kReqcmdFieldNumber = 1;
+  const ::NullPmd::request& reqcmd() const;
+  ::NullPmd::request* mutable_reqcmd();
+  ::NullPmd::request* release_reqcmd();
+  void set_allocated_reqcmd(::NullPmd::request* reqcmd);
+
+  // uint64 dwplazaversion = 3;
+  void clear_dwplazaversion();
+  static const int kDwplazaversionFieldNumber = 3;
+  ::google::protobuf::uint64 dwplazaversion() const;
+  void set_dwplazaversion(::google::protobuf::uint64 value);
+
+  // int32 wmoduleid = 2;
+  void clear_wmoduleid();
+  static const int kWmoduleidFieldNumber = 2;
+  ::google::protobuf::int32 wmoduleid() const;
+  void set_wmoduleid(::google::protobuf::int32 value);
+
+  // int32 cbdevicetype = 4;
+  void clear_cbdevicetype();
+  static const int kCbdevicetypeFieldNumber = 4;
+  ::google::protobuf::int32 cbdevicetype() const;
+  void set_cbdevicetype(::google::protobuf::int32 value);
+
+  // int32 cbgender = 5;
+  void clear_cbgender();
+  static const int kCbgenderFieldNumber = 5;
+  ::google::protobuf::int32 cbgender() const;
+  void set_cbgender(::google::protobuf::int32 value);
+
+  // int32 cbplatformid = 6;
+  void clear_cbplatformid();
+  static const int kCbplatformidFieldNumber = 6;
+  ::google::protobuf::int32 cbplatformid() const;
+  void set_cbplatformid(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:LoginPmd.logonOtherPlatform_c2s)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr szuseruin_;
+  ::google::protobuf::internal::ArenaStringPtr sznickname_;
+  ::google::protobuf::internal::ArenaStringPtr szcompellation_;
+  ::google::protobuf::internal::ArenaStringPtr szmachineid_;
+  ::google::protobuf::internal::ArenaStringPtr szmobilephone_;
+  ::google::protobuf::internal::ArenaStringPtr szdevicetoken_;
+  ::google::protobuf::internal::ArenaStringPtr strfaceurl_;
+  ::NullPmd::request* reqcmd_;
+  ::google::protobuf::uint64 dwplazaversion_;
+  ::google::protobuf::int32 wmoduleid_;
+  ::google::protobuf::int32 cbdevicetype_;
+  ::google::protobuf::int32 cbgender_;
+  ::google::protobuf::int32 cbplatformid_;
   mutable int _cached_size_;
   friend struct  protobuf_LoginPmd_2eproto::TableStruct;
 };
@@ -1264,6 +1496,483 @@ inline void loginbyaccounts_c2s::set_cbvalidateflags(::google::protobuf::int32 v
 
 // -------------------------------------------------------------------
 
+// logonOtherPlatform_c2s
+
+// .NullPmd.request reqcmd = 1;
+inline bool logonOtherPlatform_c2s::has_reqcmd() const {
+  return this != internal_default_instance() && reqcmd_ != NULL;
+}
+inline void logonOtherPlatform_c2s::clear_reqcmd() {
+  if (GetArenaNoVirtual() == NULL && reqcmd_ != NULL) delete reqcmd_;
+  reqcmd_ = NULL;
+}
+inline const ::NullPmd::request& logonOtherPlatform_c2s::reqcmd() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.logonOtherPlatform_c2s.reqcmd)
+  return reqcmd_ != NULL ? *reqcmd_
+                         : *::NullPmd::request::internal_default_instance();
+}
+inline ::NullPmd::request* logonOtherPlatform_c2s::mutable_reqcmd() {
+  
+  if (reqcmd_ == NULL) {
+    reqcmd_ = new ::NullPmd::request;
+  }
+  // @@protoc_insertion_point(field_mutable:LoginPmd.logonOtherPlatform_c2s.reqcmd)
+  return reqcmd_;
+}
+inline ::NullPmd::request* logonOtherPlatform_c2s::release_reqcmd() {
+  // @@protoc_insertion_point(field_release:LoginPmd.logonOtherPlatform_c2s.reqcmd)
+  
+  ::NullPmd::request* temp = reqcmd_;
+  reqcmd_ = NULL;
+  return temp;
+}
+inline void logonOtherPlatform_c2s::set_allocated_reqcmd(::NullPmd::request* reqcmd) {
+  delete reqcmd_;
+  reqcmd_ = reqcmd;
+  if (reqcmd) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:LoginPmd.logonOtherPlatform_c2s.reqcmd)
+}
+
+// int32 wmoduleid = 2;
+inline void logonOtherPlatform_c2s::clear_wmoduleid() {
+  wmoduleid_ = 0;
+}
+inline ::google::protobuf::int32 logonOtherPlatform_c2s::wmoduleid() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.logonOtherPlatform_c2s.wmoduleid)
+  return wmoduleid_;
+}
+inline void logonOtherPlatform_c2s::set_wmoduleid(::google::protobuf::int32 value) {
+  
+  wmoduleid_ = value;
+  // @@protoc_insertion_point(field_set:LoginPmd.logonOtherPlatform_c2s.wmoduleid)
+}
+
+// uint64 dwplazaversion = 3;
+inline void logonOtherPlatform_c2s::clear_dwplazaversion() {
+  dwplazaversion_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 logonOtherPlatform_c2s::dwplazaversion() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.logonOtherPlatform_c2s.dwplazaversion)
+  return dwplazaversion_;
+}
+inline void logonOtherPlatform_c2s::set_dwplazaversion(::google::protobuf::uint64 value) {
+  
+  dwplazaversion_ = value;
+  // @@protoc_insertion_point(field_set:LoginPmd.logonOtherPlatform_c2s.dwplazaversion)
+}
+
+// int32 cbdevicetype = 4;
+inline void logonOtherPlatform_c2s::clear_cbdevicetype() {
+  cbdevicetype_ = 0;
+}
+inline ::google::protobuf::int32 logonOtherPlatform_c2s::cbdevicetype() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.logonOtherPlatform_c2s.cbdevicetype)
+  return cbdevicetype_;
+}
+inline void logonOtherPlatform_c2s::set_cbdevicetype(::google::protobuf::int32 value) {
+  
+  cbdevicetype_ = value;
+  // @@protoc_insertion_point(field_set:LoginPmd.logonOtherPlatform_c2s.cbdevicetype)
+}
+
+// int32 cbgender = 5;
+inline void logonOtherPlatform_c2s::clear_cbgender() {
+  cbgender_ = 0;
+}
+inline ::google::protobuf::int32 logonOtherPlatform_c2s::cbgender() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.logonOtherPlatform_c2s.cbgender)
+  return cbgender_;
+}
+inline void logonOtherPlatform_c2s::set_cbgender(::google::protobuf::int32 value) {
+  
+  cbgender_ = value;
+  // @@protoc_insertion_point(field_set:LoginPmd.logonOtherPlatform_c2s.cbgender)
+}
+
+// int32 cbplatformid = 6;
+inline void logonOtherPlatform_c2s::clear_cbplatformid() {
+  cbplatformid_ = 0;
+}
+inline ::google::protobuf::int32 logonOtherPlatform_c2s::cbplatformid() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.logonOtherPlatform_c2s.cbplatformid)
+  return cbplatformid_;
+}
+inline void logonOtherPlatform_c2s::set_cbplatformid(::google::protobuf::int32 value) {
+  
+  cbplatformid_ = value;
+  // @@protoc_insertion_point(field_set:LoginPmd.logonOtherPlatform_c2s.cbplatformid)
+}
+
+// string szuseruin = 7;
+inline void logonOtherPlatform_c2s::clear_szuseruin() {
+  szuseruin_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& logonOtherPlatform_c2s::szuseruin() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.logonOtherPlatform_c2s.szuseruin)
+  return szuseruin_.GetNoArena();
+}
+inline void logonOtherPlatform_c2s::set_szuseruin(const ::std::string& value) {
+  
+  szuseruin_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:LoginPmd.logonOtherPlatform_c2s.szuseruin)
+}
+#if LANG_CXX11
+inline void logonOtherPlatform_c2s::set_szuseruin(::std::string&& value) {
+  
+  szuseruin_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:LoginPmd.logonOtherPlatform_c2s.szuseruin)
+}
+#endif
+inline void logonOtherPlatform_c2s::set_szuseruin(const char* value) {
+  
+  szuseruin_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:LoginPmd.logonOtherPlatform_c2s.szuseruin)
+}
+inline void logonOtherPlatform_c2s::set_szuseruin(const char* value, size_t size) {
+  
+  szuseruin_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:LoginPmd.logonOtherPlatform_c2s.szuseruin)
+}
+inline ::std::string* logonOtherPlatform_c2s::mutable_szuseruin() {
+  
+  // @@protoc_insertion_point(field_mutable:LoginPmd.logonOtherPlatform_c2s.szuseruin)
+  return szuseruin_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* logonOtherPlatform_c2s::release_szuseruin() {
+  // @@protoc_insertion_point(field_release:LoginPmd.logonOtherPlatform_c2s.szuseruin)
+  
+  return szuseruin_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void logonOtherPlatform_c2s::set_allocated_szuseruin(::std::string* szuseruin) {
+  if (szuseruin != NULL) {
+    
+  } else {
+    
+  }
+  szuseruin_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), szuseruin);
+  // @@protoc_insertion_point(field_set_allocated:LoginPmd.logonOtherPlatform_c2s.szuseruin)
+}
+
+// string sznickname = 8;
+inline void logonOtherPlatform_c2s::clear_sznickname() {
+  sznickname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& logonOtherPlatform_c2s::sznickname() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.logonOtherPlatform_c2s.sznickname)
+  return sznickname_.GetNoArena();
+}
+inline void logonOtherPlatform_c2s::set_sznickname(const ::std::string& value) {
+  
+  sznickname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:LoginPmd.logonOtherPlatform_c2s.sznickname)
+}
+#if LANG_CXX11
+inline void logonOtherPlatform_c2s::set_sznickname(::std::string&& value) {
+  
+  sznickname_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:LoginPmd.logonOtherPlatform_c2s.sznickname)
+}
+#endif
+inline void logonOtherPlatform_c2s::set_sznickname(const char* value) {
+  
+  sznickname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:LoginPmd.logonOtherPlatform_c2s.sznickname)
+}
+inline void logonOtherPlatform_c2s::set_sznickname(const char* value, size_t size) {
+  
+  sznickname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:LoginPmd.logonOtherPlatform_c2s.sznickname)
+}
+inline ::std::string* logonOtherPlatform_c2s::mutable_sznickname() {
+  
+  // @@protoc_insertion_point(field_mutable:LoginPmd.logonOtherPlatform_c2s.sznickname)
+  return sznickname_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* logonOtherPlatform_c2s::release_sznickname() {
+  // @@protoc_insertion_point(field_release:LoginPmd.logonOtherPlatform_c2s.sznickname)
+  
+  return sznickname_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void logonOtherPlatform_c2s::set_allocated_sznickname(::std::string* sznickname) {
+  if (sznickname != NULL) {
+    
+  } else {
+    
+  }
+  sznickname_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), sznickname);
+  // @@protoc_insertion_point(field_set_allocated:LoginPmd.logonOtherPlatform_c2s.sznickname)
+}
+
+// string szcompellation = 9;
+inline void logonOtherPlatform_c2s::clear_szcompellation() {
+  szcompellation_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& logonOtherPlatform_c2s::szcompellation() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.logonOtherPlatform_c2s.szcompellation)
+  return szcompellation_.GetNoArena();
+}
+inline void logonOtherPlatform_c2s::set_szcompellation(const ::std::string& value) {
+  
+  szcompellation_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:LoginPmd.logonOtherPlatform_c2s.szcompellation)
+}
+#if LANG_CXX11
+inline void logonOtherPlatform_c2s::set_szcompellation(::std::string&& value) {
+  
+  szcompellation_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:LoginPmd.logonOtherPlatform_c2s.szcompellation)
+}
+#endif
+inline void logonOtherPlatform_c2s::set_szcompellation(const char* value) {
+  
+  szcompellation_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:LoginPmd.logonOtherPlatform_c2s.szcompellation)
+}
+inline void logonOtherPlatform_c2s::set_szcompellation(const char* value, size_t size) {
+  
+  szcompellation_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:LoginPmd.logonOtherPlatform_c2s.szcompellation)
+}
+inline ::std::string* logonOtherPlatform_c2s::mutable_szcompellation() {
+  
+  // @@protoc_insertion_point(field_mutable:LoginPmd.logonOtherPlatform_c2s.szcompellation)
+  return szcompellation_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* logonOtherPlatform_c2s::release_szcompellation() {
+  // @@protoc_insertion_point(field_release:LoginPmd.logonOtherPlatform_c2s.szcompellation)
+  
+  return szcompellation_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void logonOtherPlatform_c2s::set_allocated_szcompellation(::std::string* szcompellation) {
+  if (szcompellation != NULL) {
+    
+  } else {
+    
+  }
+  szcompellation_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), szcompellation);
+  // @@protoc_insertion_point(field_set_allocated:LoginPmd.logonOtherPlatform_c2s.szcompellation)
+}
+
+// string szmachineid = 10;
+inline void logonOtherPlatform_c2s::clear_szmachineid() {
+  szmachineid_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& logonOtherPlatform_c2s::szmachineid() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.logonOtherPlatform_c2s.szmachineid)
+  return szmachineid_.GetNoArena();
+}
+inline void logonOtherPlatform_c2s::set_szmachineid(const ::std::string& value) {
+  
+  szmachineid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:LoginPmd.logonOtherPlatform_c2s.szmachineid)
+}
+#if LANG_CXX11
+inline void logonOtherPlatform_c2s::set_szmachineid(::std::string&& value) {
+  
+  szmachineid_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:LoginPmd.logonOtherPlatform_c2s.szmachineid)
+}
+#endif
+inline void logonOtherPlatform_c2s::set_szmachineid(const char* value) {
+  
+  szmachineid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:LoginPmd.logonOtherPlatform_c2s.szmachineid)
+}
+inline void logonOtherPlatform_c2s::set_szmachineid(const char* value, size_t size) {
+  
+  szmachineid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:LoginPmd.logonOtherPlatform_c2s.szmachineid)
+}
+inline ::std::string* logonOtherPlatform_c2s::mutable_szmachineid() {
+  
+  // @@protoc_insertion_point(field_mutable:LoginPmd.logonOtherPlatform_c2s.szmachineid)
+  return szmachineid_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* logonOtherPlatform_c2s::release_szmachineid() {
+  // @@protoc_insertion_point(field_release:LoginPmd.logonOtherPlatform_c2s.szmachineid)
+  
+  return szmachineid_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void logonOtherPlatform_c2s::set_allocated_szmachineid(::std::string* szmachineid) {
+  if (szmachineid != NULL) {
+    
+  } else {
+    
+  }
+  szmachineid_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), szmachineid);
+  // @@protoc_insertion_point(field_set_allocated:LoginPmd.logonOtherPlatform_c2s.szmachineid)
+}
+
+// string szmobilephone = 11;
+inline void logonOtherPlatform_c2s::clear_szmobilephone() {
+  szmobilephone_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& logonOtherPlatform_c2s::szmobilephone() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.logonOtherPlatform_c2s.szmobilephone)
+  return szmobilephone_.GetNoArena();
+}
+inline void logonOtherPlatform_c2s::set_szmobilephone(const ::std::string& value) {
+  
+  szmobilephone_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:LoginPmd.logonOtherPlatform_c2s.szmobilephone)
+}
+#if LANG_CXX11
+inline void logonOtherPlatform_c2s::set_szmobilephone(::std::string&& value) {
+  
+  szmobilephone_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:LoginPmd.logonOtherPlatform_c2s.szmobilephone)
+}
+#endif
+inline void logonOtherPlatform_c2s::set_szmobilephone(const char* value) {
+  
+  szmobilephone_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:LoginPmd.logonOtherPlatform_c2s.szmobilephone)
+}
+inline void logonOtherPlatform_c2s::set_szmobilephone(const char* value, size_t size) {
+  
+  szmobilephone_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:LoginPmd.logonOtherPlatform_c2s.szmobilephone)
+}
+inline ::std::string* logonOtherPlatform_c2s::mutable_szmobilephone() {
+  
+  // @@protoc_insertion_point(field_mutable:LoginPmd.logonOtherPlatform_c2s.szmobilephone)
+  return szmobilephone_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* logonOtherPlatform_c2s::release_szmobilephone() {
+  // @@protoc_insertion_point(field_release:LoginPmd.logonOtherPlatform_c2s.szmobilephone)
+  
+  return szmobilephone_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void logonOtherPlatform_c2s::set_allocated_szmobilephone(::std::string* szmobilephone) {
+  if (szmobilephone != NULL) {
+    
+  } else {
+    
+  }
+  szmobilephone_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), szmobilephone);
+  // @@protoc_insertion_point(field_set_allocated:LoginPmd.logonOtherPlatform_c2s.szmobilephone)
+}
+
+// string szdevicetoken = 12;
+inline void logonOtherPlatform_c2s::clear_szdevicetoken() {
+  szdevicetoken_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& logonOtherPlatform_c2s::szdevicetoken() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.logonOtherPlatform_c2s.szdevicetoken)
+  return szdevicetoken_.GetNoArena();
+}
+inline void logonOtherPlatform_c2s::set_szdevicetoken(const ::std::string& value) {
+  
+  szdevicetoken_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:LoginPmd.logonOtherPlatform_c2s.szdevicetoken)
+}
+#if LANG_CXX11
+inline void logonOtherPlatform_c2s::set_szdevicetoken(::std::string&& value) {
+  
+  szdevicetoken_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:LoginPmd.logonOtherPlatform_c2s.szdevicetoken)
+}
+#endif
+inline void logonOtherPlatform_c2s::set_szdevicetoken(const char* value) {
+  
+  szdevicetoken_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:LoginPmd.logonOtherPlatform_c2s.szdevicetoken)
+}
+inline void logonOtherPlatform_c2s::set_szdevicetoken(const char* value, size_t size) {
+  
+  szdevicetoken_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:LoginPmd.logonOtherPlatform_c2s.szdevicetoken)
+}
+inline ::std::string* logonOtherPlatform_c2s::mutable_szdevicetoken() {
+  
+  // @@protoc_insertion_point(field_mutable:LoginPmd.logonOtherPlatform_c2s.szdevicetoken)
+  return szdevicetoken_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* logonOtherPlatform_c2s::release_szdevicetoken() {
+  // @@protoc_insertion_point(field_release:LoginPmd.logonOtherPlatform_c2s.szdevicetoken)
+  
+  return szdevicetoken_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void logonOtherPlatform_c2s::set_allocated_szdevicetoken(::std::string* szdevicetoken) {
+  if (szdevicetoken != NULL) {
+    
+  } else {
+    
+  }
+  szdevicetoken_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), szdevicetoken);
+  // @@protoc_insertion_point(field_set_allocated:LoginPmd.logonOtherPlatform_c2s.szdevicetoken)
+}
+
+// string strfaceurl = 13;
+inline void logonOtherPlatform_c2s::clear_strfaceurl() {
+  strfaceurl_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& logonOtherPlatform_c2s::strfaceurl() const {
+  // @@protoc_insertion_point(field_get:LoginPmd.logonOtherPlatform_c2s.strfaceurl)
+  return strfaceurl_.GetNoArena();
+}
+inline void logonOtherPlatform_c2s::set_strfaceurl(const ::std::string& value) {
+  
+  strfaceurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:LoginPmd.logonOtherPlatform_c2s.strfaceurl)
+}
+#if LANG_CXX11
+inline void logonOtherPlatform_c2s::set_strfaceurl(::std::string&& value) {
+  
+  strfaceurl_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:LoginPmd.logonOtherPlatform_c2s.strfaceurl)
+}
+#endif
+inline void logonOtherPlatform_c2s::set_strfaceurl(const char* value) {
+  
+  strfaceurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:LoginPmd.logonOtherPlatform_c2s.strfaceurl)
+}
+inline void logonOtherPlatform_c2s::set_strfaceurl(const char* value, size_t size) {
+  
+  strfaceurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:LoginPmd.logonOtherPlatform_c2s.strfaceurl)
+}
+inline ::std::string* logonOtherPlatform_c2s::mutable_strfaceurl() {
+  
+  // @@protoc_insertion_point(field_mutable:LoginPmd.logonOtherPlatform_c2s.strfaceurl)
+  return strfaceurl_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* logonOtherPlatform_c2s::release_strfaceurl() {
+  // @@protoc_insertion_point(field_release:LoginPmd.logonOtherPlatform_c2s.strfaceurl)
+  
+  return strfaceurl_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void logonOtherPlatform_c2s::set_allocated_strfaceurl(::std::string* strfaceurl) {
+  if (strfaceurl != NULL) {
+    
+  } else {
+    
+  }
+  strfaceurl_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), strfaceurl);
+  // @@protoc_insertion_point(field_set_allocated:LoginPmd.logonOtherPlatform_c2s.strfaceurl)
+}
+
+// -------------------------------------------------------------------
+
 // loginbyvisitor_c2s
 
 // .NullPmd.request reqcmd = 1;
@@ -1582,6 +2291,8 @@ inline void loginfailure_s2c::set_allocated_respcmd(::NullPmd::response* respcmd
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
