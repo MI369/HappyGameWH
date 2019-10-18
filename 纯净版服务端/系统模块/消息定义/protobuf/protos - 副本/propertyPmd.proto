@@ -1,0 +1,72 @@
+syntax = "proto2";    //指定proto版本2.x
+
+import "NullPmd.proto";
+
+package propertyPmd; 
+
+//道具节点
+message tagPropertyTypeItem_s2c
+{
+	optional NullPmd.response respcmd		= 1;
+	required uint64	dwtypeid		= 2;	//类型标识
+	required uint64	dwsortid		= 3;	//排序标识
+	required string	sztypename		= 4;	//种类名字
+};
+
+//道具节点
+message tagPropertyRelatItem_s2c
+{
+	optional NullPmd.response respcmd		= 1;
+	required uint64	dwpropertyid	= 2;	//道具标识
+	required uint64	dwtypeid		= 3;	//类型标识
+};
+
+//道具信息
+message tagPropertyItem_s2c
+{
+	//道具信息
+	required uint64		dwpropertyid						= 1;					//道具标识
+	required uint64		dwpropertykind						= 2;					//功能类型
+
+	required int32		cbusearea							= 3;					//使用范围
+	required int32		cbservicearea						= 4;					//对象范围
+	required int32		cbrecommend							= 5;					//推荐标识
+
+	required uint64		dwexchangeratio						= 6;					//钻石兑换道具比率
+	
+	//销售价格
+	required uint64		lpropertydiamond					= 7;					//道具钻石
+	required uint64		lpropertygold						= 8;					//道具金币
+	required double		dpropertycash						= 9;					//道具价格
+	required uint64		lpropertyusermedal					= 10;					//道具金币
+	required uint64		lpropertyloveliness					= 11;					//道具金币
+
+	//获得财富
+	required uint64		lsendloveliness						= 12;					//获得魅力 赠送方
+	required uint64		lrecvloveliness						= 13;					//获得魅力 接收方
+	required uint64		luseresultsgold						= 14;					//获得金币
+
+	//持续效果
+	required uint64		dwuseresultsvalidtime				= 15;					//有效时间
+	required uint64		dwuseresultsvalidtimescoremultiple	= 16;					//有效倍率
+
+	//礼物拆包
+	required uint64		dwuseresultsgiftpackage				= 17;					//礼物拆包
+
+	required uint64		dwsortid							= 18;					//排序标识
+	required string		szname								= 19;			 		//道具名称
+	required string		szregulationsinfo					= 20;					//使用信息
+	optional NullPmd.response respcmd						= 21;
+	
+};
+
+//子道具信息
+message tagPropertySubItem_s2c
+{
+	optional NullPmd.response respcmd						= 1;
+	required uint64	dwpropertyid		= 2;					//道具标识
+	required uint64	dwownerpropertyid	= 3;					//道具标识
+	required uint64  dwpropertycount		= 4;                    //道具数目
+	required uint64	dwsortid			= 5;					//排序标识
+};
+

@@ -1,0 +1,44 @@
+syntax = "proto2";    //指定proto版本2.x
+
+package NullPmd;  
+
+message request
+{
+	
+}
+
+message response
+{
+	required int32 result			= 1;
+	optional string errordescription	= 2;
+}
+
+message indication
+{
+	
+}
+
+message command
+{
+	required uint64	mainid			= 1;
+    required uint64	subid			= 2;
+}
+
+message info
+{
+	optional uint64	cbdatakind		= 1;//数据类型
+	optional uint64	cbcheckcode		= 2;//效验字段
+	optional uint64	wpacketsize		= 3;//数据大小
+}
+
+message head
+{
+	required command command			= 1;
+	required info	info			= 2;
+}
+
+message message
+{
+	required head	head			= 1;
+    optional bytes	data			= 2;    // data
+}

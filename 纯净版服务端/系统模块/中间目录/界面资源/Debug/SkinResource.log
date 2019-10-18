@@ -1,0 +1,12 @@
+﻿cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
+  Stdafx.cpp
+cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
+  SkinResourceModule.cpp
+  SkinResource.cpp
+  PlatformResource.cpp
+  正在生成代码...
+PlatformResource.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/SAFESEH”规范)
+    正在创建库 ../../链接库/SkinResourceD.lib 和对象 ../../链接库/SkinResourceD.exp
+  SkinResource.vcxproj -> G:\网狐\HappyGameWH\纯净版服务端\系统模块\共享组件\界面资源\../../运行/Debug/SkinResourceD.dll
+  子目录或文件 ..\..\发布组件\客户端组件\Debug 已经存在。
+  已复制         1 个文件。

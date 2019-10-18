@@ -1,0 +1,51 @@
+syntax = "proto3";    //指定proto版本3.x
+
+import "NullPmd.proto";
+
+package MatchPmd; 
+
+//奖励信息
+message tagMatchRewardInfo
+{
+	int32	wrankid				= 1;	//奖励名次
+	uint64	lrewardgold			= 2;	//奖励金币
+	uint64	lrewardingot		= 3;	//奖励元宝	
+	uint64	dwrewardexperience	= 4;	//奖励经验
+};
+
+message tagGameMatch
+{
+	//基本信息
+	int32				wserverid				= 1;	//房间标识
+	uint64				dwmatchid				= 2;	//比赛标识	
+	int32				cbmatchtype				= 3;	//比赛类型
+	string				szmatchname				= 4;	//比赛名称
+		
+	//报名信息		
+	int32				cbfeetype				= 5;	//费用类型
+	int32				cbdeductarea			= 6;	//缴费区域
+	uint64				lsignupfee				= 7;	//报名费用	
+	int32				cbsignupmode			= 8;	//报名方式
+	int32				cbjoincondition			= 9;	//参赛条件
+	int32				cbmemberorder			= 10;	//会员等级
+	uint64				lexperience				= 11;	//玩家经验
+		
+	//排名方式		
+	int32				cbrankingmode			= 12;	//排名方式	
+	int32				wcountinnings			= 13;	//统计局数
+	int32				cbfiltergradesmode		= 14;	//筛选方式
+			
+	//奖励信息		
+	int32				wrewardcount			= 15;	//奖励人数
+	repeated tagMatchRewardInfo	matchrewardinfo	= 16;	//比赛奖励
+
+	//比赛规则
+	string				cbmatchrule				= 17;	//比赛规则
+};
+
+//比赛信息
+message tagGameMatch_s2c
+{
+	NullPmd.response 	respcmd				= 1;
+	repeated tagGameMatch	tagGameMatch	= 2;
+};

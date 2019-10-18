@@ -1,0 +1,100 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: 中间目录(../../中间目录/登陆服务器/Debug/)包含从另一个项目(斗地主游戏服务器.vcxproj)共享的文件。   这会导致错误的清除和重新生成行为。
+cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
+  StdAfx.cpp
+cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
+  ServerList.cpp
+  LogonService.cpp
+g:\网狐\happygamewh\纯净版服务端\系统模块\模板库\module.h(224): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+  g:\网狐\happygamewh\纯净版服务端\系统模块\模板库\module.h(209): note: 编译 类 模板 成员函数 "bool CTempldateHelper<ITimerEngine>::CreateInstance(void)" 时
+  g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\登陆服务器\logonservice.cpp(30): note: 参见对正在编译的函数 模板 实例化“bool CTempldateHelper<ITimerEngine>::CreateInstance(void)”的引用
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\atlmfc\include\afxtempl.h(965): note: 编译 类 模板 成员函数 "POSITION CList<IControlSiteFactory *,IControlSiteFactory *>::AddTail(ARG_TYPE)" 时
+          with
+          [
+              ARG_TYPE=IControlSiteFactory *
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\atlmfc\include\afxtempl.h(1196): note: 参见对正在编译的函数 模板 实例化“POSITION CList<IControlSiteFactory *,IControlSiteFactory *>::AddTail(ARG_TYPE)”的引用
+          with
+          [
+              ARG_TYPE=IControlSiteFactory *
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\atlmfc\include\afxtempl.h(878): note: 编译 类 模板 成员函数 "CList<IControlSiteFactory *,IControlSiteFactory *>::~CList(void)" 时
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\atlmfc\include\afxocc.h(64): note: 参见对正在编译的 类 模板 实例化 "CList<IControlSiteFactory *,IControlSiteFactory *>" 的引用
+g:\网狐\happygamewh\纯净版服务端\系统模块\模板库\module.h(232): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\模板库\module.h(240): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\模板库\module.h(246): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\模板库\module.h(251): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+  LogonServerDlg.cpp
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\登陆服务器\logonserverdlg.cpp(63): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\8.1\include\um\winsock2.h(1850): note: 参见“inet_addr”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\登陆服务器\logonserverdlg.cpp(66): warning C4996: 'gethostbyname': Use getaddrinfo() or GetAddrInfoW() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\8.1\include\um\winsock2.h(2238): note: 参见“gethostbyname”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\登陆服务器\logonserverdlg.cpp(77): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\8.1\include\um\winsock2.h(1850): note: 参见“inet_addr”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\登陆服务器\logonserverdlg.cpp(80): warning C4996: 'gethostbyname': Use getaddrinfo() or GetAddrInfoW() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\8.1\include\um\winsock2.h(2238): note: 参见“gethostbyname”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\登陆服务器\logonserverdlg.cpp(107): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\登陆服务器\logonserverdlg.cpp(118): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+  LogonServer.cpp
+  InitParamter.cpp
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\登陆服务器\initparamter.cpp(46): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\登陆服务器\initparamter.cpp(113): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+  DataBaseSink.cpp
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\登陆服务器\databasesink.cpp(268): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\登陆服务器\databasesink.cpp(500): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\登陆服务器\databasesink.cpp(522): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\登陆服务器\databasesink.cpp(548): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\模板库\module.h(224): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+  g:\网狐\happygamewh\纯净版服务端\系统模块\模板库\module.h(209): note: 编译 类 模板 成员函数 "bool CTempldateHelper<IDataBase>::CreateInstance(void)" 时
+  g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\登陆服务器\databasesink.cpp(38): note: 参见对正在编译的函数 模板 实例化“bool CTempldateHelper<IDataBase>::CreateInstance(void)”的引用
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\atlmfc\include\afxtempl.h(965): note: 编译 类 模板 成员函数 "POSITION CList<IControlSiteFactory *,IControlSiteFactory *>::AddTail(ARG_TYPE)" 时
+          with
+          [
+              ARG_TYPE=IControlSiteFactory *
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\atlmfc\include\afxtempl.h(1196): note: 参见对正在编译的函数 模板 实例化“POSITION CList<IControlSiteFactory *,IControlSiteFactory *>::AddTail(ARG_TYPE)”的引用
+          with
+          [
+              ARG_TYPE=IControlSiteFactory *
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\atlmfc\include\afxtempl.h(878): note: 编译 类 模板 成员函数 "CList<IControlSiteFactory *,IControlSiteFactory *>::~CList(void)" 时
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\atlmfc\include\afxocc.h(64): note: 参见对正在编译的 类 模板 实例化 "CList<IControlSiteFactory *,IControlSiteFactory *>" 的引用
+g:\网狐\happygamewh\纯净版服务端\系统模块\模板库\module.h(232): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\模板库\module.h(240): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\模板库\module.h(246): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\模板库\module.h(251): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+  AttemperEngineSink.cpp
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\登陆服务器\attemperenginesink.cpp(62): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\8.1\include\um\winsock2.h(1850): note: 参见“inet_addr”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\登陆服务器\attemperenginesink.cpp(98): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\8.1\include\um\winsock2.h(1850): note: 参见“inet_addr”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\登陆服务器\attemperenginesink.cpp(530): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1769): note: 参见“sprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\登陆服务器\attemperenginesink.cpp(612): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1769): note: 参见“sprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\登陆服务器\attemperenginesink.cpp(699): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1769): note: 参见“sprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\登陆服务器\attemperenginesink.cpp(737): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+  正在生成代码...
+AttemperEngineSink.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/SAFESEH”规范)
+  LogonServer.vcxproj -> G:\网狐\HappyGameWH\纯净版服务端\系统模块\服务器组件\登陆服务器\../../运行/Debug/LogonServer.exe
+  子目录或文件 ..\..\发布组件\服务器组件\Debug 已经存在。
+  已复制         1 个文件。

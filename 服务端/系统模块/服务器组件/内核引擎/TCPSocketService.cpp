@@ -210,8 +210,8 @@ DWORD CTCPSocketServiceThread::PerformConnect(DWORD dwServerIP, WORD wPort)
         m_cbRecvRound = 0;
         m_dwSendXorKey = 0xA8C543FF;
         m_dwRecvXorKey = 0xA8C543FF;
-        m_dwSendTickCount = GetTickCount() / 1000L;
-        m_dwRecvTickCount = GetTickCount() / 1000L;
+        m_dwSendTickCount = GetTickCount();
+        m_dwRecvTickCount = GetTickCount();
 
         // 建立 SOCKET
         m_hSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
@@ -353,7 +353,7 @@ DWORD CTCPSocketServiceThread::SendBuffer(VOID * pBuffer, WORD wSendSize)
     WORD wTotalCount = 0;
 
     // 设置变量
-    m_dwSendTickCount = GetTickCount() / 1000L;
+    m_dwSendTickCount = GetTickCount();
 
     // 发送数据
     while ((m_bNeedBuffer == false) && (wTotalCount < wSendSize))
@@ -704,7 +704,7 @@ LRESULT CTCPSocketServiceThread::OnSocketNotifyRead(WPARAM wParam, LPARAM lParam
         if (iRetCode == SOCKET_ERROR) throw TEXT("网络连接关闭，读取数据失败");
         ASSERT(m_dwSendPacketCount > 0);
         m_wRecvSize += iRetCode;
-        m_dwRecvTickCount = GetTickCount() / 1000L;
+        m_dwRecvTickCount = GetTickCount();
 
         // 变量定义
         WORD wPacketSize = 0;
@@ -784,7 +784,7 @@ LRESULT CTCPSocketServiceThread::OnSocketNotifyWrite(WPARAM wParam, LPARAM lPara
         DWORD dwPacketSize = 4096;
 
         // 设置变量
-        m_dwSendTickCount = GetTickCount() / 1000L;
+        m_dwSendTickCount = GetTickCount();
 
         // 发送数据
         while (dwTotalCount < m_dwBufferData)

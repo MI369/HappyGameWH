@@ -1,0 +1,13 @@
+syntax = "proto3";    //指定proto版本3.x
+
+import "NullPmd.proto";
+
+package RealAuthPmd; 
+
+//认证参数
+message RealAuthParameter_s2c
+{
+	NullPmd.response respcmd		= 1;
+	uint64	dwauthentdisable	= 2;					//验证开启
+	uint64	dwauthrealaward		= 3;					//奖励金币
+};

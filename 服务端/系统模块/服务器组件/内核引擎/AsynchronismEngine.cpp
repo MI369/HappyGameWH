@@ -188,8 +188,8 @@ bool CAsynchronismEngine::PostAsynchronismData(WORD wIdentifier, VOID * pData, W
 	try
 	{
 		// ‘À––≈–∂œ
-		/*ASSERT(m_bService == true);
-		ASSERT(m_hCompletionPort != NULL);*/
+		ASSERT(m_bService == true);
+		ASSERT(m_hCompletionPort != NULL);
 		if ((m_hCompletionPort == NULL) || (m_bService == false))
 			return false;
 

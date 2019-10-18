@@ -1,0 +1,29 @@
+﻿cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
+  Stdafx.cpp
+cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
+  SkinSplitter.cpp
+  SkinResourceManager.cpp
+  SkinListCtrl.cpp
+  SkinImage.cpp
+  SkinHyperLink.cpp
+  SkinFrameWnd.cpp
+  SkinEdit.cpp
+  SkinDialog.cpp
+  SkinControls.cpp
+  SkinButton.cpp
+  SkinAide.cpp
+  PngImage.cpp
+  正在生成代码...
+cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
+  SkinRichEdit.cpp
+g:\网狐\happygamewh\纯净版服务端\系统模块\共享组件\界面控件\skinrichedit.cpp(610): warning C4302: “类型强制转换”: 从“LPSTR”到“WORD”截断
+cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
+  SkinWndObject.cpp
+g:\网狐\happygamewh\纯净版服务端\系统模块\共享组件\界面控件\skinwndobject.cpp(394): warning C4302: “类型强制转换”: 从“LPSTR”到“WORD”截断
+PngImage.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/SAFESEH”规范)
+    正在创建库 ../../链接库/SkinControlsD.lib 和对象 ../../链接库/SkinControlsD.exp
+  SkinControls.vcxproj -> G:\网狐\HappyGameWH\纯净版服务端\系统模块\共享组件\界面控件\../../运行/Debug/SkinControlsD.dll
+  子目录或文件 ..\..\发布组件\服务器组件\Debug 已经存在。
+  子目录或文件 ..\..\发布组件\客户端组件\Debug 已经存在。
+  已复制         1 个文件。
+  已复制         1 个文件。

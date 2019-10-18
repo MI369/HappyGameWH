@@ -1,0 +1,64 @@
+syntax = "proto2";    //指定proto版本2.x
+import "NullPmd.proto";
+import "CommonPmd.proto";
+
+package LoginPmd;
+
+message loginbyid_c2s
+{
+    optional NullPmd.request reqcmd			= 1;
+	//系统信息
+	required uint64	dwplazaversion			= 2;	//广场版本
+	required string	szmachineid				= 3;	//机器序列
+
+	//登录信息
+	required uint64	dwgameid				= 4;	//游戏 i d
+	required string	szpassword				= 5;	//登录密码
+	required int32	cbvalidateflags			= 6;	//校验标识
+}
+
+message loginbyaccounts_c2s
+{
+    optional NullPmd.request reqcmd			= 1;
+	//系统信息
+	required uint64	dwplazaversion			= 2;	//广场版本
+	required string	szmachineid				= 3;	//机器序列
+
+	//登录信息
+	required string	szpassword				= 4;	//登录密码
+	required string	szaccounts				= 5;	//登录帐号
+	required string	szpassportid			= 6;	//身份证号
+	required int32	cbvalidateflags			= 7;	//校验标识
+}
+
+message loginbyvisitor_c2s
+{
+    optional NullPmd.request reqcmd			= 1;
+	//系统信息
+	required uint64	dwplazaversion			= 2;	//广场版本
+	required string	szmachineid				= 3;	//机器序列
+
+	//登录信息
+	required int32	cbvalidateflags			= 4;	//校验标识
+}
+
+//登录成功
+message loginsuccess_s2c
+{
+	optional NullPmd.response respcmd		= 1;
+	required CommonPmd.personinfo personinfo	= 2;
+}
+
+//登陆完成
+message loginfinish_s2c
+{
+	optional NullPmd.response respcmd		= 1;
+	required int32	wIntermitTime 			= 2;	//中断时间
+	required int32	wOnLineCountTime		= 3;	//更新时间
+}
+
+//登录失败
+message loginfailure_s2c
+{
+	optional NullPmd.response respcmd		= 1;
+}

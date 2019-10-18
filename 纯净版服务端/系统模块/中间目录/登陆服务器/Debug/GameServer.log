@@ -1,0 +1,18 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: 中间目录(../../../中间目录/登陆服务器/Debug/)包含从另一个项目(登陆服务器.vcxproj)共享的文件。   这会导致错误的清除和重新生成行为。
+cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
+  Stdafx.cpp
+g:\网狐\happygamewh\纯净版服务端\系统模块\游戏组件\3.斗地主\游戏服务器\stdafx.h : warning C4335: 检测到 Mac 文件格式: 请将源文件转换为 DOS 格式或 UNIX 格式
+cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
+  GameServerManager.cpp
+  GameServer.cpp
+  GameLogic.cpp
+  AndroidUserItemSink.cpp
+  HistoryRecord.cpp
+  正在生成代码...
+cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
+  TableFrameSink.cpp
+HistoryRecord.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/SAFESEH”规范)
+    正在创建库 ../../../链接库/LandServer.lib 和对象 ../../../链接库/LandServer.exp
+  GameServer.vcxproj -> G:\网狐\HappyGameWH\纯净版服务端\系统模块\游戏组件\3.斗地主\游戏服务器\../../../运行/Debug/LandServer.dll
+  子目录或文件 ..\..\..\发布组件\服务器组件\Debug 已经存在。
+  已复制         1 个文件。

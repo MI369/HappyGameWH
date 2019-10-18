@@ -1,0 +1,103 @@
+﻿cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
+  Stdafx.cpp
+cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
+  ServiceParameter.cpp
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\服务器组件\服务装载器\serviceparameter.cpp(55): warning C4996: 'gethostbyname': Use getaddrinfo() or GetAddrInfoW() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\8.1\include\um\winsock2.h(2238): note: 参见“gethostbyname”的声明
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\服务器组件\服务装载器\serviceparameter.cpp(60): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\8.1\include\um\winsock2.h(1868): note: 参见“inet_ntoa”的声明
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\服务器组件\服务装载器\serviceparameter.cpp(190): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\8.1\include\um\winsock2.h(1850): note: 参见“inet_addr”的声明
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\服务器组件\服务装载器\serviceparameter.cpp(215): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\服务器组件\服务装载器\serviceparameter.cpp(493): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\服务器组件\服务装载器\serviceparameter.cpp(522): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\服务器组件\服务装载器\serviceparameter.cpp(531): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\8.1\include\um\winsock2.h(1850): note: 参见“inet_addr”的声明
+  ServiceLoaderDlg.cpp
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\服务器组件\服务装载器\serviceloaderdlg.cpp(71): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\8.1\include\um\winsock2.h(1850): note: 参见“inet_addr”的声明
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\服务器组件\服务装载器\serviceloaderdlg.cpp(74): warning C4996: 'gethostbyname': Use getaddrinfo() or GetAddrInfoW() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\8.1\include\um\winsock2.h(2238): note: 参见“gethostbyname”的声明
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\服务器组件\服务装载器\serviceloaderdlg.cpp(81): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\8.1\include\um\winsock2.h(1850): note: 参见“inet_addr”的声明
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\服务器组件\服务装载器\serviceloaderdlg.cpp(84): warning C4996: 'gethostbyname': Use getaddrinfo() or GetAddrInfoW() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\8.1\include\um\winsock2.h(2238): note: 参见“gethostbyname”的声明
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\服务器组件\服务装载器\serviceloaderdlg.cpp(91): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\8.1\include\um\winsock2.h(1850): note: 参见“inet_addr”的声明
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\服务器组件\服务装载器\serviceloaderdlg.cpp(94): warning C4996: 'gethostbyname': Use getaddrinfo() or GetAddrInfoW() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\8.1\include\um\winsock2.h(2238): note: 参见“gethostbyname”的声明
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\服务器组件\服务装载器\serviceloaderdlg.cpp(119): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\服务器组件\服务装载器\serviceloaderdlg.cpp(132): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\服务器组件\服务装载器\serviceloaderdlg.cpp(139): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\服务器组件\服务装载器\serviceloaderdlg.cpp(194): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\服务器组件\服务装载器\serviceloaderdlg.cpp(199): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\服务器组件\服务装载器\serviceloaderdlg.cpp(258): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\8.1\include\um\winsock2.h(1850): note: 参见“inet_addr”的声明
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\服务器组件\服务装载器\serviceloaderdlg.cpp(268): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\8.1\include\um\winsock2.h(1850): note: 参见“inet_addr”的声明
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\服务器组件\服务装载器\serviceloaderdlg.cpp(273): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\8.1\include\um\winsock2.h(1850): note: 参见“inet_addr”的声明
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\服务器组件\服务装载器\serviceloaderdlg.cpp(304): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\服务器组件\服务装载器\serviceloaderdlg.cpp(309): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\服务器组件\服务装载器\serviceloaderdlg.cpp(314): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\服务器组件\服务装载器\serviceloaderdlg.cpp(381): warning C4477: “_snprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\服务器组件\服务装载器\serviceloaderdlg.cpp(386): warning C4477: “_snprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\服务器组件\服务装载器\serviceloaderdlg.cpp(381): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\服务器组件\服务装载器\serviceloaderdlg.cpp(386): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\服务器组件\服务装载器\serviceloaderdlg.cpp(470): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\模板库\module.h(224): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+  e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\模板库\module.h(209): note: 编译 类 模板 成员函数 "bool CTempldateHelper<IDataBase>::CreateInstance(void)" 时
+  e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\服务器组件\服务装载器\serviceloaderdlg.cpp(451): note: 参见对正在编译的函数 模板 实例化“bool CTempldateHelper<IDataBase>::CreateInstance(void)”的引用
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\atlmfc\include\afxtempl.h(965): note: 编译 类 模板 成员函数 "POSITION CList<IControlSiteFactory *,IControlSiteFactory *>::AddTail(ARG_TYPE)" 时
+          with
+          [
+              ARG_TYPE=IControlSiteFactory *
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\atlmfc\include\afxtempl.h(1196): note: 参见对正在编译的函数 模板 实例化“POSITION CList<IControlSiteFactory *,IControlSiteFactory *>::AddTail(ARG_TYPE)”的引用
+          with
+          [
+              ARG_TYPE=IControlSiteFactory *
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\atlmfc\include\afxtempl.h(878): note: 编译 类 模板 成员函数 "CList<IControlSiteFactory *,IControlSiteFactory *>::~CList(void)" 时
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\atlmfc\include\afxocc.h(64): note: 参见对正在编译的 类 模板 实例化 "CList<IControlSiteFactory *,IControlSiteFactory *>" 的引用
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\模板库\module.h(232): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\模板库\module.h(240): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\模板库\module.h(246): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\模板库\module.h(251): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+  ServiceLoader.cpp
+  InitParamter.cpp
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\服务器组件\服务装载器\initparamter.cpp(48): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+e:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\c++项目工程\系统模块\服务器组件\服务装载器\initparamter.cpp(134): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+  正在生成代码...
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(1216,5): warning MSB8012: TargetPath(E:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\C++项目工程\系统模块\服务器组件\服务装载器\Debug\服务装载器.exe) 与 Linker 的 OutputFile 属性值(E:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\C++项目工程\系统模块\运行\Debug\ServiceLoader.exe)不匹配。这可能导致项目生成不正确。若要更正此问题，请确保 $(OutDir)、$(TargetName) 和 $(TargetExt) 属性值与 %(Link.OutputFile) 中指定的值匹配。
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(1218,5): warning MSB8012: TargetName(服务装载器) 与 Linker 的 OutputFile 属性值(ServiceLoader)不匹配。这可能导致项目生成不正确。若要更正此问题，请确保 $(OutDir)、$(TargetName) 和 $(TargetExt) 属性值与 %(Link.OutputFile) 中指定的值匹配。
+InitParamter.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/SAFESEH”规范)
+  ServiceLoader.vcxproj -> E:\baidu\新建文件夹\1\网狐棋牌源码全套\网狐6.6完整源码\网狐6.6完整源码+内核源码+105款游戏源码（内含百人+赛马+捕鱼）\C++项目工程\系统模块\服务器组件\服务装载器\Debug\服务装载器.exe
+  子目录或文件 ..\..\发布组件\服务器组件\Debug 已经存在。
+  系统找不到指定的文件。
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppCommon.targets(138,5): error MSB3073: 命令“mkdir ..\..\发布组件\服务器组件\Debug
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppCommon.targets(138,5): error MSB3073: copy /y ..\..\运行\Debug\服务装载器.exe ..\..\发布组件\服务器组件\Debug\服务装载器.exe
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppCommon.targets(138,5): error MSB3073: 
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppCommon.targets(138,5): error MSB3073: 
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppCommon.targets(138,5): error MSB3073: :VCEnd”已退出，代码为 1。

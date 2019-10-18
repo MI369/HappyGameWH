@@ -1,0 +1,143 @@
+﻿cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
+  Stdafx.cpp
+cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
+  TableFrame.cpp
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\tableframe.cpp(373): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\tableframe.cpp(479): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\tableframe.cpp(483): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\tableframe.cpp(496): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\tableframe.cpp(500): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\tableframe.cpp(533): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\tableframe.cpp(542): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\tableframe.cpp(553): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\tableframe.cpp(560): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\tableframe.cpp(709): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\tableframe.cpp(1118): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\tableframe.cpp(1121): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\tableframe.cpp(1128): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\tableframe.cpp(1581): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\tableframe.cpp(1585): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\tableframe.cpp(1599): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\tableframe.cpp(1603): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\tableframe.cpp(1804): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\tableframe.cpp(1809): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+  ServerUserManager.cpp
+  ServerList.cpp
+  GameService.cpp
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\gameservice.cpp(215): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\gameservice.cpp(223): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\gameservice.cpp(231): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\模板库\module.h(224): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+  g:\网狐\happygamewh\纯净版服务端\系统模块\模板库\module.h(209): note: 编译 类 模板 成员函数 "bool CTempldateHelper<ITimerEngine>::CreateInstance(void)" 时
+  g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\gameservice.cpp(58): note: 参见对正在编译的函数 模板 实例化“bool CTempldateHelper<ITimerEngine>::CreateInstance(void)”的引用
+  g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\内核引擎\kernelenginehead.h(709): note: 参见对正在编译的 类 模板 实例化 "CTempldateHelper<ITimerEngine>" 的引用
+g:\网狐\happygamewh\纯净版服务端\系统模块\模板库\module.h(232): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\模板库\module.h(240): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\模板库\module.h(246): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\模板库\module.h(251): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+  DataBaseSink.cpp
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\databasesink.cpp(58): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\databasesink.cpp(68): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\databasesink.cpp(754): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\databasesink.cpp(777): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\databasesink.cpp(807): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\databasesink.cpp(840): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\databasesink.cpp(860): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\databasesink.cpp(881): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\databasesink.cpp(902): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\databasesink.cpp(929): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\databasesink.cpp(955): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\databasesink.cpp(1011): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\databasesink.cpp(1033): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\databasesink.cpp(1054): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\模板库\module.h(224): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+  g:\网狐\happygamewh\纯净版服务端\系统模块\模板库\module.h(209): note: 编译 类 模板 成员函数 "bool CTempldateHelper<IDataBase>::CreateInstance(void)" 时
+  g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\databasesink.cpp(37): note: 参见对正在编译的函数 模板 实例化“bool CTempldateHelper<IDataBase>::CreateInstance(void)”的引用
+  g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\内核引擎\kernelenginehead.h(708): note: 参见对正在编译的 类 模板 实例化 "CTempldateHelper<IDataBase>" 的引用
+g:\网狐\happygamewh\纯净版服务端\系统模块\模板库\module.h(232): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\模板库\module.h(240): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\模板库\module.h(246): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\模板库\module.h(251): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+  AttemperEngineSink.cpp
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\attemperenginesink.cpp(746): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\attemperenginesink.cpp(750): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\attemperenginesink.cpp(751): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\attemperenginesink.cpp(1207): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\attemperenginesink.cpp(1697): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1769): note: 参见“sprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\attemperenginesink.cpp(1800): warning C4474: _snprintf: 格式字符串中传递的参数太多
+  g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\attemperenginesink.cpp(1800): note: 占位符和其参数预计 0 可变参数，但提供的却是 1 参数
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\attemperenginesink.cpp(1755): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\attemperenginesink.cpp(1785): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\attemperenginesink.cpp(1800): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\attemperenginesink.cpp(1825): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\attemperenginesink.cpp(1865): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\attemperenginesink.cpp(2093): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\attemperenginesink.cpp(3588): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+g:\网狐\happygamewh\纯净版服务端\系统模块\服务器组件\游戏服务\attemperenginesink.cpp(3606): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+  AndroidUserManager.cpp
+  AndroidUserItem.cpp
+  正在生成代码...
+AndroidUserItem.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/SAFESEH”规范)
+    正在创建库 ../../链接库/GameServiceD.lib 和对象 ../../链接库/GameServiceD.exp
+  GameService.vcxproj -> G:\网狐\HappyGameWH\纯净版服务端\系统模块\服务器组件\游戏服务\../../运行/Debug/GameServiceD.dll
+  子目录或文件 ..\..\发布组件\服务器组件\Debug 已经存在。
+  已复制         1 个文件。

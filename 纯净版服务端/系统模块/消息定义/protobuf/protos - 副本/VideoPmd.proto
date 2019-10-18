@@ -1,0 +1,13 @@
+syntax = "proto2";    //指定proto版本2.x
+
+import "NullPmd.proto";
+
+package VideoPmd; 
+
+//视频配置
+message tagAVServerOption_s2c
+{
+	optional NullPmd.response respcmd		= 1;
+	required int32	wavserverport	= 2;	//视频端口
+	required uint64	dwavserveraddr	= 3;	//视频地址
+};

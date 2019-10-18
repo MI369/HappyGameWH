@@ -1,0 +1,44 @@
+syntax = "proto3";    //指定proto版本3.x
+
+package NullPmd;  
+
+message request
+{
+	
+}
+
+message response
+{
+	int32 result			= 1;
+	string errordescription	= 2;
+}
+
+message indication
+{
+	
+}
+
+message command
+{
+	uint64	mainid			= 1;
+    uint64	subid			= 2;
+}
+
+message info
+{
+	uint64	cbversion		= 1;//数据类型
+	uint64	cbcheckcode		= 2;//效验字段
+	uint64	wpacketsize		= 3;//数据大小
+}
+
+message head
+{
+	command command			= 1;
+	info	info			= 2;
+}
+
+message message
+{
+	head	head			= 1;
+    bytes	data			= 2;    // data
+}

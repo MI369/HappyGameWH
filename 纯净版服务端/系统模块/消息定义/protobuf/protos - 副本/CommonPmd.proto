@@ -1,0 +1,33 @@
+syntax = "proto2";    //指定proto版本2.x
+package CommonPmd;  
+
+message personinfo
+{
+	//属性资料
+	required int32	wfaceid					= 1;	//头像标识
+	required uint64	dwuserid				= 2;	//用户 i d
+	required uint64	dwgameid				= 3;	//游戏 i d
+	required uint64	dwgroupid				= 4;	//社团标识
+	required uint64	dwcustomid				= 5;	//自定标识	
+	required uint64	dwexperience			= 6;	//经验数值
+	required uint64	lloveliness				= 7;	//用户魅力
+
+	//用户成绩
+	required uint64	luserscore				= 8;	//用户金币
+	required uint64	luserinsure				= 9;	//用户银行
+	required uint64	luseringot				= 10;	//用户元宝
+	required double	duserbeans				= 11;	//用户游戏豆
+
+	//用户信息
+	required uint64	cbgender				= 12;	//用户性别
+	required uint64	cbmoormachine			= 13;	//锁定机器
+	required string	szaccounts				= 14;	//登录帐号
+	required string	sznickname				= 15;	//用户昵称
+	required string	szdynamicpass			= 16;	//动态密码
+	required string	szgroupname				= 17;	//社团名字
+
+	//配置信息
+	required uint64	cbinsureenabled			= 18;	//银行使能标识
+	required uint64	cbshowserverstatus		= 19;   //显示服务器状态
+	required uint64	cbisagent				= 20;	//代理标识
+}
